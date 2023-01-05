@@ -14,7 +14,7 @@ jobs:
     - name: checkout pypoe
       uses: actions/checkout@v3
       with:
-        repository: Project-Path-of-Exile-Wiki/PyPoE
+        repository: lvlvllvlvllvlvl/PyPoE
         path: PyPoE
     - name: setup python
       uses: actions/setup-python@v4
@@ -25,8 +25,8 @@ jobs:
       run: pip install -e .
       working-directory: PyPoE
     - name: run export
-      run: python run_parser.py all
+      run: python run_parser.py all -f "http://patchcdn.pathofexile.com/$(<version.txt)/"
       working-directory: RePoE
     - name: commit changes
       with: stefanzweifel/git-auto-commit-action@v4
-        commit_message: [skip ci] Automated export
+        commit_message: "[skip ci] Automated export"
