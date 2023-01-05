@@ -33,7 +33,7 @@ jobs:
       run: python run_parser.py all -f "http://patchcdn.pathofexile.com/$(<version.txt)/"
       working-directory: RePoE
     - name: generate index.html
-      run: tree -H '.' --noreport --charset utf-8 -o index.html
+      run: tree -H '.' --filesfirst --noreport --charset utf-8 -o index.html
       working-directory: RePoE/data/
     - name: upload gh-pages artifact
       uses: actions/upload-pages-artifact@v1
@@ -46,7 +46,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    
+
     needs: build
 
     permissions:
