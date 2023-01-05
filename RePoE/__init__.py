@@ -19,6 +19,7 @@ def load_json(json_file_path, base_path=__DATA_PATH__):
 
 active_skill_types = load_json("active_skill_types.json")
 base_items = load_json("base_items.json")
+uniques = load_json("uniques.json")
 characters = load_json("characters.json")
 crafting_bench_options = load_json("crafting_bench_options.json")
 default_monster_stats = load_json("default_monster_stats.json")
