@@ -1,0 +1,32 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+    - name: checkout pypoe
+      uses: actions/checkout@v3
+      with:
+        repository: Project-Path-of-Exile-Wiki/PyPoE
+        path: PyPoE
+    - name: setup python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        cache: 'pip'
+    - name: install pypoe
+      run: pip install -e .
+      working-directory: PyPoE
+    - name: run export
+      run: python run_parser.py all
+      working-directory: RePoE
+    - name: commit changes
+      with: stefanzweifel/git-auto-commit-action@v4
+        commit_message: [skip ci] Automated export
