@@ -4,17 +4,13 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from PyPoE.poe.constants import COOLDOWN_BYPASS_TYPES
 from PyPoE.poe.file.dat import DatRecord, RelationalReader
 from PyPoE.poe.file.file_system import FileSystem
+from PyPoE.poe.file.ot import OTFileCache
 from PyPoE.poe.file.stat_filters import StatFilterFile
 from PyPoE.poe.file.translations import TranslationFileCache
 from PyPoE.poe.sim.formula import GemTypes, gem_stat_requirement
 
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import (
-    call_with_default_args,
-    get_release_state,
-    get_stat_translation_file_name,
-    write_json,
-)
+from RePoE.parser.util import call_with_default_args, get_release_state, get_stat_translation_file_name, write_json
 
 
 def _handle_dict(representative, per_level):
@@ -57,8 +53,8 @@ def _handle_dict(representative, per_level):
 
 
 def _handle_list(
-    representative: List[Dict[str, Any]], per_level: List[List[Dict[str, Any]]]
-) -> Tuple[Union[List[Dict[str, Any]], List[Dict[str, str]]], bool]:
+    representative: List[Dict[str, Any]], per_level: List[List[Optional[Dict[str, Any]]]]
+) -> Tuple[Optional[List[Optional[Dict[str, Any]]]], bool]:
     # edge cases (all None, any None, mismatching lengths, all empty)
     all_none = True
     any_none = False
@@ -75,7 +71,7 @@ def _handle_list(
         # all empty, else above would be true
         return [], True
 
-    static = None
+    static: Optional[List[Optional[Dict[str, Any]]]] = None
     cleared = True
     cleared_is = []
     for i, v in enumerate(representative):
@@ -118,21 +114,21 @@ class GemConverter:
     def __init__(self, file_system: FileSystem, relational_reader: RelationalReader, data_path: str) -> None:
         self.relational_reader = relational_reader
 
-        self.gepls = {}
+        self.gepls: Dict[str, Any] = {}
         for gepl in self.relational_reader["GrantedEffectsPerLevel.dat64"]:
             ge_id = gepl["GrantedEffect"]["Id"]
             if ge_id not in self.gepls:
                 self.gepls[ge_id] = []
             self.gepls[ge_id].append(gepl)
 
-        self.gesspls = {}
+        self.gesspls: Dict[str, List[Any]] = {}
         for gesspl in self.relational_reader["GrantedEffectStatSetsPerLevel.dat64"]:
             gess_id = gesspl["StatSet"]["Id"]
             if gess_id not in self.gesspls:
                 self.gesspls[gess_id] = []
             self.gesspls[gess_id].append(gesspl)
 
-        self.granted_effect_quality_stats = {}
+        self.granted_effect_quality_stats: Dict[str, Any] = {}
         for geq in self.relational_reader["GrantedEffectQualityStats.dat64"]:
             ge_id = geq["GrantedEffectsKey"]["Id"]
             if ge_id not in self.granted_effect_quality_stats:
@@ -144,7 +140,7 @@ class GemConverter:
             name = tag["Tag"]
             self.tags[tag["Id"]] = name if name != "" else None
 
-        self.max_levels = {}
+        self.max_levels: Dict[str, int] = {}
         for row in self.relational_reader["ItemExperiencePerLevel.dat64"]:
             base_item = row["BaseItemTypesKey"]["Id"]
             level = row["ItemCurrentLevel"]
@@ -203,7 +199,7 @@ class GemConverter:
         gepl: DatRecord,
         gess: DatRecord,
         gesspl: DatRecord,
-        multipliers: Dict[str, int],
+        multipliers: Optional[Dict[str, int]],
         is_support: bool,
         xp: Optional[Dict[int, int]],
     ) -> Dict[str, Any]:
@@ -410,11 +406,11 @@ class gems(Parser_Module):
         data_path: str,
         relational_reader: RelationalReader,
         translation_file_cache: TranslationFileCache,
-        **kwargs: Any
+        ot_file_cache: OTFileCache,
     ) -> None:
         gems = {}
         converter = GemConverter(file_system, relational_reader, data_path)
-        xp = {}
+        xp: Dict[int, Dict[int, int]] = {}
 
         for level in relational_reader["ItemExperiencePerLevel.dat64"]:
             rowid = level["BaseItemTypesKey"].rowid

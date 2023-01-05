@@ -24,7 +24,7 @@ def _convert_stats(
     # 'Stat{i}' is a virtual field that is an array of ['StatsKey{i}', 'Stat{i}Min', 'Stat{i}Max']
     r = []
     for stat in stats:
-        if stat[0] is not None:
+        if isinstance(stat[0], DatRecord):
             r.append({"id": stat[0]["Id"], "min": stat[1], "max": stat[2]})
     return r
 

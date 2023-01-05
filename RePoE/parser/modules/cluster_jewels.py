@@ -1,9 +1,12 @@
-from RePoE.parser.util import call_with_default_args, write_json
-from RePoE.parser import Parser_Module
+from typing import Any, Dict, List
+
 from PyPoE.poe.file.dat import RelationalReader
 from PyPoE.poe.file.file_system import FileSystem
 from PyPoE.poe.file.ot import OTFileCache
 from PyPoE.poe.file.translations import TranslationFileCache
+
+from RePoE.parser import Parser_Module
+from RePoE.parser.util import call_with_default_args, write_json
 
 
 class cluster_jewels(Parser_Module):
@@ -15,7 +18,7 @@ class cluster_jewels(Parser_Module):
         translation_file_cache: TranslationFileCache,
         ot_file_cache: OTFileCache,
     ) -> None:
-        skills = {}
+        skills: Dict[str, List[Dict[str, Any]]] = {}
         for row in relational_reader["PassiveTreeExpansionSkills.dat64"]:
             size = row["PassiveTreeExpansionJewelSizesKey"]["Name"]
             if size not in skills:

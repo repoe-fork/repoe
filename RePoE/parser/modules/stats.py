@@ -5,7 +5,7 @@ from PyPoE.poe.file.file_system import FileSystem
 from PyPoE.poe.file.ot import OTFileCache
 from PyPoE.poe.file.translations import TranslationFileCache
 from PyPoE.poe.file.dat import DatRecord
-from typing import Dict
+from typing import Dict, Set
 from typing import Optional
 
 
@@ -30,7 +30,7 @@ class stats(Parser_Module):
         ot_file_cache: OTFileCache,
     ) -> None:
         root = {}
-        previous = set()
+        previous: Set[str] = set()
         for stat in relational_reader["Stats.dat64"]:
             if stat["Id"] in previous:
                 print("Duplicate stat id %s" % stat["Id"])

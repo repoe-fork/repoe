@@ -2,7 +2,7 @@ import io
 import json
 import os
 from io import BytesIO
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Optional, Union
 
 from PIL import Image
 from PyPoE.poe.file.dat import RelationalReader
@@ -82,7 +82,7 @@ def get_release_state(item_id: str) -> ReleaseState:
     return ReleaseState.released
 
 
-def get_stat_translation_file_name(game_file: str) -> str:
+def get_stat_translation_file_name(game_file: str) -> Optional[str]:
     if game_file in STAT_DESCRIPTION_NAMING_EXCEPTIONS:
         return f"stat_translations{STAT_DESCRIPTION_NAMING_EXCEPTIONS[game_file]}"
     elif game_file.endswith("_stat_descriptions.txt"):

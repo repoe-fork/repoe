@@ -45,7 +45,7 @@ def _convert_range(translation_range: List[TranslationRange]) -> Union[List[Dict
 
 
 def _convert_handlers(n_ids: int, index_handlers: Dict) -> Union[List[List[str]], List[List]]:
-    hs = [[] for _ in range(n_ids)]
+    hs: List[List[str]] = [[] for _ in range(n_ids)]
     for handler_name, ids in index_handlers.items():
         for i in ids:
             # Indices in the handler dict are 1-based
@@ -111,7 +111,7 @@ class stat_translations(Parser_Module):
         translation_file_cache: TranslationFileCache,
         ot_file_cache: OTFileCache,
     ) -> None:
-        tag_set = set()
+        tag_set: Set[str] = set()
         for in_file, out_file in _build_stat_translation_file_map(file_system):
             translations = translation_file_cache[in_file].translations
             result = _get_stat_translations(tag_set, translations, get_custom_translation_file().translations)

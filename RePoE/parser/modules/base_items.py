@@ -21,7 +21,7 @@ def _add_if_greater_zero(value: int, key: str, obj: Dict[str, int]) -> None:
         obj[key] = value
 
 
-def _add_if_not_zero(value: int, key: str, obj: Dict[str, Dict[str, int]]) -> None:
+def _add_if_not_zero(value: int, key: str, obj: Dict[str, Any]) -> None:
     if value != 0:
         obj[key] = value
 
@@ -65,7 +65,7 @@ def _convert_flask_properties(flask_row: Optional[DatRecord], properties: Dict[s
     _add_if_greater_zero(flask_row["RecoveryTime"], "duration", properties)
 
 
-def _convert_flask_buff(flask_row: Optional[DatRecord], item_object: Dict[str, Any]) -> Optional[Any]:
+def _convert_flask_buff(flask_row: Optional[DatRecord], item_object: Dict[str, Any]) -> None:
     if flask_row is None or flask_row["BuffDefinitionsKey"] is None:
         return None
     stats_values = zip(flask_row["BuffDefinitionsKey"]["StatsKeys"], flask_row["BuffStatValues"])
@@ -221,7 +221,7 @@ class base_items(Parser_Module):
             inherited_tags = list(ot_file_cache[ot_path]["Base"]["tag"])
             mod_domain = item["ModDomainsKey"]
             item_id = item["Id"]
-            properties = {}
+            properties: Dict = {}
             _convert_armour_properties(armour_types[item_id], properties)
             _convert_shield_properties(shield_types[item_id], properties)
             _convert_flask_properties(flask_types[item_id], properties)
