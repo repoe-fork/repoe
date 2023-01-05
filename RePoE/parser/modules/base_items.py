@@ -1,9 +1,6 @@
-import os
 from collections import defaultdict
-from io import BytesIO
 from typing import Any, Dict, Optional
 
-from PIL import Image
 from PyPoE.poe.constants import MOD_DOMAIN
 from PyPoE.poe.file.dat import DatReader, DatRecord, RelationalReader
 from PyPoE.poe.file.file_system import FileSystem
@@ -11,7 +8,7 @@ from PyPoE.poe.file.ot import OTFileCache
 from PyPoE.poe.file.translations import TranslationFileCache
 
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import call_with_default_args, get_release_state, write_json
+from RePoE.parser.util import call_with_default_args, export_image, get_release_state, write_json
 
 
 def _create_default_dict(relation: DatReader) -> Dict:
@@ -250,21 +247,8 @@ class base_items(Parser_Module):
             }
             _convert_flask_buff(flask_types[item_id], root[item_id])
 
-            ddsfile = item["ItemVisualIdentityKey"]["DDSFile"]
-            if ddsfile:
-                bytes = file_system.extract_dds(file_system.get_file(ddsfile))
-                if not bytes:
-                    print(f"dds file not found {ddsfile}")
-                    continue
-                if bytes[:4] != b"DDS ":
-                    print(f"{ddsfile} was not a dds file")
-                    continue
-                dest = os.path.join(data_path, os.path.splitext(ddsfile)[0])
-                os.makedirs(os.path.dirname(dest), exist_ok=True)
-
-                with Image.open(BytesIO(bytes)) as image:
-                    image.save(dest + ".png")
-                    image.save(dest + ".webp")
+            if item["ItemVisualIdentityKey"]["DDSFile"]:
+                export_image(item["ItemVisualIdentityKey"]["DDSFile"], data_path, file_system)
 
         print(f"Skipped the following item classes for base_items {skipped_item_classes}")
         write_json(root, data_path, "base_items")

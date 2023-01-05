@@ -1,14 +1,10 @@
-import os
-from io import BytesIO
-
-from PIL import Image
 from PyPoE.poe.file.dat import RelationalReader
 from PyPoE.poe.file.file_system import FileSystem
 from PyPoE.poe.file.ot import OTFileCache
 from PyPoE.poe.file.translations import TranslationFileCache
 
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import call_with_default_args, write_json
+from RePoE.parser.util import call_with_default_args, export_image, write_json
 
 
 class uniques(Parser_Module):
@@ -42,21 +38,8 @@ class uniques(Parser_Module):
                 },
             }
 
-            ddsfile = item["ItemVisualIdentityKey"]["DDSFile"]
-            if ddsfile:
-                bytes = file_system.extract_dds(file_system.get_file(ddsfile))
-                if not bytes:
-                    print(f"dds file not found {ddsfile}")
-                    continue
-                if bytes[:4] != b"DDS ":
-                    print(f"{ddsfile} was not a dds file")
-                    continue
-                dest = os.path.join(data_path, os.path.splitext(ddsfile)[0])
-                os.makedirs(os.path.dirname(dest), exist_ok=True)
-
-                with Image.open(BytesIO(bytes)) as image:
-                    image.save(dest + ".png")
-                    image.save(dest + ".webp")
+            if item["ItemVisualIdentityKey"]["DDSFile"]:
+                export_image(item["ItemVisualIdentityKey"]["DDSFile"], data_path, file_system)
 
         write_json(root, data_path, "uniques")
 

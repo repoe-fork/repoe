@@ -1,25 +1,20 @@
 import re
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 from PyPoE.poe.constants import COOLDOWN_BYPASS_TYPES
+from PyPoE.poe.file.dat import DatRecord, RelationalReader
+from PyPoE.poe.file.file_system import FileSystem
 from PyPoE.poe.file.stat_filters import StatFilterFile
+from PyPoE.poe.file.translations import TranslationFileCache
 from PyPoE.poe.sim.formula import GemTypes, gem_stat_requirement
+
+from RePoE.parser import Parser_Module
 from RePoE.parser.util import (
     call_with_default_args,
-    write_json,
     get_release_state,
     get_stat_translation_file_name,
+    write_json,
 )
-from RePoE.parser import Parser_Module
-from PyPoE.poe.file.dat import DatRecord
-from typing import Any
-from typing import Dict
-from typing import List
-from typing import Union
-from PyPoE.poe.file.dat import RelationalReader
-from PyPoE.poe.file.file_system import FileSystem
-from PyPoE.poe.file.translations import TranslationFileCache
-from typing import Optional
-from typing import Tuple
 
 
 def _handle_dict(representative, per_level):
@@ -120,7 +115,7 @@ def _handle_primitives(
 class GemConverter:
     regex_number = re.compile(r"-?\d+(\.\d+)?")
 
-    def __init__(self, file_system: FileSystem, relational_reader: RelationalReader) -> None:
+    def __init__(self, file_system: FileSystem, relational_reader: RelationalReader, data_path: str) -> None:
         self.relational_reader = relational_reader
 
         self.gepls = {}
@@ -204,9 +199,16 @@ class GemConverter:
         return [row["Id"] for row in type_rows]
 
     def _convert_gepl(
-        self, gepl: DatRecord, gess: DatRecord, gesspl: DatRecord, multipliers: Dict[str, int], is_support: bool
+        self,
+        gepl: DatRecord,
+        gess: DatRecord,
+        gesspl: DatRecord,
+        multipliers: Dict[str, int],
+        is_support: bool,
+        xp: Optional[Dict[int, int]],
     ) -> Dict[str, Any]:
         r = {
+            "experience": xp and xp.get(gepl["Level"]),
             "required_level": gepl["PlayerLevelReq"],
         }
         if gepl["Cooldown"] > 0:
@@ -308,6 +310,7 @@ class GemConverter:
         secondary_granted_effect: Optional[DatRecord],
         gem_tags: Optional[List[DatRecord]],
         multipliers: Optional[Dict[str, int]],
+        xp: Optional[Dict[int, int]],
     ) -> Dict[str, Any]:
         is_support = granted_effect["IsSupport"]
         obj = {"is_support": is_support}
@@ -337,7 +340,7 @@ class GemConverter:
         gesspls = {row["GemLevel"]: row for row in self.gesspls[gess["Id"]]}
         gepls_dict = {}
         for gepl in gepls:
-            gepl_converted = self._convert_gepl(gepl, gess, gesspls[gepl["Level"]], multipliers, is_support)
+            gepl_converted = self._convert_gepl(gepl, gess, gesspls[gepl["Level"]], multipliers, is_support, xp)
             gepls_dict[gepl["Level"]] = gepl_converted
         obj["per_level"] = gepls_dict
 
@@ -410,7 +413,14 @@ class gems(Parser_Module):
         **kwargs: Any
     ) -> None:
         gems = {}
-        converter = GemConverter(file_system, relational_reader)
+        converter = GemConverter(file_system, relational_reader, data_path)
+        xp = {}
+
+        for level in relational_reader["ItemExperiencePerLevel.dat64"]:
+            rowid = level["BaseItemTypesKey"].rowid
+            if rowid not in xp:
+                xp[rowid] = {}
+            xp[rowid][level["ItemCurrentLevel"]] = level["Experience"]
 
         # Skills from gems
         for gem in relational_reader["SkillGems.dat64"]:
@@ -420,7 +430,12 @@ class gems(Parser_Module):
                 print("Duplicate GrantedEffectsKey.Id '%s'" % ge_id)
             multipliers = {"str": gem["Str"], "dex": gem["Dex"], "int": gem["Int"]}
             gems[ge_id] = converter.convert(
-                gem["BaseItemTypesKey"], granted_effect, gem["GrantedEffectsKey2"], gem["GemTagsKeys"], multipliers
+                gem["BaseItemTypesKey"],
+                granted_effect,
+                gem["GrantedEffectsKey2"],
+                gem["GemTagsKeys"],
+                multipliers,
+                xp.get(gem["BaseItemTypesKey"].rowid),
             )
 
         # Secondary skills from gems. This adds the support skill implicitly provided by Bane
@@ -431,7 +446,7 @@ class gems(Parser_Module):
             ge_id = granted_effect["Id"]
             if ge_id in gems:
                 continue
-            gems[ge_id] = converter.convert(None, granted_effect, None, None, None)
+            gems[ge_id] = converter.convert(None, granted_effect, None, None, None, None)
 
         # Skills from mods
         for mod in relational_reader["Mods.dat64"]:
@@ -443,14 +458,14 @@ class gems(Parser_Module):
                 if ge_id in gems:
                     # mod effects may exist as gems, those are handled above
                     continue
-                gems[ge_id] = converter.convert(None, granted_effect, None, None, None)
+                gems[ge_id] = converter.convert(None, granted_effect, None, None, None, None)
 
         # Default Attack/PlayerMelee is neither gem nor mod effect
         for granted_effect in relational_reader["GrantedEffects.dat64"]:
             ge_id = granted_effect["Id"]
             if ge_id != "PlayerMelee":
                 continue
-            gems[ge_id] = converter.convert(None, granted_effect, None, None, None)
+            gems[ge_id] = converter.convert(None, granted_effect, None, None, None, None)
 
         write_json(gems, data_path, "gems")
 
