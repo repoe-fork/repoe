@@ -1,3 +1,4 @@
+from typing import Any
 from setuptools import find_packages, setup
 
 # Package meta-data.
@@ -13,7 +14,7 @@ VERSION = "1.0.0"
 REQUIRED = ["PyPoE", "pre-commit"]
 
 # What packages are optional?
-EXTRAS = {
+EXTRAS: Any = {
     # 'fancy feature': ['django'],
 }
 

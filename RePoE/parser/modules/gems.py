@@ -303,10 +303,11 @@ class GemConverter:
         self,
         base_item_type: Optional[DatRecord],
         granted_effect: DatRecord,
-        secondary_granted_effect: Optional[DatRecord],
-        gem_tags: Optional[List[DatRecord]],
-        multipliers: Optional[Dict[str, int]],
-        xp: Optional[Dict[int, int]],
+        secondary_granted_effect: Optional[DatRecord] = None,
+        gem_tags: Optional[List[DatRecord]] = None,
+        multipliers: Optional[Dict[str, int]] = None,
+        xp: Optional[Dict[int, int]] = None,
+        quest_reward: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         is_support = granted_effect["IsSupport"]
         obj = {"is_support": is_support}
@@ -320,6 +321,9 @@ class GemConverter:
         else:
             obj["cast_time"] = granted_effect["CastTime"]
             obj["active_skill"] = self._convert_active_skill(granted_effect["ActiveSkill"])
+
+        if quest_reward:
+            obj["quest_reward"] = quest_reward
 
         game_file_name = self._get_translation_file_name(obj.get("active_skill"))
         obj["stat_translation_file"] = get_stat_translation_file_name(game_file_name)
@@ -411,12 +415,21 @@ class gems(Parser_Module):
         gems = {}
         converter = GemConverter(file_system, relational_reader, data_path)
         xp: Dict[int, Dict[int, int]] = {}
+        rewards: Dict[int, Dict[str, Any]] = {}
 
         for level in relational_reader["ItemExperiencePerLevel.dat64"]:
             rowid = level["BaseItemTypesKey"].rowid
             if rowid not in xp:
                 xp[rowid] = {}
             xp[rowid][level["ItemCurrentLevel"]] = level["Experience"]
+
+        for reward in relational_reader["QuestRewards.dat64"]:
+            rowid = reward["Reward"].rowid
+            if rowid not in rewards:
+                quest = reward["RewardOffer"]["QuestKey"]
+                rewards[rowid] = {"act": quest["Act"], "quest": quest["Name"], "classes": []}
+            for character in reward["Characters"]:
+                rewards[rowid]["classes"].append(character["Name"])
 
         # Skills from gems
         for gem in relational_reader["SkillGems.dat64"]:
@@ -432,6 +445,7 @@ class gems(Parser_Module):
                 gem["GemTagsKeys"],
                 multipliers,
                 xp.get(gem["BaseItemTypesKey"].rowid),
+                rewards.get(gem["BaseItemTypesKey"].rowid),
             )
 
         # Secondary skills from gems. This adds the support skill implicitly provided by Bane
@@ -442,7 +456,7 @@ class gems(Parser_Module):
             ge_id = granted_effect["Id"]
             if ge_id in gems:
                 continue
-            gems[ge_id] = converter.convert(None, granted_effect, None, None, None, None)
+            gems[ge_id] = converter.convert(None, granted_effect)
 
         # Skills from mods
         for mod in relational_reader["Mods.dat64"]:
@@ -454,14 +468,14 @@ class gems(Parser_Module):
                 if ge_id in gems:
                     # mod effects may exist as gems, those are handled above
                     continue
-                gems[ge_id] = converter.convert(None, granted_effect, None, None, None, None)
+                gems[ge_id] = converter.convert(None, granted_effect)
 
         # Default Attack/PlayerMelee is neither gem nor mod effect
         for granted_effect in relational_reader["GrantedEffects.dat64"]:
             ge_id = granted_effect["Id"]
             if ge_id != "PlayerMelee":
                 continue
-            gems[ge_id] = converter.convert(None, granted_effect, None, None, None, None)
+            gems[ge_id] = converter.convert(None, granted_effect)
 
         write_json(gems, data_path, "gems")
 

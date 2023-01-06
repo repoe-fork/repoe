@@ -219,7 +219,7 @@ class base_items(Parser_Module):
 
             ot_path = item["InheritsFrom"] + ".it"
             inherited_tags = list(ot_file_cache[ot_path]["Base"]["tag"])
-            mod_domain = item["ModDomainsKey"]
+            mod_domain = item["ModDomain"]
             item_id = item["Id"]
             properties: Dict = {}
             _convert_armour_properties(armour_types[item_id], properties)
@@ -237,8 +237,8 @@ class base_items(Parser_Module):
                 "implicits": [mod["Id"] for mod in item["Implicit_ModsKeys"]],
                 "tags": [tag["Id"] for tag in item["TagsKeys"]] + inherited_tags,
                 "visual_identity": {
-                    "id": item["ItemVisualIdentityKey"]["Id"],
-                    "dds_file": item["ItemVisualIdentityKey"]["DDSFile"],
+                    "id": item["ItemVisualIdentity"]["Id"],
+                    "dds_file": item["ItemVisualIdentity"]["DDSFile"],
                 },
                 "requirements": _convert_requirements(attribute_requirements[item_id], item["DropLevel"]),
                 "properties": properties,
@@ -247,8 +247,8 @@ class base_items(Parser_Module):
             }
             _convert_flask_buff(flask_types[item_id], root[item_id])
 
-            if item["ItemVisualIdentityKey"]["DDSFile"]:
-                export_image(item["ItemVisualIdentityKey"]["DDSFile"], data_path, file_system)
+            if item["ItemVisualIdentity"]["DDSFile"]:
+                export_image(item["ItemVisualIdentity"]["DDSFile"], data_path, file_system)
 
         print(f"Skipped the following item classes for base_items {skipped_item_classes}")
         write_json(root, data_path, "base_items")
