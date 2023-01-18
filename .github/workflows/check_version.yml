@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.VERSION_COMMIT_PAT }}
     - name: get version
       run: curl https://raw.githubusercontent.com/poe-tool-dev/latest-patch-version/main/latest.txt > version.txt
       working-directory: RePoE
@@ -19,4 +21,3 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: "Update patch version"
-        token: ${{ secrets.VERSION_COMMIT_PAT }}
