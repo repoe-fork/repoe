@@ -2,40 +2,30 @@
 
 Repository of Path of Exile resources for tool developers.
 
+Forked from [brather1ng/RePoE](https://github.com/brather1ng/RePoE); not using GitHub fork
+functionality due to [a bug](https://github.com/git-lfs/git-lfs/issues/1906).
+
 Contains data about stats, mods, base items, gems and more. See the `data`
 folder for those files and the `docs` folder for their documentation.
 
-For the actual GGPK parsing, [PyPoE](https://github.com/OmegaK2/PyPoE) is used.
-The code here just converts PyPoE's Python objects to JSON.
+For the actual GGPK parsing, [PyPoE](https://github.com/lvlvllvlvllvlvl/PyPoE) is used.
+This is a fork of the version used by Project PoE Wiki, reverting to the data
+[schema](https://github.com/poe-tool-dev/dat-schema) provided by poe-tool-dev.
+The code in this repo just converts PyPoE's Python objects to JSON.
 
 Developed to supply [PoESkillTree](https://github.com/PoESkillTree/PoESkillTree) with the
 game data information it requires. If you need other files converted, feel free to
-open an Issue or Pull Request for that.
-
-## Use as a Package
-
-- Install Python 3.7 or later (PyPoE recommends Python 3.7) and Git
-- Install [PyPoE](https://github.com/OmegaK2/PyPoE):
-  * Note: until PyPoE is updated again, RePoE only works with my fork of PyPoE (https://github.com/brather1ng/PyPoE)
-  * Clone PyPoE and go into its folder
-  * Minimal install: `pip install -e .`
-  * Full install: `pip install -e .[full]` (not required for RePoE)
-- To be able to decompress GGG's bundle files, PyPoE expects an ooz.exe or libooz.dll in its path.
-- Install RePoE
-  * Clone RePoE and go into its folder
-  * install: `pip install -e .`  
-  * install pre-commit: `pre-commit install`
-
-You can now access the data using `from RePoE import mods, characters` which returns the current 
-dicts found in the files `mods.json, characters.json`
-
-To update the data, in the `RePoE/RePoE` directory use `python run_parser.py all`.
+open an Issue or Pull Request for that. The source data files can be inspected with [poe-dat-viewer](https://snosme.github.io/poe-dat-viewer/).
 
 ## Files
 
 The [RePoE/data](RePoE/data) folder contains the generated data in Json format. Each file has a
 formatted and a compact version. The formatted versions complement their descriptions
 in the [RePoE/docs](RePoE/docs) folder.
+
+Web apps using provided files should link to files in the
+[gh-pages](https://lvlvllvlvllvlvl.github.io/RePoE/), for better performance and caching behavior
+than linking to raw files in the repository.
 
 Note that the file formats are not final, they may change at any time, e.g. when the format
 of files in the GGPK changes. 
@@ -74,7 +64,9 @@ The following data is currently available:
 - `cluster_jewels.json`: Describes how cluster jewels can be generated and how they influence the passive tree. 
 - `cluster_jewel_notables.json`: Lists the notable and keystone passive skills that can appear on cluster jewels.
 - `cost_types.json`: Defines the resource cost types used in `gems.json`.
-- `active_skill_types.json` List the active skill types used in `gems.json`.
+- `active_skill_types.json`: List the active skill types used in `gems.json`.
+- `uniques.json`: Lists the names and art files of unique items - this is the only information
+included in the data files.
   
 
 ## Credits
@@ -83,3 +75,6 @@ The following data is currently available:
   [Path of Exile](https://www.pathofexile.com/). The contents of all `data` files
   obviously belong to them.
 - [OmegaK2](https://github.com/OmegaK2/) for [PyPoE](https://github.com/OmegaK2/PyPoE).
+- [Project PoE Wiki](poewiki.net) for updating PyPoE to handle the latest data format.
+- [Path of Exile Tool Devs](https://github.com/poe-tool-dev/) for maintaining a standardised
+data schema.
