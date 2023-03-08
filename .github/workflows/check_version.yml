@@ -17,7 +17,10 @@ jobs:
     - name: get version
       run: curl https://raw.githubusercontent.com/poe-tool-dev/latest-patch-version/main/latest.txt > version.txt
       working-directory: RePoE
+    - name: get schema hash
+      run: git ls-remote https://github.com/poe-tool-dev/dat-schema.git refs/heads/main > schema.txt
+      working-directory: RePoE
     - name: commit changes
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        commit_message: "Update patch version"
+        commit_message: "Update patch or schema version"

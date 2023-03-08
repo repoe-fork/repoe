@@ -26,7 +26,7 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.10'
-        cache: pip    
+        cache: pip
     - name: install requirements
       run: pip install -r RePoE/requirements.txt
     - name: install pypoe
@@ -35,6 +35,10 @@ jobs:
     - name: install repoe
       run: pip install -e .
       working-directory: RePoE
+    - name: clean data dir
+      run: rm -r RePoE/RePoE/data/*
+    - name: copy text files
+      run: cp RePoE/RePoE/*.txt RePoE/RePoE/data/
     - name: run export
       run: python run_parser.py all -f "http://patchcdn.pathofexile.com/$(<version.txt)/"
       working-directory: RePoE/RePoE
