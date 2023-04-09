@@ -87,7 +87,7 @@ class mods(Parser_Module):
                 "domain": domain.name.lower(),
                 "name": mod["Name"],
                 "type": mod["ModTypeKey"]["Name"],
-                "generation_type": mod["GenerationType"].name.lower(),
+                "generation_type": mod["GenerationType"].name.lower() if mod["GenerationType"] else "<unknown>",
                 "groups": [family["Id"] for family in mod["Families"]],
                 "spawn_weights": _convert_spawn_weights(mod["SpawnWeight"]),
                 "generation_weights": _convert_generation_weights(mod["GenerationWeight"]),

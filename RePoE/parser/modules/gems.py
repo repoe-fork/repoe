@@ -142,7 +142,7 @@ class GemConverter:
 
         self.max_levels: Dict[str, int] = {}
         for row in self.relational_reader["ItemExperiencePerLevel.dat64"]:
-            base_item = row["BaseItemTypesKey"]["Id"]
+            base_item = row["ItemExperienceType"]["Id"]
             level = row["ItemCurrentLevel"]
             if base_item not in self.max_levels:
                 self.max_levels[base_item] = level
@@ -203,9 +203,10 @@ class GemConverter:
         is_support: bool,
         xp: Optional[Dict[int, int]],
     ) -> Dict[str, Any]:
+        required_level = gepl["PlayerLevelReq"]
         r = {
             "experience": xp and xp.get(gepl["Level"]),
-            "required_level": gepl["PlayerLevelReq"],
+            "required_level": int(required_level) if int(required_level) == required_level else required_level,
         }
         if gepl["Cooldown"] > 0:
             r["cooldown"] = gepl["Cooldown"]
@@ -286,7 +287,9 @@ class GemConverter:
             r["life_percent"] = gepl["LifeReservationPercent"] / 100
         return r
 
-    def _convert_base_item_specific(self, base_item_type: Optional[DatRecord], obj: Dict[str, Any]) -> None:
+    def _convert_base_item_specific(
+        self, base_item_type: Optional[DatRecord], obj: Dict[str, Any], experience_type: Optional[str]
+    ) -> None:
         if base_item_type is None:
             obj["base_item"] = None
             return
@@ -295,9 +298,10 @@ class GemConverter:
             "id": base_item_type["Id"],
             "display_name": base_item_type["Name"],
             "release_state": get_release_state(base_item_type["Id"]).name,
+            "experience_type": experience_type,
         }
-        if base_item_type["Id"] in self.max_levels:
-            obj["base_item"]["max_level"] = self.max_levels[base_item_type["Id"]]
+        if experience_type in self.max_levels:
+            obj["base_item"]["max_level"] = self.max_levels[experience_type]
 
     def convert(
         self,
@@ -308,6 +312,7 @@ class GemConverter:
         multipliers: Optional[Dict[str, int]] = None,
         xp: Optional[Dict[int, int]] = None,
         quest_reward: Optional[Dict[str, Any]] = None,
+        experience_type: Optional[str] = None,
     ) -> Dict[str, Any]:
         is_support = granted_effect["IsSupport"]
         obj = {"is_support": is_support}
@@ -328,7 +333,7 @@ class GemConverter:
         game_file_name = self._get_translation_file_name(obj.get("active_skill"))
         obj["stat_translation_file"] = get_stat_translation_file_name(game_file_name)
 
-        self._convert_base_item_specific(base_item_type, obj)
+        self._convert_base_item_specific(base_item_type, obj, experience_type)
 
         if secondary_granted_effect:
             obj["secondary_granted_effect"] = secondary_granted_effect["Id"]
@@ -418,7 +423,7 @@ class gems(Parser_Module):
         rewards: Dict[int, Dict[str, Any]] = {}
 
         for level in relational_reader["ItemExperiencePerLevel.dat64"]:
-            rowid = level["BaseItemTypesKey"].rowid
+            rowid = level["ItemExperienceType"].rowid
             if rowid not in xp:
                 xp[rowid] = {}
             xp[rowid][level["ItemCurrentLevel"]] = level["Experience"]
@@ -444,8 +449,9 @@ class gems(Parser_Module):
                 gem["GrantedEffectsKey2"],
                 gem["GemTagsKeys"],
                 multipliers,
-                xp.get(gem["BaseItemTypesKey"].rowid),
+                xp.get(gem["ItemExperienceType"].rowid),
                 rewards.get(gem["BaseItemTypesKey"].rowid),
+                gem["ItemExperienceType"]["Id"],
             )
 
         # Secondary skills from gems. This adds the support skill implicitly provided by Bane

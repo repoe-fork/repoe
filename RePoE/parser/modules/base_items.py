@@ -215,7 +215,8 @@ class base_items(Parser_Module):
             elif item["ItemClassesKey"]["Id"] in ITEM_CLASS_WHITELIST:
                 pass
             else:
-                raise ValueError(f"Unknown item class, not in whitelist or blacklist: {item['ItemClassesKey']['Id']}")
+                print(f"Unknown item class, not in whitelist or blacklist: {item['ItemClassesKey']['Id']}")
+                continue
 
             ot_path = item["InheritsFrom"] + ".it"
             inherited_tags = list(ot_file_cache[ot_path]["Base"]["tag"])
@@ -243,7 +244,9 @@ class base_items(Parser_Module):
                 "requirements": _convert_requirements(attribute_requirements[item_id], item["DropLevel"]),
                 "properties": properties,
                 "release_state": get_release_state(item_id).name,
-                "domain": mod_domain.name.lower() if mod_domain is not MOD_DOMAIN.MODS_DISALLOWED else "undefined",
+                "domain": mod_domain.name.lower()
+                if mod_domain and mod_domain is not MOD_DOMAIN.MODS_DISALLOWED
+                else "undefined",
             }
             _convert_flask_buff(flask_types[item_id], root[item_id])
 
