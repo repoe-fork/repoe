@@ -1,5 +1,7 @@
+from functools import cache
 import re
-from typing import Any, Dict, List, Optional, Tuple, Union
+import traceback
+from typing import Any, Dict, List, Optional, Tuple, Union, cast
 
 from PyPoE.poe.constants import COOLDOWN_BYPASS_TYPES
 from PyPoE.poe.file.dat import DatRecord, RelationalReader
@@ -11,6 +13,8 @@ from PyPoE.poe.sim.formula import GemTypes, gem_stat_requirement
 
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, get_release_state, get_stat_translation_file_name, write_json
+
+quality_sets = ["Superior", "Anomalous", "Divergent", "Phantasmal"]
 
 
 def _handle_dict(representative, per_level):
@@ -111,8 +115,15 @@ def _handle_primitives(
 class GemConverter:
     regex_number = re.compile(r"-?\d+(\.\d+)?")
 
-    def __init__(self, file_system: FileSystem, relational_reader: RelationalReader, data_path: str) -> None:
+    def __init__(
+        self,
+        file_system: FileSystem,
+        relational_reader: RelationalReader,
+        data_path: str,
+        translation_file_cache: TranslationFileCache,
+    ) -> None:
         self.relational_reader = relational_reader
+        self.translation_file_cache = translation_file_cache
 
         self.gepls: Dict[str, Any] = {}
         for gepl in self.relational_reader["GrantedEffectsPerLevel.dat64"]:
@@ -194,6 +205,33 @@ class GemConverter:
     def _select_active_skill_types(type_rows: List[DatRecord]) -> List[str]:
         return [row["Id"] for row in type_rows]
 
+    def get_translation(self, id: str, value: int):
+        return self._get_translation(id, 0 if value == 0 else 1 if value > 0 else -1)
+
+    @cache
+    def _get_translation(self, id: str, value: int):
+        trans = next((tr for tr in self.translations if id in tr.ids), None)
+        if trans:
+            try:
+                lang = trans.get_language("English")
+                string = lang.get_string([int(value * 20 / 1000)])[0]
+                if not string or len(string.tags) > 1:
+                    string = next((string for string in lang.strings if len(string.tags) == 1), lang.strings[0])
+                if string:
+                    s = []
+                    for i, tag in enumerate(string.tags):
+                        q = [str(tag)]
+                        for k, v in string.quantifier.index_handlers.items():
+                            if tag + 1 in v:
+                                q.append(k)
+                        s.append(string.strings[i])
+                        s.append(f'{{{"/".join(q)}}}')
+                    s.append(string.strings[-1])
+                    return "".join(s)
+            except:
+                traceback.print_exc()
+            print(id, self.game_file_name)
+
     def _convert_gepl(
         self,
         gepl: DatRecord,
@@ -236,15 +274,15 @@ class GemConverter:
 
         stats = []
         for k, v in zip(gesspl["FloatStats"], gesspl["BaseResolvedValues"]):
-            stats.append({"id": k["Id"], "value": v})
+            stats.append({"id": k["Id"], "value": v, "stat": self.get_translation(k["Id"], v), "type": "float"})
         for k, v in zip(gess["ConstantStats"], gess["ConstantStatsValues"]):
-            stats.append({"id": k["Id"], "value": v})
+            stats.append({"id": k["Id"], "value": v, "stat": self.get_translation(k["Id"], v), "type": "constant"})
         for k, v in zip(gesspl["AdditionalStats"], gesspl["AdditionalStatsValues"]):
-            stats.append({"id": k["Id"], "value": v})
+            stats.append({"id": k["Id"], "value": v, "stat": self.get_translation(k["Id"], v), "type": "additional"})
         for k in gess["ImplicitStats"]:
-            stats.append({"id": k["Id"], "value": 1})
+            stats.append({"id": k["Id"], "value": 1, "stat": self.get_translation(k["Id"], 1), "type": "implicit"})
         for k in gesspl["AdditionalFlags"]:
-            stats.append({"id": k["Id"], "value": 1})
+            stats.append({"id": k["Id"], "value": 1, "stat": self.get_translation(k["Id"], 1), "type": "flag"})
         r["stats"] = stats
 
         q_stats = []
@@ -252,7 +290,16 @@ class GemConverter:
             if ge["Id"] in self.granted_effect_quality_stats:
                 for geq in self.granted_effect_quality_stats[ge["Id"]]:
                     for k, v in zip(geq["StatsKeys"], geq["StatsValuesPermille"]):
-                        q_stats.append({"id": k["Id"], "value": v, "set": geq["SetId"], "weight": geq["Weight"]})
+                        q_stats.append(
+                            {
+                                "id": k["Id"],
+                                "value": v,
+                                "set": geq["SetId"],
+                                "set_name": quality_sets[geq["SetId"]],
+                                "weight": geq["Weight"],
+                                "stat": self.get_translation(k["Id"], v),
+                            }
+                        )
         r["quality_stats"] = q_stats
 
         if multipliers is not None:
@@ -330,8 +377,16 @@ class GemConverter:
         if quest_reward:
             obj["quest_reward"] = quest_reward
 
-        game_file_name = self._get_translation_file_name(obj.get("active_skill"))
-        obj["stat_translation_file"] = get_stat_translation_file_name(game_file_name)
+        self.game_file_name = self._get_translation_file_name(obj.get("active_skill"))
+        obj["stat_translation_file"] = get_stat_translation_file_name(self.game_file_name)
+        self.translations = self.translation_file_cache[self.game_file_name].translations
+        # lan = next((tr.languages[0] for tr in self.translations if "molten_shell_damage_absorb_limit_%_of_armour" in tr.ids), None)
+        # if lan:
+        #     print(self.game_file_name)
+        #     for str in lan.strings:
+        #         print(str.string, str.match_range([250]), str.tags_types, str.original_string)
+        #     print (lan.format_string([250]))
+        #     exit()
 
         self._convert_base_item_specific(base_item_type, obj, experience_type)
 
@@ -418,7 +473,8 @@ class gems(Parser_Module):
         ot_file_cache: OTFileCache,
     ) -> None:
         gems = {}
-        converter = GemConverter(file_system, relational_reader, data_path)
+        skill_gems = {}
+        converter = GemConverter(file_system, relational_reader, data_path, translation_file_cache)
         xp: Dict[int, Dict[int, int]] = {}
         rewards: Dict[int, Dict[str, Any]] = {}
 
@@ -453,6 +509,7 @@ class gems(Parser_Module):
                 rewards.get(gem["BaseItemTypesKey"].rowid),
                 gem["ItemExperienceType"]["Id"],
             )
+            skill_gems[ge_id] = {k: gems[ge_id][k] for k in gems[ge_id] if k != "per_level"}
 
         # Secondary skills from gems. This adds the support skill implicitly provided by Bane
         for gem in relational_reader["SkillGems.dat64"]:
@@ -484,6 +541,7 @@ class gems(Parser_Module):
             gems[ge_id] = converter.convert(None, granted_effect)
 
         write_json(gems, data_path, "gems")
+        write_json(skill_gems, data_path, "gems_minimal")
 
 
 if __name__ == "__main__":
