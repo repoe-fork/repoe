@@ -473,7 +473,7 @@ class gems(Parser_Module):
         ot_file_cache: OTFileCache,
     ) -> None:
         gems = {}
-        skill_gems = {}
+        skill_gems = []
         converter = GemConverter(file_system, relational_reader, data_path, translation_file_cache)
         xp: Dict[int, Dict[int, int]] = {}
         rewards: Dict[int, Dict[str, Any]] = {}
@@ -509,7 +509,7 @@ class gems(Parser_Module):
                 rewards.get(gem["BaseItemTypesKey"].rowid),
                 gem["ItemExperienceType"]["Id"],
             )
-            skill_gems[ge_id] = {k: gems[ge_id][k] for k in gems[ge_id] if k != "per_level"}
+            skill_gems.append({k: gems[ge_id][k] for k in gems[ge_id] if k != "per_level"})
 
         # Secondary skills from gems. This adds the support skill implicitly provided by Bane
         for gem in relational_reader["SkillGems.dat64"]:
