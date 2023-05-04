@@ -777,6 +777,7 @@
       "is_manually_casted": true,
       "is_skill_totem": false,
       "stat_conversions": {
+        "cast_a_helmet_socketed_spell_on_channel_with_blade_flurry_or_charged_dash": "trigger_helmet_socketed_spell_on_channel_with_blade_flurry_or_charged_dash",
         "cast_a_main_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash": "trigger_a_main_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash",
         "cast_an_off_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash": "trigger_an_off_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash",
         "charged_dash_damage_+%": "damage_+%",
@@ -928,6 +929,7 @@
       "is_manually_casted": true,
       "is_skill_totem": false,
       "stat_conversions": {
+        "cast_a_helmet_socketed_spell_on_channel_with_blade_flurry_or_charged_dash": "trigger_helmet_socketed_spell_on_channel_with_blade_flurry_or_charged_dash",
         "cast_a_main_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash": "trigger_a_main_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash",
         "cast_an_off_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash": "trigger_an_off_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash",
         "charged_attack_damage_+%": "damage_+%",
@@ -22946,7 +22948,8 @@
       "is_manually_casted": true,
       "is_skill_totem": false,
       "stat_conversions": {
-        "spectral_throw_an_spectral_helix_active_skill_projectile_speed_+%_variation_final": "active_skill_projectile_speed_+%_variation_final",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_main_hand": "active_skill_projectile_speed_+%_variation_final",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_off_hand": "active_skill_projectile_speed_+%_variation_final_from_off_hand",
         "spectral_throw_damage_+%": "damage_+%",
         "spectral_throw_projectile_speed_+%": "base_projectile_speed_+%"
       },
@@ -23049,7 +23052,8 @@
       "is_manually_casted": true,
       "is_skill_totem": false,
       "stat_conversions": {
-        "spectral_throw_an_spectral_helix_active_skill_projectile_speed_+%_variation_final": "active_skill_projectile_speed_+%_variation_final",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_main_hand": "active_skill_projectile_speed_+%_variation_final",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_off_hand": "active_skill_projectile_speed_+%_variation_final_from_off_hand",
         "spectral_throw_damage_+%": "damage_+%",
         "spectral_throw_projectile_speed_+%": "base_projectile_speed_+%"
       },
@@ -23467,13 +23471,13 @@
       "stats": [
         {
           "id": "cast_on_damage_taken_%",
-          "stat": "Trigger Supported Spells when you take a total of {2} Damage",
+          "stat": "Trigger Supported Spells when you take {2} total Damage from Hits",
           "type": "constant",
           "value": 100
         },
         {
           "id": "cast_on_damage_taken_threshold",
-          "stat": "Trigger Supported Spells when you take a total of {2} Damage",
+          "stat": "Trigger Supported Spells when you take {2} total Damage from Hits",
           "type": "additional"
         },
         {
@@ -38595,7 +38599,7 @@
           "id": "support_storm_barrier_damage_buff_time_threshold_ms",
           "set": 0,
           "set_name": "Superior",
-          "stat": "Gain Infusion after Channelling a Supported Skill for {0/milliseconds_to_seconds} seconds",
+          "stat": "Gain Infusion after Channelling a Supported Skill for {1/milliseconds_to_seconds} seconds",
           "value": -20000,
           "weight": 50
         },
@@ -38646,8 +38650,14 @@
         },
         {
           "id": "support_storm_barrier_damage_buff_time_threshold_ms",
-          "stat": "Gain Infusion after Channelling a Supported Skill for {0/milliseconds_to_seconds} seconds",
+          "stat": "Gain Infusion after Channelling a Supported Skill for {1/milliseconds_to_seconds} seconds",
           "type": "additional"
+        },
+        {
+          "id": "support_storm_barrier_damage_buff_uses_time_threshold",
+          "stat": "Gain Infusion after Channelling a Supported Skill for {1/milliseconds_to_seconds} seconds",
+          "type": "flag",
+          "value": 1
         }
       ]
     },
@@ -54152,7 +54162,8 @@
       "is_manually_casted": true,
       "is_skill_totem": false,
       "stat_conversions": {
-        "frozen_legion_and_generals_cry_active_skill_cooldown_speed_+%_final_from_skill_specific_stat": "active_skill_cooldown_speed_+%_final_from_skill_specific_stat",
+        "frozen_legion_and_generals_cry_weapon_tree_active_skill_cooldown_speed_+%_final_in_main_hand": "weapon_tree_active_skill_cooldown_speed_+%_final_in_main_hand",
+        "frozen_legion_and_generals_cry_weapon_tree_active_skill_cooldown_speed_+%_final_in_off_hand": "weapon_tree_active_skill_cooldown_speed_+%_final_in_off_hand",
         "generals_cry_cooldown_speed_+%": "base_cooldown_speed_+%",
         "generals_cry_maximum_warriors_+": "maximum_number_of_spiritual_cry_warriors",
         "warcry_skills_cooldown_is_4_seconds": "skill_cooldown_is_4_seconds"
@@ -55731,7 +55742,8 @@
         "Triggerable",
         "CanRapidFire",
         "Hex",
-        "AreaSpell"
+        "AreaSpell",
+        "DynamicCooldown"
       ],
       "weapon_restrictions": []
     },
@@ -57480,6 +57492,7 @@
       "is_manually_casted": true,
       "is_skill_totem": false,
       "stat_conversions": {
+        "cast_a_helmet_socketed_spell_on_channel_with_blade_flurry_or_charged_dash": "trigger_helmet_socketed_spell_on_channel_with_blade_flurry_or_charged_dash",
         "cast_a_main_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash": "trigger_a_main_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash",
         "cast_an_off_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash": "trigger_an_off_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash",
         "charged_attack_damage_+%": "damage_+%",
@@ -58411,7 +58424,8 @@
       "is_manually_casted": true,
       "is_skill_totem": false,
       "stat_conversions": {
-        "frozen_legion_and_generals_cry_active_skill_cooldown_speed_+%_final_from_skill_specific_stat": "active_skill_cooldown_speed_+%_final_from_skill_specific_stat",
+        "frozen_legion_and_generals_cry_weapon_tree_active_skill_cooldown_speed_+%_final_in_main_hand": "weapon_tree_active_skill_cooldown_speed_+%_final_in_main_hand",
+        "frozen_legion_and_generals_cry_weapon_tree_active_skill_cooldown_speed_+%_final_in_off_hand": "weapon_tree_active_skill_cooldown_speed_+%_final_in_off_hand",
         "generals_cry_cooldown_speed_+%": "base_cooldown_speed_+%",
         "generals_cry_maximum_warriors_+": "maximum_number_of_spiritual_cry_warriors",
         "warcry_skills_cooldown_is_4_seconds": "skill_cooldown_is_4_seconds"
@@ -58720,6 +58734,7 @@
       "is_manually_casted": true,
       "is_skill_totem": false,
       "stat_conversions": {
+        "cast_a_helmet_socketed_spell_on_channel_with_blade_flurry_or_charged_dash": "trigger_helmet_socketed_spell_on_channel_with_blade_flurry_or_charged_dash",
         "cast_a_main_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash": "trigger_a_main_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash",
         "cast_an_off_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash": "trigger_an_off_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash",
         "charged_dash_damage_+%": "damage_+%",
@@ -59401,7 +59416,8 @@
       "is_manually_casted": true,
       "is_skill_totem": false,
       "stat_conversions": {
-        "spectral_throw_an_spectral_helix_active_skill_projectile_speed_+%_variation_final": "active_skill_projectile_speed_+%_variation_final",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_main_hand": "active_skill_projectile_speed_+%_variation_final",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_off_hand": "active_skill_projectile_speed_+%_variation_final_from_off_hand",
         "spectral_throw_damage_+%": "damage_+%",
         "spectral_throw_projectile_speed_+%": "base_projectile_speed_+%"
       },
@@ -67505,7 +67521,8 @@
       "stat_conversions": {
         "spectral_helix_damage_+%": "damage_+%",
         "spectral_helix_projectile_speed_+%": "base_projectile_speed_+%",
-        "spectral_throw_an_spectral_helix_active_skill_projectile_speed_+%_variation_final": "active_skill_projectile_speed_+%_variation_final"
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_main_hand": "active_skill_projectile_speed_+%_variation_final",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_off_hand": "active_skill_projectile_speed_+%_variation_final_from_off_hand"
       },
       "types": [
         "Attack",
@@ -76740,7 +76757,8 @@
       "is_skill_totem": false,
       "stat_conversions": {
         "frozen_legion_added_cooldown_count": "base_added_cooldown_count",
-        "frozen_legion_and_generals_cry_active_skill_cooldown_speed_+%_final_from_skill_specific_stat": "active_skill_cooldown_speed_+%_final_from_skill_specific_stat",
+        "frozen_legion_and_generals_cry_weapon_tree_active_skill_cooldown_speed_+%_final_in_main_hand": "weapon_tree_active_skill_cooldown_speed_+%_final_in_main_hand",
+        "frozen_legion_and_generals_cry_weapon_tree_active_skill_cooldown_speed_+%_final_in_off_hand": "weapon_tree_active_skill_cooldown_speed_+%_final_in_off_hand",
         "frozen_legion_cooldown_speed_+%": "base_cooldown_speed_+%"
       },
       "types": [
@@ -77775,6 +77793,7 @@
       "is_manually_casted": true,
       "is_skill_totem": false,
       "stat_conversions": {
+        "cast_a_helmet_socketed_spell_on_channel_with_blade_flurry_or_charged_dash": "trigger_helmet_socketed_spell_on_channel_with_blade_flurry_or_charged_dash",
         "cast_a_main_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash": "trigger_a_main_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash",
         "cast_an_off_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash": "trigger_an_off_hand_socketed_spell_on_channel_with_blade_flurry_or_charged_dash",
         "charged_attack_damage_+%": "damage_+%",
