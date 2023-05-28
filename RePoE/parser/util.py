@@ -25,7 +25,7 @@ def get_id_or_none(relational_file_cell):
 
 
 def write_json(
-    root_obj: Union[Dict[str, Dict[str, Any]], Dict[str, Dict[str, List[str]]], List[Dict[str, Any]]],
+    root_obj: Any,
     data_path: str,
     file_name: str,
 ) -> None:
