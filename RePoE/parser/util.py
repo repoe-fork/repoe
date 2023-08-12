@@ -1,6 +1,7 @@
 import io
 import json
 import os
+from hashlib import md5
 from io import BytesIO
 from typing import Any, Dict, List, Optional, Union
 
@@ -108,6 +109,19 @@ def export_image(ddsfile: str, data_path: str, file_system: FileSystem) -> None:
         return
     dest = os.path.join(data_path, os.path.splitext(ddsfile)[0])
     os.makedirs(os.path.dirname(dest), exist_ok=True)
+
+    # output images can vary slightly for the same input;
+    # hash the input data to avoid committing unnecessary changes
+    hashfile = dest + ".dds.md5sum"
+    exists = os.path.isfile(hashfile) and os.path.isfile(dest + ".png") and os.path.isfile(dest + ".webp")
+    with open(hashfile, "r+" if os.path.isfile(hashfile) else "w") as f:
+        hash = md5(bytes).hexdigest()
+        if exists and hash == f.read():
+            return
+        else:
+            f.seek(0)
+            f.write(hash)
+            f.truncate()
 
     with Image.open(BytesIO(bytes)) as image:
         image.save(dest + ".png")
