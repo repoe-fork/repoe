@@ -15,12 +15,13 @@ jobs:
       with:
         token: ${{ secrets.VERSION_COMMIT_PAT }}
     - name: get version
-      run: curl https://raw.githubusercontent.com/poe-tool-dev/latest-patch-version/main/latest.txt > version.txt
-      working-directory: RePoE
+      run: curl https://raw.githubusercontent.com/poe-tool-dev/latest-patch-version/main/latest.txt > RePoE/version.txt
     - name: get schema hash
-      run: git ls-remote https://github.com/poe-tool-dev/dat-schema.git refs/heads/main > schema.txt
-      working-directory: RePoE
+      run: git ls-remote https://github.com/poe-tool-dev/dat-schema.git refs/heads/main > RePoE/schema.txt
+    - name: set version
+      id: set-version
+      run: echo "version=$(cat RePoE/version.txt)" >> "$GITHUB_OUTPUT"
     - name: commit changes
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        commit_message: "Update patch or schema version"
+        commit_message: "Version ${{ steps.set-version.outputs.version }}"

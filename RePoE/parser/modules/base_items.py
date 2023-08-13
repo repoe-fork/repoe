@@ -162,6 +162,9 @@ ITEM_CLASS_WHITELIST = {
     "MemoryLine",
     "Relic",
     "SanctumSpecialRelic",
+    "GiftBox",
+    "Breachstone",
+    "VaultKey",
 }
 
 ITEM_CLASS_BLACKLIST = {
@@ -220,7 +223,7 @@ class base_items(Parser_Module):
 
             ot_path = item["InheritsFrom"] + ".it"
             inherited_tags = list(ot_file_cache[ot_path]["Base"]["tag"])
-            mod_domain = item["ModDomain"]
+            mod_domain = MOD_DOMAIN(item["ModDomain"])
             item_id = item["Id"]
             properties: Dict = {}
             _convert_armour_properties(armour_types[item_id], properties)

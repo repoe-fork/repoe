@@ -1,4 +1,5 @@
 from enum import unique, Enum
+from PyPoE.poe.constants import IntEnumOverride
 
 
 @unique
@@ -123,3 +124,27 @@ STAT_DESCRIPTION_NAMING_EXCEPTIONS = {
     "gem_stat_descriptions.txt": "/support_gem",
     "map_stat_descriptions.txt": "/areas",
 }
+
+
+class CRAFTING_BENCH_CUSTOM_ACTIONS(IntEnumOverride):
+    REMOVE_CRAFTED_MODS = 0
+    REMOVE_ENCHANT_MODS = 1
+    UNKNOWN_2 = 2
+    UNKNOWN_3 = 3
+    UNKNOWN_4 = 4
+    UNKNOWN_5 = 5
+    UNKNOWN_6 = 6
+    UNKNOWN_7 = 7
+
+
+class COOLDOWN_BYPASS_TYPES(IntEnumOverride):
+    EXPEND_ENDURANCE_CHARGE = 1
+    EXPEND_FRENZY_CHARGE = 2
+    EXPEND_POWER_CHARGE = 3
+    NONE = 4
+
+
+class BASE_ITEM_TYPE_VISIBILITY(IntEnumOverride):
+    HIDDEN = 0
+    VISIBLE = 1
+    UNKNOWN_2 = 2

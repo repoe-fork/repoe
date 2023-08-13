@@ -41,6 +41,7 @@ def main():
         selected_module_names = [m for m in module_names if m != "all"]
 
     rr = create_relational_reader(file_system)
+    rr.instance_options["raise_error_on_missing_relation"] = False
     tfc = create_translation_file_cache(file_system)
     otfc = create_ot_file_cache(file_system)
 

@@ -1,7 +1,7 @@
 import itertools
 
-from PyPoE.poe.constants import CRAFTING_BENCH_CUSTOM_ACTIONS
 from RePoE.parser import Parser_Module
+from RePoE.parser.constants import CRAFTING_BENCH_CUSTOM_ACTIONS
 from RePoE.parser.util import write_json, call_with_default_args
 from PyPoE.poe.file.dat import DatRecord
 from typing import Dict

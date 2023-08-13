@@ -3,7 +3,6 @@ import re
 import traceback
 from typing import Any, Dict, List, Optional, Tuple, Union, cast
 
-from PyPoE.poe.constants import COOLDOWN_BYPASS_TYPES
 from PyPoE.poe.file.dat import DatRecord, RelationalReader
 from PyPoE.poe.file.file_system import FileSystem
 from PyPoE.poe.file.ot import OTFileCache
@@ -12,6 +11,7 @@ from PyPoE.poe.file.translations import TranslationFileCache
 from PyPoE.poe.sim.formula import GemTypes, gem_stat_requirement
 
 from RePoE.parser import Parser_Module
+from RePoE.parser.constants import COOLDOWN_BYPASS_TYPES
 from RePoE.parser.util import call_with_default_args, get_release_state, get_stat_translation_file_name, write_json
 
 quality_sets = ["Superior", "Anomalous", "Divergent", "Phantasmal"]
@@ -248,8 +248,9 @@ class GemConverter:
         }
         if gepl["Cooldown"] > 0:
             r["cooldown"] = gepl["Cooldown"]
-            if gepl["CooldownBypassType"] is not COOLDOWN_BYPASS_TYPES.NONE:
-                r["cooldown_bypass_type"] = gepl["CooldownBypassType"].name.lower()
+            cooldown_bypass_type = COOLDOWN_BYPASS_TYPES(gepl["CooldownBypassType"])
+            if cooldown_bypass_type is not COOLDOWN_BYPASS_TYPES.NONE:
+                r["cooldown_bypass_type"] = cooldown_bypass_type.name.lower()
         if gepl["StoredUses"] > 0:
             r["stored_uses"] = gepl["StoredUses"]
 
@@ -257,7 +258,7 @@ class GemConverter:
             r["cost_multiplier"] = gepl["CostMultiplier"]
         else:
             r["costs"] = {}
-            for cost_type, cost_amount in gepl["Costs"]:
+            for cost_type, cost_amount in zip(gepl["CostTypes"], gepl["CostAmounts"]):
                 r["costs"][cost_type["Id"]] = cost_amount
             if gesspl["DamageEffectiveness"] != 0:
                 r["damage_effectiveness"] = gesspl["DamageEffectiveness"] // 100
@@ -484,6 +485,7 @@ class gems(Parser_Module):
                 xp[rowid] = {}
             xp[rowid][level["ItemCurrentLevel"]] = level["Experience"]
 
+        print("raise error", relational_reader.raise_error_on_missing_relation)
         for reward in relational_reader["QuestRewards.dat64"]:
             rowid = reward["Reward"].rowid
             if rowid not in rewards:
