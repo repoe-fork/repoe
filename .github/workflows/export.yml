@@ -29,12 +29,12 @@ jobs:
         cache: pip
     - name: install requirements
       run: pip install -r RePoE/requirements.txt
-    - name: import schema
-      run: python import_dat_schema.py schema.json
-      working-directory: PyPoE/PyPoE/poe/file/specification/generation
     - name: install pypoe
       run: pip install -e .
       working-directory: PyPoE
+    - name: import schema
+      run: python import_dat_schema.py schema.json
+      working-directory: PyPoE/PyPoE/poe/file/specification/generation
     - name: install repoe
       run: pip install -e .
       working-directory: RePoE
