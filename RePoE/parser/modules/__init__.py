@@ -24,7 +24,7 @@ def get_all_modules() -> List[Parser_Module]:
     )
 
 
-def get_parser_modules() -> List[type]:
+def get_parser_modules() -> List[type[Parser_Module]]:
     parser_modules = []
 
     for module in get_all_modules():

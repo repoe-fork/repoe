@@ -1,10 +1,6 @@
 from PyPoE.poe.constants import MOD_DOMAIN
 from RePoE.parser.util import write_json, call_with_default_args
 from RePoE.parser import Parser_Module
-from PyPoE.poe.file.dat import RelationalReader
-from PyPoE.poe.file.file_system import FileSystem
-from PyPoE.poe.file.ot import OTFileCache
-from PyPoE.poe.file.translations import TranslationFileCache
 from PyPoE.poe.file.dat import DatRecord
 from typing import Any
 from typing import Dict
@@ -70,16 +66,9 @@ def _convert_tags_keys(tags_keys: List[DatRecord]) -> List[str]:
 
 
 class mods(Parser_Module):
-    @staticmethod
-    def write(
-        file_system: FileSystem,
-        data_path: str,
-        relational_reader: RelationalReader,
-        translation_file_cache: TranslationFileCache,
-        ot_file_cache: OTFileCache,
-    ) -> None:
+    def write(self) -> None:
         root = {}
-        for mod in relational_reader["Mods.dat64"]:
+        for mod in self.relational_reader["Mods.dat64"]:
             domain = MOD_DOMAIN_FIX.get(mod["Id"], mod["Domain"])
             obj = {
                 "required_level": mod["Level"],
@@ -101,7 +90,7 @@ class mods(Parser_Module):
             else:
                 root[mod["Id"]] = obj
 
-        write_json(root, data_path, "mods")
+        write_json(root, self.data_path, "mods")
 
 
 # a few unique item mods have the wrong mod domain so they wouldn't be added to the file without this
@@ -114,4 +103,4 @@ MOD_DOMAIN_FIX = {
 
 
 if __name__ == "__main__":
-    call_with_default_args(mods.write)
+    call_with_default_args(mods)

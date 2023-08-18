@@ -1,22 +1,11 @@
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import write_json, call_with_default_args
-from PyPoE.poe.file.dat import RelationalReader
-from PyPoE.poe.file.file_system import FileSystem
-from PyPoE.poe.file.ot import OTFileCache
-from PyPoE.poe.file.translations import TranslationFileCache
 
 
 class fossils(Parser_Module):
-    @staticmethod
-    def write(
-        file_system: FileSystem,
-        data_path: str,
-        relational_reader: RelationalReader,
-        translation_file_cache: TranslationFileCache,
-        ot_file_cache: OTFileCache,
-    ) -> None:
+    def write(self) -> None:
         root = {}
-        for row in relational_reader["DelveCraftingModifiers.dat64"]:
+        for row in self.relational_reader["DelveCraftingModifiers.dat64"]:
 
             base_item_key = row["BaseItemTypesKey"]["Id"]
             name_from_base_item = row["BaseItemTypesKey"]["Name"]
@@ -50,8 +39,8 @@ class fossils(Parser_Module):
                 ],
             }
 
-        write_json(root, data_path, "fossils")
+        write_json(root, self.data_path, "fossils")
 
 
 if __name__ == "__main__":
-    call_with_default_args(fossils.write)
+    call_with_default_args(fossils)

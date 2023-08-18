@@ -1,9 +1,5 @@
 from RePoE.parser.util import write_json, call_with_default_args
 from RePoE.parser import Parser_Module
-from PyPoE.poe.file.dat import RelationalReader
-from PyPoE.poe.file.file_system import FileSystem
-from PyPoE.poe.file.ot import OTFileCache
-from PyPoE.poe.file.translations import TranslationFileCache
 from PyPoE.poe.file.dat import DatRecord
 from typing import Dict, Set
 from typing import Optional
@@ -21,17 +17,10 @@ def _convert_alias_stats(
 
 
 class stats(Parser_Module):
-    @staticmethod
-    def write(
-        file_system: FileSystem,
-        data_path: str,
-        relational_reader: RelationalReader,
-        translation_file_cache: TranslationFileCache,
-        ot_file_cache: OTFileCache,
-    ) -> None:
+    def write(self) -> None:
         root = {}
         previous: Set[str] = set()
-        for stat in relational_reader["Stats.dat64"]:
+        for stat in self.relational_reader["Stats.dat64"]:
             if stat["Id"] in previous:
                 print("Duplicate stat id %s" % stat["Id"])
                 continue
@@ -43,8 +32,8 @@ class stats(Parser_Module):
                 # 'is_on_tooltip': stat['Flag7'],  # not sure
             }
 
-        write_json(root, data_path, "stats")
+        write_json(root, self.data_path, "stats")
 
 
 if __name__ == "__main__":
-    call_with_default_args(stats.write)
+    call_with_default_args(stats)

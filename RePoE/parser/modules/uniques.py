@@ -1,8 +1,3 @@
-from PyPoE.poe.file.dat import RelationalReader
-from PyPoE.poe.file.file_system import FileSystem
-from PyPoE.poe.file.ot import OTFileCache
-from PyPoE.poe.file.translations import TranslationFileCache
-
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, export_image, write_json
 
@@ -77,16 +72,9 @@ def get_wiki_data():
 
 
 class uniques(Parser_Module):
-    @staticmethod
-    def write(
-        file_system: FileSystem,
-        data_path: str,
-        relational_reader: RelationalReader,
-        translation_file_cache: TranslationFileCache,
-        ot_file_cache: OTFileCache,
-    ) -> None:
+    def write(self) -> None:
         root = {}
-        for item in relational_reader["UniqueStashLayout.dat64"]:
+        for item in self.relational_reader["UniqueStashLayout.dat64"]:
             name = item["WordsKey"]["Text"]
             root[item.rowid] = {
                 "name": name,
@@ -108,11 +96,11 @@ class uniques(Parser_Module):
             }
 
             if item["ItemVisualIdentityKey"]["DDSFile"]:
-                export_image(item["ItemVisualIdentityKey"]["DDSFile"], data_path, file_system)
+                export_image(item["ItemVisualIdentityKey"]["DDSFile"], self.data_path, self.file_system)
 
-        write_json(root, data_path, "uniques")
-        write_json(get_wiki_data(), data_path, "uniques_poewiki")
+        write_json(root, self.data_path, "uniques")
+        write_json(get_wiki_data(), self.data_path, "uniques_poewiki")
 
 
 if __name__ == "__main__":
-    call_with_default_args(uniques.write)
+    call_with_default_args(uniques)

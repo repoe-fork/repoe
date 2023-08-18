@@ -2,10 +2,8 @@ from collections import defaultdict
 from typing import Any, Dict, Optional
 
 from PyPoE.poe.constants import MOD_DOMAIN
-from PyPoE.poe.file.dat import DatReader, DatRecord, RelationalReader
-from PyPoE.poe.file.file_system import FileSystem
-from PyPoE.poe.file.ot import OTFileCache
-from PyPoE.poe.file.translations import TranslationFileCache
+from PyPoE.poe.file.dat import DatReader, DatRecord
+from PyPoE.poe.file.it import ITFileCache
 
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, export_image, get_release_state, write_json
@@ -73,7 +71,7 @@ def _convert_flask_buff(flask_row: Optional[DatRecord], item_object: Dict[str, A
         "id": flask_row["BuffDefinitionsKey"]["Id"],
         "stats": {},
     }
-    for (stat, value) in stats_values:
+    for stat, value in stats_values:
         item_object["grants_buff"]["stats"][stat["Id"]] = value
 
 
@@ -191,14 +189,8 @@ ITEM_CLASS_BLACKLIST = {
 
 
 class base_items(Parser_Module):
-    @staticmethod
-    def write(
-        file_system: FileSystem,
-        data_path: str,
-        relational_reader: RelationalReader,
-        translation_file_cache: TranslationFileCache,
-        ot_file_cache: OTFileCache,
-    ) -> None:
+    def write(self) -> None:
+        relational_reader = self.relational_reader
         attribute_requirements = _create_default_dict(relational_reader["ComponentAttributeRequirements.dat64"])
         armour_types = _create_default_dict(relational_reader["ArmourTypes.dat64"])
         shield_types = _create_default_dict(relational_reader["ShieldTypes.dat64"])
@@ -211,7 +203,6 @@ class base_items(Parser_Module):
         root = {}
         skipped_item_classes = set()
         for item in relational_reader["BaseItemTypes.dat64"]:
-
             if item["ItemClassesKey"]["Id"] in ITEM_CLASS_BLACKLIST:
                 skipped_item_classes.add(item["ItemClassesKey"]["Id"])
                 continue
@@ -221,8 +212,8 @@ class base_items(Parser_Module):
                 print(f"Unknown item class, not in whitelist or blacklist: {item['ItemClassesKey']['Id']}")
                 continue
 
-            ot_path = item["InheritsFrom"] + ".it"
-            inherited_tags = list(ot_file_cache[ot_path]["Base"]["tag"])
+            it_path = item["InheritsFrom"] + ".it"
+            inherited_tags = list(self.get_cache(ITFileCache)[it_path]["Base"]["tag"])
             mod_domain = MOD_DOMAIN(item["ModDomain"])
             item_id = item["Id"]
             properties: Dict = {}
@@ -254,11 +245,11 @@ class base_items(Parser_Module):
             _convert_flask_buff(flask_types[item_id], root[item_id])
 
             if item["ItemVisualIdentity"]["DDSFile"]:
-                export_image(item["ItemVisualIdentity"]["DDSFile"], data_path, file_system)
+                export_image(item["ItemVisualIdentity"]["DDSFile"], self.data_path, self.file_system)
 
         print(f"Skipped the following item classes for base_items {skipped_item_classes}")
-        write_json(root, data_path, "base_items")
+        write_json(root, self.data_path, "base_items")
 
 
 if __name__ == "__main__":
-    call_with_default_args(base_items.write)
+    call_with_default_args(base_items)

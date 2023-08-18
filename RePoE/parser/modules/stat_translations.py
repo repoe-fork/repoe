@@ -1,15 +1,13 @@
 from PyPoE.poe.file.translations import get_custom_translation_file
 from RePoE.parser.util import write_json, call_with_default_args, get_stat_translation_file_name
 from RePoE.parser import Parser_Module
-from PyPoE.poe.file.dat import RelationalReader
-from PyPoE.poe.file.file_system import FileSystem
-from PyPoE.poe.file.ot import OTFileCache
-from PyPoE.poe.file.translations import TranslationFileCache
 from typing import List
+from PyPoE.poe.file.translations import TranslationFileCache
 from PyPoE.poe.file.translations import TranslationRange
+from PyPoE.poe.file.translations import Translation
+from PyPoE.poe.file.file_system import FileSystem
 from typing import Dict
 from typing import Union
-from PyPoE.poe.file.translations import Translation
 from typing import Any
 from typing import Set
 from typing import Iterator
@@ -103,21 +101,14 @@ def _build_stat_translation_file_map(file_system: FileSystem) -> Iterator[Tuple[
 
 
 class stat_translations(Parser_Module):
-    @staticmethod
-    def write(
-        file_system: FileSystem,
-        data_path: str,
-        relational_reader: RelationalReader,
-        translation_file_cache: TranslationFileCache,
-        ot_file_cache: OTFileCache,
-    ) -> None:
+    def write(self) -> None:
         tag_set: Set[str] = set()
-        for in_file, out_file in _build_stat_translation_file_map(file_system):
-            translations = translation_file_cache[in_file].translations
+        for in_file, out_file in _build_stat_translation_file_map(self.file_system):
+            translations = self.get_cache(TranslationFileCache)[in_file].translations
             result = _get_stat_translations(tag_set, translations, get_custom_translation_file().translations)
-            write_json(result, data_path, out_file)
+            write_json(result, self.data_path, out_file)
         print("Possible format tags: {}".format(tag_set))
 
 
 if __name__ == "__main__":
-    call_with_default_args(stat_translations.write)
+    call_with_default_args(stat_translations)

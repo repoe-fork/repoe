@@ -1,17 +1,30 @@
+from typing import TypeVar
 from PyPoE.poe.file.dat import RelationalReader
 from PyPoE.poe.file.file_system import FileSystem
-from PyPoE.poe.file.ot import OTFileCache
-from PyPoE.poe.file.translations import TranslationFileCache
+from PyPoE.poe.file.shared.cache import AbstractFileCache
 
 
 class Parser_Module:
-    @staticmethod
-    def write(
+    file_system: FileSystem
+    data_path: str
+    relational_reader: RelationalReader
+    caches: dict[type, AbstractFileCache] = {}
+
+    def __init__(
+        self,
         file_system: FileSystem,
         data_path: str,
         relational_reader: RelationalReader,
-        translation_file_cache: TranslationFileCache,
-        ot_file_cache: OTFileCache,
     ) -> None:
+        self.file_system = file_system
+        self.data_path = data_path
+        self.relational_reader = relational_reader
+
+    def get_cache(self, cache_type: type) -> AbstractFileCache:
+        if cache_type not in self.caches:
+            self.caches[cache_type] = cache_type(self.file_system)
+        return self.caches[cache_type]
+
+    def write(self) -> None:
         """method which writes json files to data_path"""
         raise NotImplementedError

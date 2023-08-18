@@ -3,10 +3,9 @@ from RePoE.parser import Parser_Module
 
 
 class characters(Parser_Module):
-    @staticmethod
-    def write(file_system, data_path, relational_reader, translation_file_cache, ot_file_cache):
+    def write(self):
         root = []
-        for row in relational_reader["Characters.dat64"]:
+        for row in self.relational_reader["Characters.dat64"]:
             root.append(
                 {
                     "metadata_id": row["Id"],
@@ -27,8 +26,8 @@ class characters(Parser_Module):
                     },
                 }
             )
-        write_json(root, data_path, "characters")
+        write_json(root, self.data_path, "characters")
 
 
 if __name__ == "__main__":
-    call_with_default_args(characters.write)
+    call_with_default_args(characters)

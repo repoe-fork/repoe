@@ -119,7 +119,6 @@ class GemConverter:
         self,
         file_system: FileSystem,
         relational_reader: RelationalReader,
-        data_path: str,
         translation_file_cache: TranslationFileCache,
     ) -> None:
         self.relational_reader = relational_reader
@@ -465,17 +464,11 @@ class GemConverter:
 
 
 class gems(Parser_Module):
-    @staticmethod
-    def write(
-        file_system: FileSystem,
-        data_path: str,
-        relational_reader: RelationalReader,
-        translation_file_cache: TranslationFileCache,
-        ot_file_cache: OTFileCache,
-    ) -> None:
+    def write(self) -> None:
         gems = {}
         skill_gems = []
-        converter = GemConverter(file_system, relational_reader, data_path, translation_file_cache)
+        relational_reader = self.relational_reader
+        converter = GemConverter(self.file_system, relational_reader, self.get_cache(TranslationFileCache))
         xp: Dict[int, Dict[int, int]] = {}
         rewards: Dict[int, Dict[str, Any]] = {}
 
@@ -485,7 +478,6 @@ class gems(Parser_Module):
                 xp[rowid] = {}
             xp[rowid][level["ItemCurrentLevel"]] = level["Experience"]
 
-        print("raise error", relational_reader.raise_error_on_missing_relation)
         for reward in relational_reader["QuestRewards.dat64"]:
             rowid = reward["Reward"].rowid
             if rowid not in rewards:
@@ -542,9 +534,9 @@ class gems(Parser_Module):
                 continue
             gems[ge_id] = converter.convert(None, granted_effect)
 
-        write_json(gems, data_path, "gems")
-        write_json(skill_gems, data_path, "gems_minimal")
+        write_json(gems, self.data_path, "gems")
+        write_json(skill_gems, self.data_path, "gems_minimal")
 
 
 if __name__ == "__main__":
-    call_with_default_args(gems.write)
+    call_with_default_args(gems)

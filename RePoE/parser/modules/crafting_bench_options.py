@@ -6,10 +6,6 @@ from RePoE.parser.util import write_json, call_with_default_args
 from PyPoE.poe.file.dat import DatRecord
 from typing import Dict
 from typing import Union
-from PyPoE.poe.file.dat import RelationalReader
-from PyPoE.poe.file.file_system import FileSystem
-from PyPoE.poe.file.ot import OTFileCache
-from PyPoE.poe.file.translations import TranslationFileCache
 
 
 class crafting_bench_options(Parser_Module):
@@ -34,16 +30,9 @@ class crafting_bench_options(Parser_Module):
             raise NotImplementedError(f"Crafting option {row['Name']} has an unknown action")
         return actions
 
-    @staticmethod
-    def write(
-        file_system: FileSystem,
-        data_path: str,
-        relational_reader: RelationalReader,
-        translation_file_cache: TranslationFileCache,
-        ot_file_cache: OTFileCache,
-    ) -> None:
+    def write(self) -> None:
         root = []
-        for row in relational_reader["CraftingBenchOptions.dat64"]:
+        for row in self.relational_reader["CraftingBenchOptions.dat64"]:
             if row["RequiredLevel"] > 100 or row["IsDisabled"]:
                 continue
             item_class_row_lists = [categories["ItemClasses"] for categories in row["CraftingItemClassCategories"]]
@@ -58,8 +47,8 @@ class crafting_bench_options(Parser_Module):
                     "actions": crafting_bench_options._get_actions(row),
                 }
             )
-        write_json(root, data_path, "crafting_bench_options")
+        write_json(root, self.data_path, "crafting_bench_options")
 
 
 if __name__ == "__main__":
-    call_with_default_args(crafting_bench_options.write)
+    call_with_default_args(crafting_bench_options)

@@ -1,9 +1,5 @@
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, write_json
-from PyPoE.poe.file.dat import RelationalReader
-from PyPoE.poe.file.file_system import FileSystem
-from PyPoE.poe.file.ot import OTFileCache
-from PyPoE.poe.file.translations import TranslationFileCache
 from PyPoE.poe.file.dat import DatRecord
 from typing import Dict
 
@@ -37,14 +33,7 @@ def _convert_mods(row: DatRecord) -> Dict[str, str]:
 
 
 class essences(Parser_Module):
-    @staticmethod
-    def write(
-        file_system: FileSystem,
-        data_path: str,
-        relational_reader: RelationalReader,
-        translation_file_cache: TranslationFileCache,
-        ot_file_cache: OTFileCache,
-    ) -> None:
+    def write(self) -> None:
         essences = {
             row["BaseItemTypesKey"]["Id"]: {
                 "name": row["BaseItemTypesKey"]["Name"],
@@ -58,10 +47,10 @@ class essences(Parser_Module):
                 },
                 "mods": _convert_mods(row),
             }
-            for row in relational_reader["Essences.dat64"]
+            for row in self.relational_reader["Essences.dat64"]
         }
-        write_json(essences, data_path, "essences")
+        write_json(essences, self.data_path, "essences")
 
 
 if __name__ == "__main__":
-    call_with_default_args(essences.write)
+    call_with_default_args(essences)

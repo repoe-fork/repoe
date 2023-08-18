@@ -8,15 +8,12 @@ from RePoE.parser.modules import get_parser_modules
 
 from RePoE.parser.util import (
     create_relational_reader,
-    create_translation_file_cache,
     DEFAULT_GGPK_PATH,
-    create_ot_file_cache,
     load_file_system,
 )
 
 
 def main():
-
     modules = get_parser_modules()
 
     module_names = [module.__name__ for module in modules]
@@ -42,19 +39,15 @@ def main():
 
     rr = create_relational_reader(file_system)
     rr.instance_options["raise_error_on_missing_relation"] = False
-    tfc = create_translation_file_cache(file_system)
-    otfc = create_ot_file_cache(file_system)
 
     selected_modules = [m for m in modules if m.__name__ in selected_module_names]
     for parser_module in selected_modules:
         print("Running module '%s'" % parser_module.__name__)
-        parser_module.write(
+        parser_module(
             file_system=file_system,
             data_path=__DATA_PATH__,
             relational_reader=rr,
-            translation_file_cache=tfc,
-            ot_file_cache=otfc,
-        )
+        ).write()
 
     # This forces the globals to be up to date with what we just parsed, in case someone uses `run_parser` within a script
     reload(RePoE)

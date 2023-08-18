@@ -1,22 +1,11 @@
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import write_json, call_with_default_args
-from PyPoE.poe.file.dat import RelationalReader
-from PyPoE.poe.file.file_system import FileSystem
-from PyPoE.poe.file.ot import OTFileCache
-from PyPoE.poe.file.translations import TranslationFileCache
 
 
 class default_monster_stats(Parser_Module):
-    @staticmethod
-    def write(
-        file_system: FileSystem,
-        data_path: str,
-        relational_reader: RelationalReader,
-        translation_file_cache: TranslationFileCache,
-        ot_file_cache: OTFileCache,
-    ) -> None:
+    def write(self) -> None:
         root = {}
-        for row in relational_reader["DefaultMonsterStats.dat64"]:
+        for row in self.relational_reader["DefaultMonsterStats.dat64"]:
             root[row["DisplayLevel"]] = {
                 "physical_damage": row["Damage"],
                 "evasion": row["Evasion"],
@@ -25,8 +14,8 @@ class default_monster_stats(Parser_Module):
                 "ally_life": row["AllyLife"],
                 "armour": row["Armour"],
             }
-        write_json(root, data_path, "default_monster_stats")
+        write_json(root, self.data_path, "default_monster_stats")
 
 
 if __name__ == "__main__":
-    call_with_default_args(default_monster_stats.write)
+    call_with_default_args(default_monster_stats)
