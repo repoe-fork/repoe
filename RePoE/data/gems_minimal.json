@@ -2075,7 +2075,17 @@
           "type": "additional"
         },
         {
-          "id": "base_deal_no_damage",
+          "id": "base_deal_no_attack_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_spell_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_secondary_damage",
           "type": "implicit",
           "value": 1
         },
@@ -3018,7 +3028,7 @@
   },
   {
     "active_skill": {
-      "description": "Dive through enemies, dealing weapon damage. Only works with daggers, claws and one handed swords. Cannot be supported by Multistrike.",
+      "description": "Dive through enemies, dealing weapon damage. If dual wielding attacks with both weapons, dealing the damage of both in one hit. Only works with Daggers, Claws, and One-Handed Swords. Cannot be supported by Multistrike.",
       "display_name": "Whirling Blades",
       "id": "blade_flurry",
       "is_manually_casted": true,
@@ -3106,12 +3116,23 @@
           "value": -1
         },
         {
+          "id": "active_skill_merged_damage_+%_final_while_dual_wielding",
+          "stat": "When Dual Wielding, Deals {0/multiplicative_damage_modifier}% Damage from each Weapon combined",
+          "type": "constant",
+          "value": -25
+        },
+        {
           "id": "ignores_proximity_shield",
           "type": "implicit",
           "value": 1
         },
         {
           "id": "base_skill_show_average_damage_instead_of_dps",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_double_hits_when_dual_wielding",
           "type": "implicit",
           "value": 1
         }
@@ -4307,8 +4328,8 @@
           "set": 1,
           "set_name": "Anomalous",
           "stat": "Projectiles from Supported Skills have {1}% chance to Return to you",
-          "value": 3000,
-          "weight": 100
+          "value": 500,
+          "weight": 10
         },
         {
           "id": "projectile_damage_+%",
@@ -4316,7 +4337,7 @@
           "set_name": "Divergent",
           "stat": "Supported Skills deal {0}% increased Projectile Damage",
           "value": 500,
-          "weight": 100
+          "weight": 50
         }
       ],
       "stat_requirements": {
@@ -5067,7 +5088,7 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
         },
         {
@@ -5079,6 +5100,11 @@
           "id": "zombie_slam_area_of_effect_+%",
           "stat": "Raised Zombies' Slam Attack has {0}% increased Area of Effect",
           "type": "additional"
+        },
+        {
+          "id": "infinite_minion_duration",
+          "type": "implicit",
+          "value": 1
         }
       ]
     },
@@ -7706,6 +7732,11 @@
           "stat": "Minions have +30% to all Elemental Resistances",
           "type": "implicit",
           "value": 1
+        },
+        {
+          "id": "infinite_minion_duration",
+          "type": "implicit",
+          "value": 1
         }
       ]
     },
@@ -9542,7 +9573,7 @@
           "id": "buff_time_passed_+%_other_than_temporal_chains",
           "stat": "Other effects on Cursed enemies expire {0}% faster",
           "type": "constant",
-          "value": -40
+          "value": -25
         },
         {
           "id": "curse_effect_+%_final_vs_players",
@@ -10812,7 +10843,7 @@
           "id": "number_of_melee_skeletons_to_summon",
           "set": 2,
           "set_name": "Divergent",
-          "stat": "Summons {0} Skeleton Warrior",
+          "stat": "Summons {1} Skeleton Warrior",
           "value": 200,
           "weight": 50
         },
@@ -10851,7 +10882,7 @@
         },
         {
           "id": "number_of_melee_skeletons_to_summon",
-          "stat": "Summons {0} Skeleton Warrior",
+          "stat": "Summons {1} Skeleton Warrior",
           "type": "additional"
         },
         {
@@ -10860,7 +10891,7 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
         }
       ]
@@ -10875,7 +10906,7 @@
   },
   {
     "active_skill": {
-      "description": "Summons an army of skeletal warriors, archers and mages, led by a powerful general.",
+      "description": "Summons an army of skeletal soldiers, archers and mages, led by a powerful general.",
       "display_name": "Vaal Summon Skeletons",
       "id": "vaal_summon_skeletons",
       "is_manually_casted": true,
@@ -10954,7 +10985,7 @@
         },
         {
           "id": "number_of_melee_skeletons_to_summon",
-          "stat": "Summons {0} Skeleton Warrior",
+          "stat": "Summons {1} Skeleton Warrior",
           "type": "additional"
         },
         {
@@ -10973,7 +11004,7 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
         },
         {
@@ -10983,7 +11014,7 @@
         },
         {
           "id": "skeletons_are_vaal",
-          "stat": "Summons {0} Skeleton Warrior",
+          "stat": "Summons {1} Skeleton Warrior",
           "type": "implicit",
           "value": 1
         }
@@ -11839,7 +11870,7 @@
           "id": "base_all_ailment_duration_+%",
           "set": 2,
           "set_name": "Divergent",
-          "stat": "Supported Skills have {0}% increased Duration of Ailments on Enemies",
+          "stat": "{0}% increased Duration of Ailments inflicted with Supported Skills",
           "value": 1000,
           "weight": 50
         }
@@ -12007,8 +12038,7 @@
         }
       ],
       "stat_requirements": {
-        "dex": 0,
-        "str": 0
+        "dex": 0
       },
       "stats": [
         {
@@ -16555,7 +16585,7 @@
           "id": "totem_life_+%",
           "set": 0,
           "set_name": "Superior",
-          "stat": "{0}% increased totem life",
+          "stat": "Supported Skills have {0}% increased Totem Life",
           "value": 1000,
           "weight": 50
         },
@@ -16738,7 +16768,7 @@
         },
         {
           "id": "totem_life_+%",
-          "stat": "{0}% increased totem life",
+          "stat": "Supported Skills have {0}% increased Totem Life",
           "type": "additional"
         },
         {
@@ -17609,7 +17639,7 @@
           "id": "totem_life_+%",
           "set": 0,
           "set_name": "Superior",
-          "stat": "{0}% increased totem life",
+          "stat": "Supported Skills have {0}% increased Totem Life",
           "value": 1000,
           "weight": 50
         },
@@ -17656,7 +17686,7 @@
         },
         {
           "id": "totem_life_+%",
-          "stat": "{0}% increased totem life",
+          "stat": "Supported Skills have {0}% increased Totem Life",
           "type": "additional"
         },
         {
@@ -17732,7 +17762,7 @@
           "id": "totem_life_+%",
           "set": 0,
           "set_name": "Superior",
-          "stat": "{0}% increased totem life",
+          "stat": "Supported Skills have {0}% increased Totem Life",
           "value": 1000,
           "weight": 50
         },
@@ -17781,7 +17811,7 @@
         },
         {
           "id": "totem_life_+%",
-          "stat": "{0}% increased totem life",
+          "stat": "Supported Skills have {0}% increased Totem Life",
           "type": "additional"
         },
         {
@@ -19790,30 +19820,70 @@
   },
   {
     "base_item": {
-      "display_name": "Return Projectiles Support",
-      "experience_type": "GemProgression24",
-      "id": "Metadata/Items/Gems/SupportGemReturn",
+      "display_name": "Returning Projectiles Support",
+      "experience_type": "GemProgression38",
+      "id": "Metadata/Items/Gems/SupportGemReturningProjectiles",
       "max_level": 20,
-      "release_state": "unreleased"
+      "release_state": "released"
     },
     "is_support": true,
+    "quest_reward": {
+      "act": 4,
+      "classes": [
+        "Ranger",
+        "Shadow",
+        "Scion"
+      ],
+      "quest": "The Eternal Nightmare"
+    },
     "stat_translation_file": "stat_translations/support_gem",
     "static": {
-      "cost_multiplier": 120,
-      "quality_stats": [],
+      "cost_multiplier": 150,
+      "quality_stats": [
+        {
+          "id": "base_projectile_speed_+%",
+          "set": 0,
+          "set_name": "Superior",
+          "stat": "{0}% increased Projectile Speed",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "projectile_additional_return_chance_%",
+          "set": 1,
+          "set_name": "Anomalous",
+          "stat": "Projectiles from Supported Skills have {0}% chance to Return to you an additional Time",
+          "value": 1000,
+          "weight": 50
+        },
+        {
+          "id": "projectile_base_number_of_targets_to_pierce",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "Projectiles Pierce {0} additional Targets",
+          "value": 50,
+          "weight": 20
+        }
+      ],
       "stat_requirements": {
         "int": 0,
         "str": 0
       },
       "stats": [
         {
-          "id": "projectile_damage_+%",
-          "stat": "Supported Skills deal {0}% increased Projectile Damage",
+          "id": "support_return_returning_projectiles_damage_+%_final",
+          "stat": "Projectiles from Supported Skills deal {0}% more Damage while Returning",
           "type": "additional"
         },
         {
           "id": "projectiles_return",
           "stat": "Projectiles from Supported Skills have {1}% chance to Return to you",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "returning_projectiles_always_pierce",
+          "stat": "Projectiles from Supported Skills Pierce all Targets while Returning",
           "type": "implicit",
           "value": 1
         }
@@ -21292,7 +21362,7 @@
           "id": "totem_life_+%",
           "set": 0,
           "set_name": "Superior",
-          "stat": "{0}% increased totem life",
+          "stat": "Supported Skills have {0}% increased Totem Life",
           "value": 1000,
           "weight": 50
         },
@@ -22103,7 +22173,7 @@
       "stats": [
         {
           "id": "supported_active_skill_gem_level_+",
-          "stat": "{0} to Level of Supported Active Skill Gems",
+          "stat": "{0} to Level of Supported Skill Gems",
           "type": "additional"
         }
       ]
@@ -22773,7 +22843,7 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
         },
         {
@@ -22785,6 +22855,11 @@
           "id": "attack_maximum_added_physical_damage",
           "stat": "{0} to {1} Added Attack Physical Damage",
           "type": "additional"
+        },
+        {
+          "id": "infinite_minion_duration",
+          "type": "implicit",
+          "value": 1
         }
       ]
     },
@@ -23275,7 +23350,7 @@
           "id": "base_all_ailment_duration_+%",
           "set": 1,
           "set_name": "Anomalous",
-          "stat": "Supported Skills have {0}% increased Duration of Ailments on Enemies",
+          "stat": "{0}% increased Duration of Ailments inflicted with Supported Skills",
           "value": 500,
           "weight": 100
         },
@@ -23756,7 +23831,7 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
         }
       ]
@@ -23807,7 +23882,7 @@
       "stats": [
         {
           "id": "supported_active_skill_gem_quality_%",
-          "stat": "{0}% to Quality of Supported Active Skill Gems",
+          "stat": "{0}% to Quality of Supported Skill Gems",
           "type": "additional"
         }
       ]
@@ -25689,7 +25764,7 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
         },
         {
@@ -27873,6 +27948,7 @@
         "Chaos",
         "Physical",
         "CreatesMinion",
+        "MinionsAreUndamagable",
         "InstantNoRepeatWhenHeld",
         "InstantShiftAttackForLeftMouse",
         "Cooldown"
@@ -27994,6 +28070,11 @@
         {
           "id": "minions_cannot_taunt_enemies",
           "stat": "Minions cannot Taunt Enemies",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "infinite_minion_duration",
           "type": "implicit",
           "value": 1
         }
@@ -28138,7 +28219,7 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
         },
         {
@@ -29006,7 +29087,7 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
         },
         {
@@ -29164,7 +29245,7 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
         },
         {
@@ -29965,8 +30046,13 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
+        },
+        {
+          "id": "infinite_minion_duration",
+          "type": "implicit",
+          "value": 1
         }
       ],
       "stored_uses": 1
@@ -30105,8 +30191,13 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
+        },
+        {
+          "id": "infinite_minion_duration",
+          "type": "implicit",
+          "value": 1
         }
       ],
       "stored_uses": 1
@@ -30236,8 +30327,13 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
+        },
+        {
+          "id": "infinite_minion_duration",
+          "type": "implicit",
+          "value": 1
         }
       ],
       "stored_uses": 1
@@ -30369,8 +30465,13 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
+        },
+        {
+          "id": "infinite_minion_duration",
+          "type": "implicit",
+          "value": 1
         }
       ],
       "stored_uses": 1
@@ -30775,7 +30876,17 @@
           "type": "additional"
         },
         {
-          "id": "base_deal_no_damage",
+          "id": "base_deal_no_attack_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_spell_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_secondary_damage",
           "type": "implicit",
           "value": 1
         },
@@ -30916,6 +31027,16 @@
           "id": "base_skill_effect_duration",
           "stat": "Base duration is {0/milliseconds_to_seconds_2dp} seconds",
           "type": "additional"
+        },
+        {
+          "id": "base_deal_no_attack_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_spell_damage",
+          "type": "implicit",
+          "value": 1
         },
         {
           "id": "damage_cannot_be_reflected",
@@ -33832,8 +33953,13 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
+        },
+        {
+          "id": "infinite_minion_duration",
+          "type": "implicit",
+          "value": 1
         }
       ],
       "stored_uses": 1
@@ -36654,7 +36780,7 @@
       "stats": [
         {
           "id": "number_of_melee_skeletons_to_summon",
-          "stat": "Summons {0} Skeleton Warrior",
+          "stat": "Summons {1} Skeleton Warrior",
           "type": "constant",
           "value": 1
         },
@@ -36680,7 +36806,7 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
         }
       ]
@@ -36987,7 +37113,7 @@
           "id": "base_all_ailment_duration_+%",
           "set": 1,
           "set_name": "Anomalous",
-          "stat": "Supported Skills have {0}% increased Duration of Ailments on Enemies",
+          "stat": "{0}% increased Duration of Ailments inflicted with Supported Skills",
           "value": 1000,
           "weight": 100
         },
@@ -37507,7 +37633,7 @@
           "id": "base_all_ailment_duration_+%",
           "set": 0,
           "set_name": "Superior",
-          "stat": "Supported Skills have {0}% increased Duration of Ailments on Enemies",
+          "stat": "{0}% increased Duration of Ailments inflicted with Supported Skills",
           "value": 500,
           "weight": 50
         },
@@ -37534,7 +37660,7 @@
       "stats": [
         {
           "id": "base_all_ailment_duration_+%",
-          "stat": "Supported Skills have {0}% increased Duration of Ailments on Enemies",
+          "stat": "{0}% increased Duration of Ailments inflicted with Supported Skills",
           "type": "additional"
         },
         {
@@ -37729,8 +37855,8 @@
           "type": "additional"
         },
         {
-          "id": "support_ruthless_blow_bleeding_damage_from_melee_hits_+%_final",
-          "stat": "Ruthless Blows with Supported Skills deal {0}% more Damage with Bleeding caused by Melee Hits",
+          "id": "support_ruthless_blow_ailment_damage_from_melee_hits_+%_final",
+          "stat": "Ruthless Blows with Supported Skills deal {0}% more Damage with\nAilments caused by Melee Hits",
           "type": "additional"
         }
       ]
@@ -38076,7 +38202,8 @@
         "Cascadable",
         "Projectile",
         "CanRapidFire",
-        "AreaSpell"
+        "AreaSpell",
+        "Orb"
       ],
       "weapon_restrictions": []
     },
@@ -38216,7 +38343,8 @@
       "area",
       "fire",
       "duration",
-      "projectile"
+      "projectile",
+      "orb"
     ]
   },
   {
@@ -41583,12 +41711,17 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
         },
         {
           "id": "minions_cannot_taunt_enemies",
           "stat": "Minions cannot Taunt Enemies",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "infinite_minion_duration",
           "type": "implicit",
           "value": 1
         }
@@ -45015,7 +45148,7 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
         },
         {
@@ -47124,8 +47257,13 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
+        },
+        {
+          "id": "infinite_minion_duration",
+          "type": "implicit",
+          "value": 1
         }
       ],
       "stored_uses": 1
@@ -48122,6 +48260,7 @@
         "Instant",
         "Minion",
         "CreatesMinion",
+        "MinionsAreUndamagable",
         "HasReservation",
         "Cold",
         "Lightning",
@@ -48225,6 +48364,11 @@
         {
           "id": "display_skitterbot_chilling_aura",
           "stat": "Chilling Skitterbot's Aura Chills Enemies near it",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "infinite_minion_duration",
           "type": "implicit",
           "value": 1
         }
@@ -48755,7 +48899,7 @@
         },
         {
           "id": "returning_projectiles_always_pierce",
-          "stat": "Returning Projectiles Pierce all Targets",
+          "stat": "Projectiles from Supported Skills Pierce all Targets while Returning",
           "type": "implicit",
           "value": 1
         },
@@ -49158,7 +49302,9 @@
       ]
     },
     "support_gem": {
-      "added_types": [],
+      "added_types": [
+        "Rain"
+      ],
       "allowed_types": [
         "Projectile",
         "ThresholdJewelProjectile",
@@ -50459,7 +50605,9 @@
       ]
     },
     "support_gem": {
-      "added_types": [],
+      "added_types": [
+        "Rain"
+      ],
       "allowed_types": [
         "Projectile",
         "ThresholdJewelProjectile",
@@ -51089,7 +51237,7 @@
         },
         {
           "id": "supported_active_skill_gem_level_+",
-          "stat": "{0} to Level of Supported Active Skill Gems",
+          "stat": "{0} to Level of Supported Skill Gems",
           "type": "additional"
         }
       ]
@@ -51843,7 +51991,7 @@
           "id": "base_all_ailment_duration_+%",
           "set": 0,
           "set_name": "Superior",
-          "stat": "Supported Skills have {0}% increased Duration of Ailments on Enemies",
+          "stat": "{0}% increased Duration of Ailments inflicted with Supported Skills",
           "value": 500,
           "weight": 50
         }
@@ -51854,7 +52002,7 @@
       "stats": [
         {
           "id": "base_all_ailment_duration_+%",
-          "stat": "Supported Skills have {0}% increased Duration of Ailments on Enemies",
+          "stat": "{0}% increased Duration of Ailments inflicted with Supported Skills",
           "type": "additional"
         },
         {
@@ -51985,7 +52133,7 @@
       "stats": [
         {
           "id": "supported_active_skill_gem_level_+",
-          "stat": "{0} to Level of Supported Active Skill Gems",
+          "stat": "{0} to Level of Supported Skill Gems",
           "type": "additional"
         }
       ]
@@ -52080,7 +52228,7 @@
       "stats": [
         {
           "id": "supported_active_skill_gem_quality_%",
-          "stat": "{0}% to Quality of Supported Active Skill Gems",
+          "stat": "{0}% to Quality of Supported Skill Gems",
           "type": "additional"
         }
       ]
@@ -53298,7 +53446,17 @@
           "type": "additional"
         },
         {
-          "id": "base_deal_no_damage",
+          "id": "base_deal_no_attack_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_spell_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_secondary_damage",
           "type": "implicit",
           "value": 1
         },
@@ -53464,7 +53622,17 @@
           "type": "additional"
         },
         {
-          "id": "base_deal_no_damage",
+          "id": "base_deal_no_attack_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_spell_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_secondary_damage",
           "type": "implicit",
           "value": 1
         },
@@ -53621,7 +53789,17 @@
           "type": "additional"
         },
         {
-          "id": "base_deal_no_damage",
+          "id": "base_deal_no_attack_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_spell_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_secondary_damage",
           "type": "implicit",
           "value": 1
         },
@@ -54251,7 +54429,17 @@
           "type": "additional"
         },
         {
-          "id": "base_deal_no_damage",
+          "id": "base_deal_no_attack_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_spell_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_secondary_damage",
           "type": "implicit",
           "value": 1
         },
@@ -58481,7 +58669,17 @@
           "type": "additional"
         },
         {
-          "id": "base_deal_no_damage",
+          "id": "base_deal_no_attack_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_spell_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_secondary_damage",
           "type": "implicit",
           "value": 1
         },
@@ -59570,7 +59768,7 @@
         },
         {
           "id": "returning_projectiles_always_pierce",
-          "stat": "Returning Projectiles Pierce all Targets",
+          "stat": "Projectiles from Supported Skills Pierce all Targets while Returning",
           "type": "implicit",
           "value": 1
         },
@@ -59604,7 +59802,7 @@
   },
   {
     "active_skill": {
-      "description": "Dive through enemies, dealing weapon damage. Only works with daggers, claws and one handed swords. Cannot be supported by Multistrike.",
+      "description": "Dive through enemies, dealing weapon damage. If dual wielding attacks with both weapons, dealing the damage of both in one hit. Only works with Daggers, Claws, and One-Handed Swords. Cannot be supported by Multistrike.",
       "display_name": "Whirling Blades",
       "id": "blade_flurry",
       "is_manually_casted": true,
@@ -59659,12 +59857,23 @@
           "value": -1
         },
         {
+          "id": "active_skill_merged_damage_+%_final_while_dual_wielding",
+          "stat": "When Dual Wielding, Deals {0/multiplicative_damage_modifier}% Damage from each Weapon combined",
+          "type": "constant",
+          "value": -25
+        },
+        {
           "id": "ignores_proximity_shield",
           "type": "implicit",
           "value": 1
         },
         {
           "id": "base_skill_show_average_damage_instead_of_dps",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_double_hits_when_dual_wielding",
           "type": "implicit",
           "value": 1
         }
@@ -60235,7 +60444,7 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
         },
         {
@@ -62026,7 +62235,8 @@
         "Cascadable",
         "Projectile",
         "CanRapidFire",
-        "AreaSpell"
+        "AreaSpell",
+        "Orb"
       ],
       "weapon_restrictions": []
     },
@@ -62132,7 +62342,8 @@
       "area",
       "fire",
       "duration",
-      "projectile"
+      "projectile",
+      "orb"
     ]
   },
   {
@@ -65214,7 +65425,17 @@
           "type": "additional"
         },
         {
-          "id": "base_deal_no_damage",
+          "id": "base_deal_no_attack_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_spell_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_secondary_damage",
           "type": "implicit",
           "value": 1
         },
@@ -67734,7 +67955,17 @@
           "type": "additional"
         },
         {
-          "id": "base_deal_no_damage",
+          "id": "base_deal_no_attack_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_spell_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_deal_no_secondary_damage",
           "type": "implicit",
           "value": 1
         },
@@ -68046,7 +68277,7 @@
           "value": 1
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
         },
         {
@@ -68127,7 +68358,9 @@
       ]
     },
     "support_gem": {
-      "added_types": [],
+      "added_types": [
+        "Rain"
+      ],
       "allowed_types": [
         "Projectile",
         "ThresholdJewelProjectile",
@@ -69186,7 +69419,7 @@
         },
         {
           "id": "number_of_melee_skeletons_to_summon",
-          "stat": "Summons {0} Skeleton Warrior",
+          "stat": "Summons {1} Skeleton Warrior",
           "type": "additional"
         },
         {
@@ -69195,7 +69428,7 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
         }
       ]
@@ -73744,7 +73977,7 @@
           "id": "totem_life_+%",
           "set": 2,
           "set_name": "Divergent",
-          "stat": "{0}% increased totem life",
+          "stat": "Supported Skills have {0}% increased Totem Life",
           "value": 500,
           "weight": 50
         }
@@ -73906,7 +74139,7 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
         },
         {
@@ -73918,6 +74151,11 @@
           "id": "active_skill_minion_bleeding_damage_+%_final",
           "stat": "Minion deals {0}% more Damage with Bleeding",
           "type": "additional"
+        },
+        {
+          "id": "infinite_minion_duration",
+          "type": "implicit",
+          "value": 1
         }
       ],
       "stored_uses": 1
@@ -74041,7 +74279,8 @@
         "Melee",
         "Area",
         "Duration",
-        "Physical"
+        "Physical",
+        "InnateTrauma"
       ],
       "weapon_restrictions": [
         "One Hand Axe",
@@ -74097,7 +74336,7 @@
           "id": "trauma_strike_self_damage_per_trauma",
           "set": 2,
           "set_name": "Divergent",
-          "stat": "Take {2} Physical Damage per Trauma when you gain Trauma",
+          "stat": "Take {3} Physical Damage per Trauma when you gain Trauma",
           "value": 1000,
           "weight": 10
         }
@@ -74109,7 +74348,7 @@
       "stats": [
         {
           "id": "trauma_strike_self_damage_per_trauma",
-          "stat": "Take {2} Physical Damage per Trauma when you gain Trauma",
+          "stat": "Take {3} Physical Damage per Trauma when you gain Trauma",
           "type": "float"
         },
         {
@@ -74129,8 +74368,8 @@
           "value": 15
         },
         {
-          "id": "trauma_base_duration_ms",
-          "stat": "Take {2} Physical Damage per Trauma when you gain Trauma",
+          "id": "boneshatter_trauma_base_duration_ms",
+          "stat": "Take {3} Physical Damage per Trauma when you gain Trauma",
           "type": "constant",
           "value": 6000
         },
@@ -75164,11 +75403,6 @@
           "type": "additional"
         },
         {
-          "id": "base_deal_no_damage",
-          "type": "implicit",
-          "value": 1
-        },
-        {
           "id": "skill_cost_over_time_is_not_removed_with_skill",
           "type": "implicit",
           "value": 1
@@ -75279,11 +75513,6 @@
           "type": "additional"
         },
         {
-          "id": "base_deal_no_damage",
-          "type": "implicit",
-          "value": 1
-        },
-        {
           "id": "skill_cost_over_time_is_not_removed_with_skill",
           "type": "implicit",
           "value": 1
@@ -75373,11 +75602,6 @@
           "id": "base_skill_effect_duration",
           "stat": "Base duration is {0/milliseconds_to_seconds_2dp} seconds",
           "type": "additional"
-        },
-        {
-          "id": "base_deal_no_damage",
-          "type": "implicit",
-          "value": 1
         },
         {
           "id": "skill_cost_over_time_is_not_removed_with_skill",
@@ -75474,11 +75698,6 @@
           "id": "base_skill_effect_duration",
           "stat": "Base duration is {0/milliseconds_to_seconds_2dp} seconds",
           "type": "additional"
-        },
-        {
-          "id": "base_deal_no_damage",
-          "type": "implicit",
-          "value": 1
         },
         {
           "id": "skill_cost_over_time_is_not_removed_with_skill",
@@ -75580,11 +75799,6 @@
           "type": "additional"
         },
         {
-          "id": "base_deal_no_damage",
-          "type": "implicit",
-          "value": 1
-        },
-        {
           "id": "skill_cost_over_time_is_not_removed_with_skill",
           "type": "implicit",
           "value": 1
@@ -75680,11 +75894,6 @@
           "id": "base_skill_effect_duration",
           "stat": "Base duration is {0/milliseconds_to_seconds_2dp} seconds",
           "type": "additional"
-        },
-        {
-          "id": "base_deal_no_damage",
-          "type": "implicit",
-          "value": 1
         },
         {
           "id": "skill_cost_over_time_is_not_removed_with_skill",
@@ -77368,7 +77577,7 @@
     },
     "support_gem": {
       "added_types": [
-        "TotemsAreBallistae"
+        "PreventHexTransfer"
       ],
       "allowed_types": [
         "Hex",
@@ -77461,7 +77670,7 @@
       ],
       "excluded_types": [
         "Aura",
-        "TotemsAreBallistae"
+        "PreventHexTransfer"
       ],
       "letter": "*",
       "supports_gems_only": false
@@ -78145,7 +78354,7 @@
           "type": "additional"
         },
         {
-          "id": "display_minion_monster_level",
+          "id": "base_display_minion_actor_level",
           "type": "additional"
         },
         {
@@ -78569,9 +78778,6 @@
         "Cold",
         "Vaal",
         "Duration",
-        "Totemable",
-        "Trappable",
-        "Mineable",
         "ProjectilesNumberModifiersNotApplied"
       ],
       "weapon_restrictions": [
@@ -78903,7 +79109,7 @@
         },
         {
           "id": "totem_life_+%",
-          "stat": "{0}% increased totem life",
+          "stat": "Supported Skills have {0}% increased Totem Life",
           "type": "additional"
         },
         {
@@ -79218,7 +79424,9 @@
         "Attack"
       ],
       "excluded_types": [
-        "Triggered"
+        "Triggered",
+        "RemoteMined",
+        "Trapped"
       ],
       "letter": "J",
       "supports_gems_only": false
@@ -79456,6 +79664,1559 @@
       "movement",
       "travel",
       "blink"
+    ]
+  },
+  {
+    "base_item": {
+      "display_name": "Trauma Support",
+      "experience_type": "GemProgression38",
+      "id": "Metadata/Items/Gems/SupportGemTrauma",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "is_support": true,
+    "quest_reward": {
+      "act": 4,
+      "classes": [
+        "Marauder",
+        "Duelist"
+      ],
+      "quest": "The Eternal Nightmare"
+    },
+    "stat_translation_file": "stat_translations/support_gem",
+    "static": {
+      "cost_multiplier": 140,
+      "quality_stats": [
+        {
+          "id": "base_stun_threshold_reduction_+%",
+          "set": 0,
+          "set_name": "Superior",
+          "stat": "{0}% reduced Enemy Stun Threshold",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "ignore_self_damage_from_trauma_chance_%",
+          "set": 1,
+          "set_name": "Anomalous",
+          "stat": "{0}% chance to not take Damage when you gain Trauma from Supported Skills",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "attack_speed_+%_per_trauma",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "{0}% increased Attack Speed per Trauma",
+          "value": 50,
+          "weight": 10
+        },
+        {
+          "id": "trauma_strike_self_damage_per_trauma",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "Take {3} Physical Damage per Trauma when you gain Trauma",
+          "value": 1000,
+          "weight": 10
+        }
+      ],
+      "stat_requirements": {
+        "dex": 0,
+        "int": 0
+      },
+      "stats": [
+        {
+          "id": "trauma_strike_self_damage_per_trauma",
+          "stat": "Take {3} Physical Damage per Trauma when you gain Trauma",
+          "type": "float"
+        },
+        {
+          "id": "attack_minimum_added_physical_damage_with_weapons_per_trauma",
+          "stat": "Supported Skills have {0} to {1} Added Attack Physical Damage per Trauma",
+          "type": "additional"
+        },
+        {
+          "id": "attack_maximum_added_physical_damage_with_weapons_per_trauma",
+          "stat": "Supported Skills have {0} to {1} Added Attack Physical Damage per Trauma",
+          "type": "additional"
+        },
+        {
+          "id": "support_trauma_stun_duration_+%_per_trauma",
+          "stat": "Supported Skills have {0}% increased Stun Duration per Trauma",
+          "type": "additional",
+          "value": 5
+        },
+        {
+          "id": "support_trauma_base_duration_ms",
+          "stat": "Take {3} Physical Damage per Trauma when you gain Trauma from Supported Skills",
+          "type": "additional"
+        },
+        {
+          "id": "supported_skill_can_only_use_axe_mace_and_staff",
+          "stat": "Supported Skills can only be used with Axes, Maces, Sceptres or Staves",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "support_gem": {
+      "added_types": [
+        "Duration"
+      ],
+      "allowed_types": [
+        "MeleeSingleTarget"
+      ],
+      "excluded_types": [
+        "Vaal",
+        "Triggered",
+        "SummonsTotem",
+        "OtherThingUsesSkill",
+        "InnateTrauma"
+      ],
+      "letter": "#",
+      "supports_gems_only": false
+    },
+    "tags": [
+      "physical",
+      "strength",
+      "support",
+      "melee",
+      "attack",
+      "strike",
+      "duration"
+    ]
+  },
+  {
+    "base_item": {
+      "display_name": "Spellblade Support",
+      "experience_type": "GemProgression38",
+      "id": "Metadata/Items/Gems/SupportGemSpellblade",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "is_support": true,
+    "quest_reward": {
+      "act": 4,
+      "classes": [
+        "Templar"
+      ],
+      "quest": "The Eternal Nightmare"
+    },
+    "stat_translation_file": "stat_translations/support_gem",
+    "static": {
+      "cost_multiplier": 130,
+      "quality_stats": [
+        {
+          "id": "spell_damage_+%",
+          "set": 0,
+          "set_name": "Superior",
+          "stat": "Buff Grants {0}% increased Spell Damage",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "support_spell_weapon_damage_gain_%_of_one_hand_melee_weapon_damage_as_added_spell_damage_while_wielding_two_different_weapon_types",
+          "set": 1,
+          "set_name": "Anomalous",
+          "stat": "Supported Skills have Added Spell Damage equal to {0}% of Damage of Equipped One Handed Melee Weapons while wielding two different Weapon Types",
+          "value": 1000,
+          "weight": 20
+        },
+        {
+          "id": "chance_for_extra_damage_roll_%",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "Supported Skills have {0}% chance for Damage with Hits to be Lucky",
+          "value": 500,
+          "weight": 50
+        }
+      ],
+      "stat_requirements": {
+        "dex": 0
+      },
+      "stats": [
+        {
+          "id": "support_spell_weapon_damage_gain_%_of_one_hand_melee_weapon_damage_as_added_spell_damage",
+          "stat": "Supported Skills have Added Spell Damage equal to {0}% of\nDamage of Equipped One Handed Melee Weapons\nIf two Weapons are Equipped, each contributes 60% as much Added Damage",
+          "type": "additional"
+        }
+      ]
+    },
+    "support_gem": {
+      "added_types": [],
+      "allowed_types": [
+        "Damage",
+        "Spell",
+        "AND"
+      ],
+      "excluded_types": [],
+      "letter": "|",
+      "supports_gems_only": false
+    },
+    "tags": [
+      "intelligence",
+      "support",
+      "spell"
+    ]
+  },
+  {
+    "base_item": {
+      "display_name": "Devour Support",
+      "experience_type": "GemProgression8",
+      "id": "Metadata/Items/Gems/SupportGemDevour",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "is_support": true,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "Witch"
+      ],
+      "quest": "The Caged Brute"
+    },
+    "stat_translation_file": "stat_translations/support_gem",
+    "static": {
+      "cost_multiplier": 120,
+      "quality_stats": [
+        {
+          "id": "damage_vs_enemies_on_low_life_+%",
+          "set": 0,
+          "set_name": "Superior",
+          "stat": "Supported Skills deal {0}% increased Damage with Hits against Enemies that are on Low Life",
+          "value": 2000,
+          "weight": 50
+        },
+        {
+          "id": "damage_+%_if_you_have_consumed_a_corpse_recently",
+          "set": 1,
+          "set_name": "Anomalous",
+          "stat": "Supported Skills deal {0}% increased Damage if you have Consumed a corpse Recently",
+          "value": 4000,
+          "weight": 50
+        },
+        {
+          "id": "life_leech_from_any_damage_permyriad",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "Supported Skills have {0/divide_by_one_hundred}% of Damage Leeched as Life",
+          "value": 2500,
+          "weight": 50
+        }
+      ],
+      "stat_requirements": {
+        "str": 0
+      },
+      "stats": [
+        {
+          "id": "killing_blow_consumes_corpse_restore_x_life",
+          "stat": "Killing Blows with Supported Skills Consume corpses to Recover {1} Mana",
+          "type": "additional"
+        },
+        {
+          "id": "killing_blow_consumes_corpse_restore_x_mana",
+          "stat": "Killing Blows with Supported Skills Consume corpses to Recover {1} Mana",
+          "type": "additional"
+        }
+      ]
+    },
+    "support_gem": {
+      "added_types": [],
+      "allowed_types": [
+        "Damage",
+        "Attack"
+      ],
+      "excluded_types": [],
+      "letter": "*",
+      "supports_gems_only": false
+    },
+    "tags": [
+      "intelligence",
+      "support"
+    ]
+  },
+  {
+    "base_item": {
+      "display_name": "Fresh Meat Support",
+      "experience_type": "GemProgression18",
+      "id": "Metadata/Items/Gems/SupportGemFreshMeat",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "is_support": true,
+    "quest_reward": {
+      "act": 2,
+      "classes": [
+        "Witch"
+      ],
+      "quest": "Sharp and Cruel"
+    },
+    "stat_translation_file": "stat_translations/support_gem",
+    "static": {
+      "cost_multiplier": 140,
+      "quality_stats": [
+        {
+          "id": "minion_critical_strike_chance_+%",
+          "set": 0,
+          "set_name": "Superior",
+          "stat": "Minions from Supported Skills have {0}% increased Critical Strike Chance",
+          "value": 1000,
+          "weight": 50
+        },
+        {
+          "id": "support_recent_minions_life_leech_from_any_damage_permyriad_from_wakened_fury",
+          "set": 1,
+          "set_name": "Anomalous",
+          "stat": "Wakened Fury grants {0/divide_by_one_hundred}% of Damage Leeched as Life",
+          "value": 10000,
+          "weight": 50
+        },
+        {
+          "id": "skill_effect_duration_+%",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "{0}% increased Skill Effect Duration",
+          "value": 500,
+          "weight": 50
+        }
+      ],
+      "stat_requirements": {
+        "dex": 0,
+        "str": 0
+      },
+      "stats": [
+        {
+          "id": "support_recent_minions_effect_duration_is_%_summon_duration",
+          "stat": "Minions created by Supported Skills gain Wakened Fury and Adrenaline for {1}% of their Duration, up to a maximum of {0/milliseconds_to_seconds_2dp_if_required} seconds\nWakened Fury grants {2/divide_by_one_hundred}% to Critical Strike Chance\nWakened Fury grants {3}% to Critical Strike Multiplier",
+          "type": "constant",
+          "value": 10
+        },
+        {
+          "id": "support_recent_minions_max_effect_duration_ms",
+          "stat": "Minions created by Supported Skills gain Wakened Fury and Adrenaline for {1}% of their Duration, up to a maximum of {0/milliseconds_to_seconds_2dp_if_required} seconds\nWakened Fury grants {2/divide_by_one_hundred}% to Critical Strike Chance\nWakened Fury grants {3}% to Critical Strike Multiplier",
+          "type": "constant",
+          "value": 10000
+        },
+        {
+          "id": "support_recent_minions_additional_critical_strike_chance_from_wakened_fury",
+          "stat": "Minions created by Supported Skills gain Wakened Fury and Adrenaline for {1}% of their Duration, up to a maximum of {0/milliseconds_to_seconds_2dp_if_required} seconds\nWakened Fury grants {2/divide_by_one_hundred}% to Critical Strike Chance\nWakened Fury grants {3}% to Critical Strike Multiplier",
+          "type": "additional"
+        },
+        {
+          "id": "support_recent_minions_additional_critical_strike_multiplier_from_wakened_fury",
+          "stat": "Minions created by Supported Skills gain Wakened Fury and Adrenaline for {1}% of their Duration, up to a maximum of {0/milliseconds_to_seconds_2dp_if_required} seconds\nWakened Fury grants {2/divide_by_one_hundred}% to Critical Strike Chance\nWakened Fury grants {3}% to Critical Strike Multiplier",
+          "type": "additional"
+        }
+      ]
+    },
+    "support_gem": {
+      "added_types": [
+        "Buff"
+      ],
+      "allowed_types": [
+        "CreatesMinion"
+      ],
+      "excluded_types": [],
+      "letter": "f",
+      "supports_gems_only": false
+    },
+    "tags": [
+      "critical",
+      "intelligence",
+      "support",
+      "minion"
+    ]
+  },
+  {
+    "base_item": {
+      "display_name": "Flamewood Support",
+      "experience_type": "GemProgression8",
+      "id": "Metadata/Items/Gems/SupportGemFlamewood",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "is_support": true,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "Marauder"
+      ],
+      "quest": "The Caged Brute"
+    },
+    "secondary_granted_effect": "AvengingFlame",
+    "stat_translation_file": "stat_translations/support_gem",
+    "static": {
+      "cost_multiplier": 140,
+      "quality_stats": [
+        {
+          "id": "dummy_stat_display_nothing",
+          "set": 0,
+          "set_name": "Superior",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "totem_life_+%",
+          "set": 1,
+          "set_name": "Anomalous",
+          "stat": "Supported Skills have {0}% increased Totem Life",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "dummy_stat_display_nothing",
+          "set": 2,
+          "set_name": "Divergent",
+          "value": 500,
+          "weight": 20
+        }
+      ],
+      "stat_requirements": {
+        "dex": 0
+      },
+      "stats": [
+        {
+          "id": "support_flamewood_totems_trigger_infernal_bolt_when_hit",
+          "stat": "Totems from Supported Skills gain the Avenging Flame\nSkill and Trigger it when Hit by an Enemy",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "support_gem": {
+      "added_types": [],
+      "allowed_types": [
+        "SummonsTotem"
+      ],
+      "excluded_types": [],
+      "letter": "f",
+      "supports_gems_only": false
+    },
+    "tags": [
+      "strength",
+      "support",
+      "totem",
+      "grants_active_skill",
+      "spell",
+      "area",
+      "fire",
+      "projectile",
+      "trigger"
+    ]
+  },
+  {
+    "base_item": {
+      "display_name": "Corrupting Cry Support",
+      "experience_type": "GemProgression31",
+      "id": "Metadata/Items/Gems/SupportGemCorruptingCry",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "is_support": true,
+    "quest_reward": {
+      "act": 3,
+      "classes": [
+        "Marauder",
+        "Duelist"
+      ],
+      "quest": "A Fixture of Fate"
+    },
+    "stat_translation_file": "stat_translations/support_gem",
+    "static": {
+      "cost_multiplier": 1000,
+      "quality_stats": [
+        {
+          "id": "base_skill_area_of_effect_+%",
+          "set": 0,
+          "set_name": "Superior",
+          "stat": "{0}% increased Area of Effect",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "skill_effect_duration_+%",
+          "set": 1,
+          "set_name": "Anomalous",
+          "stat": "{0}% increased Skill Effect Duration",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "base_life_cost_+%",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "Supported Skills have {0}% increased Life Cost",
+          "value": -500,
+          "weight": 50
+        }
+      ],
+      "stat_requirements": {
+        "dex": 0,
+        "int": 0
+      },
+      "stats": [
+        {
+          "id": "support_corrupting_cry_corrupted_blood_base_physical_damage_to_deal_per_minute",
+          "stat": "Corrupted Blood inflicted by Supported Warcries deals {0/per_minute_to_per_second} base Physical Damage per second",
+          "type": "float"
+        },
+        {
+          "id": "support_corrupting_cry_warcry_and_first_exerted_attack_applies_corrupted_blood_for_X_ms",
+          "stat": "Corrupted Blood inflicted by Supported Warcries has a Base Duration of {0/milliseconds_to_seconds_2dp_if_required} seconds",
+          "type": "constant",
+          "value": 2000
+        },
+        {
+          "id": "support_corrupting_cry_area_of_effect_+%_final",
+          "stat": "Supported Skills have {0}% more Area of Effect",
+          "type": "constant",
+          "value": -20
+        },
+        {
+          "id": "support_corrupting_cry_warcry_applies_X_stacks_of_corrupted_blood",
+          "stat": "Supported Warcries inflict {0} Corrupted Blood Debuffs",
+          "type": "additional",
+          "value": 4
+        },
+        {
+          "id": "support_corrupting_cry_exerted_attack_applies_X_stacks_of_corrupted_blood_on_first_hit",
+          "stat": "Supported Warcries inflict {0} Corrupted Blood Debuffs on the first\nenemy Hit by each Attack they Exert",
+          "type": "additional",
+          "value": 1
+        },
+        {
+          "id": "base_skill_cost_life_instead_of_mana",
+          "stat": "Supported Skills Cost Life instead of Mana",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "support_gem": {
+      "added_types": [
+        "DamageOverTime",
+        "Duration"
+      ],
+      "allowed_types": [
+        "Warcry"
+      ],
+      "excluded_types": [],
+      "letter": "C",
+      "supports_gems_only": false
+    },
+    "tags": [
+      "area",
+      "physical",
+      "strength",
+      "support",
+      "warcry",
+      "duration"
+    ]
+  },
+  {
+    "base_item": {
+      "display_name": "[UNUSED] Conflagration Support",
+      "experience_type": "GemProgression18",
+      "id": "Metadata/Items/Gems/SupportGemConflagration",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "is_support": true,
+    "stat_translation_file": "stat_translations/support_gem",
+    "static": {
+      "cost_multiplier": 120,
+      "quality_stats": [
+        {
+          "id": "base_chance_to_ignite_%",
+          "set": 0,
+          "set_name": "Superior",
+          "stat": "{0}% chance to Ignite enemies",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "base_stun_threshold_reduction_+%",
+          "set": 1,
+          "set_name": "Anomalous",
+          "stat": "{0}% reduced Enemy Stun Threshold",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "gain_endurance_charge_on_melee_stun_%",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "{1}% chance to gain an Endurance Charge when you Stun an Enemy with a Melee Hit from Supported Skills",
+          "value": 1000,
+          "weight": 20
+        }
+      ],
+      "stat_requirements": {
+        "dex": 0,
+        "int": 0
+      },
+      "stats": [
+        {
+          "id": "support_conflagration_ignites_from_stunning_melee_hits_deal_damage_+%_final_per_200ms_stun",
+          "stat": "[DNT] Ignites from Stunning Melee Hits from Supported Skills deal {0}% more Damage per 200ms of Stun duration",
+          "type": "additional",
+          "value": 5
+        },
+        {
+          "id": "support_conflagration_ignites_from_stunning_melee_hits_duration_+%",
+          "stat": "[DNT] Ignites from Stunning Melee Hits from Supported Skills have {0}% increased Duration",
+          "type": "additional"
+        },
+        {
+          "id": "support_conflagration_ignites_from_stunning_melee_hits_count_as_coming_from_critical_strike",
+          "stat": "[DNT] Ignites from Stunning Melee Hits from Supported Skills count as coming from a Critical Strike",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "support_gem": {
+      "added_types": [],
+      "allowed_types": [
+        "Melee"
+      ],
+      "excluded_types": [],
+      "letter": "c",
+      "supports_gems_only": false
+    },
+    "tags": [
+      "critical",
+      "fire",
+      "strength",
+      "support",
+      "melee",
+      "attack"
+    ]
+  },
+  {
+    "base_item": {
+      "display_name": "Guardian's Blessing Support",
+      "experience_type": "GemProgression31",
+      "id": "Metadata/Items/Gems/SupportGemGuardiansBlessing",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "is_support": true,
+    "quest_reward": {
+      "act": 3,
+      "classes": [
+        "Templar"
+      ],
+      "quest": "A Fixture of Fate"
+    },
+    "secondary_granted_effect": "SupportGuardiansBlessingMinion",
+    "stat_translation_file": "stat_translations/support_gem",
+    "static": {
+      "cost_multiplier": 200,
+      "quality_stats": [
+        {
+          "id": "aura_effect_+%",
+          "set": 0,
+          "set_name": "Superior",
+          "stat": "{0}% increased effect of Aura",
+          "value": 250,
+          "weight": 50
+        },
+        {
+          "id": "dummy_stat_display_nothing",
+          "set": 1,
+          "set_name": "Anomalous",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "aura_effect_+%",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "{0}% increased effect of Aura",
+          "value": 1000,
+          "weight": 20
+        }
+      ],
+      "stat_requirements": {
+        "dex": 0
+      },
+      "stats": [
+        {
+          "id": "aura_effect_+%",
+          "type": "additional"
+        },
+        {
+          "id": "skill_is_blessing_skill",
+          "stat": "Supported Skills also count as Blessing Skills\nYou can only have one Aura on you from your Blessing Skills",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "aura_skill_no_reservation",
+          "stat": "Supported Aura Skills have no Reservation",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "support_guardians_blessing_aura_only_enabled_while_support_minion_is_summoned",
+          "stat": "Supported Skills cannot apply Auras on you unless you have Minions from a Supported Skill",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "support_gem": {
+      "added_types": [
+        "Blessing"
+      ],
+      "allowed_types": [
+        "CanHaveBlessing"
+      ],
+      "excluded_types": [
+        "SummonsTotem",
+        "InbuiltTrigger",
+        "AuraNotOnCaster",
+        "ZeroReservation",
+        "Triggered"
+      ],
+      "letter": "g",
+      "supports_gems_only": false
+    },
+    "tags": [
+      "strength",
+      "support",
+      "aura",
+      "blessing",
+      "minion"
+    ]
+  },
+  {
+    "base_item": {
+      "display_name": "Sacrifice Support",
+      "experience_type": "GemProgression31",
+      "id": "Metadata/Items/Gems/SupportGemSacrifice",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "is_support": true,
+    "quest_reward": {
+      "act": 3,
+      "classes": [
+        "Witch"
+      ],
+      "quest": "A Fixture of Fate"
+    },
+    "stat_translation_file": "stat_translations/support_gem",
+    "static": {
+      "cost_multiplier": 100,
+      "quality_stats": [
+        {
+          "id": "chaos_damage_+%",
+          "set": 0,
+          "set_name": "Superior",
+          "stat": "Supported Skills deal {0}% increased Chaos Damage",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "base_skill_cost_life_instead_of_mana_%",
+          "set": 1,
+          "set_name": "Anomalous",
+          "stat": "Supported Skills Cost Life instead of {0}% of Mana Cost",
+          "value": 2000,
+          "weight": 50
+        },
+        {
+          "id": "support_sacrifice_sacrifice_%_of_current_life",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "Supported Spells Sacrifice {0}% of your current Life when Cast",
+          "value": 250,
+          "weight": 20
+        }
+      ],
+      "stat_requirements": {
+        "dex": 0,
+        "str": 0
+      },
+      "stats": [
+        {
+          "id": "support_sacrifice_sacrifice_%_of_current_life",
+          "stat": "Supported Spells Sacrifice {0}% of your current Life when Cast",
+          "type": "additional",
+          "value": 20
+        },
+        {
+          "id": "support_sacrifice_gain_%_of_sacrificed_life_as_added_chaos_damage",
+          "stat": "Supported Spells Sacrifice {0}% of your current Life when Cast",
+          "type": "additional"
+        }
+      ]
+    },
+    "support_gem": {
+      "added_types": [],
+      "allowed_types": [
+        "Damage",
+        "Spell",
+        "AND"
+      ],
+      "excluded_types": [
+        "HasReservation",
+        "Vaal",
+        "Channel",
+        "Trapped",
+        "RemoteMined",
+        "Orb",
+        "Brand"
+      ],
+      "letter": "^",
+      "supports_gems_only": false
+    },
+    "tags": [
+      "chaos",
+      "intelligence",
+      "support",
+      "spell"
+    ]
+  },
+  {
+    "base_item": {
+      "display_name": "Frigid Bond Support",
+      "experience_type": "GemProgression38",
+      "id": "Metadata/Items/Gems/SupportGemFrigidBond",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "is_support": true,
+    "quest_reward": {
+      "act": 4,
+      "classes": [
+        "Templar",
+        "Scion"
+      ],
+      "quest": "The Eternal Nightmare"
+    },
+    "stat_translation_file": "stat_translations/support_gem",
+    "static": {
+      "cost_multiplier": 140,
+      "quality_stats": [
+        {
+          "id": "chill_effect_+%",
+          "set": 0,
+          "set_name": "Superior",
+          "stat": "{0}% increased Effect of Chill",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "support_damaging_links_base_duration_ms",
+          "set": 1,
+          "set_name": "Anomalous",
+          "stat": "Damage and Chill Linger for a Base Duration of {0/milliseconds_to_seconds_2dp_if_required} seconds",
+          "value": 100000,
+          "weight": 50
+        },
+        {
+          "id": "base_mana_cost_-%",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "Supported Skills have {0}% reduced Mana Cost",
+          "value": 500,
+          "weight": 50
+        }
+      ],
+      "stat_requirements": {
+        "dex": 0,
+        "str": 0
+      },
+      "stats": [
+        {
+          "id": "base_cold_damage_to_deal_per_minute",
+          "stat": "Deals {0/per_minute_to_per_second} Base Cold Damage per second",
+          "type": "float"
+        },
+        {
+          "id": "support_damaging_links_base_duration_ms",
+          "stat": "Damage and Chill Linger for a Base Duration of {0/milliseconds_to_seconds_2dp_if_required} seconds",
+          "type": "constant",
+          "value": 2000
+        },
+        {
+          "id": "link_skills_deal_cold_dot_to_enemies_in_beam_aoe",
+          "stat": "Supported Skills Damage and Chill Enemies between you and Linked Targets",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "spell_damage_modifiers_apply_to_skill_dot",
+          "stat": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "support_damaging_links_base_duration_is_gem",
+          "stat": "Damage and Chill Linger for a Base Duration of {0/milliseconds_to_seconds_2dp_if_required} seconds",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "support_gem": {
+      "added_types": [
+        "DamageOverTime",
+        "DegenOnlySpellDamage",
+        "NonHitChill",
+        "Duration"
+      ],
+      "allowed_types": [
+        "Link"
+      ],
+      "excluded_types": [],
+      "letter": "f",
+      "supports_gems_only": false
+    },
+    "tags": [
+      "cold",
+      "intelligence",
+      "support",
+      "link",
+      "duration"
+    ]
+  },
+  {
+    "base_item": {
+      "display_name": "Locus Mine Support",
+      "experience_type": "GemProgression8",
+      "id": "Metadata/Items/Gems/SupportGemLocusMine",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "is_support": true,
+    "stat_translation_file": "stat_translations/support_gem",
+    "static": {
+      "cost_multiplier": 50,
+      "quality_stats": [
+        {
+          "id": "mine_laying_speed_+%",
+          "set": 0,
+          "set_name": "Superior",
+          "stat": "Supported Skills have {0}% increased Mine Throwing Speed",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "mine_detonation_speed_+%",
+          "set": 1,
+          "set_name": "Anomalous",
+          "stat": "Mines from Supported Skills have {0}% increased Detonation Speed",
+          "value": 1000,
+          "weight": 50
+        },
+        {
+          "id": "base_reservation_efficiency_+%",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "Supported Skills have {0}% increased Reservation Efficiency",
+          "value": -1500,
+          "weight": 50
+        },
+        {
+          "id": "number_of_additional_mines_to_place",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "Supported Skills throw up to {0} additional Mines",
+          "value": 50,
+          "weight": 50
+        }
+      ],
+      "stat_requirements": {
+        "str": 0
+      },
+      "stats": [
+        {
+          "id": "number_of_additional_mines_to_place",
+          "stat": "Supported Skills throw up to {0} additional Mines",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "support_locus_mine_base_mine_duration",
+          "stat": "Mine lasts {0/milliseconds_to_seconds} seconds",
+          "type": "constant",
+          "value": 5000
+        },
+        {
+          "id": "support_locus_mine_cannot_detonate_mines_within_X_units",
+          "stat": "Mines from Supported Skills can't be Detonated while within a radius of {0} of you",
+          "type": "constant",
+          "value": 30
+        },
+        {
+          "id": "support_remote_mine_2_base_mine_detonation_time_ms",
+          "stat": "Supported Skills have a Base Mine Detonation Time of {0/milliseconds_to_seconds_2dp} seconds",
+          "type": "constant",
+          "value": 250
+        },
+        {
+          "id": "support_makes_skill_mine_pvp_damage_+%_final",
+          "type": "constant",
+          "value": -60
+        },
+        {
+          "id": "number_of_projectiles_+%_final_from_locus_mine_support",
+          "stat": "Supported Skills fire {0}% more Projectiles",
+          "type": "constant",
+          "value": -30
+        },
+        {
+          "id": "support_locus_mine_damage_+%_final",
+          "stat": "Supported Skills deal {0}% more Damage",
+          "type": "additional"
+        },
+        {
+          "id": "support_locus_mine_throw_mines_in_an_arc",
+          "stat": "Supported Skills throw Mines in an Arc",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "support_locus_mine_mines_always_target_your_location",
+          "stat": "Mines using Supported Skills always target your location",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_skill_is_mined",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_remote_mine",
+          "stat": "Throws {1} Remote Mines which use the Supported Skill when detonated",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "disable_skill_if_melee_attack",
+          "stat": "Supported Attack Skills cannot be used with Melee Weapons",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_skill_show_average_damage_instead_of_dps",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "remote_mined_by_support",
+          "stat": "Supported Skills gain a Base Reservation equal to Base Mana and Life Cost",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "minimum_number_of_projectiles_to_fire_is_1",
+          "stat": "Supported Skills always fire at least 1 Projectile",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "support_gem": {
+      "added_types": [
+        "RemoteMined",
+        "HasReservation"
+      ],
+      "allowed_types": [
+        "Projectile",
+        "ThresholdJewelProjectile",
+        "OR",
+        "RangedAttack",
+        "ThresholdJewelRangedAttack",
+        "OR",
+        "AND",
+        "Mineable",
+        "AND"
+      ],
+      "excluded_types": [
+        "Rain",
+        "ProjectilesNotFromUser",
+        "InbuiltTrigger",
+        "Triggered",
+        "HasReservation",
+        "ReservationBecomesCost",
+        "NOT",
+        "AND",
+        "RemoteMined",
+        "NOT",
+        "AND"
+      ],
+      "letter": "*",
+      "supports_gems_only": false
+    },
+    "tags": [
+      "bow",
+      "attack",
+      "dexterity",
+      "support",
+      "projectile",
+      "mine"
+    ]
+  },
+  {
+    "base_item": {
+      "display_name": "Sadism Support",
+      "experience_type": "GemProgression18",
+      "id": "Metadata/Items/Gems/SupportGemSadism",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "is_support": true,
+    "quest_reward": {
+      "act": 2,
+      "classes": [
+        "Duelist",
+        "Scion"
+      ],
+      "quest": "Sharp and Cruel"
+    },
+    "stat_translation_file": "stat_translations/support_gem",
+    "static": {
+      "cost_multiplier": 130,
+      "quality_stats": [
+        {
+          "id": "damage_over_time_+%",
+          "set": 0,
+          "set_name": "Superior",
+          "stat": "{0}% increased Damage over Time",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "attack_and_cast_speed_+%",
+          "set": 1,
+          "set_name": "Anomalous",
+          "stat": "Supported Skills have {0}% increased Attack and Cast Speed",
+          "value": 500,
+          "weight": 20
+        },
+        {
+          "id": "base_all_ailment_duration_+%",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "{0}% increased Duration of Ailments inflicted with Supported Skills",
+          "value": -1500,
+          "weight": 50
+        },
+        {
+          "id": "dot_multiplier_+",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "Supported Skills have {0}% to Damage over Time Multiplier",
+          "value": 750,
+          "weight": 50
+        }
+      ],
+      "stat_requirements": {
+        "int": 0
+      },
+      "stats": [
+        {
+          "id": "damaging_ailments_deal_damage_+%_faster",
+          "stat": "Damaging Ailments inflicted with Supported Skills deal damage {0}% faster",
+          "type": "additional"
+        },
+        {
+          "id": "support_faster_ailments_ailment_duration_+%_final",
+          "stat": "{0}% more Duration of Ailments inflicted with Supported Skills",
+          "type": "additional",
+          "value": -80
+        }
+      ]
+    },
+    "support_gem": {
+      "added_types": [],
+      "allowed_types": [
+        "Damage",
+        "Attack"
+      ],
+      "excluded_types": [],
+      "letter": "X",
+      "supports_gems_only": false
+    },
+    "tags": [
+      "dexterity",
+      "support"
+    ]
+  },
+  {
+    "base_item": {
+      "display_name": "Controlled Blaze Support",
+      "experience_type": "GemProgression31",
+      "id": "Metadata/Items/Gems/SupportGemControlledBlaze",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "is_support": true,
+    "quest_reward": {
+      "act": 3,
+      "classes": [
+        "Marauder"
+      ],
+      "quest": "A Fixture of Fate"
+    },
+    "stat_translation_file": "stat_translations/support_gem",
+    "static": {
+      "cost_multiplier": 130,
+      "quality_stats": [
+        {
+          "id": "base_chance_to_ignite_%",
+          "set": 0,
+          "set_name": "Superior",
+          "stat": "{0}% chance to Ignite enemies",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "ignite_duration_+%",
+          "set": 1,
+          "set_name": "Anomalous",
+          "stat": "Supported Skills have {0}% increased Ignite Duration on Enemies",
+          "value": 1000,
+          "weight": 50
+        },
+        {
+          "id": "faster_burn_%",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "Ignites from Supported Skills deal Damage {0}% faster",
+          "value": 500,
+          "weight": 20
+        },
+        {
+          "id": "attack_speed_+%",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "Supported Skills have {0}% increased Attack Speed",
+          "value": -500,
+          "weight": 20
+        }
+      ],
+      "stat_requirements": {
+        "dex": 0,
+        "int": 0
+      },
+      "stats": [
+        {
+          "id": "support_recent_ignites_ignite_damage_per_recent_ignite_+%_final",
+          "stat": "Each Supported Skill deals {0/negate}% less Damage with Ignite for each Ignite inflicted with it Recently",
+          "type": "additional"
+        },
+        {
+          "id": "support_recent_ignites_damage_per_recent_ignite_+%_final",
+          "stat": "Each Supported Skill deals {0}% more Damage for each Ignite inflicted with it Recently",
+          "type": "additional",
+          "value": -3
+        },
+        {
+          "id": "support_recent_ignites_max_recent_ignites_tracked",
+          "type": "additional"
+        },
+        {
+          "id": "support_recent_ignites_ignite_damage_per_recent_ignite_+%_final_maximum",
+          "stat": "Each Supported Skill deals {0/negate}% less Damage with Ignite for each Ignite inflicted with it Recently",
+          "type": "additional"
+        },
+        {
+          "id": "support_recent_ignites_damage_per_recent_ignite_+%_final_minimum",
+          "stat": "Each Supported Skill deals {0}% more Damage for each Ignite inflicted with it Recently",
+          "type": "additional"
+        },
+        {
+          "id": "base_chance_to_ignite_%",
+          "stat": "{0}% chance to Ignite enemies",
+          "type": "additional"
+        }
+      ]
+    },
+    "support_gem": {
+      "added_types": [],
+      "allowed_types": [
+        "Melee"
+      ],
+      "excluded_types": [],
+      "letter": "Z",
+      "supports_gems_only": false
+    },
+    "tags": [
+      "fire",
+      "strength",
+      "support",
+      "melee",
+      "attack"
+    ]
+  },
+  {
+    "base_item": {
+      "display_name": "Volatility Support",
+      "experience_type": "GemProgression18",
+      "id": "Metadata/Items/Gems/SupportGemVolatility",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "is_support": true,
+    "quest_reward": {
+      "act": 2,
+      "classes": [
+        "Marauder"
+      ],
+      "quest": "Sharp and Cruel"
+    },
+    "stat_translation_file": "stat_translations/support_gem",
+    "static": {
+      "cost_multiplier": 130,
+      "quality_stats": [
+        {
+          "id": "damage_+%",
+          "set": 0,
+          "set_name": "Superior",
+          "stat": "{0}% increased Damage",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "non_damaging_ailment_effect_+%",
+          "set": 1,
+          "set_name": "Anomalous",
+          "stat": "{0}% increased Effect of non-Damaging Ailments on Enemies",
+          "value": 500,
+          "weight": 50
+        },
+        {
+          "id": "base_stun_duration_+%",
+          "set": 2,
+          "set_name": "Divergent",
+          "stat": "{0}% increased Stun Duration on enemies",
+          "value": 1000,
+          "weight": 100
+        }
+      ],
+      "stat_requirements": {
+        "dex": 0,
+        "int": 0
+      },
+      "stats": [
+        {
+          "id": "minimum_attack_damage_+%_final_from_volatility_support",
+          "stat": "Supported Skills deal {0}% more Minimum Attack Damage",
+          "type": "additional"
+        },
+        {
+          "id": "maximum_attack_damage_+%_final_from_volatility_support",
+          "stat": "Supported Skills deal {0}% more Maximum Attack Damage",
+          "type": "additional"
+        }
+      ]
+    },
+    "support_gem": {
+      "added_types": [],
+      "allowed_types": [
+        "Attack"
+      ],
+      "excluded_types": [],
+      "letter": "v",
+      "supports_gems_only": false
+    },
+    "tags": [
+      "attack",
+      "strength",
+      "support"
+    ]
+  },
+  {
+    "active_skill": {
+      "description": "Strike your foes down with a powerful blow.",
+      "display_name": "Playtest Attack",
+      "id": "playtest_attack",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {},
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "MirageArcherCanUse",
+        "Projectile",
+        "MeleeSingleTarget",
+        "Multistrikeable",
+        "Melee",
+        "ProjectilesFromUser"
+      ],
+      "weapon_restrictions": []
+    },
+    "base_item": {
+      "display_name": "Playtest Attack",
+      "experience_type": "GemProgressionPlayTest",
+      "id": "Metadata/Items/Gems/SkillGemPlaytestAttack",
+      "max_level": 6,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "costs": {
+        "Mana": 10
+      },
+      "quality_stats": [],
+      "required_level": 0,
+      "stat_requirements": {
+        "dex": 0,
+        "int": 0,
+        "str": 0
+      },
+      "stats": [
+        {
+          "id": "skill_can_fire_arrows",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_can_fire_wand_projectiles",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "tags": [
+      "grants_active_skill",
+      "attack",
+      "projectile",
+      "melee",
+      "strike",
+      "bow"
+    ]
+  },
+  {
+    "active_skill": {
+      "description": "Unleashes a ball of fire towards a target which explodes, damaging nearby foes.",
+      "display_name": "Playtest Spell",
+      "id": "playtest_spell",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {},
+      "types": [
+        "Projectile",
+        "ProjectilesFromUser",
+        "Spell",
+        "Damage",
+        "Area",
+        "Trappable",
+        "Totemable",
+        "Mineable",
+        "Multicastable",
+        "Triggerable",
+        "CanRapidFire",
+        "AreaSpell"
+      ],
+      "weapon_restrictions": []
+    },
+    "base_item": {
+      "display_name": "Playtest Spell",
+      "experience_type": "GemProgressionPlayTest",
+      "id": "Metadata/Items/Gems/SkillGemPlaytestSpell",
+      "max_level": 6,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "costs": {
+        "Mana": 10
+      },
+      "crit_chance": 500,
+      "quality_stats": [],
+      "required_level": 0,
+      "stat_requirements": {
+        "dex": 0,
+        "int": 0,
+        "str": 0
+      }
+    },
+    "tags": [
+      "grants_active_skill",
+      "projectile",
+      "spell",
+      "area"
+    ]
+  },
+  {
+    "active_skill": {
+      "description": "Slams the ground in front of you, creating a wave that travels forward and damages enemies. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
+      "display_name": "Playtest Slam",
+      "id": "playtest_slam",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {},
+      "types": [
+        "Attack",
+        "Area",
+        "Multistrikeable",
+        "Melee",
+        "Slam",
+        "Totemable"
+      ],
+      "weapon_restrictions": [
+        "One Hand Mace",
+        "Sceptre",
+        "Staff",
+        "Two Hand Mace",
+        "One Hand Axe",
+        "Two Hand Axe",
+        "Unarmed",
+        "Warstaff"
+      ]
+    },
+    "base_item": {
+      "display_name": "Playtest Slam",
+      "experience_type": "GemProgressionPlayTest",
+      "id": "Metadata/Items/Gems/SkillGemPlaytestSlam",
+      "max_level": 6,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "costs": {
+        "Mana": 10
+      },
+      "quality_stats": [],
+      "required_level": 0,
+      "stat_requirements": {
+        "dex": 0,
+        "int": 0,
+        "str": 0
+      },
+      "stats": [
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "console_skill_dont_chase",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "tags": [
+      "grants_active_skill",
+      "attack",
+      "area",
+      "slam",
+      "melee"
     ]
   }
 ]
