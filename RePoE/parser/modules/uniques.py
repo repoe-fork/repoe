@@ -1,5 +1,5 @@
 from html import escape
-from urllib.parse import quote_plus
+from urllib.parse import quote
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, export_image, write_json, write_text
 
@@ -117,7 +117,7 @@ class uniques(Parser_Module):
             if item["ItemVisualIdentityKey"]["DDSFile"]:
                 ddsfile: str = item["ItemVisualIdentityKey"]["DDSFile"]
                 name = escape(name) + (" (Alternate Art)" if item["IsAlternateArt"] else "")
-                html = html + f"\n\t<a href='{quote_plus(ddsfile.replace('.dds', '.png'))}'>{name}</a><br>"
+                html = html + f"\n\t<a href='{quote(ddsfile.replace('.dds', '.png'))}'>{name}</a><br>"
                 export_image(ddsfile, self.data_path, self.file_system)
         html = (
             html
