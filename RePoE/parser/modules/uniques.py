@@ -1,3 +1,5 @@
+from html import escape
+from urllib.parse import quote_plus
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, export_image, write_json, write_text
 
@@ -51,7 +53,10 @@ def get_wiki_data():
     page_size = 200
     data = []
     while True:
-        url = f"https://www.poewiki.net/w/api.php?action=cargoquery&tables=items&where=rarity=%22Unique%22&fields={','.join( fields)}&limit={page_size}&offset={offset}&format=json"
+        url = (
+            "https://www.poewiki.net/w/api.php?action=cargoquery&tables=items&where=rarity=%22Unique%22"
+            f"&fields={','.join( fields)}&limit={page_size}&offset={offset}&format=json"
+        )
         json = requests.get(url).json()
         if "cargoquery" not in json:
             print(offset, json)
@@ -111,8 +116,8 @@ class uniques(Parser_Module):
 
             if item["ItemVisualIdentityKey"]["DDSFile"]:
                 ddsfile: str = item["ItemVisualIdentityKey"]["DDSFile"]
-                suffix = " (Alternate Art)" if item["IsAlternateArt"] else ""
-                html = html + f"\n\t<a href='{ddsfile.replace('.dds', '.png')}'>{name}{suffix}</a><br>"
+                name = escape(name) + (" (Alternate Art)" if item["IsAlternateArt"] else "")
+                html = html + f"\n\t<a href='{quote_plus(ddsfile.replace('.dds', '.png'))}'>{name}</a><br>"
                 export_image(ddsfile, self.data_path, self.file_system)
         html = (
             html
