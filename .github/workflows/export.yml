@@ -46,7 +46,7 @@ jobs:
       run: python run_parser.py all -f "http://patchcdn.pathofexile.com/$(<version.txt)/"
       working-directory: RePoE/RePoE
     - name: generate index.html
-      run: tree -H '.' --filesfirst --noreport --charset utf-8 -o index.html
+      run: find -type d -exec tree {} -H '.' --filesfirst --noreport --charset utf-8 -o {}/index.html \;
       working-directory: RePoE/RePoE/data/
     - name: commit changes
       id: autocommit
