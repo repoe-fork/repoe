@@ -39,6 +39,17 @@ def write_json(
     print(" Done!")
 
 
+def write_text(
+    text: str,
+    data_path: str,
+    file_name: str,
+) -> None:
+    print("Writing '" + str(file_name) + "' ...", end="", flush=True)
+    with io.open(data_path + file_name, mode="w") as out:
+        out.write(text)
+    print(" Done!")
+
+
 def load_file_system(ggpk_path: str) -> FileSystem:
     return FileSystem(ggpk_path)
 

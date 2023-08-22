@@ -1,5 +1,5 @@
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import call_with_default_args, export_image, write_json
+from RePoE.parser.util import call_with_default_args, export_image, write_json, write_text
 
 import requests
 
@@ -53,7 +53,7 @@ def get_wiki_data():
     while True:
         url = f"https://www.poewiki.net/w/api.php?action=cargoquery&tables=items&where=rarity=%22Unique%22&fields={','.join( fields)}&limit={page_size}&offset={offset}&format=json"
         json = requests.get(url).json()
-        if not "cargoquery" in json:
+        if "cargoquery" not in json:
             print(offset, json)
             return data
         page = json["cargoquery"]
@@ -74,6 +74,20 @@ def get_wiki_data():
 class uniques(Parser_Module):
     def write(self) -> None:
         root = {}
+        html = """<!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <title>Unique Icons</title>
+ <style type="text/css">
+  BODY { font-family : monospace, sans-serif;  color: black;}
+  A:visited { text-decoration : none; margin : 0px; padding : 0px;}
+  A:link    { text-decoration : none; margin : 0px; padding : 0px;}
+  A:hover   { text-decoration: underline; background-color : yellow; margin : 0px; padding : 0px;}
+  A:active  { margin : 0px; padding : 0px;}
+ </style>
+</head>
+<body>"""
         for item in self.relational_reader["UniqueStashLayout.dat64"]:
             name = item["WordsKey"]["Text"]
             root[item.rowid] = {
@@ -96,10 +110,21 @@ class uniques(Parser_Module):
             }
 
             if item["ItemVisualIdentityKey"]["DDSFile"]:
-                export_image(item["ItemVisualIdentityKey"]["DDSFile"], self.data_path, self.file_system)
+                ddsfile: str = item["ItemVisualIdentityKey"]["DDSFile"]
+                suffix = " (Alternate Art)" if item["IsAlternateArt"] else ""
+                html = html + f"\n\t<a href='{ddsfile.replace('.dds', '.png')}'>{name}{suffix}</a><br>"
+                export_image(ddsfile, self.data_path, self.file_system)
+        html = (
+            html
+            + """
+</body>
+</html>
+"""
+        )
 
         write_json(root, self.data_path, "uniques")
         write_json(get_wiki_data(), self.data_path, "uniques_poewiki")
+        write_text(html, self.data_path, "uniques.html")
 
 
 if __name__ == "__main__":
