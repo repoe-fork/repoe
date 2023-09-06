@@ -60,7 +60,10 @@ def create_relational_reader(file_system: FileSystem) -> RelationalReader:
         "auto_build_index": True,
         "x64": True,
     }
-    return RelationalReader(path_or_file_system=file_system, files=["Stats.dat64"], read_options=opt)
+    opt2 = {"raise_error_on_missing_relation": False}
+    return RelationalReader(
+        path_or_file_system=file_system, files=["Stats.dat64"], read_options=opt, instance_options=opt2
+    )
 
 
 DEFAULT_GGPK_PATH = "C:/Program Files (x86)/Grinding Gear Games/Path of Exile"
