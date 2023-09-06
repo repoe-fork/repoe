@@ -46,7 +46,7 @@ jobs:
       run: python run_parser.py all -f "http://patchcdn.pathofexile.com/$(<version.txt)/"
       working-directory: RePoE/RePoE
     - name: generate index.html
-      run: find -type d -exec tree {} -H '.' --dirsfirst -F -L 1 -T "$(cat ../version.txt)" -I index.html --noreport --charset utf-8 -o {}/index.html \;
+      run: find -type d -exec tree {} -H '.' --dirsfirst -F -L 1 -T "RePoE - Game version $(cat ../version.txt)" -I index.html --noreport --charset utf-8 -o {}/index.html \;
       working-directory: RePoE/RePoE/data/
     - name: commit changes
       id: autocommit
@@ -54,6 +54,12 @@ jobs:
       with:
         repository: RePoE
         commit_message: "[skip ci] Automated export"
+    - name: checkout lfs
+      if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
+      uses: actions/checkout@v3
+      with:
+        lfs: true
+        path: RePoE
     - name: upload gh-pages artifact
       if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
       uses: actions/upload-pages-artifact@v1
