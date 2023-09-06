@@ -39,7 +39,7 @@ jobs:
       run: pip install -e .
       working-directory: RePoE
     - name: clean data dir
-      run: find RePoE/data/ '(' -name '*.json' -o -name '*.html' -o -name '*.txt' ')' -delete
+      run: find RePoE/RePoE/data/ '(' -name '*.json' -o -name '*.html' -o -name '*.txt' ')' -delete -print | wc -l
     - name: copy text files
       run: cp RePoE/RePoE/*.txt RePoE/RePoE/data/
     - name: run export
