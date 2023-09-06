@@ -3,6 +3,7 @@ import json
 import os
 from hashlib import md5
 from io import BytesIO
+import traceback
 from typing import Any, Dict, List, Optional, Union
 
 from PIL import Image
@@ -103,7 +104,12 @@ def get_stat_translation_file_name(game_file: str) -> Optional[str]:
 
 
 def export_image(ddsfile: str, data_path: str, file_system: FileSystem) -> None:
-    bytes = file_system.extract_dds(file_system.get_file(ddsfile))
+    try:
+        bytes = file_system.extract_dds(file_system.get_file(ddsfile))
+    except Exception:
+        print(f"Failed to extract {ddsfile}")
+        traceback.print_exc()
+        return
     if not bytes:
         print(f"dds file not found {ddsfile}")
         return
