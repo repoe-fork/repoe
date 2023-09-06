@@ -54,12 +54,10 @@ jobs:
       with:
         repository: RePoE
         commit_message: "[skip ci] Automated export"
-    - name: checkout lfs
+    - name: lfs pull
       if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
-      uses: actions/checkout@v3
-      with:
-        lfs: true
-        path: RePoE
+      run: git lfs pull
+      working-directory: RePoE
     - name: upload gh-pages artifact
       if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
       uses: actions/upload-pages-artifact@v1
