@@ -1,7 +1,5 @@
 import os
 from textwrap import shorten
-from typing import Any
-
 
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args
@@ -19,8 +17,11 @@ class audio(Parser_Module):
             os.makedirs(dir, exist_ok=True)
             basename = os.path.join(dir, shorten(audio["Text"], 80) if audio["Text"] else audio["Id"])
 
-            with open(basename + os.path.splitext(audio["Mono_AudioFile"])[1], "wb") as file:
-                file.write(self.file_system.get_file(audio["Mono_AudioFile"]))
+            audiofile = basename + os.path.splitext(audio["Mono_AudioFile"])[1]
+            if not os.path.exists(audiofile):
+                with open(audiofile, "wb") as file:
+                    file.write(self.file_system.get_file(audio["Mono_AudioFile"]))
+
             if audio["Text"]:
                 with open(basename + ".txt", "w") as file:
                     file.write(audio["Text"])
