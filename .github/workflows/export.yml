@@ -85,13 +85,9 @@ jobs:
       - name: deploy gh-pages
         id: deployment
         uses: actions/deploy-pages@v1
-      - name: set version
-        id: set-version
-        run: echo "version=$(cat RePoE/version.txt)" >> "$GITHUB_OUTPUT"
       - name: trigger poetrage
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.VERSION_COMMIT_PAT }}
           repository: lvlvllvlvllvlvl/poetrage
           event-type: build
-          client-payload: '{ "commit_message": "updated data for ${{ steps.set-version.outputs.version }}" }'
