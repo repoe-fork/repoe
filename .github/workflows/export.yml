@@ -57,9 +57,17 @@ jobs:
       with:
         repository: RePoE
         commit_message: "[skip ci] Automated export"
-    - name: lfs pull
+    - name: fetch large files
       if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
-      run: git lfs pull
+      run: |
+        git lfs ls-files | grep ' - ' | cut -d'-' -f2 | while read line
+        do
+          URL="https://lvlvllvlvllvlvl.github.io/$(dirname "${line/\/data/}" | sed 's/ /%20/g')/$(jq -rRn --arg url "$(basename "$line")" '$url|@uri')"
+          curl "$URL" -sfSLo "$line" || echo $URL &
+        done
+        wait
+        git checkout .
+        git lfs pull
       working-directory: RePoE
     - name: upload gh-pages artifact
       if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
