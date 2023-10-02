@@ -48,7 +48,8 @@ def main():
             relational_reader=rr,
         ).write()
 
-    # This forces the globals to be up to date with what we just parsed, in case someone uses `run_parser` within a script
+    # This forces the globals to be up to date with what we just parsed,
+    # in case someone uses `run_parser` within a script
     reload(RePoE)
 
 

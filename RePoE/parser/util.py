@@ -1,14 +1,15 @@
 import io
 import json
 import os
+import traceback
 from hashlib import md5
 from io import BytesIO
-import traceback
 from typing import Any, Optional
 
 from PIL import Image
 from PyPoE.poe.file.dat import RelationalReader
 from PyPoE.poe.file.file_system import FileSystem
+from PyPoE.poe.file.specification.data import generated
 
 from RePoE import __DATA_PATH__
 from RePoE.parser import Parser_Module
@@ -59,7 +60,9 @@ def create_relational_reader(file_system: FileSystem) -> RelationalReader:
         "auto_build_index": True,
         "x64": True,
     }
-    return RelationalReader(path_or_file_system=file_system, files=["Stats.dat64"], read_options=opt)
+    return RelationalReader(
+        path_or_file_system=file_system, files=["Stats.dat64"], specification=generated.Specification, read_options=opt
+    )
 
 
 DEFAULT_GGPK_PATH = "C:/Program Files (x86)/Grinding Gear Games/Path of Exile"
