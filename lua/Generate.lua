@@ -42,8 +42,6 @@ function isValueInArray(tbl, val)
     end
 end
 
-local json = require("dkjson")
-bit = require("bit32")
 require("PathOfBuilding.src.Data.Global")
 
 local function makeSkillMod(modName, modType, modVal, flags, keywordFlags, ...)
@@ -79,6 +77,7 @@ local function clean(map, visited)
     return map
 end
 
+local json = require("dkjson")
 if file == "Global" then
     require("PathOfBuilding.src.Modules.Data")
     clean(data, {})
