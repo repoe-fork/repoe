@@ -26,7 +26,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: PathOfBuildingCommunity/PathOfBuilding
-        path: pob
+        path: PathOfBuilding
     - uses: leafo/gh-actions-lua@v9
     - uses: leafo/gh-actions-luarocks@v4
     - name: install a lua dependencies
@@ -57,7 +57,9 @@ jobs:
     - name: copy text files
       run: cp RePoE/RePoE/*.txt RePoE/RePoE/data/
     - name: lua export
-      run: find pob/src/Data/ -name '*.lua' -exec lua RePoE/lua/Generate.lua '{}' RePoE/RePoE/data/pob \;
+      run: |
+        find PathOfBuilding/src/Data/ -type d | sed 's|PathOfBuilding/src/Data|RePoE/RePoE/data/pob|g' | while read DIR; do echo -p $DIR; done
+        find PathOfBuilding/src/Data/ -name '*.lua' -exec lua RePoE/lua/Generate.lua '{}' RePoE/RePoE/data/pob/ \;
     - name: run export
       run: python run_parser.py all -f "http://patchcdn.pathofexile.com/$(<version.txt)/"
       working-directory: RePoE/RePoE

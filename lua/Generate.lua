@@ -1,15 +1,13 @@
 local params = { ... }
-local file = (params[2] or "data") .. params[1]:gsub(".*/Data(/.*).lua$", "%1")
+local file = params[1]:gsub(".*/Data/(.*).lua$", "%1")
 
-if file == "Data/Global" then
-    return
-end
 print(file)
 
 latestTreeVersion = '0_0'
+launch = {}
 
 function LoadModule(module, ...)
-    return loadfile("pob/src/" .. module .. ".lua")(...)
+    return loadfile("PathOfBuilding/src/" .. module .. ".lua")(...)
 end
 
 function triangular(n)
@@ -44,10 +42,10 @@ function isValueInArray(tbl, val)
     end
 end
 
+local json = require("dkjson")
 require("bit")
-require("pob.src.Data.Global")
+require("PathOfBuilding.src.Data.Global")
 
-local output = {}
 local function makeSkillMod(modName, modType, modVal, flags, keywordFlags, ...)
     return {
         name = modName,
@@ -64,29 +62,43 @@ end
 local function makeSkillDataMod(dataKey, dataValue, ...)
     return makeSkillMod("SkillData", "LIST", { key = dataKey, value = dataValue }, 0, 0, ...)
 end
-local result
-if file:find("Data/Uniques/Special") then
-    require("pob.src.Modules.Data")
+local function clean(map, visited)
+    if type(map) == 'table' then
+        for k, v in pairs(map) do
+            local seen = visited[v]
+            visited[v] = true
+            if seen then
+                map[k] = nil
+            elseif type(v) == 'function' then
+                map[k] = nil
+            elseif type(v) == 'table' then
+                clean(v, visited)
+            end
+        end
+    end
+    return map
 end
-if file == "Data/SkillStatMap" then
+
+if file == "Global" then
+    require("PathOfBuilding.src.Modules.Data")
+    clean(data, {})
+    io.open((params[2] or "data/") .. "DataModule.min.json", "w"):write(json.encode(data))
+    io.open((params[2] or "data/") .. "DataModule.json", "w"):write(json.encode(data, { indent = true }))
+    return
+end
+
+local output = {}
+local result
+if file:find("Uniques/Special") then
+    require("PathOfBuilding.src.Modules.Data")
+end
+if file == "SkillStatMap" then
     result = loadfile(params[1])(makeSkillMod, makeFlagMod, makeSkillDataMod) or output
 else
     result = loadfile(params[1])(output, makeSkillMod, makeFlagMod, makeSkillDataMod) or output
 end
 
-local function removeFuncs(map)
-    if type(map) == 'table' then
-        for k, v in pairs(map) do
-            if type(v) == 'table' then
-                removeFuncs(v)
-            elseif type(v) == 'function' then
-                map[k] = nil
-            end
-        end
-    end
-end
+clean(result, {})
 
-removeFuncs(result)
-
-local json = require("dkjson")
-io.open(file .. ".json", "w"):write(json.encode(result))
+io.open((params[2] or "data/") .. file .. ".min.json", "w"):write(json.encode(result))
+io.open((params[2] or "data/") .. file .. ".json", "w"):write(json.encode(result, { indent = true }))
