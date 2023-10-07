@@ -59,7 +59,7 @@ jobs:
       run: cp RePoE/RePoE/*.txt RePoE/RePoE/data/
     - name: lua export
       run: |
-        find PathOfBuilding/src/Data/ -type d | sed 's|PathOfBuilding/src/Data|RePoE/RePoE/data/pob|g' | while read DIR; do echo -p $DIR; done
+        find PathOfBuilding/src/Data/ -type d | sed 's|PathOfBuilding/src/Data|RePoE/RePoE/data/pob|g' | while read DIR; do mkdir -p $DIR; done
         find PathOfBuilding/src/Data/ -name '*.lua' -exec lua RePoE/lua/Generate.lua '{}' RePoE/RePoE/data/pob/ \;
     - name: run export
       run: python run_parser.py all -f "http://patchcdn.pathofexile.com/$(<version.txt)/"
