@@ -28,12 +28,9 @@ jobs:
         repository: PathOfBuildingCommunity/PathOfBuilding
         path: PathOfBuilding
     - uses: leafo/gh-actions-lua@v9
-      with:
-        luaVersion: "5.2.4"
     - uses: leafo/gh-actions-luarocks@v4
     - name: install a lua dependencies
       run: |
-        luarocks install luabitop
         luarocks install dkjson
     - name: setup python
       uses: actions/setup-python@v4

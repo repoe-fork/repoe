@@ -43,7 +43,7 @@ function isValueInArray(tbl, val)
 end
 
 local json = require("dkjson")
-require("bit")
+bit = require("bit32")
 require("PathOfBuilding.src.Data.Global")
 
 local function makeSkillMod(modName, modType, modVal, flags, keywordFlags, ...)
