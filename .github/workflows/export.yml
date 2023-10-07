@@ -22,6 +22,17 @@ jobs:
       with:
         repository: lvlvllvlvllvlvl/PyPoE
         path: PyPoE
+    - name: checkout pob
+      uses: actions/checkout@v3
+      with:
+        repository: PathOfBuildingCommunity/PathOfBuilding
+        path: pob
+    - uses: leafo/gh-actions-lua@v9
+    - uses: leafo/gh-actions-luarocks@v4
+    - name: install a lua dependencies
+      run: |
+        luarocks install luabitop
+        luarocks install dkjson
     - name: setup python
       uses: actions/setup-python@v4
       with:
@@ -45,6 +56,8 @@ jobs:
       run: find RePoE/RePoE/data/ '(' -name '*.json' -o -name '*.html' -o -name '*.txt' ')' -delete -print | wc -l
     - name: copy text files
       run: cp RePoE/RePoE/*.txt RePoE/RePoE/data/
+    - name: lua export
+      run: find pob/src/Data/ -name '*.lua' -exec lua RePoE/lua/Generate.lua '{}' RePoE/RePoE/data/pob \;
     - name: run export
       run: python run_parser.py all -f "http://patchcdn.pathofexile.com/$(<version.txt)/"
       working-directory: RePoE/RePoE
