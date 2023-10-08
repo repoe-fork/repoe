@@ -70,7 +70,11 @@ local function clean(map, visited)
             elseif type(v) == 'function' then
                 map[k] = nil
             elseif type(v) == 'table' then
-                clean(v, visited)
+                if next(v) == nil then
+                    map[k] = nil
+                else
+                    clean(v, visited)
+                end
             end
         end
     end
