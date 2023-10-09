@@ -1,5 +1,6 @@
 from collections import defaultdict
 import json
+import re
 from typing import Any, Dict, Iterator, List, Set, Tuple, Union
 
 from PyPoE.poe.file.file_system import FileSystem
@@ -62,13 +63,18 @@ def _convert(tr: Translation, tag_set: Set[str], all_trade_stats: dict[str, list
             if trade in all_trade_stats:
                 for trade_stat in all_trade_stats[trade]:
                     trade_stats[trade_stat["id"]] = trade_stat
-            else:
+            elif "\n" in trade:
                 for line in trade.splitlines():
                     if line in all_trade_stats:
                         for trade_stat in all_trade_stats[line]:
                             trade_stats[trade_stat["id"]] = trade_stat
+            else:
+                trade = re.sub(r"\d+", "#", trade)
+                if trade in all_trade_stats:
+                    for trade_stat in all_trade_stats[trade]:
+                        trade_stats[trade_stat["id"]] = trade_stat
         except Exception:
-            # bad format string
+            # probably an unescaped brace in a format string
             pass
 
         value = {
