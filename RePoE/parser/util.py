@@ -35,8 +35,22 @@ def write_json(
     json.dump(root_obj, io.open(data_path + file_name + ".json", mode="w"), indent=2, sort_keys=True)
     print(" Done!")
     print("Writing '" + str(file_name) + ".min.json' ...", end="", flush=True)
-    json.dump(root_obj, io.open(data_path + file_name + ".min.json", mode="w"), separators=(",", ":"), sort_keys=True)
+    json.dump(
+        minimize(root_obj),
+        io.open(data_path + file_name + ".min.json", mode="w"),
+        separators=(",", ":"),
+        sort_keys=True,
+    )
     print(" Done!")
+
+
+def minimize(value):
+    if isinstance(value, dict):
+        return {k: minimize(v) for k, v in value.items() if v is not None}
+    elif isinstance(value, list):
+        return [minimize(v) for v in value]
+    else:
+        return value
 
 
 def write_text(
