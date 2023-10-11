@@ -1,12 +1,12 @@
+from typing import Any, Dict, List, Optional, Union
+
 from PyPoE.poe.constants import MOD_DOMAIN
-from RePoE.parser.util import write_json, call_with_default_args
-from RePoE.parser import Parser_Module
 from PyPoE.poe.file.dat import DatRecord
-from typing import Any
-from typing import Dict
-from typing import List
-from typing import Optional
-from typing import Union
+from PyPoE.poe.file.translations import TranslationFileCache
+from PyPoE.poe.sim.mods import get_translation
+
+from RePoE.parser import Parser_Module
+from RePoE.parser.util import call_with_default_args, write_json
 
 
 def _convert_stats(
@@ -68,11 +68,16 @@ def _convert_tags_keys(tags_keys: List[DatRecord]) -> List[str]:
 class mods(Parser_Module):
     def write(self) -> None:
         root = {}
+        translation_cache = self.get_cache(TranslationFileCache)
         for mod in self.relational_reader["Mods.dat64"]:
             domain = MOD_DOMAIN_FIX.get(mod["Id"], mod["Domain"])
+
+            lines = get_translation(mod, translation_cache).lines
+
             obj = {
                 "required_level": mod["Level"],
                 "stats": _convert_stats(mod["Stats"]),
+                "text": "\n".join(lines) if lines else None,
                 "domain": domain.name.lower(),
                 "name": mod["Name"],
                 "type": mod["ModTypeKey"]["Name"],

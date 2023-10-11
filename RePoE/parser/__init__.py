@@ -1,4 +1,3 @@
-from typing import TypeVar
 from PyPoE.poe.file.dat import RelationalReader
 from PyPoE.poe.file.file_system import FileSystem
 from PyPoE.poe.file.shared.cache import AbstractFileCache
