@@ -1,11 +1,10 @@
-from functools import cache
 import re
 import traceback
-from typing import Any, Dict, List, Optional, Tuple, Union, cast
+from functools import cache
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 from PyPoE.poe.file.dat import DatRecord, RelationalReader
 from PyPoE.poe.file.file_system import FileSystem
-from PyPoE.poe.file.ot import OTFileCache
 from PyPoE.poe.file.stat_filters import StatFilterFile
 from PyPoE.poe.file.translations import TranslationFileCache
 from PyPoE.poe.sim.formula import GemTypes, gem_stat_requirement
@@ -227,7 +226,7 @@ class GemConverter:
                         s.append(f'{{{"/".join(q)}}}')
                     s.append(string.strings[-1])
                     return "".join(s)
-            except:
+            except Exception:
                 traceback.print_exc()
             print(id, self.game_file_name)
 
@@ -380,13 +379,6 @@ class GemConverter:
         self.game_file_name = self._get_translation_file_name(obj.get("active_skill"))
         obj["stat_translation_file"] = get_stat_translation_file_name(self.game_file_name)
         self.translations = self.translation_file_cache[self.game_file_name].translations
-        # lan = next((tr.languages[0] for tr in self.translations if "molten_shell_damage_absorb_limit_%_of_armour" in tr.ids), None)
-        # if lan:
-        #     print(self.game_file_name)
-        #     for str in lan.strings:
-        #         print(str.string, str.match_range([250]), str.tags_types, str.original_string)
-        #     print (lan.format_string([250]))
-        #     exit()
 
         self._convert_base_item_specific(base_item_type, obj, experience_type)
 

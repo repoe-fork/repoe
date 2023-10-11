@@ -17,6 +17,7 @@ def main():
     modules = get_parser_modules()
 
     module_names = [module.__name__ for module in modules]
+    module_names.sort()
     module_names.append("all")
     parser = argparse.ArgumentParser(description="Convert GGPK files to Json using PyPoE")
     parser.add_argument(
