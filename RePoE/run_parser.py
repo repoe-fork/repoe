@@ -40,8 +40,8 @@ def main():
 
     rr = create_relational_reader(file_system)
 
-    selected_modules = [m for m in modules if m.__name__ in selected_module_names]
-    for parser_module in selected_modules:
+    for name in selected_module_names:
+        parser_module = next(m for m in modules if m.__name__ == name)
         print("Running module '%s'" % parser_module.__name__)
         parser_module(
             file_system=file_system,
