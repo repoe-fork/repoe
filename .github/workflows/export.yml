@@ -34,13 +34,13 @@ jobs:
     - name: install a lua dependencies
       run: |
         luarocks install dkjson
+    - name: Install poetry
+      run: pipx install poetry
     - name: setup python
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
         cache: poetry
-    - name: Install poetry
-      uses: abatilo/actions-poetry@v2
     - name: clean data dir
       run: find RePoE/RePoE/data/ '(' -name '*.json' -o -name '*.html' -o -name '*.txt' ')' -delete -print | wc -l
     - name: copy text files
