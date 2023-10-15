@@ -38,21 +38,9 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
-        cache: pip
+        cache: poetry
     - name: Install poetry
       uses: abatilo/actions-poetry@v2
-    - name: install pypoe and update schema
-      run: |
-        poetry install
-        poetry run python import_dat_schema.py -a stable
-        poetry build
-      working-directory: PyPoE/PyPoE/poe/file/specification/generation
-    - name: install repoe
-      run: |
-        pip install ../PyPoE/dist/*.tar.gz
-        pip install -r requirements.txt
-        pip install -e .
-      working-directory: RePoE
     - name: clean data dir
       run: find RePoE/RePoE/data/ '(' -name '*.json' -o -name '*.html' -o -name '*.txt' ')' -delete -print | wc -l
     - name: copy text files
@@ -61,8 +49,11 @@ jobs:
       run: |
         find PathOfBuilding/src/Data/ -type d | sed 's|PathOfBuilding/src/Data|RePoE/RePoE/data/pob|g' | while read DIR; do mkdir -p $DIR; done
         find PathOfBuilding/src/Data/ -name '*.lua' -exec lua RePoE/lua/Generate.lua '{}' RePoE/RePoE/data/pob/ \;
-    - name: run export
-      run: python run_parser.py all -f "http://patchcdn.pathofexile.com/$(<version.txt)/"
+    - name: install and run repoe
+      run: |
+        poetry install
+        poetry run pypoe_schema_import -a stable
+        poetry run repoe all -f "http://patchcdn.pathofexile.com/$(<version.txt)/"
       working-directory: RePoE/RePoE
     - name: generate index.html
       run: find -type d -exec tree {} -H '.' --dirsfirst -F -L 1 -T "RePoE - Game version $(cat ../version.txt)" -I index.html --noreport --charset utf-8 -o {}/index.html \;

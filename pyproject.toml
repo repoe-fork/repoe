@@ -1,2 +1,26 @@
+[tool.poetry]
+name = "repoe"
+version = "1.0.0"
+description = "Repository of Path of Exile resources for tool developers."
+authors = ["brather1ng"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    { include = "RePoE", from = "." },
+]
+
+[tool.poetry.scripts]
+repoe = 'RePoE.run_parser:main'
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pillow = "^10.0.1"
+requests = "^2.31.0"
+pypoe = {path = "../PyPoE"}
+
 [tool.black]
 line-length = 120
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

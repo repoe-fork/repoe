@@ -8,14 +8,14 @@ functionality due to [a bug](https://github.com/git-lfs/git-lfs/issues/1906).
 Contains data about stats, mods, base items, gems and more. See the `data`
 folder for those files and the `docs` folder for their documentation.
 
-For the actual GGPK parsing, [PyPoE](https://github.com/lvlvllvlvllvlvl/PyPoE) is used.
-This is a fork of the version used by Project PoE Wiki, reverting to the data
-[schema](https://github.com/poe-tool-dev/dat-schema) provided by poe-tool-dev.
-The code in this repo just converts PyPoE's Python objects to JSON.
+For the actual GGPK parsing, [PyPoE](https://github.com/Project-Path-of-Exile-Wiki/PyPoE) is used,
+with a specification generated from the [schema](https://github.com/poe-tool-dev/dat-schema)
+provided by poe-tool-dev.
 
 Developed to supply [PoESkillTree](https://github.com/PoESkillTree/PoESkillTree) with the
 game data information it requires. If you need other files converted, feel free to
-open an Issue or Pull Request for that. The source data files can be inspected with [poe-dat-viewer](https://snosme.github.io/poe-dat-viewer/).
+open an Issue or Pull Request for that. The source data files can be inspected with
+[poe-dat-viewer](https://snosme.github.io/poe-dat-viewer/).
 
 ## Files
 
@@ -28,7 +28,7 @@ Web apps using provided files should link to files in the
 than linking to raw files in the repository.
 
 Note that the file formats are not final, they may change at any time, e.g. when the format
-of files in the GGPK changes. 
+of files in the GGPK changes.
 
 The following data is currently available:
 
@@ -67,14 +67,12 @@ The following data is currently available:
 - `active_skill_types.json`: List the active skill types used in `gems.json`.
 - `uniques.json`: Lists the names and art files of unique items - this is the only information
 included in the data files.
-  
 
 ## Credits
 
-- [Grinding Gear Games](http://www.grindinggear.com/) for 
-  [Path of Exile](https://www.pathofexile.com/). The contents of all `data` files
-  obviously belong to them.
+- [Grinding Gear Games](http://www.grindinggear.com/) for [Path of Exile](https://www.pathofexile.com/).
+  The contents of all `data` files obviously belong to them.
 - [OmegaK2](https://github.com/OmegaK2/) for [PyPoE](https://github.com/OmegaK2/PyPoE).
 - [Project PoE Wiki](poewiki.net) for updating PyPoE to handle the latest data format.
 - [Path of Exile Tool Devs](https://github.com/poe-tool-dev/) for maintaining a standardised
-data schema.
+  data schema.
