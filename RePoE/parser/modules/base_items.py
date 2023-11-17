@@ -95,7 +95,7 @@ def _convert_weapon_properties(weapon_row: Optional[DatRecord], properties: Dict
 def _convert_currency_properties(currency_row: Optional[DatRecord], properties: Dict[str, Any]) -> None:
     if currency_row is None:
         return
-    properties["stack_size"] = currency_row["Stacks"]
+    properties["stack_size"] = currency_row["StackSize"]
     properties["directions"] = currency_row["Directions"]
     if currency_row["FullStack_BaseItemTypesKey"]:
         properties["full_stack_turns_into"] = currency_row["FullStack_BaseItemTypesKey"]["Id"]

@@ -450,7 +450,11 @@ class gems(Parser_Module):
             ge_id = granted_effect["Id"]
             if ge_id in gems:
                 print("Duplicate GrantedEffectsKey.Id '%s'" % ge_id)
-            multipliers = {"str": gem["Str"], "dex": gem["Dex"], "int": gem["Int"]}
+            multipliers = {
+                "str": gem["StrengthRequirementPercent"],
+                "dex": gem["DexterityRequirementPercent"],
+                "int": gem["IntelligenceRequirementPercent"],
+            }
             gems[ge_id] = converter.convert(
                 gem["BaseItemTypesKey"],
                 granted_effect,
