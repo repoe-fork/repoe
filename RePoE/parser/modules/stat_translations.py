@@ -4,7 +4,16 @@ import re
 from typing import Any, Dict, Iterator, List, Set, Tuple, Union
 
 from PyPoE.poe.file.file_system import FileSystem
-from PyPoE.poe.file.translations import Translation, TranslationFileCache, TranslationRange, get_custom_translation_file
+from PyPoE.poe.file.translations import (
+    Translation,
+    TranslationFileCache,
+    TranslationRange,
+    TranslationQuantifierHandler,
+    TQNumberFormat,
+    TQRelationalData,
+    get_custom_translation_file,
+    install_data_dependant_quantifiers,
+)
 from urllib.request import urlopen, Request
 
 from RePoE.parser import Parser_Module
@@ -56,35 +65,42 @@ def _convert(tr: Translation, tag_set: Set[str], all_trade_stats: dict[str, list
     for s in tr.get_language("English").strings:
         tags = _convert_tags(n_ids, s.tags, s.tags_types)
         tag_set.update(tags)
-        format = s.as_format_string
 
-        try:
-            trade = format.format(*tags)
-            if trade in all_trade_stats:
-                for trade_stat in all_trade_stats[trade]:
-                    trade_stats[trade_stat["id"]] = trade_stat
-            elif "\n" in trade:
-                for line in trade.splitlines():
-                    if line in all_trade_stats:
-                        for trade_stat in all_trade_stats[line]:
-                            trade_stats[trade_stat["id"]] = trade_stat
-            else:
-                trade = re.sub(r"\d+", "#", trade)
-                if trade in all_trade_stats:
-                    for trade_stat in all_trade_stats[trade]:
+        def placeholder(*_):
+            return "#"
+
+        trade_format, _, _, extra_strings = s.format_string(
+            [1 for _ in s.translation.ids],
+            [False for _ in s.translation.ids],
+            use_placeholder=placeholder,
+        )
+        if trade_format in all_trade_stats:
+            for trade_stat in all_trade_stats[trade_format]:
+                trade_stats[trade_stat["id"]] = trade_stat
+        elif "\n" in trade_format:
+            for line in trade_format.splitlines():
+                if line in all_trade_stats:
+                    for trade_stat in all_trade_stats[line]:
                         trade_stats[trade_stat["id"]] = trade_stat
-        except Exception:
-            # probably an unescaped brace in a format string
-            pass
+        else:
+            trade_format = re.sub(r"\d+", "#", trade_format)
+            if trade_format in all_trade_stats:
+                for trade_stat in all_trade_stats[trade_format]:
+                    trade_stats[trade_stat["id"]] = trade_stat
 
         value = {
             "condition": _convert_range(s.range),
             "string": s.as_format_string,
             "format": tags,
             "index_handlers": _convert_handlers(n_ids, s.quantifier.index_handlers),
+            "reminder_text": next(iter(extra_strings.values())) if extra_strings else None,
         }
         english.append(value)
-    return {"ids": ids, "English": english, "trade_stats": list(trade_stats.values()) if trade_stats else None}
+    return {
+        "ids": ids,
+        "English": english,
+        "trade_stats": list(trade_stats.values()) if trade_stats else None,
+    }
 
 
 def _get_stat_translations(
@@ -120,6 +136,37 @@ def _build_stat_translation_file_map(file_system: FileSystem) -> Iterator[Tuple[
 
 class stat_translations(Parser_Module):
     def write(self) -> None:
+        install_data_dependant_quantifiers(self.relational_reader)
+
+        quantifiers = {}
+        for handler_name, handler in TranslationQuantifierHandler.handlers.items():
+            if isinstance(handler, TQNumberFormat):
+                quantifiers[handler_name] = {
+                    "type": handler.type.name.lower(),
+                    "multiplier": handler.multiplier if handler.multiplier != 1 else None,
+                    "divisor": handler.divisor if handler.divisor != 1 else None,
+                    "addend": handler.addend if handler.addend != 0 else None,
+                    "precision": handler.dp,
+                    "fixed": handler.fixed if handler.fixed else None,
+                }
+            elif isinstance(handler, TQRelationalData):
+                quantifiers[handler_name] = {
+                    "type": handler.type.name.lower(),
+                    "dat_file": handler.table.file_name,
+                    "value_column": handler.value_column,
+                    "index_column": handler.index_column,
+                    "predicate": f"{handler.predicate[0]}={handler.predicate[1]}" if handler.predicate else None,
+                    "values": {
+                        r[handler.index_column] if handler.index_column else r.rowid: r[handler.value_column]
+                        for r in handler.table
+                        if r[handler.value_column]
+                        and (not handler.predicate or r[handler.predicate[0]] == handler.predicate[1])
+                    },
+                }
+            else:
+                quantifiers[handler_name] = {"type": handler.type.name.lower()}
+        write_json(quantifiers, self.data_path, "stat_value_handlers")
+
         with urlopen(
             Request(
                 "https://www.pathofexile.com/api/trade/data/stats",
@@ -136,6 +183,8 @@ class stat_translations(Parser_Module):
                         trade_stats[trade_stat["text"].replace("#", option["text"])].append(trade_stat)
                 else:
                     trade_stats[trade_stat["text"]].append(trade_stat)
+            for k, v in trade_stats.items():
+                trade_stats[k] = sorted(v, key=lambda v: v.get("id", ""))
 
         tag_set: Set[str] = set()
         for in_file, out_file in _build_stat_translation_file_map(self.file_system):

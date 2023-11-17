@@ -1,12 +1,10 @@
 import re
-import traceback
-from functools import cache
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from PyPoE.poe.file.dat import DatRecord, RelationalReader
 from PyPoE.poe.file.file_system import FileSystem
 from PyPoE.poe.file.stat_filters import StatFilterFile
-from PyPoE.poe.file.translations import TranslationFileCache
+from PyPoE.poe.file.translations import TranslationFileCache, TranslationString
 from PyPoE.poe.sim.formula import GemTypes, gem_stat_requirement
 
 from RePoE.parser import Parser_Module
@@ -16,7 +14,7 @@ from RePoE.parser.util import call_with_default_args, get_release_state, get_sta
 quality_sets = ["Superior", "Anomalous", "Divergent", "Phantasmal"]
 
 
-def _handle_dict(representative, per_level):
+def _handle_dict(representative: Dict[str, Any], per_level: List[Dict[str, Any]]):
     static = None
     cleared = True
     cleared_keys = []
@@ -123,12 +121,10 @@ class GemConverter:
         self.relational_reader = relational_reader
         self.translation_file_cache = translation_file_cache
 
-        self.gepls: Dict[str, Any] = {}
+        self.gepls: Dict[str, List[DatRecord]] = {}
         for gepl in self.relational_reader["GrantedEffectsPerLevel.dat64"]:
             ge_id = gepl["GrantedEffect"]["Id"]
-            if ge_id not in self.gepls:
-                self.gepls[ge_id] = []
-            self.gepls[ge_id].append(gepl)
+            self.gepls.setdefault(ge_id, []).append(gepl)
 
         self.gesspls: Dict[str, List[Any]] = {}
         for gesspl in self.relational_reader["GrantedEffectStatSetsPerLevel.dat64"]:
@@ -203,32 +199,17 @@ class GemConverter:
     def _select_active_skill_types(type_rows: List[DatRecord]) -> List[str]:
         return [row["Id"] for row in type_rows]
 
-    def get_translation(self, id: str, value: int):
-        return self._get_translation(id, 0 if value == 0 else 1 if value > 0 else -1)
-
-    @cache
-    def _get_translation(self, id: str, value: int):
-        trans = next((tr for tr in self.translations if id in tr.ids), None)
-        if trans:
-            try:
-                lang = trans.get_language("English")
-                string = lang.get_string([int(value * 20 / 1000)])[0]
-                if not string or len(string.tags) > 1:
-                    string = next((string for string in lang.strings if len(string.tags) == 1), lang.strings[0])
-                if string:
-                    s = []
-                    for i, tag in enumerate(string.tags):
-                        q = [str(tag)]
-                        for k, v in string.quantifier.index_handlers.items():
-                            if tag + 1 in v:
-                                q.append(k)
-                        s.append(string.strings[i])
-                        s.append(f'{{{"/".join(q)}}}')
-                    s.append(string.strings[-1])
-                    return "".join(s)
-            except Exception:
-                traceback.print_exc()
-            print(id, self.game_file_name)
+    def get_translation(self, string: TranslationString):
+        s = []
+        for i, tag in enumerate(string.tags):
+            q = [string.translation.ids[tag]]
+            for k, v in string.quantifier.index_handlers.items():
+                if tag + 1 in v:
+                    q.append(k)
+            s.append(string.strings[i])
+            s.append(f'{{{"/".join(q)}}}')
+        s.append(string.strings[-1])
+        return "".join(s)
 
     def _convert_gepl(
         self,
@@ -273,32 +254,55 @@ class GemConverter:
 
         stats = []
         for k, v in zip(gesspl["FloatStats"], gesspl["BaseResolvedValues"]):
-            stats.append({"id": k["Id"], "value": v, "stat": self.get_translation(k["Id"], v), "type": "float"})
+            stats.append({"id": k["Id"], "value": v, "type": "float"})
         for k, v in zip(gess["ConstantStats"], gess["ConstantStatsValues"]):
-            stats.append({"id": k["Id"], "value": v, "stat": self.get_translation(k["Id"], v), "type": "constant"})
+            stats.append({"id": k["Id"], "value": v, "type": "constant"})
         for k, v in zip(gesspl["AdditionalStats"], gesspl["AdditionalStatsValues"]):
-            stats.append({"id": k["Id"], "value": v, "stat": self.get_translation(k["Id"], v), "type": "additional"})
+            stats.append({"id": k["Id"], "value": v, "type": "additional"})
         for k in gess["ImplicitStats"]:
-            stats.append({"id": k["Id"], "value": 1, "stat": self.get_translation(k["Id"], 1), "type": "implicit"})
+            stats.append({"id": k["Id"], "value": 1, "type": "implicit"})
         for k in gesspl["AdditionalFlags"]:
-            stats.append({"id": k["Id"], "value": 1, "stat": self.get_translation(k["Id"], 1), "type": "flag"})
+            stats.append({"id": k["Id"], "value": 1, "type": "flag"})
         r["stats"] = stats
+
+        stat_text = {}
+        value_map = {v["id"]: v["value"] for v in stats if v["value"]}
+        trans = self.translation_file.get_translation(value_map.keys(), value_map, full_result=True)
+        for i, stats in enumerate(trans.found_ids):
+            stats = [stat for stat in stats if value_map.get(stat, None)]
+            stat_text["\n".join(stats)] = trans.found_lines[i]
+
+        r["stat_text"] = stat_text
 
         q_stats = []
         for ge in gesspl["GrantedEffects"]:
             if ge["Id"] in self.granted_effect_quality_stats:
                 for geq in self.granted_effect_quality_stats[ge["Id"]]:
-                    for k, v in zip(geq["StatsKeys"], geq["StatsValuesPermille"]):
-                        q_stats.append(
-                            {
-                                "id": k["Id"],
-                                "value": v,
-                                "set": geq["SetId"],
-                                "set_name": quality_sets[geq["SetId"]],
-                                "weight": geq["Weight"],
-                                "stat": self.get_translation(k["Id"], v),
-                            }
+                    stats = {
+                        r["Id"]: geq["StatsValuesPermille"][i]
+                        for i, r in enumerate(geq["StatsKeys"])
+                        if geq["StatsValuesPermille"][i] is not None
+                    }
+                    if not stats:
+                        continue
+                    tag_count = -1
+                    for value in sorted(set([min(1000, abs(v)) for v in stats.values() if v] + [25])):
+                        trans = self.translation_file.get_translation(
+                            stats.keys(), {k: v / value for k, v in stats.items()}, full_result=True
                         )
+                        tags = sum(len(i.tags) for i in trans.string_instances)
+                        if sum(len(i.tags) for i in trans.string_instances) > tag_count:
+                            tag_count = tags
+                            stat_text = "\n".join(self.get_translation(string) for string in trans.string_instances)
+                    q_stats.append(
+                        {
+                            "stats": stats,
+                            "set": geq["SetId"],
+                            "set_name": quality_sets[geq["SetId"]],
+                            "weight": geq["Weight"],
+                            "stat": stat_text,
+                        }
+                    )
         r["quality_stats"] = q_stats
 
         if multipliers is not None:
@@ -378,7 +382,7 @@ class GemConverter:
 
         self.game_file_name = self._get_translation_file_name(obj.get("active_skill"))
         obj["stat_translation_file"] = get_stat_translation_file_name(self.game_file_name)
-        self.translations = self.translation_file_cache[self.game_file_name].translations
+        self.translation_file = self.translation_file_cache[self.game_file_name]
 
         self._convert_base_item_specific(base_item_type, obj, experience_type)
 
@@ -406,44 +410,6 @@ class GemConverter:
                 obj["static"] = static
 
         return obj
-
-    @staticmethod
-    def _normalize_stat_arrays(values):
-        # normalize arrays for each level so they all contain the same stats (set to None if missing for a level)
-        i = 0
-        while i < max(len(pl["stats"]) for pl in values):
-            id_map = {None: 0}
-            for pl in values:
-                stats = pl["stats"]
-                if i >= len(stats):
-                    stats.append(None)
-                if stats[i] is None:
-                    id_map[None] += 1
-                    continue
-                if stats[i]["id"] not in id_map:
-                    id_map[stats[i]["id"]] = 1
-                else:
-                    id_map[stats[i]["id"]] += 1
-            if (id_map[None] > 0 and len(id_map) > 1) or len(id_map) > 2:
-                # Not all are the same stat.
-                # Take the most often occurring stat except None and insert None when pl has a
-                # different stat.
-                del id_map[None]
-                taken = max(id_map, key=lambda k: id_map[k])
-                taken_text = None
-                for pl in values:
-                    stats = pl["stats"]
-                    if stats[i] is not None:
-                        if stats[i]["id"] != taken:
-                            stats.insert(i, None)
-                        else:
-                            taken_text = stats[i]["text"]
-                for pl in values:
-                    stats = pl["stats"]
-                    if stats[i] is None:
-                        stats[i] = {"id": taken, "text": taken_text, "values": None}
-
-            i += 1
 
     def _get_translation_file_name(self, active_skill: Optional[Dict[str, Any]]) -> str:
         if active_skill is None:

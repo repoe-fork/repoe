@@ -1,4 +1,5 @@
 from html import escape
+from time import sleep
 from urllib.parse import quote
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, export_image, write_json, write_text
@@ -52,12 +53,20 @@ def get_wiki_data():
     # data will be truncated if it's too large, reducing page size can resolve unterminated json errors
     page_size = 200
     data = []
+    errors = 0
     while True:
-        url = (
-            "https://www.poewiki.net/w/api.php?action=cargoquery&tables=items&where=rarity=%22Unique%22"
-            f"&fields={','.join( fields)}&limit={page_size}&offset={offset}&format=json"
-        )
-        json = requests.get(url).json()
+        try:
+            url = (
+                "https://www.poewiki.net/w/api.php?action=cargoquery&tables=items&where=rarity=%22Unique%22"
+                f"&fields={','.join( fields)}&limit={page_size}&offset={offset}&format=json"
+            )
+            json = requests.get(url).json()
+        except Exception as e:
+            print("error fetching", url)
+            if errors > 10:
+                raise e
+            sleep(0.01 * 2**errors)
+            errors += 1
         if "cargoquery" not in json:
             print(offset, json)
             return data

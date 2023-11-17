@@ -2,7 +2,7 @@ from typing import Any, Dict, List, Optional, Union
 
 from PyPoE.poe.constants import MOD_DOMAIN
 from PyPoE.poe.file.dat import DatRecord
-from PyPoE.poe.file.translations import TranslationFileCache
+from PyPoE.poe.file.translations import install_data_dependant_quantifiers, TranslationFileCache
 from PyPoE.poe.sim.mods import get_translation
 
 from RePoE.parser import Parser_Module
@@ -69,6 +69,7 @@ class mods(Parser_Module):
     def write(self) -> None:
         root = {}
         translation_cache = self.get_cache(TranslationFileCache)
+        install_data_dependant_quantifiers(self.relational_reader)
         for mod in self.relational_reader["Mods.dat64"]:
             domain = MOD_DOMAIN_FIX.get(mod["Id"], mod["Domain"])
 
