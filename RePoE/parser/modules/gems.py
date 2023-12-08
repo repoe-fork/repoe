@@ -193,11 +193,12 @@ class GemConverter:
             "allowed_types": cls._select_active_skill_types(granted_effect["AllowedActiveSkillTypes"]),
             "excluded_types": cls._select_active_skill_types(granted_effect["ExcludedActiveSkillTypes"]),
             "added_types": cls._select_active_skill_types(granted_effect["AddedActiveSkillTypes"]),
+            "added_minion_types": cls._select_active_skill_types(granted_effect["AddedMinionActiveSkillTypes"]),
         }
 
     @staticmethod
     def _select_active_skill_types(type_rows: List[DatRecord]) -> List[str]:
-        return [row["Id"] for row in type_rows]
+        return [row["Id"] for row in type_rows] if type_rows else None
 
     def get_translation(self, string: TranslationString):
         s = []
@@ -423,7 +424,7 @@ class GemConverter:
 
 class gems(Parser_Module):
     def write(self) -> None:
-        gems = {}
+        gems: dict[str, dict] = {}
         skill_gems = []
         relational_reader = self.relational_reader
         converter = GemConverter(self.file_system, relational_reader, self.get_cache(TranslationFileCache))

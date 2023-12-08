@@ -69,7 +69,7 @@ def _convert(tr: Translation, tag_set: Set[str], all_trade_stats: dict[str, list
         def placeholder(*_):
             return "#"
 
-        trade_format, _, _, extra_strings = s.format_string(
+        trade_format, _, _, extra_strings, _ = s.format_string(
             [1 for _ in s.translation.ids],
             [False for _ in s.translation.ids],
             use_placeholder=placeholder,
@@ -163,7 +163,7 @@ class stat_translations(Parser_Module):
                         and (not handler.predicate or r[handler.predicate[0]] == handler.predicate[1])
                     },
                 }
-            else:
+            elif not handler.type.name == "tq_noop":
                 quantifiers[handler_name] = {"type": handler.type.name.lower()}
         write_json(quantifiers, self.data_path, "stat_value_handlers")
 
