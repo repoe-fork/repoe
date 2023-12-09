@@ -11,8 +11,6 @@ from RePoE.parser import Parser_Module
 from RePoE.parser.constants import COOLDOWN_BYPASS_TYPES
 from RePoE.parser.util import call_with_default_args, get_release_state, get_stat_translation_file_name, write_json
 
-quality_sets = ["Superior", "Anomalous", "Divergent", "Phantasmal"]
-
 
 def _handle_dict(representative: Dict[str, Any], per_level: List[Dict[str, Any]]):
     static = None
@@ -298,9 +296,6 @@ class GemConverter:
                     q_stats.append(
                         {
                             "stats": stats,
-                            "set": geq["SetId"],
-                            "set_name": quality_sets[geq["SetId"]],
-                            "weight": geq["Weight"],
                             "stat": stat_text,
                         }
                     )
@@ -447,36 +442,38 @@ class gems(Parser_Module):
 
         # Skills from gems
         for gem in relational_reader["SkillGems.dat64"]:
-            granted_effect = gem["GrantedEffectsKey"]
-            ge_id = granted_effect["Id"]
-            if ge_id in gems:
-                print("Duplicate GrantedEffectsKey.Id '%s'" % ge_id)
-            multipliers = {
-                "str": gem["StrengthRequirementPercent"],
-                "dex": gem["DexterityRequirementPercent"],
-                "int": gem["IntelligenceRequirementPercent"],
-            }
-            gems[ge_id] = converter.convert(
-                gem["BaseItemTypesKey"],
-                granted_effect,
-                gem["GrantedEffectsKey2"],
-                gem["GemTagsKeys"],
-                multipliers,
-                xp.get(gem["ItemExperienceType"].rowid),
-                rewards.get(gem["BaseItemTypesKey"].rowid),
-                gem["ItemExperienceType"]["Id"],
-            )
-            skill_gems.append({k: gems[ge_id][k] for k in gems[ge_id] if k != "per_level"})
+            for gem_effect in gem["GemEffects"]:
+                granted_effect = gem_effect["GrantedEffect"]
+                ge_id = granted_effect["Id"]
+                if ge_id in gems:
+                    print("Duplicate GrantedEffectsKey.Id '%s'" % ge_id)
+                multipliers = {
+                    "str": gem["StrengthRequirementPercent"],
+                    "dex": gem["DexterityRequirementPercent"],
+                    "int": gem["IntelligenceRequirementPercent"],
+                }
+                gems[ge_id] = converter.convert(
+                    gem["BaseItemTypesKey"],
+                    granted_effect,
+                    gem_effect["GrantedEffect2"],
+                    gem_effect["GemTags"],
+                    multipliers,
+                    xp.get(gem["ItemExperienceType"].rowid),
+                    rewards.get(gem["BaseItemTypesKey"].rowid),
+                    gem["ItemExperienceType"]["Id"],
+                )
+                skill_gems.append({k: gems[ge_id][k] for k in gems[ge_id] if k != "per_level"})
 
         # Secondary skills from gems. This adds the support skill implicitly provided by Bane
         for gem in relational_reader["SkillGems.dat64"]:
-            granted_effect = gem["GrantedEffectsKey2"]
-            if not granted_effect:
-                continue
-            ge_id = granted_effect["Id"]
-            if ge_id in gems:
-                continue
-            gems[ge_id] = converter.convert(None, granted_effect)
+            for gem_effect in gem["GemEffects"]:
+                granted_effect = gem_effect["GrantedEffect2"]
+                if not granted_effect:
+                    continue
+                ge_id = granted_effect["Id"]
+                if ge_id in gems:
+                    continue
+                gems[ge_id] = converter.convert(None, granted_effect)
 
         # Skills from mods
         for mod in relational_reader["Mods.dat64"]:
