@@ -3,7 +3,7 @@
     "qualityStats":{
       "Alternate3":[["avoid_interruption_while_using_this_skill_%",1]],
       "Alternate2":[["cyclone_movement_speed_+%_final",0.25]],
-      "Default":[["base_skill_area_of_effect_+%",0.5]],
+      "Default":[[null,0.5]],
       "Alternate1":[["base_global_chance_to_knockback_%"]]
     },
     "color":2,
@@ -12,7 +12,7 @@
       "None":true
     },
     "baseFlags":[],
-    "constantStats":[[null,-30],["cyclone_first_hit_damage_+%_final",-50],["cyclone_melee_weapon_range_+_per_stage"],["cyclone_stage_decay_time_ms",330],["cyclone_area_of_effect_+%_per_additional_melee_range",8]],
+    "constantStats":[[null,-30],["cyclone_area_of_effect_+%_per_additional_melee_range",10]],
     "description":"Channel this skill to move towards a targeted location while spinning, building up stages while constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back.",
     "levels":[{
         "statInterpolation":[],
@@ -22,9 +22,8 @@
       },{
         "1":0.80000001192093,
         "2":1.2000000476837,
-        "4":3,
         "attackSpeedMultiplier":200,
-        "statInterpolation":[],
+        "statInterpolation":[3],
         "damageEffectiveness":0.45,
         "cost":[],
         "baseMultiplier":0.448,
@@ -64,8 +63,6 @@
         "baseMultiplier":0.495,
         "levelRequirement":46
       },{
-        "3":250,
-        "4":4,
         "statInterpolation":[],
         "cost":[],
         "baseMultiplier":0.503,
@@ -77,7 +74,6 @@
         "baseMultiplier":0.511,
         "levelRequirement":50
       },{
-        "4":5,
         "statInterpolation":[],
         "damageEffectiveness":0.52,
         "cost":[],
@@ -124,8 +120,6 @@
         "baseMultiplier":0.574,
         "levelRequirement":66
       },{
-        "3":170,
-        "4":6,
         "statInterpolation":[],
         "damageEffectiveness":0.58,
         "cost":[],
@@ -148,8 +142,6 @@
         "baseMultiplier":0.606,
         "levelRequirement":74
       },{
-        "3":140,
-        "4":7,
         "statInterpolation":[],
         "damageEffectiveness":0.61,
         "cost":[],
@@ -196,7 +188,6 @@
         "baseMultiplier":0.669,
         "levelRequirement":90
       },{
-        "3":125,
         "statInterpolation":[],
         "damageEffectiveness":0.67,
         "cost":[],
@@ -246,8 +237,6 @@
         "baseMultiplier":0.704,
         "levelRequirement":99
       },{
-        "3":110,
-        "4":9,
         "statInterpolation":[],
         "damageEffectiveness":0.71,
         "cost":[],
@@ -255,19 +244,6 @@
         "levelRequirement":100
       }],
     "statMap":{
-      "cyclone_max_number_of_stages":[{
-          "flags":0,
-          "type":"BASE",
-          "name":"Multiplier:CycloneMaxStages"
-        }],
-      "cyclone_area_of_effect_+%_per_additional_melee_range":[{
-          "1":{
-            "type":"Multiplier",
-            "var":"AdditionalMeleeRange"
-          },
-          "type":"INC",
-          "name":"AreaOfEffect"
-        }],
       "cyclone_movement_speed_+%_final":[{
           "1":{
             "type":"Condition",
@@ -277,29 +253,30 @@
             "type":"GlobalEffect",
             "effectType":"Buff"
           },
+          "flags":0,
           "type":"MORE",
           "name":"MovementSpeed"
         }],
-      "cyclone_melee_weapon_range_+_per_stage":[{
+      "cyclone_area_of_effect_+%_per_additional_melee_range":[{
           "1":{
-            "var":"CycloneStage"
+            "type":"Multiplier",
+            "var":"AdditionalMeleeRange"
           },
-          "type":"LIST",
-          "value":{
-            "key":"radiusExtra"
-          },
-          "name":"SkillData"
+          "type":"INC",
+          "name":"AreaOfEffect"
         }]
     },
-    "stats":["attack_minimum_added_physical_damage","attack_maximum_added_physical_damage","cyclone_gain_stage_every_x_ms_while_channelling","cyclone_max_number_of_stages","is_area_damage","skill_can_add_multiple_charges_per_action"],
+    "stats":["attack_minimum_added_physical_damage","attack_maximum_added_physical_damage","is_area_damage","skill_can_add_multiple_charges_per_action"],
     "skillTypes":[],
     "incrementalEffectiveness":0.023299999535084,
     "name":"Cyclone",
     "baseMods":[{
+        "type":"LIST",
         "value":{
           "key":"radius",
-          "value":11
-        }
+          "value":16
+        },
+        "name":"SkillData"
       }]
   },
   "Riposte":{
@@ -310,17 +287,20 @@
     },
     "levels":[{
         "baseMultiplier":1.6,
-        "statInterpolation":[]
+        "statInterpolation":[],
+        "levelRequirement":4
       },{
         "baseMultiplier":1.637,
         "PvPDamageMultiplier":-80,
         "cooldown":0.8,
         "damageEffectiveness":1.64,
-        "statInterpolation":[]
+        "statInterpolation":[],
+        "levelRequirement":6
       },{
         "baseMultiplier":1.674,
         "damageEffectiveness":1.67,
-        "statInterpolation":[]
+        "statInterpolation":[],
+        "levelRequirement":9
       },{
         "baseMultiplier":1.711,
         "damageEffectiveness":1.71,
@@ -329,8 +309,7 @@
       },{
         "baseMultiplier":1.747,
         "damageEffectiveness":1.75,
-        "statInterpolation":[],
-        "levelRequirement":16
+        "statInterpolation":[]
       },{
         "baseMultiplier":1.784,
         "damageEffectiveness":1.78,
@@ -489,15 +468,16 @@
   "ThrownWeapon":{
     "qualityStats":{
       "Alternate2":[["base_projectile_speed_+%",-0.5],["number_of_additional_projectiles",0.05]],
-      "Default":[["attack_speed_+%"]],
+      "Default":[["projectile_damage_+%_if_pierced_enemy"]],
       "Alternate1":[[]]
     },
     "levels":[{
         "cost":[]
       },{
-        "attackSpeedMultiplier":10,
         "damageEffectiveness":0.82,
-        "cost":[],
+        "cost":{
+          "Mana":5
+        },
         "baseMultiplier":0.824
       },{
         "damageEffectiveness":0.85,
@@ -533,7 +513,9 @@
         "baseMultiplier":1.013
       },{
         "damageEffectiveness":1.04,
-        "cost":[],
+        "cost":{
+          "Mana":7
+        },
         "baseMultiplier":1.037
       },{
         "damageEffectiveness":1.06,
@@ -565,7 +547,9 @@
         "baseMultiplier":1.203
       },{
         "damageEffectiveness":1.23,
-        "cost":[],
+        "cost":{
+          "Mana":8
+        },
         "baseMultiplier":1.226
       },{
         "damageEffectiveness":1.25,
@@ -612,7 +596,9 @@
         "baseMultiplier":1.487
       },{
         "damageEffectiveness":1.5,
-        "cost":[],
+        "cost":{
+          "Mana":11
+        },
         "baseMultiplier":1.499
       },{
         "damageEffectiveness":1.51,
@@ -650,9 +636,20 @@
         "cost":[],
         "baseMultiplier":1.605
       }],
+    "statMap":{
+      "projectile_damage_+%_if_pierced_enemy":[{
+          "1":{
+            "type":"StatThreshold",
+            "stat":"PiercedCount"
+          },
+          "flags":1024,
+          "name":"Damage"
+        }]
+    },
     "constantStats":[["spectral_throw_forget_hit_list_time_override",225]],
     "stats":["base_is_projectile"],
     "baseMods":[{
+        "type":"BASE",
         "name":"PierceChance"
       }],
     "weaponTypes":[],
@@ -664,7 +661,7 @@
   "Hatred":{
     "qualityStats":{
       "Alternate2":[["movement_velocity_+%_on_chilled_ground"]],
-      "Default":[[]],
+      "Default":[["base_skill_area_of_effect_+%"]],
       "Alternate1":[["chill_and_freeze_duration_+%"]]
     },
     "levels":[{
@@ -1074,6 +1071,7 @@
         "cost":[],
         "statInterpolation":[]
       },{
+        "7":110,
         "cost":[],
         "statInterpolation":[]
       },{
@@ -1117,6 +1115,7 @@
         "cost":[],
         "statInterpolation":[]
       },{
+        "7":125,
         "cost":[],
         "statInterpolation":[]
       },{
@@ -1564,10 +1563,7 @@
       }],
     "baseEffectiveness":0.6700000166893,
     "statMap":{
-      "vaal_lightning_strike_beam_damage_+%_final":[{
-          "1":[],
-          "name":"Damage"
-        }]
+      "vaal_lightning_strike_beam_damage_+%_final":[[[]]]
     },
     "constantStats":[["skill_physical_damage_%_to_convert_to_lightning"],[null,6000],["total_projectile_spread_angle_override",180]],
     "stats":["attack_minimum_added_lightning_damage","attack_maximum_added_lightning_damage",null,null,"show_number_of_projectiles"],
@@ -1717,6 +1713,7 @@
         "statInterpolation":[]
       },{
         "2":1.4500000476837,
+        "6":170,
         "7":248,
         "cost":[],
         "statInterpolation":[]
@@ -2345,6 +2342,7 @@
         "cost":[],
         "baseMultiplier":1.807
       },{
+        "3":140,
         "statInterpolation":[],
         "cost":[],
         "baseMultiplier":1.838
@@ -2878,7 +2876,7 @@
     },
     "qualityStats":{
       "Alternate2":[["skill_travel_distance_+%"]],
-      "Default":[[]],
+      "Default":[["attack_speed_+%"]],
       "Alternate1":[["skill_code_movement_speed_+%_final"]]
     },
     "baseMods":[{
@@ -3057,7 +3055,7 @@
       }
     },
     "stats":["spell_minimum_base_physical_damage","spell_maximum_base_physical_damage",null,null,"damage_cannot_be_reflected_or_leech_if_used_by_other_object",null,"tornado_hinder"],
-    "constantStats":[["base_secondary_skill_effect_duration"],["tornado_base_damage_interval_ms"],["tornado_damage_absorbed_%"],["number_of_tornados_allowed"],["tornado_maximum_number_of_hits"],["skill_override_pvp_scaling_time_ms"],[null,1500]],
+    "constantStats":[["base_secondary_skill_effect_duration"],["tornado_base_damage_interval_ms",250],["tornado_damage_absorbed_%"],["number_of_tornados_allowed"],["tornado_maximum_number_of_hits"],["skill_override_pvp_scaling_time_ms"],[null,1500]],
     "castTime":0.75,
     "skillTypes":[],
     "baseFlags":[],
@@ -3196,7 +3194,7 @@
       }],
     "baseEffectiveness":2.1717000007629,
     "stats":[],
-    "constantStats":[["maximum_number_of_blades_left_in_ground"],["ethereal_knives_blade_left_in_ground_for_every_X_projectiles"],[],["blades_left_in_ground_+%_final_if_not_hand_cast"],[]],
+    "constantStats":[["maximum_number_of_blades_left_in_ground"],["ethereal_knives_blade_left_in_ground_for_every_X_projectiles"],[],["blades_left_in_ground_+%_final_if_not_hand_cast",-50],[]],
     "skillTypes":[],
     "baseFlags":[],
     "incrementalEffectiveness":0.043600000441074,
@@ -3471,7 +3469,7 @@
   },
   "VaalDoubleStrike":{
     "qualityStats":{
-      "Default":[[]]
+      "Default":[["chance_to_deal_double_damage_%_vs_bleeding_enemies"]]
     },
     "levels":[{
         "baseMultiplier":0.28,
@@ -4357,6 +4355,10 @@
       "chronomancer_buff_cooldown_speed_+%":[{
           "1":[],
           "name":"CooldownRecovery"
+        }],
+      "debuff_time_passed_+%":[{
+          "1":[],
+          "name":"SelfDebuffExpirationRate"
         }]
     },
     "stats":[null,null,null,"spell_cast_time_cannot_be_modified","unaffected_by_temporal_chains"],
@@ -4552,8 +4554,9 @@
     "description":"Performs a series of quick teleports towards a targeted location, stopping if you would overlap with monsters or terrain. If using the \"Attack in Place\" option, the direction is reversed. Shares a cooldown with other Blink skills. Cannot be supported."
   },
   "VaalBladeVortex":{
+    "stats":[null,null,null,null,null,"vaal_blade_vortex_has_10_spinning_blades"],
     "qualityStats":{
-      "Default":[[]]
+      "Default":[["blade_vortex_hit_rate_+%_per_blade"]]
     },
     "levels":[{
         "cost":[],
@@ -4677,16 +4680,25 @@
         "statInterpolation":[]
       }],
     "statMap":{
+      "blade_vortex_hit_rate_+%_per_blade":[{
+          "value":{
+            "key":"hitFrequencyPerBlade"
+          }
+        }],
+      "vaal_blade_vortex_has_10_spinning_blades":[],
       "base_blade_vortex_hit_rate_ms":[{
           "value":{
-            "key":"hitTimeOverride"
+            "key":"hitFrequency"
           }
         }]
     },
     "constantStats":[[],["extra_gore_chance_override_%"],["base_blade_vortex_hit_rate_ms"],[]],
-    "stats":[null,null,null,null,null,"vaal_blade_vortex_has_10_spinning_blades"],
     "baseMods":[{
         "value":[]
+      },{
+        "value":{
+          "key":"VaalBladeVortexBlade"
+        }
       }],
     "skillTypes":[],
     "baseFlags":[],
@@ -5122,10 +5134,14 @@
         "statInterpolation":[]
       }],
     "statMap":{
-      "projectile_damage_taken_+%":[{
+      "projectiles_hitting_self_split_into_x":[{
           "1":{
             "effectType":"Curse"
           },
+          "name":"SelfSplitCount"
+        }],
+      "projectile_damage_taken_+%":[{
+          "1":[],
           "name":"ProjectileDamageTaken"
         }]
     },
@@ -6503,6 +6519,7 @@
         "statInterpolation":[],
         "cost":[]
       },{
+        "1":330,
         "baseMultiplier":0.675,
         "statInterpolation":[],
         "cost":[]
@@ -6510,9 +6527,7 @@
     "constantStats":[[],["storm_rain_pulse_count"],["number_of_allowed_storm_arrows"]],
     "statMap":{
       "prismatic_rain_beam_base_frequency_ms":[{
-          "value":{
-            "key":"hitFrequency"
-          }
+          "value":[]
         }],
       "prismatic_rain_beam_frequency_+%":[{
           "name":"StormRainBeamFrequency"
@@ -8886,8 +8901,8 @@
       }],
     "qualityStats":{
       "Alternate2":[["golem_cooldown_recovery_+%"]],
-      "Default":[["minion_damage_+%"]],
-      "Alternate1":[["golem_buff_effect_+%"]]
+      "Default":[["golem_buff_effect_+%"]],
+      "Alternate1":[[]]
     },
     "statMap":{
       "ice_golem_grants_accuracy_+%":[{
@@ -9606,6 +9621,18 @@
       "Default":[[]],
       "Alternate1":[["life_leech_from_any_damage_permyriad"]]
     },
+    "baseMods":[{
+        "value":[]
+      },{
+        "value":[]
+      },{
+        "1":[],
+        "name":"Multiplier:BladeVortexBlade"
+      },[[]],{
+        "name":"Condition:HaveBladeVortex"
+      }],
+    "constantStats":[[],["maximum_number_of_spinning_blades"],[],["blade_vortex_damage_+%_per_blade_final"]],
+    "description":"This spell creates ethereal blades which orbit in an area around you, dealing damage every 0.6 seconds to all enemies in their radius. As more blades are added, the damage becomes greater and more frequent.",
     "parts":[{
         "name":"0 Blades"
       },{
@@ -9736,12 +9763,13 @@
       }],
     "baseEffectiveness":0.30599999427795,
     "statMap":{
-      "blade_vortex_hit_rate_+%_per_blade":[],
-      "blade_vortex_critical_strike_chance_+%_per_blade":[[{
-            "var":"BladeVortexBlade"
-          }]],
+      "blade_vortex_hit_rate_+%_per_blade":[{
+          "value":[]
+        }],
       "blade_vortex_ailment_damage_+%_per_blade_final":[{
-          "1":[],
+          "1":{
+            "var":"BladeVortexBlade"
+          },
           "keywordFlags":524288
         }],
       "maximum_number_of_spinning_blades":[{
@@ -9753,34 +9781,11 @@
             "skillPartList":[]
           }]]
     },
-    "constantStats":[[],["maximum_number_of_spinning_blades"],["blade_vortex_critical_strike_chance_+%_per_blade"],["blade_vortex_hit_rate_+%_per_blade"],["blade_vortex_damage_+%_per_blade_final"]],
     "stats":[null,null,null,null,null,"action_ignores_crit_tracking",null,"damage_originates_from_initiator_location","skill_cannot_gain_repeat_bonuses"],
-    "baseMods":[{
-        "value":[]
-      },{
-        "1":[],
-        "name":"Multiplier:BladeVortexBlade"
-      },[[]],{
-        "1":[],
-        "value":[]
-      },{
-        "1":[],
-        "value":{
-          "value":0.21818181818182
-        }
-      },{
-        "1":[],
-        "value":{
-          "value":0.13333333333333
-        }
-      },{
-        "name":"Condition:HaveBladeVortex"
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.042899999767542,
+    "incrementalEffectiveness":0.04434,
     "name":"Blade Vortex",
-    "description":"This spell creates ethereal blades which orbit in an area around you, dealing damage every 0.6 seconds to all enemies in their radius. As more blades are added, the damage becomes greater and more frequent."
+    "skillTypes":[]
   },
   "IntuitiveLink":{
     "qualityStats":{
@@ -9921,7 +9926,7 @@
     "qualityStats":{
       "Alternate3":[["ailment_damage_+%_per_frenzy_charge"]],
       "Alternate2":[["melee_attack_number_of_spirit_strikes"]],
-      "Default":[[]],
+      "Default":[["frenzy_skill_attack_damage_+%_final_per_frenzy_charge"],["frenzy_skill_attack_speed_+%_final_per_frenzy_charge"]],
       "Alternate1":[[]]
     },
     "levels":[{
@@ -10034,7 +10039,7 @@
     },
     "stats":[null,"skill_can_fire_wand_projectiles"],
     "skillTypes":[],
-    "constantStats":[["frenzy_skill_attack_damage_+%_final_per_frenzy_charge"],["frenzy_skill_attack_speed_+%_final_per_frenzy_charge"]],
+    "constantStats":[[],[]],
     "baseFlags":[],
     "name":"Frenzy",
     "description":"Performs an attack that gives the character a frenzy charge if it hits. Frenzy charges increase your attack speed."
@@ -10129,7 +10134,8 @@
     "statMap":{
       "spectral_spiral_weapon_base_number_of_bounces":[{
           "name":"BounceCount"
-        }]
+        }],
+      "projectile_damage_+%_if_pierced_enemy":[[[]]]
     },
     "constantStats":[[],["spectral_helix_rotations_%",425]],
     "stats":["projectiles_nova",null,"skill_display_single_base_projectile"],
@@ -10719,7 +10725,8 @@
     "statMap":{
       "base_number_of_projectiles_in_spiral_nova":[{
           "name":"ProjectileCount"
-        }]
+        }],
+      "projectile_damage_+%_if_pierced_enemy":[[[]]]
     },
     "stats":["projectile_spiral_nova_both_directions",null,null,"projectiles_not_offset"],
     "constantStats":[["base_number_of_projectiles_in_spiral_nova"],["projectile_spiral_nova_time_ms",2000],["projectile_spiral_nova_angle"],["projectile_spiral_nova_starting_angle_offset"],[]],
@@ -11350,12 +11357,6 @@
     "description":"Grants a buff adding cold damage to spells and attacks. If you shatter an enemy, this skill will cause them to explode and deal AoE cold damage to enemies near them. This damage is not affected by modifiers to spell damage."
   },
   "ShrapnelBallista":{
-    "qualityStats":{
-      "Alternate3":[[]],
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
-    },
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -11498,8 +11499,14 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "constantStats":[["base_totem_range"],["base_totem_duration"],[]],
+    "qualityStats":{
+      "Alternate3":[[]],
+      "Alternate2":[[]],
+      "Default":[[]],
+      "Alternate1":[[]]
+    },
     "stats":[null,null,"attack_skills_additional_ballista_totems_allowed",null,"base_skill_is_totemified","is_totem",null,"projectiles_can_shotgun","is_ranged_attack_totem"],
+    "constantStats":[["base_totem_range"],["base_totem_duration"],[]],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
@@ -11851,7 +11858,9 @@
             "limitVar":"ExplosiveArrowMaxBonusRadius",
             "var":"ExplosiveArrowStage"
           },
-          "value":[]
+          "value":{
+            "key":"radiusExtra"
+          }
         }],
       "explosive_arrow_ailment_damage_+%_final_per_stack":[[{
             "skillPartList":[]
@@ -11886,168 +11895,126 @@
     "qualityStats":{
       "Alternate3":[["active_skill_added_damage_+%_final"]],
       "Alternate2":[["damage_+%_vs_enemies_on_full_life"]],
-      "Default":[[],["base_critical_strike_multiplier_+"]],
+      "Default":[["dual_strike_damage_+%_final_against_enemies_on_full_life"]],
       "Alternate1":[["melee_range_+"]]
     },
     "levels":[{
-        "statInterpolation":[],
         "cost":[]
       },{
-        "statInterpolation":[],
         "cost":[]
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":1.375
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":1.438
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":1.501
       },{
-        "statInterpolation":[],
         "cost":[]
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":1.626
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":1.688
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":1.751
       },{
-        "statInterpolation":[],
         "cost":[]
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":1.876
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":1.939
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":2.002
       },{
-        "statInterpolation":[],
         "cost":[]
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":2.127
       },{
-        "statInterpolation":[],
         "cost":[]
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":2.252
       },{
-        "statInterpolation":[],
         "cost":[]
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":2.377
       },{
-        "1":107,
-        "statInterpolation":[],
         "damageEffectiveness":2.44,
         "cost":[]
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":2.503
       },{
-        "statInterpolation":[],
         "cost":[]
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":2.628
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":2.691
       },{
-        "statInterpolation":[],
         "damageEffectiveness":2.75,
         "cost":[],
         "baseMultiplier":2.753
       },{
-        "statInterpolation":[],
         "cost":[]
       },{
-        "statInterpolation":[],
         "damageEffectiveness":2.88,
         "cost":[],
         "baseMultiplier":2.878
       },{
-        "statInterpolation":[],
         "damageEffectiveness":2.94,
         "cost":[],
         "baseMultiplier":2.941
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":3.004
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":3.066
       },{
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":3.098
       },{
-        "1":143,
-        "statInterpolation":[],
         "cost":[],
         "baseMultiplier":3.129
       },{
-        "statInterpolation":[],
         "cost":[]
       },{
-        "statInterpolation":[],
         "damageEffectiveness":3.19,
         "cost":[],
         "baseMultiplier":3.192
       },{
-        "statInterpolation":[],
         "damageEffectiveness":3.22,
         "cost":[],
         "baseMultiplier":3.223
       },{
-        "statInterpolation":[],
         "damageEffectiveness":3.25,
         "cost":[],
         "baseMultiplier":3.254
       },{
-        "statInterpolation":[],
         "damageEffectiveness":3.29,
         "cost":[],
         "baseMultiplier":3.286
       },{
-        "statInterpolation":[],
         "damageEffectiveness":3.32,
         "cost":[],
         "baseMultiplier":3.317
       },{
-        "statInterpolation":[],
         "damageEffectiveness":3.35,
         "cost":[],
         "baseMultiplier":3.348
       },{
-        "statInterpolation":[],
         "damageEffectiveness":3.38,
         "cost":[],
         "baseMultiplier":3.379
@@ -12057,7 +12024,7 @@
       "dual_strike_damage_+%_final_against_enemies_on_full_life":[[[]]]
     },
     "stats":[],
-    "constantStats":[["dual_strike_critical_strike_chance_+%_final_against_enemies_on_full_life"],["dual_strike_damage_+%_final_against_enemies_on_full_life"]],
+    "constantStats":[["dual_strike_critical_strike_chance_+%_final_against_enemies_on_full_life"],[]],
     "skillTypes":[],
     "baseFlags":[],
     "weaponTypes":[],
@@ -12381,14 +12348,11 @@
         "baseMultiplier":1.759
       }],
     "statMap":{
-      "active_skill_projectile_damage_+%_final_for_each_remaining_chain":[{
-          "1":{
+      "active_skill_projectile_damage_+%_final_for_each_remaining_chain":[[{
             "stat":"ChainRemaining"
-          },
-          "flags":1024
-        }]
+          },[]]]
     },
-    "constantStats":[[],[],["projectile_angle_variance"],["critical_poison_dot_multiplier_+"],[],["active_skill_projectile_damage_+%_final_for_each_remaining_chain"]],
+    "constantStats":[[],[],["projectile_angle_variance"],[],["active_skill_projectile_damage_+%_final_for_each_remaining_chain"]],
     "stats":[],
     "baseFlags":[],
     "skillTypes":[],
@@ -12538,7 +12502,7 @@
       "Default":[[]],
       "Alternate1":[[]]
     },
-    "stats":[],
+    "stats":["minion_damage_+%"],
     "baseFlags":[],
     "statDescriptionScope":"minion_attack_skill_stat_descriptions",
     "skillTypes":[],
@@ -12610,6 +12574,7 @@
         "statInterpolation":[],
         "cost":[]
       },{
+        "2":107,
         "statInterpolation":[],
         "cost":[]
       },{
@@ -12696,7 +12661,7 @@
   "Bladefall":{
     "qualityStats":{
       "Alternate2":[["bladefall_volley_gap_distance_+%"]],
-      "Default":[[]],
+      "Default":[["bladefall_number_of_volleys"]],
       "Alternate1":[[]]
     },
     "levels":[{
@@ -12821,7 +12786,7 @@
         "cost":[]
       }],
     "baseEffectiveness":1.2013000249863,
-    "constantStats":[["bladefall_damage_per_stage_+%_final",-6],[],["bladefall_critical_strike_chance_+%_per_stage"],["bladefall_number_of_volleys"],["bladefall_blade_left_in_ground_for_every_X_volleys"],[],[],[]],
+    "constantStats":[[],["bladefall_blade_left_in_ground_for_every_X_volleys"],[],[]],
     "stats":[],
     "baseMods":[{
         "value":[]
@@ -13035,37 +13000,29 @@
       "Default":[[]],
       "Alternate1":[["chance_to_inflict_additional_impale_%"]]
     },
-    "weaponTypes":[],
-    "baseMods":[[]],
-    "constantStats":[[],[],["impacting_steel_secondary_projectile_damage_+%_final"]],
-    "description":"Consume a Steel Shard to fire a single projectile that splits on impact or at the targeted location, dealing area damage when it splits and again when the split projectiles explode at the end of their flight. Requires a Sword or Axe. Steel Shards are gained with the Call of Steel Skill.",
-    "parts":[{
-        "name":"Main Projectile"
-      },{
-        "name":"Split Projectile"
-      }],
     "levels":[{
         "statInterpolation":[],
         "cost":[]
       },{
-        "baseMultiplier":0.741,
+        "attackSpeedMultiplier":-10,
+        "statInterpolation":[],
+        "cost":[],
+        "baseMultiplier":0.741
+      },{
+        "statInterpolation":[],
+        "cost":[],
+        "baseMultiplier":0.781
+      },{
+        "statInterpolation":[],
+        "cost":[],
+        "baseMultiplier":0.842
+      },{
         "statInterpolation":[],
         "cost":[]
       },{
-        "baseMultiplier":0.781,
         "statInterpolation":[],
-        "cost":[]
-      },{
-        "baseMultiplier":0.842,
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "baseMultiplier":0.963,
-        "statInterpolation":[],
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":0.963
       },{
         "cost":[],
         "statInterpolation":[]
@@ -13073,41 +13030,38 @@
         "statInterpolation":[],
         "cost":[]
       },{
-        "baseMultiplier":1.064,
         "statInterpolation":[],
-        "cost":[]
-      },{
-        "baseMultiplier":1.154,
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "baseMultiplier":1.244,
-        "statInterpolation":[],
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":1.064
       },{
         "statInterpolation":[],
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":1.154
       },{
-        "baseMultiplier":1.401,
         "statInterpolation":[],
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":1.244
       },{
         "statInterpolation":[],
         "cost":[]
       },{
         "statInterpolation":[],
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":1.401
       },{
-        "baseMultiplier":1.681,
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "baseMultiplier":1.733,
         "statInterpolation":[],
         "cost":[]
       },{
         "statInterpolation":[],
         "cost":[]
+      },{
+        "statInterpolation":[],
+        "cost":[],
+        "baseMultiplier":1.681
+      },{
+        "statInterpolation":[],
+        "cost":[],
+        "baseMultiplier":1.733
       },{
         "statInterpolation":[],
         "cost":[]
@@ -13118,93 +13072,104 @@
         "statInterpolation":[],
         "cost":[]
       },{
-        "baseMultiplier":2.216,
+        "statInterpolation":[],
+        "cost":[]
+      },{
         "statInterpolation":[],
         "damageEffectiveness":2.22,
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":2.216
       },{
-        "baseMultiplier":2.274,
         "statInterpolation":[],
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":2.274
       },{
-        "baseMultiplier":2.332,
         "statInterpolation":[],
         "damageEffectiveness":2.33,
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":2.332
       },{
-        "baseMultiplier":2.389,
+        "statInterpolation":[],
+        "cost":[],
+        "baseMultiplier":2.389
+      },{
         "statInterpolation":[],
         "cost":[]
       },{
         "statInterpolation":[],
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":2.505
       },{
-        "baseMultiplier":2.505,
+        "statInterpolation":[],
+        "cost":[],
+        "baseMultiplier":2.563
+      },{
+        "statInterpolation":[],
+        "cost":[],
+        "baseMultiplier":2.621
+      },{
+        "statInterpolation":[],
+        "cost":[],
+        "baseMultiplier":2.679
+      },{
+        "statInterpolation":[],
+        "cost":[],
+        "baseMultiplier":2.708
+      },{
         "statInterpolation":[],
         "cost":[]
       },{
-        "baseMultiplier":2.563,
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "baseMultiplier":2.621,
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "baseMultiplier":2.679,
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "baseMultiplier":2.708,
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "baseMultiplier":2.766,
         "statInterpolation":[],
         "damageEffectiveness":2.77,
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":2.766
       },{
-        "baseMultiplier":2.795,
+        "statInterpolation":[],
+        "cost":[],
+        "baseMultiplier":2.795
+      },{
+        "statInterpolation":[],
+        "cost":[],
+        "baseMultiplier":2.824
+      },{
         "statInterpolation":[],
         "cost":[]
       },{
-        "baseMultiplier":2.824,
         "statInterpolation":[],
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":2.882
       },{
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "baseMultiplier":2.882,
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "baseMultiplier":2.911,
         "statInterpolation":[],
         "damageEffectiveness":2.91,
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":2.911
       },{
-        "baseMultiplier":2.939,
         "statInterpolation":[],
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":2.939
       },{
-        "baseMultiplier":2.968,
         "statInterpolation":[],
         "damageEffectiveness":2.97,
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":2.968
       }],
     "baseEffectiveness":0.39730000495911,
     "statMap":{
-      "impacting_steel_secondary_projectile_damage_+%_final":[[[]]]
+      "projectile_number_to_split":[{
+          "name":"SplitCount"
+        }],
+      "modifiers_to_number_of_projectiles_instead_apply_to_splitting":[[],{
+          "name":"AdditionalProjectilesAddSplitsInstead"
+        }]
     },
-    "stats":[null,null,"projectile_number_to_split",null,"modifiers_to_number_of_projectiles_instead_apply_to_splitting","already_split_if_no_steel_shards","projectiles_can_split_at_end_of_range","projectiles_can_split_from_terrain"],
+    "constantStats":[[]],
+    "stats":[null,null,"projectile_number_to_split",null,"modifiers_to_number_of_projectiles_instead_apply_to_splitting","projectiles_can_split_at_end_of_range","projectiles_can_split_from_terrain"],
+    "baseFlags":[],
+    "weaponTypes":[],
     "skillTypes":[],
     "incrementalEffectiveness":0.035399999469519,
     "name":"Splitting Steel",
-    "baseFlags":[]
+    "description":"Consume a Steel Shard to fire a single projectile that splits on impact or at the targeted location, dealing area damage when it splits and again when the split projectiles explode at the end of their flight. Requires a Sword or Axe. Steel Shards are gained with the Call of Steel Skill."
   },
   "VaalReave":{
     "qualityStats":{
@@ -14332,7 +14297,7 @@
   "ShrapnelTrap":{
     "qualityStats":{
       "Alternate2":[[]],
-      "Default":[[]],
+      "Default":[["shrapnel_trap_number_of_secondary_explosions"]],
       "Alternate1":[["burn_damage_+%"]]
     },
     "baseMods":[{
@@ -14488,7 +14453,7 @@
           "name":"SmallExplosions"
         }]
     },
-    "stats":[null,null,"shrapnel_trap_number_of_secondary_explosions"],
+    "stats":[],
     "baseFlags":[],
     "incrementalEffectiveness":0.035599999129772,
     "name":"Explosive Trap",
@@ -14512,7 +14477,6 @@
         "statInterpolation":[]
       },{
         "3":-17,
-        "4":-10,
         "cost":[],
         "statInterpolation":[]
       },{

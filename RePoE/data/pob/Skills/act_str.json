@@ -1955,8 +1955,8 @@
       }],
     "qualityStats":{
       "Alternate2":[["golem_cooldown_recovery_+%"]],
-      "Default":[["minion_damage_+%"]],
-      "Alternate1":[["golem_buff_effect_+%"]]
+      "Default":[["golem_buff_effect_+%"]],
+      "Alternate1":[[]]
     },
     "statMap":{
       "stone_golem_grants_base_life_regeneration_rate_per_minute":[{
@@ -2785,7 +2785,7 @@
   "Boneshatter":{
     "qualityStats":{
       "Alternate2":[["attack_speed_+%_per_trauma",0.05],["trauma_strike_self_damage_per_trauma"]],
-      "Default":[["base_stun_duration_+%"]],
+      "Default":[["trauma_strike_damage_+%_final_per_trauma"]],
       "Alternate1":[["base_stun_threshold_reduction_+%"]]
     },
     "weaponTypes":[],
@@ -3054,7 +3054,7 @@
           "name":"TraumaSelfDamageTakenLife"
         }]
     },
-    "stats":[null,null,null,"trauma_strike_damage_+%_final_per_trauma"],
+    "stats":[],
     "skillTypes":[],
     "incrementalEffectiveness":0.053700000047684,
     "name":"Boneshatter",
@@ -3491,7 +3491,7 @@
     "qualityStats":{
       "Alternate3":[[]],
       "Alternate2":[[]],
-      "Default":[[]],
+      "Default":[["base_stun_duration_+%"]],
       "Alternate1":[[]]
     },
     "levels":[{
@@ -4207,15 +4207,18 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "qualityStats":{
+      "Alternate1":[[]],
+      "Default":[["fire_damage_+%"]]
+    },
     "statMap":{
       "active_skill_hit_ailment_damage_with_projectile_+%_final":[[[]]]
     },
     "constantStats":[["active_skill_hit_ailment_damage_with_projectile_+%_final"],[]],
     "stats":[null,null,"show_number_of_projectiles","projectiles_not_offset"],
-    "qualityStats":{
-      "Alternate1":[[]],
-      "Default":[["fire_damage_+%"]]
-    },
+    "baseMods":[{
+        "name":"CannotSplit"
+      }],
     "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
@@ -5147,7 +5150,7 @@
   "GeneralsCry":{
     "qualityStats":{
       "Alternate2":[["spiritual_cry_double_movement_velocity_+%"]],
-      "Default":[[]],
+      "Default":[["maximum_number_of_spiritual_cry_warriors"]],
       "Alternate1":[[]]
     },
     "levels":[{
@@ -5278,7 +5281,7 @@
       "spiritual_cry_doubles_summoned_per_5_MP":[]
     },
     "stats":[null,null,null,null,null,null,"warcry_gain_mp_from_corpses"],
-    "constantStats":[["spiritual_cry_doubles_summoned_per_5_MP"],["maximum_number_of_spiritual_cry_warriors"]],
+    "constantStats":[["spiritual_cry_doubles_summoned_per_5_MP"],[]],
     "baseFlags":[],
     "baseMods":[{
         "value":[]
@@ -5609,11 +5612,12 @@
         "statInterpolation":[],
         "damageEffectiveness":2.753
       }],
-    "constantStats":[[],["vaal_volcanic_fissure_crack_repeat_count"],[]],
-    "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
+    "constantStats":[[],["vaal_volcanic_fissure_crack_repeat_count"],[]],
+    "stats":[],
+    "baseMods":[[]],
     "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
@@ -6580,7 +6584,7 @@
           "key":"radiusTertiaryLabel",
           "value":"Chain Maximum Distance:"
         }
-      }],
+      },[]],
     "constantStats":[[],[],[]],
     "description":"Infuses your melee weapon with molten energies to attack with physical and fire damage. This attack causes balls of molten magma to launch forth from the enemies you hit, divided amongst all enemies hit by the strike. These will deal area attack damage to enemies where they land.",
     "parts":[[],[]],
@@ -9084,7 +9088,7 @@
   },
   "VaalReap":{
     "qualityStats":{
-      "Default":[[]]
+      "Default":[["blood_scythe_damage_+%_final_per_charge"]]
     },
     "levels":[{
         "cost":[],
@@ -9215,6 +9219,9 @@
           "1":[],
           "name":"BloodChargesMax"
         }],
+      "blood_scythe_damage_+%_final_per_charge":[[{
+            "var":"BloodCharge"
+          }]],
       "base_physical_damage_to_deal_per_minute":[{
           "1":{
             "var":"ReapDebuffIsFireDamage"
@@ -11942,9 +11949,7 @@
       }],
     "baseEffectiveness":1.405699968338,
     "statMap":{
-      "blood_scythe_damage_+%_final_per_charge":[[{
-            "var":"BloodCharge"
-          }]],
+      "blood_scythe_damage_+%_final_per_charge":[[[]]],
       "base_physical_damage_to_deal_per_minute":[{
           "1":[],
           "value":[]
@@ -11957,7 +11962,7 @@
           "name":"LifeCost"
         }]
     },
-    "constantStats":[["blood_scythe_damage_+%_final_per_charge"],["blood_scythe_cost_+%_final_per_charge"],[]],
+    "constantStats":[[],["blood_scythe_cost_+%_final_per_charge"],[]],
     "stats":[null,null,null,null,null,"lose_blood_scythe_charge_on_kill"],
     "baseMods":[{
         "value":[]
@@ -13060,7 +13065,7 @@
       },{
         "1":[],
         "value":[]
-      }],
+      },[]],
     "parts":[[],[]],
     "levels":[{
         "cost":[],
@@ -13822,7 +13827,7 @@
     "qualityStats":{
       "Alternate3":[["ice_crash_first_stage_damage_+%_final"],["ice_crash_third_hit_damage_+%_final"]],
       "Alternate2":[[]],
-      "Default":[[]],
+      "Default":[["physical_damage_%_to_add_as_cold"]],
       "Alternate1":[[]]
     },
     "weaponTypes":[],

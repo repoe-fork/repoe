@@ -314,8 +314,12 @@
         "cooldown":0.15
       }
     },
-    "stats":["show_number_of_projectiles",null,null,"base_skill_show_average_damage_instead_of_dps"],
     "constantStats":[[],["attack_trigger_on_melee_hit_%"]],
+    "stats":["show_number_of_projectiles",null,null,"base_skill_show_average_damage_instead_of_dps"],
+    "baseMods":[{
+        "type":"FLAG",
+        "name":"CannotSplit"
+      }],
     "skillTypes":[],
     "baseFlags":[],
     "name":"Molten Burst",
@@ -475,7 +479,6 @@
         }
       },{
         "1":[],
-        "type":"FLAG",
         "name":"Condition:HaveBestialMinion"
       }],
     "minionSkillTypes":[],
@@ -796,7 +799,9 @@
         },
         "name":"ActionSpeed"
       },{
-        "value":[]
+        "value":{
+          "key":"buffAllies"
+        }
       }],
     "skillTypes":[],
     "baseFlags":[],
@@ -959,6 +964,11 @@
         "value":[]
       },{
         "name":"Multiplier:BloodSacramentMaxStages"
+      },{
+        "1":{
+          "var":"BloodSacramentReservationEHP"
+        },
+        "name":"HasUncancellableReservation"
       }],
     "levels":[{
         "statInterpolation":[],
@@ -1934,7 +1944,6 @@
     "levels":{
       "20":[]
     },
-    "constantStats":[["chance_to_deal_double_damage_%"],["minion_chance_to_deal_double_damage_%"],["base_movement_velocity_+%"],[],[],[]],
     "statMap":{
       "chance_to_deal_double_damage_%":[{
           "1":{
@@ -1943,16 +1952,25 @@
           },
           "name":"DoubleDamageChance"
         }],
-      "minion_movement_speed_+%":[],
-      "base_movement_velocity_+%":[[{
+      "minion_movement_speed_+%":[{
+          "1":{
             "effectCond":"AviansFlightActive",
             "effectName":"Avian's Flight"
-          }]]
+          },
+          "value":{
+            "mod":[]
+          }
+        }],
+      "minion_chance_to_deal_double_damage_%":[{
+          "1":[],
+          "value":{
+            "mod":[]
+          }
+        }],
+      "base_movement_velocity_+%":[[[]]]
     },
     "stats":[],
-    "baseMods":[{
-        "value":[]
-      }],
+    "constantStats":[["chance_to_deal_double_damage_%"],["minion_chance_to_deal_double_damage_%"],["base_movement_velocity_+%"],[],[],[]],
     "skillTypes":[],
     "baseFlags":[],
     "name":"Aspect of the Avian",
@@ -2147,7 +2165,9 @@
   "FieryImpactHeistMaceImplicit":{
     "levels":{
       "20":[],
-      "10":[],
+      "10":{
+        "cooldown":1.8
+      },
       "15":[]
     },
     "constantStats":[["skill_physical_damage_%_to_convert_to_fire"]],
@@ -2239,7 +2259,7 @@
     },
     "constantStats":[[],["guardian_relic_explode_on_death_for_%_life_as_element_damage"],[],["skill_triggered_by_nearby_allies_kill_or_hit_rare_unique_%_chance"]],
     "stats":[],
-    "minionList":["GuardianRelicFire","GuardianRelicCold","GuardianRelicLightning"],
+    "minionList":["GuardianRelicAll"],
     "skillTypes":[],
     "name":"Summon Elemental Relic",
     "description":"Summons a Relic of a random element that stays near you. Depending on the element chosen, the relic minion will have an Anger, Hatred, or Wrath aura. These relics explode when they die, dealing elemental damage to enemies around them. If you already have a relic of the chosen element, its duration will be refreshed instead of summoning a new one."

@@ -206,7 +206,7 @@
   },
   "VaalIceNova":{
     "qualityStats":{
-      "Default":[["base_skill_area_of_effect_+%",0.5]]
+      "Default":[["active_skill_base_radius_+",0.15]]
     },
     "levels":[{
         "cost":[],
@@ -363,7 +363,7 @@
     "stats":["spell_minimum_base_fire_damage","spell_maximum_base_fire_damage","sigil_attached_target_hit_damage_+%_final",null,"additive_cast_speed_modifiers_apply_to_sigil_repeat_frequency","base_skill_show_average_damage_instead_of_dps","skill_can_add_multiple_charges_per_action","console_skill_dont_chase"],
     "qualityStats":{
       "Alternate2":[["armageddon_brand_brands_attach_to_new_enemy_each_activation_%_chance"]],
-      "Default":[["base_cast_speed_+%"]],
+      "Default":[["base_cast_speed_+%",0.5]],
       "Alternate1":[["chance_to_deal_double_damage_%",0.25]]
     },
     "levels":[{
@@ -520,7 +520,7 @@
     "qualityStats":{
       "Alternate3":[["ice_spear_distance_before_form_change_+%",-1]],
       "Alternate2":[["cold_damage_+%"]],
-      "Default":[[]],
+      "Default":[["ice_spear_second_form_critical_strike_multiplier_+"]],
       "Alternate1":[["projectile_base_number_of_targets_to_pierce",0.1]]
     },
     "baseMods":[{
@@ -688,7 +688,7 @@
           "name":"CritChance"
         }]
     },
-    "stats":[null,null,"ice_spear_second_form_critical_strike_multiplier_+"],
+    "stats":[],
     "baseFlags":[],
     "incrementalEffectiveness":0.034099999815226,
     "name":"Ice Spear",
@@ -819,8 +819,8 @@
       }],
     "qualityStats":{
       "Alternate2":[["golem_cooldown_recovery_+%"]],
-      "Default":[["minion_damage_+%"]],
-      "Alternate1":[["golem_buff_effect_+%"]]
+      "Default":[["golem_buff_effect_+%"]],
+      "Alternate1":[[]]
     },
     "statMap":{
       "lightning_golem_grants_attack_and_cast_speed_+%":[{
@@ -1403,7 +1403,7 @@
           "name":"LightningResist"
         }]
     },
-    "stats":[null,"active_skill_base_radius_+","base_lightning_damage_resistance_%","base_deal_no_damage"],
+    "stats":[null,null,"base_lightning_damage_resistance_%","base_deal_no_damage"],
     "constantStats":[[]],
     "statDescriptionScope":"curse_skill_stat_descriptions",
     "baseFlags":[],
@@ -1423,7 +1423,7 @@
       "Alternate3":[["hit_damage_+%"]],
       "Alternate2":[[]],
       "Default":[["chaos_damage_+%"]],
-      "Alternate1":[[]]
+      "Alternate1":[["base_skill_area_of_effect_+%"]]
     },
     "levels":[{
         "1":42.000000620882,
@@ -2754,16 +2754,15 @@
     "description":"A fixed number of flaming bolts rain down in a spiral, culminating in the central one impacting the targeted location. They explode when landing, dealing damage to nearby enemies and leaving burning ground, which deals fire damage over time."
   },
   "RighteousFire":{
-    "stats":[null,"righteous_fire_spell_damage_+%_final"],
+    "stats":["righteous_fire_spell_damage_+%_final"],
     "qualityStats":{
       "Alternate2":[["spell_damage_+%"]],
-      "Default":[["burn_damage_+%"]],
+      "Default":[[]],
       "Alternate1":[[]]
     },
     "levels":[{
         "statInterpolation":[]
       },{
-        "1":66.666668156783,
         "statInterpolation":[],
         "cooldown":0.3
       },{
@@ -2868,7 +2867,7 @@
             "stat":"EnergyShield"
           },[]]]
     },
-    "constantStats":[["base_righteous_fire_%_of_max_life_to_deal_to_nearby_per_minute",2100],["base_nonlethal_fire_damage_%_of_maximum_life_taken_per_minute",5400],["base_righteous_fire_%_of_max_energy_shield_to_deal_to_nearby_per_minute"],["base_nonlethal_fire_damage_%_of_maximum_energy_shield_taken_per_minute",4200]],
+    "constantStats":[["base_righteous_fire_%_of_max_life_to_deal_to_nearby_per_minute",4200],["base_nonlethal_fire_damage_%_of_maximum_life_taken_per_minute",5400],["base_righteous_fire_%_of_max_energy_shield_to_deal_to_nearby_per_minute"],["base_nonlethal_fire_damage_%_of_maximum_energy_shield_taken_per_minute"]],
     "baseMods":[{
         "value":[]
       },{
@@ -2885,7 +2884,7 @@
       "Alternate3":[["bodyswap_damage_+%_when_not_consuming_corpse"]],
       "Alternate2":[[]],
       "Default":[[]],
-      "Alternate1":[[]]
+      "Alternate1":[["burn_damage_+%"]]
     },
     "baseMods":[{
         "1":[],
@@ -3196,6 +3195,8 @@
         "value":{
           "value":"Maximum Range:"
         }
+      },{
+        "name":"CannotSplit"
       }],
     "skillTypes":[],
     "baseFlags":[],
@@ -4115,6 +4116,7 @@
         "statInterpolation":[],
         "cost":[]
       },{
+        "1":2100,
         "2":100800,
         "statInterpolation":[],
         "cost":[]
@@ -5605,8 +5607,8 @@
   "DivineTempest":{
     "qualityStats":{
       "Alternate2":[["skill_physical_damage_%_to_convert_to_cold"]],
-      "Default":[[]],
-      "Alternate1":[["divine_tempest_beam_width_+%"]]
+      "Default":[["divine_tempest_beam_width_+%"]],
+      "Alternate1":[[]]
     },
     "castTime":0.22,
     "baseMods":[{
@@ -5615,7 +5617,7 @@
       },{
         "value":[]
       }],
-    "constantStats":[[],["divine_tempest_hit_damage_+%_final_per_stage"],["divine_tempest_base_number_of_nearby_enemies_to_zap"],["divine_tempest_stage_on_hitting_normal_magic_%_chance"],["divine_tempest_ailment_damage_+%_final_per_stage"],["divine_tempest_damage_+%_final_while_channelling"],[]],
+    "constantStats":[[],["divine_tempest_hit_damage_+%_final_per_stage",240],["divine_tempest_base_number_of_nearby_enemies_to_zap"],["divine_tempest_ailment_damage_+%_final_per_stage"],[]],
     "description":"Channelling draws in energy around you to repeatedly build up stages, damaging a number of nearby enemies when you do so. Release to unleash a powerful burst of energy in a beam in front of you.",
     "parts":[[],{
         "name":"Release"
@@ -5747,13 +5749,10 @@
       "divine_tempest_hit_damage_+%_final_per_stage":[[{
             "var":"DivineIreStageAfterFirst"
           }]],
-      "divine_tempest_stage_on_hitting_normal_magic_%_chance":[{
-          "name":"NormalEnemyHitMultiplier"
-        }],
       "divine_tempest_damage_+%_final_while_channelling":[[[]]],
       "divine_tempest_ailment_damage_+%_final_per_stage":[[[]]]
     },
-    "stats":[null,null,"divine_tempest_beam_width_+","divine_tempest_stage_on_hitting_rare_unique"],
+    "stats":[null,null,"divine_tempest_beam_width_+"],
     "baseFlags":[],
     "incrementalEffectiveness":0.04280000180006,
     "name":"Divine Ire",
@@ -5978,7 +5977,7 @@
     "stats":["active_skill_minion_movement_velocity_+%_final","holy_relic_nova_life_regeneration_rate_per_minute","holy_relic_nova_minion_life_regeneration_rate_per_second"],
     "qualityStats":{
       "Alternate2":[["holy_relic_cooldown_recovery_+%"]],
-      "Default":[[]],
+      "Default":[["skill_buff_effect_+%"]],
       "Alternate1":[[]]
     },
     "minionList":["HolyLivingRelic"],
@@ -6288,7 +6287,7 @@
         }]
     },
     "stats":[],
-    "constantStats":[[],["offering_skill_effect_duration_per_corpse"],["minion_life_regeneration_rate_per_minute_%_if_blocked_recently",240]],
+    "constantStats":[[],["offering_skill_effect_duration_per_corpse"],["minion_life_regeneration_rate_per_minute_%_if_blocked_recently"]],
     "statDescriptionScope":"offering_skill_stat_descriptions",
     "baseFlags":[],
     "baseMods":[{
@@ -6303,7 +6302,7 @@
   "PowerSiphon":{
     "qualityStats":{
       "Alternate2":[["critical_ailment_dot_multiplier_+"]],
-      "Default":[[]],
+      "Default":[["critical_strike_multiplier_+_per_power_charge"]],
       "Alternate1":[[]]
     },
     "levels":[{
@@ -6445,8 +6444,8 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "stats":[null,"kill_enemy_on_hit_if_under_10%_life"],
-    "constantStats":[["chance_to_gain_power_charge_on_rare_or_unique_enemy_hit_%"],["critical_strike_multiplier_+_per_power_charge"],["critical_strike_chance_+%_per_power_charge"]],
+    "stats":["soulfeast_number_of_secondary_projectiles","kill_enemy_on_hit_if_under_10%_life"],
+    "constantStats":[["chance_to_gain_power_charge_on_rare_or_unique_enemy_hit_%"],[],["critical_strike_chance_+%_final_per_power_charge"]],
     "weaponTypes":[],
     "baseFlags":[],
     "skillTypes":[],
@@ -7107,7 +7106,7 @@
   },
   "VaalColdSnap":{
     "qualityStats":{
-      "Default":[[]]
+      "Default":[["chill_effect_+%_final"]]
     },
     "levels":[{
         "3":39.666669460634,
@@ -7273,7 +7272,7 @@
       }],
     "baseEffectiveness":3.1500000953674,
     "constantStats":[[],["base_chance_to_freeze_%"],["chance_to_gain_frenzy_charge_on_killing_enemy_affected_by_cold_snap_ground_%"]],
-    "stats":[null,null,null,"chill_effect_+%",null,null,null,"vaal_cold_snap_gain_frenzy_charge_every_second_if_enemy_in_aura"],
+    "stats":[null,null,null,null,null,null,"vaal_cold_snap_gain_frenzy_charge_every_second_if_enemy_in_aura"],
     "baseMods":[{
         "value":[]
       },{
@@ -7298,7 +7297,7 @@
   },
   "IceNova":{
     "qualityStats":{
-      "Alternate3":[[]],
+      "Alternate3":[["chill_effect_+%"]],
       "Alternate2":[[]],
       "Default":[[]],
       "Alternate1":[["damage_+%_vs_chilled_enemies"]]
@@ -7307,7 +7306,9 @@
         "statInterpolation":[],
         "cost":[]
       },{
+        "2":1.261,
         "statInterpolation":[],
+        "damageEffectiveness":2.3,
         "cost":[]
       },{
         "statInterpolation":[],
@@ -7424,14 +7425,13 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "baseEffectiveness":1.6555000543594,
+    "baseEffectiveness":2.15,
     "statMap":{
       "damage_+%_vs_chilled_enemies":[[{
             "var":"Chilled"
           }]]
     },
-    "constantStats":[["ice_nova_number_of_frost_bolts_to_cast_on"],["active_skill_area_of_effect_+%_final_when_cast_on_frostbolt"]],
-    "stats":[null,null,"minimum_added_cold_damage_vs_chilled_enemies","maximum_added_cold_damage_vs_chilled_enemies"],
+    "stats":[],
     "baseMods":[{
         "value":[]
       }],
@@ -11141,8 +11141,7 @@
         "value":[]
       },{
         "value":{
-          "key":"strikeInterval",
-          "value":0.15
+          "key":"strikeInterval"
         }
       },{
         "value":{
@@ -11150,7 +11149,7 @@
         }
       },{
         "value":[]
-      }],
+      },[]],
     "constantStats":[["ball_lightning_projectile_speed_and_hit_frequency_+%_final"]],
     "description":"Fires a slow-moving projectile that periodically damages enemies in an area around it with bolts of lightning.",
     "parts":[{
@@ -11850,7 +11849,7 @@
   },
   "VaalArcChain":{
     "qualityStats":{
-      "Default":[["lightning_ailment_duration_+%"]]
+      "Default":[[]]
     },
     "levels":[{
         "cost":[],
@@ -11980,7 +11979,7 @@
             "stat":"ChainRemaining"
           }]]
     },
-    "constantStats":[[],[],[],["arc_damage_+%_final_for_each_remaining_chain"],["arc_chain_distance"],[]],
+    "constantStats":[[],[],["lightning_ailment_duration_+%"],["arc_damage_+%_final_for_each_remaining_chain"],["arc_chain_distance"],[]],
     "stats":[null,null,null,null,"disable_visual_hit_effect"],
     "baseMods":[{
         "1":[],
@@ -12180,163 +12179,123 @@
         "name":"Explosions"
       }],
     "levels":[{
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.408,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.416,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.424,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.432,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.439,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.447,
-        "statInterpolation":[],
         "cost":[]
       },{
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.463,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.471,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.479,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.487,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.495,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.503,
-        "statInterpolation":[],
         "cost":[]
       },{
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.518,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.526,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.534,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.542,
-        "statInterpolation":[],
         "cost":[]
       },{
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.558,
-        "statInterpolation":[],
         "cost":[]
       },{
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.574,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.582,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.589,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.597,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.605,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.613,
-        "statInterpolation":[],
         "cost":[]
       },{
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.629,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.633,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.637,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.641,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.645,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.649,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.653,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.657,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.661,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.664,
-        "statInterpolation":[],
         "cost":[]
       },{
         "baseMultiplier":1.668,
-        "statInterpolation":[],
         "cost":[]
       }],
     "qualityStats":{
       "Alternate2":[["kinetic_blast_projectiles_gain_%_aoe_after_forking"]],
-      "Default":[[]],
+      "Default":[["cluster_burst_spawn_amount"]],
       "Alternate1":[[]]
     },
     "statMap":{
@@ -12345,7 +12304,7 @@
             "stat":"ForkedCount"
           }]]
     },
-    "constantStats":[["cluster_burst_spawn_amount"],["active_skill_area_damage_+%_final"]],
+    "constantStats":[[],["active_skill_area_damage_+%_final"]],
     "stats":[],
     "baseMods":[{
         "value":[]
@@ -12360,7 +12319,7 @@
     "qualityStats":{
       "Alternate2":[[]],
       "Default":[[]],
-      "Alternate1":[["soulfeast_number_of_secondary_projectiles"]]
+      "Alternate1":[[]]
     },
     "baseMods":[{
         "value":[]
@@ -12926,10 +12885,7 @@
       "flameblast_maximum_stages":[{
           "name":"Multiplier:FlameblastMaxStages"
         }],
-      "vaal_flameblast_radius_+_per_stage":[{
-          "1":[],
-          "value":[]
-        }],
+      "vaal_flameblast_radius_+_per_stage":[[[]]],
       "base_skill_show_average_damage_instead_of_dps":[],
       "charged_blast_spell_damage_+%_final_per_stack":[[[]]]
     },
@@ -12949,7 +12905,7 @@
   "LightningConduit":{
     "qualityStats":{
       "Alternate2":[["destroy_corpses_on_kill_%_chance"]],
-      "Default":[[]],
+      "Default":[["energy_release_damage_+%_final_per_5%_increased_damage_taken_from_shock_on_target"]],
       "Alternate1":[["base_critical_strike_multiplier_+"]]
     },
     "levels":[{
@@ -13080,7 +13036,7 @@
           "keywordFlags":262144
         }]
     },
-    "stats":[null,null,"energy_release_damage_+%_final_per_5%_increased_damage_taken_from_shock_on_target"],
+    "stats":[],
     "baseMods":[{
         "value":[]
       },{
@@ -13229,7 +13185,7 @@
           "name":"FreezingPulseRamp"
         }]
     },
-    "stats":[null,null,null,null,null,"display_what_freezing_pulse_does"],
+    "stats":[null,null,null,null,"display_what_freezing_pulse_does"],
     "skillTypes":[],
     "baseFlags":[],
     "incrementalEffectiveness":0.046000000089407,
@@ -13387,7 +13343,7 @@
     "qualityStats":{
       "Alternate2":[["critical_link_grants_accuracy_rating_+%"]],
       "Default":[[]],
-      "Alternate1":[["skill_buff_effect_+%"]]
+      "Alternate1":[[]]
     },
     "levels":[{
         "cost":{
@@ -15803,7 +15759,7 @@
     "stats":[null,null,null,null,null,null,"display_projectiles_chain_when_impacting_ground"],
     "baseMods":[{
         "value":[]
-      }],
+      },[]],
     "skillTypes":[],
     "baseFlags":[],
     "name":"Rolling Magma",
@@ -16038,11 +15994,7 @@
     "statMap":{
       "active_skill_ailment_damage_+%_final":[[]],
       "area_of_effect_+%_per_removable_power_frenzy_or_endurance_charge":[[{
-            "var":"RemovableEnduranceCharge"
-          }],[{
-            "var":"RemovableFrenzyCharge"
-          }],[{
-            "var":"RemovablePowerCharge"
+            "var":"RemovableTotalCharges"
           }]]
     },
     "constantStats":[["area_of_effect_+%_per_removable_power_frenzy_or_endurance_charge"],["active_skill_ailment_damage_+%_final"]],
@@ -16497,10 +16449,7 @@
   },
   "Arc":{
     "qualityStats":{
-      "Alternate3":[[]],
-      "Alternate2":[["damage_+%_per_chain"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -16627,8 +16576,8 @@
     "statMap":{
       "arc_damage_+%_final_for_each_remaining_chain":[[[]]]
     },
-    "stats":[null,null,null,null,"arc_enhanced_behaviour"],
-    "constantStats":[[],[],[]],
+    "stats":[null,null,null,"arc_enhanced_behaviour"],
+    "constantStats":[[],[]],
     "skillTypes":[],
     "baseFlags":[],
     "incrementalEffectiveness":0.039500001817942,
@@ -16766,10 +16715,7 @@
             "var":"VaalFlameblastStage"
           }]],
       "charged_blast_spell_damage_+%_final_per_stack":[[[]]],
-      "vaal_flameblast_radius_+_per_stage":[{
-          "1":[],
-          "value":[]
-        }]
+      "vaal_flameblast_radius_+_per_stage":[[[]]]
     },
     "constantStats":[[],[],[],[]],
     "stats":[],
@@ -16797,7 +16743,6 @@
       },{
         "critChance":6.5,
         "statInterpolation":[],
-        "damageEffectiveness":2.3,
         "cost":[]
       },{
         "statInterpolation":[],
@@ -18151,41 +18096,18 @@
     "description":"Creates a Void Sphere which Hinders enemies in an area around it, with the debuff being stronger on enemies closer to the sphere. It also regularly releases pulses of area damage. The Void Sphere will consume the corpses of any enemies which die in its area. Can only have one Void Sphere at a time."
   },
   "MagmaSigil":{
+    "stats":[],
     "qualityStats":{
       "Alternate2":[[]],
       "Default":[[]],
       "Alternate1":[[]]
     },
-    "baseMods":[{
-        "1":{
-          "skillPartList":[]
-        },
-        "value":[]
-      },[[]],{
-        "value":[]
-      },{
-        "1":{
-          "var":"PenanceBrandStageAfterFirst"
-        },
-        "value":[]
-      },{
-        "1":[],
-        "name":"Multiplier:PenanceBrandMaxStages"
-      }],
-    "constantStats":[[],[],[],["magma_brand_ailment_damage_+%_final_per_additional_pustule"],["magma_brand_hit_damage_+%_final_per_additional_pustule"],[],[]],
-    "description":"Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, adding energy to the branded enemy. Each activation, energy spreads from each energised enemy to an enemy in range which is not energised by the brand. If the branded enemy has 20 energy, each activation will instead deal a pulse of area damage. Energy explodes when the energised enemy dies or the brand is removed, dealing damage in an area.",
-    "parts":[{
-        "name":"Energy Explosion"
-      },{
-        "name":"Max Explosion per Brand"
-      },{
-        "name":"Max Stages Energy Pulsing"
-      }],
     "levels":[{
         "statInterpolation":[],
         "cost":[]
       },{
         "statInterpolation":[],
+        "damageEffectiveness":5.7,
         "cost":[]
       },{
         "statInterpolation":[],
@@ -18302,17 +18224,22 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "baseEffectiveness":0.63830000162125,
+    "baseEffectiveness":4.723,
     "statMap":{
-      "penance_brand_additional_descriptions_boolean":[],
-      "magma_brand_ailment_damage_+%_final_per_additional_pustule":[[[]]],
       "base_skill_show_average_damage_instead_of_dps":[],
-      "magma_brand_hit_damage_+%_final_per_additional_pustule":[[[]]]
+      "active_skill_ailment_damage_+%_final":[[]]
     },
-    "stats":[null,null,"penance_brand_base_spread_radius_+",null,null,null,null,"penance_brand_additional_descriptions_boolean"],
+    "constantStats":[[],[],[],[],[],[]],
+    "baseMods":[{
+        "value":[]
+      },{
+        "name":"Multiplier:PenanceBrandMaxEnergy"
+      }],
+    "skillTypes":[],
     "baseFlags":[],
+    "incrementalEffectiveness":0.04675,
     "name":"Penance Brand",
-    "skillTypes":[]
+    "description":"Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, adding energy to the branded enemy. Each activation, energy spreads from each energised enemy to an enemy in range which is not energised by the brand. If the branded enemy has 20 energy, each activation will instead deal a pulse of area damage. Energy explodes when the energised enemy dies or the brand is removed, dealing damage in an area."
   },
   "Spark":{
     "qualityStats":{
@@ -18745,7 +18672,7 @@
     "qualityStats":{
       "Alternate3":[[]],
       "Alternate2":[["intensity_loss_frequency_while_moving_+%"]],
-      "Default":[[]],
+      "Default":[["disintegrate_damage_+%_final_per_intensity"]],
       "Alternate1":[[]]
     },
     "levels":[{
@@ -18880,7 +18807,7 @@
           "value":[]
         }]
     },
-    "constantStats":[["disintegrate_base_radius_+_per_intensify"],["disintegrate_damage_+%_final_per_intensity"]],
+    "constantStats":[["disintegrate_base_radius_+_per_intensify"],[]],
     "stats":[null,null,null,"display_base_intensity_loss","active_skill_display_does_intensity_stuff"],
     "baseMods":[{
         "value":[]
@@ -19904,46 +19831,11 @@
       "Alternate1":[[]]
     },
     "levels":[{
-        "3":67.166671664765,
         "cost":[],
         "statInterpolation":[]
       },{
         "2":0.60000002384186,
-        "3":65.500002576659,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "3":63.666666977108,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "3":60.33333277454,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "3":59.166667194416,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "3":58.166668125739,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "3":56.166666014741,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "3":55.166666946063,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "3":54.166667877386,
+        "3":72.33333277454,
         "cost":[],
         "statInterpolation":[]
       },{
@@ -19956,107 +19848,124 @@
         "cost":[],
         "statInterpolation":[]
       },{
-        "3":50.33333414048,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "3":49.333335071802,
         "cost":[],
         "statInterpolation":[]
       },{
         "cost":[],
         "statInterpolation":[]
       },{
-        "3":47.666665983697,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "3":72.000002235174,
         "cost":[],
         "statInterpolation":[]
       },{
         "cost":[],
         "statInterpolation":[]
       },{
-        "3":46.000000869234,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "3":45.166668312003,
+        "3":71.666669212282,
         "cost":[],
         "statInterpolation":[]
       },{
         "cost":[],
         "statInterpolation":[]
       },{
-        "3":43.499999223898,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "3":42.666666666667,
         "cost":[],
         "statInterpolation":[]
       },{
         "cost":[],
         "statInterpolation":[]
       },{
-        "3":41.166668063651,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "3":40.500002017866,
         "cost":[],
         "statInterpolation":[]
       },{
         "cost":[],
         "statInterpolation":[]
       },{
-        "3":38.999999441206,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "3":38.333333395422,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "3":38.000000372529,
         "cost":[],
         "statInterpolation":[]
       },{
         "cost":[],
         "statInterpolation":[]
       },{
-        "3":37.333334326744,
         "cost":[],
         "statInterpolation":[]
       },{
         "cost":[],
         "statInterpolation":[]
       },{
-        "3":36.666668280959,
         "cost":[],
         "statInterpolation":[]
       },{
         "cost":[],
         "statInterpolation":[]
       },{
-        "3":36.000002235174,
+        "3":71.330000869234,
         "cost":[],
         "statInterpolation":[]
       },{
         "cost":[],
         "statInterpolation":[]
       },{
-        "3":35.333332215746,
         "cost":[],
         "statInterpolation":[]
       },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "3":71.000002235174,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "3":70.666669212282,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "3":70.330000869234,
         "cost":[],
         "statInterpolation":[]
       }],
-    "baseEffectiveness":1.4085999727249,
+    "baseEffectiveness":1.6505,
     "statMap":{
       "active_skill_damage_+%_when_cast_on_frostbolt":[[{
             "var":"CastOnFrostbolt"
           }]]
     },
-    "constantStats":[[],["frost_bolt_nova_number_of_frost_bolts_to_detonate"],[],[]],
+    "constantStats":[[],[]],
     "baseMods":[{
         "value":[]
       },{
@@ -20064,7 +19973,7 @@
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.064499996602535,
+    "incrementalEffectiveness":0.05532,
     "name":"Vortex",
     "description":"An icy blast explodes around the caster, dealing cold damage to enemies, and leaving behind a whirling vortex which deals cold damage over time and chills enemies caught in it. If the caster targets near their Frostbolt projectiles, it will explode from a number of those projectiles instead, destroying them."
   }
