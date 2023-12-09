@@ -53,7 +53,7 @@ jobs:
       run: |
         poetry install
         poetry run pypoe_schema_import -a stable
-        poetry run repoe all -f "http://patchcdn.pathofexile.com/$(<version.txt)/"
+        poetry run repoe all -f "https://patch.poecdn.com/$(<version.txt)/"
       working-directory: RePoE/RePoE
     - name: generate index.html
       run: find -type d -exec tree {} -H '.' --dirsfirst -F -L 1 -T "RePoE - Game version $(cat ../version.txt)" -I index.html --noreport --charset utf-8 -o {}/index.html \;
