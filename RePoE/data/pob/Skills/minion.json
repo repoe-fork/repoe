@@ -39,7 +39,34 @@
     "skillTypes":[],
     "castTime":0.75,
     "name":"Absolution",
-    "description":"Damages enemies in an area, applying a debuff for a short duration. If a non-unique enemy dies while affected by the debuff, the enemy's corpse will be consumed to summon a Sentinel of Absolution for a longer secondary duration, or to refresh the duration and life of an existing one instead if you have the maximum number of them."
+    "description":"Damages enemies in an area, applying a debuff for a short duration. If a non-unique enemy dies while affected by the debuff, the corpse will be consumed to summon a Sentinel of Absolution for a secondary duration, or to refresh the duration and life of an existing one instead if you have the maximum number of them."
+  },
+  "SiegebreakerCausticGround":{
+    "qualityStats":[],
+    "levels":[{
+        "cost":[]
+      }],
+    "stats":[],
+    "baseMods":[{
+        "1":{
+          "type":"PerStat",
+          "stat":"Life",
+          "div":5
+        },
+        "value":{
+          "key":"ChaosDot"
+        }
+      },{
+        "value":{
+          "key":"dotIsArea"
+        }
+      },{
+        "type":"FLAG",
+        "name":"dotIsCausticGround"
+      }],
+    "skillTypes":[],
+    "name":"Caustic Ground",
+    "baseFlags":[]
   },
   "VaalDominationSunder":{
     "levels":[{
@@ -79,7 +106,6 @@
         "statInterpolation":[]
       },{
         "3":-23,
-        "critChance":5,
         "damageEffectiveness":2.5,
         "statInterpolation":[],
         "cooldown":0.3
@@ -248,9 +274,18 @@
     "name":"Whirl",
     "baseFlags":[]
   },
+  "BlinkMirrorArrowMelee":{
+    "levels":[{
+        "damageEffectiveness":1.75
+      }],
+    "stats":["skill_can_fire_arrows","skill_can_fire_wand_projectiles"],
+    "baseFlags":[],
+    "skillTypes":[],
+    "name":"Projectile Attack"
+  },
   "MeleeAtAnimationSpeedUnique":{
     "levels":[[]],
-    "stats":["skill_can_fire_arrows","skill_can_fire_wand_projectiles","action_attack_or_cast_time_uses_animation_length","projectile_uses_contact_position","use_scaled_contact_offset"],
+    "stats":[null,null,"action_attack_or_cast_time_uses_animation_length","projectile_uses_contact_position","use_scaled_contact_offset"],
     "skillTypes":[],
     "baseFlags":[]
   },
@@ -401,19 +436,13 @@
       }],
     "stats":[],
     "baseMods":[{
-        "1":{
-          "type":"PerStat",
-          "stat":"Life"
-        },
+        "1":[],
         "value":{
           "key":"FireDot"
         }
       },{
-        "value":{
-          "key":"dotIsArea"
-        }
+        "value":[]
       },{
-        "type":"FLAG",
         "name":"dotIsBurningGround"
       }],
     "skillTypes":[],
@@ -477,13 +506,13 @@
     "baseMods":[{
         "value":[]
       }],
-    "constantStats":[[]],
+    "constantStats":[[],["active_skill_base_area_of_effect_radius"]],
     "stats":[null,"disable_attack_repeats"],
     "baseFlags":[],
     "skillTypes":[],
     "weaponTypes":[],
     "name":"Leap Slam",
-    "description":"Jump into the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff. Cannot be supported by Multistrike."
+    "description":"Jump through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff. Cannot be supported by Multistrike."
   },
   "SummonedRhoaShieldCharge":{
     "levels":[[]],
@@ -577,23 +606,11 @@
     "skillTypes":[]
   },
   "ZombieSlam":{
-    "levels":[{
-        "1":-30,
-        "statInterpolation":[]
-      },{
-        "1":-28,
-        "statInterpolation":[]
-      },{
-        "1":-26,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[],
+    "levels":[[],[],[],[],{
         "levelRequirement":45
       }],
-    "stats":[null,null,null,"global_always_hit"],
-    "constantStats":[[]],
+    "stats":[null,"global_always_hit"],
+    "constantStats":[[],[]],
     "baseMods":[{
         "value":{
           "key":"radius"
@@ -606,7 +623,6 @@
     "levels":[[]],
     "stats":[],
     "skillTypes":[],
-    "name":"Projectile Attack",
     "constantStats":[[null,145]],
     "baseFlags":[]
   },
@@ -704,25 +720,19 @@
     "name":"Immolate",
     "description":"Summons a totem that fires a stream of flame at nearby enemies."
   },
-  "SiegebreakerCausticGround":{
-    "qualityStats":[],
+  "SumonRagingSpiritMelee":{
     "levels":[{
-        "cost":[]
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
       }],
     "stats":[],
-    "baseMods":[{
-        "1":[],
-        "value":{
-          "key":"ChaosDot"
-        }
-      },{
-        "value":[]
-      },{
-        "name":"dotIsCausticGround"
-      }],
-    "skillTypes":[],
-    "name":"Caustic Ground",
-    "baseFlags":[]
+    "baseFlags":[],
+    "skillTypes":[]
   },
   "MinionInstability":{
     "levels":[{
@@ -994,8 +1004,8 @@
         "baseMultiplier":0.4,
         "cooldown":7.5
       }],
-    "stats":[null,null,"distribute_additional_projectiles_over_contact_points"],
-    "constantStats":[[],["projectile_minimum_range"],[],[],["main_hand_base_maximum_attack_distance"],[]],
+    "stats":[null,null,"distribute_projectiles_over_contact_points"],
+    "constantStats":[[],["projectile_minimum_range"],["base_number_of_projectiles"],[],["main_hand_base_maximum_attack_distance"],[]],
     "baseFlags":[],
     "skillTypes":[],
     "name":"Mortar"
@@ -1046,7 +1056,7 @@
     "baseFlags":[],
     "skillTypes":[],
     "weaponTypes":[],
-    "description":"Channel this skill to move towards a targeted location while spinning, building up stages while constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back."
+    "description":"Channel this skill to move towards a targeted location while spinning constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back."
   },
   "SkeletonMinionProjectileFire":{
     "levels":[{

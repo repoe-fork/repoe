@@ -1,11 +1,10 @@
 {
   "SupportIncreasedBurningDamage":{
     "qualityStats":{
-      "Alternate2":[["non_damaging_ailment_effect_+%",2]],
-      "Default":[["burn_damage_+%",0.5]],
-      "Alternate1":[["ignite_duration_+%",1]]
+      "Default":[["burn_damage_+%",0.5]]
     },
     "support":true,
+    "color":1,
     "excludeSkillTypes":[],
     "stats":["support_burning_damage_+%_final"],
     "statDescriptionScope":"gem_stat_descriptions",
@@ -164,9 +163,7 @@
   },
   "AncestralSlamSupport":{
     "qualityStats":{
-      "Alternate2":[["ancestral_slam_stun_threshold_reduction_+%"]],
-      "Default":[["base_skill_area_of_effect_+%"]],
-      "Alternate1":[["attack_speed_+%",-1],["damage_+%",3]]
+      "Default":[["base_skill_area_of_effect_+%"]]
     },
     "excludeSkillTypes":[null,null,null,106],
     "levels":[{
@@ -334,10 +331,6 @@
           "type":"BASE",
           "name":"FistOfWarHitMultiplier"
         }],
-      "ancestral_slam_stun_threshold_reduction_+%":[{
-          "type":"INC",
-          "name":"EnemyStunThreshold"
-        }],
       "ancestral_slam_interval_duration":{
         "1":{
           "name":"FistOfWarCooldown"
@@ -355,16 +348,15 @@
   },
   "SupportRuthless":{
     "qualityStats":{
-      "Alternate2":[[],["support_ruthless_big_hit_damage_+%_final"]],
-      "Default":[["attack_damage_+%"]],
-      "Alternate1":[["base_stun_duration_+%"]]
+      "Default":[["attack_damage_+%"]]
     },
     "excludeSkillTypes":[],
-    "stats":[null,"support_ruthless_blow_ailment_damage_from_melee_hits_+%_final"],
+    "stats":["support_ruthless_big_hit_damage_+%_final","support_ruthless_blow_ailment_damage_from_melee_hits_+%_final"],
     "levels":[{
         "statInterpolation":[]
       },{
-        "statInterpolation":[]
+        "statInterpolation":[],
+        "levelRequirement":2
       },{
         "statInterpolation":[],
         "levelRequirement":4
@@ -446,7 +438,7 @@
       },{
         "statInterpolation":[]
       }],
-    "constantStats":[["support_ruthless_big_hit_max_count"],["support_ruthless_big_hit_stun_base_duration_override_ms",800]],
+    "constantStats":[["support_ruthless_big_hit_max_count",3],["support_ruthless_big_hit_stun_base_duration_override_ms",800]],
     "statMap":{
       "support_ruthless_blow_ailment_damage_from_melee_hits_+%_final":[{
           "flags":256,
@@ -568,9 +560,7 @@
   },
   "SupportSpiritStrike":{
     "qualityStats":{
-      "Alternate2":[["melee_range_+",0.2]],
-      "Default":[["melee_damage_+%"]],
-      "Alternate1":[[]]
+      "Default":[["extra_target_targeting_distance_+%",0.75]]
     },
     "excludeSkillTypes":[],
     "levels":[{
@@ -629,6 +619,7 @@
         "1":-2,
         "statInterpolation":[]
       },{
+        "1":-1,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -694,9 +685,7 @@
   },
   "SupportLifeGainOnHit":{
     "qualityStats":{
-      "Alternate2":[["mana_gain_per_target",0.1]],
-      "Default":[["base_life_gain_per_target"]],
-      "Alternate1":[["damage_+%_when_on_full_life"]]
+      "Default":[["base_life_gain_per_target"]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -869,9 +858,7 @@
         "statInterpolation":[]
       }],
     "qualityStats":{
-      "Alternate2":[["damage_vs_enemies_on_low_life_+%",1.5]],
-      "Default":[["damage_+%_when_on_low_life"]],
-      "Alternate1":[["accuracy_rating_+%_when_on_low_life"]]
+      "Default":[["damage_+%_when_on_low_life"]]
     },
     "baseEffectiveness":0.11999999731779,
     "excludeSkillTypes":[],
@@ -964,9 +951,7 @@
   },
   "SupportBloodMagic":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[["aura_effect_+%",0.25]],
-      "Alternate1":[["base_life_reservation_efficiency_+%"]]
+      "Default":[["aura_effect_+%",0.25]]
     },
     "excludeSkillTypes":[],
     "stats":[null,"base_skill_reserve_life_instead_of_mana"],
@@ -1063,12 +1048,10 @@
   },
   "SupportGuardiansBlessingMinion":{
     "qualityStats":{
-      "Alternate2":[["support_guardians_blessing_minion_physical_damage_%_of_maximum_life_and_ES_taken_per_minute"]],
-      "Default":[["dummy_stat_display_nothing"]],
-      "Alternate1":[["minion_life_regeneration_rate_per_minute_%"]]
+      "Default":[["dummy_stat_display_nothing"]]
     },
     "excludeSkillTypes":[128],
-    "stats":[null,"support_guardians_blessing_summoned_minions_are_guardians_blessing_minions"],
+    "stats":["support_guardians_blessing_minion_physical_damage_%_of_maximum_life_and_ES_taken_per_minute","support_guardians_blessing_summoned_minions_are_guardians_blessing_minions"],
     "levels":[{
         "1":480,
         "statInterpolation":[]
@@ -1205,14 +1188,13 @@
           }
         }]
     },
-    "description":"Must support both a skill that creates minions which can be damaged, and\n an aura skill that creates permanent auras around you.\nCannot support triggered skills, banner skills or stance skills. ",
+    "description":"Must support both a skill that creates minions which can be damaged, and\n an aura skill that creates permanent auras around you.\nCannot support triggered skills, banner skills or stance skills.",
     "name":"Guardian's Blessing",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
   "SupportAdditionalLevel":{
     "qualityStats":{
-      "Alternate1":[["local_gem_str_requirement_+%"]],
       "Default":[["local_gem_experience_gain_+%"]]
     },
     "excludeSkillTypes":[126],
@@ -1244,12 +1226,6 @@
     "requireSkillTypes":[]
   },
   "SupportRangedAttackTotem":{
-    "qualityStats":{
-      "Alternate3":[["projectile_return_%_chance"]],
-      "Alternate2":[["totem_range_+%"]],
-      "Default":[["summon_totem_cast_speed_+%"]],
-      "Alternate1":[["totem_duration_+%"]]
-    },
     "levels":[{
         "statInterpolation":[]
       },{
@@ -1344,16 +1320,20 @@
       },{
         "statInterpolation":[]
       }],
-    "excludeSkillTypes":[],
-    "constantStats":[["base_totem_duration",8000],["base_totem_range"],["support_attack_totem_attack_speed_+%_final",-50],["attack_skills_additional_ballista_totems_allowed"],["terrain_arrow_attachment_chance_reduction_+%",200]],
-    "stats":["support_totem_damage_+%_final","totem_support_gem_level","base_skill_is_totemified","disable_skill_if_melee_attack","is_ranged_attack_totem","is_totem"],
+    "qualityStats":{
+      "Default":[["summon_totem_cast_speed_+%"]]
+    },
     "statMap":{
       "support_attack_totem_attack_speed_+%_final":[{
           "name":"Speed"
         }],
       "support_totem_damage_+%_final":[[]]
     },
+    "excludeSkillTypes":[],
+    "constantStats":[["base_totem_duration",8000],["base_totem_range"],["support_attack_totem_attack_speed_+%_final",-50],["attack_skills_additional_ballista_totems_allowed"],["terrain_arrow_attachment_chance_reduction_+%",200]],
+    "stats":["support_totem_damage_+%_final","totem_support_gem_level","base_skill_is_totemified","disable_skill_if_melee_attack","is_ranged_attack_totem","is_totem"],
     "addFlags":[],
+    "weaponTypes":[],
     "description":"Supports any bow or wand attack skill, causing it to summon a ballista totem that uses the skill for you.",
     "name":"Ballista Totem",
     "addSkillTypes":[null,null,null,null,125],
@@ -1361,9 +1341,7 @@
   },
   "SupportFlamewood":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["totem_life_+%"]]
+      "Default":[["totem_life_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_flamewood_totems_trigger_infernal_bolt_when_hit"],
@@ -1378,9 +1356,7 @@
   },
   "SupportBluntWeapon":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[["melee_damage_+%"]]
     },
     "levels":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     "excludeSkillTypes":[],
@@ -1478,9 +1454,7 @@
   },
   "SupportSpellTotem":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[]
@@ -1595,13 +1569,12 @@
   },
   "SupportChanceToBleed":{
     "qualityStats":{
-      "Alternate2":[["added_damage_+%_final"]],
-      "Default":[["bleeding_damage_+%"]],
-      "Alternate1":[["base_bleed_duration_+%"]]
+      "Default":[["bleeding_damage_+%"]]
     },
     "baseEffectiveness":0.27500000596046,
     "excludeSkillTypes":[],
     "levels":[{
+        "2":1.5,
         "statInterpolation":[]
       },{
         "1":0.80000001192093,
@@ -1703,9 +1676,7 @@
   },
   "SupportFirePenetration":{
     "qualityStats":{
-      "Alternate2":[["base_chance_to_destroy_corpse_on_kill_%_vs_ignited"]],
-      "Default":[["fire_damage_+%"]],
-      "Alternate1":[[]]
+      "Default":[["fire_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["base_reduce_enemy_fire_resistance_%"],
@@ -1797,12 +1768,10 @@
   },
   "SupportBehead":{
     "qualityStats":{
-      "Alternate2":[["support_executioner_refresh_stolen_mod_on_hitting_rare_or_unique_monster_chance_%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[["damage_vs_enemies_on_low_life_+%"]]
     },
     "excludeSkillTypes":[],
-    "stats":[null,"support_executioner_damage_vs_enemies_on_low_life_+%_final"],
+    "stats":["melee_range_+","support_executioner_damage_vs_enemies_on_low_life_+%_final"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -1884,7 +1853,7 @@
       },{
         "statInterpolation":[]
       }],
-    "constantStats":[["support_executioner_gain_one_rare_monster_mod_on_kill_ms",20000],[]],
+    "constantStats":[["support_executioner_gain_one_rare_monster_mod_on_kill_ms",20000],["support_executioner_refresh_stolen_mod_on_hitting_rare_or_unique_monster_chance_%"]],
     "statMap":{
       "support_executioner_damage_vs_enemies_on_low_life_+%_final":[{
           "1":{
@@ -1901,9 +1870,7 @@
   },
   "SupportMeleeDamageOnFullLife":{
     "qualityStats":{
-      "Alternate2":[["damage_+%_vs_enemies_on_full_life"]],
-      "Default":[[]],
-      "Alternate1":[["base_life_leech_from_attack_damage_permyriad",2.5]]
+      "Default":[["damage_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_damage_while_on_full_life_+%_final"],
@@ -2000,9 +1967,7 @@
   },
   "SupportEarthbreaker":{
     "qualityStats":{
-      "Alternate2":[["ancestor_totem_parent_activation_range_+%"]],
-      "Default":[["totem_damage_+%"]],
-      "Alternate1":[["ancestor_totem_buff_effect_+%"]]
+      "Default":[["totem_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "levels":[{
@@ -2090,6 +2055,7 @@
     "constantStats":[[null,12000],[],["ancestor_totem_parent_activiation_range"],[],["support_ancestor_slam_totem_attack_speed_+%_final"],["support_skill_totem_type_override"]],
     "statMap":{
       "ancestor_totem_grants_owner_area_of_effect_+%_with_melee_skills":[{
+          "type":"INC",
           "name":"AreaOfEffect"
         }],
       "support_ancestor_slam_totem_attack_speed_+%_final":[[]],
@@ -2103,9 +2069,7 @@
   },
   "SupportMultiTotem":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["support_additional_totem_damage_+%_final","summon_2_totems"],
@@ -2200,6 +2164,51 @@
     "requireSkillTypes":[]
   },
   "SupportCorruptingCry":{
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "excludeSkillTypes":[],
+    "incrementalEffectiveness":0.050000000745058,
+    "baseMods":[{
+        "value":{
+          "key":"debuff"
+        }
+      },{
+        "type":"FLAG",
+        "name":"dotIsCorruptingBlood"
+      },{
+        "name":"Multiplier:CorruptingCryMaxStages"
+      },{
+        "1":{
+          "type":"Multiplier",
+          "var":"CorruptingCryStageAfterFirst"
+        },
+        "keywordFlags":16777216
+      }],
+    "constantStats":[["support_corrupting_cry_warcry_and_first_exerted_attack_applies_corrupted_blood_for_X_ms",2000],["support_corrupting_cry_area_of_effect_+%_final"]],
+    "description":"Supports warcry skills. Cannot modify the skills of minions.",
+    "baseEffectiveness":0.64999997615814,
+    "statMap":{
+      "support_corrupting_cry_warcry_applies_X_stacks_of_corrupted_blood":[{
+          "name":"CorruptingCryStagesFromWarcry"
+        }],
+      "support_corrupting_cry_exerted_attack_applies_X_stacks_of_corrupted_blood_on_first_hit":[{
+          "flags":65536,
+          "name":"CorruptingCryStagesFromExerted"
+        }],
+      "support_corrupting_cry_area_of_effect_+%_final":[[]],
+      "support_corrupting_cry_corrupted_blood_base_physical_damage_to_deal_per_minute":[{
+          "value":{
+            "key":"PhysicalDot"
+          }
+        }],
+      "support_corrupting_cry_warcry_and_first_exerted_attack_applies_corrupted_blood_for_X_ms":[{
+          "value":{
+            "key":"durationSecondary"
+          }
+        }]
+    },
+    "stats":["support_corrupting_cry_corrupted_blood_base_physical_damage_to_deal_per_minute","support_corrupting_cry_warcry_applies_X_stacks_of_corrupted_blood","support_corrupting_cry_exerted_attack_applies_X_stacks_of_corrupted_blood_on_first_hit","base_skill_cost_life_instead_of_mana"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -2282,55 +2291,8 @@
       },{
         "statInterpolation":[]
       }],
-    "qualityStats":{
-      "Alternate2":[["base_life_cost_+%",-0.5]],
-      "Default":[[]],
-      "Alternate1":[["skill_effect_duration_+%"]]
-    },
-    "baseEffectiveness":0.64999997615814,
-    "excludeSkillTypes":[],
-    "constantStats":[["support_corrupting_cry_warcry_and_first_exerted_attack_applies_corrupted_blood_for_X_ms",2000],["support_corrupting_cry_area_of_effect_+%_final"]],
-    "stats":["support_corrupting_cry_corrupted_blood_base_physical_damage_to_deal_per_minute","support_corrupting_cry_warcry_applies_X_stacks_of_corrupted_blood","support_corrupting_cry_exerted_attack_applies_X_stacks_of_corrupted_blood_on_first_hit","base_skill_cost_life_instead_of_mana"],
-    "statMap":{
-      "support_corrupting_cry_warcry_applies_X_stacks_of_corrupted_blood":[{
-          "name":"CorruptingCryStagesFromWarcry"
-        }],
-      "support_corrupting_cry_exerted_attack_applies_X_stacks_of_corrupted_blood_on_first_hit":[{
-          "flags":65536,
-          "name":"CorruptingCryStagesFromExerted"
-        }],
-      "support_corrupting_cry_area_of_effect_+%_final":[[]],
-      "support_corrupting_cry_corrupted_blood_base_physical_damage_to_deal_per_minute":[{
-          "value":{
-            "key":"PhysicalDot"
-          }
-        }],
-      "support_corrupting_cry_warcry_and_first_exerted_attack_applies_corrupted_blood_for_X_ms":[{
-          "value":{
-            "key":"durationSecondary"
-          }
-        }]
-    },
-    "incrementalEffectiveness":0.050000000745058,
-    "baseMods":[{
-        "value":{
-          "key":"debuff"
-        }
-      },{
-        "type":"FLAG",
-        "name":"dotIsCorruptingBlood"
-      },{
-        "name":"Multiplier:CorruptingCryMaxStages"
-      },{
-        "1":{
-          "type":"Multiplier",
-          "var":"CorruptingCryStageAfterFirst"
-        },
-        "keywordFlags":16777216
-      }],
-    "description":"Supports warcry skills.",
-    "name":"Corrupting Cry",
     "addSkillTypes":[],
+    "name":"Corrupting Cry",
     "requireSkillTypes":[]
   },
   "SupportMeleePhysicalDamagePlus":{
@@ -2399,9 +2361,7 @@
   },
   "SupportCastOnMeleeKill":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "levels":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -2417,9 +2377,7 @@
   },
   "SupportReducedMana":{
     "qualityStats":{
-      "Alternate2":[["base_mana_cost_-%"]],
-      "Default":[["inspiration_charge_duration_+%"]],
-      "Alternate1":[["critical_strike_chance_+%"]]
+      "Default":[["base_mana_cost_-%"]]
     },
     "excludeSkillTypes":[],
     "stats":[null,"lose_all_righteous_charges_on_mana_use_threshold","elemental_damage_+%_final_per_righteous_charge","critical_strike_chance_+%_per_righteous_charge"],
@@ -2561,9 +2519,7 @@
   },
   "SupportGuardiansBlessing":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":[null,"skill_is_blessing_skill","aura_skill_no_reservation","support_guardians_blessing_aura_only_enabled_while_support_minion_is_summoned"],
@@ -2678,9 +2634,7 @@
   },
   "SupportKnockback":{
     "qualityStats":{
-      "Alternate2":[["knockback_distance_+%"]],
-      "Default":[["base_global_chance_to_knockback_%"]],
-      "Alternate1":[[]]
+      "Default":[["base_global_chance_to_knockback_%"]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -2765,7 +2719,7 @@
       },{
         "statInterpolation":[]
       }],
-    "constantStats":[[]],
+    "constantStats":[["knockback_distance_+%"]],
     "description":"Supports any skill that hits enemies.",
     "name":"Knockback",
     "addSkillTypes":[],
@@ -2829,9 +2783,7 @@
   },
   "SupportControlledBlaze":{
     "qualityStats":{
-      "Alternate2":[["faster_burn_%"],[]],
-      "Default":[["base_chance_to_ignite_%"]],
-      "Alternate1":[[]]
+      "Default":[["base_chance_to_ignite_%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_recent_ignites_ignite_damage_per_recent_ignite_+%_final","support_recent_ignites_damage_per_recent_ignite_+%_final","support_recent_ignites_ignite_damage_per_recent_ignite_+%_final_maximum","support_recent_ignites_damage_per_recent_ignite_+%_final_minimum"],
@@ -2953,9 +2905,7 @@
   },
   "AvengingFlame":{
     "qualityStats":{
-      "Alternate2":[["cover_in_ash_on_hit_%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[]
@@ -3084,9 +3034,7 @@
   },
   "SupportTrauma":{
     "qualityStats":{
-      "Alternate2":[["attack_speed_+%_per_trauma",0.05],["trauma_strike_self_damage_per_trauma"]],
-      "Default":[["base_stun_threshold_reduction_+%"]],
-      "Alternate1":[["ignore_self_damage_from_trauma_chance_%"]]
+      "Default":[["base_stun_threshold_reduction_+%"]]
     },
     "excludeSkillTypes":[null,null,null,null,129],
     "weaponTypes":[],
@@ -3103,9 +3051,6 @@
           },
           "flags":8193
         }],
-      "attack_speed_+%_per_trauma":[[[]],{
-          "name":"SpeedPerTrauma"
-        }],
       "support_trauma_stun_duration_+%_per_trauma":[{
           "1":[],
           "name":"EnemyStunDuration"
@@ -3118,7 +3063,7 @@
           "name":"TraumaSelfDamageTakenLife"
         }]
     },
-    "stats":[null,"attack_minimum_added_physical_damage_with_weapons_per_trauma","attack_maximum_added_physical_damage_with_weapons_per_trauma","support_trauma_stun_duration_+%_per_trauma","support_trauma_base_duration_ms","supported_skill_can_only_use_axe_mace_and_staff"],
+    "stats":["trauma_strike_self_damage_per_trauma","attack_minimum_added_physical_damage_with_weapons_per_trauma","attack_maximum_added_physical_damage_with_weapons_per_trauma","support_trauma_stun_duration_+%_per_trauma","support_trauma_base_duration_ms","supported_skill_can_only_use_axe_mace_and_staff"],
     "levels":[{
         "5":5000,
         "statInterpolation":[]
@@ -3246,9 +3191,7 @@
   },
   "SupportWeaponElementalDamage":{
     "qualityStats":{
-      "Alternate2":[["base_mana_leech_from_elemental_damage_permyriad"]],
-      "Default":[["elemental_damage_with_attack_skills_+%"]],
-      "Alternate1":[["chance_to_freeze_shock_ignite_%"]]
+      "Default":[["elemental_damage_with_attack_skills_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_attack_skills_elemental_damage_+%_final"],
@@ -3342,9 +3285,7 @@
   },
   "SupportMaim":{
     "qualityStats":{
-      "Alternate2":[["chance_to_bleed_on_hit_%_vs_maimed"]],
-      "Default":[["physical_damage_+%"]],
-      "Alternate1":[["maim_effect_+%"]]
+      "Default":[["maim_effect_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_maim_chance_physical_damage_+%_final"],
@@ -3431,19 +3372,15 @@
       }],
     "constantStats":[["maim_on_hit_%"],["support_maimed_enemies_physical_damage_taken_+%"]],
     "statMap":{
-      "chance_to_bleed_on_hit_%_vs_maimed":[{
-          "1":{
-            "var":"Maimed"
-          },
-          "name":"BleedChance"
-        }],
       "support_maimed_enemies_physical_damage_taken_+%":[{
           "1":{
             "type":"GlobalEffect",
             "effectType":"Debuff",
             "effectName":"Maim"
           },
-          "2":[],
+          "2":{
+            "var":"Maimed"
+          },
           "name":"PhysicalDamageTaken"
         }],
       "support_maim_chance_physical_damage_+%_final":[[]]
@@ -3509,9 +3446,7 @@
   },
   "SupportCastOnMeleeKillTriggered":{
     "qualityStats":{
-      "Alternate2":[["base_cooldown_speed_+%"]],
-      "Default":[["spell_damage_+%"]],
-      "Alternate1":[[]]
+      "Default":[["spell_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_cast_on_melee_kill_spell_damage_+%_final","spell_uncastable_if_triggerable","triggered_skill_uses_main_hand_or_averaged_attack_time_for_pvp_scaling","cast_spell_on_linked_melee_kill"],
@@ -3605,9 +3540,7 @@
   },
   "SupportMeleePhysicalDamage":{
     "qualityStats":{
-      "Alternate2":[["enemy_phys_reduction_%_penalty_vs_hit"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -3704,9 +3637,7 @@
   },
   "SupportCruelty":{
     "qualityStats":{
-      "Alternate2":[["cruelty_duration_+%"]],
-      "Default":[["cruelty_effect_+%"]],
-      "Alternate1":[[]]
+      "Default":[["cruelty_effect_+%"]]
     },
     "levels":[{
         "statInterpolation":[]
@@ -3805,9 +3736,7 @@
   },
   "SupportBluntWeaponShockwave":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "baseMultiplier":1.6,
@@ -3968,7 +3897,7 @@
         "damageEffectiveness":3.39,
         "statInterpolation":[]
       }],
-    "stats":["active_skill_base_radius_+",null,null,"triggered_by_shockwave_support"],
+    "stats":["active_skill_base_radius_+","base_cooldown_speed_+%",null,"triggered_by_shockwave_support"],
     "statDescriptionScope":"skill_stat_descriptions",
     "weaponTypes":[],
     "baseFlags":[],
@@ -4029,9 +3958,7 @@
   },
   "SupportMultistrike":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[],["multistrike_area_of_effect_+%_per_repeat"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "levels":[{
@@ -4118,15 +4045,12 @@
     "stats":[],
     "constantStats":[[],[],[],[]],
     "statMap":{
-      "multistrike_area_of_effect_+%_per_repeat":[{
-          "name":"RepeatPerRepeatAreaOfEffect"
-        }],
+      "support_multiple_attacks_melee_attack_speed_+%_final":[[[]],[[]]],
       "multistrike_damage_+%_final_on_first_repeat":[[[],{
             "varList":[]
           }],[[],{
             "varList":[]
           }]],
-      "support_multiple_attacks_melee_attack_speed_+%_final":[[[]],[[]]],
       "support_multiple_attack_damage_+%_final":[[]],
       "multistrike_damage_+%_final_on_second_repeat":[[[]],[[]]]
     },
@@ -4195,9 +4119,7 @@
   },
   "SupportVolatility":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["minimum_attack_damage_+%_final_from_volatility_support","maximum_attack_damage_+%_final_from_volatility_support"],
@@ -4325,9 +4247,7 @@
   },
   "SupportAddedFireDamage":{
     "qualityStats":{
-      "Alternate2":[["skill_physical_damage_%_to_convert_to_fire"]],
-      "Default":[[]],
-      "Alternate1":[[],["fire_dot_multiplier_+"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["physical_damage_%_to_add_as_fire"],
@@ -4470,9 +4390,7 @@
   },
   "SupportIronWill":{
     "qualityStats":{
-      "Alternate2":[["base_projectile_speed_+%"]],
-      "Default":[[]],
-      "Alternate1":[["base_cast_speed_+%"],[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":[null,"strong_casting"],
@@ -4564,9 +4482,7 @@
   },
   "SupportUrgentOrders":{
     "qualityStats":{
-      "Alternate2":[["minimum_power_from_quality"]],
-      "Default":[["warcry_speed_+%"]],
-      "Alternate1":[[],["skill_buff_effect_+%"]]
+      "Default":[["warcry_speed_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -4652,6 +4568,7 @@
         "statInterpolation":[]
       }],
     "constantStats":[["base_cooldown_modifier_ms"]],
+    "description":"Supports warcry skills.",
     "name":"Urgent Orders",
     "addSkillTypes":[],
     "requireSkillTypes":[]
@@ -4743,22 +4660,20 @@
         "statInterpolation":[]
       }],
     "qualityStats":{
-      "Alternate2":[["gain_1_rage_on_use_%_chance"]],
-      "Default":[[]],
-      "Alternate1":[["attack_speed_+%_with_atleast_20_rage"]]
+      "Default":[[]]
     },
     "baseEffectiveness":0.18000000715256,
     "excludeSkillTypes":[],
     "constantStats":[["support_rage_gain_rage_on_melee_hit_cooldown_ms",400]],
     "stats":["attack_minimum_added_physical_damage_with_at_least_10_rage","attack_maximum_added_physical_damage_with_at_least_10_rage","attack_minimum_added_physical_damage_per_10_rage","attack_maximum_added_physical_damage_per_10_rage"],
     "statMap":{
-      "attack_speed_+%_with_atleast_20_rage":[[{
-            "type":"MultiplierThreshold",
+      "attack_minimum_added_physical_damage_per_10_rage":[[{
             "var":"Rage"
           }]],
-      "attack_minimum_added_physical_damage_per_10_rage":[[[]]],
       "attack_maximum_added_physical_damage_per_10_rage":[[[]]],
-      "attack_maximum_added_physical_damage_with_at_least_10_rage":[[[]]],
+      "attack_maximum_added_physical_damage_with_at_least_10_rage":[[{
+            "type":"MultiplierThreshold"
+          }]],
       "support_rage_gain_rage_on_melee_hit_cooldown_ms":[{
           "1":{
             "effectType":"Buff"
@@ -4774,9 +4689,7 @@
   },
   "SupportStun":{
     "qualityStats":{
-      "Alternate2":[["recover_%_life_when_stunning_an_enemy_permyriad"]],
-      "Default":[[]],
-      "Alternate1":[["chance_to_double_stun_duration_%"]]
+      "Default":[["chance_to_double_stun_duration_%"]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -4873,9 +4786,7 @@
   },
   "SupportAuraDuration":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["support_aura_duration_base_buff_duration",null,"base_mana_cost_+"],
@@ -5044,9 +4955,7 @@
   },
   "SupportColdToFire":{
     "qualityStats":{
-      "Alternate2":[["base_poison_damage_+%"]],
-      "Default":[["cold_damage_+%"],[]],
-      "Alternate1":[["skill_cold_damage_%_to_convert_to_fire"]]
+      "Default":[["cold_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["cold_damage_%_to_add_as_fire"],
@@ -5131,16 +5040,14 @@
       },{
         "statInterpolation":[]
       }],
-    "constantStats":[[]],
+    "constantStats":[["skill_cold_damage_%_to_convert_to_fire"]],
     "name":"Cold to Fire",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
   "SupportCastOnDamageTaken":{
     "qualityStats":{
-      "Alternate2":[["cast_when_damage_taken_trigger_threshold_+%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[["cast_when_damage_taken_trigger_threshold_+%",-0.5]]
     },
     "excludeSkillTypes":[],
     "stats":["cast_on_damage_taken_threshold","cast_on_damage_taken_damage_+%_final","local_support_gem_max_skill_level_requirement_to_support",null,"base_skill_show_average_damage_instead_of_dps"],
@@ -5276,9 +5183,7 @@
   },
   "SupportIronGrip":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[["projectile_damage_+%"]],
-      "Alternate1":[[],[]]
+      "Default":[["projectile_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":[null,"keystone_strong_bowman"],
@@ -5370,9 +5275,7 @@
   },
   "SupportLifeLeech":{
     "qualityStats":{
-      "Alternate2":[["maximum_life_leech_amount_per_leech_+%"]],
-      "Default":[["damage_+%_while_life_leeching"]],
-      "Alternate1":[[]]
+      "Default":[["damage_+%_while_life_leeching"]]
     },
     "excludeSkillTypes":[],
     "stats":["life_leech_from_any_damage_permyriad"],
@@ -5483,11 +5386,6 @@
         "1":590,
         "statInterpolation":[]
       }],
-    "statMap":{
-      "maximum_life_leech_amount_per_leech_+%":[{
-          "name":"MaxLifeLeechRate"
-        }]
-    },
     "description":"Supports any skill that hits enemies, causing those hits to leech life based on damage dealt.",
     "name":"Life Leech",
     "addSkillTypes":[],
@@ -5495,12 +5393,10 @@
   },
   "SupportPulverise":{
     "qualityStats":{
-      "Alternate2":[["support_pulverise_attack_speed_+%_final"],["support_pulverise_melee_area_damage_+%_final"]],
-      "Default":[["area_damage_+%"]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
-    "stats":[],
+    "stats":["support_pulverise_melee_area_damage_+%_final"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -5582,7 +5478,7 @@
       },{
         "statInterpolation":[]
       }],
-    "constantStats":[[]],
+    "constantStats":[["support_pulverise_attack_speed_+%_final"]],
     "statMap":{
       "support_pulverise_melee_area_damage_+%_final":[{
           "flags":768
@@ -5595,9 +5491,7 @@
   },
   "SupportLifetap":{
     "qualityStats":{
-      "Alternate2":[["support_base_lifetap_buff_duration"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[["support_base_lifetap_buff_duration"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_lifetap_damage_+%_final_while_buffed","support_lifetap_spent_life_threshold",null,"quality_display_lifetap_is_gem"],
@@ -5715,9 +5609,7 @@
   },
   "SupportFortify":{
     "qualityStats":{
-      "Alternate2":[["overwhelm_%_physical_damage_reduction_while_max_fortification"]],
-      "Default":[[]],
-      "Alternate1":[["fortify_duration_+%"]]
+      "Default":[["fortify_duration_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_fortify_melee_damage_+%_final","support_fortify_ailment_damage_+%_final_from_melee_hits"],
@@ -5804,12 +5696,6 @@
       }],
     "constantStats":[["chance_to_fortify_on_melee_hit_+%"]],
     "statMap":{
-      "overwhelm_%_physical_damage_reduction_while_max_fortification":[{
-          "1":{
-            "var":"HaveMaximumFortification"
-          },
-          "name":"EnemyPhysicalDamageReduction"
-        }],
       "fortify_effect_+%":[{
           "name":"FortifyEffectOnSelf"
         }],
@@ -5877,9 +5763,7 @@
   },
   "SupportGenerosity":{
     "qualityStats":{
-      "Alternate2":[[],["base_reservation_efficiency_+%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -5975,9 +5859,7 @@
   },
   "SupportBrutality":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[["physical_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_brutality_physical_damage_+%_final","deal_no_elemental_damage","base_deal_no_chaos_damage"],
@@ -6072,9 +5954,7 @@
   },
   "SupportIncreasedDuration":{
     "qualityStats":{
-      "Alternate2":[["base_all_ailment_duration_+%"]],
-      "Default":[[]],
-      "Alternate1":[[],[],[]]
+      "Default":[["skill_effect_duration_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -6166,9 +6046,7 @@
   },
   "EnduranceChargeOnMeleeStun":{
     "qualityStats":{
-      "Alternate2":[["damage_+%_if_lost_endurance_charge_in_past_8_seconds"]],
-      "Default":[[]],
-      "Alternate1":[["damage_+%_per_endurance_charge"]]
+      "Default":[["base_stun_duration_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":[null,"gain_endurance_charge_on_melee_stun"],
@@ -6257,9 +6135,6 @@
     "statMap":{
       "endurance_charge_on_melee_stun_damage_+%_final_per_endurance_charge":[[{
             "var":"EnduranceCharge"
-          }]],
-      "damage_+%_if_lost_endurance_charge_in_past_8_seconds":[[{
-            "var":"LostEnduranceChargeInPast8Sec"
           }]]
     },
     "name":"Endurance Charge on Melee Stun",
@@ -6268,9 +6143,7 @@
   },
   "SupportReducedDuration":{
     "qualityStats":{
-      "Alternate2":[["faster_bleed_%"]],
-      "Default":[["support_reduced_duration_skill_effect_duration_+%_final"]],
-      "Alternate1":[[]]
+      "Default":[["support_reduced_duration_skill_effect_duration_+%_final"]]
     },
     "excludeSkillTypes":[],
     "stats":[null,"support_reduced_duration_damage_+%_final"],
@@ -6423,9 +6296,7 @@
   },
   "SupportBloodlust":{
     "qualityStats":{
-      "Alternate2":[["refresh_bleeding_duration_on_hit_%_chance"]],
-      "Default":[["melee_damage_vs_bleeding_enemies_+%"]],
-      "Alternate1":[["crush_for_2_seconds_on_hit_%_chance"]]
+      "Default":[["melee_damage_vs_bleeding_enemies_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_bloodlust_melee_physical_damage_+%_final_vs_bleeding_enemies","cannot_cause_bleeding"],
@@ -6522,9 +6393,7 @@
   },
   "SupportMeleeSplash":{
     "qualityStats":{
-      "Alternate2":[["support_melee_splash_damage_+%_final_for_splash"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["melee_splash_area_of_effect_+%_final","melee_splash","quality_display_melee_splash_is_gem"],
@@ -6609,7 +6478,7 @@
       },{
         "statInterpolation":[]
       }],
-    "constantStats":[[]],
+    "constantStats":[["support_melee_splash_damage_+%_final_for_splash"]],
     "description":"Supports melee strike skills, causing their melee strike to deal splash damage around each target hit.",
     "name":"Melee Splash",
     "addSkillTypes":[],
@@ -6669,9 +6538,7 @@
   },
   "SupportMortalConviction":{
     "qualityStats":{
-      "Alternate2":[[],[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":[null,"skill_aura_also_disables_non_blessing_mana_reservation_skills",null,"base_skill_no_reservation"],

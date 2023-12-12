@@ -2,7 +2,7 @@
   "AnimatedArmour":{
     "skillList":["Melee"],
     "lightningResist":40,
-    "life":4.5,
+    "life":5,
     "armour":0.5,
     "chaosResist":20,
     "attackTime":1,
@@ -32,7 +32,7 @@
     "attackRange":8,
     "skillList":["LightningGolemArcSummoned","LightningGolemWrath","MonsterProjectileSpellLightningGolemSummoned"],
     "lightningResist":70,
-    "life":5.83,
+    "life":5.82,
     "damageFixup":0.22,
     "damageSpread":0.2,
     "limit":"ActiveGolemLimit",
@@ -141,6 +141,7 @@
   "SummonedSpectralWolf":{
     "weaponType1":"Dagger",
     "skillList":[],
+    "life":4.5,
     "limit":"ActiveWolfLimit",
     "attackRange":11,
     "modList":[],
@@ -148,7 +149,6 @@
   },
   "UniqueAnimatedWeapon":{
     "skillList":[null,"DancingDervishCycloneChannelled"],
-    "life":5,
     "attackRange":105,
     "modList":[],
     "name":"Dancing Dervish"
@@ -169,6 +169,11 @@
     "energyShield":0.6,
     "name":"Lightning Relic"
   },
+  "GuardianRelicCold":{
+    "skillList":[null,"Hatred"],
+    "modList":[],
+    "name":"Cold Relic"
+  },
   "SummonedStoneGolem":{
     "skillList":[null,"RockGolemSlam","RockGolemMinionWhirlingBlades"],
     "life":7.25,
@@ -178,33 +183,23 @@
     "damage":2.7,
     "name":"Stone Golem"
   },
-  "GuardianRelicCold":{
-    "skillList":[null,"Hatred"],
-    "modList":[],
-    "name":"Cold Relic"
-  },
   "GuardianRelicFire":{
     "skillList":[null,"Anger"],
     "modList":[],
     "name":"Fire Relic"
-  },
-  "Clone":{
-    "skillList":[],
-    "modList":[{
-        "name":"EnergyShield"
-      }],
-    "name":"Clone"
   },
   "GuardianRelicAll":{
     "skillList":[],
     "modList":[],
     "name":"All Relics"
   },
-  "AbsolutionTemplarJudgeVaal":{
-    "modList":[[],[]],
-    "skillList":["AbsolutionMinionVaal","AbsolutionMinionVaalCascade","GTVaalAbsolutionLarge","VaalAbsolutionDelayedBlast","GSVaalAbsolutionEmerge"],
-    "attackRange":9,
-    "name":"Ascended Sentinel of Absolution"
+  "RaisedSkeletonArcher":{
+    "weaponType1":"Bow",
+    "skillList":[],
+    "damageSpread":0.16,
+    "attackTime":1.33,
+    "modList":[],
+    "name":"Summoned Skeleton Archer"
   },
   "GuardianSentinel":{
     "skillList":[],
@@ -213,10 +208,30 @@
     "modList":[],
     "name":"Sentinel of Radiance"
   },
+  "RaisedZombie":{
+    "skillList":[null,"ZombieSlam"],
+    "armour":0.7,
+    "limit":"ActiveZombieLimit",
+    "modList":[{
+        "type":"INC",
+        "name":"Armour"
+      }],
+    "damage":1.65,
+    "name":"Raised Zombie"
+  },
+  "SummonedReaper":{
+    "modList":[],
+    "skillList":["ReaperConsumeMinionForHeal","ReaperConsumeMinionForBuff","SummonedReaperMelee","SummonedReaperDash","SummonedReaperUltimate","GASummonReaperUltimateLeftSlash","GASummonReaperUltimateRightSlash","EAASummonedReaperComboAttack","GASummonReaperComboWhirl","GASummonReaperComboLeftSlash","GASummonReaperComboRightSlash","GASummonReaperDashImpactSlash","GASummonReaperDash"],
+    "life":3.74,
+    "attackRange":13,
+    "damage":2.4,
+    "name":"Reaper"
+  },
   "DropBearUniqueSummoned":{
     "attackTime":1.1,
     "weaponType1":"One Handed Mace",
     "skillList":["MeleeAtAnimationSpeedUnique","DropBearSummonedGroundSlam","DropBearSummonedRallyingCry"],
+    "life":9,
     "limit":"ActiveBeastMinionLimit",
     "modList":[{
         "type":"LIST",
@@ -234,13 +249,15 @@
     "limit":"ActiveHolyRelicLimit",
     "name":"Holy Relic"
   },
-  "SummonedReaper":{
-    "modList":[],
-    "skillList":["ReaperConsumeMinionForHeal","ReaperConsumeMinionForBuff","SummonedReaperMelee","SummonedReaperDash","SummonedReaperUltimate","GASummonReaperUltimateLeftSlash","GASummonReaperUltimateRightSlash","EAASummonedReaperComboAttack","GASummonReaperComboWhirl","GASummonReaperComboLeftSlash","GASummonReaperComboRightSlash","GASummonReaperDashImpactSlash","GASummonReaperDash"],
-    "life":3,
-    "attackRange":13,
-    "damage":2.4,
-    "name":"Reaper"
+  "RhoaUniqueSummoned":{
+    "attackTime":0.93,
+    "skillList":[null,"SummonedRhoaShieldCharge"],
+    "attackRange":14,
+    "modList":[{
+        "value":[]
+      }],
+    "damage":4.28,
+    "name":"Summoned Rhoa"
   },
   "HeraldOfAgonySpiderPlated":{
     "skillList":["HeraldOfAgonyMinionMortar","HeraldOfAgonyMinionTailSpike","HeraldOfAgonyMinionCleave"],
@@ -250,16 +267,10 @@
       },[],[]],
     "name":"Agony Crawler"
   },
-  "RaisedZombie":{
-    "skillList":[null,"ZombieSlam"],
-    "armour":0.7,
-    "limit":"ActiveZombieLimit",
-    "modList":[{
-        "type":"INC",
-        "name":"Armour"
-      }],
-    "damage":1.65,
-    "name":"Raised Zombie"
+  "AbsolutionTemplarJudgeVaal":{
+    "modList":[[],[]],
+    "skillList":["AbsolutionMinionVaal","AbsolutionMinionVaalCascade","GTVaalAbsolutionLarge","VaalAbsolutionDelayedBlast","GSVaalAbsolutionEmerge"],
+    "name":"Ascended Sentinel of Absolution"
   },
   "SummonedPhantasm":{
     "modList":[],
@@ -274,8 +285,35 @@
     "attackTime":0.9,
     "name":"Carrion Golem"
   },
+  "ArrowClone":{
+    "skillList":["BlinkMirrorArrowMelee"],
+    "modList":[{
+        "name":"EnergyShield"
+      }],
+    "name":"Clone"
+  },
+  "AxisEliteSoldierHeraldOfLight":{
+    "weaponType1":"Staff",
+    "skillList":[null,"HeraldOfLightMinionSlam","ChampionTeleport","SentinelHolySlam"],
+    "limit":"ActiveSentinelOfPurityLimit",
+    "modList":[],
+    "damage":3.04,
+    "name":"Sentinel of Purity"
+  },
+  "AxisEliteSoldierDominatingBlow":{
+    "modList":[[]],
+    "skillList":[null,"DominatingBlowMinionCharge"],
+    "name":"Sentinel of Dominance"
+  },
+  "SummonedChaosGolem":{
+    "modList":[[]],
+    "skillList":[null,"SandstormChaosElementalSummoned","ChaosElementalCascadeSummoned"],
+    "life":6.9,
+    "damage":2.9,
+    "name":"Chaos Golem"
+  },
   "SummonedRagingSpirit":{
-    "skillList":[],
+    "skillList":["SumonRagingSpiritMelee"],
     "life":2.16,
     "limit":"ActiveRagingSpiritLimit",
     "modList":[{
@@ -290,34 +328,6 @@
     "damage":1.02,
     "name":"Raging Spirit"
   },
-  "AxisEliteSoldierHeraldOfLight":{
-    "weaponType1":"Staff",
-    "skillList":[null,"HeraldOfLightMinionSlam","ChampionTeleport","SentinelHolySlam"],
-    "limit":"ActiveSentinelOfPurityLimit",
-    "modList":[],
-    "damage":3.04,
-    "name":"Sentinel of Purity"
-  },
-  "RaisedSkeletonArcher":{
-    "weaponType1":"Bow",
-    "skillList":[],
-    "damageSpread":0.16,
-    "attackTime":1.33,
-    "modList":[],
-    "name":"Summoned Skeleton Archer"
-  },
-  "SummonedChaosGolem":{
-    "modList":[[]],
-    "skillList":[null,"SandstormChaosElementalSummoned","ChaosElementalCascadeSummoned"],
-    "life":6.91,
-    "damage":2.9,
-    "name":"Chaos Golem"
-  },
-  "AxisEliteSoldierDominatingBlow":{
-    "modList":[[]],
-    "skillList":[null,"DominatingBlowMinionCharge"],
-    "name":"Sentinel of Dominance"
-  },
   "SnakeSpitUniqueSummoned":{
     "skillList":["SummonedSnakeProjectile"],
     "armour":0.15,
@@ -327,15 +337,9 @@
     "damage":3.23,
     "name":"Summoned Cobra"
   },
-  "RhoaUniqueSummoned":{
-    "attackTime":0.93,
-    "skillList":[null,"SummonedRhoaShieldCharge"],
-    "attackRange":14,
-    "modList":[{
-        "value":[]
-      }],
-    "damage":4.28,
-    "name":"Summoned Rhoa"
+  "Clone":{
+    "skillList":[],
+    "modList":[[]]
   },
   "AbsolutionTemplarJudge":{
     "modList":[],

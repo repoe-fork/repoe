@@ -1,7 +1,7 @@
 {
   "VaalCleave":{
     "qualityStats":{
-      "Default":[["attack_speed_+%",0.5]]
+      "Default":[["cleave_+1_base_radius_per_nearby_enemy_up_to_10",1]]
     },
     "levels":[{
         "cost":[],
@@ -15,7 +15,7 @@
           "Soul":25
         },
         "levelRequirement":2,
-        "statInterpolation":[3,null,1],
+        "statInterpolation":[3],
         "damageEffectiveness":2.105,
         "soulPreventionDuration":4
       },{
@@ -219,11 +219,25 @@
         "damageEffectiveness":5.579
       }],
     "baseEffectiveness":0.6700000166893,
+    "statMap":{
+      "cleave_+1_base_radius_per_nearby_enemy_up_to_10":[{
+          "1":{
+            "type":"Multiplier",
+            "limit":10,
+            "limitTotal":true,
+            "var":"NearbyEnemies"
+          },
+          "flags":0,
+          "type":"LIST",
+          "value":{
+            "key":"radiusExtra"
+          },
+          "name":"SkillData"
+        }]
+    },
     "constantStats":[["active_skill_merged_damage_+%_final_while_dual_wielding",-40],["base_skill_effect_duration",20000],["base_secondary_skill_effect_duration"],["vaal_cleave_executioner_area_of_effect_+%"],["vaal_cleave_executioner_damage_against_enemies_on_low_life_+%"],["additional_weapon_base_attack_time_ms",800]],
     "stats":["attack_minimum_added_physical_damage","attack_maximum_added_physical_damage","active_skill_base_radius_+","is_area_damage","skill_double_hits_when_dual_wielding","console_skill_dont_chase","kill_enemy_on_hit_if_under_10%_life","vaal_cleave_steal_mods_on_kill","cannot_cancel_skill_before_contact_point","modifiers_to_skill_effect_duration_also_affect_soul_prevention_duration","global_always_hit"],
-    "baseFlags":{
-      "melee":true
-    },
+    "baseFlags":[],
     "statDescriptionScope":"skill_stat_descriptions",
     "weaponTypes":[],
     "skillTypes":[],
@@ -233,12 +247,9 @@
   },
   "BloodSandStance":{
     "qualityStats":{
-      "Alternate2":[["spell_area_damage_+%_in_blood_stance"],["spell_area_of_effect_+%_in_sand_stance"]],
-      "Default":[["base_cooldown_speed_+%"]],
-      "Alternate1":[["projectile_attack_damage_+%_in_blood_stance"],["projectile_speed_+%_in_sand_stance"]]
+      "Default":[["base_cooldown_speed_+%",0.5]]
     },
     "levels":[{
-        "1":0,
         "statInterpolation":[]
       },{
         "statInterpolation":[],
@@ -273,8 +284,7 @@
         "statInterpolation":[]
       },{
         "1":130,
-        "statInterpolation":[],
-        "manaReservationPercent":10
+        "statInterpolation":[]
       },{
         "1":140,
         "statInterpolation":[]
@@ -313,12 +323,12 @@
         "statInterpolation":[]
       }],
     "statMap":{
-      "blood_sand_stance_melee_skills_area_damage_+%_final_in_sand_stance":[{
+      "blood_sand_stance_melee_skills_area_damage_+%_final_in_blood_stance":[{
           "1":{
             "type":"GlobalEffect",
-            "effectCond":"SandStance",
+            "effectCond":"BloodStance",
             "effectType":"Buff",
-            "effectName":"Sand"
+            "effectName":"Blood"
           },
           "2":{
             "type":"SkillType"
@@ -328,29 +338,15 @@
           "name":"Damage"
         }],
       "blood_sand_stance_melee_skills_area_of_effect_+%_final_in_blood_stance":[{
-          "1":{
-            "effectCond":"BloodStance",
-            "effectName":"Blood"
-          },
+          "1":[],
           "2":[],
           "name":"AreaOfEffect"
         }],
-      "spell_area_damage_+%_in_blood_stance":[{
-          "1":[],
-          "flags":514,
-          "type":"INC"
-        }],
-      "projectile_speed_+%_in_sand_stance":[{
-          "1":[],
-          "name":"ProjectileSpeed"
-        }],
-      "blood_sand_stance_melee_skills_area_damage_+%_final_in_blood_stance":[[[],[]]],
-      "spell_area_of_effect_+%_in_sand_stance":[[[]]],
-      "blood_sand_stance_melee_skills_area_of_effect_+%_final_in_sand_stance":[[[],[]]],
-      "projectile_attack_damage_+%_in_blood_stance":[{
-          "1":[],
-          "flags":1025
-        }]
+      "blood_sand_stance_melee_skills_area_of_effect_+%_final_in_sand_stance":[[{
+            "effectCond":"SandStance",
+            "effectName":"Sand"
+          },[]]],
+      "blood_sand_stance_melee_skills_area_damage_+%_final_in_sand_stance":[[[],[]]]
     },
     "stats":[null,"blood_sand_stance_melee_skills_area_damage_+%_final_in_blood_stance","blood_sand_stance_melee_skills_area_of_effect_+%_final_in_sand_stance","base_deal_no_damage"],
     "baseFlags":[],
@@ -361,9 +357,7 @@
   },
   "AncestralCry":{
     "qualityStats":{
-      "Alternate2":[["physical_damage_reduction_rating_+%"]],
-      "Default":[[]],
-      "Alternate1":[["warcry_speed_+%"]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -590,14 +584,13 @@
         "cost":[]
       }],
     "statMap":{
-      "ancestral_cry_x_melee_range_per_5_monster_power":[{
-          "type":"BASE",
-          "name":"AncestralMeleeWeaponRangePer5MP"
-        }],
       "ancestral_cry_max_physical_damage_reduction_rating":[{
+          "type":"BASE",
           "name":"AncestralArmourMax"
         }],
-      "physical_damage_reduction_rating_+%":[[]],
+      "ancestral_cry_x_melee_range_per_5_monster_power":[{
+          "name":"AncestralMeleeWeaponRangePer5MP"
+        }],
       "skill_empowers_next_x_melee_attacks":[{
           "name":"AncestralExertedAttacks"
         }],
@@ -605,17 +598,15 @@
           "name":"AncestralArmourPer5MP"
         }]
     },
-    "stats":["ancestral_cry_physical_damage_reduction_rating_per_5_MP","ancestral_cry_max_physical_damage_reduction_rating",null,null,"base_deal_no_attack_damage","base_deal_no_spell_damage","base_deal_no_secondary_damage",null,"warcry_count_power_from_enemies"],
+    "stats":["ancestral_cry_physical_damage_reduction_rating_per_5_MP","ancestral_cry_max_physical_damage_reduction_rating","warcry_speed_+%",null,"base_deal_no_attack_damage","base_deal_no_spell_damage","base_deal_no_secondary_damage",null,"warcry_count_power_from_enemies"],
     "constantStats":[["skill_empowers_next_x_melee_attacks"],["ancestral_cry_x_melee_range_per_5_monster_power"],["ancestral_cry_empowered_attacks_strike_X_additional_enemies"],["skill_empower_limitation_specifier_for_stat_description"]],
     "statDescriptionScope":"buff_skill_stat_descriptions",
     "castTime":0.8,
     "baseFlags":[],
     "baseMods":[{
-        "type":"LIST",
         "value":{
           "key":"radius"
-        },
-        "name":"SkillData"
+        }
       }],
     "skillTypes":[],
     "name":"Ancestral Cry",
@@ -623,9 +614,7 @@
   },
   "EnduringCry":{
     "qualityStats":{
-      "Alternate2":[["skill_buff_effect_+%"],[null,-2]],
-      "Default":[["skill_effect_duration_+%"]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -814,9 +803,7 @@
   },
   "HeraldOfPurity":{
     "qualityStats":{
-      "Alternate2":[["sentinel_minion_cooldown_speed_+%"]],
-      "Default":[["minion_movement_speed_+%"]],
-      "Alternate1":[["minion_chance_to_taunt_on_hit_%"]]
+      "Default":[["minion_cooldown_recovery_+%"]]
     },
     "minionSkillTypes":[],
     "levels":[{
@@ -923,14 +910,6 @@
           "1":[],
           "name":"PhysicalDamage"
         }],
-      "sentinel_minion_cooldown_speed_+%":[{
-          "value":{
-            "mod":{
-              "name":"CooldownRecovery"
-            }
-          },
-          "name":"MinionModifier"
-        }],
       "base_number_of_champions_of_light_allowed":[{
           "name":"ActiveSentinelOfPurityLimit"
         }]
@@ -947,10 +926,7 @@
   },
   "Vengeance":{
     "qualityStats":{
-      "Alternate3":[["gain_rage_on_hit_%_chance"]],
-      "Alternate2":[["damage_+%"]],
-      "Default":[["melee_counterattack_trigger_on_hit_%"]],
-      "Alternate1":[[]]
+      "Default":[["melee_counterattack_trigger_on_hit_%"]]
     },
     "levels":[{
         "baseMultiplier":1.7,
@@ -1111,13 +1087,6 @@
         "damageEffectiveness":3.22,
         "statInterpolation":[]
       }],
-    "statMap":{
-      "gain_rage_on_hit_%_chance":[{
-          "1":[],
-          "type":"FLAG",
-          "name":"Condition:CanGainRage"
-        }]
-    },
     "constantStats":[[]],
     "stats":[null,null,"attack_unusable_if_triggerable","base_skill_show_average_damage_instead_of_dps"],
     "baseFlags":[],
@@ -1323,22 +1292,17 @@
         "baseMultiplier":2.592
       }],
     "qualityStats":{
-      "Alternate3":[["spike_slam_fissure_damage_+%_final"],["spike_slam_spike_damage_+%_final",-3]],
-      "Alternate2":[["spike_slam_fissure_length_+%"]],
-      "Default":[["base_skill_area_of_effect_+%"]],
-      "Alternate1":[["spike_slam_additional_spike_%_chance"]]
+      "Default":[["spike_slam_num_spikes",0.05],["spike_slam_max_spikes",0.15]]
     },
     "statMap":{
-      "spike_slam_spike_damage_+%_final":[[{
+      "spike_slam_explosion_damage_+%_final":[[{
             "type":"SkillPart"
           }]],
-      "spike_slam_explosion_damage_+%_final":[[[]]],
-      "spike_slam_fissure_damage_+%_final":[[[]]],
-      "spike_slam_fissure_length_+%":[[[]]],
+      "spike_slam_spike_damage_+%_final":[[[]]],
       "active_skill_area_of_effect_+%_final":[[]]
     },
-    "constantStats":[["spike_slam_explosion_damage_+%_final",-30],["spike_slam_num_spikes"],["spike_slam_max_spikes"],[null,6000]],
-    "stats":["active_skill_area_of_effect_+%_final"],
+    "constantStats":[["spike_slam_explosion_damage_+%_final",-30],[],[],[null,6000]],
+    "stats":["active_skill_area_of_effect_+%_final",null,"quality_display_spike_slam_is_gem","quality_display_max_spikes_is_gem"],
     "baseMods":[{
         "1":[],
         "value":[]
@@ -1351,14 +1315,22 @@
   },
   "VaalSmite":{
     "qualityStats":{
-      "Default":[[]]
+      "Default":[["active_skill_area_damage_+%_final"]]
     },
     "weaponTypes":[],
     "baseMods":[{
-        "value":[]
+        "value":{
+          "key":"radiusLabel",
+          "value":"Lightning Strike area:"
+        }
+      },{
+        "value":{
+          "key":"radiusSecondaryLabel",
+          "value":"Aura area:"
+        }
       }],
-    "constantStats":[["skill_physical_damage_%_to_convert_to_lightning"],[null,8000],["base_smite_number_of_targets"],["buff_grants_smite_additional_lightning_targets"]],
-    "description":"Calls lightning down to infuse your weapon, then performs a melee attack and causes lightning to strike nearby enemies, dealing damage in an area around each. Hitting an enemy grants an aura, giving you and your allies additional lightning damage for a duration, and additional lightning bolts with Smite. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
+    "constantStats":[["skill_physical_damage_%_to_convert_to_lightning"],[null,8000],["base_smite_number_of_targets"],["buff_grants_smite_additional_lightning_targets"],["smite_lightning_target_range"],["active_skill_base_area_of_effect_radius"],["active_skill_base_secondary_area_of_effect_radius"],["active_skill_secondary_area_of_effect_description_mode"]],
+    "description":"Calls lightning down to infuse your weapon, then performs a melee attack and causes lightning to strike nearby enemies, dealing damage in an area. Hitting an enemy grants an aura for a duration. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
     "parts":[{
         "name":"Melee Hit",
         "area":false
@@ -1543,7 +1515,7 @@
           "name":"LightningMax"
         }]
     },
-    "stats":["minimum_added_lightning_damage_from_skill","maximum_added_lightning_damage_from_skill","base_chance_to_shock_%_from_skill",null,"visual_hit_effect_elemental_is_holy",null,null,"has_vaal_smite_behaviour"],
+    "stats":["minimum_added_lightning_damage_from_skill","maximum_added_lightning_damage_from_skill","base_chance_to_shock_%_from_skill",null,null,"visual_hit_effect_elemental_is_holy",null,null,"has_vaal_smite_behaviour",null,null,"quality_display_active_skill_area_damage_is_gem"],
     "skillTypes":[],
     "incrementalEffectiveness":0.028000000864267,
     "name":"Vaal Smite",
@@ -1551,9 +1523,7 @@
   },
   "CorruptingFever":{
     "qualityStats":{
-      "Alternate2":[["corrupting_fever_apply_additional_corrupted_blood_%"]],
-      "Default":[[]],
-      "Alternate1":[["base_life_cost_+%",-0.5]]
+      "Default":[["skill_effect_duration_+%"]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -1778,11 +1748,11 @@
           "key":"debuff"
         }
       },{
+        "type":"FLAG",
         "name":"dotIsCorruptingBlood"
       },{
         "name":"Multiplier:CorruptingFeverMaxStages"
       },[{
-          "type":"Multiplier",
           "var":"CorruptingFeverStageAfterFirst"
         }]],
     "statDescriptionScope":"secondary_debuff_skill_stat_descriptions",
@@ -1795,168 +1765,165 @@
   "SummonRockGolem":{
     "minionSkillTypes":[],
     "levels":[{
-        "3":1980,
+        "2":1980,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":2160,
+        "2":2160,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":2340,
+        "2":2340,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":2520,
+        "2":2520,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":2700,
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "3":3120,
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "3":3360,
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "3":3600,
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "3":3840,
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "3":4080,
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "3":4320,
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "3":4560,
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "3":4860,
+        "2":2700,
         "statInterpolation":[],
         "cost":[]
       },{
         "statInterpolation":[],
         "cost":[]
       },{
+        "2":3120,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":5700,
+        "2":3360,
+        "statInterpolation":[],
+        "cost":[]
+      },{
+        "2":3600,
+        "statInterpolation":[],
+        "cost":[]
+      },{
+        "2":3840,
+        "statInterpolation":[],
+        "cost":[]
+      },{
+        "2":4080,
+        "statInterpolation":[],
+        "cost":[]
+      },{
+        "2":4320,
+        "statInterpolation":[],
+        "cost":[]
+      },{
+        "2":4560,
+        "statInterpolation":[],
+        "cost":[]
+      },{
+        "2":4860,
         "statInterpolation":[],
         "cost":[]
       },{
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":6180,
-        "4":69,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":6300,
+        "2":5700,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":6600,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":6960,
+        "2":6180,
+        "3":69,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":7260,
+        "2":6300,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":7620,
+        "2":6600,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":7980,
+        "2":6960,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":8340,
+        "2":7260,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":8700,
+        "2":7620,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":9060,
+        "2":7980,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":9420,
+        "2":8340,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":9840,
+        "2":8700,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":10020,
+        "2":9060,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":10200,
+        "2":9420,
         "statInterpolation":[],
         "cost":[]
       },{
-        "2":61,
-        "3":10380,
+        "2":9840,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":10560,
+        "2":10020,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":10740,
+        "2":10200,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":10920,
+        "2":10380,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":11100,
+        "2":10560,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":11280,
+        "2":10740,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":11460,
+        "2":10920,
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":11640,
+        "2":11100,
+        "statInterpolation":[],
+        "cost":[]
+      },{
+        "2":11280,
+        "statInterpolation":[],
+        "cost":[]
+      },{
+        "2":11460,
+        "statInterpolation":[],
+        "cost":[]
+      },{
+        "2":11640,
         "statInterpolation":[],
         "cost":[]
       }],
     "qualityStats":{
-      "Alternate2":[["golem_cooldown_recovery_+%"]],
-      "Default":[["golem_buff_effect_+%"]],
-      "Alternate1":[[]]
+      "Default":[["golem_buff_effect_+%"]]
     },
     "statMap":{
       "stone_golem_grants_base_life_regeneration_rate_per_minute":[{
@@ -1965,7 +1932,7 @@
         }]
     },
     "constantStats":[["base_number_of_golems_allowed"],[]],
-    "stats":["base_actor_scale_+%","minion_maximum_life_+%","stone_golem_grants_base_life_regeneration_rate_per_minute",null,"infinite_minion_duration"],
+    "stats":["base_actor_scale_+%","stone_golem_grants_base_life_regeneration_rate_per_minute",null,"infinite_minion_duration"],
     "baseMods":[{
         "value":{
           "key":"allowTotemBuff"
@@ -1983,10 +1950,7 @@
   },
   "SearingBond":{
     "qualityStats":{
-      "Alternate3":[["number_of_additional_totems_allowed",0.1]],
-      "Alternate2":[[]],
-      "Default":[["totem_life_+%"]],
-      "Alternate1":[["totem_duration_+%"]]
+      "Default":[["number_of_additional_totems_allowed",0.1]]
     },
     "baseEffectiveness":7.5956997871399,
     "levels":[{
@@ -2072,7 +2036,9 @@
         "cost":[],
         "statInterpolation":[]
       },{
-        "cost":[],
+        "cost":{
+          "Mana":61
+        },
         "statInterpolation":[]
       },{
         "cost":[],
@@ -2121,23 +2087,22 @@
   },
   "Smite":{
     "qualityStats":{
-      "Alternate3":[["skill_buff_grants_attack_and_cast_speed_+%",0.25]],
-      "Alternate2":[["lightning_damage_+%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[],["quality_display_active_skill_area_damage_quality_negated_from_gem"]]
     },
     "weaponTypes":[],
     "baseMods":[{
         "value":[]
+      },{
+        "value":[]
       }],
-    "constantStats":[[],[],[]],
-    "description":"Performs a melee attack, and causes lightning to strike a targeted location or nearby enemy, dealing damage in an area. Each target can only be hit once by this skill. Hitting an enemy grants an aura, giving you and your allies additional lightning damage for a duration. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
+    "constantStats":[[],[],[],[],[],[],[]],
+    "description":"Performs a melee attack, and causes lightning to strike a nearby enemy, dealing damage in an area. Each target can only be hit once by this skill. Hitting an enemy grants an aura for a duration. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
         "cost":[]
       },{
-        "5":-29,
+        "6":-29,
         "attackSpeedMultiplier":-15,
         "statInterpolation":[],
         "cost":[],
@@ -2151,7 +2116,7 @@
         "cost":[],
         "baseMultiplier":2.082
       },{
-        "5":-28,
+        "6":-28,
         "statInterpolation":[],
         "cost":[],
         "baseMultiplier":2.122
@@ -2160,7 +2125,7 @@
         "cost":[],
         "baseMultiplier":2.163
       },{
-        "5":-27,
+        "6":-27,
         "statInterpolation":[],
         "cost":[],
         "baseMultiplier":2.203
@@ -2169,7 +2134,7 @@
         "cost":[],
         "baseMultiplier":2.244
       },{
-        "5":-26,
+        "6":-26,
         "statInterpolation":[],
         "cost":[],
         "baseMultiplier":2.284
@@ -2178,12 +2143,12 @@
         "cost":[],
         "baseMultiplier":2.325
       },{
-        "5":-25,
+        "6":-25,
         "statInterpolation":[],
         "cost":[],
         "baseMultiplier":2.365
       },{
-        "5":-24,
+        "6":-24,
         "statInterpolation":[],
         "cost":[],
         "baseMultiplier":2.406
@@ -2192,7 +2157,7 @@
         "cost":[],
         "baseMultiplier":2.446
       },{
-        "5":-23,
+        "6":-23,
         "statInterpolation":[],
         "cost":[],
         "baseMultiplier":2.487
@@ -2201,7 +2166,7 @@
         "cost":[],
         "baseMultiplier":2.527
       },{
-        "5":-22,
+        "6":-22,
         "statInterpolation":[],
         "cost":[],
         "baseMultiplier":2.568
@@ -2216,7 +2181,7 @@
         "cost":[],
         "baseMultiplier":2.649
       },{
-        "5":-21,
+        "6":-21,
         "statInterpolation":[],
         "damageEffectiveness":2.69,
         "cost":[],
@@ -2234,13 +2199,13 @@
         "cost":[],
         "baseMultiplier":2.811
       },{
-        "5":-19,
+        "6":-19,
         "statInterpolation":[],
         "damageEffectiveness":2.85,
         "cost":[],
         "baseMultiplier":2.852
       },{
-        "5":-18,
+        "6":-18,
         "statInterpolation":[],
         "damageEffectiveness":2.89,
         "cost":[],
@@ -2256,13 +2221,13 @@
         "cost":[],
         "baseMultiplier":2.973
       },{
-        "5":-17,
+        "6":-17,
         "statInterpolation":[],
         "damageEffectiveness":3.01,
         "cost":[],
         "baseMultiplier":3.014
       },{
-        "5":-16,
+        "6":-16,
         "statInterpolation":[],
         "damageEffectiveness":3.05,
         "cost":[],
@@ -2303,7 +2268,7 @@
         "cost":[],
         "baseMultiplier":3.257
       },{
-        "5":-14,
+        "6":-14,
         "statInterpolation":[],
         "damageEffectiveness":3.28,
         "cost":[],
@@ -2319,7 +2284,7 @@
         "cost":[],
         "baseMultiplier":3.318
       },{
-        "5":-13,
+        "6":-13,
         "statInterpolation":[],
         "damageEffectiveness":3.34,
         "cost":[],
@@ -2332,23 +2297,17 @@
             "var":"AffectedByVaalSmite"
           }]],
       "minimum_added_lightning_damage_from_skill":[[[],[]]],
-      "skill_buff_grants_attack_and_cast_speed_+%":[{
-          "1":[],
-          "2":[],
-          "name":"Speed"
-        }],
+      "quality_display_active_skill_area_damage_quality_negated_from_gem":[],
       "maximum_added_lightning_damage_from_skill":[[[],[]]]
     },
-    "stats":[null,null,null,null,"active_skill_area_damage_+%_final"],
+    "stats":[],
     "skillTypes":[],
     "name":"Smite",
     "baseFlags":[]
   },
   "ImmortalCall":{
     "qualityStats":{
-      "Alternate2":[["mortal_call_physical_damage_taken_per_endurance_charge_consumed_final_permyriad"],["immortal_call_elemental_damage_taken_+%_final_per_endurance_charge_consumed_permyriad",-10]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -2483,35 +2442,31 @@
         "cost":[]
       }],
     "statMap":{
-      "immortal_call_elemental_damage_taken_+%_final_per_endurance_charge_consumed_permyriad":[{
+      "mortal_call_physical_damage_taken_+%_final":[{
           "1":{
             "effectType":"Guard"
           },
-          "2":{
-            "var":"RemovableEnduranceCharge"
-          },
-          "name":"ElementalDamageTaken"
-        }],
-      "mortal_call_physical_damage_taken_+%_final":[{
-          "1":[],
           "name":"PhysicalDamageTaken"
         }],
-      "mortal_call_elemental_damage_taken_+%_final":[[[]]],
+      "mortal_call_physical_damage_taken_per_endurance_charge_consumed_final_permyriad":[[[],{
+            "var":"RemovableEnduranceCharge"
+          }]],
       "quality_display_immortal_call_is_gem":[],
-      "mortal_call_physical_damage_taken_per_endurance_charge_consumed_final_permyriad":[[[],[]]]
+      "mortal_call_elemental_damage_taken_+%_final":[{
+          "1":[],
+          "name":"ElementalDamageTaken"
+        }]
     },
     "stats":["mortal_call_elemental_damage_taken_+%_final","mortal_call_physical_damage_taken_+%_final",null,"display_this_skill_cooldown_does_not_recover_during_buff","quality_display_immortal_call_is_gem"],
     "skillTypes":[],
-    "constantStats":[[null,-1500],["buff_effect_duration_+%_per_removable_endurance_charge_limited_to_5"],[]],
+    "constantStats":[["mortal_call_physical_damage_taken_per_endurance_charge_consumed_final_permyriad",-1500],["buff_effect_duration_+%_per_removable_endurance_charge_limited_to_5"],[]],
     "baseFlags":[],
     "name":"Immortal Call",
     "description":"Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills."
   },
   "PuresteelBanner":{
     "qualityStats":{
-      "Alternate2":[["attacks_impale_on_hit_%_chance"]],
-      "Default":[["aura_effect_+%"]],
-      "Alternate1":[["puresteel_banner_damage_+%_final",-0.1],["active_skill_quality_duration_+%_final"]]
+      "Default":[["aura_effect_+%"]]
     },
     "levels":[{
         "statInterpolation":[]
@@ -2603,9 +2558,9 @@
         }],
       "impale_debuff_effect_+%":[{
           "1":[],
+          "type":"INC",
           "name":"ImpaleEffect"
         }],
-      "puresteel_banner_damage_+%_final":[[[]]],
       "attacks_impale_on_hit_%_chance":[{
           "1":[],
           "name":"ImpaleChance",
@@ -2613,7 +2568,7 @@
         }]
     },
     "stats":["puresteel_banner_accuracy_rating_+%_final","impale_debuff_effect_+%","banner_add_stage_on_impale"],
-    "constantStats":[[],["banner_area_of_effect_+%_per_stage"],["banner_buff_effect_+%_per_stage"],["banner_additional_base_duration_per_stage_ms"],["puresteel_banner_+10_max_fortification_for_duration_per_stage_ms"],[null,10000]],
+    "constantStats":[["attacks_impale_on_hit_%_chance"],["banner_area_of_effect_+%_per_stage"],["banner_buff_effect_+%_per_stage"],["banner_additional_base_duration_per_stage_ms"],["puresteel_banner_+10_max_fortification_for_duration_per_stage_ms"],[null,10000]],
     "statDescriptionScope":"banner_aura_skill_stat_descriptions",
     "baseFlags":[],
     "baseMods":[{
@@ -2636,9 +2591,7 @@
   },
   "Berserk":{
     "qualityStats":{
-      "Alternate2":[["berserk_spell_damage_+%_final"]],
-      "Default":[["attack_damage_+%"]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -2763,16 +2716,17 @@
       }],
     "statMap":{
       "berserk_attack_damage_+%_final":[[[]]],
+      "berserk_base_damage_taken_+%_final":[{
+          "1":[],
+          "name":"DamageTaken"
+        }],
       "berserk_movement_speed_+%_final":[{
           "1":[],
           "name":"MovementSpeed"
         }],
-      "berserk_attack_speed_+%_final":[[[]]],
-      "attack_damage_+%":[[[]]],
-      "berserk_spell_damage_+%_final":[[[]]],
-      "berserk_base_damage_taken_+%_final":[{
+      "berserk_attack_speed_+%_final":[{
           "1":[],
-          "name":"DamageTaken"
+          "name":"Speed"
         }]
     },
     "stats":["berserk_attack_damage_+%_final","berserk_attack_speed_+%_final","berserk_movement_speed_+%_final","berserk_base_damage_taken_+%_final"],
@@ -2784,9 +2738,7 @@
   },
   "Boneshatter":{
     "qualityStats":{
-      "Alternate2":[["attack_speed_+%_per_trauma",0.05],["trauma_strike_self_damage_per_trauma"]],
-      "Default":[["trauma_strike_damage_+%_final_per_trauma"]],
-      "Alternate1":[["base_stun_threshold_reduction_+%"]]
+      "Default":[["trauma_strike_damage_+%_final_per_trauma"]]
     },
     "weaponTypes":[],
     "baseMods":[{
@@ -3041,204 +2993,280 @@
       }],
     "baseEffectiveness":0.18279999494553,
     "statMap":{
-      "boneshatter_trauma_base_duration_ms":[{
-          "name":"TraumaDuration"
-        }],
+      "quality_display_boneshatter_is_gem":[],
       "trauma_strike_damage_+%_final_per_trauma":[[{
             "var":"TraumaStacks"
           }]],
-      "attack_speed_+%_per_trauma":[[[]],{
-          "name":"SpeedPerTrauma"
-        }],
-      "trauma_strike_self_damage_per_trauma":[{
-          "name":"TraumaSelfDamageTakenLife"
+      "trauma_strike_self_damage_per_trauma":[],
+      "boneshatter_trauma_base_duration_ms":[{
+          "name":"TraumaDuration"
         }]
     },
-    "stats":[],
+    "stats":["trauma_strike_self_damage_per_trauma",null,null,null,"quality_display_boneshatter_is_gem"],
     "skillTypes":[],
     "incrementalEffectiveness":0.053700000047684,
     "name":"Boneshatter",
     "baseFlags":[]
   },
-  "VaalAncestralWarchief":{
+  "VaalEarthquake":{
     "qualityStats":{
-      "Default":[["totem_damage_+%"]]
+      "Default":[["quake_slam_fully_charged_explosion_damage_+%_final",1.5]]
     },
-    "levels":[{
-        "cost":[]
-      },{
-        "cost":[],
-        "damageEffectiveness":1.03,
-        "baseMultiplier":1.028
-      },{
-        "cost":[],
-        "damageEffectiveness":1.06,
-        "baseMultiplier":1.057
-      },{
-        "cost":[],
-        "damageEffectiveness":1.09,
-        "baseMultiplier":1.085
-      },{
-        "cost":[],
-        "damageEffectiveness":1.11,
-        "baseMultiplier":1.114
-      },{
-        "cost":[],
-        "damageEffectiveness":1.14,
-        "baseMultiplier":1.142
-      },{
-        "cost":[],
-        "damageEffectiveness":1.17,
-        "baseMultiplier":1.171
-      },{
-        "cost":[],
-        "baseMultiplier":1.199
-      },{
-        "cost":[],
-        "damageEffectiveness":1.23,
-        "baseMultiplier":1.227
-      },{
-        "cost":[],
-        "damageEffectiveness":1.26,
-        "baseMultiplier":1.256
-      },{
-        "cost":[],
-        "damageEffectiveness":1.28,
-        "baseMultiplier":1.284
-      },{
-        "cost":[],
-        "damageEffectiveness":1.31,
-        "baseMultiplier":1.313
-      },{
-        "cost":[],
-        "damageEffectiveness":1.34,
-        "baseMultiplier":1.341
-      },{
-        "cost":[],
-        "baseMultiplier":1.369
-      },{
-        "cost":[],
-        "damageEffectiveness":1.4,
-        "baseMultiplier":1.398
-      },{
-        "cost":[],
-        "damageEffectiveness":1.43,
-        "baseMultiplier":1.426
-      },{
-        "cost":[],
-        "baseMultiplier":1.455
-      },{
-        "cost":[],
-        "damageEffectiveness":1.48,
-        "baseMultiplier":1.483
-      },{
-        "cost":[],
-        "damageEffectiveness":1.51,
-        "baseMultiplier":1.512
-      },{
-        "cost":[],
-        "damageEffectiveness":1.54
-      },{
-        "cost":[],
-        "baseMultiplier":1.568
-      },{
-        "cost":[],
-        "damageEffectiveness":1.6,
-        "baseMultiplier":1.597
-      },{
-        "cost":[],
-        "damageEffectiveness":1.63,
-        "baseMultiplier":1.625
-      },{
-        "cost":[],
-        "damageEffectiveness":1.65,
-        "baseMultiplier":1.654
-      },{
-        "cost":[],
-        "baseMultiplier":1.682
-      },{
-        "cost":[],
-        "damageEffectiveness":1.71,
-        "baseMultiplier":1.711
-      },{
-        "cost":[],
-        "baseMultiplier":1.739
-      },{
-        "cost":[],
-        "damageEffectiveness":1.77,
-        "baseMultiplier":1.767
-      },{
-        "cost":[],
-        "baseMultiplier":1.796
-      },{
-        "cost":[],
-        "damageEffectiveness":1.82,
-        "baseMultiplier":1.824
-      },{
-        "cost":[],
-        "baseMultiplier":1.838
-      },{
-        "cost":[],
-        "damageEffectiveness":1.85,
-        "baseMultiplier":1.853
-      },{
-        "cost":[],
-        "damageEffectiveness":1.87,
-        "baseMultiplier":1.867
-      },{
-        "cost":[],
-        "baseMultiplier":1.881
-      },{
-        "cost":[],
-        "damageEffectiveness":1.9,
-        "baseMultiplier":1.895
-      },{
-        "cost":[],
-        "damageEffectiveness":1.91,
-        "baseMultiplier":1.909
-      },{
-        "cost":[]
-      },{
-        "cost":[],
-        "damageEffectiveness":1.94,
-        "baseMultiplier":1.938
-      },{
-        "cost":[],
-        "damageEffectiveness":1.95,
-        "baseMultiplier":1.952
-      },{
-        "cost":[],
-        "baseMultiplier":1.966
-      }],
-    "statMap":{
-      "slam_ancestor_totem_grant_owner_melee_damage_+%_final":[{
-          "1":{
-            "effectName":"Ancestral Warchief"
-          },
-          "flags":256
-        }]
-    },
-    "constantStats":[[],[],["ancestor_totem_parent_activiation_range"],["summon_totem_cast_speed_+%"],["slam_ancestor_totem_grant_owner_melee_damage_+%_final"],[]],
-    "stats":[null,null,null,"totem_ignores_vaal_skill_cost","modifiers_to_totem_duration_also_affect_soul_prevention_duration"],
+    "weaponTypes":[],
     "baseMods":[{
+        "1":[],
+        "value":{
+          "key":"showAverage"
+        }
+      },{
+        "1":[],
         "value":[]
       },{
-        "value":{
-          "key":"thisIsNotABuff"
-        }
+        "1":[],
+        "value":[]
       }],
+    "constantStats":[[],[],["vaal_earthquake_maximum_aftershocks"]],
+    "description":"Smashes the ground, dealing damage in an area and cracking the earth. The crack will erupt in a powerful aftershock after a short duration. After using this skill, your steps will deal damage around you, cracking the earth if the previous cracks have erupted. This effect ends after a secondary duration, or after a maximum number of aftershocks. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
+    "parts":[[],{
+        "name":"Aftershock"
+      }],
+    "levels":[{
+        "1":350,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":0.7
+      },{
+        "1":353,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":0.72,
+        "baseMultiplier":0.719
+      },{
+        "1":356,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":0.74,
+        "baseMultiplier":0.738
+      },{
+        "1":359,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":0.76,
+        "baseMultiplier":0.757
+      },{
+        "1":362,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":0.78,
+        "baseMultiplier":0.776
+      },{
+        "1":365,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":0.79,
+        "baseMultiplier":0.795
+      },{
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":0.81,
+        "baseMultiplier":0.814
+      },{
+        "1":371,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":0.83,
+        "baseMultiplier":0.833
+      },{
+        "1":374,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":0.85,
+        "baseMultiplier":0.852
+      },{
+        "1":377,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":0.87,
+        "baseMultiplier":0.871
+      },{
+        "1":380,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":0.89,
+        "baseMultiplier":0.889
+      },{
+        "1":383,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":0.91,
+        "baseMultiplier":0.908
+      },{
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":0.93,
+        "baseMultiplier":0.927
+      },{
+        "1":389,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":0.95,
+        "baseMultiplier":0.946
+      },{
+        "1":392,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":0.97,
+        "baseMultiplier":0.965
+      },{
+        "1":395,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":0.98,
+        "baseMultiplier":0.984
+      },{
+        "baseMultiplier":1.003,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "1":401,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.02,
+        "baseMultiplier":1.022
+      },{
+        "1":404,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.04,
+        "baseMultiplier":1.041
+      },{
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.06
+      },{
+        "1":410,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.08,
+        "baseMultiplier":1.079
+      },{
+        "1":413,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.1,
+        "baseMultiplier":1.098
+      },{
+        "1":416,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.12,
+        "baseMultiplier":1.117
+      },{
+        "1":419,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.14,
+        "baseMultiplier":1.136
+      },{
+        "1":422,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.15,
+        "baseMultiplier":1.155
+      },{
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.17,
+        "baseMultiplier":1.174
+      },{
+        "1":428,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.19,
+        "baseMultiplier":1.193
+      },{
+        "1":431,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.21,
+        "baseMultiplier":1.212
+      },{
+        "1":434,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.23,
+        "baseMultiplier":1.231
+      },{
+        "cost":[],
+        "statInterpolation":[],
+        "baseMultiplier":1.249
+      },{
+        "1":437,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.26,
+        "baseMultiplier":1.259
+      },{
+        "1":440,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.27,
+        "baseMultiplier":1.268
+      },{
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.28,
+        "baseMultiplier":1.278
+      },{
+        "cost":[],
+        "statInterpolation":[],
+        "baseMultiplier":1.287
+      },{
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.3,
+        "baseMultiplier":1.297
+      },{
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.31,
+        "baseMultiplier":1.306
+      },{
+        "1":446,
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.32,
+        "baseMultiplier":1.316
+      },{
+        "1":449,
+        "cost":[],
+        "statInterpolation":[],
+        "baseMultiplier":1.325
+      },{
+        "cost":[],
+        "statInterpolation":[],
+        "baseMultiplier":1.335
+      },{
+        "cost":[],
+        "statInterpolation":[],
+        "damageEffectiveness":1.34,
+        "baseMultiplier":1.344
+      }],
+    "statMap":{
+      "quality_display_earthquake_is_gem":[],
+      "quake_slam_fully_charged_explosion_damage_+%_final":[{
+          "1":[],
+          "keywordFlags":786432
+        }]
+    },
+    "stats":[null,null,null,null,"force_lite_skill_effects","is_player_earthquake","quality_display_earthquake_is_gem"],
     "skillTypes":[],
-    "baseFlags":[],
-    "weaponTypes":[],
-    "name":"Vaal Ancestral Warchief",
-    "description":"Summons an Ancestor Totem which attacks enemies with a powerful cascading slam while you're near it. If the enemies are far away, it will leap toward them as it slams. Being near it grants you more melee damage. Requires a Melee Weapon or Unarmed."
+    "name":"Vaal Earthquake",
+    "baseFlags":[]
   },
   "FlameTotem":{
     "qualityStats":{
-      "Alternate3":[[],[]],
-      "Alternate2":[["skill_physical_damage_%_to_convert_to_fire"]],
-      "Default":[["base_projectile_speed_+%"]],
-      "Alternate1":[["number_of_additional_projectiles"]]
+      "Default":[["base_projectile_speed_+%"]]
     },
     "baseEffectiveness":0.74919998645782,
     "levels":[{
@@ -3364,14 +3392,15 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "constantStats":[[],[],[],[],["ignite_art_variation"]],
-    "stats":["spell_minimum_base_physical_damage","spell_maximum_base_physical_damage",null,null,"base_is_projectile","always_pierce","consecrated_ground_immune_to_curses"],
+    "constantStats":[[],[],["base_number_of_projectiles"],["skill_physical_damage_%_to_convert_to_fire"],["ignite_art_variation"],["active_skill_projectile_speed_+%_variation_final"]],
+    "stats":["spell_minimum_base_physical_damage","spell_maximum_base_physical_damage",null,null,"base_is_projectile","always_pierce","consecrated_ground_immune_to_curses",null,"quality_display_base_number_of_projectiles_is_gem"],
     "baseMods":[{
         "value":[]
       }],
     "incrementalEffectiveness":0.032200001180172,
     "skillTypes":[],
     "baseFlags":[],
+    "castTime":0.25,
     "name":"Holy Flame Totem",
     "description":"Summons a totem that channels to fire a stream of flame at nearby enemies, and creates an area of consecrated ground around the totem."
   },
@@ -3384,6 +3413,7 @@
     "levels":[[],{
         "baseMultiplier":1.758
       },{
+        "damageEffectiveness":1.82,
         "baseMultiplier":1.817
       },{
         "baseMultiplier":1.875
@@ -3474,9 +3504,7 @@
     "stats":[],
     "constantStats":[["skill_physical_damage_%_to_convert_to_cold"],["skill_disabled_unless_cloned"]],
     "qualityStats":{
-      "Alternate2":[["dummy_stat_display_nothing"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[["dummy_stat_display_nothing"]]
     },
     "baseMods":[{
         "value":[]
@@ -3489,10 +3517,7 @@
   },
   "LeapSlam":{
     "qualityStats":{
-      "Alternate3":[[]],
-      "Alternate2":[[]],
-      "Default":[["base_stun_duration_+%"]],
-      "Alternate1":[[]]
+      "Default":[["stun_duration_+%_vs_enemies_that_are_on_full_life"]]
     },
     "levels":[{
         "cost":[],
@@ -3500,6 +3525,7 @@
       },{
         "baseMultiplier":1.026,
         "statInterpolation":[],
+        "damageEffectiveness":1.03,
         "cost":[]
       },{
         "baseMultiplier":1.053,
@@ -3507,13 +3533,12 @@
         "damageEffectiveness":1.05,
         "cost":[]
       },{
-        "baseMultiplier":1.079,
         "statInterpolation":[],
-        "damageEffectiveness":1.08,
         "cost":[]
       },{
         "baseMultiplier":1.105,
         "statInterpolation":[],
+        "damageEffectiveness":1.11,
         "cost":[]
       },{
         "baseMultiplier":1.132,
@@ -3533,7 +3558,6 @@
       },{
         "baseMultiplier":1.211,
         "statInterpolation":[],
-        "damageEffectiveness":1.21,
         "cost":[]
       },{
         "baseMultiplier":1.237,
@@ -3548,9 +3572,7 @@
         "statInterpolation":[],
         "cost":[]
       },{
-        "baseMultiplier":1.316,
         "statInterpolation":[],
-        "damageEffectiveness":1.32,
         "cost":[]
       },{
         "baseMultiplier":1.342,
@@ -3578,7 +3600,6 @@
         "damageEffectiveness":1.47,
         "cost":[]
       },{
-        "baseMultiplier":1.5,
         "statInterpolation":[],
         "cost":[]
       },{
@@ -3600,6 +3621,7 @@
       },{
         "baseMultiplier":1.632,
         "statInterpolation":[],
+        "damageEffectiveness":1.63,
         "cost":[]
       },{
         "baseMultiplier":1.658,
@@ -3610,7 +3632,9 @@
         "statInterpolation":[],
         "cost":[]
       },{
+        "baseMultiplier":1.711,
         "statInterpolation":[],
+        "damageEffectiveness":1.71,
         "cost":[]
       },{
         "baseMultiplier":1.737,
@@ -3649,25 +3673,35 @@
       },{
         "baseMultiplier":1.868,
         "statInterpolation":[],
+        "damageEffectiveness":1.87,
         "cost":[]
       },{
         "statInterpolation":[],
         "cost":[]
       },{
+        "baseMultiplier":1.895,
         "statInterpolation":[],
         "damageEffectiveness":1.89,
         "cost":[]
       }],
-    "constantStats":[[null,550]],
-    "stats":["stun_duration_+%_vs_enemies_that_are_on_full_life",null,"always_stun_enemies_that_are_on_full_life","leap_slam_always_knockback_within_range"],
-    "baseMods":[{
-        "value":[]
-      }],
+    "statMap":{
+      "stun_duration_+%_vs_enemies_that_are_on_full_life":[{
+          "1":{
+            "type":"ActorCondition",
+            "var":"FullLife",
+            "actor":"enemy"
+          },
+          "name":"EnemyStunDuration"
+        }]
+    },
+    "stats":[null,null,"always_stun_enemies_that_are_on_full_life","leap_slam_always_knockback_within_range"],
+    "constantStats":[[null,550],[]],
+    "castTime":1.4,
     "skillTypes":[],
     "baseFlags":[],
     "weaponTypes":[],
     "name":"Leap Slam",
-    "description":"Jump into the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff. Cannot be supported by Multistrike."
+    "description":"Jump through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff. Cannot be supported by Multistrike."
   },
   "StaticStrike":{
     "stats":["static_strike_base_zap_frequency_ms","static_strike_number_of_beam_targets"],
@@ -3677,7 +3711,6 @@
         "name":"Beams"
       }],
     "levels":[{
-        "baseMultiplier":1.1,
         "statInterpolation":[],
         "cost":[]
       },{
@@ -3704,7 +3737,6 @@
         "statInterpolation":[],
         "cost":[]
       },{
-        "1":380,
         "baseMultiplier":1.346,
         "statInterpolation":[],
         "damageEffectiveness":1.35,
@@ -3717,6 +3749,7 @@
         "1":370,
         "baseMultiplier":1.428,
         "statInterpolation":[],
+        "damageEffectiveness":1.43,
         "cost":[]
       },{
         "baseMultiplier":1.469,
@@ -3726,6 +3759,7 @@
         "1":360,
         "baseMultiplier":1.511,
         "statInterpolation":[],
+        "damageEffectiveness":1.51,
         "cost":[]
       },{
         "baseMultiplier":1.552,
@@ -3737,7 +3771,6 @@
         "damageEffectiveness":1.59,
         "cost":[]
       },{
-        "1":350,
         "baseMultiplier":1.634,
         "statInterpolation":[],
         "cost":[]
@@ -3855,11 +3888,6 @@
     "constantStats":[[],["number_of_chains"],["static_strike_beam_damage_+%_final"],[]],
     "statMap":{
       "static_strike_beam_damage_+%_final":[[[]]],
-      "static_strike_zap_speed_+%":[{
-          "value":{
-            "key":"repeatFrequencyIncrease"
-          }
-        }],
       "static_strike_base_zap_frequency_ms":[{
           "value":{
             "key":"repeatFrequency"
@@ -3867,10 +3895,7 @@
         }]
     },
     "qualityStats":{
-      "Alternate3":[["static_strike_zap_speed_+%"],[null,-1]],
-      "Alternate2":[[],[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[["static_strike_zap_speed_+%"]]
     },
     "baseMods":[{
         "value":[]
@@ -3883,10 +3908,7 @@
   },
   "AbyssalCry":{
     "qualityStats":{
-      "Alternate3":[[]],
-      "Alternate2":[["warcry_grant_damage_+%_to_exerted_attacks"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -4017,9 +4039,6 @@
       }],
     "statMap":{
       "infernal_cry_empowered_attacks_trigger_combust_display":[],
-      "infernal_cry_covered_in_ash_fire_damage_taken_":[{
-          "name":"InfernalAshEffectPer5MP"
-        }],
       "skill_empowers_next_x_melee_attacks":[{
           "name":"InfernalExertedAttacks"
         }],
@@ -4035,7 +4054,6 @@
         "value":[]
       },{
         "value":{
-          "key":"radiusLabel",
           "value":"Warcry area:"
         }
       },{
@@ -4044,7 +4062,6 @@
         }
       },{
         "value":{
-          "key":"radiusSecondaryLabel",
           "value":"Explosion area:"
         }
       }],
@@ -4060,7 +4077,6 @@
       }],
     "levels":[{
         "statInterpolation":[],
-        "damageEffectiveness":1.3,
         "cost":[]
       },{
         "statInterpolation":[],
@@ -4132,6 +4148,7 @@
         "cost":[]
       },{
         "statInterpolation":[],
+        "damageEffectiveness":1.85,
         "cost":[]
       },{
         "statInterpolation":[],
@@ -4146,6 +4163,7 @@
         "cost":[]
       },{
         "statInterpolation":[],
+        "damageEffectiveness":1.966,
         "cost":[]
       },{
         "statInterpolation":[],
@@ -4208,8 +4226,7 @@
         "cost":[]
       }],
     "qualityStats":{
-      "Alternate1":[[]],
-      "Default":[["fire_damage_+%"]]
+      "Default":[[]]
     },
     "statMap":{
       "active_skill_hit_ailment_damage_with_projectile_+%_final":[[[]]]
@@ -4227,14 +4244,12 @@
   },
   "ConsecratedPath":{
     "qualityStats":{
-      "Alternate3":[["consecrated_ground_area_+%"]],
-      "Alternate2":[["holy_path_teleport_range_+%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[["groundslam_damage_to_close_targets_+%_final"]]
     },
     "levels":[{
         "cost":[]
       },{
+        "damageEffectiveness":1.54,
         "cost":[],
         "baseMultiplier":1.542
       },{
@@ -4350,10 +4365,11 @@
     "statMap":{
       "groundslam_damage_to_close_targets_+%_final":[[{
             "var":"AtCloseRange"
-          }]]
+          }]],
+      "quality_display_groundslam_is_gem":[]
     },
-    "constantStats":[[],[],["groundslam_damage_to_close_targets_+%_final"],[]],
-    "stats":[],
+    "constantStats":[[],[],[],[]],
+    "stats":[null,null,"quality_display_groundslam_is_gem"],
     "baseMods":[{
         "value":[]
       }],
@@ -4530,9 +4546,7 @@
   },
   "PhysicalDamageAura":{
     "qualityStats":{
-      "Alternate2":[["base_additional_physical_damage_reduction_%"]],
-      "Default":[[]],
-      "Alternate1":[["receive_bleeding_chance_%_when_hit_by_attack"]]
+      "Default":[["base_skill_area_of_effect_+%"]]
     },
     "levels":[{
         "statInterpolation":[]
@@ -4621,15 +4635,7 @@
           }]],
       "physical_damage_aura_nearby_enemies_physical_damage_taken_+%_max":[[{
             "modCond":"PrideMaxEffect"
-          }]],
-      "base_additional_physical_damage_reduction_%":[{
-          "1":[],
-          "name":"PhysicalDamageReduction"
-        }],
-      "receive_bleeding_chance_%_when_hit_by_attack":[{
-          "1":[],
-          "name":"SelfBleedChance"
-        }]
+          }]]
     },
     "stats":["physical_damage_aura_nearby_enemies_physical_damage_taken_+%","physical_damage_aura_nearby_enemies_physical_damage_taken_+%_max"],
     "statDescriptionScope":"aura_skill_stat_descriptions",
@@ -4641,132 +4647,193 @@
     "name":"Pride",
     "description":"Casts an aura that causes nearby enemies to take more physical damage."
   },
-  "PetrifiedBlood":{
+  "DevouringTotem":{
     "qualityStats":{
-      "Alternate2":[["skill_grants_life_cost_%_mana_cost_while_not_on_low_life"]],
-      "Default":[["petrified_blood_%_prevented_life_loss_to_lose_over_time",-0.25]],
-      "Alternate1":[[],["petrified_blood_%_life_loss_below_half_from_hit_to_prevent"]]
+      "Default":[["totem_life_+%_final"]]
+    },
+    "statMap":{
+      "corpse_consumption_life_to_gain":[{
+          "value":{
+            "key":"lifeLeechPerUse"
+          }
+        }],
+      "corpse_consumption_mana_to_gain":[{
+          "value":{
+            "key":"manaLeechPerUse"
+          }
+        }]
     },
     "levels":[{
+        "cost":[],
         "statInterpolation":[]
       },{
+        "cost":[],
         "statInterpolation":[]
       },{
+        "cost":[],
         "statInterpolation":[]
       },{
+        "cost":[],
         "statInterpolation":[]
       },{
+        "cost":[],
         "statInterpolation":[]
       },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":87,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":83,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":81,
-        "statInterpolation":[]
-      },{
+        "cost":[],
         "statInterpolation":[]
       },{
         "1":79,
+        "cost":[],
         "statInterpolation":[]
       },{
+        "cost":[],
         "statInterpolation":[]
       },{
+        "1":102,
+        "cost":[],
         "statInterpolation":[]
       },{
+        "cost":[],
         "statInterpolation":[]
       },{
+        "1":129,
+        "cost":[],
         "statInterpolation":[]
       },{
+        "cost":[],
         "statInterpolation":[]
       },{
-        "1":73,
+        "cost":[],
         "statInterpolation":[]
       },{
+        "cost":[],
         "statInterpolation":[]
       },{
+        "1":191,
+        "cost":[],
         "statInterpolation":[]
       },{
-        "1":71,
+        "1":211,
+        "cost":[],
         "statInterpolation":[]
       },{
+        "1":231,
+        "cost":[],
         "statInterpolation":[]
       },{
+        "1":253,
+        "cost":[],
         "statInterpolation":[]
       },{
+        "cost":[],
         "statInterpolation":[]
       },{
+        "1":299,
+        "cost":[],
         "statInterpolation":[]
       },{
+        "1":325,
+        "cost":[],
         "statInterpolation":[]
       },{
+        "1":352,
+        "cost":[],
         "statInterpolation":[]
       },{
+        "1":382,
+        "cost":[],
         "statInterpolation":[]
       },{
+        "2":73,
+        "cost":[],
         "statInterpolation":[]
       },{
+        "1":447,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "1":483,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "1":522,
+        "3":104,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "1":563,
+        "3":108,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "1":606,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "1":652,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "1":677,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "1":701,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "1":727,
+        "3":122,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "1":753,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "1":781,
+        "3":126,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "1":808,
+        "3":128,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "1":837,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "1":866,
+        "3":132,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "1":897,
+        "2":114,
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "1":927,
+        "2":116,
+        "cost":[],
         "statInterpolation":[]
       }],
-    "statMap":{
-      "skill_grants_life_cost_%_mana_cost_while_not_on_low_life":[{
-          "1":{
-            "effectName":"Petrified Blood"
-          },
-          "2":{
-            "var":"LowLife"
-          },
-          "name":"ManaCostAsLifeCost"
-        }],
-      "cannot_recover_above_low_life_except_flasks":[],
-      "petrified_blood_%_life_loss_below_half_from_hit_to_prevent":[{
-          "1":[],
-          "name":"LifeLossBelowHalfPrevented"
-        }],
-      "petrified_blood_%_prevented_life_loss_to_lose_over_time":[{
-          "1":[],
-          "name":"LifeLossBelowHalfLost"
-        }]
-    },
-    "stats":[null,"cannot_recover_above_low_life_except_flasks"],
-    "baseFlags":[],
+    "stats":["corpse_consumption_life_to_gain","corpse_consumption_mana_to_gain","totem_life_+%"],
     "constantStats":[[],[]],
+    "incrementalEffectiveness":0.029999999329448,
     "skillTypes":[],
-    "description":"Applies a buff that protects the lower half of your life, preventing some of the immediate life loss when damaged by hits and applying the loss over time instead. Your life cannot be raised above low life other than by flasks, and while above low life, skills will cost life as well as mana."
+    "baseFlags":[],
+    "name":"Devouring Totem",
+    "description":"Summons a totem that can consume nearby corpses. If you are hurt, it will destroy a corpse to leech life to you."
   },
   "GlacialHammer":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[["cold_ailment_duration_+%"]],
-      "Alternate1":[[]]
+      "Default":[["glacial_hammer_third_hit_freeze_as_though_dealt_damage_+%"]]
     },
     "levels":[{
+        "baseMultiplier":1.65,
         "statInterpolation":[],
         "cost":[]
       },{
@@ -4846,7 +4913,6 @@
         "statInterpolation":[],
         "cost":[]
       },{
-        "4":410,
         "baseMultiplier":2.799,
         "statInterpolation":[],
         "cost":[]
@@ -4860,7 +4926,6 @@
         "statInterpolation":[],
         "cost":[]
       },{
-        "4":440,
         "baseMultiplier":2.964,
         "statInterpolation":[],
         "damageEffectiveness":2.96,
@@ -4945,22 +5010,21 @@
           "name":"FreezeAsThoughDealing"
         }]
     },
-    "constantStats":[[],["base_chance_to_freeze_%"],[],["additional_main_hand_hits_per_combo_average"],[]],
-    "stats":["minimum_added_cold_damage_vs_chilled_enemies","maximum_added_cold_damage_vs_chilled_enemies","cold_ailment_effect_+%","glacial_hammer_third_hit_freeze_as_though_dealt_damage_+%","glacial_hammer_shatter_frozen_enemies_at_33%_life"],
+    "constantStats":[[],["base_chance_to_freeze_%"],["cold_ailment_duration_+%"],["additional_main_hand_hits_per_combo_average"],[]],
+    "stats":["minimum_added_cold_damage_vs_chilled_enemies","maximum_added_cold_damage_vs_chilled_enemies","cold_ailment_effect_+%",null,"glacial_hammer_shatter_frozen_enemies_at_33%_life","quality_display_glacial_hammer_is_gem"],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
     "name":"Glacial Hammer",
-    "description":"Hits enemies, converting some of your physical damage to cold damage. If an enemy is frozen and is on less than one third life, they will shatter when hit by Glacial Hammer. If striking three times in a row, the third strike will freeze enemies more easily. Requires a Mace, Sceptre or Staff."
+    "description":"Hits enemies, converting some of your physical damage to cold damage. If a non-unique enemy is frozen and is on less than one third life, they will shatter when hit by Glacial Hammer. If striking three times in a row, the third strike will freeze enemies more easily. Requires a Mace, Sceptre or Staff."
   },
   "HeavyStrike":{
     "qualityStats":{
-      "Alternate2":[["knockback_distance_+%"]],
-      "Default":[[],[]],
-      "Alternate1":[[]]
+      "Default":[["chance_to_deal_double_damage_%"]]
     },
     "levels":[{
         "statInterpolation":[],
+        "damageEffectiveness":1.95,
         "cost":[]
       },{
         "statInterpolation":[],
@@ -5139,8 +5203,8 @@
           "name":"DoubleDamageChance"
         }]
     },
-    "stats":["chance_to_deal_double_damage_%","global_knockback"],
-    "constantStats":[[],[]],
+    "stats":[null,"global_knockback"],
+    "constantStats":[["base_stun_threshold_reduction_+%"],[]],
     "skillTypes":[],
     "baseFlags":[],
     "weaponTypes":[],
@@ -5149,9 +5213,7 @@
   },
   "GeneralsCry":{
     "qualityStats":{
-      "Alternate2":[["spiritual_cry_double_movement_velocity_+%"]],
-      "Default":[["maximum_number_of_spiritual_cry_warriors"]],
-      "Alternate1":[[]]
+      "Default":[["maximum_number_of_spiritual_cry_warriors"]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -5275,12 +5337,13 @@
         "cost":[]
       }],
     "statMap":{
+      "quality_display_generals_cry_is_gem":[],
       "maximum_number_of_spiritual_cry_warriors":[{
           "name":"GeneralsCryDoubleMaxCount"
         }],
       "spiritual_cry_doubles_summoned_per_5_MP":[]
     },
-    "stats":[null,null,null,null,null,null,"warcry_gain_mp_from_corpses"],
+    "stats":[null,null,null,null,null,null,"warcry_gain_mp_from_corpses",null,"quality_display_generals_cry_is_gem"],
     "constantStats":[["spiritual_cry_doubles_summoned_per_5_MP"],[]],
     "baseFlags":[],
     "baseMods":[{
@@ -5292,10 +5355,7 @@
   },
   "TotemMelee":{
     "qualityStats":{
-      "Alternate3":[["ancestor_totem_buff_effect_+%"]],
-      "Alternate2":[["ancestor_totem_parent_activation_range_+%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[null,0.2]]
     },
     "levels":[{
         "baseMultiplier":0.9,
@@ -5304,7 +5364,6 @@
       },{
         "baseMultiplier":0.947,
         "statInterpolation":[],
-        "damageEffectiveness":0.95,
         "cost":[]
       },{
         "baseMultiplier":0.995,
@@ -5314,11 +5373,11 @@
       },{
         "baseMultiplier":1.042,
         "statInterpolation":[],
-        "damageEffectiveness":1.04,
         "cost":[]
       },{
         "baseMultiplier":1.089,
         "statInterpolation":[],
+        "damageEffectiveness":1.09,
         "cost":[]
       },{
         "baseMultiplier":1.137,
@@ -5386,6 +5445,7 @@
       },{
         "baseMultiplier":1.942,
         "statInterpolation":[],
+        "damageEffectiveness":1.94,
         "cost":[]
       },{
         "baseMultiplier":1.989,
@@ -5452,17 +5512,16 @@
         "cost":[]
       }],
     "statMap":{
-      "ancestor_totem_buff_effect_+%":[{
-          "name":"BuffEffect"
-        }],
       "melee_ancestor_totem_grant_owner_attack_speed_+%_final":[[[]]]
     },
-    "constantStats":[[],[],[],[]],
+    "constantStats":[[],[],["ancestor_totem_parent_activiation_range"],["summon_totem_cast_speed_+%"]],
     "stats":[null,"melee_ancestor_totem_grant_owner_attack_speed_+%_final"],
     "baseMods":[{
         "value":[]
       },{
-        "value":[]
+        "value":{
+          "key":"thisIsNotABuff"
+        }
       }],
     "skillTypes":[],
     "baseFlags":[],
@@ -5626,9 +5685,7 @@
   },
   "Determination":{
     "qualityStats":{
-      "Alternate2":[["evasion_rating_%_to_add_as_armour"]],
-      "Default":[[]],
-      "Alternate1":[["base_avoid_stun_%"]]
+      "Default":[[]]
     },
     "levels":[{
         "2":179,
@@ -5749,19 +5806,11 @@
         "statInterpolation":[]
       }],
     "statMap":{
-      "evasion_rating_%_to_add_as_armour":[{
-          "1":[],
-          "name":"EvasionGainAsArmour"
-        }],
-      "base_physical_damage_reduction_rating":[{
+      "determination_aura_armour_+%_final":[{
           "1":[],
           "name":"Armour"
         }],
-      "determination_aura_armour_+%_final":[[[]]],
-      "base_avoid_stun_%":[{
-          "1":[],
-          "name":"AvoidStun"
-        }]
+      "base_physical_damage_reduction_rating":[[[]]]
     },
     "stats":["determination_aura_armour_+%_final","base_physical_damage_reduction_rating"],
     "baseFlags":[],
@@ -5774,9 +5823,7 @@
   },
   "Vitality":{
     "qualityStats":{
-      "Alternate2":[["damage_+%_when_on_full_life",0.2]],
-      "Default":[[]],
-      "Alternate1":[["life_leech_from_physical_attack_damage_permyriad"]]
+      "Default":[[]]
     },
     "levels":[{
         "1":600,
@@ -5801,15 +5848,13 @@
         "statInterpolation":[]
       },{
         "1":2556,
-        "statInterpolation":[],
-        "manaReservationFlat":108
+        "statInterpolation":[]
       },{
         "1":2831,
         "statInterpolation":[]
       },{
         "1":3370,
-        "statInterpolation":[],
-        "manaReservationFlat":128
+        "statInterpolation":[]
       },{
         "1":3915,
         "statInterpolation":[],
@@ -5851,8 +5896,7 @@
         "manaReservationFlat":244
       },{
         "1":12806,
-        "statInterpolation":[],
-        "manaReservationFlat":253
+        "statInterpolation":[]
       },{
         "1":13421,
         "statInterpolation":[],
@@ -5905,8 +5949,7 @@
         "manaReservationFlat":379
       },{
         "1":19829,
-        "statInterpolation":[],
-        "manaReservationFlat":389
+        "statInterpolation":[]
       },{
         "1":20162,
         "statInterpolation":[],
@@ -5917,22 +5960,14 @@
         "manaReservationFlat":409
       },{
         "1":20831,
-        "statInterpolation":[],
-        "manaReservationFlat":419
+        "statInterpolation":[]
       },{
         "1":21168,
         "statInterpolation":[],
         "manaReservationFlat":429
       }],
     "statMap":{
-      "life_leech_from_physical_attack_damage_permyriad":[{
-          "1":[],
-          "name":"PhysicalDamageLifeLeech"
-        }],
-      "base_life_regeneration_rate_per_minute":[[[]]],
-      "damage_+%_when_on_full_life":[[[],{
-            "var":"FullLife"
-          }]]
+      "base_life_regeneration_rate_per_minute":[[[]]]
     },
     "stats":["base_life_regeneration_rate_per_minute"],
     "baseFlags":[],
@@ -6138,9 +6173,7 @@
   },
   "FrozenLegion":{
     "qualityStats":{
-      "Alternate2":[["frozen_legion_%_chance_to_summon_additional_statue"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "cost":[]
@@ -6223,25 +6256,17 @@
       },{
         "cost":[]
       }],
-    "statMap":{
-      "frozen_legion_%_chance_to_summon_additional_statue":[{
-          "name":"FrozenLegionExtraStatueChance"
-        }]
-    },
     "stats":[],
     "constantStats":[["ring_of_ice_placement_distance"]],
     "weaponTypes":[],
-    "skillTypes":[],
     "baseFlags":[],
-    "castTime":0.7,
+    "skillTypes":[],
     "name":"Frozen Legion",
     "description":"This spell consumes multiple cooldown uses to summon icy Statues in a ring. Each Statue uses your Frozen Sweep attack once before vanishing. Requires an Axe, Mace, Sceptre, or Staff. This skill cannot be triggered, supported by Spell Echo or Unleash, or used by Totems, Traps, or Mines. "
   },
   "Vulnerability":{
     "qualityStats":{
-      "Alternate2":[["chance_to_be_maimed_when_hit_%"]],
-      "Default":[["self_bleed_duration_+%"]],
-      "Alternate1":[["curse_effect_+%"]]
+      "Default":[["self_bleed_duration_+%"]]
     },
     "levels":[{
         "cost":[],
@@ -6407,10 +6432,13 @@
           "1":[],
           "name":"SelfBleedDuration"
         }],
-      "receive_bleeding_chance_%_when_hit_by_attack":[[[]]]
+      "receive_bleeding_chance_%_when_hit_by_attack":[{
+          "1":[],
+          "name":"SelfBleedChance"
+        }]
     },
     "stats":[null,null,"physical_damage_taken_+%"],
-    "constantStats":[[]],
+    "constantStats":[["receive_bleeding_chance_%_when_hit_by_attack"]],
     "statDescriptionScope":"curse_skill_stat_descriptions",
     "skillTypes":[],
     "baseMods":[{
@@ -6424,9 +6452,7 @@
   },
   "BloodSandArmour":{
     "qualityStats":{
-      "Alternate2":[["damage_+%_if_changed_stances_recently"]],
-      "Default":[[]],
-      "Alternate1":[["evasion_and_physical_damage_reduction_rating_+%"]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[]
@@ -6483,6 +6509,7 @@
       },{
         "statInterpolation":[]
       },{
+        "1":71,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -6516,14 +6543,7 @@
             "effectName":"Maim"
           },{
             "var":"Maimed"
-          }]],
-      "damage_+%_if_changed_stances_recently":[[[],{
-            "var":"ChangedStanceRecently"
-          }]],
-      "evasion_and_physical_damage_reduction_rating_+%":[{
-          "1":[],
-          "name":"ArmourAndEvasion"
-        }]
+          }]]
     },
     "stats":[null,"attack_damage_taken_+%_final_from_enemies_unaffected_by_sand_armour","support_maimed_enemies_physical_damage_taken_+%"],
     "constantStats":[["blind_art_variation"]],
@@ -6547,10 +6567,7 @@
   },
   "MoltenStrike":{
     "qualityStats":{
-      "Alternate3":[["damage_over_time_+%"]],
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "weaponTypes":[],
     "baseMods":[{
@@ -6608,7 +6625,6 @@
         "statInterpolation":[],
         "cost":[]
       },{
-        "baseMultiplier":1.297,
         "statInterpolation":[],
         "cost":[]
       },{
@@ -6624,6 +6640,7 @@
         "statInterpolation":[],
         "cost":[]
       },{
+        "baseMultiplier":1.455,
         "statInterpolation":[],
         "damageEffectiveness":1.46,
         "cost":[]
@@ -6659,6 +6676,7 @@
       },{
         "baseMultiplier":1.771,
         "statInterpolation":[],
+        "damageEffectiveness":1.77,
         "cost":[]
       },{
         "baseMultiplier":1.811,
@@ -6945,9 +6963,7 @@
   },
   "FireResistAura":{
     "qualityStats":{
-      "Alternate2":[["base_reduce_enemy_fire_resistance_%"]],
-      "Default":[[]],
-      "Alternate1":[["base_avoid_ignite_%"]]
+      "Default":[["base_fire_damage_resistance_%"]]
     },
     "levels":[{
         "statInterpolation":[]
@@ -7031,14 +7047,6 @@
         "statInterpolation":[]
       }],
     "statMap":{
-      "base_avoid_ignite_%":[{
-          "1":[],
-          "name":"AvoidIgnite"
-        }],
-      "base_reduce_enemy_fire_resistance_%":[{
-          "1":[],
-          "name":"FirePenetration"
-        }],
       "base_maximum_fire_damage_resistance_%":[{
           "1":[],
           "name":"FireResistMax"
@@ -7048,7 +7056,7 @@
           "name":"FireResist"
         }]
     },
-    "stats":["base_fire_damage_resistance_%","base_maximum_fire_damage_resistance_%"],
+    "stats":[null,"base_maximum_fire_damage_resistance_%"],
     "baseFlags":[],
     "baseMods":[{
         "value":[]
@@ -7069,9 +7077,11 @@
         "statInterpolation":[],
         "cost":[]
       },{
+        "2":-1,
         "statInterpolation":[],
         "cost":[]
       },{
+        "2":-3,
         "statInterpolation":[],
         "cost":[]
       },{
@@ -7222,29 +7232,20 @@
         "cost":[]
       }],
     "qualityStats":{
-      "Alternate3":[["sunder_shockwave_area_of_effect_+%"],["sunder_wave_area_of_effect_+%"]],
-      "Alternate2":[["physical_damage_+%"]],
-      "Default":[[]],
-      "Alternate1":[["sunder_wave_delay_+%"]]
+      "Default":[["sunder_wave_radius_+_per_step"]]
     },
     "statMap":{
-      "shockwave_slam_explosion_damage_+%_final":[[[]]],
       "sunder_wave_radius_+_per_step":[{
           "1":{
             "var":"SunderWaveArea"
           },
-          "value":{
-            "key":"radiusExtra"
-          }
+          "value":[]
         }],
-      "sunder_wave_area_of_effect_+%":[[{
-            "skillPartList":[]
-          }]],
-      "sunder_shockwave_area_of_effect_+%":[[[]]],
+      "shockwave_slam_explosion_damage_+%_final":[[[]]],
       "active_skill_area_of_effect_+%_final":[[]]
     },
-    "constantStats":[["shockwave_slam_explosion_damage_+%_final"],["base_sunder_wave_delay_ms"],["sunder_wave_radius_+_per_step"],["sunder_wave_max_steps"],["sunder_wave_min_steps"],["sunder_shockwave_limit_per_cascade"]],
-    "stats":[],
+    "constantStats":[["shockwave_slam_explosion_damage_+%_final"],["base_sunder_wave_delay_ms"],[],["sunder_wave_max_steps"],["sunder_wave_min_steps"],["sunder_shockwave_limit_per_cascade"]],
+    "stats":[null,"sunder_wave_delay_+%"],
     "baseMods":[{
         "value":[]
       },{
@@ -7259,12 +7260,9 @@
   },
   "ChainStrike":{
     "qualityStats":{
-      "Alternate2":[["chain_hook_range_+%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[["chain_strike_gain_x_rage_if_attack_hits"]]
     },
     "levels":[{
-        "damageEffectiveness":1.15,
         "cost":[]
       },{
         "cost":[],
@@ -7311,6 +7309,7 @@
         "cost":[],
         "baseMultiplier":1.576
       },{
+        "damageEffectiveness":1.6,
         "cost":[]
       },{
         "cost":[],
@@ -7378,13 +7377,17 @@
         "baseMultiplier":2.116
       }],
     "statMap":{
-      "chain_strike_gain_x_rage_if_attack_hits":[[[]]],
       "chain_strike_cone_radius_+_per_x_rage":[[{
             "var":"Rage"
-          }]]
+          }]],
+      "quality_display_chain_hook_is_gem":[],
+      "chain_strike_gain_x_rage_if_attack_hits":[{
+          "1":[],
+          "name":"Condition:CanGainRage"
+        }]
     },
-    "constantStats":[["chain_strike_cone_radius_+_per_x_rage"],["chain_strike_gain_x_rage_if_attack_hits"]],
-    "stats":[],
+    "constantStats":[["chain_strike_cone_radius_+_per_x_rage"],[]],
+    "stats":[null,"quality_display_chain_hook_is_gem"],
     "baseMods":[{
         "value":[]
       }],
@@ -7395,11 +7398,11 @@
     "description":"When used at range, throws out a chain, pulling you to the enemy hit dealing damage in an area behind them. When close to the enemy, just causes the area damage directly. Requires a One Handed Mace, Sceptre, Sword or Axe."
   },
   "Cleave":{
+    "baseMods":[{
+        "value":[]
+      }],
     "qualityStats":{
-      "Alternate3":[["destroy_corpses_on_kill_%_chance"]],
-      "Alternate2":[["area_of_effect_+%_while_not_dual_wielding"]],
-      "Default":[[]],
-      "Alternate1":[["base_life_gain_per_target"]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -7444,6 +7447,7 @@
         "cost":[]
       },{
         "statInterpolation":[],
+        "damageEffectiveness":1.9,
         "cost":[],
         "baseMultiplier":1.898
       },{
@@ -7554,9 +7558,12 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "baseMods":[{
-        "value":[]
-      }],
+    "statMap":{
+      "cleave_+1_base_radius_per_nearby_enemy_up_to_10":[{
+          "1":[],
+          "value":[]
+        }]
+    },
     "constantStats":[[]],
     "stats":[],
     "baseFlags":[],
@@ -7567,25 +7574,28 @@
   },
   "InfernalBlow":{
     "qualityStats":{
-      "Alternate3":[[]],
-      "Alternate2":[["burn_damage_+%"],["base_chance_to_ignite_%"]],
-      "Default":[[]],
-      "Alternate1":[["infernal_blow_explosion_applies_uncharged_debuff_on_hit_%_chance"]]
+      "Default":[["infernal_blow_explosion_damage_%_of_total_per_stack"]]
     },
     "weaponTypes":[],
     "baseMods":[{
+        "1":[],
         "value":[]
       },{
         "1":[],
-        "value":{
-          "key":"showAverage"
-        }
+        "name":"Multiplier:DebuffStack"
       },{
         "1":[],
-        "name":"Multiplier:DebuffStack"
+        "value":{
+          "value":"Hit area:"
+        }
+      },{
+        "1":{
+          "skillPartList":[]
+        },
+        "value":[]
       }],
-    "constantStats":[[],[],["corpse_explosion_monster_life_%"],["infernal_blow_explosion_damage_%_of_total_per_stack"]],
-    "description":"Attacks with your weapon, applying a charged debuff to enemies hit by your strike, and an uncharged debuff to any other enemies hit. Upon reaching 6 charges, expiring, or the enemy's death, the charged debuff is removed, and it deals damage to that and other nearby enemies. Enemies with either debuff explode when they die, damaging other nearby enemies. Damage from this explosion cannot be reflected. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
+    "constantStats":[[],[],["corpse_explosion_monster_life_%"],[],[],[],[]],
+    "description":"Attacks with your weapon, applying a charged debuff to enemies hit by your strike, and an uncharged debuff to any other enemies hit. Upon reaching 6 charges, expiring, or the enemy's death, the charged debuff is removed to damage that and other surrounding enemies. Enemies with either debuff explode when they die, damaging other surrounding enemies. Damage from this explosion cannot be reflected. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
     "parts":[[],{
         "name":"Debuff Explosion - 1 Stack"
       },{
@@ -7607,6 +7617,7 @@
         "statInterpolation":[],
         "cost":[]
       },{
+        "baseMultiplier":1.171,
         "statInterpolation":[],
         "cost":[]
       },{
@@ -7618,9 +7629,7 @@
         "statInterpolation":[],
         "cost":[]
       },{
-        "baseMultiplier":1.268,
         "statInterpolation":[],
-        "damageEffectiveness":1.27,
         "cost":[]
       },{
         "baseMultiplier":1.301,
@@ -7747,20 +7756,29 @@
         "cost":[]
       }],
     "statMap":{
+      "active_skill_base_secondary_area_of_effect_radius":[{
+          "1":{
+            "skillPartList":[]
+          },
+          "value":[]
+        }],
+      "active_skill_base_area_of_effect_radius":[{
+          "1":[],
+          "value":[]
+        }],
       "infernal_blow_explosion_damage_%_of_total_per_stack":[{
           "name":"DebuffEffect"
-        }]
+        }],
+      "quality_display_infernal_blow_is_gem":[]
     },
-    "stats":[],
+    "stats":[null,null,"quality_display_infernal_blow_is_gem"],
     "skillTypes":[],
     "name":"Infernal Blow",
     "baseFlags":[]
   },
   "BloodstainedBanner":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["accuracy_rating_+%"],[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[]
@@ -7847,7 +7865,7 @@
       "accuracy_rating_+%":[[[]]],
       "physical_damage_taken_+%":[[[]]]
     },
-    "stats":[null,null,"banner_add_stage_on_kill"],
+    "stats":["accuracy_rating_+%",null,"banner_add_stage_on_kill"],
     "constantStats":[[],[],[],["bloodstained_banner_adrenaline_duration_per_stage_ms"],[]],
     "baseFlags":[],
     "baseMods":[{
@@ -7862,9 +7880,7 @@
   },
   "WarlordsMark":{
     "qualityStats":{
-      "Alternate2":[["enemy_rage_regeneration_on_stun"]],
-      "Default":[["grant_attacker_endurance_charge_when_hit_%_chance"]],
-      "Alternate1":[["base_damage_taken_+%"]]
+      "Default":[["grant_attacker_endurance_charge_when_hit_%_chance"]]
     },
     "levels":[{
         "cost":[],
@@ -7950,7 +7966,6 @@
         "cost":[],
         "statInterpolation":[]
       },{
-        "2":325,
         "cost":[],
         "statInterpolation":[]
       },{
@@ -7974,7 +7989,6 @@
         "cost":[],
         "statInterpolation":[]
       },{
-        "2":352,
         "cost":[],
         "statInterpolation":[]
       },{
@@ -7988,11 +8002,9 @@
         "cost":[],
         "statInterpolation":[]
       },{
-        "2":362,
         "cost":[],
         "statInterpolation":[]
       },{
-        "2":365,
         "cost":[],
         "statInterpolation":[]
       },{
@@ -8004,23 +8016,21 @@
         "statInterpolation":[]
       }],
     "statMap":{
-      "life_leech_on_any_damage_when_hit_by_attack_permyriad":[{
-          "1":[],
-          "name":"SelfDamageLifeLeech"
-        }],
       "enemy_chance_to_double_stun_duration_%_vs_self":[{
           "1":[],
           "name":"SelfDoubleStunDurationChance"
         }],
-      "enemy_rage_regeneration_on_stun":[[[]]],
+      "life_leech_on_any_damage_when_hit_by_attack_permyriad":[{
+          "1":[],
+          "name":"SelfDamageLifeLeech"
+        }],
       "mana_leech_on_any_damage_when_hit_by_attack_permyriad":[{
           "1":[],
           "name":"SelfDamageManaLeech"
-        }],
-      "base_damage_taken_+%":[[[]]]
+        }]
     },
     "stats":["enemy_chance_to_double_stun_duration_%_vs_self","life_leech_on_any_damage_when_hit_by_attack_permyriad","mana_leech_on_any_damage_when_hit_by_attack_permyriad"],
-    "constantStats":[[],["chance_to_grant_endurance_charge_on_death_%"]],
+    "constantStats":[["enemy_rage_regeneration_on_stun"],["chance_to_grant_endurance_charge_on_death_%"]],
     "skillTypes":[],
     "baseMods":[{
         "value":[]
@@ -8031,10 +8041,7 @@
   },
   "VigilantStrike":{
     "qualityStats":{
-      "Alternate3":[["gain_fortify_on_melee_hit_ms"]],
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[["active_skill_attack_damage_+%_final_per_endurance_charge"]]
     },
     "levels":[{
         "cost":[]
@@ -8161,7 +8168,7 @@
         "baseMultiplier":4.417
       }],
     "stats":[],
-    "constantStats":[[],[]],
+    "constantStats":[["gain_fortify_on_melee_hit_ms"],[]],
     "weaponTypes":[],
     "baseFlags":[],
     "skillTypes":[],
@@ -8170,9 +8177,7 @@
   },
   "ProtectiveLink":{
     "qualityStats":{
-      "Alternate2":[["bulwark_link_grants_stun_threshold_+%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "cost":{
@@ -8218,14 +8223,12 @@
         },
         "statInterpolation":[]
       },{
-        "1":104,
         "2":8900,
         "cost":{
           "ManaPerMinute":1440
         },
         "statInterpolation":[]
       },{
-        "1":116,
         "cost":{
           "ManaPerMinute":1490
         },
@@ -8312,7 +8315,6 @@
         },
         "statInterpolation":[]
       },{
-        "1":446,
         "2":10500,
         "cost":[],
         "statInterpolation":[]
@@ -8414,10 +8416,6 @@
         },{
           "1":[],
           "name":"MaximumBlockAttackChanceIsEqualToParent"
-        }],
-      "bulwark_link_grants_stun_threshold_+%":[{
-          "1":[],
-          "name":"StunThreshold"
         }]
     },
     "stats":["bulwark_link_grants_recover_X_life_on_block",null,"skill_cost_over_time_is_not_removed_with_skill","display_link_stuff","display_bulwark_link_overrides_attack_block_and_maximum_attack_block"],
@@ -8428,10 +8426,7 @@
   },
   "EnduranceChargeSlam":{
     "qualityStats":{
-      "Alternate3":[[]],
-      "Alternate2":[["base_life_leech_from_fire_damage_permyriad"]],
-      "Default":[[]],
-      "Alternate1":[[],[]]
+      "Default":[["tectonic_slam_side_crack_additional_chance_%"]]
     },
     "levels":[{
         "cost":[]
@@ -8524,13 +8519,10 @@
     "statMap":{
       "active_skill_area_of_effect_+%_final_per_endurance_charge":[[{
             "var":"EnduranceCharge"
-          }]],
-      "base_life_leech_from_fire_damage_permyriad":[{
-          "name":"FireDamageLifeLeech"
-        }]
+          }]]
     },
-    "constantStats":[["tectonic_slam_side_crack_additional_chance_%_per_endurance_charge"],[],["active_skill_area_of_effect_+%_final_per_endurance_charge"],["tectonic_slam_side_crack_additional_chance_%"]],
-    "stats":[],
+    "constantStats":[["tectonic_slam_side_crack_additional_chance_%_per_endurance_charge"],[],["active_skill_area_of_effect_+%_final_per_endurance_charge"],[]],
+    "stats":[null,null,"quality_display_tectonic_slam_is_gem"],
     "baseMods":[{
         "value":[]
       },{
@@ -8551,12 +8543,6 @@
     "description":"Slam the ground, unleashing a fiery fissure in front of you, dealing area damage and randomly releasing a number of smaller fissures branching off from it. Consume an Endurance Charge every third time you slam the ground with this skill. Requires a Mace, Sceptre, Sword, Axe, Staff, or Unarmed."
   },
   "DominatingBlow":{
-    "qualityStats":{
-      "Alternate3":[["max_number_of_dominated_normal_monsters"]],
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["base_minion_duration_+%"]]
-    },
     "minionSkillTypes":[],
     "levels":[{
         "cost":[]
@@ -8574,7 +8560,8 @@
       },{
         "cost":[]
       },{
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":1.881
       },{
         "cost":[],
         "baseMultiplier":1.919
@@ -8663,19 +8650,10 @@
         "cost":[],
         "baseMultiplier":2.956
       }],
-    "statMap":{
-      "damage_+%":[{
-          "value":{
-            "mod":[]
-          }
-        }],
-      "sentinel_minion_cooldown_speed_+%":[{
-          "value":{
-            "mod":[]
-          }
-        }]
+    "qualityStats":{
+      "Default":[[]]
     },
-    "constantStats":[[],[],["max_number_of_dominated_magic_monsters"],["max_number_of_dominated_rare_monsters"],[],["dominating_blow_chance_to_summon_on_hitting_unqiue_%"],["max_number_of_vaal_dominated_monsters"]],
+    "constantStats":[[],["max_number_of_dominated_normal_monsters"],["max_number_of_dominated_magic_monsters"],["max_number_of_dominated_rare_monsters"],[],["dominating_blow_chance_to_summon_on_hitting_unqiue_%"],["max_number_of_vaal_dominated_monsters"]],
     "stats":["is_dominated"],
     "baseFlags":[],
     "statDescriptionScope":"minion_attack_skill_stat_descriptions",
@@ -8687,7 +8665,7 @@
   },
   "VaalRejuvenationTotem":{
     "qualityStats":{
-      "Default":[["base_aura_area_of_effect_+%"]]
+      "Default":[[]]
     },
     "statMap":{
       "base_life_regeneration_rate_per_minute":[[[]]],
@@ -8746,7 +8724,6 @@
         "cost":[]
       },{
         "1":19767,
-        "2":122,
         "statInterpolation":[],
         "cost":[]
       },{
@@ -8870,7 +8847,7 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "stats":[],
+    "stats":[null,null,null,null,null,"modifiers_to_totem_duration_also_affect_soul_prevention_duration"],
     "constantStats":[[],[],["vaal_rejuvenation_totem_%_damage_taken_applied_to_totem_instead"],[],[],["totem_scale_pluspercent"]],
     "skillTypes":[],
     "baseMods":[{
@@ -8882,9 +8859,7 @@
   },
   "Exsanguinate":{
     "qualityStats":{
-      "Alternate2":[["blood_tendrils_beam_count"]],
-      "Default":[[]],
-      "Alternate1":[["base_cast_speed_+%"]]
+      "Default":[[]]
     },
     "levels":[{
         "3":67.163333804583,
@@ -9064,7 +9039,7 @@
         }]
     },
     "constantStats":[[]],
-    "stats":[null,null,null,null,null,"quality_display_exsanguinate_beam_targets_is_gem"],
+    "stats":[null,null,null,"blood_tendrils_beam_count",null,"quality_display_exsanguinate_beam_targets_is_gem"],
     "baseMods":[{
         "value":[]
       },{
@@ -9249,10 +9224,7 @@
   },
   "Sweep":{
     "qualityStats":{
-      "Alternate3":[[]],
-      "Alternate2":[["base_chance_to_deal_triple_damage_%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -9387,10 +9359,7 @@
   },
   "Earthquake":{
     "qualityStats":{
-      "Alternate3":[["active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value"]],
-      "Alternate2":[["earthquake_initial_slam_area_of_effect_+%"]],
-      "Default":[[]],
-      "Alternate1":[[],[]]
+      "Default":[[]]
     },
     "weaponTypes":[],
     "baseMods":[{
@@ -9403,13 +9372,10 @@
         "1":[],
         "value":[]
       }],
-    "constantStats":[[],["quake_slam_fully_charged_explosion_damage_+%_final"]],
-    "description":"Smashes the ground, dealing damage in an area and cracking the earth. The crack will erupt in a powerful aftershock after a short duration. Cracks created before the first one has erupted will not generate their own aftershocks. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
-    "parts":[[],{
-        "name":"Aftershock"
-      }],
+    "constantStats":[[],[]],
+    "description":"Smashes the ground, dealing damage in an area and cracking the earth. The crack will erupt in a powerful aftershock after a duration. Cracks created before the first one has erupted will not generate their own aftershocks. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
+    "parts":[[],[]],
     "levels":[{
-        "damageEffectiveness":0.85,
         "cost":[]
       },{
         "damageEffectiveness":0.88,
@@ -9426,7 +9392,6 @@
         "cost":[],
         "baseMultiplier":0.987
       },{
-        "damageEffectiveness":1.02,
         "cost":[],
         "baseMultiplier":1.021
       },{
@@ -9435,13 +9400,11 @@
       },{
         "cost":[]
       },{
-        "damageEffectiveness":1.12,
         "cost":[],
         "baseMultiplier":1.124
       },{
         "cost":[]
       },{
-        "damageEffectiveness":1.19,
         "cost":[],
         "baseMultiplier":1.192
       },{
@@ -9472,7 +9435,8 @@
       },{
         "cost":[]
       },{
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":1.568
       },{
         "cost":[],
         "baseMultiplier":1.603
@@ -9485,7 +9449,8 @@
       },{
         "cost":[]
       },{
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":1.739
       },{
         "cost":[],
         "baseMultiplier":1.774
@@ -9504,6 +9469,7 @@
         "cost":[],
         "baseMultiplier":1.893
       },{
+        "damageEffectiveness":1.91,
         "cost":[],
         "baseMultiplier":1.911
       },{
@@ -9522,27 +9488,10 @@
         "cost":[]
       }],
     "statMap":{
-      "earthquake_aftershock_maximum_added_physical_damage":[{
-          "1":[],
-          "name":"PhysicalMax"
-        }],
-      "active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value":[{
-          "name":"SpellDamageAppliesToAttacks"
-        },{
-          "type":"MAX",
-          "name":"ImprovedSpellDamageAppliesToAttacks"
-        }],
-      "earthquake_aftershock_minimum_added_physical_damage":[{
-          "1":[],
-          "name":"PhysicalMin"
-        }],
-      "earthquake_initial_slam_area_of_effect_+%":[[[]]],
-      "quake_slam_fully_charged_explosion_damage_+%_final":[{
-          "1":[],
-          "keywordFlags":786432
-        }]
+      "quality_display_earthquake_is_gem":[],
+      "quake_slam_fully_charged_explosion_damage_+%_final":[[[]]]
     },
-    "stats":[null,null,"is_player_earthquake"],
+    "stats":[],
     "skillTypes":[],
     "name":"Earthquake",
     "baseFlags":[]
@@ -9590,8 +9539,7 @@
         "cost":[]
       },{
         "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":1.287
+        "cost":[]
       },{
         "statInterpolation":[],
         "cost":[],
@@ -9611,7 +9559,6 @@
         "cost":[],
         "baseMultiplier":1.405
       },{
-        "3":102,
         "statInterpolation":[],
         "cost":[],
         "baseMultiplier":1.429
@@ -9621,6 +9568,7 @@
         "baseMultiplier":1.453
       },{
         "statInterpolation":[],
+        "damageEffectiveness":1.48,
         "cost":[],
         "baseMultiplier":1.476
       },{
@@ -9635,7 +9583,6 @@
         "cost":[],
         "baseMultiplier":1.547
       },{
-        "3":114,
         "statInterpolation":[],
         "cost":[],
         "baseMultiplier":1.571
@@ -9659,7 +9606,6 @@
         "cost":[],
         "baseMultiplier":1.689
       },{
-        "3":126,
         "statInterpolation":[],
         "cost":[],
         "baseMultiplier":1.713
@@ -9667,7 +9613,6 @@
         "statInterpolation":[],
         "cost":[]
       },{
-        "3":129,
         "statInterpolation":[],
         "cost":[],
         "baseMultiplier":1.749
@@ -9681,13 +9626,13 @@
         "cost":[],
         "baseMultiplier":1.772
       },{
-        "3":132,
         "statInterpolation":[],
         "cost":[],
         "baseMultiplier":1.784
       },{
         "statInterpolation":[],
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":1.796
       },{
         "statInterpolation":[],
         "cost":[]
@@ -9707,28 +9652,20 @@
         "cost":[]
       }],
     "qualityStats":{
-      "Alternate3":[["bladestorm_create_alternate_stance_storm_%_chance"]],
-      "Alternate2":[["bladestorm_blood_stance_ailment_damage_+%"]],
-      "Default":[[]],
-      "Alternate1":[["bladestorm_sandstorm_movement_speed_+%"]]
+      "Default":[["bladestorm_maximum_number_of_storms_allowed"]]
     },
     "statMap":{
       "bladestorm_movement_speed_+%_while_in_sandstorm":[[{
             "effectCond":"BladestormInSandstorm",
             "effectName":"Sandstorm"
           }]],
-      "bladestorm_blood_stance_ailment_damage_+%":[{
-          "1":[],
-          "2":[],
-          "keywordFlags":524288
-        }],
       "bladestorm_storm_damage_+%_final":[[[]]],
       "bladestorm_attack_speed_+%_final_while_in_bloodstorm":[[{
             "var":"BladestormInBloodstorm"
           }]]
     },
-    "constantStats":[["bladestorm_storm_damage_+%_final"],["bladestorm_maximum_number_of_storms_allowed"],[],[]],
-    "stats":["bladestorm_attack_speed_+%_final_while_in_bloodstorm","bladestorm_movement_speed_+%_while_in_sandstorm","active_skill_bleeding_damage_+%_final_in_blood_stance",null,null,"skill_can_add_multiple_charges_per_action"],
+    "constantStats":[["bladestorm_storm_damage_+%_final"],[],[],[]],
+    "stats":["bladestorm_attack_speed_+%_final_while_in_bloodstorm","bladestorm_movement_speed_+%_while_in_sandstorm","active_skill_bleeding_damage_+%_final_in_blood_stance",null,null,"skill_can_add_multiple_charges_per_action","quality_display_bladestorm_is_gem"],
     "baseMods":[{
         "value":[]
       },{
@@ -9751,224 +9688,123 @@
     "baseFlags":[],
     "description":"Perform a spinning attack, damaging enemies around you and creating a bladestorm matching your stance. The bladestorm repeatedly damages enemies, based on your weapon damage and attack time, for a duration. Blood bladestorms are stationary and cause Bleeding, while Sand bladestorms move slowly forwards and Blind enemies. Requires a Sword or Axe. You are in Blood Stance by default."
   },
-  "VaalEarthquake":{
+  "PetrifiedBlood":{
     "qualityStats":{
-      "Default":[[]]
+      "Default":[["petrified_blood_%_prevented_life_loss_to_lose_over_time",-0.25]]
     },
-    "weaponTypes":[],
-    "baseMods":[{
-        "1":[],
-        "value":[]
-      },{
-        "1":[],
-        "value":[]
-      },{
-        "1":[],
-        "value":[]
-      }],
-    "constantStats":[[],[],["vaal_earthquake_maximum_aftershocks"]],
-    "description":"Smashes the ground, dealing damage in an area and cracking the earth. The crack will erupt in a powerful aftershock after a short duration. After using this skill, your steps will deal damage around you, cracking the earth if the previous cracks have erupted. This effect ends after a secondary duration, or after a maximum number of aftershocks. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
-    "parts":[[],[]],
     "levels":[{
-        "cost":[],
         "statInterpolation":[]
       },{
-        "1":353,
-        "cost":[],
-        "statInterpolation":[],
-        "damageEffectiveness":0.72,
-        "baseMultiplier":0.719
-      },{
-        "1":356,
-        "cost":[],
-        "statInterpolation":[],
-        "damageEffectiveness":0.74,
-        "baseMultiplier":0.738
-      },{
-        "1":359,
-        "cost":[],
-        "statInterpolation":[],
-        "damageEffectiveness":0.76,
-        "baseMultiplier":0.757
-      },{
-        "cost":[],
-        "statInterpolation":[],
-        "damageEffectiveness":0.78,
-        "baseMultiplier":0.776
-      },{
-        "cost":[],
-        "statInterpolation":[],
-        "damageEffectiveness":0.79,
-        "baseMultiplier":0.795
-      },{
-        "cost":[],
-        "statInterpolation":[],
-        "damageEffectiveness":0.81,
-        "baseMultiplier":0.814
-      },{
-        "1":371,
-        "cost":[],
-        "statInterpolation":[],
-        "damageEffectiveness":0.83,
-        "baseMultiplier":0.833
-      },{
-        "1":374,
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":0.852
-      },{
-        "1":377,
-        "cost":[],
-        "statInterpolation":[],
-        "damageEffectiveness":0.87,
-        "baseMultiplier":0.871
-      },{
-        "cost":[],
-        "statInterpolation":[],
-        "damageEffectiveness":0.89,
-        "baseMultiplier":0.889
-      },{
-        "1":383,
-        "cost":[],
-        "statInterpolation":[],
-        "damageEffectiveness":0.91,
-        "baseMultiplier":0.908
-      },{
-        "cost":[],
-        "statInterpolation":[],
-        "damageEffectiveness":0.93,
-        "baseMultiplier":0.927
-      },{
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":0.946
-      },{
-        "1":392,
-        "cost":[],
-        "statInterpolation":[],
-        "damageEffectiveness":0.97,
-        "baseMultiplier":0.965
-      },{
-        "1":395,
-        "cost":[],
-        "statInterpolation":[],
-        "damageEffectiveness":0.98,
-        "baseMultiplier":0.984
-      },{
-        "baseMultiplier":1.003,
-        "cost":[],
         "statInterpolation":[]
       },{
-        "1":401,
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":1.022
-      },{
-        "1":404,
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":1.041
-      },{
-        "cost":[],
         "statInterpolation":[]
       },{
-        "cost":[],
         "statInterpolation":[]
       },{
-        "1":413,
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":1.098
-      },{
-        "1":416,
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":1.117
-      },{
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":1.136
-      },{
-        "1":422,
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":1.155
-      },{
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":1.174
-      },{
-        "1":428,
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":1.193
-      },{
-        "1":431,
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":1.212
-      },{
-        "1":434,
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":1.231
-      },{
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":1.249
-      },{
-        "1":437,
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":1.259
-      },{
-        "cost":[],
         "statInterpolation":[]
       },{
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":1.278
-      },{
-        "cost":[],
         "statInterpolation":[]
       },{
-        "cost":[],
         "statInterpolation":[]
       },{
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":1.306
-      },{
-        "cost":[],
         "statInterpolation":[]
       },{
-        "1":449,
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":1.325
+        "statInterpolation":[]
       },{
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":1.335
+        "statInterpolation":[]
       },{
-        "cost":[],
-        "statInterpolation":[],
-        "baseMultiplier":1.344
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":87,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":83,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":81,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
       }],
     "statMap":{
-      "quake_slam_fully_charged_explosion_damage_+%_final":[[[]]]
+      "skill_grants_life_cost_%_mana_cost_while_not_on_low_life":[{
+          "1":{
+            "effectName":"Petrified Blood"
+          },
+          "2":{
+            "var":"LowLife"
+          },
+          "name":"ManaCostAsLifeCost"
+        }],
+      "cannot_recover_above_low_life_except_flasks":[],
+      "petrified_blood_%_life_loss_below_half_from_hit_to_prevent":[{
+          "1":[],
+          "name":"LifeLossBelowHalfPrevented"
+        }],
+      "petrified_blood_%_prevented_life_loss_to_lose_over_time":[{
+          "1":[],
+          "name":"LifeLossBelowHalfLost"
+        }]
     },
-    "stats":[null,null,null,null,"force_lite_skill_effects"],
+    "stats":[null,"cannot_recover_above_low_life_except_flasks"],
+    "baseFlags":[],
+    "constantStats":[["petrified_blood_%_life_loss_below_half_from_hit_to_prevent"],["skill_grants_life_cost_%_mana_cost_while_not_on_low_life"]],
     "skillTypes":[],
-    "name":"Vaal Earthquake",
-    "baseFlags":[]
+    "description":"Applies a buff that protects the lower half of your life, preventing some of the immediate life loss when damaged by hits and applying the loss over time instead. Your life cannot be raised above low life other than by flasks, and while above low life, skills will cost life as well as mana."
   },
   "RallyingCry":{
     "qualityStats":{
-      "Alternate3":[[]],
-      "Alternate2":[["rallying_cry_buff_effect_on_minions_+%_final"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -10112,7 +9948,7 @@
         }]
     },
     "stats":[null,null,null,null,null,null,"warcry_gain_mp_from_allies"],
-    "constantStats":[["rallying_cry_damage_+%_final_from_osm_per_nearby_ally"],[],["rallying_cry_weapon_damage_%_for_allies_per_5_monster_power"],[]],
+    "constantStats":[["rallying_cry_damage_+%_final_from_osm_per_nearby_ally"],[],["rallying_cry_weapon_damage_%_for_allies_per_5_monster_power"],["rallying_cry_buff_effect_on_minions_+%_final"]],
     "baseFlags":[],
     "baseMods":[{
         "value":{
@@ -10131,10 +9967,7 @@
   },
   "DecoyTotem":{
     "qualityStats":{
-      "Alternate3":[["totems_explode_on_death_for_%_life_as_physical"]],
-      "Alternate2":[["totems_regenerate_%_life_per_minute"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -10431,14 +10264,8 @@
     "description":"Hits enemies, converting some of your physical damage to cold damage. It traps enemies with you in a circle of ice so that they can't escape. Requires a Mace, Sceptre or Staff."
   },
   "Reckoning":{
-    "baseMods":[{
-        "value":[]
-      }],
     "qualityStats":{
-      "Alternate3":[[]],
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["debilitate_enemies_for_1_second_on_hit_%_chance"]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[]
@@ -10546,11 +10373,9 @@
         "baseMultiplier":2.224,
         "statInterpolation":[]
       }],
-    "statMap":{
-      "debilitate_enemies_for_1_second_on_hit_%_chance":[{
-          "name":"DebilitateChance"
-        }]
-    },
+    "baseMods":[{
+        "value":[]
+      }],
     "constantStats":[["melee_counterattack_trigger_on_block_%"],["shield_counterattack_aoe_range"]],
     "stats":[],
     "baseFlags":[],
@@ -10564,12 +10389,13 @@
         "value":[]
       }],
     "qualityStats":{
-      "Default":[[],[]]
+      "Default":[[]]
     },
     "levels":[{
         "cost":[],
         "statInterpolation":[]
       },{
+        "attackSpeedMultiplier":-10,
         "cost":[],
         "statInterpolation":[],
         "baseMultiplier":1.997
@@ -10738,9 +10564,10 @@
       }],
     "statMap":{
       "groundslam_damage_to_close_targets_+%_final":[[[]]],
-      "vaal_skill_exertable":[]
+      "vaal_skill_exertable":[],
+      "quality_display_groundslam_is_gem":[]
     },
-    "constantStats":[[],[]],
+    "constantStats":[["base_stun_duration_+%"],[]],
     "stats":[null,null,null,null,null,"vaal_skill_exertable"],
     "baseFlags":[],
     "weaponTypes":[],
@@ -10750,9 +10577,7 @@
   },
   "DefianceBanner":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[],[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[]
@@ -10842,9 +10667,12 @@
           "1":[],
           "name":"EnemyCritChance"
         }],
-      "evasion_and_physical_damage_reduction_rating_+%":[[[]]]
+      "evasion_and_physical_damage_reduction_rating_+%":[{
+          "1":[],
+          "name":"ArmourAndEvasion"
+        }]
     },
-    "stats":[null,"armour_evasion_banner_critical_strike_chance_+%"],
+    "stats":["evasion_and_physical_damage_reduction_rating_+%","armour_evasion_banner_critical_strike_chance_+%"],
     "constantStats":[[],[],[],["banner_add_stage_every_x_milliseconds_while_enemies_nearby"],["armour_evasion_banner_taunted_enemies_damage_+%_final"],["armour_evasion_banner_super_taunt_duration_per_stage_ms"],[]],
     "baseFlags":[],
     "baseMods":[{
@@ -10859,9 +10687,7 @@
   },
   "Anger":{
     "qualityStats":{
-      "Alternate2":[["base_movement_velocity_+%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[]
@@ -10951,16 +10777,11 @@
           "name":"FireMax",
           "keywordFlags":131072
         }],
-      "spell_minimum_added_fire_damage":[{
+      "attack_minimum_added_fire_damage":[{
           "1":[],
           "name":"FireMin"
         }],
-      "base_movement_velocity_+%":[[[]]],
-      "attack_minimum_added_fire_damage":[[[]]],
-      "burn_damage_+%":[{
-          "1":[],
-          "keywordFlags":134217728
-        }],
+      "spell_minimum_added_fire_damage":[[[]]],
       "attack_maximum_added_fire_damage":[[[]]]
     },
     "stats":[null,null,"spell_minimum_added_fire_damage","spell_maximum_added_fire_damage"],
@@ -10975,10 +10796,7 @@
   },
   "ShockwaveTotem":{
     "qualityStats":{
-      "Alternate3":[["base_global_chance_to_knockback_%"]],
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[],[]]
+      "Default":[[]]
     },
     "baseEffectiveness":1.0778000354767,
     "levels":[{
@@ -11104,11 +10922,8 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "constantStats":[[],[],[]],
     "stats":[],
-    "baseMods":[{
-        "value":[]
-      }],
+    "constantStats":[[],[],["base_global_chance_to_knockback_%"],[]],
     "incrementalEffectiveness":0.043600000441074,
     "skillTypes":[],
     "baseFlags":[],
@@ -11118,9 +10933,7 @@
   },
   "NewShieldCharge":{
     "qualityStats":{
-      "Alternate2":[["shield_charge_damage_+%_maximum"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[["base_movement_velocity_+%"]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -11247,7 +11060,7 @@
         "cost":[]
       }],
     "baseEffectiveness":1.7799999713898,
-    "constantStats":[["shield_charge_scaling_stun_threshold_reduction_+%_at_maximum_range"],[]],
+    "constantStats":[["shield_charge_scaling_stun_threshold_reduction_+%_at_maximum_range"],["shield_charge_damage_+%_maximum"]],
     "stats":["off_hand_local_minimum_added_physical_damage","off_hand_local_maximum_added_physical_damage",null,"off_hand_minimum_added_physical_damage_per_15_shield_armour_and_evasion_rating","off_hand_maximum_added_physical_damage_per_15_shield_armour_and_evasion_rating","ignores_proximity_shield",null,"shield_charge_attack_time_+30%_if_no_charge","attack_is_melee_override"],
     "baseMods":[{
         "value":[]
@@ -11276,10 +11089,7 @@
   },
   "AncestorTotemSlam":{
     "qualityStats":{
-      "Alternate3":[["base_ailment_damage_+%"]],
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[["ancestor_totem_parent_activation_range_+%"]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -11331,7 +11141,8 @@
         "baseMultiplier":1.454
       },{
         "statInterpolation":[],
-        "cost":[]
+        "cost":[],
+        "baseMultiplier":1.483
       },{
         "statInterpolation":[],
         "cost":[],
@@ -11430,10 +11241,15 @@
         "cost":[]
       }],
     "statMap":{
-      "slam_ancestor_totem_grant_owner_melee_damage_+%_final":[[[]]]
+      "slam_ancestor_totem_grant_owner_melee_damage_+%_final":[{
+          "1":{
+            "effectName":"Ancestral Warchief"
+          },
+          "flags":256
+        }]
     },
     "constantStats":[[],[],[],[],[]],
-    "stats":[],
+    "stats":["slam_ancestor_totem_grant_owner_melee_damage_+%_final"],
     "baseMods":[{
         "value":[]
       },{
@@ -11449,9 +11265,7 @@
         "value":[]
       }],
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -11576,22 +11390,13 @@
       }],
     "baseEffectiveness":2.0517001152039,
     "statMap":{
-      "sentinel_minion_cooldown_speed_+%":[{
-          "value":{
-            "mod":[]
-          }
-        }],
-      "damage_+%":[{
-          "value":{
-            "mod":[]
-          }
-        }],
       "skill_physical_damage_%_to_convert_to_lightning":[{
           "name":"SkillPhysicalDamageConvertToLightning"
         },{
           "value":{
             "mod":[]
-          }
+          },
+          "name":"MinionModifier"
         }]
     },
     "constantStats":[[],["max_number_of_absolution_sentinels"],[],["absolution_blast_chance_to_summon_on_hitting_rare_or_unique_%"],[],[],["max_number_of_vaal_absolution_sentinels"]],
@@ -11603,18 +11408,17 @@
     "minionList":["AbsolutionTemplarJudge","AbsolutionTemplarJudgeVaal"],
     "incrementalEffectiveness":0.043200001120567,
     "name":"Absolution",
-    "description":"Damages enemies in an area, applying a debuff for a short duration. If a non-unique enemy dies while affected by the debuff, the enemy's corpse will be consumed to summon a Sentinel of Absolution for a longer secondary duration, or to refresh the duration and life of an existing one instead if you have the maximum number of them."
+    "description":"Damages enemies in an area, applying a debuff for a short duration. If a non-unique enemy dies while affected by the debuff, the corpse will be consumed to summon a Sentinel of Absolution for a secondary duration, or to refresh the duration and life of an existing one instead if you have the maximum number of them."
   },
   "RejuvenationTotem":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "statMap":{
       "base_life_regeneration_rate_per_minute":[[[]]]
     },
     "levels":[{
+        "1":514,
         "cost":[],
         "statInterpolation":[]
       },{
@@ -11783,9 +11587,7 @@
   },
   "Bloodreap":{
     "qualityStats":{
-      "Alternate2":[["reap_life_%_granted_on_death_with_debuff"]],
-      "Default":[[]],
-      "Alternate1":[["critical_strike_chance_+%"]]
+      "Default":[[]]
     },
     "levels":[{
         "3":100.66666828096,
@@ -11949,7 +11751,6 @@
       }],
     "baseEffectiveness":1.405699968338,
     "statMap":{
-      "blood_scythe_damage_+%_final_per_charge":[[[]]],
       "base_physical_damage_to_deal_per_minute":[{
           "1":[],
           "value":[]
@@ -11957,13 +11758,15 @@
           "1":[],
           "value":[]
         }],
+      "blood_scythe_damage_+%_final_per_charge":[[[]]],
+      "quality_display_reap_is_gem":[],
       "blood_scythe_cost_+%_final_per_charge":[{
           "1":[],
           "name":"LifeCost"
         }]
     },
     "constantStats":[[],["blood_scythe_cost_+%_final_per_charge"],[]],
-    "stats":[null,null,null,null,null,"lose_blood_scythe_charge_on_kill"],
+    "stats":[null,null,null,null,null,"lose_blood_scythe_charge_on_kill","quality_display_reap_is_gem"],
     "baseMods":[{
         "value":[]
       },{
@@ -12196,10 +11999,14 @@
         "cost":[]
       }],
     "baseEffectiveness":1.2081999778748,
+    "statMap":{
+      "shield_crush_damage_+%_final_from_distance":[[{
+            "type":"MeleeProximity",
+            "ramp":[]
+          }]]
+    },
     "qualityStats":{
-      "Alternate2":[["critical_multiplier_+%_per_100_max_es_on_shield"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[["shield_crush_damage_+%_final_from_distance"]]
     },
     "stats":[],
     "baseMods":[{
@@ -12365,384 +12172,164 @@
         "cost":[],
         "baseMultiplier":0.794
       }],
-    "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["ragestorm_movement_speed_+%"]]
-    },
     "statMap":{
       "rage_slash_radius_+_per_amount_of_rage_sacrificed":[{
           "1":{
-            "limitVar":"MaxRageVortexSacrifice",
             "var":"RageSacrificed"
           },
           "value":[]
         }],
+      "rage_slash_rage_sacrifice_per_radius_bonus":[],
+      "quality_display_rage_vortex_is_gem":[],
+      "rage_slash_rage_sacrifice_per_damage_bonus":[],
+      "rage_slash_vortex_attack_speed_+%_final":[[[]]],
       "rage_slash_damage_+%_final_per_amount_of_rage_sacrificed":[[[]]],
-      "rage_slash_vortex_attack_speed_+%_final":[[[]]]
+      "rage_slash_sacrifice_rage_%":[{
+          "name":"Multiplier:MaxRageVortexSacrificePercentage"
+        }]
     },
-    "constantStats":[["rage_slash_sacrifice_rage_%"],["rage_slash_radius_+_per_amount_of_rage_sacrificed"],["rage_slash_rage_sacrifice_per_radius_bonus"],["rage_slash_damage_+%_final_per_amount_of_rage_sacrificed"],["rage_slash_rage_sacrifice_per_damage_bonus"],["rage_slash_maximum_vortices"],["rage_slash_vortex_attack_speed_+%_final"],[]],
-    "stats":[],
-    "baseMods":[{
-        "value":[]
-      }],
+    "constantStats":[["rage_slash_sacrifice_rage_%"],["rage_slash_radius_+_per_amount_of_rage_sacrificed"],["rage_slash_rage_sacrifice_per_radius_bonus"],["rage_slash_damage_+%_final_per_amount_of_rage_sacrificed"],["rage_slash_rage_sacrifice_per_damage_bonus"],["rage_slash_maximum_vortices"],["rage_slash_vortex_attack_speed_+%_final"],[],[]],
+    "stats":[null,null,null,"quality_display_rage_vortex_is_gem"],
+    "qualityStats":{
+      "Default":[[]]
+    },
     "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
     "name":"Rage Vortex",
     "description":"Spin with a sword or axe to deal damage in an area around you. Sacrifices some rage to send a ragestorm forward. While enemies are inside it, the ragestorm will slow its movement and repeatedly deal attack damage based on your attack speed."
   },
-  "AnimateArmour":{
-    "minionSkillTypes":[],
-    "levels":[{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "6":177,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "6":191,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "5":141,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "6":213,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "5":156,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "5":161,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "5":171,
-        "6":249,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "6":263,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "6":267,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "6":271,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "6":274,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "6":289,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "cost":[],
-        "statInterpolation":[]
-      }],
+  "VaalAncestralWarchief":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["minion_skill_area_of_effect_+%"]]
-    },
-    "minionUses":[],
-    "constantStats":[["emerge_speed_+%"],[]],
-    "stats":["animate_item_maximum_level_requirement",null,"melee_physical_damage_+%"],
-    "baseFlags":[],
-    "skillTypes":[],
-    "statMap":{
-      "melee_physical_damage_+%":[{
-          "value":{
-            "mod":[]
-          }
-        }],
-      "maximum_life_+%":[{
-          "value":{
-            "mod":{
-              "name":"Life"
-            }
-          }
-        }],
-      "attack_minimum_added_physical_damage":[{
-          "value":{
-            "mod":[]
-          }
-        }],
-      "attack_maximum_added_physical_damage":[{
-          "value":{
-            "mod":[]
-          }
-        }],
-      "base_movement_velocity_+%":[{
-          "value":{
-            "mod":[]
-          }
-        }]
-    },
-    "minionList":["AnimatedArmour"],
-    "name":"Animate Guardian",
-    "description":"Animates a melee weapon or armour, attaching it to an invisible Guardian that fights by your side. Animating multiple items attaches them to the same Guardian. You cannot animate unidentified items. Cannot be used by Traps or Mines."
-  },
-  "DevouringTotem":{
-    "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
-    },
-    "statMap":{
-      "corpse_consumption_life_to_gain":[{
-          "value":{
-            "key":"lifeLeechPerUse"
-          }
-        }],
-      "corpse_consumption_mana_to_gain":[{
-          "value":{
-            "key":"manaLeechPerUse"
-          }
-        }]
+      "Default":[["totem_damage_+%"]]
     },
     "levels":[{
-        "cost":[],
-        "statInterpolation":[]
+        "cost":[]
       },{
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.028
       },{
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.057
       },{
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.085
       },{
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.114
       },{
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.142
+      },{
+        "cost":[]
       },{
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.199
       },{
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.227
       },{
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.256
       },{
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.284
       },{
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.313
       },{
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.341
       },{
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.369
       },{
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.398
       },{
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.426
       },{
-        "1":211,
-        "cost":[],
-        "statInterpolation":[]
+        "cost":[]
       },{
-        "1":231,
-        "cost":[],
-        "statInterpolation":[]
+        "cost":[]
       },{
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.512
+      },{
+        "cost":[]
+      },{
+        "cost":[]
       },{
         "cost":[],
-        "statInterpolation":[]
-      },{
-        "1":299,
-        "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.597
       },{
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.625
       },{
         "cost":[],
-        "statInterpolation":[]
-      },{
-        "1":382,
-        "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.654
       },{
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.682
       },{
-        "1":447,
-        "cost":[],
-        "statInterpolation":[]
+        "cost":[]
       },{
-        "1":483,
-        "cost":[],
-        "statInterpolation":[]
+        "cost":[]
       },{
-        "1":522,
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.767
       },{
-        "1":563,
-        "cost":[],
-        "statInterpolation":[]
+        "cost":[]
       },{
-        "1":606,
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.824
       },{
-        "1":652,
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.838
       },{
-        "1":677,
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.853
       },{
-        "1":701,
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.867
       },{
-        "1":727,
-        "cost":[],
-        "statInterpolation":[]
+        "cost":[]
       },{
-        "1":753,
-        "cost":[],
-        "statInterpolation":[]
+        "cost":[]
       },{
-        "1":781,
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.909
       },{
-        "1":808,
-        "cost":[],
-        "statInterpolation":[]
+        "cost":[]
       },{
-        "1":837,
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.938
       },{
-        "1":866,
         "cost":[],
-        "statInterpolation":[]
+        "baseMultiplier":1.952
       },{
-        "1":897,
-        "cost":[],
-        "statInterpolation":[]
-      },{
-        "1":927,
-        "cost":[],
-        "statInterpolation":[]
+        "cost":[]
       }],
-    "stats":["corpse_consumption_life_to_gain","corpse_consumption_mana_to_gain"],
-    "constantStats":[[],[]],
-    "incrementalEffectiveness":0.029999999329448,
+    "statMap":{
+      "slam_ancestor_totem_grant_owner_melee_damage_+%_final":[[[]]]
+    },
+    "constantStats":[[],[],[],[],[],[]],
+    "stats":[null,null,null,"totem_ignores_vaal_skill_cost"],
+    "baseMods":[{
+        "value":[]
+      },{
+        "value":[]
+      }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Devouring Totem",
-    "description":"Summons a totem that can consume nearby corpses. If you are hurt, it will destroy a corpse to leech life to you."
+    "weaponTypes":[],
+    "name":"Vaal Ancestral Warchief",
+    "description":"Summons an Ancestor Totem which attacks enemies with a powerful cascading slam while you're near it. If the enemies are far away, it will leap toward them as it slams. Being near it grants you more melee damage. Requires a Melee Weapon or Unarmed."
   },
   "BattlemagesCry":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -12887,12 +12474,145 @@
     "name":"Battlemage's Cry",
     "description":"Performs a warcry, taunting nearby enemies to attack the user and exerting subsequent attacks. Grants a buff which boosts critical strike chance and allows attacks to benefit from increases to spell damage."
   },
+  "AnimateArmour":{
+    "minionSkillTypes":[],
+    "levels":[{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      },{
+        "cost":[],
+        "statInterpolation":[]
+      }],
+    "minionUses":[],
+    "constantStats":[["emerge_speed_+%"],[]],
+    "stats":["animate_item_maximum_level_requirement",null,"active_skill_minion_damage_+%_final"],
+    "qualityStats":{
+      "Default":[["minion_movement_speed_+%"]]
+    },
+    "statDescriptionScope":"single_minion_spell_skill_stat_descriptions",
+    "skillTypes":[],
+    "baseFlags":[],
+    "minionList":["AnimatedArmour"],
+    "name":"Animate Guardian",
+    "description":"Animates a melee weapon or armour, attaching it to an invisible Guardian that fights by your side. Animating multiple items attaches them to the same Guardian. You cannot animate unidentified items. Cannot be used by Traps or Mines."
+  },
   "InfernalCryOnHitExplosion":{
     "qualityStats":{
-      "Alternate3":[["cover_in_ash_on_hit_%"]],
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[[],{
         "baseMultiplier":1.0375
@@ -12945,9 +12665,7 @@
   },
   "BattlemagesCrySupport":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["support_divine_cry_damage_+%_final","triggered_by_divine_cry"],
@@ -13045,6 +12763,10 @@
     "requireSkillTypes":[]
   },
   "VaalMoltenStrike":{
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "weaponTypes":[],
     "baseMods":[{
         "value":[]
       },{
@@ -13066,6 +12788,8 @@
         "1":[],
         "value":[]
       },[]],
+    "constantStats":[[],[],[],[],[]],
+    "description":"Infuses your melee weapon with molten energies to attack with physical and fire damage. This attack causes balls of molten magma to launch forth causing area attack damage to enemies where they land.",
     "parts":[[],[]],
     "levels":[{
         "cost":[],
@@ -13206,16 +12930,13 @@
         "cost":[],
         "statInterpolation":[]
       }],
-    "constantStats":[[],[],[],["active_skill_projectile_speed_+%_variation_final"],[]],
-    "qualityStats":{
-      "Default":[[]]
+    "statMap":{
+      "active_skill_hit_ailment_damage_with_projectile_+%_final":[[[]]]
     },
     "stats":[null,null,null,"molten_strike_projectiles_chain_when_impacting_ground"],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
     "name":"Vaal Molten Strike",
-    "description":"Infuses your melee weapon with molten energies to attack with physical and fire damage. This attack causes balls of molten magma to launch forth causing area attack damage to enemies where they land."
+    "baseFlags":[]
   },
   "FireImpurity":{
     "qualityStats":{
@@ -13365,9 +13086,7 @@
         "value":[]
       }],
     "qualityStats":{
-      "Alternate2":[["ground_slam_angle_+%"]],
-      "Default":[[],[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -13510,7 +13229,8 @@
         "baseMultiplier":2.456
       }],
     "statMap":{
-      "groundslam_damage_to_close_targets_+%_final":[[[]]]
+      "groundslam_damage_to_close_targets_+%_final":[[[]]],
+      "quality_display_groundslam_is_gem":[]
     },
     "constantStats":[[]],
     "stats":[],
@@ -13522,10 +13242,7 @@
   },
   "IntimidatingCry":{
     "qualityStats":{
-      "Alternate3":[[]],
-      "Alternate2":[["warcry_grant_overwhelm_%_to_exerted_attacks"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -13650,9 +13367,6 @@
       }],
     "statMap":{
       "intimidating_cry_empowerd_attacks_deal_double_damage_display":[],
-      "warcry_grant_overwhelm_%_to_exerted_attacks":[{
-          "name":"EnemyPhysicalDamageReduction"
-        }],
       "skill_empowers_next_x_melee_attacks":[{
           "name":"IntimidatingExertedAttacks"
         }],
@@ -13672,10 +13386,7 @@
   },
   "SeismicCry":{
     "qualityStats":{
-      "Alternate3":[[]],
-      "Alternate2":[["warcry_grant_knockback_%_to_exerted_attacks"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -13802,16 +13513,13 @@
       "seismic_cry_+%_enemy_stun_threshold_per_5_MP":[{
           "name":"SeismicStunThresholdPer5MP"
         }],
-      "seismic_cry_base_slam_skill_area_+%":[],
-      "warcry_grant_knockback_%_to_exerted_attacks":[{
-          "name":"EnemyKnockbackChance"
-        }],
       "seismic_cry_slam_skill_area_+%_increase_per_repeat":[{
           "name":"SeismicAoEMultiplier"
         }],
       "skill_empowers_next_x_melee_attacks":[{
           "name":"SeismicExertedAttacks"
-        }]
+        }],
+      "seismic_cry_base_slam_skill_area_+%":[]
     },
     "stats":[null,null,null,null,null,"warcries_knock_back_enemies",null,null,"active_skill_200%_increased_knockback_distance"],
     "constantStats":[[],["seismic_cry_+%_enemy_stun_threshold_per_5_MP"],["seismic_cry_base_slam_skill_area_+%"],["seismic_cry_slam_skill_area_+%_increase_per_repeat"],[]],
@@ -13825,17 +13533,24 @@
   },
   "IceCrash":{
     "qualityStats":{
-      "Alternate3":[["ice_crash_first_stage_damage_+%_final"],["ice_crash_third_hit_damage_+%_final"]],
-      "Alternate2":[[]],
-      "Default":[["physical_damage_%_to_add_as_cold"]],
-      "Alternate1":[[]]
+      "Default":[["physical_damage_%_to_add_as_cold"]]
     },
     "weaponTypes":[],
     "baseMods":[{
-        "value":[]
+        "value":{
+          "value":"First hit:"
+        }
+      },{
+        "value":{
+          "value":"Second hit:"
+        }
+      },{
+        "value":{
+          "value":"Third hit:"
+        }
       }],
-    "constantStats":[[],["ice_crash_second_hit_damage_+%_final"],[]],
-    "description":"Slam the ground, damaging enemies in an area around the impact in three stages. Enemies take slightly less damage on the second and third stage. Works with Swords, Maces, Sceptres, Axes, Staves and Unarmed.",
+    "constantStats":[[],["ice_crash_second_hit_damage_+%_final"],["ice_crash_third_hit_damage_+%_final"],[],[],["active_skill_base_tertiary_area_of_effect_radius"]],
+    "description":"Slam the ground, damaging enemies in an area around the impact in three stages of increasing size. Enemies take slightly less damage on the second and third stage, and can only be hit by one stage. Works with Swords, Maces, Sceptres, Axes, Staves and Unarmed.",
     "parts":[{
         "name":"First Hit"
       },{
@@ -13928,7 +13643,6 @@
     "statMap":{
       "ice_crash_second_hit_damage_+%_final":[[[]]],
       "quality_display_ice_crash_is_gem":[],
-      "ice_crash_first_stage_damage_+%_final":[[[]]],
       "ice_crash_third_hit_damage_+%_final":[[[]]]
     },
     "stats":[null,null,"quality_display_ice_crash_is_gem"],
@@ -13938,9 +13652,7 @@
   },
   "FlameLink":{
     "qualityStats":{
-      "Alternate2":[["flame_link_grants_chance_to_ignite_%"]],
-      "Default":[[]],
-      "Alternate1":[["base_mana_cost_-%"]]
+      "Default":[[]]
     },
     "levels":[{
         "cost":[],
@@ -14066,15 +13778,12 @@
     "baseEffectiveness":0.52499997615814,
     "statMap":{
       "flame_link_maximum_fire_damage":[[[]]],
+      "flame_link_minimum_fire_damage":[[[]]],
       "flame_link_added_fire_damage_from_life_%":[[[],{
             "type":"PercentStat",
+            "stat":"Life",
             "actor":"parent"
-          }],[[],[]]],
-      "flame_link_minimum_fire_damage":[[[]]],
-      "flame_link_grants_chance_to_ignite_%":[{
-          "1":[],
-          "name":"EnemyIgniteChance"
-        }]
+          }],[[],[]]]
     },
     "stats":["flame_link_minimum_fire_damage","flame_link_maximum_fire_damage"],
     "constantStats":[["flame_link_added_fire_damage_from_life_%"]],
@@ -14087,9 +13796,7 @@
   "MoltenShell":{
     "stats":[],
     "qualityStats":{
-      "Alternate2":[["molten_shell_explosion_damage_penetrates_%_fire_resistance"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -14239,9 +13946,8 @@
           "value":[]
         }],
       "molten_shell_damage_absorbed_%":[[[]]],
-      "molten_shell_damage_absorb_limit_%_of_armour":[[[],[]]],
       "base_physical_damage_reduction_rating":[[[]]],
-      "molten_shell_explosion_damage_penetrates_%_fire_resistance":[[]],
+      "molten_shell_damage_absorb_limit_%_of_armour":[[[],[]]],
       "molten_shell_max_damage_absorbed":[[[]]]
     },
     "constantStats":[[],[],[],[],[]],
@@ -14254,11 +13960,9 @@
     "description":"Applies a buff that adds to your armour, and can take some of the damage from hits for you before being depleted. When the buff expires or is depleted, the skill deals reflected damage to enemies around you based on the total damage that was taken from the buff. Shares a cooldown with other Guard skills."
   },
   "HeraldOfAsh":{
-    "stats":["herald_of_ash_burning_damage_+%_final","herald_of_ash_spell_fire_damage_+%_final"],
+    "stats":["herald_of_ash_burning_damage_+%_final","herald_of_ash_spell_fire_damage_+%_final",null,"quality_display_herald_of_ash_is_gem"],
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[["herald_of_ash_fire_damage_+%"]],
-      "Alternate1":[[],[]]
+      "Default":[["herald_of_ash_burning_%_overkill_damage_per_minute"]]
     },
     "levels":[{
         "statInterpolation":[]
@@ -14342,7 +14046,7 @@
         "statInterpolation":[]
       }],
     "statMap":{
-      "herald_of_ash_fire_damage_+%":[[[]]],
+      "quality_display_herald_of_ash_is_gem":[],
       "herald_of_ash_burning_damage_+%_final":[{
           "value":{
             "key":"hoaMoreBurn"
@@ -14353,13 +14057,13 @@
             "key":"hoaOverkillPercent"
           }
         }],
-      "herald_of_ash_spell_fire_damage_+%_final":[[[]]],
       "physical_damage_%_to_add_as_fire":[{
           "1":[],
           "name":"PhysicalDamageGainAsFire"
-        }]
+        }],
+      "herald_of_ash_spell_fire_damage_+%_final":[[[]]]
     },
-    "constantStats":[["physical_damage_%_to_add_as_fire"],[],["herald_of_ash_burning_%_overkill_damage_per_minute"]],
+    "constantStats":[["physical_damage_%_to_add_as_fire"],[],[]],
     "baseMods":[{
         "value":[]
       }],
@@ -14371,10 +14075,7 @@
   },
   "BloodSpears":{
     "qualityStats":{
-      "Alternate3":[["blood_spears_base_number_of_spears",-0.05],["blood_spears_additional_number_of_spears_if_changed_stance_recently"]],
-      "Alternate2":[["bleed_on_hit_with_attacks_%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[["blood_spears_base_number_of_spears"]]
     },
     "weaponTypes":[],
     "baseMods":[{
@@ -14391,71 +14092,15 @@
         "1":[],
         "value":[]
       }],
-    "constantStats":[[],["blood_spears_damage_+%_final_in_blood_stance",-75],[],["blood_spears_aoe_modifiers_apply_to_blood_spear_placement_range_at_%_value"]],
+    "constantStats":[[],["blood_spears_damage_+%_final_in_blood_stance",-75],["blood_spears_aoe_modifiers_apply_to_blood_spear_placement_range_at_%_value"]],
     "description":"Smash the ground to bring forth multiple spears to damage enemies. When in Blood Stance, multiple spikes burst from the ground in sequence, able to hit enemies multiple times. In Sand Stance, the spikes are thrust outwards. Requires a Sword or Axe. You are in Blood Stance by default.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
       },{
         "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":1.296
-      },{
-        "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":1.343
-      },{
-        "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":1.389
-      },{
-        "statInterpolation":[],
-        "damageEffectiveness":1.44,
-        "cost":[],
-        "baseMultiplier":1.435
-      },{
-        "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":1.482
-      },{
-        "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":1.528
-      },{
-        "statInterpolation":[],
+        "damageEffectiveness":1.608,
         "cost":[]
-      },{
-        "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":1.621
-      },{
-        "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":1.667
-      },{
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":1.806
-      },{
-        "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":1.852
-      },{
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":1.991
       },{
         "statInterpolation":[],
         "cost":[]
@@ -14470,37 +14115,8 @@
         "cost":[]
       },{
         "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":2.223
-      },{
-        "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":2.269
-      },{
-        "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":2.315
-      },{
-        "statInterpolation":[],
+        "damageEffectiveness":1.897,
         "cost":[]
-      },{
-        "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":2.408
-      },{
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":2.501
-      },{
-        "statInterpolation":[],
-        "cost":[]
-      },{
-        "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":2.593
       },{
         "statInterpolation":[],
         "cost":[]
@@ -14509,46 +14125,129 @@
         "cost":[]
       },{
         "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":2.663
+        "damageEffectiveness":2.071,
+        "cost":[]
       },{
         "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":2.686
+        "cost":[]
       },{
         "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":2.709
+        "cost":[]
       },{
         "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":2.732
+        "cost":[]
       },{
         "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":2.755
+        "cost":[]
       },{
         "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":2.778
+        "damageEffectiveness":2.361,
+        "cost":[]
       },{
         "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":2.802
+        "cost":[]
       },{
         "statInterpolation":[],
-        "cost":[],
-        "baseMultiplier":2.825
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "damageEffectiveness":2.708,
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "damageEffectiveness":2.766,
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "damageEffectiveness":2.824,
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "damageEffectiveness":2.939,
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "damageEffectiveness":3.055,
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "damageEffectiveness":3.113,
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "damageEffectiveness":3.171,
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "damageEffectiveness":3.229,
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "damageEffectiveness":3.258,
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "damageEffectiveness":3.287,
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "damageEffectiveness":3.345,
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "damageEffectiveness":3.403,
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "damageEffectiveness":3.432,
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "damageEffectiveness":3.461,
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "damageEffectiveness":3.489,
+        "cost":[]
+      },{
+        "statInterpolation":[],
+        "damageEffectiveness":3.518,
+        "cost":[]
       }],
     "statMap":{
       "blood_spears_damage_+%_final_in_blood_stance":[[[]]],
-      "blood_spears_base_number_of_spears":[{
+      "blood_spears_additional_number_of_spears_if_changed_stance_recently":[{
+          "1":{
+            "var":"ChangedStanceRecently"
+          },
           "name":"Multiplier:PerforateMaxSpikes"
         }],
-      "blood_spears_additional_number_of_spears_if_changed_stance_recently":[[[]]],
-      "skill_area_of_effect_+%_final_in_sand_stance":[[[]]]
+      "blood_spears_base_number_of_spears":[[]],
+      "skill_area_of_effect_+%_final_in_sand_stance":[[[]]],
+      "quality_display_perforate_is_gem":[]
     },
-    "stats":[null,null,"skill_area_of_effect_+%_final_in_sand_stance"],
+    "stats":[null,null,"skill_area_of_effect_+%_final_in_sand_stance",null,null,"quality_display_perforate_is_gem"],
     "skillTypes":[],
     "name":"Perforate",
     "baseFlags":[]
@@ -14677,9 +14376,7 @@
         "cost":[]
       }],
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "statMap":{
       "fire_golem_grants_damage_+%":[[[]]]
@@ -14696,13 +14393,11 @@
     "skillTypes":[],
     "baseFlags":[],
     "name":"Summon Flame Golem",
-    "description":"Summons a Flame Golem that grants you increased Damage. The Flame Golem can use a fire spray, a wave of fire damage, and an explosive arcing projectile."
+    "description":"Summons a Flame Golem that grants you increased Damage. The Flame Golem can cast a fire spray, a wave of fire damage, and an explosive arcing projectile."
   },
   "QuickGuard":{
     "qualityStats":{
-      "Alternate2":[["resist_all_%"]],
-      "Default":[[]],
-      "Alternate1":[["steelskin_damage_limit_+%"]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -14826,14 +14521,6 @@
         "cost":[]
       }],
     "statMap":{
-      "steelskin_damage_limit_+%":[[[]]],
-      "resist_all_%":[{
-          "1":[],
-          "name":"ElementalResist"
-        },{
-          "1":[],
-          "name":"ChaosResist"
-        }],
       "quick_guard_damage_absorbed_%":[[[]]],
       "quick_guard_damage_absorb_limit":[[[]]]
     },
@@ -14850,9 +14537,7 @@
   },
   "Punishment":{
     "qualityStats":{
-      "Alternate2":[["punishment_reflect_%_overkill_damage_to_nearby_allies_on_death"]],
-      "Default":[[]],
-      "Alternate1":[["base_curse_duration_+%"]]
+      "Default":[["debilitate_self_for_x_milliseconds_on_hit"]]
     },
     "levels":[{
         "cost":[],
@@ -14978,14 +14663,16 @@
     "statMap":{
       "damage_taken_+%_on_low_life":[[[],[]]]
     },
-    "stats":[null,null,"damage_taken_+%_on_low_life"],
-    "constantStats":[["debilitate_self_for_x_milliseconds_on_hit"]],
+    "stats":[null,null,"damage_taken_+%_on_low_life",null,"quality_display_debilitate_self_for_x_milliseconds_on_hit_is_gem"],
+    "constantStats":[[]],
     "skillTypes":[],
     "baseMods":[{
         "value":[]
       },{
         "value":[]
-      },[]],
+      },{
+        "name":"DebilitateChance"
+      }],
     "baseFlags":[],
     "name":"Punishment",
     "description":"Curses all targets in an area, causing them to be debilitated when they hit enemies and increasing damage they take while on low life."

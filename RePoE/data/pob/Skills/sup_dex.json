@@ -1,9 +1,7 @@
 {
   "SupportGreaterMultipleProjectiles":{
     "qualityStats":{
-      "Alternate2":[["multiple_projectiles_projectile_spread_+%",1]],
-      "Default":[["projectile_damage_+%",0.5]],
-      "Alternate1":[["base_mana_cost_-%"],["base_life_cost_+%",-1],["base_projectile_speed_+%"]]
+      "Default":[["projectile_damage_+%",0.5]]
     },
     "support":true,
     "color":2,
@@ -15,7 +13,7 @@
         "levelRequirement":38
       },{
         "1":-35,
-        "statInterpolation":[],
+        "statInterpolation":[1],
         "PvPDamageMultiplier":-25,
         "manaMultiplier":50,
         "levelRequirement":40
@@ -165,9 +163,7 @@
   },
   "SupportFasterProjectiles":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["projectile_return_%_chance"]]
+      "Default":[["base_projectile_speed_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -288,9 +284,7 @@
   },
   "SupportImpale":{
     "qualityStats":{
-      "Alternate2":[["chance_to_inflict_additional_impale_%",0.25]],
-      "Default":[["impale_debuff_effect_+%"]],
-      "Alternate1":[["attacks_impale_on_hit_%_chance"]]
+      "Default":[["impale_debuff_effect_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -390,12 +384,15 @@
       },{
         "statInterpolation":[]
       }],
-    "constantStats":[[]],
+    "constantStats":[["attacks_impale_on_hit_%_chance"]],
     "statMap":{
-      "impale_phys_reduction_%_penalty":[{
+      "impale_phys_reduction_%_penalty":{
+        "1":{
           "type":"BASE",
           "name":"EnemyImpalePhysicalDamageReduction"
-        }],
+        },
+        "mult":-1
+      },
       "impale_support_physical_damage_+%_final":[{
           "name":"PhysicalDamage"
         }]
@@ -407,9 +404,7 @@
   },
   "SupportGemMirageArcher":{
     "qualityStats":{
-      "Alternate2":[["skill_effect_duration_+%"]],
-      "Default":[["attack_damage_+%"]],
-      "Alternate1":[["mirage_archer_number_of_additional_projectiles",0.1],["support_mirage_archer_base_duration",-100]]
+      "Default":[["attack_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "levels":[{
@@ -499,10 +494,13 @@
         "statInterpolation":[]
       }],
     "stats":["support_mirage_archer_damage_+%_final","skill_can_own_mirage_archers","summon_mirage_archer_on_hit","disable_skill_if_weapon_not_bow"],
-    "constantStats":[[null,4000],["support_mirage_archer_attack_speed_+%_final",-60],["mirage_archer_projectile_additional_height_offset",-138]],
+    "constantStats":[["support_mirage_archer_base_duration",4000],["support_mirage_archer_attack_speed_+%_final",-60],["mirage_archer_projectile_additional_height_offset",-138]],
     "statMap":{
-      "mirage_archer_number_of_additional_projectiles":[{
-          "name":"MirageArcherAdditionalProjectileCount"
+      "summon_mirage_archer_on_hit":[{
+          "name":"MirageArcherMaxCount"
+        }],
+      "support_mirage_archer_attack_speed_+%_final":[{
+          "name":"MirageArcherLessAttackSpeed"
         }],
       "support_mirage_archer_base_duration":{
         "1":{
@@ -512,12 +510,6 @@
       },
       "support_mirage_archer_damage_+%_final":[{
           "name":"MirageArcherLessDamage"
-        }],
-      "support_mirage_archer_attack_speed_+%_final":[{
-          "name":"MirageArcherLessAttackSpeed"
-        }],
-      "summon_mirage_archer_on_hit":[{
-          "name":"MirageArcherMaxCount"
         }]
     },
     "description":"Supports attack skills that can be used with bows. Supported skills can only be used with bows. Cannot support Vaal skills, minion skills, movement skills, or skills used by totems, traps, or mines.",
@@ -527,9 +519,7 @@
   },
   "SupportPhysicalProjectileAttackDamage":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[["physical_damage_+%"]],
-      "Alternate1":[["bleed_on_hit_with_attacks_%"],["base_chance_to_poison_on_hit_%"]]
+      "Default":[["physical_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_projectile_attack_physical_damage_+%_final","support_phys_chaos_projectile_physical_damage_over_time_+%_final","support_phys_chaos_projectile_chaos_damage_over_time_+%_final"],
@@ -732,9 +722,7 @@
         "statInterpolation":[]
       }],
     "qualityStats":{
-      "Alternate2":[[null,-2],["damage_+%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "constantStats":[[]],
@@ -750,9 +738,7 @@
   },
   "SupportLocusMine":{
     "qualityStats":{
-      "Alternate2":[["base_reservation_efficiency_+%",-1.5],["number_of_additional_mines_to_place",0.05]],
-      "Default":[["mine_laying_speed_+%"]],
-      "Alternate1":[["mine_detonation_speed_+%"]]
+      "Default":[["mine_laying_speed_+%"]]
     },
     "levels":[{
         "statInterpolation":[]
@@ -814,6 +800,7 @@
         "1":-3,
         "statInterpolation":[]
       },{
+        "1":-2,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -839,7 +826,7 @@
         "statInterpolation":[]
       }],
     "excludeSkillTypes":[null,null,null,null,null,null,85],
-    "constantStats":[[],["support_locus_mine_base_mine_duration",5000],["support_locus_mine_cannot_detonate_mines_within_X_units"],["support_remote_mine_2_base_mine_detonation_time_ms",250],["support_makes_skill_mine_pvp_damage_+%_final"],["number_of_projectiles_+%_final_from_locus_mine_support"]],
+    "constantStats":[["number_of_additional_mines_to_place"],["support_locus_mine_base_mine_duration",5000],["support_locus_mine_cannot_detonate_mines_within_X_units"],["support_remote_mine_2_base_mine_detonation_time_ms",250],["support_makes_skill_mine_pvp_damage_+%_final"],["number_of_projectiles_+%_final_from_locus_mine_support"]],
     "stats":["support_locus_mine_damage_+%_final","support_locus_mine_throw_mines_in_an_arc","support_locus_mine_mines_always_target_your_location","base_skill_is_mined","is_remote_mine","disable_skill_if_melee_attack","base_skill_show_average_damage_instead_of_dps","remote_mined_by_support","minimum_number_of_projectiles_to_fire_is_1"],
     "statMap":{
       "number_of_projectiles_+%_final_from_locus_mine_support":[{
@@ -855,11 +842,9 @@
   },
   "SupportGreaterVolley":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["parallel_projectile_firing_point_x_dist_+%"]]
+      "Default":[[]]
     },
-    "excludeSkillTypes":[],
+    "excludeSkillTypes":[null,null,null,null,131],
     "stats":["support_greater_volley_projectile_damage_+%_final"],
     "levels":[{
         "statInterpolation":[]
@@ -953,9 +938,7 @@
   },
   "SupportTrap":{
     "qualityStats":{
-      "Alternate2":[["trap_trigger_radius_+%"]],
-      "Default":[["trap_throwing_speed_+%"]],
-      "Alternate1":[[]]
+      "Default":[["trap_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "levels":[{
@@ -1041,7 +1024,7 @@
       },{
         "statInterpolation":[]
       }],
-    "stats":[null,"support_trap_damage_+%_final","base_skill_is_trapped",null,null,"is_trap"],
+    "stats":["trap_throwing_speed_+%","support_trap_damage_+%_final","base_skill_is_trapped",null,null,"is_trap","quality_display_trap_duration_is_gem"],
     "constantStats":[["base_trap_duration"],["support_makes_skill_trap_pvp_damage_+%_final"]],
     "statMap":{
       "base_skill_show_average_damage_instead_of_dps":[{
@@ -1063,12 +1046,10 @@
   },
   "SupportBlind":{
     "qualityStats":{
-      "Alternate2":[["critical_strike_chance_+%_vs_blinded_enemies"]],
-      "Default":[["blind_duration_+%"]],
-      "Alternate1":[["global_chance_to_blind_on_hit_%"]]
+      "Default":[["blind_effect_+%"]]
     },
     "excludeSkillTypes":[],
-    "stats":[],
+    "stats":["blind_duration_+%"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -1150,7 +1131,7 @@
       },{
         "statInterpolation":[]
       }],
-    "constantStats":[[]],
+    "constantStats":[["global_chance_to_blind_on_hit_%"]],
     "description":"Supports any skill that hits enemies.",
     "name":"Blind",
     "addSkillTypes":[],
@@ -1158,9 +1139,7 @@
   },
   "SupportManaLeech":{
     "qualityStats":{
-      "Alternate2":[["mana_gain_per_target",0.2]],
-      "Default":[["damage_+%_while_mana_leeching"]],
-      "Alternate1":[["damage_+%_per_200_mana_spent_recently"]]
+      "Default":[["damage_+%_while_mana_leeching"]]
     },
     "excludeSkillTypes":[],
     "stats":["attack_skill_mana_leech_from_any_damage_permyriad"],
@@ -1283,15 +1262,6 @@
         "1":590,
         "statInterpolation":[]
       }],
-    "statMap":{
-      "damage_+%_per_200_mana_spent_recently":[{
-          "1":{
-            "type":"Multiplier",
-            "var":"ManaSpentRecently"
-          },
-          "type":"INC"
-        }]
-    },
     "description":"Supports attack skills that hit enemies, causing those hits to leech mana based on damage dealt.",
     "name":"Mana Leech",
     "addSkillTypes":[],
@@ -1358,7 +1328,6 @@
   },
   "SupportChanceToFlee":{
     "qualityStats":{
-      "Alternate1":[["base_cast_speed_+%",-0.5]],
       "Default":[["global_hit_causes_monster_flee_%"]]
     },
     "excludeSkillTypes":[],
@@ -1450,9 +1419,7 @@
   },
   "SupportLesserMultipleProjectiles":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[],[],[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["support_lesser_multiple_projectile_damage_+%_final"],
@@ -1547,9 +1514,7 @@
   },
   "SupportDebilitate":{
     "qualityStats":{
-      "Alternate2":[["faster_poison_%"]],
-      "Default":[["base_poison_damage_+%"]],
-      "Alternate1":[["base_poison_duration_+%"]]
+      "Default":[["base_poison_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_debilitate_poison_damage_+%_final","support_debilitate_hit_damage_max_poison_stacks"],
@@ -1637,6 +1602,7 @@
     "constantStats":[["support_debilitate_hit_damage_+%_final_per_poison_stack"]],
     "statMap":{
       "support_debilitate_hit_damage_+%_final_per_poison_stack":[[{
+            "type":"Multiplier",
             "limitVar":"VileToxinsPoisonLimit",
             "var":"PoisonStack",
             "actor":"enemy"
@@ -1654,9 +1620,7 @@
   },
   "SupportDeadlyAilments":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["base_all_ailment_duration_+%"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -1743,8 +1707,7 @@
       }],
     "constantStats":[[]],
     "statMap":{
-      "support_better_ailments_ailment_damage_+%_final":[[]],
-      "support_better_ailments_hit_damage_+%_final":[[]]
+      "support_better_ailments_ailment_damage_+%_final":[[]]
     },
     "name":"Deadly Ailments",
     "addSkillTypes":[],
@@ -1871,9 +1834,7 @@
         "statInterpolation":[]
       }],
     "qualityStats":{
-      "Alternate2":[["critical_strike_chance_against_enemies_on_full_life_+%"]],
-      "Default":[["critical_strike_chance_+%"]],
-      "Alternate1":[["elusive_effect_+%"]]
+      "Default":[["critical_strike_chance_+%"]]
     },
     "baseMods":[{
         "type":"FLAG",
@@ -1887,7 +1848,7 @@
       }],
     "excludeSkillTypes":[],
     "constantStats":[["gain_elusive_on_crit_%_chance"]],
-    "stats":[null,"additional_critical_strike_chance_permyriad_while_affected_by_elusive","nightblade_elusive_grants_critical_strike_multiplier_+_to_supported_skills","supported_skill_can_only_use_dagger_and_claw","supported_by_nightblade"],
+    "stats":["elusive_effect_+%","additional_critical_strike_chance_permyriad_while_affected_by_elusive","nightblade_elusive_grants_critical_strike_multiplier_+_to_supported_skills","supported_skill_can_only_use_dagger_and_claw","supported_by_nightblade"],
     "statMap":{
       "supported_skill_can_only_use_dagger_and_claw":[]
     },
@@ -1980,11 +1941,9 @@
         "statInterpolation":[]
       }],
     "qualityStats":{
-      "Alternate2":[["support_manaforged_arrows_mana_cost_%_threshold",-2.5]],
-      "Default":[["base_cooldown_speed_+%"]],
-      "Alternate1":[[]]
+      "Default":[["base_cooldown_speed_+%"]]
     },
-    "constantStats":[["triggered_by_manaforged_arrows_support_%_chance"],["support_manaforged_arrows_damage_+%_final_per_mana_spent"],[]],
+    "constantStats":[["triggered_by_manaforged_arrows_support_%_chance"],["support_manaforged_arrows_damage_+%_final_per_mana_spent"],["support_manaforged_arrows_mana_cost_%_threshold"]],
     "excludeSkillTypes":[],
     "stats":["support_manaforged_arrows_damage_+%_final"],
     "statMap":{
@@ -2012,9 +1971,7 @@
   },
   "SupportChain":{
     "qualityStats":{
-      "Alternate2":[["projectile_chance_to_not_pierce_%"]],
-      "Default":[["chaining_range_+%"]],
-      "Alternate1":[[]]
+      "Default":[["chaining_range_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_chain_hit_damage_+%_final"],
@@ -2110,12 +2067,10 @@
   },
   "SupportCullingStrike":{
     "qualityStats":{
-      "Alternate2":[["recover_%_maximum_life_on_cull"]],
-      "Default":[[]],
-      "Alternate1":[["damage_vs_enemies_on_low_life_+%"]]
+      "Default":[["recover_%_maximum_life_on_cull",0.1]]
     },
     "excludeSkillTypes":[],
-    "stats":[null,"kill_enemy_on_hit_if_under_10%_life"],
+    "stats":["damage_+%","kill_enemy_on_hit_if_under_10%_life"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -2204,15 +2159,14 @@
   },
   "SupportCastOnDeath":{
     "qualityStats":{
-      "Alternate2":[["skill_effect_duration_+%_while_dead"]],
-      "Default":[["area_of_effect_+%_while_dead"]],
-      "Alternate1":[["additional_critical_strike_chance_permyriad_while_dead"]]
+      "Default":[["area_of_effect_+%_while_dead"]]
     },
     "levels":[{
         "statInterpolation":[]
       },{
         "statInterpolation":[],
-        "PvPDamageMultiplier":-85
+        "PvPDamageMultiplier":-85,
+        "manaMultiplier":-100
       },{
         "statInterpolation":[]
       },{
@@ -2310,16 +2264,11 @@
     "constantStats":[["cast_on_death_%"]],
     "statMap":{
       "area_of_effect_+%_while_dead":[{
+          "type":"INC",
           "name":"AreaOfEffect"
         }],
-      "additional_critical_strike_chance_permyriad_while_dead":[{
-          "name":"CritChance"
-        }],
       "no_cost":[],
-      "cast_on_death_damage_+%_final_while_dead":[[]],
-      "skill_effect_duration_+%_while_dead":[{
-          "name":"Duration"
-        }]
+      "cast_on_death_damage_+%_final_while_dead":[[]]
     },
     "baseMods":[{
         "value":{
@@ -2333,9 +2282,7 @@
   },
   "SupportAdditionalCooldown":{
     "qualityStats":{
-      "Alternate2":[["recover_permyriad_life_on_skill_use"]],
-      "Default":[[]],
-      "Alternate1":[["support_added_cooldown_count_if_not_instant"],[]]
+      "Default":[[null,0.25]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -2420,7 +2367,7 @@
       },{
         "statInterpolation":[]
       }],
-    "constantStats":[[]],
+    "constantStats":[["support_added_cooldown_count_if_not_instant"]],
     "description":"Supports skills with cooldowns.\nCannot support triggered skills.",
     "name":"Second Wind",
     "addSkillTypes":[],
@@ -2428,9 +2375,7 @@
   },
   "SupportMomentum":{
     "qualityStats":{
-      "Alternate2":[["support_momentum_stack_while_channelling_base_ms"]],
-      "Default":[["support_momentum_base_buff_duration_ms"]],
-      "Alternate1":[["support_momentum_movement_speed_+%_per_stack_removed"]]
+      "Default":[["support_momentum_base_buff_duration_ms"]]
     },
     "excludeSkillTypes":[],
     "levels":[{
@@ -2525,8 +2470,8 @@
       },{
         "statInterpolation":[]
       }],
-    "stats":["support_momentum_attack_speed_+%_per_stack","support_momentum_max_stacks"],
-    "constantStats":[[null,1500],["count_as_momentum_+_if_not_channelled"],[]],
+    "stats":["support_momentum_attack_speed_+%_per_stack","support_momentum_max_stacks","support_momentum_stack_while_channelling_base_ms"],
+    "constantStats":[[null,1500],["count_as_momentum_+_if_not_channelled"],["support_momentum_movement_speed_+%_per_stack_removed"]],
     "statMap":{
       "support_momentum_max_stacks":[{
           "name":"MomentumStacksMax"
@@ -2555,12 +2500,10 @@
   },
   "SupportPierce":{
     "qualityStats":{
-      "Alternate2":[["projectile_damage_+%_if_pierced_enemy"]],
-      "Default":[[]],
-      "Alternate1":[["projectile_base_number_of_targets_to_pierce"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
-    "stats":[null,"support_pierce_projectile_damage_+%_final"],
+    "stats":["projectile_base_number_of_targets_to_pierce","support_pierce_projectile_damage_+%_final"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -2643,10 +2586,6 @@
         "statInterpolation":[]
       }],
     "statMap":{
-      "projectile_damage_+%_if_pierced_enemy":[[{
-            "type":"StatThreshold",
-            "stat":"PiercedCount"
-          }]],
       "support_pierce_projectile_damage_+%_final":[[]]
     },
     "name":"Pierce",
@@ -2736,9 +2675,7 @@
         "statInterpolation":[]
       }],
     "qualityStats":{
-      "Alternate2":[["close_combat_damage_to_close_range_+%"]],
-      "Default":[["melee_damage_+%"]],
-      "Alternate1":[["combat_rush_effect_+%"]]
+      "Default":[["close_combat_damage_to_close_range_+%"]]
     },
     "baseMods":[{
         "name":"Condition:SupportedByCloseCombat"
@@ -2747,6 +2684,7 @@
     "constantStats":[["support_slashing_buff_base_duration_ms",2000],["support_slashing_buff_attack_speed_+%_final_to_grant"]],
     "stats":["support_slashing_damage_+%_final_from_distance","supported_by_slashing","supported_skill_can_only_use_axe_and_sword"],
     "statMap":{
+      "supported_skill_can_only_use_axe_and_sword":[],
       "support_slashing_buff_attack_speed_+%_final_to_grant":[[{
             "effectCond":"CombatRushActive",
             "effectName":"Combat Rush"
@@ -2754,19 +2692,15 @@
             "type":"Condition",
             "var":"SupportedByCloseCombat"
           },[]]],
-      "combat_rush_effect_+%":[{
-          "name":"CombatRushEffect"
-        }],
-      "support_slashing_damage_+%_final_from_distance":[{
+      "close_combat_damage_to_close_range_+%":[{
           "1":{
-            "type":"MeleeProximity",
-            "ramp":[]
+            "var":"AtCloseRange"
           },
           "flags":257
         }],
-      "supported_skill_can_only_use_axe_and_sword":[],
-      "close_combat_damage_to_close_range_+%":[[{
-            "var":"AtCloseRange"
+      "support_slashing_damage_+%_final_from_distance":[[{
+            "type":"MeleeProximity",
+            "ramp":[]
           }]]
     },
     "weaponTypes":[],
@@ -2777,9 +2711,7 @@
   },
   "SupportAdditionalTrapMine":{
     "qualityStats":{
-      "Alternate2":[["trap_throwing_speed_+%_per_frenzy_charge"],["mine_throwing_speed_+%_per_frenzy_charge"]],
-      "Default":[[],[]],
-      "Alternate1":[["trap_duration_+%"]]
+      "Default":[[],[]]
     },
     "excludeSkillTypes":[],
     "stats":["support_additional_trap_mine_%_chance_for_1_additional_trap_mine","support_additional_trap_mine_%_chance_for_2_additional_trap_mine","support_additional_trap_mine_%_chance_for_3_additional_trap_mine"],
@@ -2872,9 +2804,7 @@
   },
   "SupportSlowerProjectiles":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["projectile_damage_+%_vs_nearby_enemies",0.75]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["support_slower_projectiles_projectile_speed_+%_final","support_slower_projectiles_damage_+%_final"],
@@ -2963,8 +2893,7 @@
       "support_slower_projectiles_damage_+%_final":[[]],
       "support_slower_projectiles_projectile_speed_+%_final":[{
           "name":"ProjectileSpeed"
-        }],
-      "projectile_damage_+%_vs_nearby_enemies":[[]]
+        }]
     },
     "name":"Slower Projectiles",
     "addSkillTypes":[],
@@ -2989,9 +2918,7 @@
   },
   "SupportRapidDecay":{
     "qualityStats":{
-      "Alternate2":[["you_and_enemy_movement_velocity_+%_while_affected_by_ailment_you_inflicted"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["support_rapid_decay_damage_over_time_+%_final"],
@@ -3087,9 +3014,7 @@
   },
   "SupportFocusedBallista":{
     "qualityStats":{
-      "Alternate2":[["totem_life_+%"]],
-      "Default":[["totem_damage_+%"]],
-      "Alternate1":[["base_skill_area_of_effect_+%"]]
+      "Default":[["totem_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_focused_ballista_totem_attack_speed_+%_final","support_focused_ballista_totem_damage_+%_final","summon_totem_cast_speed_+%","ranged_attack_totem_only_attacks_when_owner_attacks"],
@@ -3187,7 +3112,6 @@
   },
   "SupportAdditionalQuality":{
     "qualityStats":{
-      "Alternate1":[["local_gem_dex_requirement_+%"]],
       "Default":[["local_gem_experience_gain_+%"]]
     },
     "excludeSkillTypes":[],
@@ -3288,9 +3212,7 @@
   },
   "SupportVoidManipulation":{
     "qualityStats":{
-      "Alternate2":[["base_life_leech_from_chaos_damage_permyriad"]],
-      "Default":[["chaos_damage_+%"]],
-      "Alternate1":[[]]
+      "Default":[["chaos_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_void_manipulation_chaos_damage_+%_final","deal_no_elemental_damage"],
@@ -3385,9 +3307,7 @@
   },
   "SupportChanceToPoison":{
     "qualityStats":{
-      "Alternate2":[["hit_damage_+%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "baseEffectiveness":0.2732999920845,
     "excludeSkillTypes":[],
@@ -3479,7 +3399,7 @@
         "statInterpolation":[]
       }],
     "incrementalEffectiveness":0.03999999910593,
-    "constantStats":[[]],
+    "constantStats":[["base_chance_to_poison_on_hit_%"]],
     "name":"Chance to Poison",
     "addSkillTypes":[],
     "requireSkillTypes":[]
@@ -3541,9 +3461,7 @@
   },
   "SupportSadism":{
     "qualityStats":{
-      "Alternate2":[[],["dot_multiplier_+"]],
-      "Default":[[]],
-      "Alternate1":[["attack_and_cast_speed_+%"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["damaging_ailments_deal_damage_+%_faster","support_faster_ailments_ailment_duration_+%_final"],
@@ -3639,9 +3557,7 @@
   },
   "SupportFork":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["chance_to_fork_extra_projectile_%"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["support_fork_projectile_damage_+%_final","projectiles_fork"],
@@ -3790,7 +3706,6 @@
   },
   "SupportBlockReduction":{
     "qualityStats":{
-      "Alternate1":[["overpowered_effect_+%"]],
       "Default":[["global_reduce_enemy_block_%"]]
     },
     "excludeSkillTypes":[],
@@ -3945,9 +3860,7 @@
   },
   "SupportCriticalStrikeAffliction":{
     "qualityStats":{
-      "Alternate2":[["base_critical_strike_multiplier_+"]],
-      "Default":[["critical_ailment_dot_multiplier_+"]],
-      "Alternate1":[[]]
+      "Default":[["critical_ailment_dot_multiplier_+"]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -4099,9 +4012,7 @@
   },
   "SupportAdditionalAccuracy":{
     "qualityStats":{
-      "Alternate2":[["attack_damage_+%_per_1000_accuracy_rating"]],
-      "Default":[["accuracy_rating_+%"]],
-      "Alternate1":[[]]
+      "Default":[["accuracy_rating_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["accuracy_rating"],
@@ -4220,20 +4131,13 @@
         "1":1911,
         "statInterpolation":[]
       }],
-    "statMap":{
-      "attack_damage_+%_per_1000_accuracy_rating":[[{
-            "stat":"Accuracy"
-          }]]
-    },
     "name":"Additional Accuracy",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
   "SupportPointBlank":{
     "qualityStats":{
-      "Alternate2":[["projectiles_pierce_all_targets_in_x_range"]],
-      "Default":[[]],
-      "Alternate1":[["knockback_chance_%_at_close_range"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":[null,"keystone_point_blank"],
@@ -4332,9 +4236,7 @@
   },
   "SupportMultiTrap":{
     "qualityStats":{
-      "Alternate2":[["support_additional_trap_%_chance_for_1_additional_trap"]],
-      "Default":[[]],
-      "Alternate1":[["number_of_additional_traps_allowed"]]
+      "Default":[["trap_trigger_radius_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_multithrow_damage_+%_final"],
@@ -4432,7 +4334,7 @@
         "1":-45,
         "statInterpolation":[]
       }],
-    "constantStats":[["number_of_additional_traps_to_throw"],[],[]],
+    "constantStats":[["number_of_additional_traps_to_throw"],["number_of_additional_traps_allowed"],[]],
     "statMap":{
       "support_multithrow_damage_+%_final":[[]]
     },
@@ -4443,9 +4345,7 @@
   },
   "SupportChaosAttacks":{
     "qualityStats":{
-      "Alternate2":[["wither_applies_additional_wither_%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["physical_damage_%_to_add_as_chaos"],
@@ -4537,9 +4437,7 @@
   },
   "SupportTrapAndMineDamage":{
     "qualityStats":{
-      "Alternate2":[["damage_+%_per_power_charge"]],
-      "Default":[[]],
-      "Alternate1":[[],[],[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["support_trap_and_mine_damage_+%_final"],
@@ -4866,9 +4764,7 @@
   },
   "SupportTrapCooldown":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[["trap_damage_+%"]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["placing_traps_cooldown_recovery_+%"],
@@ -4927,7 +4823,6 @@
       },{
         "statInterpolation":[]
       },{
-        "1":131,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -4966,9 +4861,7 @@
   },
   "SupportClusterTrap":{
     "qualityStats":{
-      "Alternate2":[["trap_spread_+%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["support_clustertrap_damage_+%_final"],
@@ -5066,9 +4959,7 @@
   },
   "SupportParallelProjectiles":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["support_parallel_projectiles_damage_+%_final"],
@@ -5163,9 +5054,7 @@
   },
   "SupportColdPenetration":{
     "qualityStats":{
-      "Alternate2":[["cold_ailment_effect_+%"]],
-      "Default":[[]],
-      "Alternate1":[["base_chance_to_freeze_%"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -5256,9 +5145,7 @@
   },
   "SupportAddedColdDamage":{
     "qualityStats":{
-      "Alternate2":[["skill_physical_damage_%_to_convert_to_cold"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "baseEffectiveness":0.58050000667572,
     "excludeSkillTypes":[],
@@ -5496,9 +5383,7 @@
         "statInterpolation":[]
       }],
     "qualityStats":{
-      "Alternate2":[["barrage_support_projectile_spread_+%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "constantStats":[[],["support_barrage_attack_time_+%_per_projectile_fired"],["support_barrage_trap_and_mine_throwing_time_+%_final_per_projectile_fired"]],
@@ -5526,16 +5411,13 @@
   },
   "SupportCastOnCrit":{
     "qualityStats":{
-      "Alternate2":[["attack_speed_+%"]],
-      "Default":[[]],
-      "Alternate1":[["support_cast_on_crit_quality_attack_damage_+%_final"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "levels":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     "stats":[],
     "constantStats":[[]],
     "statMap":{
-      "support_cast_on_crit_quality_attack_damage_+%_final":[[]],
       "support_cast_on_crit_spell_damage_+%_final":[]
     },
     "name":"Cast On Critical Strike",
@@ -5601,9 +5483,7 @@
   },
   "SupportFasterAttack":{
     "qualityStats":{
-      "Alternate2":[["faster_bleed_%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[["attack_speed_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -5694,13 +5574,11 @@
   },
   "SupportFrenzyChargeOnSlayingFrozenEnemy":{
     "qualityStats":{
-      "Alternate2":[["chance_to_gain_frenzy_charge_on_killing_frozen_enemy_%"]],
-      "Default":[["damage_+%_vs_frozen_enemies"]],
-      "Alternate1":[["damage_+%_per_frenzy_charge"]]
+      "Default":[["damage_+%_per_frenzy_charge"]]
     },
     "baseEffectiveness":0.51819998025894,
     "excludeSkillTypes":[],
-    "stats":["minimum_added_cold_damage_per_frenzy_charge","maximum_added_cold_damage_per_frenzy_charge"],
+    "stats":["minimum_added_cold_damage_per_frenzy_charge","maximum_added_cold_damage_per_frenzy_charge",null,null,"chance_to_gain_frenzy_charge_on_killing_frozen_enemy_%"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -5787,7 +5665,7 @@
         "statInterpolation":[]
       }],
     "incrementalEffectiveness":0.03770000115037,
-    "constantStats":[[]],
+    "constantStats":[["base_chance_to_freeze_%"]],
     "description":"Supports any skill you use to hit enemies yourself. Cannot support skills used by totems, traps, or mines.",
     "name":"Ice Bite",
     "addSkillTypes":[],
@@ -5795,9 +5673,7 @@
   },
   "SupportCastOnCritTriggered":{
     "qualityStats":{
-      "Alternate2":[["dummy_stat_display_nothing"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -5890,9 +5766,7 @@
   },
   "SupportMarkOnHit":{
     "qualityStats":{
-      "Alternate2":[["marked_enemy_damage_taken_+%"]],
-      "Default":[["mark_skills_curse_effect_+%"]],
-      "Alternate1":[[]]
+      "Default":[["mark_skills_curse_effect_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":[null,"trigger_on_attack_hit_against_rare_or_unique"],
@@ -5977,30 +5851,14 @@
       },{
         "statInterpolation":[]
       }],
-    "statMap":{
-      "mark_skills_curse_effect_+%":[{
-          "1":{
-            "skillType":109
-          },
-          "name":"CurseEffect"
-        }],
-      "marked_enemy_damage_taken_+%":[{
-          "1":{
-            "effectType":"Curse"
-          },
-          "name":"DamageTaken"
-        }]
-    },
     "description":"Supports mark curse skills.",
     "name":"Mark On Hit",
     "addSkillTypes":[],
-    "requireSkillTypes":[]
+    "requireSkillTypes":[null,109]
   },
   "SupportReturningProjectiles":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["projectile_additional_return_chance_%"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["support_return_returning_projectiles_damage_+%_final","projectiles_return","returning_projectiles_always_pierce"],
@@ -6093,9 +5951,7 @@
   },
   "SupportDamageAgainstChilled":{
     "qualityStats":{
-      "Alternate2":[["freeze_applies_cold_resistance_+",-0.2]],
-      "Default":[["chill_duration_+%"]],
-      "Alternate1":[["additional_chance_to_freeze_chilled_enemies_%"]]
+      "Default":[["additional_chance_to_freeze_chilled_enemies_%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_hypothermia_damage_+%_vs_chilled_enemies_final","support_hypothermia_cold_damage_over_time_+%_final"],
@@ -6182,15 +6038,6 @@
       }],
     "constantStats":[[]],
     "statMap":{
-      "freeze_applies_cold_resistance_+":[{
-          "1":{
-            "effectType":"Debuff"
-          },
-          "2":{
-            "var":"Frozen"
-          },
-          "name":"ColdResist"
-        }],
       "support_hypothermia_damage_+%_vs_chilled_enemies_final":[{
           "1":{
             "type":"ActorCondition",
@@ -6209,12 +6056,10 @@
   },
   "SupportGemFrenzyPowerOnTrapTrigger":{
     "qualityStats":{
-      "Alternate2":[["trap_trigger_radius_+%_per_power_charge"]],
-      "Default":[[]],
-      "Alternate1":[["%_chance_to_gain_power_charge_on_trap_triggered_by_an_enemy"],["%_chance_to_gain_frenzy_charge_on_trap_triggered_by_an_enemy"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
-    "stats":[],
+    "stats":["%_chance_to_gain_power_charge_on_trap_triggered_by_an_enemy","%_chance_to_gain_frenzy_charge_on_trap_triggered_by_an_enemy"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -6296,7 +6141,7 @@
       },{
         "statInterpolation":[]
       }],
-    "constantStats":[[],["trap_critical_strike_multiplier_+_per_power_charge"]],
+    "constantStats":[["trap_throwing_speed_+%_per_frenzy_charge"],["trap_critical_strike_multiplier_+_per_power_charge"]],
     "statMap":{
       "trap_trigger_radius_":[{
           "1":{

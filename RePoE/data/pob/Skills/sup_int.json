@@ -1,9 +1,7 @@
 {
   "SupportConcentratedEffect":{
     "qualityStats":{
-      "Alternate2":[["base_stun_threshold_reduction_+%",0.5]],
-      "Default":[["area_damage_+%"]],
-      "Alternate1":[["support_concentrated_effect_skill_area_of_effect_+%_final",-0.5]]
+      "Default":[["area_damage_+%",0.5]]
     },
     "support":true,
     "color":3,
@@ -149,7 +147,7 @@
         "levelRequirement":100
       }],
     "statDescriptionScope":"gem_stat_descriptions",
-    "constantStats":[[null,-30]],
+    "constantStats":[["support_concentrated_effect_skill_area_of_effect_+%_final",-30]],
     "statMap":{
       "support_concentrated_effect_skill_area_of_effect_+%_final":[{
           "type":"MORE",
@@ -225,9 +223,7 @@
   },
   "SupportAddedLightningDamage":{
     "qualityStats":{
-      "Alternate2":[["skill_physical_damage_%_to_convert_to_lightning"]],
-      "Default":[["lightning_damage_+%"]],
-      "Alternate1":[["critical_strike_chance_+%",1.5]]
+      "Default":[["lightning_damage_+%"]]
     },
     "baseEffectiveness":0.52710002660751,
     "excludeSkillTypes":[],
@@ -330,9 +326,7 @@
   },
   "SupportCastOnStunned":{
     "qualityStats":{
-      "Alternate2":[["damage_+%"]],
-      "Default":[["cast_on_stunned_%"]],
-      "Alternate1":[["skill_effect_duration_+%"]]
+      "Default":[["cast_on_stunned_%"]]
     },
     "excludeSkillTypes":[],
     "stats":[null,"spell_uncastable_if_triggerable","base_skill_show_average_damage_instead_of_dps"],
@@ -439,9 +433,7 @@
   },
   "SupportMinefield":{
     "qualityStats":{
-      "Alternate2":[["number_of_additional_remote_mines_allowed",0.2]],
-      "Default":[["mine_laying_speed_+%"]],
-      "Alternate1":[["chance_to_place_an_additional_mine_%"]]
+      "Default":[["mine_laying_speed_+%",0.25]]
     },
     "excludeSkillTypes":[],
     "stats":["support_minefield_mine_throwing_speed_+%_final"],
@@ -546,7 +538,7 @@
         "1":-36,
         "statInterpolation":[]
       }],
-    "constantStats":[["number_of_additional_mines_to_place",4],[],["multi_trap_and_mine_support_flags"]],
+    "constantStats":[["number_of_additional_mines_to_place",4],["number_of_additional_remote_mines_allowed"],["multi_trap_and_mine_support_flags"]],
     "statMap":{
       "support_minefield_mine_throwing_speed_+%_final":[{
           "name":"MineLayingSpeed"
@@ -559,12 +551,10 @@
   },
   "SupportBonechill":{
     "qualityStats":{
-      "Alternate2":[["chill_effect_+%"]],
-      "Default":[["chill_duration_+%"]],
-      "Alternate1":[["cold_damage_+%"]]
+      "Default":[["cold_damage_+%"]]
     },
     "excludeSkillTypes":[],
-    "stats":[null,"support_bonechill_cold_damage_+%_final","support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount","support_chilling_areas_also_grant_cold_damage_taken_+%_equal_to_slow_amount"],
+    "stats":["chill_effect_+%","support_bonechill_cold_damage_+%_final","support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount","support_chilling_areas_also_grant_cold_damage_taken_+%_equal_to_slow_amount"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -676,9 +666,7 @@
   },
   "SupportCastWhileChannellingTriggered":{
     "qualityStats":{
-      "Alternate2":[["support_cast_while_channelling_triggered_skill_non_damaging_ailment_effect_+%"]],
-      "Default":[["triggered_skill_damage_+%"]],
-      "Alternate1":[["dummy_stat_display_nothing"]]
+      "Default":[["triggered_skill_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":[null,"cast_spell_while_linked_skill_channelling"],
@@ -690,26 +678,6 @@
             "type":"SkillType"
           },
           "name":"TriggeredDamage"
-        }],
-      "support_cast_while_channelling_triggered_skill_non_damaging_ailment_effect_+%":[{
-          "1":[],
-          "type":"INC",
-          "name":"EnemyChillEffect"
-        },{
-          "1":[],
-          "name":"EnemyShockEffect"
-        },{
-          "1":[],
-          "name":"EnemyFreezeEffect"
-        },{
-          "1":[],
-          "name":"EnemyScorchEffect"
-        },{
-          "1":[],
-          "name":"EnemyBrittleEffect"
-        },{
-          "1":[],
-          "name":"EnemySapEffect"
         }]
     },
     "description":"Must support both a channelling skill and a non-channelling spell skill to work. The channelling skill will trigger a spell periodically while channelling. Cannot support skills used by totems, traps, or mines. Vaal skills and skills with a reservation cannot be triggered.",
@@ -719,9 +687,7 @@
   },
   "SupportMinionSpeed":{
     "qualityStats":{
-      "Alternate2":[["minion_cooldown_recovery_+%"]],
-      "Default":[["minion_movement_speed_+%"]],
-      "Alternate1":[["base_minion_duration_+%",-2]]
+      "Default":[["minion_movement_speed_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":[null,"minion_attack_speed_+%","minion_cast_speed_+%"],
@@ -873,9 +839,7 @@
   },
   "SupportOvercharge":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[["shock_duration_+%"]],
-      "Alternate1":[["shock_effect_+%_with_critical_strikes"]]
+      "Default":[["shock_duration_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_pure_shock_shock_as_though_damage_+%_final"],
@@ -1005,8 +969,7 @@
       "support_pure_shock_shock_as_though_damage_+%_final":[{
           "name":"ShockAsThoughDealing"
         }],
-      "support_pure_shock_damage_+%_final":[[]],
-      "shock_effect_+%_with_critical_strikes":[[]]
+      "support_pure_shock_damage_+%_final":[[]]
     },
     "name":"Overcharge",
     "addSkillTypes":[],
@@ -1014,12 +977,10 @@
   },
   "SupportIncreasedAreaOfEffect":{
     "qualityStats":{
-      "Alternate2":[["base_skill_area_of_effect_+%",0.25]],
-      "Default":[[]],
-      "Alternate1":[[],[null,-1]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
-    "stats":[],
+    "stats":["base_skill_area_of_effect_+%"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -1108,9 +1069,7 @@
   },
   "SupportIncreasedCriticalDamage":{
     "qualityStats":{
-      "Alternate2":[["critical_ailment_dot_multiplier_+",0.75]],
-      "Default":[["base_critical_strike_multiplier_+"]],
-      "Alternate1":[[]]
+      "Default":[["base_critical_strike_multiplier_+"]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -1240,9 +1199,7 @@
   },
   "SupportPowerChargeOnCrit":{
     "qualityStats":{
-      "Alternate2":[["damage_+%_per_power_charge"]],
-      "Default":[[]],
-      "Alternate1":[["add_power_charge_on_critical_strike_%"]]
+      "Default":[["add_power_charge_on_critical_strike_%"]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -1340,7 +1297,6 @@
   },
   "SupportAdditionalXP":{
     "qualityStats":{
-      "Alternate1":[["local_gem_int_requirement_+%",-3]],
       "Default":[["local_gem_experience_gain_+%"]]
     },
     "excludeSkillTypes":[],
@@ -1369,9 +1325,7 @@
   },
   "SupportSummonGhostOnKill":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[["chance_to_summon_support_ghost_on_killing_blow_%"]],
-      "Alternate1":[["damage_+%_for_non_minions"]]
+      "Default":[["chance_to_summon_support_ghost_on_killing_blow_%"]]
     },
     "levels":[{
         "statInterpolation":[]
@@ -1481,8 +1435,7 @@
           "1":[],
           "2":[],
           "name":"PhysicalMin"
-        }],
-      "damage_+%_for_non_minions":[]
+        }]
     },
     "addMinionList":["SummonedPhantasm"],
     "addFlags":[],
@@ -1493,9 +1446,7 @@
   },
   "SupportElementalFocus":{
     "qualityStats":{
-      "Alternate2":[["avoid_interruption_while_using_this_skill_%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -1590,9 +1541,7 @@
   },
   "SupportRemoteMine":{
     "qualityStats":{
-      "Alternate2":[["mine_detonation_speed_+%"]],
-      "Default":[[]],
-      "Alternate1":[["base_reservation_efficiency_+%"]]
+      "Default":[["mine_damage_+%"]]
     },
     "excludeSkillTypes":[null,null,null,85],
     "levels":[{
@@ -1699,9 +1648,7 @@
   },
   "SupportFasterCast":{
     "qualityStats":{
-      "Alternate2":[["faster_burn_%"]],
-      "Default":[["base_cast_speed_+%"]],
-      "Alternate1":[["base_cooldown_speed_+%"]]
+      "Default":[["base_cast_speed_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -1793,12 +1740,10 @@
   },
   "SupportMinionDefensiveStance":{
     "qualityStats":{
-      "Alternate2":[["minion_block_%",0.4]],
-      "Default":[["minion_additional_physical_damage_reduction_%"]],
-      "Alternate1":[["support_minion_defensive_stance_minion_damage_+%_final_against_enemies_near_you"]]
+      "Default":[["support_minion_defensive_stance_minion_damage_taken_+%_final",-0.25]]
     },
     "excludeSkillTypes":[],
-    "stats":["support_minion_defensive_stance_minion_damage_taken_+%_final",null,null,"minions_are_defensive"],
+    "stats":[null,"support_minion_defensive_stance_minion_damage_+%_final_against_enemies_near_you",null,"minions_are_defensive"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -1926,9 +1871,7 @@
   },
   "SupportElementalProliferation":{
     "qualityStats":{
-      "Alternate2":[["damage_+%_vs_enemies_per_freeze_shock_ignite"]],
-      "Default":[["base_elemental_status_ailment_duration_+%"]],
-      "Alternate1":[[]]
+      "Default":[["base_elemental_status_ailment_duration_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["elemental_status_effect_aura_radius",null,"display_what_elemental_proliferation_does"],
@@ -2014,17 +1957,6 @@
         "statInterpolation":[]
       }],
     "constantStats":[["chance_to_freeze_shock_ignite_%"]],
-    "statMap":{
-      "damage_+%_vs_enemies_per_freeze_shock_ignite":[[{
-            "type":"ActorCondition",
-            "var":"Ignited",
-            "actor":"enemy"
-          }],[{
-            "var":"Frozen"
-          }],[{
-            "var":"Shocked"
-          }]]
-    },
     "description":"Supports any skill that hits enemies, or could otherwise apply elemental ailments.",
     "name":"Elemental Proliferation",
     "addSkillTypes":[],
@@ -2032,20 +1964,15 @@
   },
   "SupportCurseOnHit":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["damage_vs_cursed_enemies_per_enemy_curse_+%"]]
+      "Default":[["dummy_stat_display_nothing"]]
     },
     "excludeSkillTypes":[],
     "levels":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     "stats":[],
     "constantStats":[["apply_linked_curses_on_hit_%"]],
     "statMap":{
-      "damage_vs_cursed_enemies_per_enemy_curse_+%":[[{
-            "var":"CurseOnEnemy"
-          }]],
-      "support_hextouch_curse_effect_+%_final":[],
-      "apply_linked_curses_on_hit_%":[]
+      "apply_linked_curses_on_hit_%":[],
+      "support_hextouch_curse_effect_+%_final":[]
     },
     "description":"Must support both a skill that hits enemies, and a hex curse skill to work. The hex will be applied when enemies are hit by the other skill. Cannot support totems, traps, or mines. Minions cannot apply hexes this way.",
     "name":"Hextouch",
@@ -2165,9 +2092,7 @@
   },
   "SupportDecay":{
     "qualityStats":{
-      "Alternate2":[["skill_physical_damage_%_to_convert_to_chaos"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "baseEffectiveness":1.335000038147,
     "excludeSkillTypes":[],
@@ -2260,9 +2185,7 @@
   },
   "SupportMinionDamage":{
     "qualityStats":{
-      "Alternate2":[["minion_ailment_damage_+%"]],
-      "Default":[["minion_damage_+%"]],
-      "Alternate1":[["minion_chance_to_deal_double_damage_%",0.15]]
+      "Default":[["minion_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_minion_damage_+%_final"],
@@ -2349,20 +2272,6 @@
       }],
     "constantStats":[["support_minion_damage_minion_life_+%_final"]],
     "statMap":{
-      "minion_chance_to_deal_double_damage_%":[{
-          "value":{
-            "mod":{
-              "name":"DoubleDamageChance"
-            }
-          }
-        }],
-      "minion_ailment_damage_+%":[{
-          "value":{
-            "mod":{
-              "keywordFlags":524288
-            }
-          }
-        }],
       "support_minion_damage_+%_final":[{
           "value":{
             "mod":[]
@@ -2375,9 +2284,7 @@
   },
   "SupportDevour":{
     "qualityStats":{
-      "Alternate2":[["life_leech_from_any_damage_permyriad",2.5]],
-      "Default":[["damage_vs_enemies_on_low_life_+%"]],
-      "Alternate1":[["damage_+%_if_you_have_consumed_a_corpse_recently"]]
+      "Default":[["damage_+%_if_you_have_consumed_a_corpse_recently"]]
     },
     "excludeSkillTypes":[],
     "stats":["killing_blow_consumes_corpse_restore_x_life","killing_blow_consumes_corpse_restore_x_mana"],
@@ -2584,9 +2491,7 @@
   },
   "SupportLightningPenetration":{
     "qualityStats":{
-      "Alternate2":[["lightning_ailment_effect_+%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["base_reduce_enemy_lightning_resistance_%"],
@@ -2678,9 +2583,7 @@
   },
   "SupportRemoteMine2":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "levels":[{
@@ -2786,9 +2689,7 @@
   },
   "SupportCastWhileChannelling":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[["channelled_skill_damage_+%"]],
-      "Alternate1":[[]]
+      "Default":[["channelled_skill_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["cast_while_channelling_time_ms"],
@@ -2955,9 +2856,7 @@
   },
   "SupportMinionLife":{
     "qualityStats":{
-      "Alternate2":[["minion_damage_+%_on_full_life"]],
-      "Default":[["minion_maximum_life_+%"]],
-      "Alternate1":[["minion_life_regeneration_rate_per_minute_%"]]
+      "Default":[["minion_maximum_life_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_minion_maximum_life_+%_final"],
@@ -3049,20 +2948,6 @@
               "name":"Life"
             }
           }
-        }],
-      "minion_life_regeneration_rate_per_minute_%":[{
-          "value":{
-            "mod":{
-              "name":"LifeRegenPercent"
-            }
-          }
-        }],
-      "minion_damage_+%_on_full_life":[{
-          "value":{
-            "mod":[{
-                "var":"FullLife"
-              }]
-          }
         }]
     },
     "name":"Minion Life",
@@ -3071,9 +2956,7 @@
   },
   "SupportIgniteProliferation":{
     "qualityStats":{
-      "Alternate2":[["base_chance_to_ignite_%"]],
-      "Default":[["fire_damage_+%"]],
-      "Alternate1":[[]]
+      "Default":[["fire_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["support_ignite_proliferation_radius","support_ignite_prolif_ignite_damage_+%_final"],
@@ -3234,9 +3117,7 @@
   },
   "SupportControlledDestruction":{
     "qualityStats":{
-      "Alternate2":[["chance_for_extra_damage_roll_%"]],
-      "Default":[[]],
-      "Alternate1":[[],[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -3332,9 +3213,7 @@
   },
   "SupportIncreasedCriticalStrikes":{
     "qualityStats":{
-      "Alternate2":[["gain_power_charge_on_kill_with_hit_%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[["critical_strike_chance_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -3437,9 +3316,7 @@
   },
   "SupportHandcastAnticipation":{
     "qualityStats":{
-      "Alternate2":[["unleash_support_seal_gain_frequency_+%_while_channelling"],["unleash_support_seal_gain_frequency_+%_while_not_channelling",-5]],
-      "Default":[[]],
-      "Alternate1":[[],["support_anticipation_charge_gain_frequency_+%"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "levels":[{
@@ -3543,9 +3420,7 @@
   },
   "SupportSummonElementalResistances":{
     "qualityStats":{
-      "Alternate2":[["minion_life_leech_from_elemental_damage_permyriad"]],
-      "Default":[["minion_maximum_all_elemental_resistances_%"]],
-      "Alternate1":[["minion_skill_area_of_effect_+%"]]
+      "Default":[["minion_maximum_all_elemental_resistances_%"]]
     },
     "excludeSkillTypes":[],
     "stats":["minion_elemental_resistance_%",null,"support_minion_totem_resistance_elemental_damage_+%_final"],
@@ -3632,31 +3507,12 @@
       }],
     "constantStats":[["minions_inflict_exposure_on_hit_%_chance"]],
     "statMap":{
-      "minions_inflict_exposure_on_hit_%_chance":[],
       "support_minion_totem_resistance_elemental_damage_+%_final":[{
           "value":{
             "mod":[]
           }
         }],
-      "minion_life_leech_from_elemental_damage_permyriad":[{
-          "value":{
-            "mod":{
-              "name":"FireDamageLeech"
-            }
-          }
-        },{
-          "value":{
-            "mod":{
-              "name":"LightningDamageLeech"
-            }
-          }
-        },{
-          "value":{
-            "mod":{
-              "name":"ColdDamageLeech"
-            }
-          }
-        }]
+      "minions_inflict_exposure_on_hit_%_chance":[]
     },
     "name":"Elemental Army",
     "addSkillTypes":[],
@@ -3664,9 +3520,7 @@
   },
   "SupportChanceToIgnite":{
     "qualityStats":{
-      "Alternate2":[[],[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["support_chance_to_ignite_fire_damage_+%_final"],
@@ -3751,7 +3605,7 @@
       },{
         "statInterpolation":[]
       }],
-    "constantStats":[[],["ignites_apply_fire_resistance_+",-10]],
+    "constantStats":[["base_chance_to_ignite_%"],["ignites_apply_fire_resistance_+",-10]],
     "statMap":{
       "ignites_apply_fire_resistance_+":[{
           "name":"CombustionFireResist"
@@ -3766,38 +3620,22 @@
   },
   "MinionFocusFire":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["resist_all_%",-0.2]]
+      "Default":[[]]
     },
     "levels":[[],{
         "cooldown":0.8
       },[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
-    "statMap":{
-      "resist_all_%":[{
-          "1":{
-            "effectType":"Debuff",
-            "effectCond":"EnemyHasDeathmark"
-          },
-          "name":"ElementalResist"
-        },{
-          "1":[],
-          "name":"ChaosResist"
-        }]
-    },
     "stats":["base_deal_no_damage"],
     "statDescriptionScope":"debuff_skill_stat_descriptions",
-    "baseFlags":[],
-    "constantStats":[["base_skill_effect_duration",8000]],
     "skillTypes":[],
+    "constantStats":[["base_skill_effect_duration",8000]],
+    "baseFlags":[],
     "name":"Signal Prey",
     "description":"Applies a debuff to a specific enemy which signals your minions to consider that enemy to be the Prey. All minions from skills supported by any Predator Support will target that enemy. Only one enemy can be the Prey at a time. This skill cannot be used by Totems, Traps, or Mines."
   },
   "SupportFreshMeat":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[["minion_critical_strike_chance_+%"]],
-      "Alternate1":[["support_recent_minions_life_leech_from_any_damage_permyriad_from_wakened_fury"]]
+      "Default":[["minion_critical_strike_chance_+%"]]
     },
     "excludeSkillTypes":[],
     "levels":[{
@@ -3898,13 +3736,13 @@
     "stats":["support_recent_minions_additional_critical_strike_chance_from_wakened_fury","support_recent_minions_additional_critical_strike_multiplier_from_wakened_fury"],
     "constantStats":[["support_recent_minions_effect_duration_is_%_summon_duration"],["support_recent_minions_max_effect_duration_ms",10000]],
     "statMap":{
-      "support_recent_minions_life_leech_from_any_damage_permyriad_from_wakened_fury":[{
+      "support_recent_minions_additional_critical_strike_multiplier_from_wakened_fury":[{
           "1":{
             "var":"FreshMeatActive"
           },
           "value":{
             "mod":{
-              "name":"DamageLifeLeech"
+              "name":"CritMultiplier"
             }
           }
         }],
@@ -3912,14 +3750,6 @@
           "1":[],
           "value":{
             "mod":[]
-          }
-        }],
-      "support_recent_minions_additional_critical_strike_multiplier_from_wakened_fury":[{
-          "1":[],
-          "value":{
-            "mod":{
-              "name":"CritMultiplier"
-            }
           }
         }]
     },
@@ -3992,9 +3822,7 @@
   },
   "SupportStormBarrier":{
     "qualityStats":{
-      "Alternate2":[["infusion_grants_life_regeneration_rate_per_minute_%"]],
-      "Default":[["support_storm_barrier_damage_buff_time_threshold_ms"]],
-      "Alternate1":[["infusion_effect_+%"]]
+      "Default":[["support_storm_barrier_damage_buff_time_threshold_ms"]]
     },
     "levels":[{
         "statInterpolation":[]
@@ -4103,40 +3931,35 @@
         "name":"Condition:ChaosInfusion"
       }],
     "statMap":{
-      "infusion_effect_+%":[{
-          "1":[],
-          "name":"InfusionEffect"
-        }],
-      "infusion_grants_life_regeneration_rate_per_minute_%":[[{
+      "support_storm_barrier_damage_+%_final":[[]],
+      "support_storm_barrier_skill_type_damage_+%_final":[{
+          "1":{
             "modCond":"PhysicalInfusion",
             "effectCond":"InfusionActive",
             "effectName":"Infusion"
-          }],[{
-            "modCond":"FireInfusion"
-          }],[{
-            "modCond":"ColdInfusion"
-          }],[{
-            "modCond":"LightningInfusion"
-          }],[{
-            "modCond":"ChaosInfusion"
-          }]],
-      "support_storm_barrier_skill_type_damage_+%_final":[{
-          "1":[],
+          },
           "name":"Condition:HavePhysicalInfusion"
         },{
-          "1":[],
+          "1":{
+            "modCond":"FireInfusion"
+          },
           "name":"Condition:HaveFireInfusion"
         },{
-          "1":[],
+          "1":{
+            "modCond":"ColdInfusion"
+          },
           "name":"Condition:HaveColdInfusion"
         },{
-          "1":[],
+          "1":{
+            "modCond":"LightningInfusion"
+          },
           "name":"Condition:HaveLightningInfusion"
         },{
-          "1":[],
+          "1":{
+            "modCond":"ChaosInfusion"
+          },
           "name":"Condition:HaveChaosInfusion"
         }],
-      "support_storm_barrier_damage_+%_final":[[]],
       "support_storm_barrier_skill_type_damage_taken_when_hit_+%_final":[{
           "1":{
             "effectName":"Infused Channelling"
@@ -4156,13 +3979,12 @@
           "name":"ChaosDamageTakenWhenHit"
         }]
     },
-    "description":"Supports any channelling skill, protecting you from damage while you channel it.  Cannot support skills used by totems. Cannot modify the skills of minions.",
+    "description":"Supports any channelling skill, protecting you from damage while you channel it. Cannot support skills used by totems. Cannot modify the skills of minions.",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
   "SupportItemRarity":{
     "qualityStats":{
-      "Alternate1":[["chance_for_coin_shower_on_kill_%"]],
       "Default":[["base_killed_monster_dropped_item_rarity_+%"]]
     },
     "excludeSkillTypes":[],
@@ -4255,9 +4077,7 @@
   },
   "SupportAddedChaosDamage":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["reduce_enemy_chaos_resistance_%"]]
+      "Default":[[]]
     },
     "baseEffectiveness":0.47119998931885,
     "excludeSkillTypes":[],
@@ -4350,9 +4170,7 @@
   },
   "SupportOnslaughtOnSlayingShockedEnemy":{
     "qualityStats":{
-      "Alternate2":[["support_innervate_chance_to_gain_buff_on_shock_vs_unique_%"]],
-      "Default":[[]],
-      "Alternate1":[["support_innervate_buff_base_duration_ms"]]
+      "Default":[["support_innervate_buff_base_duration_ms"]]
     },
     "baseEffectiveness":0.23749999701977,
     "excludeSkillTypes":[],
@@ -4524,15 +4342,14 @@
   },
   "ViciousHexExplosion":{
     "qualityStats":{
-      "Alternate2":[["base_added_cooldown_count",0.05],[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[]
       },{
         "damageEffectiveness":3.7,
-        "statInterpolation":[]
+        "statInterpolation":[],
+        "cooldown":0.15
       },{
         "statInterpolation":[]
       },{
@@ -4626,9 +4443,7 @@
   },
   "SupportBlasphemy":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["curse_effect_+%"],[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "levels":[{
@@ -4724,9 +4539,7 @@
   },
   "SupportCursedGround":{
     "qualityStats":{
-      "Alternate2":[["base_mana_cost_-%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["base_hex_zone_skill_duration_ms"],
@@ -4857,9 +4670,7 @@
   },
   "ViciousHexSupport":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["curse_skill_effect_duration_+%"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["trigger_vicious_hex_explosion_when_curse_ends"],
@@ -4874,9 +4685,7 @@
   },
   "SupportMulticast":{
     "qualityStats":{
-      "Alternate2":[["support_echo_damage_+%_final"],["support_spell_echo_final_repeat_damage_+%_final"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "levels":[{
@@ -4961,26 +4770,17 @@
         "statInterpolation":[]
       }],
     "stats":["support_multicast_cast_speed_+%_final"],
-    "constantStats":[["base_spell_repeat_count"],[]],
+    "constantStats":[["base_spell_repeat_count"],["support_echo_damage_+%_final"]],
     "statMap":{
       "support_multicast_cast_speed_+%_final":[{
           "name":"Speed"
         }],
-      "support_echo_damage_+%_final":[[]],
-      "support_spell_echo_final_repeat_damage_+%_final":[{
-          "1":{
-            "var":"CastOnFrostbolt"
-          },
-          "2":{
-            "varList":["averageRepeat","alwaysFinalRepeat"]
-          },
-          "name":"RepeatFinalDamage"
-        }]
+      "support_echo_damage_+%_final":[[]]
     },
     "baseMods":[{
         "name":"Condition:HaveSpellEcho"
       }],
-    "description":"Supports spell skills, making them repeat when cast. Cannot support Vaal skills, totem skills, channelling skills, triggered skills, instant skills, or skills with a reservation.",
+    "description":"Supports spell skills, making them repeat when cast. Cannot support Vaal skills, totem skills, channelling skills, triggered skills, instant skills, blink skills, or skills with a reservation.",
     "name":"Spell Echo",
     "addSkillTypes":[],
     "requireSkillTypes":[]
@@ -5045,9 +4845,7 @@
   },
   "SupportAilments":{
     "qualityStats":{
-      "Alternate2":[["base_damage_+%_while_an_ailment_on_you"]],
-      "Default":[[]],
-      "Alternate1":[["base_ailment_damage_+%"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -5133,10 +4931,7 @@
         "statInterpolation":[]
       }],
     "statMap":{
-      "support_unbound_ailments_ailment_damage_+%_final":[[]],
-      "base_damage_+%_while_an_ailment_on_you":[[{
-            "varList":[null,"Chilled",null,null,"Scorched","Brittle","Sapped","Poisoned","Bleeding"]
-          }]]
+      "support_unbound_ailments_ailment_damage_+%_final":[[]]
     },
     "name":"Unbound Ailments",
     "addSkillTypes":[],
@@ -5144,9 +4939,7 @@
   },
   "SupportTrinity":{
     "qualityStats":{
-      "Alternate2":[["skill_convert_%_physical_damage_to_random_element"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "levels":[{
@@ -5249,12 +5042,10 @@
   },
   "SupportRapidActivation":{
     "qualityStats":{
-      "Alternate2":[["from_quality_brand_activation_rate_+%_final_if_75%_attached_duration_expired"]],
-      "Default":[["sigil_repeat_frequency_+%"]],
-      "Alternate1":[["support_rapid_activation_brand_skill_only_primary_duration_+%_final"],["support_rapid_activation_brand_skill_only_secondary_duration_+%_final"]]
+      "Default":[["support_rapid_activation_brand_activation_rate_+%_final"]]
     },
     "excludeSkillTypes":[],
-    "stats":["support_rapid_activation_brand_activation_rate_+%_final","quality_display_swiftbrand_is_gem"],
+    "stats":[null,"quality_display_swiftbrand_is_gem"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -5336,14 +5127,11 @@
       },{
         "statInterpolation":[]
       }],
-    "constantStats":[[null,-65],[]],
+    "constantStats":[["support_rapid_activation_brand_skill_only_primary_duration_+%_final",-65],["support_rapid_activation_brand_skill_only_secondary_duration_+%_final"]],
     "statMap":{
       "support_rapid_activation_brand_activation_rate_+%_final":[{
           "name":"BrandActivationFrequency"
         }],
-      "from_quality_brand_activation_rate_+%_final_if_75%_attached_duration_expired":[[{
-            "var":"BrandLastQuarter"
-          }]],
       "support_rapid_activation_brand_skill_only_secondary_duration_+%_final":[{
           "name":"SecondaryDuration",
           "keywordFlags":1048576
@@ -5359,9 +5147,7 @@
   },
   "SupportCurseOnHitCurse":{
     "qualityStats":{
-      "Alternate2":[[],[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[]
@@ -5458,10 +5244,7 @@
   },
   "SupportHandcastSpellBoost":{
     "qualityStats":{
-      "Alternate3":[["intensity_loss_frequency_while_moving_+%"]],
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["support_spell_boost_area_damage_+%_final_per_charge",null,"display_base_intensity_loss"],
@@ -5561,9 +5344,7 @@
   },
   "SupportMinionFocusFire":{
     "qualityStats":{
-      "Alternate2":[["support_minion_focus_fire_critical_strike_chance_+%_vs_focused_target"],["support_minion_focus_fire_critical_strike_multiplier_+_vs_focused_target"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["support_minion_focus_fire_damage_+%_final_vs_focussed_target","deathmark_minion_damage_+%_final","support_minion_use_focussed_target"],
@@ -5649,25 +5430,15 @@
         "statInterpolation":[]
       }],
     "statMap":{
-      "support_minion_focus_fire_damage_+%_final_vs_focussed_target":[{
-          "1":[],
-          "value":{
-            "mod":[]
-          }
-        }],
-      "support_minion_focus_fire_critical_strike_multiplier_+_vs_focused_target":[{
-          "1":[],
-          "value":{
-            "mod":[]
-          }
-        }],
       "deathmark_minion_damage_+%_final":[{
           "value":{
             "mod":[]
           }
         }],
-      "support_minion_focus_fire_critical_strike_chance_+%_vs_focused_target":[{
-          "1":[],
+      "support_minion_focus_fire_damage_+%_final_vs_focussed_target":[{
+          "1":{
+            "var":"EnemyHasDeathmark"
+          },
           "value":{
             "mod":[]
           }
@@ -5679,9 +5450,7 @@
   },
   "SupportHexBloom":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["hex_transfer_on_death_range_+%"]]
+      "Default":[["hex_transfer_on_death_range_+%",0.2]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -5825,9 +5594,11 @@
       "support_multicast_cast_speed_+%_final":[[]],
       "support_echo_damage_+%_final":[[]],
       "spell_echo_plus_chance_double_damage_%_final":[{
-          "1":[],
+          "1":{
+            "var":"CastOnFrostbolt"
+          },
           "2":{
-            "varList":[]
+            "varList":["averageRepeat","alwaysFinalRepeat"]
           },
           "name":"RepeatFinalDoubleDamageChance"
         }]
@@ -5957,9 +5728,7 @@
   },
   "SupportSpellCascade":{
     "qualityStats":{
-      "Alternate2":[[],["support_spell_cascade_area_delay_+%"]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "levels":[{
@@ -6059,9 +5828,7 @@
   },
   "SupportSpellblade":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["support_spell_weapon_damage_gain_%_of_one_hand_melee_weapon_damage_as_added_spell_damage_while_wielding_two_different_weapon_types"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":["support_spell_weapon_damage_gain_%_of_one_hand_melee_weapon_damage_as_added_spell_damage"],
@@ -6163,11 +5930,8 @@
         "statInterpolation":[]
       }],
     "statMap":{
-      "support_spell_weapon_damage_gain_%_of_one_hand_melee_weapon_damage_as_added_spell_damage_while_wielding_two_different_weapon_types":[{
-          "type":"MAX",
-          "name":"OneHandWeaponDamageAppliesToSpellsWithTwoDifferentTypes"
-        }],
       "support_spell_weapon_damage_gain_%_of_one_hand_melee_weapon_damage_as_added_spell_damage":[{
+          "type":"MAX",
           "name":"OneHandWeaponDamageAppliesToSpells"
         }]
     },
@@ -6178,12 +5942,10 @@
   },
   "SupportSacrifice":{
     "qualityStats":{
-      "Alternate2":[["support_sacrifice_sacrifice_%_of_current_life"]],
-      "Default":[[]],
-      "Alternate1":[["base_skill_cost_life_instead_of_mana_%"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
-    "stats":[null,"support_sacrifice_gain_%_of_sacrificed_life_as_added_chaos_damage"],
+    "stats":["support_sacrifice_sacrifice_%_of_current_life","support_sacrifice_gain_%_of_sacrificed_life_as_added_chaos_damage"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -6291,9 +6053,7 @@
   },
   "SupportEnergyShieldLeech":{
     "qualityStats":{
-      "Alternate2":[["maximum_energy_shield_leech_amount_per_leech_+%"]],
-      "Default":[["damage_+%_while_es_leeching"]],
-      "Alternate1":[["damage_+%_on_full_energy_shield"]]
+      "Default":[["damage_+%_while_es_leeching"]]
     },
     "excludeSkillTypes":[],
     "stats":["energy_shield_leech_from_any_damage_permyriad","support_energy_shield_leech_damage_+%_on_full_energy_shield_final","support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final"],
@@ -6379,14 +6139,11 @@
         "statInterpolation":[]
       }],
     "statMap":{
-      "maximum_energy_shield_leech_amount_per_leech_+%":[{
-          "name":"MaxEnergyShieldLeechRate"
-        }],
-      "support_energy_shield_leech_damage_+%_on_full_energy_shield_final":[[{
-            "var":"FullEnergyShield"
-          }]],
       "support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final":[[{
             "var":"LeechingEnergyShield"
+          }]],
+      "support_energy_shield_leech_damage_+%_on_full_energy_shield_final":[[{
+            "var":"FullEnergyShield"
           }]]
     },
     "description":"Supports any skill that hits enemies, causing those hits to leech energy shield based on damage dealt.",
@@ -6486,12 +6243,6 @@
       }],
     "baseEffectiveness":0.99330002069473,
     "statMap":{
-      "spell_damage_+%_per_10_int":[{
-          "1":{
-            "stat":"Int"
-          },
-          "value":[]
-        }],
       "prismatic_burst_unchosen_type_damage_-100%_final":{
         "1":[{
             "type":"SkillPart",
@@ -6507,29 +6258,12 @@
           "name":"LightningDamage"
         },
         "mult":-100
-      },
-      "critical_strike_multiplier_+_if_dexterity_higher_than_intelligence":[{
-          "1":{
-            "var":"DexHigherThanInt"
-          },
-          "value":[]
-        }],
-      "area_of_effect_+%_per_50_strength":[{
-          "1":{
-            "stat":"Str"
-          },
-          "value":{
-            "key":"Area"
-          }
-        }]
+      }
     },
     "qualityStats":{
-      "Alternate3":[["area_of_effect_+%_per_50_strength"]],
-      "Alternate2":[["critical_strike_multiplier_+_if_dexterity_higher_than_intelligence"]],
-      "Default":[[]],
-      "Alternate1":[["spell_damage_+%_per_10_int"]]
+      "Default":[[]]
     },
-    "stats":["spell_minimum_base_cold_damage","spell_maximum_base_cold_damage","spell_minimum_base_fire_damage","spell_maximum_base_fire_damage","spell_minimum_base_lightning_damage","spell_maximum_base_lightning_damage","active_skill_base_radius_+",null,"triggered_prismatic_burst",null,"prismatic_burst_unchosen_type_damage_-100%_final"],
+    "stats":["spell_minimum_base_cold_damage","spell_maximum_base_cold_damage","spell_minimum_base_fire_damage","spell_maximum_base_fire_damage","spell_minimum_base_lightning_damage","spell_maximum_base_lightning_damage","active_skill_base_radius_+","base_cooldown_speed_+%","triggered_prismatic_burst",null,"prismatic_burst_unchosen_type_damage_-100%_final"],
     "baseMods":[{
         "value":[]
       }],
@@ -6541,10 +6275,7 @@
   },
   "SupportPrismaticBurst":{
     "qualityStats":{
-      "Alternate3":[[]],
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "levels":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -6584,9 +6315,7 @@
   },
   "SupportBurningMinions":{
     "qualityStats":{
-      "Alternate2":[["minion_burning_damage_+%"]],
-      "Default":[["minion_fire_damage_taken_+%"]],
-      "Alternate1":[["minion_fire_damage_%_of_maximum_life_taken_per_minute"]]
+      "Default":[[]]
     },
     "baseEffectiveness":5.9082999229431,
     "excludeSkillTypes":[],
@@ -6673,7 +6402,7 @@
         "statInterpolation":[]
       }],
     "stats":["support_minion_instability_minion_base_fire_area_damage_per_minute","infernal_legion_minions_have_burning_effect_radius_+"],
-    "constantStats":[[null,2400]],
+    "constantStats":[["minion_fire_damage_%_of_maximum_life_taken_per_minute",2400]],
     "incrementalEffectiveness":0.056499999016523,
     "statMap":{
       "minion_fire_damage_%_of_maximum_life_taken_per_minute":[{
@@ -6682,20 +6411,6 @@
               "1":[],
               "2":[],
               "name":"FireDegen"
-            }
-          }
-        }],
-      "minion_fire_damage_taken_+%":[{
-          "value":{
-            "mod":{
-              "name":"FireDamageTaken"
-            }
-          }
-        }],
-      "minion_burning_damage_+%":[{
-          "value":{
-            "mod":{
-              "keywordFlags":134217728
             }
           }
         }],
@@ -6719,7 +6434,7 @@
   "SupportCastWhileChannellingPlus":{
     "plusVersionOf":"SupportCastWhileChannelling",
     "excludeSkillTypes":[],
-    "stats":[],
+    "stats":[null,"avoid_interruption_while_using_this_skill_%"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -6777,12 +6492,10 @@
   },
   "SupportMinionOffensiveStance":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[["puppet_master_base_duration_ms"]],
-      "Alternate1":[["minion_recover_%_maximum_life_on_hit"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
-    "stats":["minion_grant_puppet_master_buff_to_parent_on_hit_%",null,"minion_larger_aggro_radius"],
+    "stats":["minion_grant_puppet_master_buff_to_parent_on_hit_%","puppet_master_base_duration_ms","minion_larger_aggro_radius"],
     "levels":[{
         "2":4000,
         "statInterpolation":[]
@@ -6918,12 +6631,10 @@
   },
   "SupportChargedMines":{
     "qualityStats":{
-      "Alternate2":[["mine_projectile_speed_+%_per_frenzy_charge"]],
-      "Default":[["mine_damage_+%"]],
-      "Alternate1":[["%_chance_to_gain_frenzy_charge_on_mine_detonated_targeting_an_enemy"],["%_chance_to_gain_power_charge_on_mine_detonated_targeting_an_enemy"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
-    "stats":[],
+    "stats":["%_chance_to_gain_frenzy_charge_on_mine_detonated_targeting_an_enemy","%_chance_to_gain_power_charge_on_mine_detonated_targeting_an_enemy"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -7006,28 +6717,13 @@
         "statInterpolation":[]
       }],
     "constantStats":[["mine_throwing_speed_+%_per_frenzy_charge"],["mine_critical_strike_chance_+%_per_power_charge"]],
-    "statMap":{
-      "mine_critical_strike_chance_+%_per_power_charge":[{
-          "1":[],
-          "keywordFlags":8192
-        }],
-      "mine_throwing_speed_+%_per_frenzy_charge":[[{
-            "var":"FrenzyCharge"
-          }]],
-      "mine_projectile_speed_+%_per_frenzy_charge":[{
-          "1":[],
-          "name":"ProjectileSpeed"
-        }]
-    },
     "name":"Charged Mines",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
   "SupportProjectileIntensity":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[["projectile_damage_+%"]],
-      "Alternate1":[[]]
+      "Default":[["projectile_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "levels":[{
@@ -7112,7 +6808,7 @@
         "statInterpolation":[]
       }],
     "stats":["support_greater_projectile_intensity_projectile_damage_+%_final"],
-    "constantStats":[["number_of_additional_projectiles"],["additional_projectiles_per_intensity"],["greater_projectile_intensity_projectile_damage_+%_final_per_intensity"]],
+    "constantStats":[["number_of_additional_projectiles"],["additional_projectiles_per_intensity",-1],["greater_projectile_intensity_projectile_damage_+%_final_per_intensity"]],
     "statMap":{
       "support_greater_projectile_intensity_projectile_damage_+%_final":[{
           "flags":1024
@@ -7130,9 +6826,7 @@
   },
   "SupportFrigidBond":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["support_damaging_links_base_duration_ms"]]
+      "Default":[["support_damaging_links_base_duration_ms"]]
     },
     "baseEffectiveness":9.3719997406006,
     "excludeSkillTypes":[],
@@ -7312,30 +7006,21 @@
         "statInterpolation":[]
       }],
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[["manaweave_added_cold_damage_%_cost_if_payable"],["manaweave_added_lightning_damage_%_cost_if_payable"]]
+      "Default":[["base_mana_cost_-%",-0.5]]
     },
     "baseEffectiveness":0.17499999701977,
     "excludeSkillTypes":[],
-    "constantStats":[["manaweave_cost_equals_%_unreserved_mana"],[]],
+    "constantStats":[["manaweave_cost_equals_%_unreserved_mana"],["manaweave_added_lightning_damage_%_cost_if_payable"]],
     "stats":[],
     "statMap":{
-      "manaweave_added_lightning_damage_%_cost_if_payable":[[{
-            "stat":"ManaCost"
-          }],[[]]],
       "manaweave_cost_equals_%_unreserved_mana":[{
           "value":{
             "key":"baseManaCostIsAtLeastPercentUnreservedMana"
           }
         }],
-      "manaweave_added_cold_damage_%_cost_if_payable":[{
-          "1":[],
-          "name":"ColdMin"
-        },{
-          "1":[],
-          "name":"ColdMax"
-        }]
+      "manaweave_added_lightning_damage_%_cost_if_payable":[[{
+            "stat":"ManaCost"
+          }],[[]]]
     },
     "description":"Supports spell skills that deal damage with hits and have no reservation. Cannot support arcane skills, Vaal skills, or skills used by totems, traps or mines. Cannot modify the skills of minions.",
     "name":"Archmage",
@@ -7344,12 +7029,10 @@
   },
   "SupportArcaneSurge":{
     "qualityStats":{
-      "Alternate2":[["support_arcane_surge_base_duration_ms"]],
-      "Default":[[]],
-      "Alternate1":[["support_arcane_surge_mana_regeneration_rate_+%",0.6]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
-    "stats":["support_arcane_surge_cast_speed_+%",null,"support_arcane_surge_gain_buff_on_mana_use_threshold","support_arcane_surge_spell_damage_+%_final_while_you_have_arcane_surge"],
+    "stats":["support_arcane_surge_cast_speed_+%","support_arcane_surge_mana_regeneration_rate_+%","support_arcane_surge_gain_buff_on_mana_use_threshold","support_arcane_surge_spell_damage_+%_final_while_you_have_arcane_surge"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -7454,7 +7137,7 @@
         "3":2078,
         "statInterpolation":[]
       }],
-    "constantStats":[[]],
+    "constantStats":[["support_arcane_surge_base_duration_ms"]],
     "statMap":{
       "support_arcane_surge_mana_regeneration_rate_+%":[{
           "1":{
@@ -7476,9 +7159,7 @@
   },
   "SupportImmolation":{
     "qualityStats":{
-      "Alternate2":[[]],
-      "Default":[[]],
-      "Alternate1":[[]]
+      "Default":[[]]
     },
     "baseEffectiveness":0.88889998197556,
     "excludeSkillTypes":[],
@@ -7571,9 +7252,7 @@
   },
   "SupportPhysicalToLightning":{
     "qualityStats":{
-      "Alternate2":[["enemies_you_shock_take_%_increased_physical_damage"]],
-      "Default":[["physical_damage_+%"],[]],
-      "Alternate1":[[]]
+      "Default":[["physical_damage_+%"]]
     },
     "excludeSkillTypes":[],
     "stats":["physical_damage_%_to_add_as_lightning"],
@@ -7658,26 +7337,17 @@
       },{
         "statInterpolation":[]
       }],
-    "constantStats":[[]],
-    "statMap":{
-      "enemies_you_shock_take_%_increased_physical_damage":[{
-          "1":[],
-          "2":[],
-          "name":"PhysicalDamageTaken"
-        }]
-    },
+    "constantStats":[["skill_physical_damage_%_to_convert_to_lightning"]],
     "name":"Physical to Lightning",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
   "SupportEfficacy":{
     "qualityStats":{
-      "Alternate2":[[],["base_life_cost_+%"]],
-      "Default":[["damage_over_time_+%"]],
-      "Alternate1":[[]]
+      "Default":[["damage_over_time_+%"]]
     },
     "excludeSkillTypes":[],
-    "stats":["support_efficacy_damage_over_time_+%_final"],
+    "stats":["support_efficacy_damage_over_time_+%_final","skill_effect_duration_+%"],
     "levels":[{
         "statInterpolation":[]
       },{
