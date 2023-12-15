@@ -359,6 +359,7 @@ class GemConverter:
         xp: Optional[Dict[int, int]] = None,
         quest_reward: Optional[Dict[str, Any]] = None,
         experience_type: Optional[str] = None,
+        gem_effect: Optional[DatRecord] = None,
     ) -> Dict[str, Any]:
         is_support = granted_effect["IsSupport"]
         obj = {"is_support": is_support}
@@ -381,6 +382,19 @@ class GemConverter:
         self.translation_file = self.translation_file_cache[self.game_file_name]
 
         self._convert_base_item_specific(base_item_type, obj, experience_type)
+
+        if gem_effect:
+            if is_support and gem_effect["SupportName"]:
+                obj["display_name"] = gem_effect["SupportName"]
+            elif gem_effect["Name"]:
+                obj["display_name"] = gem_effect["Name"]
+            elif obj["base_item"]:
+                obj["display_name"] = obj["base_item"]["display_name"]
+
+            if "AltX" in gem_effect["Id"]:
+                obj["discriminator"] = "alt_x"
+            elif "AltY" in gem_effect["Id"]:
+                obj["discriminator"] = "alt_y"
 
         if secondary_granted_effect:
             obj["secondary_granted_effect"] = secondary_granted_effect["Id"]
@@ -443,6 +457,11 @@ class gems(Parser_Module):
         # Skills from gems
         for gem in relational_reader["SkillGems.dat64"]:
             for gem_effect in gem["GemEffects"]:
+                if (gem_effect["Name"] and ("[DNT]" in gem_effect["Name"])) or (
+                    gem_effect["ItemColor"] != 3 and gem["IsVaalVariant"]
+                ):
+                    continue
+
                 granted_effect = gem_effect["GrantedEffect"]
                 ge_id = granted_effect["Id"]
                 if ge_id in gems:
@@ -461,19 +480,18 @@ class gems(Parser_Module):
                     xp.get(gem["ItemExperienceType"].rowid),
                     rewards.get(gem["BaseItemTypesKey"].rowid),
                     gem["ItemExperienceType"]["Id"],
+                    gem_effect,
                 )
                 skill_gems.append({k: gems[ge_id][k] for k in gems[ge_id] if k != "per_level"})
 
-        # Secondary skills from gems. This adds the support skill implicitly provided by Bane
-        for gem in relational_reader["SkillGems.dat64"]:
-            for gem_effect in gem["GemEffects"]:
+                # Secondary skills from gems. This adds the support skill implicitly provided by Bane
                 granted_effect = gem_effect["GrantedEffect2"]
                 if not granted_effect:
                     continue
                 ge_id = granted_effect["Id"]
                 if ge_id in gems:
                     continue
-                gems[ge_id] = converter.convert(None, granted_effect)
+                gems[ge_id] = converter.convert(None, granted_effect, gem_effect=gem_effect)
 
         # Skills from mods
         for mod in relational_reader["Mods.dat64"]:
