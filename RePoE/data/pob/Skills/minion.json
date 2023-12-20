@@ -254,6 +254,13 @@
     "name":"Infernal Legion",
     "baseFlags":[]
   },
+  "GAZombieCorpseGroundImpact":{
+    "levels":[[]],
+    "baseFlags":[],
+    "stats":[null,"global_always_hit"],
+    "name":"Falling Slam",
+    "skillTypes":[]
+  },
   "SummonPhantasmFadingProjectile":{
     "levels":[{
         "statInterpolation":[]
@@ -355,7 +362,7 @@
       },{
         "levelRequirement":45
       }],
-    "stats":[null,"global_always_hit"],
+    "stats":[],
     "constantStats":[[],["active_skill_attack_speed_+%_final"]],
     "baseMods":[{
         "value":{
@@ -477,15 +484,23 @@
     "name":"Lightning Golem Wrath",
     "incrementalEffectiveness":0.019999999552965
   },
-  "DominatingBlowMinionCharge":{
-    "levels":[[]],
-    "constantStats":[["shield_charge_scaling_stun_threshold_reduction_+%_at_maximum_range"],["base_movement_velocity_+%",400],["shield_charge_damage_+%_maximum"],[null,-40]],
-    "stats":[null,"global_cannot_crit"],
+  "DancingDervishCycloneChannelled":{
+    "levels":[{
+        "attackSpeedMultiplier":200,
+        "baseMultiplier":0.65
+      }],
+    "baseMods":[{
+        "value":{
+          "key":"radiusIsWeaponRange"
+        }
+      }],
+    "constantStats":[["cyclone_gain_stage_every_x_ms_while_channelling",170],["cyclone_melee_weapon_range_+_per_stage"],["cyclone_stage_decay_time_ms",330],["cyclone_max_number_of_stages"],["cyclone_area_of_effect_+%_per_additional_melee_range"]],
+    "stats":[null,"skill_can_add_multiple_charges_per_action"],
     "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
-    "name":"Shield Charge",
-    "description":"Charges at a targeted location or enemy, pushing away enemies in your path and repeatedly dealing damage in a small area in front of you. You deal damage in a larger area when you reach the target. The further you travel, the more damage you deal, and the greater your chance of stunning enemies. Cannot be supported by Multistrike."
+    "weaponTypes":[],
+    "name":"Cyclone",
+    "description":"Channel this skill to move towards a targeted location while spinning constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back."
   },
   "IceElementalIceCyclone":{
     "levels":[[]],
@@ -500,7 +515,6 @@
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Cyclone",
     "description":"Damage enemies around you, then perform a spinning series of attacks as you travel to a target location. Cannot be supported by Ruthless or Multistrike."
   },
   "BoneGolemMultiAttack":{
@@ -518,7 +532,7 @@
     },
     "stats":[],
     "baseFlags":[],
-    "constantStats":[["bone_golem_attack_speed_+%_final_after_third_combo_index",200],["bone_golem_damage_+%_final_after_third_combo_index"]],
+    "constantStats":[["bone_golem_attack_speed_+%_final_after_third_combo_index"],["bone_golem_damage_+%_final_after_third_combo_index"]],
     "name":"Combo Attack",
     "skillTypes":[]
   },
@@ -585,9 +599,7 @@
     "description":"Generic monster mortar skill. Like Monster Projectile but has an impact effect."
   },
   "BoneGolemCascade":{
-    "levels":[{
-        "damageEffectiveness":0.65
-      }],
+    "levels":[[]],
     "stats":[],
     "constantStats":[[],["active_skill_base_radius_+"]],
     "baseMods":[{
@@ -608,19 +620,13 @@
     "skillTypes":[],
     "name":"Absolution"
   },
-  "SandstormChaosElementalSummoned":{
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "baseEffectiveness":6.1421999931335,
-    "constantStats":[[],[]],
+  "EGBoneGolemConsumeCorpse":{
+    "levels":[[]],
     "stats":[],
-    "baseMods":[{
-        "value":[]
-      }],
     "skillTypes":[],
-    "baseFlags":[],
-    "name":"Chaos Aura"
+    "name":"Consume Corpse",
+    "constantStats":[[null,-90]],
+    "baseFlags":[]
   },
   "VaalDominationMelee":{
     "levels":[{
@@ -644,18 +650,90 @@
     "name":"Whirl",
     "baseFlags":[]
   },
-  "BlinkMirrorArrowMelee":{
+  "FireElementalConeSummoned":{
     "levels":[{
-        "damageEffectiveness":1.75
+        "statInterpolation":[],
+        "levelRequirement":34
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[],
+        "levelRequirement":38
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[],
+        "levelRequirement":42
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[],
+        "levelRequirement":46
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[],
+        "levelRequirement":54
+      },{
+        "statInterpolation":[],
+        "levelRequirement":56
+      },{
+        "statInterpolation":[]
+      },{
+        "2":1.25,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[],
+        "levelRequirement":62
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[],
+        "levelRequirement":66
+      },{
+        "statInterpolation":[],
+        "levelRequirement":68
+      },{
+        "statInterpolation":[],
+        "levelRequirement":69
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
       }],
-    "stats":["skill_can_fire_arrows","skill_can_fire_wand_projectiles"],
-    "baseFlags":[],
+    "baseEffectiveness":2.8845000267029,
+    "stats":["spell_minimum_base_fire_damage","spell_maximum_base_fire_damage"],
+    "castTime":0.935,
     "skillTypes":[],
-    "name":"Projectile Attack"
+    "baseFlags":[],
+    "name":"Flame Wave",
+    "incrementalEffectiveness":0.03999999910593
   },
   "MeleeAtAnimationSpeedUnique":{
     "levels":[[]],
-    "stats":[null,null,"action_attack_or_cast_time_uses_animation_length","projectile_uses_contact_position","use_scaled_contact_offset"],
+    "stats":["skill_can_fire_arrows","skill_can_fire_wand_projectiles","action_attack_or_cast_time_uses_animation_length","projectile_uses_contact_position","use_scaled_contact_offset"],
     "skillTypes":[],
     "baseFlags":[]
   },
@@ -702,12 +780,11 @@
   },
   "FireElementalMortarSummoned":{
     "levels":[{
-        "statInterpolation":[],
-        "levelRequirement":34
+        "statInterpolation":[]
       }],
     "baseEffectiveness":3.8238000869751,
     "constantStats":[[],[null,-33]],
-    "stats":["spell_minimum_base_fire_damage","spell_maximum_base_fire_damage"],
+    "stats":[],
     "baseFlags":[],
     "skillTypes":[],
     "name":"Magma Ball"
@@ -724,11 +801,13 @@
   },
   "SummonedRhoaShieldCharge":{
     "levels":[[]],
-    "constantStats":[[],[],[],["attack_speed_+%"],["physical_damage_%_to_add_as_lightning"]],
+    "constantStats":[["shield_charge_scaling_stun_threshold_reduction_+%_at_maximum_range"],["base_movement_velocity_+%"],["shield_charge_damage_+%_maximum"],["attack_speed_+%"],["physical_damage_%_to_add_as_lightning"]],
     "stats":[],
     "baseFlags":[],
     "weaponTypes":[],
-    "skillTypes":[]
+    "skillTypes":[],
+    "name":"Shield Charge",
+    "description":"Charges at a targeted location or enemy, pushing away enemies in your path and repeatedly dealing damage in a small area in front of you. You deal damage in a larger area when you reach the target. The further you travel, the more damage you deal, and the greater your chance of stunning enemies. Cannot be supported by Multistrike."
   },
   "DropBearSummonedRallyingCry":{
     "levels":[[]],
@@ -802,6 +881,7 @@
     "levels":[[]],
     "stats":[],
     "skillTypes":[],
+    "name":"Projectile Attack",
     "constantStats":[[null,145]],
     "baseFlags":[]
   },
@@ -811,7 +891,7 @@
       }],
     "baseEffectiveness":3.2934999465942,
     "stats":[],
-    "constantStats":[[null,11],["active_skill_cast_speed_+%_final"],[]],
+    "constantStats":[[null,11],["active_skill_cast_speed_+%_final"],[null,-40]],
     "skillTypes":[],
     "baseFlags":[],
     "incrementalEffectiveness":0.036100000143051
@@ -905,6 +985,14 @@
     "skillTypes":[],
     "name":"Melee"
   },
+  "BlinkMirrorArrowMelee":{
+    "levels":[{
+        "damageEffectiveness":1.75
+      }],
+    "stats":[],
+    "baseFlags":[],
+    "skillTypes":[]
+  },
   "SummonedReaperMelee":{
     "levels":[{
         "statInterpolation":[]
@@ -925,20 +1013,6 @@
     "name":"Charge",
     "description":"Charges at an enemy, bashing it with the character's shield and striking it. This knocks it back and stuns it. Enemies in the way are pushed to the side. Damage and stun are proportional to distance travelled. Cannot be supported by Multistrike."
   },
-  "DancingDervishCycloneChannelled":{
-    "levels":[[]],
-    "baseMods":[{
-        "value":{
-          "key":"radiusIsWeaponRange"
-        }
-      }],
-    "constantStats":[["cyclone_gain_stage_every_x_ms_while_channelling",170],["cyclone_melee_weapon_range_+_per_stage"],["cyclone_stage_decay_time_ms",330],["cyclone_max_number_of_stages"],["cyclone_area_of_effect_+%_per_additional_melee_range"]],
-    "stats":[null,"skill_can_add_multiple_charges_per_action"],
-    "baseFlags":[],
-    "skillTypes":[],
-    "weaponTypes":[],
-    "description":"Channel this skill to move towards a targeted location while spinning constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back."
-  },
   "RagingSpiritMeleeAttack":{
     "levels":[{
         "statInterpolation":[]
@@ -950,7 +1024,6 @@
       },{
         "statInterpolation":[]
       },{
-        "1":56,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -958,7 +1031,6 @@
         "1":47,
         "statInterpolation":[]
       },{
-        "1":42,
         "statInterpolation":[]
       },{
         "1":37,
@@ -970,8 +1042,7 @@
         "levelRequirement":43
       },{
         "1":23,
-        "statInterpolation":[],
-        "levelRequirement":46
+        "statInterpolation":[]
       },{
         "statInterpolation":[],
         "levelRequirement":49
@@ -986,11 +1057,9 @@
       },{
         "statInterpolation":[]
       },{
-        "statInterpolation":[],
-        "levelRequirement":66
+        "statInterpolation":[]
       },{
-        "statInterpolation":[],
-        "levelRequirement":68
+        "statInterpolation":[]
       },{
         "statInterpolation":[]
       },{
@@ -1001,6 +1070,28 @@
     "stats":[],
     "skillTypes":[],
     "baseFlags":[]
+  },
+  "SandstormChaosElementalSummoned":{
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "baseEffectiveness":6.1421999931335,
+    "constantStats":[[],[]],
+    "stats":[],
+    "baseMods":[{
+        "value":[]
+      }],
+    "skillTypes":[],
+    "baseFlags":[],
+    "name":"Chaos Aura"
+  },
+  "DominatingBlowMinionCharge":{
+    "levels":[[]],
+    "constantStats":[[],[null,400],[],[]],
+    "stats":[null,"global_cannot_crit"],
+    "baseFlags":[],
+    "weaponTypes":[],
+    "skillTypes":[]
   },
   "VaalDominationSunder":{
     "levels":[{
@@ -1021,20 +1112,12 @@
     "name":"Chaos Projectile",
     "skillTypes":[]
   },
-  "EGBoneGolemConsumeCorpse":{
-    "levels":[[]],
-    "stats":[],
-    "skillTypes":[],
-    "name":"Consume Corpse",
-    "constantStats":[[null,-90]],
-    "baseFlags":[]
-  },
   "MinionInstability":{
     "levels":[{
         "cost":[]
       }],
-    "levelMods":[],
     "stats":[],
+    "levelMods":[],
     "baseMods":[{
         "1":{
           "div":3.030303030303
@@ -1063,81 +1146,6 @@
     "constantStats":[[],[]],
     "name":"Crusade Slam",
     "skillTypes":[]
-  },
-  "FireElementalConeSummoned":{
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[],
-        "levelRequirement":38
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[],
-        "levelRequirement":54
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "2":1.25,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[],
-        "levelRequirement":62
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[],
-        "levelRequirement":69
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "baseEffectiveness":2.8845000267029,
-    "stats":[],
-    "castTime":0.935,
-    "skillTypes":[],
-    "baseFlags":[],
-    "name":"Flame Wave",
-    "incrementalEffectiveness":0.03999999910593
   },
   "SkeletonMinionProjectileFire":{
     "levels":[{

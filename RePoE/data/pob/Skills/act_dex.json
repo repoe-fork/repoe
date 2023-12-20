@@ -4191,24 +4191,6 @@
     "qualityStats":{
       "Default":[[]]
     },
-    "baseMods":[{
-        "value":900,
-        "name":"Multiplier:BladeBlastofDaggerDetonationMaxStages"
-      },{
-        "1":{
-          "var":"BladeBlastofDaggerDetonationStage"
-        },
-        "value":{
-          "key":"dpsBaseMultiplier"
-        }
-      }],
-    "constantStats":[[]],
-    "description":"Deals spell damage in an area around you. Your equipped daggers add to this damage.",
-    "parts":[{
-        "name":"Blade Hits Per Cast"
-      },{
-        "name":"Blade Hits Per Sec"
-      }],
     "levels":[{
         "cost":[],
         "statInterpolation":[]
@@ -4378,10 +4360,12 @@
         }]
     },
     "stats":[null,null,"gain_%_of_base_dagger_damage_as_added_spell_damage"],
+    "constantStats":[[]],
+    "skillTypes":[],
     "baseFlags":[],
     "incrementalEffectiveness":0.041299998760223,
     "name":"Blade Blast of Dagger Detonation",
-    "skillTypes":[]
+    "description":"Deals spell damage in an area around you. Your equipped daggers add to this damage."
   },
   "HeraldOfAgony":{
     "qualityStats":{
@@ -5316,7 +5300,11 @@
   },
   "BladeBlastAltX":{
     "stats":[],
-    "parts":[[],[]],
+    "parts":[{
+        "name":"Blade Hits Per Cast"
+      },{
+        "name":"Blade Hits Per Sec"
+      }],
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -5444,12 +5432,15 @@
       "Default":[[]]
     },
     "baseMods":[{
+        "value":900,
         "name":"Multiplier:BladeBlastofUnloadingMaxStages"
       },{
         "1":{
           "var":"BladeBlastofUnloadingStage"
         },
-        "value":[]
+        "value":{
+          "key":"dpsBaseMultiplier"
+        }
       }],
     "skillTypes":[],
     "baseFlags":[],
@@ -12400,9 +12391,9 @@
     "description":"Casts an aura that grants cold resistance to you and your allies."
   },
   "StormRainAltY":{
-    "qualityStats":{
-      "Default":[["storm_rain_pulse_count"]]
-    },
+    "parts":[[],{
+        "name":"Beam"
+      }],
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -12536,10 +12527,25 @@
         "cost":[]
       }],
     "stats":["prismatic_rain_beam_base_frequency_ms",null,null,null,null,null,null,"quality_display_storm_rain_is_gem","modifiers_to_projectile_count_do_not_apply"],
-    "constantStats":[[],[],["number_of_allowed_storm_arrows"],["base_stun_threshold_reduction_+%"]],
+    "statMap":{
+      "prismatic_rain_beam_base_frequency_ms":[{
+          "value":[]
+        }],
+      "quality_display_storm_rain_is_gem":[],
+      "number_of_allowed_storm_arrows":[{
+          "name":"StormRainAllowedStormArrows"
+        }],
+      "prismatic_rain_beam_frequency_+%":[{
+          "name":"StormRainBeamFrequency"
+        }]
+    },
+    "constantStats":[[],["storm_rain_pulse_count"],["number_of_allowed_storm_arrows"],["base_stun_threshold_reduction_+%"]],
+    "qualityStats":{
+      "Default":[[]]
+    },
     "weaponTypes":[],
-    "baseFlags":[],
     "skillTypes":[],
+    "baseFlags":[],
     "name":"Storm Rain of the Fence",
     "description":"Fires an arrow into the air to land at a targeted location, dealing area damage. The arrow sticks in the ground where it lands, and periodically fires a beam of lightning to another arrow near it, dealing area damage between them."
   },
@@ -12650,9 +12656,7 @@
     "requireSkillTypes":[]
   },
   "StormRainAltX":{
-    "qualityStats":{
-      "Default":[[]]
-    },
+    "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -12799,10 +12803,21 @@
         "cost":[]
       }],
     "stats":[],
+    "statMap":{
+      "prismatic_rain_beam_base_frequency_ms":[{
+          "value":[]
+        }],
+      "quality_display_storm_rain_is_gem":[],
+      "number_of_allowed_storm_arrows":[[]],
+      "prismatic_rain_beam_frequency_+%":[[]]
+    },
     "constantStats":[[],[],[]],
+    "qualityStats":{
+      "Default":[[]]
+    },
     "weaponTypes":[],
-    "baseFlags":[],
     "skillTypes":[],
+    "baseFlags":[],
     "name":"Storm Rain of the Conduit",
     "description":"Fires an arrow into the air to land at a targeted location, dealing area damage. The arrow sticks in the ground where it lands, and periodically fires a beam of lightning to you, dealing area damage between the arrow and you."
   },
@@ -15897,6 +15912,11 @@
         "cost":[],
         "baseMultiplier":3.379
       }],
+    "statMap":{
+      "dual_strike_off_hand_weapon_determines_attack_time":[{
+          "name":"UseOffhandAttackSpeed"
+        }]
+    },
     "stats":[null,"dual_strike_off_hand_weapon_determines_attack_time"],
     "constantStats":[[]],
     "skillTypes":[],
@@ -16221,9 +16241,7 @@
   },
   "StormRain":{
     "stats":[],
-    "parts":[[],{
-        "name":"Beam"
-      }],
+    "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -16370,9 +16388,7 @@
         }],
       "quality_display_storm_rain_is_gem":[],
       "number_of_allowed_storm_arrows":[],
-      "prismatic_rain_beam_frequency_+%":[{
-          "name":"StormRainBeamFrequency"
-        }]
+      "prismatic_rain_beam_frequency_+%":[[]]
     },
     "qualityStats":{
       "Default":[[]]
@@ -26464,6 +26480,18 @@
     "qualityStats":{
       "Default":[[]]
     },
+    "weaponTypes":[],
+    "baseMods":[{
+        "1":[],
+        "value":[]
+      }],
+    "constantStats":[[],[],[],[]],
+    "description":"Attack enemies with greatly increased range, creating a chilling area that deals cold damage over time if it hits. Requires a Melee Weapon.",
+    "parts":[{
+        "name":"Melee Hit"
+      },{
+        "name":"Ground DoT"
+      }],
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -26589,17 +26617,22 @@
         "cost":[]
       }],
     "baseEffectiveness":2.2339000701904,
-    "constantStats":[[],[],[],[]],
+    "statMap":{
+      "base_cold_damage_to_deal_per_minute":[{
+          "1":[],
+          "value":{
+            "key":"ColdDot"
+          }
+        }]
+    },
     "stats":{
       "5":"base_cold_damage_to_deal_per_minute",
       "11":"display_fixed_area"
     },
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
     "incrementalEffectiveness":0.057500001043081,
     "name":"Frost Blades of Katabasis",
-    "description":"Attack enemies with greatly increased range, creating a chilling area that deals cold damage over time if it hits. Requires a Melee Weapon."
+    "baseFlags":[]
   },
   "DetonateDeadAltY":{
     "qualityStats":{
