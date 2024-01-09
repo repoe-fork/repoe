@@ -726,7 +726,7 @@
             "type":"Condition",
             "var":"CastOnFrostbolt"
           },
-          "type":"INC",
+          "type":"MORE",
           "name":"Damage"
         }]
     },
@@ -914,13 +914,13 @@
           "1":{
             "skillPartList":[]
           },
-          "type":"MORE",
           "name":"ProjectileSpeed"
         }],
       "ice_spear_second_form_critical_strike_chance_+%":[{
           "1":{
             "skillPartList":[]
           },
+          "type":"INC",
           "name":"CritChance"
         }],
       "ice_spear_second_form_critical_strike_multiplier_+":[{
@@ -11173,7 +11173,6 @@
     "description":"Casts a temporary aura that lets you and your allies cast skills without paying their mana costs."
   },
   "FrostBoltNova":{
-    "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
@@ -11298,9 +11297,7 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "statMap":{
-      "active_skill_damage_+%_when_cast_on_frostbolt":[[[]]]
-    },
+    "stats":[],
     "constantStats":[[],[],[]],
     "baseMods":[{
         "value":[]
@@ -21934,28 +21931,6 @@
     "description":"Sacrifices a portion of your Life and Energy Shield to engulf you in magical fire that rapidly burns nearby enemies for a duration. Your spell damage is increased while under this effect."
   },
   "SupportBrandSupport":{
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "excludeSkillTypes":[],
-    "baseMods":[{
-        "value":{
-          "key":"triggeredByBrand"
-        }
-      }],
-    "constantStats":[["support_brand_area_of_effect_+%_final"],["chaining_range_+%"],["projectile_maximum_range_override"]],
-    "statMap":{
-      "trigger_brand_support_hit_damage_+%_final_vs_branded_enemy":[{
-          "1":{
-            "var":"TargetingBrandedEnemy"
-          },
-          "name":"TriggeredDamage"
-        }],
-      "support_brand_damage_+%_final":[[]],
-      "support_brand_area_of_effect_+%_final":[[]]
-    },
-    "stats":["support_brand_damage_+%_final","trigger_brand_support_hit_damage_+%_final_vs_branded_enemy","triggered_by_brand_support","projectiles_not_offset"],
-    "addFlags":[],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -22038,6 +22013,27 @@
       },{
         "statInterpolation":[]
       }],
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "constantStats":[["support_brand_area_of_effect_+%_final"],["chaining_range_+%"],["projectile_maximum_range_override"]],
+    "excludeSkillTypes":[],
+    "stats":["support_brand_damage_+%_final","trigger_brand_support_hit_damage_+%_final_vs_branded_enemy","triggered_by_brand_support","projectiles_not_offset"],
+    "baseMods":[{
+        "value":{
+          "key":"triggeredByBrand"
+        }
+      }],
+    "statMap":{
+      "trigger_brand_support_hit_damage_+%_final_vs_branded_enemy":[{
+          "1":{
+            "var":"TargetingBrandedEnemy"
+          },
+          "name":"TriggeredDamage"
+        }],
+      "support_brand_damage_+%_final":[[]],
+      "support_brand_area_of_effect_+%_final":[[]]
+    },
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
