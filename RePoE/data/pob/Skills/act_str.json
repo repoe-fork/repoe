@@ -1,10 +1,16 @@
 {
   "VaalCleave":{
+    "qualityStats":{
+      "Default":[["cleave_+1_base_radius_per_nearby_enemy_up_to_10",1]]
+    },
+    "statDescriptionScope":"skill_stat_descriptions",
+    "weaponTypes":{
+      "Two Handed Axe":true
+    },
     "baseMods":[{
         "1":{
           "type":"SkillName",
-          "skillName":"Cleave",
-          "includeTransfigured":true
+          "skillName":"Cleave"
         },
         "2":{
           "type":"GlobalEffect",
@@ -16,9 +22,8 @@
         "name":"CullPercent",
         "value":10
       }],
-    "qualityStats":{
-      "Default":[["cleave_+1_base_radius_per_nearby_enemy_up_to_10",1]]
-    },
+    "constantStats":[["active_skill_merged_damage_+%_final_while_dual_wielding",-40],["base_skill_effect_duration",20000],["base_secondary_skill_effect_duration"],["vaal_cleave_executioner_area_of_effect_+%",60],["vaal_cleave_executioner_damage_against_enemies_on_low_life_+%"],["additional_weapon_base_attack_time_ms",800]],
+    "description":"The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Killing Blows on Rare or Unique enemies grant a buff that improves Cleave for a duration. Killing Blows on Rare Enemies also steal their modifiers for a secondary duration. Only works with Axes and Swords.",
     "levels":[{
         "cost":[],
         "statInterpolation":[]
@@ -108,8 +113,7 @@
       },{
         "cost":[],
         "statInterpolation":[],
-        "damageEffectiveness":3.684,
-        "levelRequirement":60
+        "damageEffectiveness":3.684
       },{
         "3":23,
         "cost":[],
@@ -265,14 +269,10 @@
           "keywordFlags":786432
         }]
     },
-    "constantStats":[["active_skill_merged_damage_+%_final_while_dual_wielding",-40],["base_skill_effect_duration",20000],["base_secondary_skill_effect_duration"],["vaal_cleave_executioner_area_of_effect_+%"],["vaal_cleave_executioner_damage_against_enemies_on_low_life_+%"],["additional_weapon_base_attack_time_ms",800]],
     "stats":["attack_minimum_added_physical_damage","attack_maximum_added_physical_damage","active_skill_base_radius_+","is_area_damage","skill_double_hits_when_dual_wielding","console_skill_dont_chase","kill_enemy_on_hit_if_under_10%_life","vaal_cleave_steal_mods_on_kill","cannot_cancel_skill_before_contact_point","modifiers_to_skill_effect_duration_also_affect_soul_prevention_duration","global_always_hit"],
-    "baseFlags":[],
-    "statDescriptionScope":"skill_stat_descriptions",
-    "weaponTypes":[],
     "skillTypes":[],
     "incrementalEffectiveness":0.023299999535084,
-    "description":"The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Killing Blows on Rare or Unique enemies grant a buff that improves Cleave for a duration. Killing Blows on Rare Enemies also steal their modifiers for a secondary duration. Only works with Axes and Swords."
+    "baseFlags":[]
   },
   "AnimateArmour":{
     "minionSkillTypes":[],
@@ -426,8 +426,9 @@
         "cost":[],
         "statInterpolation":[]
       }],
-    "minionUses":[],
     "constantStats":[["emerge_speed_+%"],["display_minion_monster_type"]],
+    "minionUses":[],
+    "baseTypeName":"Animate Guardian",
     "stats":["animate_item_maximum_level_requirement","active_skill_minion_life_+%_final","active_skill_minion_damage_+%_final","base_display_minion_actor_level","infinite_minion_duration"],
     "qualityStats":{
       "Default":[["minion_movement_speed_+%"]]
@@ -437,7 +438,6 @@
     "skillTypes":[],
     "baseFlags":[],
     "minionList":["AnimatedArmour"],
-    "name":"Animate Guardian",
     "description":"Animates a melee weapon or armour, attaching it to an invisible Guardian that fights by your side. Animating multiple items attaches them to the same Guardian. You cannot animate unidentified items. Cannot be used by Traps or Mines."
   },
   "BattlemagesCry":{
@@ -599,17 +599,17 @@
         }],
       "display_battlemage_cry_exerted_attacks_trigger_supported_spell":[]
     },
+    "baseTypeName":"Battlemage's Cry",
     "stats":["warcry_speed_+%",null,"base_deal_no_attack_damage","base_deal_no_spell_damage","base_deal_no_secondary_damage",null,"warcry_count_power_from_enemies","display_battlemage_cry_exerted_attacks_trigger_supported_spell"],
     "constantStats":[["skill_empowers_next_x_melee_attacks",5],["divine_cry_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value_per_5_power_up_to_150%"],["divine_cry_critical_strike_chance_+%_per_5_power_up_to_cap%"]],
     "castTime":0.8,
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":{
           "key":"radius"
         }
       }],
-    "skillTypes":[],
-    "name":"Battlemage's Cry",
+    "baseFlags":[],
     "description":"Performs a warcry, taunting nearby enemies to attack the user and exerting subsequent attacks. Grants a buff which boosts critical strike chance and allows attacks to benefit from increases to spell damage."
   },
   "EnduringCry":{
@@ -789,6 +789,7 @@
           "name":"EnduringCryLifeRegen"
         }]
     },
+    "baseTypeName":"Enduring Cry",
     "stats":["regenerate_x_life_over_1_second_on_skill_use_or_trigger"],
     "constantStats":[["endurance_charge_granted_per_X_monster_power_during_endurance_warcry"],["resist_all_elements_%_per_endurance_charge"],["physical_damage_reduction_%_per_endurance_charge"],[null,2000]],
     "statDescriptionScope":"buff_skill_stat_descriptions",
@@ -797,14 +798,17 @@
         "value":[]
       }],
     "baseFlags":[],
-    "name":"Enduring Cry",
     "description":"Performs a warcry, taunting all nearby enemies to attack the user and granting endurance charges. Gives a brief burst of life regeneration, as well as a buff which grants resistances and physical damage reduction based on your endurance charges."
   },
   "HeraldOfPurity":{
     "qualityStats":{
       "Default":[["minion_cooldown_recovery_+%"]]
     },
-    "minionSkillTypes":[],
+    "statDescriptionScope":"minion_skill_stat_descriptions",
+    "incrementalEffectiveness":0.01799999922514,
+    "baseFlags":[],
+    "constantStats":[["base_number_of_champions_of_light_allowed"],["herald_of_light_summon_champion_on_unique_or_rare_enemy_hit_%"],[null,12000],[]],
+    "description":"Grants a buff which lets you deal more physical damage. When you kill an enemy while you have this buff, this skill will summon a Sentinel of Purity, or refresh the duration and life of an existing one instead if you have the maximum number of them. The Sentinels of Purity have a single-target melee attack and an area melee attack.",
     "levels":[{
         "statInterpolation":[]
       },{
@@ -919,17 +923,16 @@
           "name":"ActiveSentinelOfPurityLimit"
         }]
     },
-    "constantStats":[["base_number_of_champions_of_light_allowed"],["herald_of_light_summon_champion_on_unique_or_rare_enemy_hit_%"],[null,12000],[]],
+    "baseTypeName":"Herald of Purity",
     "stats":["herald_of_purity_physical_damage_+%_final","active_skill_minion_physical_damage_+%_final",null,null,"herald_of_light_summon_champion_on_kill"],
-    "baseFlags":[],
-    "statDescriptionScope":"minion_skill_stat_descriptions",
-    "incrementalEffectiveness":0.01799999922514,
     "skillTypes":[],
     "minionList":["AxisEliteSoldierHeraldOfLight"],
-    "name":"Herald of Purity",
-    "description":"Grants a buff which lets you deal more physical damage. When you kill an enemy while you have this buff, this skill will summon a Sentinel of Purity, or refresh the duration and life of an existing one instead if you have the maximum number of them. The Sentinels of Purity have a single-target melee attack and an area melee attack."
+    "minionSkillTypes":[]
   },
   "BladestormAltX":{
+    "qualityStats":{
+      "Default":[["bladestorm_maximum_number_of_storms_allowed",0.05]]
+    },
     "parts":[{
         "name":"Attack"
       },{
@@ -1109,9 +1112,7 @@
         "damageEffectiveness":2.234,
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[["bladestorm_maximum_number_of_storms_allowed",0.05]]
-    },
+    "constantStats":[["bladestorm_storm_damage_+%_final",-50],[],["blind_art_variation"],[null,3000],["bladestorm_create_alternate_stance_storm_%_chance"]],
     "statMap":{
       "bladestorm_movement_speed_+%_while_in_sandstorm":[{
           "1":{
@@ -1132,7 +1133,7 @@
           "name":"Speed"
         }]
     },
-    "constantStats":[["bladestorm_storm_damage_+%_final",-50],[],["blind_art_variation"],[null,3000],["bladestorm_create_alternate_stance_storm_%_chance"]],
+    "baseTypeName":"Bladestorm of Uncertainty",
     "stats":["bladestorm_attack_speed_+%_final_while_in_bloodstorm","bladestorm_movement_speed_+%_while_in_sandstorm","active_skill_bleeding_damage_+%_final",null,null,"skill_can_add_multiple_charges_per_action","quality_display_bladestorm_is_gem","quality_display_active_skill_bleed_damage_final_is_gem"],
     "baseMods":[{
         "value":[]
@@ -1151,13 +1152,15 @@
           "value":"Area of bladestorms:"
         }
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Bladestorm of Uncertainty",
+    "weaponTypes":[],
     "description":"Perform a spinning attack, damaging enemies around you and creating a random bladestorm. The bladestorm repeatedly damages enemies, based on your weapon damage and attack time, for a duration. Blood bladestorms are stationary and cause Bleeding, while Sand bladestorms move slowly forwards and Blind enemies. Requires a Sword or Axe."
   },
   "SpikeSlam":{
+    "qualityStats":{
+      "Default":[["spike_slam_num_spikes"],["spike_slam_max_spikes",0.15]]
+    },
     "parts":[{
         "name":"Initial impact"
       },{
@@ -1356,24 +1359,21 @@
         "cost":[],
         "baseMultiplier":2.592
       }],
-    "qualityStats":{
-      "Default":[["spike_slam_num_spikes"],["spike_slam_max_spikes",0.15]]
-    },
+    "constantStats":[["spike_slam_explosion_damage_+%_final"],[],[],[]],
     "statMap":{
       "spike_slam_explosion_damage_+%_final":[[[]]],
       "spike_slam_spike_damage_+%_final":[[[]]],
       "active_skill_area_of_effect_+%_final":[[]]
     },
-    "constantStats":[["spike_slam_explosion_damage_+%_final"],[],[],[]],
+    "baseTypeName":"Earthshatter",
     "stats":["active_skill_area_of_effect_+%_final",null,"quality_display_spike_slam_is_gem","quality_display_max_spikes_is_gem"],
     "baseMods":[{
         "1":[],
         "value":[]
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Earthshatter",
+    "weaponTypes":[],
     "description":"Slam the ground, sending out rectangular fissures that deal area damage to enemies and thrust a spike from the ground when they end. Warcries or other Slam Attacks performed by you or allied players near any spike will cause them to shatter, damaging surrounding enemies. Works with Maces, Sceptres, Axes, Staves and Unarmed."
   },
   "VaalSmite":{
@@ -1575,10 +1575,10 @@
           "name":"LightningMax"
         }]
     },
+    "baseTypeName":"Vaal Smite",
     "stats":["minimum_added_lightning_damage_from_skill","maximum_added_lightning_damage_from_skill","base_chance_to_shock_%_from_skill",null,null,"visual_hit_effect_elemental_is_holy",null,null,"has_vaal_smite_behaviour",null,null,"quality_display_active_skill_area_damage_is_gem"],
     "skillTypes":[],
     "incrementalEffectiveness":0.028000000864267,
-    "name":"Vaal Smite",
     "baseFlags":[]
   },
   "BloodstainedBanner":{
@@ -1678,10 +1678,11 @@
           "name":"PhysicalDamageTaken"
         }]
     },
+    "baseTypeName":"War Banner",
     "stats":["accuracy_rating_+%","physical_damage_taken_+%","banner_add_stage_on_kill"],
     "constantStats":[["banner_area_of_effect_+%_per_stage"],["banner_buff_effect_+%_per_stage"],["banner_additional_base_duration_per_stage_ms",1000],["bloodstained_banner_adrenaline_duration_per_stage_ms"],[null,10000]],
     "statDescriptionScope":"banner_aura_skill_stat_descriptions",
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       },{
@@ -1697,8 +1698,7 @@
         "type":"FLAG",
         "name":"Condition:AffectedByPlacedBanner"
       }],
-    "skillTypes":[],
-    "name":"War Banner",
+    "baseFlags":[],
     "description":"Casting once reserves mana to carry a banner which increases the accuracy of nearby allies, and physical damage taken by nearby enemies. Gain stages by killing enemies while carrying the banner. Casting the skill again places the banner, ending the mana reservation. Once placed, it becomes more powerful for each stage gained. You cannot have multiple banners at the same time."
   },
   "CorruptingFever":{
@@ -1930,6 +1930,7 @@
       }],
     "baseEffectiveness":0.362399995327,
     "constantStats":[[],[]],
+    "baseTypeName":"Corrupting Fever",
     "stats":["base_physical_damage_to_deal_per_minute","blood_surge_refresh_on_total_life_spent"],
     "baseMods":[{
         "value":{
@@ -1943,13 +1944,15 @@
           "var":"CorruptingFeverStageAfterFirst"
         }]],
     "statDescriptionScope":"secondary_debuff_skill_stat_descriptions",
+    "incrementalEffectiveness":0.050000000745058,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.050000000745058,
-    "name":"Corrupting Fever",
     "description":"Draws out your own blood to power a buff for a duration, letting this skill inflict the Corrupting Blood debuff on enemies you hit, dealing physical damage over time for a short secondary duration. The buff's duration will be refreshed if you spend enough life before it expires."
   },
   "SummonRockGolem":{
+    "qualityStats":{
+      "Default":[["golem_buff_effect_+%"]]
+    },
     "minionSkillTypes":[],
     "levels":[{
         "2":1980,
@@ -2107,16 +2110,14 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[["golem_buff_effect_+%"]]
-    },
+    "constantStats":[["base_number_of_golems_allowed"],[]],
     "statMap":{
       "stone_golem_grants_base_life_regeneration_rate_per_minute":[{
           "1":[],
           "name":"LifeRegen"
         }]
     },
-    "constantStats":[["base_number_of_golems_allowed"],[]],
+    "baseTypeName":"Summon Stone Golem",
     "stats":["base_actor_scale_+%","stone_golem_grants_base_life_regeneration_rate_per_minute"],
     "baseMods":[{
         "value":{
@@ -2127,10 +2128,9 @@
         "name":"Condition:HavePhysicalGolem"
       }],
     "statDescriptionScope":"minion_spell_skill_stat_descriptions",
-    "minionList":["SummonedStoneGolem"],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Stone Golem",
+    "minionList":["SummonedStoneGolem"],
     "description":"Summons a Stone Golem that grants you life regeneration. In addition to its melee attack, the Stone Golem uses a rolling charge and a powerful slam that can taunt enemies."
   },
   "SearingBond":{
@@ -2260,12 +2260,12 @@
         "cost":[],
         "statInterpolation":[]
       }],
+    "baseTypeName":"Searing Bond",
     "stats":["base_fire_damage_to_deal_per_minute","is_totem","base_skill_is_totemified","spell_damage_modifiers_apply_to_skill_dot"],
     "constantStats":[["base_totem_duration"],["base_totem_range"],[]],
     "incrementalEffectiveness":0.062199998646975,
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Searing Bond",
     "description":"Summons a totem that casts a beam of fire at you and each other totem you control, dealing burning damage to enemies caught in the beam. Enemies near either end of a beam also suffer burning damage."
   },
   "Smite":{
@@ -2490,9 +2490,9 @@
       "quality_display_active_skill_area_damage_quality_negated_from_gem":[],
       "maximum_added_lightning_damage_from_skill":[[[],[]]]
     },
+    "baseTypeName":"Smite",
     "stats":[],
     "skillTypes":[],
-    "name":"Smite",
     "baseFlags":[]
   },
   "ImmortalCall":{
@@ -2644,11 +2644,11 @@
           "name":"ElementalDamageTaken"
         }]
     },
+    "baseTypeName":"Immortal Call",
     "stats":["mortal_call_elemental_damage_taken_+%_final","mortal_call_physical_damage_taken_+%_final","base_deal_no_damage","display_this_skill_cooldown_does_not_recover_during_buff","quality_display_immortal_call_is_gem"],
     "skillTypes":[],
     "constantStats":[["mortal_call_physical_damage_taken_per_endurance_charge_consumed_final_permyriad",-1500],["buff_effect_duration_+%_per_removable_endurance_charge_limited_to_5"],[]],
     "baseFlags":[],
-    "name":"Immortal Call",
     "description":"Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills."
   },
   "WarlordsMark":{
@@ -2828,6 +2828,7 @@
           "name":"SelfDamageManaLeech"
         }]
     },
+    "baseTypeName":"Warlord's Mark",
     "stats":["enemy_chance_to_double_stun_duration_%_vs_self","life_leech_on_any_damage_when_hit_by_attack_permyriad","mana_leech_on_any_damage_when_hit_by_attack_permyriad"],
     "constantStats":[["enemy_rage_regeneration_on_stun"],["chance_to_grant_endurance_charge_on_death_%"]],
     "statDescriptionScope":"curse_skill_stat_descriptions",
@@ -2836,7 +2837,6 @@
         "value":[]
       }],
     "baseFlags":[],
-    "name":"Warlord's Mark",
     "description":"Curses a single enemy, giving a chance to double the duration of stuns on them. Attacking the cursed enemy will leech life and mana, stunning them will grant rage, and killing it will grant an endurance charge. You can only have one Mark at a time."
   },
   "PuresteelBanner":{
@@ -2936,17 +2936,17 @@
           "keywordFlags":65536
         }]
     },
+    "baseTypeName":"Dread Banner",
     "stats":["puresteel_banner_accuracy_rating_+%_final","impale_debuff_effect_+%","banner_add_stage_on_impale"],
     "constantStats":[["attacks_impale_on_hit_%_chance"],[],[],[],["puresteel_banner_+10_max_fortification_for_duration_per_stage_ms"],[]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       },{
         "1":[],
         "value":[]
       },[[],[]]],
-    "skillTypes":[],
-    "name":"Dread Banner",
+    "baseFlags":[],
     "description":"Casting once reserves mana to carry a banner which makes nearby allies inflict impale with attacks, and lessens the accuracy of nearby enemies. Gain stages by impaling enemies while carrying the banner. Casting the skill again places the banner, ending the mana reservation. Once placed, it becomes more powerful for each stage gained. You cannot have multiple banners at the same time."
   },
   "Vulnerability":{
@@ -3121,6 +3121,7 @@
           "name":"SelfBleedChance"
         }]
     },
+    "baseTypeName":"Vulnerability",
     "stats":[],
     "constantStats":[["receive_bleeding_chance_%_when_hit_by_attack"]],
     "skillTypes":[],
@@ -3130,7 +3131,6 @@
         "value":[]
       }],
     "baseFlags":[],
-    "name":"Vulnerability",
     "description":"Curse all targets in an area, causing them to take increased physical damage. Attacks against the cursed enemies have a chance to inflict bleeding."
   },
   "Berserk":{
@@ -3267,11 +3267,11 @@
       "berserk_movement_speed_+%_final":[[[]]],
       "berserk_attack_speed_+%_final":[[[]]]
     },
+    "baseTypeName":"Berserk",
     "stats":["berserk_attack_damage_+%_final","berserk_attack_speed_+%_final","berserk_movement_speed_+%_final","berserk_base_damage_taken_+%_final"],
     "skillTypes":[],
     "constantStats":[["berserk_minimum_rage"],[],["berserk_base_rage_loss_per_second"],["berserk_rage_loss_+%_per_second"]],
     "baseFlags":[],
-    "name":"Berserk",
     "description":"Consumes Rage at an accelerating rate to provide a powerful buff, granting more attack damage, attack speed, movement speed, and less damage taken."
   },
   "Boneshatter":{
@@ -3542,16 +3542,13 @@
           "name":"TraumaDuration"
         }]
     },
+    "baseTypeName":"Boneshatter",
     "stats":["trauma_strike_self_damage_per_trauma",null,null,null,"quality_display_boneshatter_is_gem"],
     "skillTypes":[],
     "incrementalEffectiveness":0.053700000047684,
-    "name":"Boneshatter",
     "baseFlags":[]
   },
   "VaalAncestralWarchief":{
-    "qualityStats":{
-      "Default":[["totem_damage_+%"]]
-    },
     "levels":[{
         "cost":[]
       },{
@@ -3700,6 +3697,10 @@
         "damageEffectiveness":1.97,
         "baseMultiplier":1.966
       }],
+    "qualityStats":{
+      "Default":[["totem_damage_+%"]]
+    },
+    "constantStats":[[],[],["ancestor_totem_parent_activiation_range"],["summon_totem_cast_speed_+%"],["slam_ancestor_totem_grant_owner_melee_damage_+%_final"],[]],
     "statMap":{
       "slam_ancestor_totem_grant_owner_melee_damage_+%_final":[{
           "1":{
@@ -3708,7 +3709,7 @@
           "flags":256
         }]
     },
-    "constantStats":[[],[],["ancestor_totem_parent_activiation_range"],["summon_totem_cast_speed_+%"],["slam_ancestor_totem_grant_owner_melee_damage_+%_final"],[]],
+    "baseTypeName":"Vaal Ancestral Warchief",
     "stats":[null,null,null,"totem_ignores_vaal_skill_cost","modifiers_to_totem_duration_also_affect_soul_prevention_duration"],
     "baseMods":[{
         "value":[]
@@ -3717,13 +3718,15 @@
           "key":"thisIsNotABuff"
         }
       }],
+    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "weaponTypes":[],
-    "name":"Vaal Ancestral Warchief",
     "description":"Summons an Ancestor Totem which attacks enemies with a powerful cascading slam while you're near it. If the enemies are far away, it will leap toward them as it slams. Being near it grants you more melee damage. Requires a Melee Weapon or Unarmed."
   },
   "NewSunderAltX":{
+    "qualityStats":{
+      "Default":[["sunder_wave_max_steps"]]
+    },
     "parts":[{
         "name":"Wave"
       },{
@@ -3883,29 +3886,22 @@
         "damageEffectiveness":3.132,
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[["sunder_wave_max_steps"]]
-    },
+    "constantStats":[["shockwave_slam_explosion_damage_+%_final"],["base_sunder_wave_delay_ms",400],[],["sunder_shockwave_limit_per_cascade"],["sunder_wave_delay_+%",-75]],
     "statMap":{
       "active_skill_area_of_effect_+%_final":[[]],
       "shockwave_slam_explosion_damage_+%_final":[[[]]]
     },
-    "constantStats":[["shockwave_slam_explosion_damage_+%_final"],["base_sunder_wave_delay_ms",400],[],["sunder_shockwave_limit_per_cascade"],["sunder_wave_delay_+%",-75]],
+    "baseTypeName":"Sunder of Earthbreaking",
     "stats":[],
     "baseMods":[{
         "value":[]
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Sunder of Earthbreaking",
+    "weaponTypes":[],
     "description":"Slams the ground, creating a wave of churning terrain that damages enemies in a sequence of areas in front of you. A number of enemies hit by the wave will release a shockwave, damaging other enemies around them. Requires a Mace, Sceptre, Axe, Staff or Unarmed."
   },
   "FlameTotem":{
-    "qualityStats":{
-      "Default":[["base_projectile_speed_+%"]]
-    },
-    "baseEffectiveness":0.74919998645782,
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -4029,7 +4025,12 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "qualityStats":{
+      "Default":[["base_projectile_speed_+%"]]
+    },
+    "baseEffectiveness":0.74919998645782,
     "constantStats":[[],[],["base_number_of_projectiles"],["skill_physical_damage_%_to_convert_to_fire"],["ignite_art_variation"],["active_skill_projectile_speed_+%_variation_final"]],
+    "baseTypeName":"Holy Flame Totem",
     "stats":["spell_minimum_base_physical_damage","spell_maximum_base_physical_damage",null,null,"base_is_projectile","always_pierce","consecrated_ground_immune_to_curses",null,"quality_display_base_number_of_projectiles_is_gem"],
     "baseMods":[{
         "value":[]
@@ -4037,7 +4038,6 @@
     "incrementalEffectiveness":0.032200001180172,
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Holy Flame Totem",
     "description":"Summons a totem that channels to fire a stream of flame at nearby enemies, and creates an area of consecrated ground around the totem."
   },
   "VolcanicFissureAltX":{
@@ -4156,15 +4156,16 @@
       },{
         "cost":[]
       }],
+    "baseTypeName":"Volcanic Fissure of Snaking",
     "stats":[],
     "constantStats":[[],[],[]],
-    "weaponTypes":[],
-    "baseFlags":[],
     "skillTypes":[],
-    "name":"Volcanic Fissure of Snaking",
+    "baseFlags":[],
+    "weaponTypes":[],
     "description":"Slam the ground, creating a winding fissure that deals area damage while travelling outwards. When it reaches the target location it erupts dealing damage in an area. After erupting, the fissure continues moving towards enemies to cause further eruptions. Requires an Axe, Mace, Sceptre, Staff or Unarmed."
   },
   "FrozenSweep":{
+    "stats":[null,"base_skill_show_average_damage_instead_of_dps"],
     "parts":[{
         "name":"1 charge"
       },{
@@ -4261,21 +4262,23 @@
         "baseMultiplier":3.686,
         "damageEffectiveness":3.69
       }],
-    "stats":[null,"base_skill_show_average_damage_instead_of_dps"],
     "constantStats":[["skill_physical_damage_%_to_convert_to_cold"],["skill_disabled_unless_cloned"]],
     "qualityStats":{
       "Default":[["dummy_stat_display_nothing"]]
     },
+    "baseTypeName":"Frozen Sweep",
     "baseMods":[{
         "value":[]
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Frozen Sweep",
+    "weaponTypes":[],
     "description":"This attack is used by your Statues to deal damage in an area around them while stepping forward. This skill cannot repeat and can only be used by Statues from Frozen Legion."
   },
   "VolcanicFissure":{
+    "qualityStats":{
+      "Default":[[]]
+    },
     "parts":[{
         "name":"Ground Fissure"
       },{
@@ -4402,21 +4405,18 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[[]]
-    },
+    "constantStats":[["active_skill_hit_ailment_damage_with_projectile_+%_final"],[]],
     "statMap":{
       "active_skill_hit_ailment_damage_with_projectile_+%_final":[[[]]]
     },
-    "constantStats":[["active_skill_hit_ailment_damage_with_projectile_+%_final"],[]],
+    "baseTypeName":"Volcanic Fissure",
     "stats":[null,null,"show_number_of_projectiles","projectiles_not_offset"],
     "baseMods":[{
         "name":"CannotSplit"
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Volcanic Fissure",
+    "weaponTypes":[],
     "description":"Slam the ground, creating a winding fissure that deals area damage while travelling outwards. When it reaches the target location it erupts, releasing a burst of molten projectiles. Requires an Axe, Mace, Sceptre, Staff or Unarmed."
   },
   "LeapSlam":{
@@ -4586,16 +4586,23 @@
         "damageEffectiveness":1.89,
         "cost":[]
       }],
+    "baseTypeName":"Leap Slam",
     "stats":[null,null,"always_stun_enemies_that_are_on_full_life","leap_slam_always_knockback_within_range"],
     "constantStats":[[null,550],[]],
+    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "weaponTypes":[],
-    "name":"Leap Slam",
     "description":"Jump through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff. Cannot be supported by Multistrike."
   },
   "StaticStrike":{
-    "stats":["static_strike_base_zap_frequency_ms","static_strike_number_of_beam_targets"],
+    "qualityStats":{
+      "Default":[["static_strike_zap_speed_+%"]]
+    },
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[[],["number_of_chains"],["static_strike_beam_damage_+%_final"],[]],
+    "description":"Attack with a melee weapon, gaining static energy for a duration if you hit an enemy. While you have static energy, you'll frequently hit a number of nearby enemies with beams, dealing attack damage.",
     "parts":[{
         "name":"Melee hit"
       },{
@@ -4765,7 +4772,6 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "constantStats":[[],["number_of_chains"],["static_strike_beam_damage_+%_final"],[]],
     "statMap":{
       "static_strike_beam_damage_+%_final":[[[]]],
       "static_strike_zap_speed_+%":[{
@@ -4777,25 +4783,22 @@
           }
         }]
     },
-    "qualityStats":{
-      "Default":[["static_strike_zap_speed_+%"]]
-    },
-    "baseMods":[{
-        "value":[]
-      }],
-    "weaponTypes":[],
-    "skillTypes":[],
+    "baseTypeName":"Static Strike",
+    "stats":["static_strike_base_zap_frequency_ms","static_strike_number_of_beam_targets"],
     "baseFlags":[],
-    "name":"Static Strike",
-    "description":"Attack with a melee weapon, gaining static energy for a duration if you hit an enemy. While you have static energy, you'll frequently hit a number of nearby enemies with beams, dealing attack damage."
+    "weaponTypes":[],
+    "skillTypes":[]
   },
   "GroundSlamAltX":{
-    "baseMods":[{
-        "value":[]
-      }],
     "qualityStats":{
       "Default":[["groundslam_damage_to_close_targets_+%_final"]]
     },
+    "weaponTypes":[],
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[["base_stun_threshold_reduction_+%"],["ground_slam_angle_+%"]],
+    "description":"Slams the ground in front of you, creating a wide wave that travels forward and damages enemies with an increased chance to stun. Requires a Two Handed Axe, Two Handed Mace, or Staff.",
     "levels":[{
         "statInterpolation":[],
         "damageEffectiveness":2.1,
@@ -4957,13 +4960,10 @@
           }]],
       "quality_display_groundslam_is_gem":[]
     },
-    "constantStats":[["base_stun_threshold_reduction_+%"],["ground_slam_angle_+%"]],
+    "baseTypeName":"Ground Slam of Earthshaking",
     "stats":[null,null,null,"quality_display_groundslam_is_gem"],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
-    "name":"Ground Slam of Earthshaking",
-    "description":"Slams the ground in front of you, creating a wide wave that travels forward and damages enemies with an increased chance to stun. Requires a Two Handed Axe, Two Handed Mace, or Staff."
+    "baseFlags":[]
   },
   "AbyssalCry":{
     "qualityStats":{
@@ -5099,10 +5099,11 @@
           "name":"InfernalFireTakenPer5MP"
         }]
     },
+    "baseTypeName":"Infernal Cry",
     "stats":[null,null,null,null,"damage_cannot_be_reflected",null,"display_skill_deals_secondary_damage",null,null,"infernal_cry_empowered_attacks_trigger_combust_display"],
     "constantStats":[["infernal_cry_%_max_life_as_fire_on_death"],["infernal_cry_covered_in_ash_fire_damage_taken_%_per_5_monster_power"],[]],
     "statDescriptionScope":"debuff_skill_stat_descriptions",
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       },{
@@ -5116,8 +5117,7 @@
           "value":"Explosion area:"
         }
       }],
-    "skillTypes":[],
-    "name":"Infernal Cry",
+    "baseFlags":[],
     "description":"Performs a warcry, taunting nearby enemies to attack the user and exerting subsequent attacks. Covers enemies in ash, causing them to move slower and take increased fire damage. Affected enemies explode when they die, dealing fire damage in an area."
   },
   "SummonRockGolemAltY":{
@@ -5247,14 +5247,14 @@
       "Default":[[]]
     },
     "constantStats":[[],[],["active_skill_minion_from_alternate_gem_index"],["stone_golem_grants_melee_damage_removed_from_stone_golem_before_life_or_es_%"],[]],
+    "baseTypeName":"Summon Stone Golem of Safeguarding",
     "stats":[],
     "baseMods":[{
         "value":[]
       },[[]]],
-    "minionList":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Stone Golem of Safeguarding",
+    "minionList":[],
     "description":"Summons a Stone Golem that takes a portion of the melee damage you recieve from enemy hits from its life before yours. In addition to its melee attack, the Stone Golem uses a rolling charge and a powerful slam that can taunt enemies."
   },
   "ConsecratedPath":{
@@ -5375,19 +5375,19 @@
         "cost":[],
         "baseMultiplier":2.932
       }],
+    "constantStats":[[],[],[],[]],
     "statMap":{
       "groundslam_damage_to_close_targets_+%_final":[[[]]],
       "quality_display_groundslam_is_gem":[]
     },
-    "constantStats":[[],[],[],[]],
+    "baseTypeName":"Consecrated Path",
     "stats":[],
     "baseMods":[{
         "value":[]
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Consecrated Path",
+    "weaponTypes":[],
     "description":"Slams the ground at a targeted location. If an enemy is near where you target, you'll teleport to it from a short distance away, slam, and create an area of consecrated ground. Can't be supported by Multistrike, and requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed."
   },
   "VaalImmortalCall":{
@@ -5542,15 +5542,15 @@
         "cost":[],
         "statInterpolation":[]
       }],
+    "baseTypeName":"Vaal Immortal Call",
     "stats":["buff_effect_duration_+%_per_removable_endurance_charge","immortal_call_prevent_all_damage",null,null,"display_skill_fixed_duration_buff"],
     "constantStats":[[]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "1":[],
         "name":"Condition:CannotDie"
       }],
-    "skillTypes":[],
-    "name":"Vaal Immortal Call",
+    "baseFlags":[],
     "description":"Discharges Endurance Charges, making the character unable to die or gain Vaal souls for a short time, proportional to how many endurance charges were expended."
   },
   "FrozenLegionAltX":{
@@ -5639,20 +5639,26 @@
       },{
         "cost":[]
       }],
+    "baseTypeName":"Frozen Legion of Rallying",
     "stats":[],
     "constantStats":[["ring_of_ice_placement_distance"]],
-    "weaponTypes":[],
-    "baseFlags":[],
-    "skillTypes":[],
     "castTime":0.7,
-    "name":"Frozen Legion of Rallying",
+    "skillTypes":[],
+    "baseFlags":[],
+    "weaponTypes":[],
     "description":"This spell consumes multiple cooldown uses to summon icy Statues in a ring. Each Statue uses your Frozen Sweep attack once before vanishing. Requires an Axe, Mace, Sceptre, or Staff. This skill cannot be triggered, supported by Spell Echo or Unleash, or used by Totems, Traps, or Mines. "
   },
   "BoneshatterAltY":{
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "weaponTypes":[],
     "baseMods":[{
         "1":[],
         "value":[]
       }],
+    "constantStats":[[],[],[]],
+    "description":"Attack enemies with a forceful melee strike. Stunning an enemy with the strike releases a damaging pulse. Requires a Mace, Sceptre, Axe or Staff.",
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -5793,16 +5799,10 @@
         "damageEffectiveness":3.934,
         "cost":[]
       }],
-    "constantStats":[[],[],[]],
-    "qualityStats":{
-      "Default":[[]]
-    },
+    "baseTypeName":"Boneshatter of Carnage",
     "stats":[null,null,"chance_to_double_stun_duration_%"],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
-    "name":"Boneshatter of Carnage",
-    "description":"Attack enemies with a forceful melee strike. Stunning an enemy with the strike releases a damaging pulse. Requires a Mace, Sceptre, Axe or Staff."
+    "baseFlags":[]
   },
   "VaalEarthquake":{
     "qualityStats":{
@@ -6033,9 +6033,9 @@
       "quality_display_earthquake_is_gem":[],
       "quake_slam_fully_charged_explosion_damage_+%_final":[[[]]]
     },
+    "baseTypeName":"Vaal Earthquake",
     "stats":[null,null,null,null,"force_lite_skill_effects","is_player_earthquake","quality_display_earthquake_is_gem"],
     "skillTypes":[],
-    "name":"Vaal Earthquake",
     "baseFlags":[]
   },
   "BoneshatterAltX":{
@@ -6218,9 +6218,9 @@
         }],
       "boneshatter_trauma_base_duration_ms":[[]]
     },
+    "baseTypeName":"Boneshatter of Complex Trauma",
     "stats":[],
     "skillTypes":[],
-    "name":"Boneshatter of Complex Trauma",
     "baseFlags":[]
   },
   "VigilantStrike":{
@@ -6358,30 +6358,15 @@
         "damageEffectiveness":4.45,
         "baseMultiplier":4.417
       }],
+    "baseTypeName":"Vigilant Strike",
     "stats":[],
     "constantStats":[["gain_fortify_on_melee_hit_ms"],[]],
-    "weaponTypes":[],
-    "baseFlags":[],
     "skillTypes":[],
-    "name":"Vigilant Strike",
+    "baseFlags":[],
+    "weaponTypes":[],
     "description":"Attacks enemies with a powerful melee strike which grants Fortification, reducing damage you take from hits. The cooldown can be bypassed by expending an Endurance Charge. Requires a Melee Weapon."
   },
   "DevouringTotem":{
-    "qualityStats":{
-      "Default":[["totem_life_+%_final"]]
-    },
-    "statMap":{
-      "corpse_consumption_life_to_gain":[{
-          "value":{
-            "key":"lifeLeechPerUse"
-          }
-        }],
-      "corpse_consumption_mana_to_gain":[{
-          "value":{
-            "key":"manaLeechPerUse"
-          }
-        }]
-    },
     "levels":[{
         "cost":[],
         "statInterpolation":[]
@@ -6531,15 +6516,31 @@
         "cost":[],
         "statInterpolation":[]
       }],
+    "qualityStats":{
+      "Default":[["totem_life_+%_final"]]
+    },
+    "statMap":{
+      "corpse_consumption_life_to_gain":[{
+          "value":{
+            "key":"lifeLeechPerUse"
+          }
+        }],
+      "corpse_consumption_mana_to_gain":[{
+          "value":{
+            "key":"manaLeechPerUse"
+          }
+        }]
+    },
+    "baseTypeName":"Devouring Totem",
     "stats":["corpse_consumption_life_to_gain","corpse_consumption_mana_to_gain","totem_life_+%"],
     "constantStats":[[],[]],
     "incrementalEffectiveness":0.029999999329448,
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Devouring Totem",
     "description":"Summons a totem that can consume nearby corpses. If you are hurt, it will destroy a corpse to leech life to you."
   },
   "GlacialHammer":{
+    "constantStats":[[],["base_chance_to_freeze_%"],["cold_ailment_duration_+%"],["additional_main_hand_hits_per_combo_average"],[]],
     "qualityStats":{
       "Default":[["glacial_hammer_third_hit_freeze_as_though_dealt_damage_+%"]]
     },
@@ -6723,12 +6724,11 @@
           "name":"FreezeAsThoughDealing"
         }]
     },
-    "constantStats":[[],["base_chance_to_freeze_%"],["cold_ailment_duration_+%"],["additional_main_hand_hits_per_combo_average"],[]],
+    "baseTypeName":"Glacial Hammer",
     "stats":["minimum_added_cold_damage_vs_chilled_enemies","maximum_added_cold_damage_vs_chilled_enemies","cold_ailment_effect_+%",null,"glacial_hammer_shatter_frozen_enemies_at_33%_life","quality_display_glacial_hammer_is_gem"],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Glacial Hammer",
     "description":"Hits enemies, converting some of your physical damage to cold damage. If a non-unique enemy is frozen and is on less than one third life, they will shatter when hit by Glacial Hammer. If striking three times in a row, the third strike will freeze enemies more easily. Requires a Mace, Sceptre or Staff."
   },
   "HeavyStrike":{
@@ -6907,12 +6907,12 @@
           "name":"DoubleDamageChance"
         }]
     },
+    "baseTypeName":"Heavy Strike",
     "stats":[null,"global_knockback"],
     "constantStats":[[],[]],
+    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "weaponTypes":[],
-    "name":"Heavy Strike",
     "description":"Attacks enemies with a forceful blow, knocking them back. Requires a Mace, Sceptre, Axe, Sword or Two-Handed Weapon."
   },
   "GeneralsCry":{
@@ -7056,14 +7056,14 @@
         }],
       "spiritual_cry_doubles_summoned_per_5_MP":[]
     },
+    "baseTypeName":"General's Cry",
     "stats":[null,null,null,null,null,null,"warcry_gain_mp_from_corpses",null,"quality_display_generals_cry_is_gem"],
     "constantStats":[["spiritual_cry_doubles_summoned_per_5_MP"],[]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"General's Cry",
+    "baseFlags":[],
     "description":"Performs a warcry, taunting nearby enemies to attack the user, and summoning Mirage Warriors from nearby corpses. The Mirage Warriors each use a linked attack skill once before dissipating."
   },
   "Vengeance":{
@@ -7185,11 +7185,11 @@
         "statInterpolation":[]
       }],
     "constantStats":[[]],
+    "baseTypeName":"Vengeance",
     "stats":[null,null,"attack_unusable_if_triggerable"],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Vengeance",
     "description":"Chance to perform a swift counter-attack against all enemies around you when you are hit. Weapon range increases the area of this attack. Requires a Melee Weapon."
   },
   "SummonRockGolemAltX":{
@@ -7319,14 +7319,14 @@
       "Default":[[]]
     },
     "constantStats":[[],[],[]],
+    "baseTypeName":"Summon Stone Golem of Hordes",
     "stats":[null,null,"active_skill_no_golem_aura"],
     "baseMods":[{
         "value":[]
       },[[]]],
-    "minionList":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Stone Golem of Hordes",
+    "minionList":[],
     "description":"Summons a Stone Golem. In addition to its melee attack, the Stone Golem uses a rolling charge and a powerful slam that can taunt enemies."
   },
   "ShockwaveTotem":{
@@ -7457,12 +7457,12 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "baseTypeName":"Shockwave Totem",
     "stats":[],
     "constantStats":[[],[],["base_global_chance_to_knockback_%"],[]],
     "incrementalEffectiveness":0.043600000441074,
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Shockwave Totem",
     "description":"Summons a totem that shakes the earth around it, knocking back and damaging nearby enemies"
   },
   "EnduranceChargeSlam":{
@@ -7559,6 +7559,7 @@
         "cost":[]
       }],
     "constantStats":[["tectonic_slam_side_crack_additional_chance_%_per_endurance_charge"],[],["active_skill_area_of_effect_+%_final_per_endurance_charge"],[]],
+    "baseTypeName":"Tectonic Slam",
     "stats":[null,null,"quality_display_tectonic_slam_is_gem"],
     "baseMods":[{
         "value":[]
@@ -7573,16 +7574,12 @@
           "value":"Fissure Width:"
         }
       }],
-    "weaponTypes":[],
-    "baseFlags":[],
     "skillTypes":[],
-    "name":"Tectonic Slam",
+    "baseFlags":[],
+    "weaponTypes":[],
     "description":"Slam the ground, unleashing a fiery fissure in front of you, dealing area damage and randomly releasing a number of smaller fissures branching off from it. Consume an Endurance Charge every third time you slam the ground with this skill. Requires a Mace, Sceptre, Sword, Axe, Staff, or Unarmed."
   },
   "TotemMelee":{
-    "qualityStats":{
-      "Default":[[]]
-    },
     "levels":[{
         "baseMultiplier":0.9,
         "statInterpolation":[],
@@ -7733,20 +7730,23 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "constantStats":[[],[],[],[]],
     "statMap":{
       "melee_ancestor_totem_grant_owner_attack_speed_+%_final":[[[]]]
     },
-    "constantStats":[[],[],[],[]],
+    "baseTypeName":"Ancestral Protector",
     "stats":[null,"melee_ancestor_totem_grant_owner_attack_speed_+%_final"],
     "baseMods":[{
         "value":[]
       },{
         "value":[]
       }],
+    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "weaponTypes":[],
-    "name":"Ancestral Protector",
     "description":"Summons an Ancestor Totem which attacks enemies with melee strikes while you're near it. Being near it grants you more attack speed. Requires a Melee Weapon or Unarmed."
   },
   "Sweep":{
@@ -7877,11 +7877,11 @@
     "baseMods":[{
         "value":[]
       }],
+    "baseTypeName":"Sweep",
     "stats":[],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Sweep",
     "description":"Swings a two handed melee weapon in a circle, knocking back monsters around the character."
   },
   "VaalVolcanicFissure":{
@@ -8027,12 +8027,12 @@
       "Default":[[]]
     },
     "constantStats":[[],[],[]],
+    "baseTypeName":"Vaal Volcanic Fissure",
     "stats":[],
     "baseMods":[[]],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Vaal Volcanic Fissure",
+    "weaponTypes":[],
     "description":"Slam the ground, creating a winding fissure that deals area damage while travelling outwards. When it reaches the target location it erupts, releasing a burst of molten projectiles. After erupting, the fissure continues moving towards enemies to cause further eruptions. Requires an Axe, Mace, Sceptre, Staff or Unarmed."
   },
   "Determination":{
@@ -8164,14 +8164,14 @@
         }],
       "base_physical_damage_reduction_rating":[[[]]]
     },
+    "baseTypeName":"Determination",
     "stats":["determination_aura_armour_+%_final","base_physical_damage_reduction_rating"],
     "statDescriptionScope":"aura_skill_stat_descriptions",
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Determination",
+    "baseFlags":[],
     "description":"Casts an aura that grants armour to you and your allies."
   },
   "RallyingCry":{
@@ -8319,9 +8319,10 @@
           "name":"RallyingCryExertDamageBonus"
         }]
     },
+    "baseTypeName":"Rallying Cry",
     "stats":[null,null,null,null,null,null,"warcry_gain_mp_from_allies"],
     "constantStats":[["rallying_cry_damage_+%_final_from_osm_per_nearby_ally"],[],["rallying_cry_weapon_damage_%_for_allies_per_5_monster_power"],["rallying_cry_buff_effect_on_minions_+%_final"]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":{
           "key":"buffAllies"
@@ -8333,8 +8334,7 @@
       },{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Rallying Cry",
+    "baseFlags":[],
     "description":"Performs a warcry, taunting nearby enemies to attack the user and exerting subsequent attacks. Gives nearby Allies a buff based on the damage of your weapon."
   },
   "FireResistAura":{
@@ -8432,13 +8432,13 @@
           "name":"FireResist"
         }]
     },
+    "baseTypeName":"Purity of Fire",
     "stats":[null,"base_maximum_fire_damage_resistance_%"],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Purity of Fire",
+    "baseFlags":[],
     "description":"Casts an aura that grants fire resistance to you and your allies."
   },
   "SummonFireGolemAltX":{
@@ -8568,6 +8568,7 @@
       "Default":[[]]
     },
     "constantStats":[[],[],[]],
+    "baseTypeName":"Summon Flame Golem of Hordes",
     "stats":[],
     "baseMods":[{
         "value":[]
@@ -8575,10 +8576,9 @@
         "1":[],
         "name":"Condition:HaveFireGolem"
       }],
-    "minionList":["SummonedFlameGolem"],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Flame Golem of Hordes",
+    "minionList":["SummonedFlameGolem"],
     "description":"Summons a Flame Golem. The Flame Golem can cast a fire spray, a wave of fire damage, and an explosive arcing projectile."
   },
   "Vitality":{
@@ -8730,13 +8730,13 @@
     "statMap":{
       "base_life_regeneration_rate_per_minute":[[[]]]
     },
+    "baseTypeName":"Vitality",
     "stats":["base_life_regeneration_rate_per_minute"],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Vitality",
+    "baseFlags":[],
     "description":"Casts an aura that grants life regeneration to you and your allies."
   },
   "InfernalBlowAltX":{
@@ -8919,9 +8919,9 @@
         }],
       "quality_display_infernal_blow_is_gem":[]
     },
+    "baseTypeName":"Infernal Blow of Immolation",
     "stats":["attack_minimum_added_fire_damage","attack_maximum_added_fire_damage",null,"quality_display_infernal_blow_is_gem"],
     "skillTypes":[],
-    "name":"Infernal Blow of Immolation",
     "baseFlags":[]
   },
   "FrozenLegion":{
@@ -9009,14 +9009,15 @@
       },{
         "cost":[]
       }],
+    "baseTypeName":"Frozen Legion",
     "stats":[],
     "constantStats":[[]],
-    "weaponTypes":[],
-    "baseFlags":[],
     "skillTypes":[],
-    "name":"Frozen Legion"
+    "baseFlags":[],
+    "weaponTypes":[]
   },
   "VaalReap":{
+    "constantStats":[[],["vaal_reap_additional_maximum_blood_charges"],["blood_ground_leaving_area_lasts_for_ms"],[]],
     "qualityStats":{
       "Default":[["blood_scythe_damage_+%_final_per_charge"]]
     },
@@ -9166,7 +9167,7 @@
           }
         }]
     },
-    "constantStats":[[],["vaal_reap_additional_maximum_blood_charges"],["blood_ground_leaving_area_lasts_for_ms"],[]],
+    "baseTypeName":"Vaal Reap",
     "stats":[null,null,null,null,null,null,"vaal_reap_gain_maximum_blood_charges_to_on_use"],
     "baseMods":[{
         "value":[]
@@ -9175,13 +9176,15 @@
           "key":"dotIsArea"
         }
       }],
+    "incrementalEffectiveness":0.05009999871254,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.05009999871254,
-    "name":"Vaal Reap",
     "description":"Bloody scythes swipe around a selected area, hitting enemies with physical damage. An area of boiling blood is left beneath them for a duration which deals physical damage over time. Also gives a bonus to maximum Blood Charges for a secondary duration."
   },
   "DominatingBlowAltX":{
+    "qualityStats":{
+      "Default":[["active_skill_additive_minion_damage_modifiers_apply_to_all_damage_at_%_value"]]
+    },
     "minionSkillTypes":[],
     "levels":[{
         "cost":[]
@@ -9291,17 +9294,14 @@
         "cost":[],
         "baseMultiplier":2.956
       }],
-    "qualityStats":{
-      "Default":[["active_skill_additive_minion_damage_modifiers_apply_to_all_damage_at_%_value"]]
-    },
     "constantStats":[[],["max_number_of_dominated_normal_monsters"],["max_number_of_dominated_magic_monsters"],["max_number_of_dominated_rare_monsters"],[],["dominating_blow_chance_to_summon_on_hitting_unqiue_%"],["max_number_of_vaal_dominated_monsters"],[]],
+    "baseTypeName":"Dominating Blow of Inspiring",
     "stats":["is_dominated"],
     "baseFlags":[],
     "statDescriptionScope":"minion_attack_skill_stat_descriptions",
     "weaponTypes":[],
     "skillTypes":[],
     "minionList":["AxisEliteSoldierDominatingBlow","AxisEliteSoldierDominatingBlowVaal"],
-    "name":"Dominating Blow of Inspiring",
     "description":"Attacks enemies with a melee strike, applying a debuff for a short duration. If a non-unique enemy dies while affected by the debuff, the enemy's corpse will be consumed and a Sentinel of Dominance with the same rarity, prefix and suffix modifiers will be summoned for a longer secondary duration."
   },
   "IceCrashAltX":{
@@ -9390,11 +9390,11 @@
         "cost":[]
       }],
     "constantStats":[[],["active_skill_main_hand_weapon_damage_+%_final"],[],[],["active_skill_area_of_effect_description_mode"],[]],
+    "baseTypeName":"Ice Crash of Cadence",
     "stats":[null,null,"quality_display_ice_crash_is_gem"],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Ice Crash of Cadence",
     "description":"Slam the ground, damaging enemies in an area. Slams with main hand weapon deal more damage. Slams with off hand weapon have larger area of effect. Requires dual-wielding Swords, Maces, Sceptres, or Axes to use."
   },
   "BloodSandArmour":{
@@ -9492,9 +9492,10 @@
             "var":"Maimed"
           }]]
     },
+    "baseTypeName":"Flesh and Stone",
     "stats":[null,"attack_damage_taken_+%_final_from_enemies_unaffected_by_sand_armour","support_maimed_enemies_physical_damage_taken_+%"],
     "constantStats":[[]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       },{
@@ -9509,8 +9510,7 @@
         },
         "name":"Condition:Blinded"
       }],
-    "skillTypes":[],
-    "name":"Flesh and Stone",
+    "baseFlags":[],
     "description":"Casts an aura that affects you and nearby enemies differently depending on your stance. Using the skill again alternates between Blood Stance and Sand Stance."
   },
   "EarthquakeAltX":{
@@ -9654,9 +9654,9 @@
         }],
       "earthquake_skill_aftershock_area_of_effect_+%_final_per_100ms_duration":[[[],[]]]
     },
+    "baseTypeName":"Earthquake of Amplification",
     "stats":[],
     "skillTypes":[],
-    "name":"Earthquake of Amplification",
     "baseFlags":[]
   },
   "MoltenStrike":{
@@ -9847,16 +9847,21 @@
     "statMap":{
       "active_skill_hit_ailment_damage_with_projectile_+%_final":[[[]]]
     },
+    "baseTypeName":"Molten Strike",
     "stats":[],
     "skillTypes":[],
-    "name":"Molten Strike",
     "baseFlags":[]
   },
   "HeraldOfAsh":{
-    "stats":["herald_of_ash_burning_damage_+%_final","herald_of_ash_spell_fire_damage_+%_final",null,"quality_display_herald_of_ash_is_gem"],
     "qualityStats":{
       "Default":[["herald_of_ash_burning_%_overkill_damage_per_minute"]]
     },
+    "incrementalEffectiveness":0.032699998468161,
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[["physical_damage_%_to_add_as_fire"],[],[]],
+    "description":"Grants a buff providing fire damage based on your physical damage. While you have this buff, if you kill an enemy, other enemies near them will be burned based on the overkill damage. The burn inflicted by this skill can only be affected by modifiers to damage over time (burning damage is damage over time).",
     "levels":[{
         "statInterpolation":[]
       },{
@@ -9959,15 +9964,10 @@
           "name":"FireDamage"
         }]
     },
-    "constantStats":[["physical_damage_%_to_add_as_fire"],[],[]],
-    "baseMods":[{
-        "value":[]
-      }],
-    "skillTypes":[],
+    "baseTypeName":"Herald of Ash",
+    "stats":["herald_of_ash_burning_damage_+%_final","herald_of_ash_spell_fire_damage_+%_final",null,"quality_display_herald_of_ash_is_gem"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.032699998468161,
-    "name":"Herald of Ash",
-    "description":"Grants a buff providing fire damage based on your physical damage. While you have this buff, if you kill an enemy, other enemies near them will be burned based on the overkill damage. The burn inflicted by this skill can only be affected by modifiers to damage over time (burning damage is damage over time)."
+    "skillTypes":[]
   },
   "VaalDomination":{
     "qualityStats":{
@@ -10058,11 +10058,11 @@
       "vaal_upgrade_minion_damage_+%_final":[],
       "vaal_upgrade_minion_damage_taken_+%_final":[]
     },
+    "baseTypeName":"Vaal Domination",
     "stats":[],
-    "baseFlags":[],
-    "constantStats":[[null,30000],["display_max_upgraded_sentinels_of_dominance"],["vaal_upgrade_minion_damage_+%_final"],["vaal_upgrade_minion_damage_taken_+%_final",-70]],
     "skillTypes":[],
-    "name":"Vaal Domination",
+    "constantStats":[[null,30000],["display_max_upgraded_sentinels_of_dominance"],["vaal_upgrade_minion_damage_+%_final"],["vaal_upgrade_minion_damage_taken_+%_final",-70]],
+    "baseFlags":[],
     "description":"This spell causes one of your existing Sentinels of Dominance to Ascend, becoming more powerful, gaining new attacks, and overriding its duration, while maintaining its monster modifiers and other bonuses, including from support gems. If you cannot have more Ascended Sentinels of Dominance, an existing one will be refreshed instead."
   },
   "SmiteAltX":{
@@ -10189,14 +10189,14 @@
         "cost":[]
       }],
     "constantStats":[[],[],[],[]],
+    "baseTypeName":"Smite of Divine Judgement",
     "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Smite of Divine Judgement",
+    "weaponTypes":[],
     "description":"Performs a melee attack, and causes lightning to strike nearby enemies, dealing damage in an area. Each target can only be hit once by this skill. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed."
   },
   "EnduranceChargeSlamAltX":{
@@ -10302,12 +10302,13 @@
         "damageEffectiveness":3.032,
         "cost":[]
       }],
+    "constantStats":[[],[],["tectonic_slam_side_crack_additional_chance_%_per_endurance_charge_consumed"],["tectonic_slam_area_of_effect_+%_final_per_endurance_charge_consumed"]],
     "statMap":{
       "tectonic_slam_area_of_effect_+%_final_per_endurance_charge_consumed":[[[]]],
       "quality_display_alternate_tectonic_slam_is_gem":[],
       "endurance_charge_slam_damage_+%_final_per_endurance_charge_consumed":[[[]]]
     },
-    "constantStats":[[],[],["tectonic_slam_side_crack_additional_chance_%_per_endurance_charge_consumed"],["tectonic_slam_area_of_effect_+%_final_per_endurance_charge_consumed"]],
+    "baseTypeName":"Tectonic Slam of Cataclysm",
     "stats":[null,null,"quality_display_alternate_tectonic_slam_is_gem"],
     "baseMods":[{
         "value":[]
@@ -10318,13 +10319,15 @@
       },{
         "value":[]
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Tectonic Slam of Cataclysm",
+    "weaponTypes":[],
     "description":"Slam the ground, consuming all Endurance Charges and unleashing a fiery fissure in front of you, dealing area damage and randomly releasing a number of smaller fissures branching off from it. Requires a Mace, Sceptre, Sword, Axe, Staff, or Unarmed."
   },
   "ShieldCrushAltX":{
+    "qualityStats":{
+      "Default":[["shield_crush_damage_+%_final_from_distance"]]
+    },
     "parts":[{
         "name":"1 Wave"
       },{
@@ -10457,9 +10460,7 @@
             "ramp":[]
           }]]
     },
-    "qualityStats":{
-      "Default":[["shield_crush_damage_+%_final_from_distance"]]
-    },
+    "baseTypeName":"Shield Crush of the Chieftain",
     "stats":["off_hand_local_minimum_added_fire_damage","off_hand_local_maximum_added_fire_damage","off_hand_minimum_added_fire_damage_per_15_shield_armour","off_hand_maximum_added_fire_damage_per_15_shield_armour","shield_crush_helmet_enchantment_aoe_+%_final",null,"attack_is_melee_override"],
     "baseMods":[{
         "value":[]
@@ -10469,10 +10470,9 @@
           "key":"dpsMultiplier"
         }
       }],
+    "incrementalEffectiveness":0.026799999177456,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.026799999177456,
-    "name":"Shield Crush of the Chieftain",
     "description":"Swipe your shield, dealing area damage in three waves in front of you. Enemies can be hit by two of the waves where they overlap."
   },
   "MoltenStrikeAltX":{
@@ -10678,9 +10678,9 @@
             "skillPartList":[]
           }]]
     },
+    "baseTypeName":"Molten Strike of the Zenith",
     "stats":[],
     "skillTypes":[],
-    "name":"Molten Strike of the Zenith",
     "baseFlags":[]
   },
   "VaalAbsolution":{
@@ -10772,11 +10772,11 @@
       "vaal_upgrade_minion_damage_+%_final":[],
       "vaal_upgrade_minion_damage_taken_+%_final":[]
     },
+    "baseTypeName":"Vaal Absolution",
     "stats":[],
-    "baseFlags":[],
-    "constantStats":[[null,15000],["display_max_upgraded_sentinels_of_absolution"],[],[]],
     "skillTypes":[],
-    "name":"Vaal Absolution",
+    "constantStats":[[null,15000],["display_max_upgraded_sentinels_of_absolution"],[],[]],
+    "baseFlags":[],
     "description":"Causes one of your existing Sentinels of Absolution to Ascend, becoming more powerful, gaining new spells, and overriding its duration, while maintaining its other bonuses, including from support gems. If you cannot have more Ascended Sentinels of Absolution, an existing one will be refreshed instead."
   },
   "FrozenSweepAltX":{
@@ -10833,9 +10833,9 @@
     "baseMods":[{
         "value":[]
       }],
-    "weaponTypes":[],
     "skillTypes":[],
-    "baseFlags":[]
+    "baseFlags":[],
+    "weaponTypes":[]
   },
   "NewShieldCharge":{
     "qualityStats":{
@@ -10967,6 +10967,7 @@
       }],
     "baseEffectiveness":1.7799999713898,
     "constantStats":[["shield_charge_scaling_stun_threshold_reduction_+%_at_maximum_range"],["shield_charge_damage_+%_maximum"]],
+    "baseTypeName":"Shield Charge",
     "stats":["off_hand_local_minimum_added_physical_damage","off_hand_local_maximum_added_physical_damage",null,"off_hand_minimum_added_physical_damage_per_15_shield_armour_and_evasion_rating","off_hand_maximum_added_physical_damage_per_15_shield_armour_and_evasion_rating","ignores_proximity_shield",null,"shield_charge_attack_time_+30%_if_no_charge"],
     "baseMods":[{
         "value":[]
@@ -10987,10 +10988,9 @@
           "value":"Charging area:"
         }
       }],
+    "incrementalEffectiveness":0.017300000414252,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.017300000414252,
-    "name":"Shield Charge",
     "description":"Charges at a targeted location or enemy, pushing away enemies in your path and repeatedly dealing off-hand damage in a small area in front of you. You deal damage in a larger area when you reach the target. The further you travel, the more damage you deal, and the greater your chance of stunning enemies. Cannot be supported by Multistrike."
   },
   "Earthquake":{
@@ -11095,9 +11095,9 @@
       "quality_display_earthquake_is_gem":[],
       "quake_slam_fully_charged_explosion_damage_+%_final":[[[]]]
     },
+    "baseTypeName":"Earthquake",
     "stats":[],
     "skillTypes":[],
-    "name":"Earthquake",
     "baseFlags":[]
   },
   "SummonFireGolemAltY":{
@@ -11227,14 +11227,14 @@
       "Default":[[]]
     },
     "constantStats":[[],[],[],["golem_summon_distance_+"]],
+    "baseTypeName":"Summon Flame Golem of the Meteor",
     "stats":[null,null,null,null,"golem_can_summoned_within_range"],
     "baseMods":[{
         "value":[]
       },[[]]],
-    "minionList":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Flame Golem of the Meteor",
+    "minionList":[],
     "description":"Summons a Flame Golem. When summoned, the Flame Golem attacks by falling from the sky, dealing fire damage in an area and leaving burning ground around the impact. After landing, it can cast a fire spray and a wave of fire damage."
   },
   "DefianceBanner":{
@@ -11337,25 +11337,22 @@
           "name":"ArmourAndEvasion"
         }]
     },
+    "baseTypeName":"Defiance Banner",
     "stats":["evasion_and_physical_damage_reduction_rating_+%","armour_evasion_banner_critical_strike_chance_+%"],
     "constantStats":[[],[],[],["banner_add_stage_every_x_milliseconds_while_enemies_nearby"],["armour_evasion_banner_taunted_enemies_damage_+%_final"],["armour_evasion_banner_super_taunt_duration_per_stage_ms"],[]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       },{
         "1":[],
         "value":[]
       },[[],[]]],
-    "skillTypes":[],
-    "name":"Defiance Banner",
+    "baseFlags":[],
     "description":"Casting once reserves mana to carry a banner which increases the armour and evasion of nearby allies, and reduces the critical strike chance of nearby enemies. Gains stages over time while carrying the banner near enemies. Casting the skill again places the banner, ending the mana reservation. Once placed, it becomes more powerful for each stage gained. You cannot have multiple banners at the same time."
   },
   "RejuvenationTotem":{
     "qualityStats":{
       "Default":[[]]
-    },
-    "statMap":{
-      "base_life_regeneration_rate_per_minute":[[[]]]
     },
     "levels":[{
         "1":514,
@@ -11517,6 +11514,10 @@
         "cost":[],
         "statInterpolation":[]
       }],
+    "statMap":{
+      "base_life_regeneration_rate_per_minute":[[[]]]
+    },
+    "baseTypeName":"Rejuvenation Totem",
     "stats":[],
     "constantStats":[[],[]],
     "skillTypes":[],
@@ -11524,10 +11525,12 @@
         "value":[]
       }],
     "baseFlags":[],
-    "name":"Rejuvenation Totem",
     "description":"Summons a totem that has an aura which regenerates life for you and your nearby allies."
   },
   "Reckoning":{
+    "baseMods":[{
+        "value":[]
+      }],
     "qualityStats":{
       "Default":[[]]
     },
@@ -11634,18 +11637,18 @@
         "baseMultiplier":2.224,
         "statInterpolation":[]
       }],
-    "baseMods":[{
-        "value":[]
-      }],
     "constantStats":[["melee_counterattack_trigger_on_block_%"],["shield_counterattack_aoe_range"]],
+    "baseTypeName":"Reckoning",
     "stats":[],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Reckoning",
     "description":"Perform a swift counter-attack against enemies in a cone shape when you block with your shield."
   },
   "NewSunder":{
+    "qualityStats":{
+      "Default":[["sunder_wave_radius_+_per_step"]]
+    },
     "parts":[{
         "name":"First Wave Area"
       },{
@@ -11805,9 +11808,7 @@
         "damageEffectiveness":4.079,
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[["sunder_wave_radius_+_per_step"]]
-    },
+    "constantStats":[[],[],[],[],["sunder_wave_min_steps"],[]],
     "statMap":{
       "sunder_wave_radius_+_per_step":[{
           "1":{
@@ -11818,7 +11819,7 @@
       "shockwave_slam_explosion_damage_+%_final":[[[]]],
       "active_skill_area_of_effect_+%_final":[[]]
     },
-    "constantStats":[[],[],[],[],["sunder_wave_min_steps"],[]],
+    "baseTypeName":"Sunder",
     "stats":[],
     "baseMods":[{
         "value":[]
@@ -11826,10 +11827,9 @@
         "1":[],
         "name":"Multiplier:SunderWaveArea"
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Sunder",
+    "weaponTypes":[],
     "description":"Slams the ground, creating a slow wave of churning terrain that damages enemies in a sequence of areas in front of you. A number of enemies hit by the wave will release a shockwave, damaging other enemies around them. Using the skill again will stop the previous wave. Requires a Mace, Sceptre, Axe, Staff or Unarmed."
   },
   "ChainStrike":{
@@ -11942,6 +11942,7 @@
         "cost":[],
         "baseMultiplier":2.116
       }],
+    "constantStats":[["chain_strike_cone_radius_+_per_x_rage"],[]],
     "statMap":{
       "chain_strike_cone_radius_+_per_x_rage":[[{
             "var":"Rage"
@@ -11949,24 +11950,26 @@
       "quality_display_chain_hook_is_gem":[],
       "chain_strike_gain_x_rage_if_attack_hits":[[[]]]
     },
-    "constantStats":[["chain_strike_cone_radius_+_per_x_rage"],[]],
+    "baseTypeName":"Chain Hook",
     "stats":[null,"quality_display_chain_hook_is_gem"],
     "baseMods":[{
         "value":[]
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Chain Hook",
+    "weaponTypes":[],
     "description":"When used at range, throws out a chain, pulling you to the enemy hit dealing damage in an area behind them. When close to the enemy, just causes the area damage directly. Requires a One Handed Mace, Sceptre, Sword or Axe."
   },
   "Cleave":{
-    "baseMods":[{
-        "value":[]
-      }],
     "qualityStats":{
       "Default":[[]]
     },
+    "weaponTypes":[],
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[[]],
+    "description":"The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Only works with Axes and Swords.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -12122,12 +12125,9 @@
           "value":[]
         }]
     },
-    "constantStats":[[]],
     "stats":[],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
-    "description":"The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Only works with Axes and Swords."
+    "baseFlags":[]
   },
   "InfernalBlow":{
     "qualityStats":{
@@ -12286,9 +12286,9 @@
       "infernal_blow_explosion_damage_%_of_total_per_stack":[[]],
       "quality_display_infernal_blow_is_gem":[]
     },
+    "baseTypeName":"Infernal Blow",
     "stats":[],
     "skillTypes":[],
-    "name":"Infernal Blow",
     "baseFlags":[]
   },
   "RageVortexAltX":{
@@ -12440,18 +12440,18 @@
         "cost":[],
         "baseMultiplier":0.794
       }],
+    "constantStats":[["rage_slash_maximum_vortices"],["rage_slash_vortex_attack_speed_+%_final"],[],["rage_storm_scaling_rage_hundred_times_base_cost"],["rage_storm_scaling_rage_loss_+%_per_second"]],
     "statMap":{
       "rage_slash_vortex_attack_speed_+%_final":[[[]]]
     },
-    "constantStats":[["rage_slash_maximum_vortices"],["rage_slash_vortex_attack_speed_+%_final"],[],["rage_storm_scaling_rage_hundred_times_base_cost"],["rage_storm_scaling_rage_loss_+%_per_second"]],
+    "baseTypeName":"Rage Vortex of Berserking",
     "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Rage Vortex of Berserking",
+    "weaponTypes":[],
     "description":"Spin with a sword or axe to deal damage in an area around you. If you have at least 10 rage, create a ragestorm attached to you that repeatedly deals attack damage to enemies inside based on your attack speed. The ragestorm consumes rage at an accelerating rate, and ends if you run out."
   },
   "RageVortex":{
@@ -12537,6 +12537,7 @@
       },{
         "cost":[]
       }],
+    "constantStats":[["rage_slash_sacrifice_rage_%"],["rage_slash_radius_+_per_amount_of_rage_sacrificed"],["rage_slash_rage_sacrifice_per_radius_bonus"],["rage_slash_damage_+%_final_per_amount_of_rage_sacrificed"],["rage_slash_rage_sacrifice_per_damage_bonus"],[],[],[],[]],
     "statMap":{
       "rage_slash_radius_+_per_amount_of_rage_sacrificed":[{
           "1":{
@@ -12553,15 +12554,14 @@
           "name":"Multiplier:MaxRageVortexSacrificePercentage"
         }]
     },
-    "constantStats":[["rage_slash_sacrifice_rage_%"],["rage_slash_radius_+_per_amount_of_rage_sacrificed"],["rage_slash_rage_sacrifice_per_radius_bonus"],["rage_slash_damage_+%_final_per_amount_of_rage_sacrificed"],["rage_slash_rage_sacrifice_per_damage_bonus"],[],[],[],[]],
+    "baseTypeName":"Rage Vortex",
     "stats":[null,null,null,"quality_display_rage_vortex_is_gem"],
     "qualityStats":{
       "Default":[[]]
     },
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Rage Vortex",
+    "weaponTypes":[],
     "description":"Spin with a sword or axe to deal damage in an area around you. Sacrifices some rage to send a ragestorm forward. While enemies are inside it, the ragestorm will slow its movement and repeatedly deal attack damage based on your attack speed."
   },
   "FireImpurity":{
@@ -12700,11 +12700,11 @@
         }],
       "base_maximum_fire_damage_resistance_%":[[[]]]
     },
+    "baseTypeName":"Vaal Impurity of Fire",
     "stats":[null,null,null,"base_immune_to_ignite","hits_ignore_my_fire_resistance"],
-    "baseFlags":[],
-    "constantStats":[[],[]],
     "skillTypes":[],
-    "name":"Vaal Impurity of Fire",
+    "constantStats":[[],[]],
+    "baseFlags":[],
     "description":"Casts an aura that reduces fire damage taken and provides ignite immunity to you and nearby allies, and makes hits against nearby enemies ignore their fire resistance. "
   },
   "FlameLink":{
@@ -12943,12 +12943,12 @@
             "actor":"parent"
           }],[[],[]]]
     },
+    "baseTypeName":"Flame Link",
     "stats":["flame_link_minimum_fire_damage","flame_link_maximum_fire_damage",null,"skill_cost_over_time_is_not_removed_with_skill","display_link_stuff"],
     "constantStats":[["flame_link_added_fire_damage_from_life_%"]],
+    "incrementalEffectiveness":0.039000000804663,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.039000000804663,
-    "name":"Flame Link",
     "description":"Targets an allied player to apply a buff which links you to them for a duration. While linked, they deal additional fire damage based on your life. If the target dies while linked, you will also die. This skill cannot be triggered, or used by Totems, Traps, or Mines."
   },
   "FlameTotemAltX":{
@@ -13076,16 +13076,19 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "baseTypeName":"Holy Flame Totem of Ire",
     "stats":{
       "11":"modifiers_to_projectile_count_do_not_apply"
     },
     "constantStats":[[],[],[],[]],
     "skillTypes":[],
     "baseFlags":[],
-    "castTime":0.18,
-    "name":"Holy Flame Totem of Ire"
+    "castTime":0.18
   },
   "DominatingBlow":{
+    "qualityStats":{
+      "Default":[[]]
+    },
     "minionSkillTypes":[],
     "levels":[{
         "cost":[]
@@ -13168,27 +13171,17 @@
       },{
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[[]]
-    },
     "constantStats":[[],[],[],[],[],[],[]],
+    "baseTypeName":"Dominating Blow",
     "stats":[],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "minionList":[],
-    "name":"Dominating Blow"
+    "minionList":[]
   },
   "VaalRejuvenationTotem":{
     "qualityStats":{
       "Default":[[]]
-    },
-    "statMap":{
-      "base_life_regeneration_rate_per_minute":[[[]]],
-      "vaal_rejuvenation_totem_%_damage_taken_applied_to_totem_instead":[{
-          "1":[],
-          "name":"takenFromVaalRejuvenationTotemsBeforeYou"
-        }]
     },
     "levels":[{
         "1":1157,
@@ -13365,6 +13358,14 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "statMap":{
+      "base_life_regeneration_rate_per_minute":[[[]]],
+      "vaal_rejuvenation_totem_%_damage_taken_applied_to_totem_instead":[{
+          "1":[],
+          "name":"takenFromVaalRejuvenationTotemsBeforeYou"
+        }]
+    },
+    "baseTypeName":"Vaal Rejuvenation Totem",
     "stats":[],
     "constantStats":[[],[],["vaal_rejuvenation_totem_%_damage_taken_applied_to_totem_instead"],[],[],["totem_scale_pluspercent"]],
     "skillTypes":[],
@@ -13372,10 +13373,10 @@
         "value":[]
       }],
     "baseFlags":[],
-    "name":"Vaal Rejuvenation Totem",
     "description":"Summons a totem that has an aura which regenerates life for you and your nearby allies. When things affected by the aura are hit, the totem's life is removed instead for some of the damage."
   },
   "Exsanguinate":{
+    "constantStats":[[]],
     "qualityStats":{
       "Default":[[]]
     },
@@ -13552,7 +13553,7 @@
           "value":[]
         }]
     },
-    "constantStats":[[]],
+    "baseTypeName":"Exsanguinate",
     "stats":[null,null,null,"blood_tendrils_beam_count",null,"quality_display_exsanguinate_beam_targets_is_gem"],
     "baseMods":[{
         "value":[]
@@ -13565,10 +13566,9 @@
         "2":[],
         "keywordFlags":16777216
       },[[],[]]],
+    "incrementalEffectiveness":0.052499998360872,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.052499998360872,
-    "name":"Exsanguinate",
     "description":"Releases several tendrils of blood from your character, targeting enemies in a narrow angle in front of you. The beams deal physical damage and inflict a physical damage over time debuff to enemies, which can stack up to 3 times. Effects which allow skills to chain can apply to these tendrils."
   },
   "ConsecratedPathAltX":{
@@ -13669,19 +13669,19 @@
         "cost":[],
         "damageEffectiveness":2.353
       }],
+    "constantStats":[[],[],[],[],[],[]],
     "statMap":{
       "groundslam_damage_to_close_targets_+%_final":[[[]]],
       "quality_display_groundslam_is_gem":[]
     },
-    "constantStats":[[],[],[],[],[],[]],
+    "baseTypeName":"Consecrated Path of Endurance",
     "stats":[],
     "baseMods":[{
         "value":[]
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Consecrated Path of Endurance",
+    "weaponTypes":[],
     "description":"Slams the ground at a targeted location. If an enemy is near where you target, you'll teleport to it from a short distance away, slam, and create an area of consecrated ground. The cooldown can be bypassed by expending an Endurance Charge. Can't be supported by Multistrike, and requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed."
   },
   "Punishment":{
@@ -13813,6 +13813,7 @@
     "statMap":{
       "damage_taken_+%_on_low_life":[[[],[]]]
     },
+    "baseTypeName":"Punishment",
     "stats":[null,null,"damage_taken_+%_on_low_life",null,"quality_display_debilitate_self_for_x_milliseconds_on_hit_is_gem"],
     "constantStats":[[]],
     "skillTypes":[],
@@ -13824,7 +13825,6 @@
         "name":"DebilitateChance"
       }],
     "baseFlags":[],
-    "name":"Punishment",
     "description":"Curses all targets in an area, causing them to be debilitated when they hit enemies and increasing damage they take while on low life."
   },
   "AnimateArmourAltX":{
@@ -13950,8 +13950,9 @@
         "cost":[],
         "statInterpolation":[]
       }],
-    "minionUses":[],
     "constantStats":[[],[],[]],
+    "minionUses":[],
+    "baseTypeName":"Animate Guardian of Smiting",
     "stats":[],
     "qualityStats":{
       "Default":[[]]
@@ -13959,10 +13960,12 @@
     "skillTypes":[],
     "baseFlags":[],
     "minionList":[],
-    "name":"Animate Guardian of Smiting",
     "description":"Animates a melee weapon or armour, attaching it to an invisible Guardian that fights by your side using Smite of Divine Judgement, ignoring weapon restrictions. Animating multiple items attaches them to the same Guardian. You cannot animate unidentified items. Cannot be used by Traps or Mines."
   },
   "Bladestorm":{
+    "qualityStats":{
+      "Default":[[]]
+    },
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -14106,15 +14109,12 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[[]]
-    },
+    "constantStats":[[],[],[],[]],
     "statMap":{
       "bladestorm_movement_speed_+%_while_in_sandstorm":[[[]]],
       "bladestorm_storm_damage_+%_final":[[[]]],
       "bladestorm_attack_speed_+%_final_while_in_bloodstorm":[[[]]]
     },
-    "constantStats":[[],[],[],[]],
     "stats":[null,null,"active_skill_bleeding_damage_+%_final_in_blood_stance"],
     "baseMods":[{
         "value":[]
@@ -14129,9 +14129,9 @@
         "2":[],
         "name":"BleedChance"
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
+    "weaponTypes":[],
     "description":"Perform a spinning attack, damaging enemies around you and creating a bladestorm matching your stance. The bladestorm repeatedly damages enemies, based on your weapon damage and attack time, for a duration. Blood bladestorms are stationary and cause Bleeding, while Sand bladestorms move slowly forwards and Blind enemies. Requires a Sword or Axe. You are in Blood Stance by default."
   },
   "ProtectiveLink":{
@@ -14293,10 +14293,10 @@
           "name":"MaximumBlockAttackChanceIsEqualToParent"
         }]
     },
+    "baseTypeName":"Protective Link",
     "stats":["bulwark_link_grants_recover_X_life_on_block",null,null,null,"display_bulwark_link_overrides_attack_block_and_maximum_attack_block"],
-    "baseFlags":[],
     "skillTypes":[],
-    "name":"Protective Link",
+    "baseFlags":[],
     "description":"Targets an allied player to apply a buff which links you to them for a duration. While linked, they copy your block chance and recover life when they block. If the target dies while linked, you will also die. This skill cannot be triggered, or used by Totems, Traps, or Mines."
   },
   "PhysicalDamageAura":{
@@ -14392,13 +14392,13 @@
             "modCond":"PrideMaxEffect"
           }]]
     },
+    "baseTypeName":"Pride",
     "stats":["physical_damage_aura_nearby_enemies_physical_damage_taken_+%","physical_damage_aura_nearby_enemies_physical_damage_taken_+%_max"],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Pride",
+    "baseFlags":[],
     "description":"Casts an aura that causes nearby enemies to take more physical damage."
   },
   "DecoyTotem":{
@@ -14526,14 +14526,14 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "baseTypeName":"Decoy Totem",
     "stats":[null,null,null,"totems_cannot_evade","totem_ignores_cooldown"],
     "constantStats":[[],[]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Decoy Totem",
+    "baseFlags":[],
     "description":"Summons a totem that taunts nearby monsters to attack it."
   },
   "IceCrash":{
@@ -14650,9 +14650,9 @@
       "quality_display_ice_crash_is_gem":[],
       "ice_crash_third_hit_damage_+%_final":[[[]]]
     },
+    "baseTypeName":"Ice Crash",
     "stats":[],
     "skillTypes":[],
-    "name":"Ice Crash",
     "baseFlags":[]
   },
   "PetrifiedBlood":{
@@ -14761,18 +14761,21 @@
         }]
     },
     "stats":[null,"cannot_recover_above_low_life_except_flasks"],
-    "baseFlags":[],
-    "constantStats":[["petrified_blood_%_life_loss_below_half_from_hit_to_prevent"],["skill_grants_life_cost_%_mana_cost_while_not_on_low_life"]],
     "skillTypes":[],
+    "constantStats":[["petrified_blood_%_life_loss_below_half_from_hit_to_prevent"],["skill_grants_life_cost_%_mana_cost_while_not_on_low_life"]],
+    "baseFlags":[],
     "description":"Applies a buff that protects the lower half of your life, preventing some of the immediate life loss when damaged by hits and applying the loss over time instead. Your life cannot be raised above low life other than by flasks, and while above low life, skills will cost life as well as mana."
   },
   "VaalGroundSlam":{
-    "baseMods":[{
-        "value":[]
-      }],
     "qualityStats":{
       "Default":[[]]
     },
+    "weaponTypes":[],
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[["base_stun_duration_+%"],[]],
+    "description":"Slams the ground in front of you, creating a wave that travels in all directions that damages enemies with an increased chance to stun. The wave deals more damage to closer enemies. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
     "levels":[{
         "cost":[],
         "statInterpolation":[]
@@ -14946,15 +14949,15 @@
       "vaal_skill_exertable":[],
       "quality_display_groundslam_is_gem":[]
     },
-    "constantStats":[["base_stun_duration_+%"],[]],
+    "baseTypeName":"Vaal Ground Slam",
     "stats":[null,null,null,null,null,"vaal_skill_exertable"],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
-    "name":"Vaal Ground Slam",
-    "description":"Slams the ground in front of you, creating a wave that travels in all directions that damages enemies with an increased chance to stun. The wave deals more damage to closer enemies. Requires an Axe, Mace, Sceptre, Staff or Unarmed."
+    "baseFlags":[]
   },
   "SpikeSlamAltY":{
+    "qualityStats":{
+      "Default":[[]]
+    },
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -15084,23 +15087,20 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[[]]
-    },
+    "constantStats":[[],[],[],[]],
     "statMap":{
       "earthshatter_spike_area_of_effect_+%_final":[[[]]],
       "spike_slam_explosion_damage_+%_final":[[[]]]
     },
-    "constantStats":[[],[],[],[]],
+    "baseTypeName":"Earthshatter of Prominence",
     "stats":["earthshatter_spike_area_of_effect_+%_final"],
     "baseMods":[{
         "1":[],
         "value":[]
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Earthshatter of Prominence",
+    "weaponTypes":[],
     "description":"Slam the ground, sending out a rectangular fissure that deals area damage to enemies and thrusts a large spike from the ground where it ends. Warcries or other Slam Attacks performed by you or allied players near the spike will cause it to shatter, damaging surrounding enemies. Works with Maces, Sceptres, Axes, Staves and Unarmed."
   },
   "Anger":{
@@ -15198,14 +15198,14 @@
       "spell_minimum_added_fire_damage":[[[]]],
       "attack_maximum_added_fire_damage":[[[]]]
     },
+    "baseTypeName":"Anger",
     "stats":[null,null,"spell_minimum_added_fire_damage","spell_maximum_added_fire_damage"],
     "baseMods":[{
         "value":[]
       }],
+    "incrementalEffectiveness":0.023000000044703,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.023000000044703,
-    "name":"Anger",
     "description":"Casts an aura that adds fire damage to the attacks and spells of you and your allies."
   },
   "BloodSpearsAltY":{
@@ -15380,12 +15380,15 @@
           "name":"Multiplier:PerforateofBloodshedMaxSpikes"
         }]
     },
+    "baseTypeName":"Perforate of Bloodshed",
     "stats":[null,null,null,null,null,"quality_display_perforate_is_gem"],
     "skillTypes":[],
-    "name":"Perforate of Bloodshed",
     "baseFlags":[]
   },
   "SpikeSlamAltX":{
+    "qualityStats":{
+      "Default":[[],[]]
+    },
     "parts":[[],[]],
     "levels":[{
         "cost":[],
@@ -15508,29 +15511,23 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[[],[]]
-    },
+    "constantStats":[[],[],[],[]],
     "statMap":{
       "spike_slam_spike_damage_+%_final":[[[]]],
       "spike_slam_explosion_damage_+%_final":[[[]]]
     },
-    "constantStats":[[],[],[],[]],
+    "baseTypeName":"Earthshatter of Fragility",
     "stats":[],
     "baseMods":[{
         "1":[],
         "value":[]
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Earthshatter of Fragility",
+    "weaponTypes":[],
     "description":"Slam the ground, sending out rectangular fissures that deal area damage to enemies and thrust a spike from the ground when they end. The spikes shatter after a duration, damaging surrounding enemies. Works with Maces, Sceptres, Axes, Staves and Unarmed."
   },
   "AncestorTotemSlam":{
-    "qualityStats":{
-      "Default":[["ancestor_totem_parent_activation_range_+%"]]
-    },
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -15674,19 +15671,22 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "qualityStats":{
+      "Default":[["ancestor_totem_parent_activation_range_+%"]]
+    },
+    "constantStats":[[],[],[],[],[]],
     "statMap":{
       "slam_ancestor_totem_grant_owner_melee_damage_+%_final":[[[]]]
     },
-    "constantStats":[[],[],[],[],[]],
     "stats":[],
     "baseMods":[{
         "value":[]
       },{
         "value":[]
       }],
+    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "weaponTypes":[],
     "description":"Summons an Ancestor Totem which attacks enemies with a powerful slam while you're near it. Being near it grants you more melee damage. Requires a Melee Weapon or Unarmed."
   },
   "LeapSlamAltX":{
@@ -15832,21 +15832,25 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "baseTypeName":"Leap Slam of Groundbreaking",
     "stats":[],
     "constantStats":[[]],
+    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "weaponTypes":[],
-    "name":"Leap Slam of Groundbreaking",
     "description":"Jump a short distance through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff. Cannot be supported by Multistrike."
   },
   "AbsolutionAltX":{
-    "baseMods":[{
-        "value":[]
-      }],
     "qualityStats":{
       "Default":[[]]
     },
+    "statDescriptionScope":"minion_spell_damage_skill_stat_descriptions",
+    "incrementalEffectiveness":0.043200001120567,
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[[],["max_number_of_absolution_sentinels"],[],["absolution_blast_chance_to_summon_on_hitting_rare_or_unique_%"],[],[],["max_number_of_vaal_absolution_sentinels"],[]],
+    "description":"Damages enemies in an area, applying a debuff for a short duration. If a non-unique enemy dies while affected by the debuff, the corpse will be consumed to summon a Sentinel of Absolution for a secondary duration, or to refresh the duration and life of an existing one instead if you have the maximum number of them.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -15979,17 +15983,14 @@
           "name":"MinionModifier"
         }]
     },
-    "constantStats":[[],["max_number_of_absolution_sentinels"],[],["absolution_blast_chance_to_summon_on_hitting_rare_or_unique_%"],[],[],["max_number_of_vaal_absolution_sentinels"],[]],
+    "baseTypeName":"Absolution of Inspiring",
     "stats":[],
-    "baseFlags":[],
-    "statDescriptionScope":"minion_spell_damage_skill_stat_descriptions",
     "skillTypes":[],
     "minionList":["AbsolutionTemplarJudge","AbsolutionTemplarJudgeVaal"],
-    "incrementalEffectiveness":0.043200001120567,
-    "name":"Absolution of Inspiring",
-    "description":"Damages enemies in an area, applying a debuff for a short duration. If a non-unique enemy dies while affected by the debuff, the corpse will be consumed to summon a Sentinel of Absolution for a secondary duration, or to refresh the duration and life of an existing one instead if you have the maximum number of them."
+    "baseFlags":[]
   },
   "Bloodreap":{
+    "constantStats":[[],["blood_scythe_cost_+%_final_per_charge"],[]],
     "qualityStats":{
       "Default":[[]]
     },
@@ -16169,7 +16170,7 @@
           "name":"LifeCost"
         }]
     },
-    "constantStats":[[],["blood_scythe_cost_+%_final_per_charge"],[]],
+    "baseTypeName":"Reap",
     "stats":[null,null,null,null,null,"lose_blood_scythe_charge_on_kill","quality_display_reap_is_gem"],
     "baseMods":[{
         "value":[]
@@ -16178,7 +16179,6 @@
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Reap",
     "description":"A bloody scythe swipes across a selected area, applying a physical damage over time debuff and hitting enemies with physical damage. If any survive, you gain a blood charge which raises the damage and cost of the skill. Players can have 5 maximum blood charges."
   },
   "GeneralsCrySupport":{
@@ -16276,6 +16276,9 @@
     "requireSkillTypes":[]
   },
   "ShieldCrush":{
+    "qualityStats":{
+      "Default":[[]]
+    },
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -16404,9 +16407,7 @@
             "ramp":[]
           }]]
     },
-    "qualityStats":{
-      "Default":[[]]
-    },
+    "baseTypeName":"Shield Crush",
     "stats":[],
     "baseMods":[{
         "value":[]
@@ -16415,10 +16416,10 @@
         "value":[]
       }],
     "skillTypes":[],
-    "baseFlags":[],
-    "name":"Shield Crush"
+    "baseFlags":[]
   },
   "VaalMoltenShell":{
+    "stats":[null,"molten_shell_damage_absorbed_%","molten_shell_%_of_absorbed_damage_dealt_as_reflected_fire",null,"molten_shell_explode_each_hit",null,"display_vaal_molten_shell_alternate_description","damage_originates_from_initiator_location"],
     "qualityStats":{
       "Default":[[]]
     },
@@ -16601,19 +16602,22 @@
           "name":"Multiplier:GuardAbsorbMax"
         }]
     },
-    "stats":[null,"molten_shell_damage_absorbed_%","molten_shell_%_of_absorbed_damage_dealt_as_reflected_fire",null,"molten_shell_explode_each_hit",null,"display_vaal_molten_shell_alternate_description","damage_originates_from_initiator_location"],
+    "baseTypeName":"Vaal Molten Shell",
     "constantStats":[["skill_override_pvp_scaling_time_ms",1400],["molten_shell_damage_absorb_limit_%_of_armour"],["molten_shell_max_damage_absorbed"],[]],
+    "incrementalEffectiveness":0.016499999910593,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.016499999910593,
-    "name":"Vaal Molten Shell",
     "description":"Applies a buff that raises your armour, and takes some of the damage from hits for you before being depleted. Each second, the skill deals reflected damage to surrounding enemies based on the damage taken by the buff in that second. When the buff is removed, the skill deals reflected damage to enemies around you based on the total damage that was taken by the buff. You cannot have the buff at the same time as any other Guard skill."
   },
   "MoltenShell":{
-    "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[[],[],[],[],[]],
+    "description":"Applies a buff that adds to your armour, and can take some of the damage from hits for you before being depleted. When the buff expires or is depleted, the skill deals reflected damage to enemies around you based on the total damage that was taken from the buff. Shares a cooldown with other Guard skills.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -16769,14 +16773,10 @@
       "molten_shell_damage_absorb_limit_%_of_armour":[[[],[]]],
       "molten_shell_max_damage_absorbed":[[[]]]
     },
-    "constantStats":[[],[],[],[],[]],
-    "baseMods":[{
-        "value":[]
-      }],
-    "skillTypes":[],
+    "baseTypeName":"Molten Shell",
+    "stats":[],
     "baseFlags":[],
-    "name":"Molten Shell",
-    "description":"Applies a buff that adds to your armour, and can take some of the damage from hits for you before being depleted. When the buff expires or is depleted, the skill deals reflected damage to enemies around you based on the total damage that was taken from the buff. Shares a cooldown with other Guard skills."
+    "skillTypes":[]
   },
   "BloodSpearsAltX":{
     "qualityStats":{
@@ -16944,18 +16944,19 @@
           }]],
       "quality_display_perforate_is_gem":[]
     },
+    "baseTypeName":"Perforate of Duality",
     "stats":[null,null,"skill_area_of_effect_+%_final_in_sand_stance"],
     "skillTypes":[],
-    "name":"Perforate of Duality",
     "baseFlags":[]
   },
   "Absolution":{
-    "baseMods":[{
-        "value":[]
-      }],
     "qualityStats":{
       "Default":[[]]
     },
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[[],[],[],[],[],[],[]],
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -17084,12 +17085,11 @@
           }
         }]
     },
-    "constantStats":[[],[],[],[],[],[],[]],
+    "baseTypeName":"Absolution",
     "stats":[],
-    "baseFlags":[],
     "skillTypes":[],
     "minionList":[],
-    "name":"Absolution"
+    "baseFlags":[]
   },
   "InfernalCryOnHitExplosion":{
     "qualityStats":{
@@ -17130,18 +17130,18 @@
       },[],{
         "baseMultiplier":1.9375
       },[]],
+    "constantStats":[[]],
     "statMap":{
       "triggered_by_infernal_cry":[]
     },
-    "constantStats":[[]],
+    "baseTypeName":"Combust",
     "stats":[null,"triggered_by_infernal_cry"],
     "baseMods":[{
         "value":[]
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Combust",
+    "weaponTypes":[],
     "description":"Deals attack damage in an area."
   },
   "BattlemagesCrySupport":{
@@ -17407,12 +17407,13 @@
     "statMap":{
       "active_skill_hit_ailment_damage_with_projectile_+%_final":[[[]]]
     },
+    "baseTypeName":"Vaal Molten Strike",
     "stats":[null,null,null,"molten_strike_projectiles_chain_when_impacting_ground"],
     "skillTypes":[],
-    "name":"Vaal Molten Strike",
     "baseFlags":[]
   },
   "ExsanguinateAltX":{
+    "constantStats":[[],[]],
     "qualityStats":{
       "Default":[[]]
     },
@@ -17548,7 +17549,7 @@
           "value":[]
         }]
     },
-    "constantStats":[[],[]],
+    "baseTypeName":"Exsanguinate of Transmission",
     "stats":[],
     "baseMods":[{
         "value":[]
@@ -17559,16 +17560,18 @@
         },[]],[[],[]]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Exsanguinate of Transmission",
     "description":"Releases a tendril of blood from your character, which will target an enemy in front of you, then chain to other enemies. The tendril deals physical damage and inflicts a physical damage over time debuff to enemies, which can stack up to 3 times."
   },
   "GroundSlam":{
-    "baseMods":[{
-        "value":[]
-      }],
     "qualityStats":{
       "Default":[[]]
     },
+    "weaponTypes":[],
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[[]],
+    "description":"Slams the ground in front of you, creating a wave that travels forward and damages enemies with an increased chance to stun. The wave deals more damage to closer enemies. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -17711,13 +17714,10 @@
       "groundslam_damage_to_close_targets_+%_final":[[[]]],
       "quality_display_groundslam_is_gem":[]
     },
-    "constantStats":[[]],
+    "baseTypeName":"Ground Slam",
     "stats":[],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
-    "name":"Ground Slam",
-    "description":"Slams the ground in front of you, creating a wave that travels forward and damages enemies with an increased chance to stun. The wave deals more damage to closer enemies. Requires an Axe, Mace, Sceptre, Staff or Unarmed."
+    "baseFlags":[]
   },
   "IntimidatingCry":{
     "qualityStats":{
@@ -17853,14 +17853,14 @@
           "name":"IntimidatingPDRPer5MP"
         }]
     },
+    "baseTypeName":"Intimidating Cry",
     "stats":[null,null,null,null,null,null,null,"intimidating_cry_empowerd_attacks_deal_double_damage_display","enemies_taunted_by_your_warcies_are_intimidated","use_intimidating_cry_buff_visual_for_intimidate"],
     "constantStats":[["intimidating_cry_enemy_phys_reduction_%_penalty_vs_hit_per_5_MP"],[]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Intimidating Cry",
+    "baseFlags":[],
     "description":"Performs a warcry, taunting nearby enemies to attack the user and exerting subsequent attacks. Grants a buff which lowers the effect of enemy physical damage reduction against your hits."
   },
   "SeismicCry":{
@@ -18000,23 +18000,26 @@
         }],
       "seismic_cry_base_slam_skill_area_+%":[]
     },
+    "baseTypeName":"Seismic Cry",
     "stats":[null,null,null,null,null,"warcries_knock_back_enemies",null,null,"active_skill_200%_increased_knockback_distance"],
     "constantStats":[[],["seismic_cry_+%_enemy_stun_threshold_per_5_MP"],["seismic_cry_base_slam_skill_area_+%"],["seismic_cry_slam_skill_area_+%_increase_per_repeat"],["skill_empower_limitation_specifier_for_stat_description"]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Seismic Cry",
+    "baseFlags":[],
     "description":"Performs a warcry, taunting nearby enemies to attack the user and exerting subsequent slam attacks. Grants a buff which makes it easier for you to stun enemies."
   },
   "CleaveAltX":{
-    "baseMods":[{
-        "value":[]
-      }],
     "qualityStats":{
       "Default":[[]]
     },
+    "weaponTypes":[],
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[[],[],[]],
+    "description":"The character swings both their weapons in an arc, damaging monsters in an area in front of them. Requires dual wielding both an Axe and a Sword.",
     "levels":[{
         "cost":[]
       },{
@@ -18122,13 +18125,10 @@
       "quality_display_chain_hook_is_gem":[],
       "chain_strike_gain_x_rage_if_attack_hits":[[[]]]
     },
-    "constantStats":[[],[],[]],
+    "baseTypeName":"Cleave of Rage",
     "stats":[],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
-    "name":"Cleave of Rage",
-    "description":"The character swings both their weapons in an arc, damaging monsters in an area in front of them. Requires dual wielding both an Axe and a Sword."
+    "baseFlags":[]
   },
   "GlacialHammerAltX":{
     "qualityStats":{
@@ -18256,11 +18256,11 @@
         "cost":[]
       }],
     "constantStats":[[],[],[]],
+    "baseTypeName":"Glacial Hammer of Shattering",
     "stats":[null,null,null,"glacial_hammer_third_hit_always_crits"],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Glacial Hammer of Shattering",
     "description":"Hits enemies, converting some of your physical damage to cold damage. If striking three times in a row, the third strike will be a critical strike. Requires a Mace, Sceptre or Staff."
   },
   "BloodSandStance":{
@@ -18336,11 +18336,11 @@
           },[]]],
       "blood_sand_stance_melee_skills_area_damage_+%_final_in_sand_stance":[[[],[]]]
     },
+    "baseTypeName":"Blood and Sand",
     "stats":[null,"blood_sand_stance_melee_skills_area_damage_+%_final_in_blood_stance","blood_sand_stance_melee_skills_area_of_effect_+%_final_in_sand_stance"],
-    "baseFlags":[],
-    "constantStats":[["blood_sand_stance_melee_skills_area_of_effect_+%_final_in_blood_stance"],["blood_sand_stance_melee_skills_area_damage_+%_final_in_sand_stance"]],
     "skillTypes":[],
-    "name":"Blood and Sand",
+    "constantStats":[["blood_sand_stance_melee_skills_area_of_effect_+%_final_in_blood_stance"],["blood_sand_stance_melee_skills_area_damage_+%_final_in_sand_stance"]],
+    "baseFlags":[],
     "description":"Casts a buff that grants different bonuses to melee skills depending on your stance. Using the skill again alternates between Blood Stance and Sand Stance."
   },
   "AncestralCry":{
@@ -18517,14 +18517,14 @@
           "name":"AncestralArmourPer5MP"
         }]
     },
+    "baseTypeName":"Ancestral Cry",
     "stats":["ancestral_cry_physical_damage_reduction_rating_per_5_MP","ancestral_cry_max_physical_damage_reduction_rating"],
     "constantStats":[[],["ancestral_cry_x_melee_range_per_5_monster_power"],["ancestral_cry_empowered_attacks_strike_X_additional_enemies"],[]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Ancestral Cry",
+    "baseFlags":[],
     "description":"Performs a warcry, taunting all nearby enemies to attack the user and exerting subsequent strike attacks. Grants a buff which gives you bonus armour and melee range."
   },
   "BloodSpears":{
@@ -18674,12 +18674,15 @@
         }],
       "quality_display_perforate_is_gem":[]
     },
+    "baseTypeName":"Perforate",
     "stats":[],
     "skillTypes":[],
-    "name":"Perforate",
     "baseFlags":[]
   },
   "SummonFireGolem":{
+    "qualityStats":{
+      "Default":[[]]
+    },
     "minionSkillTypes":[],
     "levels":[{
         "statInterpolation":[],
@@ -18802,24 +18805,22 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[[]]
-    },
+    "constantStats":[[],[]],
     "statMap":{
       "fire_golem_grants_damage_+%":[[[]]]
     },
-    "constantStats":[[],[]],
+    "baseTypeName":"Summon Flame Golem",
     "stats":[null,"fire_golem_grants_damage_+%"],
     "baseMods":[{
         "value":[]
       },[[]]],
-    "minionList":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Flame Golem",
+    "minionList":[],
     "description":"Summons a Flame Golem that grants you increased Damage. The Flame Golem can cast a fire spray, a wave of fire damage, and an explosive arcing projectile."
   },
   "QuickGuard":{
+    "constantStats":[["quick_guard_damage_absorbed_%"],[]],
     "qualityStats":{
       "Default":[[]]
     },
@@ -18948,7 +18949,7 @@
       "quick_guard_damage_absorbed_%":[[[]]],
       "quick_guard_damage_absorb_limit":[[[]]]
     },
-    "constantStats":[["quick_guard_damage_absorbed_%"],[]],
+    "baseTypeName":"Steelskin",
     "stats":["quick_guard_damage_absorb_limit",null,null,"display_skill_buff_grants_bleeding_immunity"],
     "baseMods":[{
         "1":[],
@@ -18956,10 +18957,12 @@
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Steelskin",
     "description":"Applies a buff which can take some of the damage from hits for you before being depleted. Shares a cooldown with other Guard skills."
   },
   "VaalGlacialHammer":{
+    "baseMods":[{
+        "value":[]
+      }],
     "qualityStats":{
       "Default":[[]]
     },
@@ -19109,15 +19112,12 @@
         "cost":[],
         "statInterpolation":[]
       }],
-    "baseMods":[{
-        "value":[]
-      }],
     "constantStats":[[],[],[],[]],
+    "baseTypeName":"Vaal Glacial Hammer",
     "stats":[null,null,null,null,"freeze_as_though_dealt_damage_+%"],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Vaal Glacial Hammer",
     "description":"Hits enemies, converting some of your physical damage to cold damage. It traps enemies with you in a circle of ice so that they can't escape. Requires a Mace, Sceptre or Staff."
   }
 }

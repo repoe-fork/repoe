@@ -8,7 +8,15 @@
     "weaponTypes":{
       "None":true
     },
-    "baseFlags":[],
+    "baseMods":[{
+        "flags":0,
+        "type":"LIST",
+        "value":{
+          "key":"radius",
+          "value":16
+        },
+        "name":"SkillData"
+      }],
     "constantStats":[[null,-30],["cyclone_area_of_effect_+%_per_additional_melee_range",10]],
     "description":"Channel this skill to move towards a targeted location while spinning constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back.",
     "levels":[{
@@ -251,7 +259,6 @@
             "type":"GlobalEffect",
             "effectType":"Buff"
           },
-          "flags":0,
           "type":"MORE",
           "name":"MovementSpeed"
         }],
@@ -264,19 +271,12 @@
           "name":"AreaOfEffect"
         }]
     },
+    "baseTypeName":"Cyclone",
     "stats":["attack_minimum_added_physical_damage","attack_maximum_added_physical_damage","is_area_damage","skill_can_add_multiple_charges_per_action"],
     "skillTypes":[],
     "incrementalEffectiveness":0.023299999535084,
     "castTime":1,
-    "name":"Cyclone",
-    "baseMods":[{
-        "type":"LIST",
-        "value":{
-          "key":"radius",
-          "value":16
-        },
-        "name":"SkillData"
-      }]
+    "baseFlags":[]
   },
   "SnappingAdder":{
     "parts":[{
@@ -469,6 +469,7 @@
       "Default":[["maximum_number_of_snapping_adder_projectiles"]]
     },
     "constantStats":[[null,30],["skill_physical_damage_%_to_convert_to_chaos"],["base_chance_to_poison_on_hit_%"],["projectile_speed_variation_+%"],["snapping_adder_maximum_projectiles_released"],["active_skill_returning_projectile_damage_+%_final",-75],["snapping_adder_%_chance_to_retain_projectile_on_release"],["base_skill_effect_duration",12000]],
+    "baseTypeName":"Venom Gyre",
     "stats":["base_is_projectile","returning_projectiles_always_pierce","projectiles_return","visual_hit_effect_chaos_is_green","quality_display_active_skill_returning_damage_is_gem","quality_display_venom_gyre_is_gem"],
     "baseMods":[{
         "1":{
@@ -477,10 +478,9 @@
         "type":"FLAG",
         "name":"Condition:ReturningProjectile"
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Venom Gyre",
+    "weaponTypes":[],
     "description":"Fires a returning projectile that can be caught. Caught projectiles spiral outwards when you use Whirling Blades and do not return. Requires a Dagger or Claw."
   },
   "ThrownWeapon":{
@@ -642,18 +642,21 @@
         "baseMultiplier":1.605
       }],
     "constantStats":[["spectral_throw_forget_hit_list_time_override",225]],
+    "baseTypeName":"Spectral Throw",
     "stats":[],
     "baseMods":[{
         "type":"BASE",
         "name":"PierceChance"
       }],
-    "weaponTypes":[],
-    "baseFlags":[],
     "skillTypes":[],
-    "name":"Spectral Throw",
+    "baseFlags":[],
+    "weaponTypes":[],
     "description":"Throws a spectral copy of your melee weapon. It flies out and then returns to you, in a spinning attack that damages enemies in its path."
   },
   "ScourgeArrowAltX":{
+    "qualityStats":{
+      "Default":[["virulent_arrow_number_of_pod_projectiles",0.05]]
+    },
     "parts":[{
         "name":"Release"
       },{
@@ -820,9 +823,7 @@
           "Mana":17
         }
       }],
-    "qualityStats":{
-      "Default":[["virulent_arrow_number_of_pod_projectiles",0.05]]
-    },
+    "constantStats":[[],[],["virulent_arrow_pod_projectile_damage_+%_final",-50],["override_turn_duration_ms"],["scourge_arrow_X_pods_per_projectile"]],
     "statMap":{
       "virulent_arrow_damage_+%_final_per_stage":[{
           "1":{
@@ -836,12 +837,11 @@
           "name":"PierceAllTargets"
         }]
     },
-    "constantStats":[[],[],["virulent_arrow_pod_projectile_damage_+%_final",-50],["override_turn_duration_ms"],["scourge_arrow_X_pods_per_projectile"]],
+    "baseTypeName":"Scourge Arrow of Menace",
     "stats":["attack_minimum_added_chaos_damage","attack_maximum_added_chaos_damage","skill_can_fire_arrows","base_arrows_always_pierce",null,"quality_display_scourge_arrow_is_gem"],
     "baseFlags":[],
-    "skillTypes":[],
     "weaponTypes":[],
-    "name":"Scourge Arrow of Menace",
+    "skillTypes":[],
     "description":"Fire an arrow that leaves a spore pod in its wake. The spore pod blooms, firing thorn arrows, which travel for a short time before dissipating. Modifiers that cause additional projectiles to be fired will only apply to the initial arrows, each of which leaves its own spore pod."
   },
   "Hatred":{
@@ -950,15 +950,15 @@
           "name":"PhysicalDamageGainAsCold"
         }]
     },
+    "baseTypeName":"Hatred",
     "stats":["physical_damage_%_to_add_as_cold","active_skill_base_radius_+","hatred_aura_cold_damage_+%_final","base_deal_no_damage"],
     "baseMods":[{
         "value":[]
       }],
     "statDescriptionScope":"aura_skill_stat_descriptions",
+    "incrementalEffectiveness":0.025000000372529,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.025000000372529,
-    "name":"Hatred",
     "description":"Casts an aura that grants extra cold damage based on physical damage to you and your allies."
   },
   "IceTrap":{
@@ -1089,6 +1089,7 @@
       }],
     "baseEffectiveness":2.3310000896454,
     "constantStats":[["base_trap_duration",4000],["active_skill_base_area_of_effect_radius"],["active_skill_base_secondary_area_of_effect_radius"],["active_skill_base_tertiary_area_of_effect_radius"]],
+    "baseTypeName":"Ice Trap",
     "stats":["spell_minimum_base_cold_damage","spell_maximum_base_cold_damage",null,"base_skill_is_trapped","base_skill_show_average_damage_instead_of_dps","is_trap","quality_display_trap_duration_is_gem"],
     "baseMods":[{
         "value":{
@@ -1106,10 +1107,9 @@
           "value":"Third Explosion:"
         }
       }],
+    "incrementalEffectiveness":0.046999998390675,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.046999998390675,
-    "name":"Ice Trap",
     "description":"Throws a trap that creates a series of icy runic explosions when triggered, dealing cold damage to all enemies caught in the blasts."
   },
   "VaalCyclone":{
@@ -1117,7 +1117,9 @@
       "Default":[[]]
     },
     "weaponTypes":[],
-    "baseFlags":[],
+    "baseMods":[{
+        "value":[]
+      }],
     "constantStats":[[null,5000],[]],
     "description":"Spin and attack in place, damaging nearby enemies and pulling others towards you. While using this skill, you cannot be stunned or knocked back. Cannot be supported by Ruthless.",
     "levels":[{
@@ -1295,12 +1297,10 @@
     "statMap":{
       "cyclone_area_of_effect_+%_per_additional_melee_range":[[[]]]
     },
+    "baseTypeName":"Vaal Cyclone",
     "stats":[null,null,null,"global_always_hit","modifiers_to_skill_effect_duration_also_affect_soul_prevention_duration","cannot_cancel_skill_before_contact_point"],
     "skillTypes":[],
-    "name":"Vaal Cyclone",
-    "baseMods":[{
-        "value":[]
-      }]
+    "baseFlags":[]
   },
   "BearTrap":{
     "qualityStats":{
@@ -1439,16 +1439,19 @@
           "name":"TrapMineDamageTaken"
         }]
     },
+    "baseTypeName":"Bear Trap",
     "stats":["secondary_minimum_base_physical_damage","secondary_maximum_base_physical_damage",null,"display_skill_deals_secondary_damage",null,"no_movement_speed","traps_do_not_explode_on_timeout"],
     "constantStats":[[],["trap_override_pvp_scaling_time_ms",750],["bear_trap_damage_taken_+%_from_traps_and_mines"],["bear_trap_movement_speed_+%_final",-80],[null,3000]],
     "statDescriptionScope":"debuff_skill_stat_descriptions",
+    "incrementalEffectiveness":0.042500000447035,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.042500000447035,
-    "name":"Bear Trap",
     "description":"Throws a trap that damages and immobilises a single enemy for a duration based on how much damage was dealt. After the immobilise expires, a debuff remains on the enemy for a duration, lowering their movement speed by an amount which lessens over time. The affected enemy will take increased damage from traps and mines until the debuff expires. Modifiers to spell damage do not affect this skill's damage."
   },
   "VaalBurningArrow":{
+    "baseMods":[{
+        "value":[]
+      }],
     "qualityStats":{
       "Default":[["active_skill_ignite_damage_+%_final"]]
     },
@@ -1651,22 +1654,25 @@
         "baseMultiplier":4.947
       }],
     "baseEffectiveness":0.86650002002716,
-    "baseMods":[{
-        "value":[]
-      }],
     "constantStats":[["base_chance_to_ignite_%"],["skill_physical_damage_%_to_convert_to_fire"],["projectile_base_number_of_targets_to_pierce"]],
+    "baseTypeName":"Vaal Burning Arrow",
     "stats":["minimum_added_fire_damage_vs_ignited_enemies","maximum_added_fire_damage_vs_ignited_enemies","vaal_burning_arrow_explode_on_hit"],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
     "incrementalEffectiveness":0.034099999815226,
-    "name":"Vaal Burning Arrow",
     "description":"Fires an arrow that explodes, dealing fire damage to its target and other nearby enemies, with an increased chance of igniting them."
   },
   "ShatteringSteel":{
+    "qualityStats":{
+      "Default":[["impale_debuff_effect_+%"]]
+    },
+    "weaponTypes":[],
     "baseMods":[{
         "value":[]
       }],
+    "constantStats":[["attacks_impale_on_hit_%_chance"],["base_number_of_projectiles"],["active_skill_projectile_speed_+%_variation_final"],["active_skill_additional_projectiles_fire_parallel_x_dist"]],
+    "description":"Swing an Axe or Sword, firing projectiles which shatter on impact or soon after being launched, dealing area damage in front of where they shatter.",
     "parts":[{
         "name":"Projectile",
         "area":false
@@ -1844,18 +1850,13 @@
         "baseMultiplier":2.056
       }],
     "baseEffectiveness":0.52929997444153,
-    "constantStats":[["attacks_impale_on_hit_%_chance"],["base_number_of_projectiles"],["active_skill_projectile_speed_+%_variation_final"],["active_skill_additional_projectiles_fire_parallel_x_dist"]],
-    "qualityStats":{
-      "Default":[["impale_debuff_effect_+%"]]
-    },
+    "baseTypeName":"Shattering Steel",
     "stats":[null,null,null,"console_skill_dont_chase","quality_display_base_number_of_projectiles_is_gem"],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
-    "name":"Shattering Steel",
-    "description":"Swing an Axe or Sword, firing projectiles which shatter on impact or soon after being launched, dealing area damage in front of where they shatter."
+    "baseFlags":[]
   },
   "BurningArrowAltX":{
+    "constantStats":[[],[]],
     "qualityStats":{
       "Default":[[]]
     },
@@ -1992,15 +1993,18 @@
           "name":"FireMax"
         }]
     },
-    "constantStats":[[],[]],
+    "baseTypeName":"Burning Arrow of Vigour",
     "stats":["added_fire_damage_to_attacks_equal_to_%_maximum_life"],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Burning Arrow of Vigour",
     "description":"Fires a burning arrow that deals fire damage and has a chance to ignite."
   },
   "DoubleSlashAltX":{
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "weaponTypes":[],
     "baseMods":[{
         "value":[]
       },{
@@ -2009,6 +2013,8 @@
           "key":"dpsMultiplier"
         }
       }],
+    "constantStats":[["skill_angle_+%_in_sand_stance"]],
+    "description":"Slashes twice, releasing wide waves of force that damage enemies they hit. Enemies in the middle of the slashes can be hit by both. Requires a Two Handed Axe or Two Handed Sword.",
     "parts":[{
         "name":"One slash"
       },{
@@ -2170,20 +2176,15 @@
         "cost":[]
       }],
     "baseEffectiveness":0.6700000166893,
-    "constantStats":[["skill_angle_+%_in_sand_stance"]],
-    "qualityStats":{
-      "Default":[[]]
-    },
+    "baseTypeName":"Lacerate of Butchering",
     "stats":[null,null,null,"display_active_skill_forced_stance"],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
-    "name":"Lacerate of Butchering",
-    "description":"Slashes twice, releasing wide waves of force that damage enemies they hit. Enemies in the middle of the slashes can be hit by both. Requires a Two Handed Axe or Two Handed Sword."
+    "baseFlags":[]
   },
   "Tornado":{
+    "stats":["spell_minimum_base_physical_damage","spell_maximum_base_physical_damage","tornado_movement_speed_+%",null,"damage_cannot_be_reflected_or_leech_if_used_by_other_object",null,"tornado_hinder"],
     "qualityStats":{
-      "Default":[["tornado_movement_speed_+%"]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -2325,12 +2326,11 @@
         "div":1000
       }
     },
-    "stats":["spell_minimum_base_physical_damage","spell_maximum_base_physical_damage",null,null,"damage_cannot_be_reflected_or_leech_if_used_by_other_object",null,"tornado_hinder"],
+    "baseTypeName":"Tornado",
     "constantStats":[["base_secondary_skill_effect_duration"],["tornado_base_damage_interval_ms",250],["tornado_damage_absorbed_%"],["number_of_tornados_allowed"],["tornado_maximum_number_of_hits"],["skill_override_pvp_scaling_time_ms"],[null,1500]],
+    "incrementalEffectiveness":0.057000000029802,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.057000000029802,
-    "name":"Tornado",
     "description":"Create a Tornado that hinders and repeatedly damages enemies around it. It will move forward for a duration, during which your projectiles can collide with it to deal damage as though it was an enemy. Then it will chase down enemies for a secondary duration, and reflect a portion of the damage it took from your projectiles to them in addition to its own damage."
   },
   "EtherealKnives":{
@@ -2461,12 +2461,12 @@
         "cost":[]
       }],
     "baseEffectiveness":2.1717000007629,
+    "baseTypeName":"Ethereal Knives",
     "stats":[],
     "constantStats":[[]],
+    "incrementalEffectiveness":0.043600000441074,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.043600000441074,
-    "name":"Ethereal Knives",
     "description":"Fires an arc of knives outwards in front of the caster which deal physical damage."
   },
   "Haste":{
@@ -2562,13 +2562,13 @@
       "base_movement_velocity_+%":[[[]]],
       "attack_speed_+%_granted_from_skill":[[[]]]
     },
+    "baseTypeName":"Haste",
     "stats":["attack_speed_+%_granted_from_skill","cast_speed_+%_granted_from_skill","base_movement_velocity_+%"],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Haste",
+    "baseFlags":[],
     "description":"Casts an aura that increases the movement speed, attack speed and cast speed of you and your allies."
   },
   "Ambush":{
@@ -2734,16 +2734,19 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "baseTypeName":"Ambush",
     "stats":["vanishing_ambush_critical_strike_multiplier_+"],
     "statDescriptionScope":"secondary_debuff_skill_stat_descriptions",
     "castTime":0.3,
-    "skillTypes":[],
-    "constantStats":[["skill_empower_limitation_specifier_for_stat_description"],["skill_empowers_next_x_melee_attacks"],[null,2500],[],[]],
     "baseFlags":[],
-    "name":"Ambush",
+    "constantStats":[["skill_empower_limitation_specifier_for_stat_description"],["skill_empowers_next_x_melee_attacks"],[null,2500],[],[]],
+    "skillTypes":[],
     "description":"Teleports you to a nearby enemy, applying a buff to you for a short duration and blinding the enemy for a secondary duration. Performing a melee attack with a One-Handed Weapon removes the buff to exert that attack."
   },
   "FrostBlades":{
+    "qualityStats":{
+      "Default":[[]]
+    },
     "parts":[{
         "name":"Melee hit"
       },{
@@ -2893,18 +2896,18 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[[]]
-    },
     "constantStats":[["skill_physical_damage_%_to_convert_to_cold"],["total_projectile_spread_angle_override"]],
+    "baseTypeName":"Frost Blades",
     "stats":["attack_minimum_added_cold_damage","attack_maximum_added_cold_damage",null,"melee_weapon_range_+","show_number_of_projectiles"],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Frost Blades",
     "description":"Attack enemies with increased range, releasing icy blades from the first enemy hit which fly at other enemies. Requires a Melee Weapon."
   },
   "SummonIceGolem":{
+    "qualityStats":{
+      "Default":[["golem_buff_effect_+%"]]
+    },
     "minionSkillTypes":[],
     "levels":[{
         "statInterpolation":[],
@@ -3027,9 +3030,7 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[["golem_buff_effect_+%"]]
-    },
+    "constantStats":[["base_number_of_golems_allowed"],["display_minion_monster_type"]],
     "statMap":{
       "ice_golem_grants_accuracy_+%":[{
           "1":[],
@@ -3040,7 +3041,7 @@
           "name":"CritChance"
         }]
     },
-    "constantStats":[["base_number_of_golems_allowed"],["display_minion_monster_type"]],
+    "baseTypeName":"Summon Ice Golem",
     "stats":["base_actor_scale_+%","ice_golem_grants_critical_strike_chance_+%","ice_golem_grants_accuracy_+%","base_display_minion_actor_level","infinite_minion_duration"],
     "baseMods":[{
         "value":{
@@ -3051,14 +3052,19 @@
         "name":"Condition:HaveColdGolem"
       }],
     "statDescriptionScope":"minion_spell_skill_stat_descriptions",
-    "minionList":["SummonedIceGolem"],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Ice Golem",
+    "minionList":["SummonedIceGolem"],
     "description":"Summons an Ice Golem that grants you increased Critical Strike Chance and Accuracy. The Ice Golem can use an icy barrage spell and a chilling spinning attack in addition to its melee attack."
   },
   "LancingSteelAltX":{
-    "stats":[null,null,null,null,null,"always_pierce"],
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "weaponTypes":[],
+    "baseFlags":[],
+    "constantStats":[["lancing_steel_damage_+%_final_after_first_hit_on_target",-90]],
+    "description":"Thrust an Axe or Sword forward to form a cluster of shards in front of you. The cluster will fire a number of projectiles in sequence, aiming at enemies in front of or close to it.",
     "parts":[{
         "name":"Single Projectile Hit"
       },{
@@ -3222,40 +3228,43 @@
         "damageEffectiveness":2.674,
         "cost":[]
       }],
-    "constantStats":[["lancing_steel_damage_+%_final_after_first_hit_on_target",-90]],
     "statMap":{
       "lancing_steel_damage_+%_final_after_first_hit_on_target":[{
           "1":[],
           "name":"LancingSteelSubsequentDamage"
         }]
     },
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "baseFlags":[],
-    "skillTypes":[],
-    "weaponTypes":[],
-    "name":"Lancing Steel of Spraying",
-    "description":"Thrust an Axe or Sword forward to form a cluster of shards in front of you. The cluster will fire a number of projectiles in sequence, aiming at enemies in front of or close to it."
+    "baseTypeName":"Lancing Steel of Spraying",
+    "stats":[null,null,null,null,null,"always_pierce"],
+    "skillTypes":[]
   },
   "QuickstepHardMode":{
     "qualityStats":{
       "Default":[["gem_display_quality_has_no_effect",0.001]]
     },
     "levels":[[],[],[],[],[],[],[],[],[],[]],
+    "baseTypeName":"Quickstep",
     "stats":[null,"skill_cannot_be_interrupted","skill_cannot_be_knocked_back","skill_cannot_be_stunned","spell_cast_time_cannot_be_modified"],
     "castTime":0.15,
-    "baseFlags":[],
-    "constantStats":[["cooldown_recovery_rate_+%_when_a_unique_enemy_in_your_presence"],[]],
     "skillTypes":[],
-    "name":"Quickstep",
+    "constantStats":[["cooldown_recovery_rate_+%_when_a_unique_enemy_in_your_presence"],[]],
+    "baseFlags":[],
     "description":"Performs a series of quick teleports towards a targeted location, stopping if you would overlap with monsters or terrain. If using the \"Attack in Place\" option, the direction is reversed. Shares a cooldown with other Blink skills. Cannot be supported."
   },
   "VaalBladeVortex":{
-    "stats":[null,null,null,null,null,"vaal_blade_vortex_has_10_spinning_blades"],
     "qualityStats":{
       "Default":[["blade_vortex_hit_rate_+%_per_blade"]]
     },
+    "incrementalEffectiveness":0.033300001174212,
+    "baseMods":[{
+        "value":[]
+      },{
+        "value":{
+          "key":"VaalBladeVortexBlade"
+        }
+      }],
+    "constantStats":[[],["extra_gore_chance_override_%"],["base_blade_vortex_hit_rate_ms"],["critical_strike_chance_+%"]],
+    "description":"Creates an independently-moving vortex of ethereal blades which lasts for a duration. The vortex moves toward nearby enemies, repeatedly damaging enemies that it passes through.",
     "levels":[{
         "cost":[],
         "statInterpolation":[]
@@ -3390,24 +3399,19 @@
           }
         }]
     },
-    "constantStats":[[],["extra_gore_chance_override_%"],["base_blade_vortex_hit_rate_ms"],["critical_strike_chance_+%"]],
-    "baseMods":[{
-        "value":[]
-      },{
-        "value":{
-          "key":"VaalBladeVortexBlade"
-        }
-      }],
-    "skillTypes":[],
+    "baseTypeName":"Vaal Blade Vortex",
+    "stats":[null,null,null,null,null,"vaal_blade_vortex_has_10_spinning_blades"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.033300001174212,
-    "name":"Vaal Blade Vortex",
-    "description":"Creates an independently-moving vortex of ethereal blades which lasts for a duration. The vortex moves toward nearby enemies, repeatedly damaging enemies that it passes through."
+    "skillTypes":[]
   },
   "ExplosiveConcoctionAltX":{
     "qualityStats":{
       "Default":[["flask_charges_used_+%",-0.75]]
     },
+    "weaponTypes":[],
+    "baseFlags":[],
+    "constantStats":[["additional_base_critical_strike_chance",800],["flask_throw_charges_used_per_projectile"],[]],
+    "description":"Throws a bottle that explodes to deal unarmed attack damage in an area. Can consume charges from your Ruby, Sapphire, and Topaz flasks to add further damage. Requires an empty main hand, and no off-hand weapon.",
     "parts":[{
         "name":"No Flasks"
       },{
@@ -3588,16 +3592,13 @@
           "name":"LightningMax"
         }]
     },
-    "constantStats":[["additional_base_critical_strike_chance",800],["flask_throw_charges_used_per_projectile"],[]],
+    "baseTypeName":"Explosive Concoction of Destruction",
     "stats":["attack_minimum_added_fire_damage","attack_maximum_added_fire_damage","flask_throw_minimum_cold_damage_if_used_sapphire_flask","flask_throw_maximum_cold_damage_if_used_sapphire_flask","flask_throw_minimum_lightning_damage_if_used_topaz_flask","flask_throw_maximum_lightning_damage_if_used_topaz_flask","flask_throw_ruby_flask_critical_strike_multiplier_+",null,null,null,"projectile_behaviour_only_explode"],
-    "baseFlags":[],
-    "weaponTypes":[],
-    "skillTypes":[],
     "incrementalEffectiveness":0.038699999451637,
-    "name":"Explosive Concoction of Destruction",
-    "description":"Throws a bottle that explodes to deal unarmed attack damage in an area. Can consume charges from your Ruby, Sapphire, and Topaz flasks to add further damage. Requires an empty main hand, and no off-hand weapon."
+    "skillTypes":[]
   },
   "ThrownShield":{
+    "constantStats":[["number_of_additional_projectiles"],["thrown_shield_secondary_projectile_damage_+%_final"],["primary_projectile_chains_+"]],
     "parts":[{
         "name":"Shield"
       },{
@@ -3733,15 +3734,14 @@
         }],
       "thrown_shield_secondary_projectile_damage_+%_final":[[[]]]
     },
-    "constantStats":[["number_of_additional_projectiles"],["thrown_shield_secondary_projectile_damage_+%_final"],["primary_projectile_chains_+"]],
+    "baseTypeName":"Spectral Shield Throw",
     "stats":["off_hand_local_minimum_added_physical_damage","off_hand_local_maximum_added_physical_damage","off_hand_minimum_added_physical_damage_per_15_shield_armour_and_evasion_rating","off_hand_maximum_added_physical_damage_per_15_shield_armour_and_evasion_rating",null,"thrown_shield_projectile_fire_random_directions"],
     "qualityStats":{
       "Default":[[]]
     },
+    "incrementalEffectiveness":0.017300000414252,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.017300000414252,
-    "name":"Spectral Shield Throw",
     "description":"Throws a spectral copy of your shield as a projectile which cannot pierce, and deals off-hand damage augmented by the defences of the shield. When it collides with something it will shatter, launching a number of smaller shards as projectiles in all directions. Modifiers that cause additional projectiles to be fired will add more shards, not more copies of the shield."
   },
   "TornadoShotAltX":{
@@ -3863,12 +3863,12 @@
         "baseMultiplier":2.376,
         "cost":[]
       }],
+    "baseTypeName":"Tornado Shot of Cloudburst",
     "stats":[null,null,"quality_display_tornado_shot_is_gem","projectiles_rain","projectiles_nova","quality_display_base_additional_arrows_is_gem"],
     "constantStats":[[]],
-    "weaponTypes":[],
-    "baseFlags":[],
     "skillTypes":[],
-    "name":"Tornado Shot of Cloudburst",
+    "baseFlags":[],
+    "weaponTypes":[],
     "description":"Fires a single payload arrow into the air to land at a targeted location. It will then fire arrows out in all directions from that point."
   },
   "NewPhaseRun":{
@@ -4008,11 +4008,11 @@
           "name":"PhysicalDamage"
         }]
     },
+    "baseTypeName":"Phase Run",
     "stats":[null,"phase_run_melee_physical_damage_+%_final","phase_through_objects"],
-    "baseFlags":[],
-    "constantStats":[["stealth_+%"],[null,1800],[],["skill_effect_duration_+%_per_removable_frenzy_charge"]],
     "skillTypes":[],
-    "name":"Phase Run",
+    "constantStats":[["stealth_+%"],[null,1800],[],["skill_effect_duration_+%_per_removable_frenzy_charge"]],
+    "baseFlags":[],
     "description":"Gain a buff that makes you faster, harder to detect, and grants Phasing, letting you pass through enemies. Performing any skill replaces this buff with one that boosts melee physical damage of skills you use yourself (it will not apply to your melee skills used by totems). Consumes Frenzy Charges to increase duration."
   },
   "ShatteringSteelAltX":{
@@ -4182,9 +4182,9 @@
           "name":"Multiplier:MaxSteelShardsConsumed"
         }]
     },
+    "baseTypeName":"Shattering Steel of Ammunition",
     "stats":[null,null,"shattering_steel_hit_damage_+%_final_scaled_by_projectile_distance_per_ammo_consumed",null,null,null,"fires_1_projectile_if_no_steel_ammo"],
     "skillTypes":[],
-    "name":"Shattering Steel of Ammunition",
     "baseFlags":[]
   },
   "BladeBlastAltY":{
@@ -4359,19 +4359,23 @@
           }
         }]
     },
+    "baseTypeName":"Blade Blast of Dagger Detonation",
     "stats":[null,null,"gain_%_of_base_dagger_damage_as_added_spell_damage"],
     "constantStats":[[]],
+    "incrementalEffectiveness":0.041299998760223,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.041299998760223,
-    "name":"Blade Blast of Dagger Detonation",
     "description":"Deals spell damage in an area around you. Your equipped daggers add to this damage."
   },
   "HeraldOfAgony":{
     "qualityStats":{
       "Default":[["maximum_virulence_stacks"]]
     },
-    "minionSkillTypes":[],
+    "statDescriptionScope":"minion_skill_stat_descriptions",
+    "incrementalEffectiveness":0.044700000435114,
+    "baseFlags":[],
+    "constantStats":[["skill_buff_grants_chance_to_poison_%"],["herald_of_agony_poison_damage_+%_final"],["base_number_of_herald_scorpions_allowed"],[]],
+    "description":"Grants a buff giving more poison damage and a chance to inflict poison. When you poison an enemy while you have this buff, you gain Virulence, and summon an Agony Crawler minion that uses projectile and area attacks. You will lose Virulence over time, at a rate which increases the more Virulence you have. The minion will die when you have no Virulence.",
     "levels":[{
         "statInterpolation":[]
       },{
@@ -4505,15 +4509,11 @@
           "keywordFlags":2097152
         }]
     },
-    "constantStats":[["skill_buff_grants_chance_to_poison_%"],["herald_of_agony_poison_damage_+%_final"],["base_number_of_herald_scorpions_allowed"],[]],
+    "baseTypeName":"Herald of Agony",
     "stats":["scorpion_minion_minimum_added_physical_damage","scorpion_minion_maximum_added_physical_damage","scorpion_minion_physical_damage_+%","scorpion_minion_attack_speed_+%","herald_of_agony_add_stack_on_poison","minions_cannot_taunt_enemies",null,"quality_display_herald_of_agony_is_gem"],
-    "baseFlags":[],
-    "statDescriptionScope":"minion_skill_stat_descriptions",
-    "incrementalEffectiveness":0.044700000435114,
     "skillTypes":[],
     "minionList":[],
-    "name":"Herald of Agony",
-    "description":"Grants a buff giving more poison damage and a chance to inflict poison. When you poison an enemy while you have this buff, you gain Virulence, and summon an Agony Crawler minion that uses projectile and area attacks. You will lose Virulence over time, at a rate which increases the more Virulence you have. The minion will die when you have no Virulence."
+    "minionSkillTypes":[]
   },
   "VaalReave":{
     "qualityStats":{
@@ -4679,6 +4679,7 @@
         "statInterpolation":[],
         "damageEffectiveness":4.289
       }],
+    "constantStats":[["reave_area_of_effect_+%_final_per_stage"],["reave_rotation_on_repeat"],[],["base_attack_repeat_count"],["reave_additional_starting_stacks"]],
     "statMap":{
       "reave_area_of_effect_+%_final_per_stage":[[{
             "var":"ReaveStage"
@@ -4687,18 +4688,22 @@
           "name":"Multiplier:ReaveMaxStages"
         }]
     },
-    "constantStats":[["reave_area_of_effect_+%_final_per_stage"],["reave_rotation_on_repeat"],[],["base_attack_repeat_count"],["reave_additional_starting_stacks"]],
+    "baseTypeName":"Vaal Reave",
     "stats":[],
     "baseMods":[{
         "value":[]
       },[]],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Vaal Reave",
+    "weaponTypes":[],
     "description":"Repeatedly attacks a large area in different directions. Each Vaal Reave that hits an enemy grants stages, which you will begin to lose after a short period without hitting anything. Only works with Daggers, Claws, and One-Handed Swords."
   },
   "MirrorArrowAltY":{
+    "baseMods":[{
+        "value":{
+          "key":"minionUseBowAndQuiver"
+        }
+      }],
     "minionSkillTypes":[],
     "levels":[{
         "statInterpolation":[],
@@ -4821,22 +4826,17 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "baseMods":[{
-        "value":{
-          "key":"minionUseBowAndQuiver"
-        }
-      }],
     "constantStats":[[null,20000],["number_of_monsters_to_summon"],[],["maximum_number_of_blink_mirror_arrow_elemental_hit_clones"]],
     "qualityStats":{
       "Default":[["base_cooldown_speed_+%"]]
     },
+    "baseTypeName":"Mirror Arrow of Prismatic Clones",
     "stats":[null,"active_skill_minion_damage_+%_final"],
     "baseFlags":[],
     "statDescriptionScope":"minion_attack_skill_stat_descriptions",
+    "weaponTypes":[],
     "skillTypes":[],
     "minionList":["ArrowClone"],
-    "weaponTypes":[],
-    "name":"Mirror Arrow of Prismatic Clones",
     "description":"Fires an arrow at the target destination. When the arrow lands, a clone is summoned. The clone is a minion that uses your bow and quiver to fire random elemental arrows."
   },
   "VaalRainOfArrows":{
@@ -5001,16 +5001,16 @@
         "statInterpolation":[]
       }],
     "constantStats":[["rain_of_arrows_additional_sequences"],["maim_effect_+%"]],
+    "baseTypeName":"Vaal Rain of Arrows",
     "stats":[null,null,null,"global_maim_on_hit",null,"cannot_pierce"],
     "baseMods":[{
         "value":[]
       },{
         "name":"OneShotProj"
       }],
-    "weaponTypes":[],
-    "baseFlags":[],
     "skillTypes":[],
-    "name":"Vaal Rain of Arrows",
+    "baseFlags":[],
+    "weaponTypes":[],
     "description":"Fires multiple arrows into the air, to land in multiple sequences after a delay, each starting at the targeted location and spreading outwards in all directions. Each arrow deals damage in an area around it. Half of the arrows will land directly on targets if there are targets in their range."
   },
   "VaalGrace":{
@@ -5144,14 +5144,14 @@
           "name":"EvadeChance"
         }]
     },
+    "baseTypeName":"Vaal Grace",
     "stats":[null,null,"modifiers_to_buff_effect_duration_also_affect_soul_prevention_duration","damage_taken_from_suppressed_hits_is_unlucky"],
     "constantStats":[["chance_to_evade_attacks_%"],[]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Vaal Grace",
+    "baseFlags":[],
     "description":"Casts a temporary aura that grants you and your allies additional chance to evade attacks, and makes suppressed spell damage unlucky against you."
   },
   "Desecrate":{
@@ -5284,6 +5284,7 @@
       }],
     "baseEffectiveness":1.6000000238419,
     "constantStats":[[],["desecrate_number_of_corpses_to_create"],["desecrate_maximum_number_of_corpses"]],
+    "baseTypeName":"Desecrate",
     "stats":["base_chaos_damage_to_deal_per_minute","desecrate_corpse_level"],
     "baseMods":[{
         "value":{
@@ -5292,14 +5293,28 @@
       },{
         "value":[]
       }],
+    "incrementalEffectiveness":0.046500001102686,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.046500001102686,
-    "name":"Desecrate",
     "description":"Desecrates the ground, summoning corpses and dealing chaos damage to all enemies in the area. The corpses will be chosen from the monsters in the current area and any Spectres that have existed in this instance."
   },
   "BladeBlastAltX":{
-    "stats":[],
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "baseMods":[{
+        "value":900,
+        "name":"Multiplier:BladeBlastofUnloadingMaxStages"
+      },{
+        "1":{
+          "var":"BladeBlastofUnloadingStage"
+        },
+        "value":{
+          "key":"dpsBaseMultiplier"
+        }
+      }],
+    "constantStats":[[],["blade_burst_area_of_effect_+%_final_per_blade_vortex_blade_detonated"]],
+    "description":"Deals spell damage in an area around you. If you have Blade Vortex blades orbiting you, it will detonate each of them in turn, dealing damage again in an area around you for each one.",
     "parts":[{
         "name":"Blade Hits Per Cast"
       },{
@@ -5427,25 +5442,10 @@
         "cost":[]
       }],
     "baseEffectiveness":2.9500000476837,
-    "constantStats":[[],["blade_burst_area_of_effect_+%_final_per_blade_vortex_blade_detonated"]],
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "baseMods":[{
-        "value":900,
-        "name":"Multiplier:BladeBlastofUnloadingMaxStages"
-      },{
-        "1":{
-          "var":"BladeBlastofUnloadingStage"
-        },
-        "value":{
-          "key":"dpsBaseMultiplier"
-        }
-      }],
-    "skillTypes":[],
+    "baseTypeName":"Blade Blast of Unloading",
+    "stats":[],
     "baseFlags":[],
-    "name":"Blade Blast of Unloading",
-    "description":"Deals spell damage in an area around you. If you have Blade Vortex blades orbiting you, it will detonate each of them in turn, dealing damage again in an area around you for each one."
+    "skillTypes":[]
   },
   "EtherealKnivesAltX":{
     "qualityStats":{
@@ -5572,11 +5572,11 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "baseTypeName":"Ethereal Knives of Lingering Blades",
     "stats":[],
     "constantStats":[[],["maximum_number_of_blades_left_in_ground"],["ethereal_knives_blade_left_in_ground_for_every_X_projectiles"],[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Ethereal Knives of Lingering Blades",
     "description":"Fires an arc of knives down into the ground in front of the caster which deal physical damage.\nCannot be supported by Volley."
   },
   "BloodRage":{
@@ -5766,6 +5766,7 @@
           },[]]],
       "attack_speed_+%_granted_from_skill":[[[]]]
     },
+    "baseTypeName":"Blood Rage",
     "stats":[null,null,"skill_level"],
     "constantStats":[["life_leech_from_physical_attack_damage_permyriad"],["base_physical_damage_%_of_maximum_life_to_deal_per_minute"],["base_physical_damage_%_of_maximum_energy_shield_to_deal_per_minute"],["add_frenzy_charge_on_kill_%_chance"]],
     "skillTypes":[],
@@ -5775,7 +5776,6 @@
         }
       }],
     "baseFlags":[],
-    "name":"Blood Rage",
     "description":"Adds a buff that deals Physical Damage over time, while increasing Attack Speed and Life Leech. Killing an enemy while this buff is active refreshes the buff duration, and can grant a Frenzy Charge."
   },
   "FireTrap":{
@@ -5911,6 +5911,7 @@
       }],
     "baseEffectiveness":2.1289000511169,
     "constantStats":[[],[null,1750]],
+    "baseTypeName":"Fire Trap",
     "stats":["spell_minimum_base_fire_damage","spell_maximum_base_fire_damage","base_fire_damage_to_deal_per_minute","global_minimum_added_fire_damage_vs_burning_enemies","global_maximum_added_fire_damage_vs_burning_enemies",null,null,null,null,"spell_damage_modifiers_apply_to_skill_dot"],
     "baseMods":[{
         "value":[]
@@ -5919,19 +5920,24 @@
       },{
         "value":[]
       }],
+    "incrementalEffectiveness":0.057300001382828,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.057300001382828,
-    "name":"Fire Trap",
     "description":"Throws a trap that explodes when triggered, dealing fire damage to surrounding enemies and leaving an area of burning ground that damages enemies who walk through it."
   },
   "IceShot":{
+    "qualityStats":{
+      "Default":[["skill_area_angle_+%"]]
+    },
+    "weaponTypes":[],
     "baseMods":[{
         "1":[],
         "name":"SkillPhysicalDamageConvertToCold"
       },{
         "value":[]
       }],
+    "constantStats":[[]],
+    "description":"Fires an arrow that converts some physical damage to cold on its target and converts all physical damage to cold in a cone behind that target.",
     "parts":[{
         "name":"Arrow"
       },{
@@ -6115,16 +6121,10 @@
         "damageEffectiveness":2.09,
         "cost":[]
       }],
-    "constantStats":[[]],
-    "qualityStats":{
-      "Default":[["skill_area_angle_+%"]]
-    },
+    "baseTypeName":"Ice Shot",
     "stats":[null,null,"active_skill_chill_as_though_damage_+%_final"],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
-    "name":"Ice Shot",
-    "description":"Fires an arrow that converts some physical damage to cold on its target and converts all physical damage to cold in a cone behind that target."
+    "baseFlags":[]
   },
   "IntuitiveLink":{
     "qualityStats":{
@@ -6352,14 +6352,15 @@
     "statMap":{
       "display_trigger_link":[]
     },
+    "baseTypeName":"Intuitive Link",
     "stats":[null,"skill_cost_over_time_is_not_removed_with_skill","display_trigger_link","display_link_stuff"],
     "statDescriptionScope":"buff_skill_stat_descriptions",
-    "baseFlags":[],
     "skillTypes":[],
-    "name":"Intuitive Link",
+    "baseFlags":[],
     "description":"Targets an allied player to apply a buff which links you to them for a duration. While linked, their hits can trigger your supported spells. If the target dies while linked, you will also die. This skill cannot be triggered, or used by Totems, Traps, or Mines."
   },
   "BoneLance":{
+    "constantStats":[[]],
     "qualityStats":{
       "Default":[["maximum_life_+%_for_corpses_you_create"]]
     },
@@ -6493,7 +6494,7 @@
           "name":"CorpseLevel"
         }]
     },
-    "constantStats":[[]],
+    "baseTypeName":"Unearth",
     "stats":[null,null,"unearth_base_corpse_level"],
     "baseMods":[{
         "value":{
@@ -6501,10 +6502,9 @@
           "value":"Bone Archer"
         }
       }],
+    "incrementalEffectiveness":0.039500001817942,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.039500001817942,
-    "name":"Unearth",
     "description":"Fires a projectile that will pierce through enemies to impact the ground at the targeted location, creating a Bone Archer corpse where it lands."
   },
   "DoubleStrike":{
@@ -6670,11 +6670,11 @@
         "name":"PvpTvalueMultiplier"
       }],
     "constantStats":[["base_skill_number_of_additional_hits"],["bleed_on_hit_with_attacks_%"]],
+    "baseTypeName":"Double Strike",
     "stats":["global_minimum_added_physical_damage_vs_bleeding_enemies","global_maximum_added_physical_damage_vs_bleeding_enemies"],
     "baseFlags":[],
-    "skillTypes":[],
     "weaponTypes":[],
-    "name":"Double Strike",
+    "skillTypes":[],
     "description":"Performs two fast strikes with a melee weapon."
   },
   "BladeTrapAltX":{
@@ -6827,18 +6827,19 @@
         "cost":[],
         "statInterpolation":[]
       }],
+    "baseTypeName":"Blade Trap of Greatswords",
     "stats":[null,null,null,null,null,"attack_is_not_melee_override","trap_use_alternate_death_animation"],
     "constantStats":[[],["trap_variation"],[],[null,3500]],
-    "weaponTypes":[],
-    "baseFlags":[],
     "skillTypes":[],
-    "name":"Blade Trap of Greatswords",
+    "baseFlags":[],
+    "weaponTypes":[],
     "description":"Throws a trap which, once triggered, swings two copies of your equipped Two Handed Sword around it in circles for a duration, each repeatedly damaging enemies it spins through"
   },
   "ShrapnelTrapAltX":{
     "qualityStats":{
       "Default":[["shrapnel_trap_number_of_secondary_explosions"]]
     },
+    "incrementalEffectiveness":0.035599999129772,
     "baseMods":[{
         "value":{
           "value":"Primary Explosion:"
@@ -6994,12 +6995,11 @@
         }],
       "quality_display_explosive_trap_is_gem":[]
     },
+    "baseTypeName":"Explosive Trap of Shrapnel",
     "stats":{
       "12":"quality_display_explosive_trap_is_gem"
     },
     "baseFlags":[],
-    "incrementalEffectiveness":0.035599999129772,
-    "name":"Explosive Trap of Shrapnel",
     "skillTypes":[]
   },
   "DetonateDeadAltX":{
@@ -7149,19 +7149,22 @@
       }],
     "baseEffectiveness":4.0300002098083,
     "constantStats":[[],["active_skill_ailment_damage_+%_final"]],
+    "baseTypeName":"Detonate Dead of Scavenging",
     "stats":[],
     "baseMods":[{
         "value":{
           "key":"explodeCorpse"
         }
       }],
+    "incrementalEffectiveness":0.031700000166893,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.031700000166893,
-    "name":"Detonate Dead of Scavenging",
     "description":"Targets a corpse, causing it to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected. Cannot target corpses that have been created by skills."
   },
   "ShrapnelShotAltX":{
+    "baseMods":[{
+        "value":[]
+      }],
     "qualityStats":{
       "Default":[[]]
     },
@@ -7287,15 +7290,12 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "baseMods":[{
-        "value":[]
-      }],
     "constantStats":[["skill_physical_damage_%_to_convert_to_lightning"],[]],
+    "baseTypeName":"Galvanic Arrow of Energy",
     "stats":["attack_minimum_added_lightning_damage","attack_maximum_added_lightning_damage"],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Galvanic Arrow of Energy",
     "description":"Create a burst of lightning from your Bow, firing no arrows but damaging enemies in a cone in front of you."
   },
   "ExplosiveArrow":{
@@ -7499,13 +7499,17 @@
           "name":"Multiplier:ExplosiveArrowMaxBonusRadius"
         }]
     },
+    "baseTypeName":"Explosive Arrow",
     "stats":["explosive_arrow_explosion_minimum_added_fire_damage","explosive_arrow_explosion_maximum_added_fire_damage",null,null,"quality_display_explosive_arrow_is_gem"],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Explosive Arrow",
     "baseFlags":[]
   },
   "PoisonArrow":{
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "weaponTypes":[],
     "baseMods":[{
         "value":{
           "key":"radiusSecondary"
@@ -7523,9 +7527,8 @@
       },{
         "name":"dotIsCausticGround"
       }],
-    "qualityStats":{
-      "Default":[[]]
-    },
+    "constantStats":[[null,2000],[],["caustic_arrow_explode_on_hit_base_area_of_effect_radius"]],
+    "description":"Fires an arrow which deals chaos damage in an area on impact, and spreads caustic ground. Enemies standing on the caustic ground take chaos damage over time.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -7686,17 +7689,20 @@
           "value":[]
         }]
     },
-    "constantStats":[[null,2000],[],["caustic_arrow_explode_on_hit_base_area_of_effect_radius"]],
+    "baseTypeName":"Caustic Arrow",
     "stats":[null,null,null,"projectile_damage_modifiers_apply_to_skill_dot"],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
     "incrementalEffectiveness":0.050299998372793,
-    "name":"Caustic Arrow",
-    "description":"Fires an arrow which deals chaos damage in an area on impact, and spreads caustic ground. Enemies standing on the caustic ground take chaos damage over time."
+    "baseFlags":[]
   },
   "LancingSteel":{
-    "stats":[],
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "weaponTypes":[],
+    "baseFlags":[],
+    "constantStats":[[],[],[],["number_of_projectiles_to_fire_+%_final_per_steel_ammo_consumed"],[]],
+    "description":"Thrust an Axe or Sword forward, consuming your Steel Shards to form a cluster of shards in front of you. The cluster will fire a number of projectiles in sequence, aiming at enemies in front of or close to it. Steel Shards are gained with the Call of Steel Skill.",
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -7849,7 +7855,6 @@
         "cost":[],
         "baseMultiplier":1.399
       }],
-    "constantStats":[[],[],[],["number_of_projectiles_to_fire_+%_final_per_steel_ammo_consumed"],[]],
     "statMap":{
       "lancing_steel_damage_+%_final_after_first_hit_on_target":[[[]]],
       "number_of_projectiles_to_fire_+%_final_per_steel_ammo_consumed":[{
@@ -7860,14 +7865,9 @@
             "ramp":[[],[]]
           }]]
     },
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "baseFlags":[],
-    "skillTypes":[],
-    "weaponTypes":[],
-    "name":"Lancing Steel",
-    "description":"Thrust an Axe or Sword forward, consuming your Steel Shards to form a cluster of shards in front of you. The cluster will fire a number of projectiles in sequence, aiming at enemies in front of or close to it. Steel Shards are gained with the Call of Steel Skill."
+    "baseTypeName":"Lancing Steel",
+    "stats":[],
+    "skillTypes":[]
   },
   "ImpactingSteelAltX":{
     "qualityStats":{
@@ -8041,12 +8041,12 @@
       }],
     "baseEffectiveness":0.39730000495911,
     "constantStats":[[],[],[],["projectile_number_to_split"]],
+    "baseTypeName":"Splitting Steel of Ammunition",
     "stats":[null,null,null,null,"modifiers_to_number_of_projectiles_instead_apply_to_splitting","projectiles_can_split_at_end_of_range","projectiles_can_split_from_terrain",null,null,"already_split_if_no_steel_shards"],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
     "incrementalEffectiveness":0.035399999469519,
-    "name":"Splitting Steel of Ammunition",
     "description":"Consume Steel Shards to fire a single projectile that splits on impact or at the targeted location, dealing area damage when it splits and again when the split projectiles explode at the end of their flight. Requires a Sword or Axe. Steel Shards are gained with the Call of Steel Skill."
   },
   "ShrapnelTrapAltY":{
@@ -8176,11 +8176,11 @@
         "cost":[]
       }],
     "baseEffectiveness":5.75,
+    "baseTypeName":"Explosive Trap of Magnitude",
     "stats":[],
     "constantStats":[[],[],[],["active_skill_trap_throwing_speed_+%_final"],["base_stun_duration_+%"]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Explosive Trap of Magnitude",
     "description":"Throws a trap that creates a large explosion when triggered, dealing spell damage in an area around it."
   },
   "Reave":{
@@ -8336,19 +8336,19 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "constantStats":[[],["display_reave_base_maximum_stacks"]],
     "statMap":{
       "reave_area_of_effect_+%_final_per_stage":[[[]]],
       "reave_additional_max_stacks":[[]]
     },
-    "constantStats":[[],["display_reave_base_maximum_stacks"]],
+    "baseTypeName":"Reave",
     "stats":[],
     "baseMods":[{
         "value":[]
       },[]],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Reave",
+    "weaponTypes":[],
     "description":"Attacks an area in front of you. Each Reave that hits an enemy grants stages, which you will begin to lose after a short period without hitting anything. Only works with Daggers, Claws, and One-Handed Swords."
   },
   "BladeTrapAltY":{
@@ -8490,15 +8490,15 @@
     "statMap":{
       "quality_display_active_skill_bleed_damage_final_is_gem":[]
     },
+    "baseTypeName":"Blade Trap of Laceration",
     "stats":{
       "10":"quality_display_blade_trap_is_gem",
       "11":"quality_display_active_skill_bleed_damage_final_is_gem"
     },
     "constantStats":[[],["base_weapon_trap_total_rotation_%"],[],[],[]],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Blade Trap of Laceration",
+    "weaponTypes":[],
     "description":"Throws a trap which, once triggered, swings two copies of your equipped Dagger, Claw or One Handed Sword around it in a circle, each damaging enemies it spins through."
   },
   "TemporalChains":{
@@ -8678,6 +8678,7 @@
           "name":"BuffExpireFaster"
         }]
     },
+    "baseTypeName":"Temporal Chains",
     "stats":[null,null,"temporal_chains_action_speed_+%_final","temporal_chains_action_speed_+%_vs_rare_or_unique_final"],
     "constantStats":[["buff_time_passed_+%_other_than_temporal_chains"],["curse_effect_+%_final_vs_players"]],
     "statDescriptionScope":"curse_skill_stat_descriptions",
@@ -8690,11 +8691,22 @@
         "value":[]
       }],
     "baseFlags":[],
-    "name":"Temporal Chains",
     "description":"Curses all enemies in an area, lowering their action speed and making other effects on them expire more slowly."
   },
   "BladeBlast":{
-    "stats":[],
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "baseMods":[{
+        "name":"Multiplier:BladeBlastMaxStages"
+      },{
+        "1":{
+          "var":"BladeBlastStage"
+        },
+        "value":[]
+      }],
+    "constantStats":[[]],
+    "description":"Deals spell damage in a targeted area. Each time this spell deals damage,  it will detonate any of your Lingering Blades it touches, dealing damage again in an area around them. Up to 50 Blades can be detonated this way.",
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -8817,24 +8829,13 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "constantStats":[[]],
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "baseMods":[{
-        "name":"Multiplier:BladeBlastMaxStages"
-      },{
-        "1":{
-          "var":"BladeBlastStage"
-        },
-        "value":[]
-      }],
-    "skillTypes":[],
+    "baseTypeName":"Blade Blast",
+    "stats":[],
     "baseFlags":[],
-    "name":"Blade Blast",
-    "description":"Deals spell damage in a targeted area. Each time this spell deals damage,  it will detonate any of your Lingering Blades it touches, dealing damage again in an area around them. Up to 50 Blades can be detonated this way."
+    "skillTypes":[]
   },
   "BarrageAltX":{
+    "stats":[null,"skill_can_fire_wand_projectiles","projectiles_barrage"],
     "parts":[{
         "name":"1 Projectile"
       },{
@@ -8950,30 +8951,32 @@
       },{
         "cost":[]
       }],
-    "stats":[null,"skill_can_fire_wand_projectiles","projectiles_barrage"],
+    "constantStats":[[],["barrage_final_volley_fires_x_additional_projectiles_simultaneously"]],
     "statMap":{
       "projectiles_barrage":[]
     },
-    "constantStats":[[],["barrage_final_volley_fires_x_additional_projectiles_simultaneously"]],
+    "baseTypeName":"Barrage of Volley Fire",
     "qualityStats":{
       "Default":[[]]
     },
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Barrage of Volley Fire",
+    "weaponTypes":[],
     "description":"After a short preparation time, you fire projectiles repeatedly with a Bow or Wand. These projectiles have a small randomised spread. This skill cannot be Triggered."
   },
   "LightningArrowAltX":{
+    "qualityStats":{
+      "Default":[["lightning_arrow_alt_additional_strikes"]]
+    },
+    "weaponTypes":[],
     "baseMods":[{
         "1":{
           "var":"LightningArrowofElectrocutionStage"
         },
         "value":[]
       }],
-    "qualityStats":{
-      "Default":[["lightning_arrow_alt_additional_strikes"]]
-    },
+    "constantStats":[[],["lightning_arrow_stack_limit"],[],["lightning_arrow_alt_strike_frequency_ms"]],
+    "description":"Fires a charged arrow which damages enemies by causing them to be struck by a bolt of lightning. It sticks into the final target, causing them to be struck and damaged multiple times.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -9127,13 +9130,10 @@
           "name":"Multiplier:LightningArrowofElectrocutionMaxStages"
         }]
     },
-    "constantStats":[[],["lightning_arrow_stack_limit"],[],["lightning_arrow_alt_strike_frequency_ms"]],
+    "baseTypeName":"Lightning Arrow of Electrocution",
     "stats":[null,null,null,"quality_display_lightning_arrow_is_gem"],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
-    "name":"Lightning Arrow of Electrocution",
-    "description":"Fires a charged arrow which damages enemies by causing them to be struck by a bolt of lightning. It sticks into the final target, causing them to be struck and damaged multiple times."
+    "baseFlags":[]
   },
   "VaalArcticArmour":{
     "qualityStats":{
@@ -9355,14 +9355,15 @@
           "name":"VaalArcticArmourMaxHits"
         }]
     },
+    "baseTypeName":"Vaal Arctic Armour",
     "stats":[null,"base_energy_shield_regeneration_rate_per_minute","base_mana_regeneration_rate_per_minute"],
-    "baseFlags":[],
-    "constantStats":[["vaal_arctic_armour_damage_taken_+%_final_from_hits"],["vaal_arctic_armour_number_of_hits_absorbed"]],
     "skillTypes":[],
-    "name":"Vaal Arctic Armour",
+    "constantStats":[["vaal_arctic_armour_damage_taken_+%_final_from_hits"],["vaal_arctic_armour_number_of_hits_absorbed"]],
+    "baseFlags":[],
     "description":"Immediately encases you in ice, protecting you for a duration or until you take damage from a number of hits, and also grants a buff once the cast time has finished. You cannot move or perform non-instant actions while in the ice. When the ice breaks, the buff is also removed."
   },
   "PoachersMark":{
+    "constantStats":[["base_additional_physical_damage_reduction_%"],["chance_to_grant_frenzy_charge_on_death_%"]],
     "qualityStats":{
       "Default":[["grant_attacker_frenzy_charge_when_hit_%_chance"]]
     },
@@ -9510,15 +9511,14 @@
           "name":"PhysicalDamageReduction"
         }]
     },
-    "constantStats":[["base_additional_physical_damage_reduction_%"],["chance_to_grant_frenzy_charge_on_death_%"]],
+    "baseTypeName":"Poacher's Mark",
     "stats":["minimum_added_physical_damage_taken","maximum_added_physical_damage_taken","life_granted_when_hit_by_attacks","mana_granted_when_hit_by_attacks"],
     "baseMods":[{
         "value":[]
       }],
+    "incrementalEffectiveness":0.024100000038743,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.024100000038743,
-    "name":"Poacher's Mark",
     "description":"Curses a single enemy, lowering their physical damage reduction, and adding physical damage to all hits against them. Attacking the cursed enemy will grant life and mana, and killing them will grant a frenzy charge. You can only have one Mark at a time."
   },
   "ArcticArmour":{
@@ -9654,12 +9654,12 @@
           "name":"FireDamageTakenWhenHit"
         }]
     },
+    "baseTypeName":"Arctic Armour",
     "stats":["new_arctic_armour_physical_damage_taken_when_hit_+%_final","new_arctic_armour_fire_damage_taken_when_hit_+%_final",null,"base_immune_to_freeze"],
     "constantStats":[["arctic_armour_chill_when_hit_duration"],["ground_ice_art_variation"]],
-    "incrementalEffectiveness":0.029999999329448,
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Arctic Armour",
+    "incrementalEffectiveness":0.029999999329448,
     "description":"Conjures an icy barrier that chills enemies when they hit you. You drop chilled ground while moving, and take less Fire and Physical damage while stationary."
   },
   "MambaStrike":{
@@ -9806,14 +9806,15 @@
         "value":[]
       }],
     "constantStats":[["mamba_strike_deal_%_of_all_poison_total_damage_per_minute"],[],[],[],[],[]],
+    "baseTypeName":"Pestilent Strike",
     "stats":[],
     "baseFlags":[],
-    "skillTypes":[],
     "weaponTypes":[],
-    "name":"Pestilent Strike",
+    "skillTypes":[],
     "description":"Attacks with your weapon, inflicting a debuff on enemies hit by the strike. If a debuffed enemy dies while poisoned, Pestilent Strike inflicts a secondary chaos damage over time debuff on enemies around them, based on the poisons on the slain enemy. This damage is not affected by your damage modifiers. Requires a Claw or Dagger."
   },
   "VaalChargedAttack":{
+    "constantStats":[["vaal_charged_attack_damage_taken_+%_final"],["vaal_charged_attack_radius_+_per_stage"],["global_chance_to_blind_on_hit_%"]],
     "qualityStats":{
       "Default":[["charged_attack_damage_per_stack_+%_final"]]
     },
@@ -9978,12 +9979,11 @@
           "name":"DamageTaken"
         }]
     },
-    "constantStats":[["vaal_charged_attack_damage_taken_+%_final"],["vaal_charged_attack_radius_+_per_stage"],["global_chance_to_blind_on_hit_%"]],
+    "baseTypeName":"Vaal Blade Flurry",
     "stats":[null,null,"blind_effect_+%"],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Vaal Blade Flurry",
     "description":"Channel to create an expanding circle area around you that blinds enemies within it. When you stop channelling, deals damage in a smaller area around each enemy in the circle. Requires a Dagger, Claw or One-Handed Sword."
   },
   "QuickDodge":{
@@ -10111,13 +10111,14 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "baseTypeName":"Dash",
     "stats":[null,"skill_travel_distance_+%"],
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Dash",
+    "skillTypes":[],
     "description":"Performs a series of quick teleports towards a targeted location. If using the \"Attack in Place\" option, the direction is reversed. Shares a cooldown with other Blink skills."
   },
   "BlastRain":{
+    "stats":["base_reduce_enemy_fire_resistance_%"],
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -10285,18 +10286,17 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "stats":["base_reduce_enemy_fire_resistance_%"],
     "constantStats":[[],[],["blast_rain_arrow_delay_ms"]],
     "qualityStats":{
       "Default":[[]]
     },
+    "baseTypeName":"Blast Rain",
     "baseMods":[{
         "value":[]
       },[]],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Blast Rain",
+    "weaponTypes":[],
     "description":"Fires arrows up in the air, to rain down in an area. Each arrow deals area damage around where it lands, and they will all overlap on the targeted location."
   },
   "FireTrapAltX":{
@@ -10428,16 +10428,19 @@
       }],
     "baseEffectiveness":0.85159999132156,
     "constantStats":[[],[]],
+    "baseTypeName":"Fire Trap of Blasting",
     "stats":[],
     "baseMods":[{
         "value":[]
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Fire Trap of Blasting",
     "description":"Throws a trap that explodes when triggered, dealing fire damage to surrounding enemies."
   },
   "LightningStrike":{
+    "qualityStats":{
+      "Default":[[]]
+    },
     "parts":[[],{
         "name":"Projectiles"
       }],
@@ -10600,26 +10603,26 @@
         "damageEffectiveness":2.96,
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[[]]
-    },
     "constantStats":[[],[],[]],
+    "baseTypeName":"Lightning Strike",
     "stats":[],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Lightning Strike",
     "description":"Infuses your melee weapon with electrical energies as you swing. In addition to converting some of your physical damage to lightning damage, the stored energy is released from the weapon as projectiles as you strike, flying out to hit farther-away enemies. The projectiles cannot miss if the melee attack hit a target."
   },
   "Puncture":{
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "weaponTypes":[],
     "baseMods":[{
         "value":{
           "key":"bleedIsSkillEffect"
         }
       }],
-    "qualityStats":{
-      "Default":[[]]
-    },
+    "constantStats":[[]],
+    "description":"Punctures enemies, causing a bleeding debuff, which will be affected by modifiers to skill duration. Puncture works with bows, daggers, claws or swords.",
     "levels":[{
         "statInterpolation":[],
         "cost":[],
@@ -10786,13 +10789,10 @@
     "statMap":{
       "quality_display_active_skill_bleed_damage_final_is_gem":[]
     },
-    "constantStats":[[]],
+    "baseTypeName":"Puncture",
     "stats":[null,null,null,null,"global_bleed_on_hit","bleed_duration_is_skill_duration"],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
-    "name":"Puncture",
-    "description":"Punctures enemies, causing a bleeding debuff, which will be affected by modifiers to skill duration. Puncture works with bows, daggers, claws or swords."
+    "baseFlags":[]
   },
   "Riposte":{
     "qualityStats":{
@@ -10907,17 +10907,20 @@
         "statInterpolation":[]
       }],
     "constantStats":[["melee_counterattack_trigger_on_block_%"]],
+    "baseTypeName":"Riposte",
     "stats":[null,null,"attack_unusable_if_triggerable",null,"skill_double_hits_when_dual_wielding"],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Riposte",
     "description":"Perform a deadly counter-attack when you block. Uses both weapons while you're dual wielding."
   },
   "ExplosiveConcoction":{
     "qualityStats":{
       "Default":[[]]
     },
+    "weaponTypes":[],
+    "baseFlags":[],
+    "constantStats":[[],[],[]],
     "parts":[[],[],[],[],[],[],[],[]],
     "levels":[{
         "cost":[],
@@ -11062,14 +11065,18 @@
             "skillPartList":[]
           }]]
     },
-    "constantStats":[[],[],[]],
+    "baseTypeName":"Explosive Concoction",
     "stats":[null,null,null,null,null,null,"flask_throw_ruby_flask_ignite_dot_multiplier_+"],
-    "baseFlags":[],
-    "weaponTypes":[],
-    "skillTypes":[],
-    "name":"Explosive Concoction"
+    "skillTypes":[]
   },
   "ShrapnelBallista":{
+    "qualityStats":{
+      "Default":[["base_projectile_speed_+%"]]
+    },
+    "weaponTypes":[],
+    "baseFlags":[],
+    "constantStats":[["base_totem_range"],["base_totem_duration"],[]],
+    "description":"Summons a ballista totem that fires multiple arrows with extreme force, breaking them apart into shrapnel. Enemies can be hit by multiple arrows from the same attack. Requires a Bow.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -11224,21 +11231,18 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[["base_projectile_speed_+%"]]
-    },
+    "baseTypeName":"Shrapnel Ballista",
     "stats":[null,null,"attack_skills_additional_ballista_totems_allowed",null,"base_skill_is_totemified","is_totem",null,"projectiles_can_shotgun","is_ranged_attack_totem"],
-    "constantStats":[["base_totem_range"],["base_totem_duration"],[]],
-    "baseFlags":[],
-    "weaponTypes":[],
-    "skillTypes":[],
-    "name":"Shrapnel Ballista",
-    "description":"Summons a ballista totem that fires multiple arrows with extreme force, breaking them apart into shrapnel. Enemies can be hit by multiple arrows from the same attack. Requires a Bow."
+    "skillTypes":[]
   },
   "VaalLightningStrike":{
     "qualityStats":{
       "Default":[[]]
     },
+    "weaponTypes":[],
+    "baseFlags":[],
+    "constantStats":[[],[],[]],
+    "description":"Infuses your melee weapon with electrical energies as you swing. In addition to converting some of your physical damage to lightning damage, the stored energy becomes an orb attached to the enemy you hit, or the ground if you don't hit an enemy. The orb will periodically fire projectiles at other nearby enemies for a duration, which will also damage the enemy the orb is attached to.",
     "parts":[[],[]],
     "levels":[{
         "cost":[],
@@ -11391,13 +11395,9 @@
     "statMap":{
       "vaal_lightning_strike_beam_damage_+%_final":[[[]]]
     },
-    "constantStats":[[],[],[]],
+    "baseTypeName":"Vaal Lightning Strike",
     "stats":[],
-    "baseFlags":[],
-    "weaponTypes":[],
-    "skillTypes":[],
-    "name":"Vaal Lightning Strike",
-    "description":"Infuses your melee weapon with electrical energies as you swing. In addition to converting some of your physical damage to lightning damage, the stored energy becomes an orb attached to the enemy you hit, or the ground if you don't hit an enemy. The orb will periodically fire projectiles at other nearby enemies for a duration, which will also damage the enemy the orb is attached to."
+    "skillTypes":[]
   },
   "AnimateWeapon":{
     "minionSkillTypes":[],
@@ -11579,6 +11579,7 @@
       }],
     "baseEffectiveness":0.21999999880791,
     "minionUses":[],
+    "baseTypeName":"Animate Weapon",
     "stats":["attack_minimum_added_physical_damage_for_ethereal_blades","attack_maximum_added_physical_damage_for_ethereal_blades","animate_item_maximum_level_requirement",null,"active_skill_minion_attack_speed_+%_final",null,null,"number_of_animated_weapons_allowed",null,"quality_display_animate_weapon_is_gem"],
     "statMap":{
       "attack_minimum_added_physical_damage":[{
@@ -11613,7 +11614,6 @@
     },
     "minionList":["AnimatedWeapon"],
     "skillTypes":[],
-    "name":"Animate Weapon",
     "qualityStats":{
       "Default":[[]]
     }
@@ -11785,15 +11785,16 @@
           "name":"Condition:CanWither"
         }]
     },
+    "baseTypeName":"Toxic Rain of Withering",
     "stats":[null,null,null,null,null,null,null,null,"toxic_rain_spores_apply_withered"],
     "skillTypes":[],
     "incrementalEffectiveness":0.036899998784065,
-    "name":"Toxic Rain of Withering",
     "baseFlags":[]
   },
   "CorrosiveShroud":{
+    "constantStats":[["corrosive_shroud_gains_%_of_damage_from_inflicted_poisons"],["corrosive_shroud_%_of_stored_poison_damage_to_deal_per_second"],["corrosive_shroud_poison_damage_+%_final_while_accumulating_poison"]],
     "qualityStats":{
-      "Default":[["corrosive_shroud_%_of_stored_poison_damage_to_deal_per_second"]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -11943,21 +11944,24 @@
             "modCond":"PlagueBearerIncubating"
           }]]
     },
-    "constantStats":[["corrosive_shroud_gains_%_of_damage_from_inflicted_poisons"],[],["corrosive_shroud_poison_damage_+%_final_while_accumulating_poison"]],
+    "baseTypeName":"Plague Bearer",
     "stats":["corrosive_shroud_maximum_stored_poison_damage",null,null,"quality_display_plague_bearer_is_gem"],
     "baseMods":[{
         "value":[]
       }],
+    "incrementalEffectiveness":0.10670000314713,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.10670000314713,
-    "name":"Plague Bearer",
     "description":"Gain an Incubating buff, adding to its Plague Value as you inflict poisons. Use the skill again to begin Infecting, dealing chaos damage over time to nearby enemies until the Plague Value is depleted. Your damage modifiers don't apply to this skill's damage. Using the skill again alternates between Incubating and Infecting."
   },
   "LightningStrikeAltX":{
     "qualityStats":{
       "Default":[["number_of_chains"]]
     },
+    "weaponTypes":[],
+    "baseFlags":[],
+    "constantStats":[[],["skill_damage_+%_final_per_chain_from_skill_specific_stat"]],
+    "description":"Infuses your melee weapon with electrical energies as you swing. In addition to converting some of your physical damage to lightning damage, the stored energy is released from the weapon as a projectile as you strike, flying out to hit farther-away enemies and chain between them. The projectile cannot miss if the melee attack hit a target.",
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -12106,13 +12110,9 @@
             "stat":"Chain"
           }]]
     },
-    "constantStats":[[],["skill_damage_+%_final_per_chain_from_skill_specific_stat"]],
+    "baseTypeName":"Lightning Strike of Arcing",
     "stats":[],
-    "baseFlags":[],
-    "weaponTypes":[],
-    "skillTypes":[],
-    "name":"Lightning Strike of Arcing",
-    "description":"Infuses your melee weapon with electrical energies as you swing. In addition to converting some of your physical damage to lightning damage, the stored energy is released from the weapon as a projectile as you strike, flying out to hit farther-away enemies and chain between them. The projectile cannot miss if the melee attack hit a target."
+    "skillTypes":[]
   },
   "VampiricLink":{
     "qualityStats":{
@@ -12280,10 +12280,10 @@
           "name":"MaximumLifeLeechIsEqualToParent"
         }]
     },
+    "baseTypeName":"Vampiric Link",
     "stats":["remora_link_grants_maximum_life_leech_rate_%_per_minute",null,null,null,"life_leech_is_applied_to_remora_link_targets_instead"],
-    "baseFlags":[],
     "skillTypes":[],
-    "name":"Vampiric Link",
+    "baseFlags":[],
     "description":"Targets an allied player to apply a buff which links you to them for a duration. While linked, they get recovery from your life leech instead of you. If the target dies while linked, you will also die. This skill cannot be triggered, or used by Totems, Traps, or Mines."
   },
   "ColdResistAura":{
@@ -12381,16 +12381,17 @@
           "name":"ColdResistMax"
         }]
     },
+    "baseTypeName":"Purity of Ice",
     "stats":[null,"base_maximum_cold_damage_resistance_%"],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Purity of Ice",
+    "baseFlags":[],
     "description":"Casts an aura that grants cold resistance to you and your allies."
   },
   "StormRainAltY":{
+    "stats":["prismatic_rain_beam_base_frequency_ms",null,null,null,null,null,null,"quality_display_storm_rain_is_gem","modifiers_to_projectile_count_do_not_apply"],
     "parts":[[],{
         "name":"Beam"
       }],
@@ -12526,7 +12527,7 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "stats":["prismatic_rain_beam_base_frequency_ms",null,null,null,null,null,null,"quality_display_storm_rain_is_gem","modifiers_to_projectile_count_do_not_apply"],
+    "constantStats":[[],["storm_rain_pulse_count"],["number_of_allowed_storm_arrows"],["base_stun_threshold_reduction_+%"]],
     "statMap":{
       "prismatic_rain_beam_base_frequency_ms":[{
           "value":[]
@@ -12539,14 +12540,13 @@
           "name":"StormRainBeamFrequency"
         }]
     },
-    "constantStats":[[],["storm_rain_pulse_count"],["number_of_allowed_storm_arrows"],["base_stun_threshold_reduction_+%"]],
+    "baseTypeName":"Storm Rain of the Fence",
     "qualityStats":{
       "Default":[[]]
     },
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Storm Rain of the Fence",
+    "weaponTypes":[],
     "description":"Fires an arrow into the air to land at a targeted location, dealing area damage. The arrow sticks in the ground where it lands, and periodically fires a beam of lightning to another arrow near it, dealing area damage between them."
   },
   "SupportIntuitiveLink":{
@@ -12656,6 +12656,7 @@
     "requireSkillTypes":[]
   },
   "StormRainAltX":{
+    "stats":[],
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -12802,7 +12803,7 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "stats":[],
+    "constantStats":[[],[],[]],
     "statMap":{
       "prismatic_rain_beam_base_frequency_ms":[{
           "value":[]
@@ -12811,14 +12812,13 @@
       "number_of_allowed_storm_arrows":[[]],
       "prismatic_rain_beam_frequency_+%":[[]]
     },
-    "constantStats":[[],[],[]],
+    "baseTypeName":"Storm Rain of the Conduit",
     "qualityStats":{
       "Default":[[]]
     },
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Storm Rain of the Conduit",
+    "weaponTypes":[],
     "description":"Fires an arrow into the air to land at a targeted location, dealing area damage. The arrow sticks in the ground where it lands, and periodically fires a beam of lightning to you, dealing area damage between the arrow and you."
   },
   "TemporalRift":{
@@ -12912,10 +12912,10 @@
           "name":"SelfDebuffExpirationRate"
         }]
     },
+    "baseTypeName":"Temporal Rift",
     "stats":[null,null,null,null,"unaffected_by_temporal_chains"],
-    "baseFlags":[],
     "skillTypes":[],
-    "name":"Temporal Rift",
+    "baseFlags":[],
     "description":"Reserves mana to apply a buff and leave afterimages of your recent past. Cast the spell again to return to the oldest afterimage, teleporting to that location as well as resetting your Life, Mana and Energy Shield to the values they had then."
   },
   "SummonIceGolemAltY":{
@@ -13045,14 +13045,14 @@
       "Default":[[]]
     },
     "constantStats":[[],[],["minion_from_alternate_gem_index"]],
+    "baseTypeName":"Summon Ice Golem of Shattering",
     "stats":[null,null,null,"active_skill_no_golem_aura"],
     "baseMods":[{
         "value":[]
       },[[]]],
-    "minionList":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Ice Golem of Shattering",
+    "minionList":[],
     "description":"Summons an Ice Golem. The Ice Golem can use an icy barrage spell and a chilling spinning attack in addition to its melee attack. If reduced to low life it will trigger a spell that destroys itself to deal area damage and fire icy projectiles in a circle."
   },
   "SplitArrowAltX":{
@@ -13195,11 +13195,11 @@
         "cost":[]
       }],
     "constantStats":[[]],
+    "baseTypeName":"Split Arrow of Splitting",
     "stats":[],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Split Arrow of Splitting",
     "description":"Fires an arrow that splits to hit different targets."
   },
   "PoisonousConcoction":{
@@ -13341,15 +13341,30 @@
           "name":"ChaosPerLifeFlaskPercent"
         }]
     },
+    "baseTypeName":"Poisonous Concoction",
     "stats":[null,null,"flask_throw_added_chaos_damage_%_of_flask_life_to_recover"],
     "incrementalEffectiveness":0.033100001513958,
-    "name":"Poisonous Concoction",
     "skillTypes":[]
   },
   "VolatileDeadAltX":{
     "qualityStats":{
       "Default":[[]]
     },
+    "incrementalEffectiveness":0.041000001132488,
+    "baseMods":[{
+        "1":[],
+        "value":[]
+      },{
+        "value":{
+          "value":"Orb Explosion:"
+        }
+      },{
+        "value":{
+          "value":"Corpse Explosion:"
+        }
+      }],
+    "constantStats":[["volatile_dead_base_number_of_corpses_to_consume"],["volatile_dead_max_cores_allowed"],[],[],["active_skill_secondary_area_of_effect_description_mode"],[]],
+    "description":"Corpses near the targeted location explode, dealing damage in a small area and creating an orb which detonates after a duration, dealing spell damage in a larger area. The explosion of the corpse is not affected by modifiers to spell damage, and cannot be reflected.",
     "parts":[{
         "name":"Spell"
       },{
@@ -13487,25 +13502,10 @@
           "value":[]
         }]
     },
-    "constantStats":[["volatile_dead_base_number_of_corpses_to_consume"],["volatile_dead_max_cores_allowed"],[],[],["active_skill_secondary_area_of_effect_description_mode"],[]],
+    "baseTypeName":"Volatile Dead of Confinement",
     "stats":[],
-    "baseMods":[{
-        "1":[],
-        "value":[]
-      },{
-        "value":{
-          "value":"Orb Explosion:"
-        }
-      },{
-        "value":{
-          "value":"Corpse Explosion:"
-        }
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.041000001132488,
-    "name":"Volatile Dead of Confinement",
-    "description":"Corpses near the targeted location explode, dealing damage in a small area and creating an orb which detonates after a duration, dealing spell damage in a larger area. The explosion of the corpse is not affected by modifiers to spell damage, and cannot be reflected."
+    "skillTypes":[]
   },
   "AccuracyAndCritsAura":{
     "qualityStats":{
@@ -13641,13 +13641,13 @@
       "accuracy_rating":[[[]]],
       "skill_buff_grants_critical_strike_chance_+%":[[[]]]
     },
+    "baseTypeName":"Precision",
     "stats":["accuracy_rating","skill_buff_grants_critical_strike_chance_+%"],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Precision",
+    "baseFlags":[],
     "description":"Casts an aura that grants accuracy and critical strike chance to you and your allies."
   },
   "Grace":{
@@ -13777,13 +13777,13 @@
         }],
       "base_evasion_rating":[[[]]]
     },
+    "baseTypeName":"Grace",
     "stats":["grace_aura_evasion_rating_+%_final","base_evasion_rating"],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Grace",
+    "baseFlags":[],
     "description":"Casts an aura that grants evasion to you and your allies."
   },
   "Slither":{
@@ -13915,6 +13915,7 @@
       "slither_wither_stacks":[[]],
       "quality_display_withering_step_is_gem":[]
     },
+    "baseTypeName":"Withering Step",
     "stats":[null,null,"elusive_effect_+%",null,"display_this_skill_cooldown_does_not_recover_during_buff","display_removes_and_grants_elusive_when_used",null,"quality_display_withering_step_is_gem"],
     "constantStats":[["active_skill_withered_base_duration_ms"]],
     "skillTypes":[],
@@ -13925,10 +13926,12 @@
         "value":[]
       }],
     "baseFlags":[],
-    "name":"Withering Step",
     "description":"Grants Elusive and a buff that grants Phasing. While you have this buff, monsters that enter an area around you will be Withered. Using a skill or losing the Elusive buff ends this skill's effects. Shares a cooldown with other Blink skills. Cannot be used while already Elusive."
   },
   "WildStrikeAltX":{
+    "qualityStats":{
+      "Default":[["chance_to_freeze_shock_ignite_%"]]
+    },
     "parts":[{
         "name":"Fire hit"
       },{
@@ -14081,9 +14084,7 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[["chance_to_freeze_shock_ignite_%"]]
-    },
+    "constantStats":[["elemental_strike_physical_damage_%_to_convert"],["fixed_projectile_spread"],[],["treat_enemy_resistances_as_negated_on_elemental_damage_hit_%_chance"]],
     "statMap":{
       "elemental_strike_physical_damage_%_to_convert":[{
           "1":{
@@ -14102,19 +14103,19 @@
           "name":"PhysicalDamageConvertToCold"
         }]
     },
-    "constantStats":[["elemental_strike_physical_damage_%_to_convert"],["fixed_projectile_spread"],[],["treat_enemy_resistances_as_negated_on_elemental_damage_hit_%_chance"]],
+    "baseTypeName":"Wild Strike of Extremes",
     "stats":["additional_beam_only_chains"],
     "baseMods":[{
         "1":[],
         "value":[]
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Wild Strike of Extremes",
+    "weaponTypes":[],
     "description":"Your melee weapon strikes enemies, converting physical damage to a random element. Then, depending on the element chosen, it releases a fiery explosion, an arcing bolt of lightning, or an icy wave. It will avoid choosing the same element twice in a row."
   },
   "EnsnaringArrow":{
+    "constantStats":[["tethered_movement_speed_+%_final_per_rope"],["tethered_movement_speed_+%_final_per_rope_vs_rare"],["tethered_movement_speed_+%_final_per_rope_vs_unique"],["tethering_arrow_display_rope_limit"]],
     "qualityStats":{
       "Default":[["skill_buff_effect_+%"]]
     },
@@ -14259,13 +14260,12 @@
           "name":"ProjectileAttackDamageTaken"
         }]
     },
-    "constantStats":[["tethered_movement_speed_+%_final_per_rope"],["tethered_movement_speed_+%_final_per_rope_vs_rare"],["tethered_movement_speed_+%_final_per_rope_vs_unique"],["tethering_arrow_display_rope_limit"]],
+    "baseTypeName":"Ensnaring Arrow",
     "stats":["tethered_enemies_take_attack_projectile_damage_taken_+%"],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
     "incrementalEffectiveness":0.052000001072884,
-    "name":"Ensnaring Arrow",
     "description":"Fires an arrow that remains in the ground behind its final target, tethering that enemy to it. Ensnared enemies always count as moving, and have less movement speed while trying to break the snare. The snare will break if they leave the area of effect."
   },
   "BladefallAltY":{
@@ -14405,12 +14405,12 @@
     "statMap":{
       "quality_display_bladefall_is_gem":[]
     },
+    "baseTypeName":"Bladefall of Impaling",
     "stats":[null,null,null,null,"quality_display_bladefall_is_gem","no_critical_strike_multiplier"],
     "constantStats":[["bladefall_number_of_volleys"],["spell_impale_on_crit_%_chance"]],
+    "incrementalEffectiveness":0.045499999076128,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.045499999076128,
-    "name":"Bladefall of Impaling",
     "description":"Ethereal weapons rain from the sky, dealing damage to enemies in a sequence of volleys. Enemies can be hit multiple times where these overlap."
   },
   "RainOfArrows":{
@@ -14555,17 +14555,18 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "baseTypeName":"Rain of Arrows",
     "stats":[],
     "baseMods":[{
         "value":[]
       },[]],
+    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "weaponTypes":[],
-    "name":"Rain of Arrows",
     "description":"Fires multiple arrows into the air, to land in sequence after a delay, starting at the targeted location and spreading outwards in all directions. Each arrow deals damage in an area around it. Half of the arrows will land directly on targets if there are targets in their range."
   },
   "BladeVortexAltX":{
+    "constantStats":[["maximum_number_of_spinning_blades"],[]],
     "qualityStats":{
       "Default":[[]]
     },
@@ -14695,7 +14696,7 @@
       "base_skill_show_average_damage_instead_of_dps":[],
       "quality_display_blade_vortex_is_gem":[]
     },
-    "constantStats":[["maximum_number_of_spinning_blades"],[]],
+    "baseTypeName":"Blade Vortex of the Scythe",
     "stats":[null,null,null,null,null,"action_ignores_crit_tracking",null,"damage_originates_from_initiator_location","skill_cannot_gain_repeat_bonuses","quality_display_blade_vortex_is_gem"],
     "baseMods":[{
         "value":[]
@@ -14706,13 +14707,15 @@
       },{
         "name":"Condition:HaveBladeVortex"
       }],
+    "incrementalEffectiveness":0.042899999767542,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.042899999767542,
-    "name":"Blade Vortex of the Scythe",
     "description":"This spell creates a swarm of ethereal blades which briefly orbit in an area around you, dealing damage every 0.6 seconds to all enemies in their radius."
   },
   "WildStrike":{
+    "qualityStats":{
+      "Default":[[]]
+    },
     "parts":[[],[],[],[],[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -14870,9 +14873,7 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[[]]
-    },
+    "constantStats":[[],[],[]],
     "statMap":{
       "elemental_strike_physical_damage_%_to_convert":[[{
             "skillPartList":[]
@@ -14882,18 +14883,20 @@
             "skillPartList":[]
           }]]
     },
-    "constantStats":[[],[],[]],
+    "baseTypeName":"Wild Strike",
     "stats":[],
     "baseMods":[{
         "1":[],
         "value":[]
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Wild Strike"
+    "weaponTypes":[]
   },
   "BlinkArrowAltY":{
+    "baseMods":[{
+        "value":[]
+      }],
     "minionSkillTypes":[],
     "levels":[{
         "statInterpolation":[],
@@ -15016,19 +15019,16 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "baseMods":[{
-        "value":[]
-      }],
     "constantStats":[[],[],[],[]],
     "qualityStats":{
       "Default":[[]]
     },
+    "baseTypeName":"Blink Arrow of Prismatic Clones",
     "stats":[],
     "baseFlags":[],
+    "weaponTypes":[],
     "skillTypes":[],
     "minionList":[],
-    "weaponTypes":[],
-    "name":"Blink Arrow of Prismatic Clones",
     "description":"Fires an arrow at the target destination. When the arrow lands, you are teleported to it and a clone is summoned at your old location. The clone is a minion that uses your bow and quiver to fire random elemental arrows."
   },
   "DoubleStrikeAltX":{
@@ -15120,11 +15120,11 @@
         "value":[]
       },[]],
     "constantStats":[[],[],["apply_enemy_impale_damage_to_nearby_enemies_on_killing_blow_%_chance"]],
+    "baseTypeName":"Double Strike of Impaling",
     "stats":[],
     "baseFlags":[],
-    "skillTypes":[],
     "weaponTypes":[],
-    "name":"Double Strike of Impaling"
+    "skillTypes":[]
   },
   "SnipersMark":{
     "qualityStats":{
@@ -15261,13 +15261,13 @@
           "name":"ProjectileDamageTaken"
         }]
     },
+    "baseTypeName":"Sniper's Mark",
     "stats":["projectiles_hitting_self_split_into_x"],
     "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
     "baseFlags":[],
-    "name":"Sniper's Mark",
     "description":"Curses a single enemy, increasing the damage they take from projectiles, and making projectiles split when hitting them, to hit other targets around them. You can only have one Mark at a time."
   },
   "WhirlingBlades":{
@@ -15367,12 +15367,12 @@
       },{
         "cost":[]
       }],
+    "baseTypeName":"Whirling Blades",
     "stats":["ignores_proximity_shield"],
     "constantStats":[["additional_weapon_base_attack_time_ms"],["animation_effect_variation",-1],["active_skill_merged_damage_+%_final_while_dual_wielding"]],
+    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "weaponTypes":[],
-    "name":"Whirling Blades",
     "description":"Dive through enemies, dealing weapon damage. If dual wielding attacks with both weapons, dealing the damage of both in one hit. Only works with Daggers, Claws, and One-Handed Swords. Cannot be supported by Multistrike."
   },
   "ImpactingSteelReload":{
@@ -15509,17 +15509,27 @@
         "cost":[],
         "statInterpolation":[]
       }],
+    "baseTypeName":"Bear Trap of Skewers",
     "stats":[],
     "constantStats":[[],[],["impale_on_hit_%_chance"],[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Bear Trap of Skewers",
     "description":"Throws a trap that damages and impales a single enemy, and immobilises them for a duration based on how much damage was dealt. Modifiers to spell damage do not affect this skill's damage."
   },
   "VolatileDeadAltY":{
     "qualityStats":{
       "Default":[["volatile_dead_core_movement_speed_+%"]]
     },
+    "baseMods":[{
+        "1":[],
+        "value":[]
+      },{
+        "value":[]
+      },{
+        "value":[]
+      }],
+    "constantStats":[[],[],[],[],[]],
+    "description":"Corpses near the targeted location explode, dealing damage in a small area and creating an orb which moves towards nearby enemies before dealing spell damage in a larger area. The explosion of the corpse is not affected by modifiers to spell damage, and cannot be reflected.",
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -15653,20 +15663,10 @@
           "value":[]
         }]
     },
-    "constantStats":[[],[],[],[],[]],
+    "baseTypeName":"Volatile Dead of Seething",
     "stats":[],
-    "baseMods":[{
-        "1":[],
-        "value":[]
-      },{
-        "value":[]
-      },{
-        "value":[]
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Volatile Dead of Seething",
-    "description":"Corpses near the targeted location explode, dealing damage in a small area and creating an orb which moves towards nearby enemies before dealing spell damage in a larger area. The explosion of the corpse is not affected by modifiers to spell damage, and cannot be reflected."
+    "skillTypes":[]
   },
   "FlickerStrike":{
     "qualityStats":{
@@ -15788,12 +15788,12 @@
       "base_skill_show_average_damage_instead_of_dps":[],
       "flicker_strike_buff_movement_speed_+%":[[[]]]
     },
+    "baseTypeName":"Flicker Strike",
     "stats":[null,null,"melee_defer_damage_prediction"],
     "constantStats":[["base_attack_speed_+%_per_frenzy_charge"],[],["flicker_strike_buff_movement_speed_+%"],[]],
+    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "weaponTypes":[],
-    "name":"Flicker Strike",
     "description":"Teleports the character to a nearby monster and attacks with a melee weapon. If no specific monster is targeted, one is picked at random. Grants a buff that increases movement speed for a duration. The cooldown can be bypassed by expending a Frenzy Charge."
   },
   "DualStrikeAltX":{
@@ -15917,12 +15917,12 @@
           "name":"UseOffhandAttackSpeed"
         }]
     },
+    "baseTypeName":"Dual Strike of Ambidexterity",
     "stats":[null,"dual_strike_off_hand_weapon_determines_attack_time"],
     "constantStats":[[]],
+    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "weaponTypes":[],
-    "name":"Dual Strike of Ambidexterity",
     "description":"Attacks with both weapons, dealing the damage of both in one strike. Requires dual-wielding two different melee weapon types to use."
   },
   "ChargedAttack":{
@@ -16097,12 +16097,13 @@
       "base_skill_show_average_damage_instead_of_dps":[],
       "charged_attack_damage_per_stack_+%_final":[[[]]]
     },
+    "baseTypeName":"Blade Flurry",
     "stats":[null,null,null,null,null,"quality_display_charged_attack_is_gem"],
     "skillTypes":[],
-    "name":"Blade Flurry",
     "baseFlags":[]
   },
   "ThrownShieldAltX":{
+    "constantStats":[[],[]],
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -16229,18 +16230,37 @@
     "statMap":{
       "thrown_shield_secondary_projectile_damage_+%_final":[[[]]]
     },
-    "constantStats":[[],[]],
+    "baseTypeName":"Spectral Shield Throw of Shattering",
     "stats":["off_hand_local_minimum_added_cold_damage","off_hand_local_maximum_added_cold_damage","off_hand_minimum_added_cold_damage_per_15_shield_evasion","off_hand_maximum_added_cold_damage_per_15_shield_evasion"],
     "qualityStats":{
       "Default":[["active_skill_projectile_speed_+%_final"]]
     },
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Spectral Shield Throw of Shattering",
     "description":"Throws a spectral copy of your shield as a projectile which cannot pierce, and deals off-hand damage augmented by the evasion of the shield. When it collides with something it will shatter, launching a number of smaller shards as projectiles in all directions. Modifiers that cause additional projectiles to be fired will add more shards, not more copies of the shield."
   },
   "StormRain":{
-    "stats":[],
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "baseMods":[{
+        "1":[],
+        "value":[]
+      },{
+        "1":[],
+        "value":{
+          "value":"Arrow Explosion:"
+        }
+      },{
+        "1":[],
+        "value":[]
+      },{
+        "1":[],
+        "value":{
+          "value":"Beam Width:"
+        }
+      }],
+    "constantStats":[[],[],[]],
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -16381,7 +16401,6 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "constantStats":[[],[],[]],
     "statMap":{
       "prismatic_rain_beam_base_frequency_ms":[{
           "value":[]
@@ -16390,40 +16409,24 @@
       "number_of_allowed_storm_arrows":[],
       "prismatic_rain_beam_frequency_+%":[[]]
     },
+    "baseTypeName":"Storm Rain",
+    "stats":[],
+    "baseFlags":[],
+    "weaponTypes":[],
+    "skillTypes":[]
+  },
+  "ViperStrike":{
     "qualityStats":{
       "Default":[[]]
     },
-    "baseMods":[{
-        "1":[],
-        "value":[]
-      },{
-        "1":[],
-        "value":{
-          "value":"Arrow Explosion:"
-        }
-      },{
-        "1":[],
-        "value":[]
-      },{
-        "1":[],
-        "value":{
-          "value":"Beam Width:"
-        }
-      }],
     "weaponTypes":[],
-    "skillTypes":[],
-    "baseFlags":[],
-    "name":"Storm Rain"
-  },
-  "ViperStrike":{
     "baseMods":[{
         "value":{
           "key":"poisonIsSkillEffect"
         }
       }],
-    "qualityStats":{
-      "Default":[[]]
-    },
+    "constantStats":[[],[],[],["viper_strike_dual_wield_damage_+%_final"],["viper_strike_dual_wield_attack_speed_+%_final"]],
+    "description":"Hits enemies, converting some of your physical damage to chaos damage and inflicting poison which will be affected by modifiers to skill duration. If dual wielding, will strike with both weapons. Requires a claw, dagger or sword.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -16570,15 +16573,23 @@
           }]],
       "viper_strike_dual_wield_damage_+%_final":[[[]]]
     },
-    "constantStats":[[],[],[],["viper_strike_dual_wield_damage_+%_final"],["viper_strike_dual_wield_attack_speed_+%_final"]],
+    "baseTypeName":"Viper Strike",
     "stats":[null,null,"poison_duration_is_skill_duration"],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
-    "name":"Viper Strike",
-    "description":"Hits enemies, converting some of your physical damage to chaos damage and inflicting poison which will be affected by modifiers to skill duration. If dual wielding, will strike with both weapons. Requires a claw, dagger or sword."
+    "baseFlags":[]
   },
   "VaalCausticArrow":{
+    "baseMods":[{
+        "value":[]
+      },{
+        "value":[]
+      },{
+        "value":[]
+      },{
+        "value":[]
+      },{
+        "value":[]
+      },[]],
     "qualityStats":{
       "Default":[[]]
     },
@@ -16704,23 +16715,12 @@
         "statInterpolation":[]
       }],
     "baseEffectiveness":19.590000152588,
-    "baseMods":[{
-        "value":[]
-      },{
-        "value":[]
-      },{
-        "value":[]
-      },{
-        "value":[]
-      },{
-        "value":[]
-      },[]],
     "constantStats":[[],[],["vaal_caustic_arrow_ground_art_variation"]],
+    "baseTypeName":"Vaal Caustic Arrow",
     "stats":[],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Vaal Caustic Arrow",
     "description":"Fires a slow-moving serpentine arrow which deals chaos damage while piercing enemies, and leaves a trail of caustic ground. Enemies standing on the caustic ground take chaos damage over time."
   },
   "VaalSnappingAdder":{
@@ -16808,18 +16808,24 @@
       },{
         "cost":[]
       }],
+    "baseTypeName":"Vaal Venom Gyre",
     "stats":[null,null,"vaal_venom_gyre_instantly_capture_maximum_projectiles","projectiles_are_not_fired"],
     "constantStats":[[],[],[],[],[],[],[],["vaal_venom_gyre_capture_x_projectiles_per_second"],[]],
-    "weaponTypes":[],
-    "baseFlags":[],
     "skillTypes":[],
-    "name":"Vaal Venom Gyre",
+    "baseFlags":[],
+    "weaponTypes":[],
     "description":"Creates already-caught projectiles without firing them first, both immediately and over a secondary duration. Caught projectiles spiral outwards when you use Whirling Blades and do not return. Requires a Dagger or Claw."
   },
   "ShrapnelShot":{
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "weaponTypes":[],
     "baseMods":[{
         "value":[]
       }],
+    "constantStats":[[],[]],
+    "description":"Fire a trio of electrical arrows that quickly dissipate, vanishing shortly after being loosed. The arrows are fired with such force that they create a burst of lightning, damaging enemies in a cone in front of you.",
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -16946,22 +16952,21 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "constantStats":[[],[]],
-    "qualityStats":{
-      "Default":[[]]
-    },
+    "baseTypeName":"Galvanic Arrow",
     "stats":[null,null,null,null,null,"additive_arrow_speed_modifiers_apply_to_area_of_effect"],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
-    "name":"Galvanic Arrow",
-    "description":"Fire a trio of electrical arrows that quickly dissipate, vanishing shortly after being loosed. The arrows are fired with such force that they create a burst of lightning, damaging enemies in a cone in front of you."
+    "baseFlags":[]
   },
   "CorpseEruptionAltY":{
-    "stats":[],
     "qualityStats":{
       "Default":[["cremation_fires_projectiles_faster_+%_final"]]
     },
+    "incrementalEffectiveness":0.034499999135733,
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[[],["corpse_erruption_base_maximum_number_of_geyers"],[],["cremation_base_fires_projectile_every_x_ms"]],
+    "description":"Creates a volcanic geyser at a location, which will repeatedly unleash projectiles sequentially over the surrounding area for a duration.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -17097,15 +17102,10 @@
           }
         }]
     },
-    "constantStats":[[],["corpse_erruption_base_maximum_number_of_geyers"],[],["cremation_base_fires_projectile_every_x_ms"]],
-    "baseMods":[{
-        "value":[]
-      }],
-    "skillTypes":[],
+    "baseTypeName":"Cremation of the Volcano",
+    "stats":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.034499999135733,
-    "name":"Cremation of the Volcano",
-    "description":"Creates a volcanic geyser at a location, which will repeatedly unleash projectiles sequentially over the surrounding area for a duration."
+    "skillTypes":[]
   },
   "VaalLightningArrow":{
     "qualityStats":{
@@ -17266,9 +17266,9 @@
       "base_skill_show_average_damage_instead_of_dps":[],
       "quality_display_lightning_arrow_is_gem":[]
     },
+    "baseTypeName":"Vaal Lightning Arrow",
     "stats":[null,null,null,null,null,"vaal_lightning_arrow_fork_and_chain_modifiers_apply_to_number_of_redirects","projectiles_cannot_split"],
     "skillTypes":[],
-    "name":"Vaal Lightning Arrow",
     "baseFlags":[]
   },
   "TornadoShot":{
@@ -17361,12 +17361,12 @@
       },{
         "cost":[]
       }],
+    "baseTypeName":"Tornado Shot",
     "stats":[],
     "constantStats":[[]],
-    "weaponTypes":[],
-    "baseFlags":[],
     "skillTypes":[],
-    "name":"Tornado Shot",
+    "baseFlags":[],
+    "weaponTypes":[],
     "description":"Fires a piercing shot that travels until it reaches the targeted location. It will then fire projectiles out in all directions from that point, which will travel for a short time before disappearing."
   },
   "ChannelledSnipeSupport":{
@@ -17596,14 +17596,14 @@
       "Default":[["minion_cooldown_recovery_+%"]]
     },
     "constantStats":[[],[],[]],
+    "baseTypeName":"Summon Ice Golem of Hordes",
     "stats":[],
     "baseMods":[{
         "value":[]
       },[[]]],
-    "minionList":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Ice Golem of Hordes",
+    "minionList":[],
     "description":"Summons an Ice Golem. The Ice Golem can use an icy barrage spell and a chilling spinning attack in addition to its melee attack."
   },
   "EtherealKnivesAltY":{
@@ -17731,11 +17731,11 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "baseTypeName":"Ethereal Knives of the Massacre",
     "stats":[],
     "constantStats":[[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Ethereal Knives of the Massacre",
     "description":"Fires a circle of knives outwards around the caster which deal physical damage."
   },
   "CorpseEruptionAltX":{
@@ -17882,9 +17882,9 @@
           "value":[]
         }]
     },
+    "baseTypeName":"Cremation of Exhuming",
     "stats":[],
     "baseFlags":[],
-    "name":"Cremation of Exhuming",
     "skillTypes":[]
   },
   "ReaveAltX":{
@@ -18012,6 +18012,7 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "constantStats":[[],[],["skill_convert_%_physical_damage_to_random_element"]],
     "statMap":{
       "reave_area_of_effect_+%_final_per_stage":[[{
             "var":"ReaveofRefractionStage"
@@ -18020,15 +18021,14 @@
           "name":"Multiplier:ReaveofRefractionMaxStages"
         }]
     },
-    "constantStats":[[],[],["skill_convert_%_physical_damage_to_random_element"]],
+    "baseTypeName":"Reave of Refraction",
     "stats":[],
     "baseMods":[{
         "value":[]
       },[]],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Reave of Refraction"
+    "weaponTypes":[]
   },
   "ChannelledSnipe":{
     "qualityStats":{
@@ -18164,9 +18164,9 @@
     },
     "stats":[null,null,null,"is_snipe_default_projectile","is_snipe_default_projectile_2","quality_display_snipe_is_gem"],
     "constantStats":[[],[]],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
+    "weaponTypes":[],
     "description":"Channel to charge up your bow, gaining stages. Release to trigger one supported bow skill for each stage gained. If there are no supported skills, but at least one stage was gained, this skill will fire its own arrow instead. Cannot be used by Totems."
   },
   "RainOfArrowsAltY":{
@@ -18319,12 +18319,12 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "baseTypeName":"Rain of Arrows of Saturation",
     "stats":[],
     "baseMods":[[]],
+    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "weaponTypes":[],
-    "name":"Rain of Arrows of Saturation",
     "description":"Fires multiple arrows into the air, to slowly land in sequence after a delay, starting at the targeted location and spreading outwards in all directions. Each arrow deals damage in an area around it. Half of the arrows will land directly on targets if there are targets in their range."
   },
   "SplitArrow":{
@@ -18456,11 +18456,11 @@
         "cost":[]
       }],
     "constantStats":[[]],
+    "baseTypeName":"Split Arrow",
     "stats":[],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Split Arrow",
     "description":"Fires multiple arrows at different targets."
   },
   "RainOfArrowsAltX":{
@@ -18605,18 +18605,19 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "baseTypeName":"Rain of Arrows of Artillery",
     "stats":[],
     "baseMods":[[]],
+    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "weaponTypes":[],
-    "name":"Rain of Arrows of Artillery",
     "description":"Fires multiple arrows into the air, to land in sequence after a delay, starting in front of you and proceeding in a line in the direction of the target. Each arrow deals damage in an area around it."
   },
   "FlamethrowerTrap":{
     "qualityStats":{
       "Default":[[]]
     },
+    "incrementalEffectiveness":0.058899998664856,
     "baseMods":[{
         "value":[]
       }],
@@ -18789,10 +18790,9 @@
           }]],
       "base_skill_show_average_damage_instead_of_dps":[]
     },
+    "baseTypeName":"Flamethrower Trap",
     "stats":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.058899998664856,
-    "name":"Flamethrower Trap",
     "skillTypes":[]
   },
   "SpectralHelix":{
@@ -18880,20 +18880,20 @@
       },{
         "cost":[]
       }],
+    "constantStats":[["spectral_spiral_weapon_base_number_of_bounces"],["spectral_helix_rotations_%",425]],
     "statMap":{
       "spectral_spiral_weapon_base_number_of_bounces":[{
           "name":"BounceCount"
         }]
     },
-    "constantStats":[["spectral_spiral_weapon_base_number_of_bounces"],["spectral_helix_rotations_%",425]],
+    "baseTypeName":"Spectral Helix",
     "stats":[null,null,"skill_display_single_base_projectile"],
     "baseMods":[[],{
         "name":"AdditionalProjectilesAddBouncesInstead"
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Spectral Helix",
+    "weaponTypes":[],
     "description":"Throws a spectral copy of your melee weapon. It spins around while flying in a large spiral, damaging enemies in its path, and bouncing if it collides with walls."
   },
   "IceTrapAltX":{
@@ -19024,6 +19024,7 @@
       }],
     "baseEffectiveness":2.7999999523163,
     "constantStats":[[],[],[]],
+    "baseTypeName":"Ice Trap of Hollowness",
     "stats":[],
     "baseMods":[{
         "value":[]
@@ -19032,10 +19033,10 @@
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Ice Trap of Hollowness",
     "description":"Throws a trap that creates a series of icy runic explosions in a circle around itself when triggered, dealing cold damage to all enemies caught in the blasts."
   },
   "RainOfSporesAltX":{
+    "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
@@ -19174,17 +19175,16 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "stats":[],
     "constantStats":[[],[],[],["rain_of_spores_vines_movement_speed_+%_final",-5],["minimum_rain_of_spores_movement_speed_+%_final_cap"],[]],
     "baseMods":[[],{
         "value":[]
       },{
         "value":[]
       }],
+    "baseTypeName":"Toxic Rain of Sporeburst",
     "baseFlags":[],
-    "skillTypes":[],
     "weaponTypes":[],
-    "name":"Toxic Rain of Sporeburst",
+    "skillTypes":[],
     "description":"Fire arrows into the air that rain down around the targeted area, dealing damage to enemies they hit and creating spore pods where they land. Each spore pod slows the movement speed of nearby enemies. The pods last for a duration before bursting, dealing area damage."
   },
   "VaalIceShot":{
@@ -19331,18 +19331,27 @@
         "statInterpolation":[]
       }],
     "constantStats":[[],[],["maximum_number_of_vaal_ice_shot_mirages"]],
+    "baseTypeName":"Vaal Ice Shot",
     "stats":[null,null,null,null,"vaal_ice_shot_modifiers_to_projectile_count_do_not_apply_to_mirages"],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Vaal Ice Shot",
     "description":"Fires an arrow that converts some physical damage to cold on its target and converts all physical damage to cold in a cone behind that target. When you use this skill, it summons a squad of Mirage Sharpshooters for a duration. Cannot be used by Totems, Traps, or Mines."
   },
   "RainOfSpores":{
-    "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
+    "weaponTypes":[],
+    "baseMods":[{
+        "value":[]
+      },[],[],{
+        "value":[]
+      },{
+        "value":[]
+      }],
+    "constantStats":[[],[],[],[],[]],
+    "description":"Fire arrows into the air that rain down around the targeted area, dealing damage to enemies they hit and creating spore pods where they land. Each spore pod deals chaos damage over time to nearby enemies and slows their movement speed. The pods last for a duration before bursting, dealing area damage.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -19464,19 +19473,10 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "constantStats":[[],[],[],[],[]],
-    "baseMods":[{
-        "value":[]
-      },[],[],{
-        "value":[]
-      },{
-        "value":[]
-      }],
-    "baseFlags":[],
-    "weaponTypes":[],
+    "baseTypeName":"Toxic Rain",
+    "stats":[],
     "skillTypes":[],
-    "name":"Toxic Rain",
-    "description":"Fire arrows into the air that rain down around the targeted area, dealing damage to enemies they hit and creating spore pods where they land. Each spore pod deals chaos damage over time to nearby enemies and slows their movement speed. The pods last for a duration before bursting, dealing area damage."
+    "baseFlags":[]
   },
   "Frenzy":{
     "qualityStats":{
@@ -19588,11 +19588,11 @@
       "quality_display_frenzy_is_gem":[],
       "frenzy_skill_attack_damage_+%_final_per_frenzy_charge":[[[]]]
     },
+    "baseTypeName":"Frenzy",
     "stats":[null,null,"quality_display_frenzy_is_gem","quality_display_active_skill_attack_speed_per_frenzy_is_gem"],
     "skillTypes":[],
     "constantStats":[[],[]],
     "baseFlags":[],
-    "name":"Frenzy",
     "description":"Performs an attack that gives the character a frenzy charge if it hits. Frenzy charges increase your attack speed."
   },
   "VaalThrownWeapon":{
@@ -19689,12 +19689,12 @@
     "statMap":{
       "base_number_of_projectiles_in_spiral_nova":[[]]
     },
+    "baseTypeName":"Vaal Spectral Throw",
     "stats":["projectile_spiral_nova_both_directions",null,null,"projectiles_not_offset"],
     "constantStats":[["base_number_of_projectiles_in_spiral_nova"],["projectile_spiral_nova_time_ms"],["projectile_spiral_nova_angle"],["projectile_spiral_nova_starting_angle_offset"],[]],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Vaal Spectral Throw",
+    "weaponTypes":[],
     "description":"Throws several spectral copies of your melee weapon. They fly out and then return to you, in a spinning attack that damages enemies in their path."
   },
   "AlchemistsMark":{
@@ -19836,6 +19836,7 @@
           "name":"PoisonDpsAsCausticGround"
         }]
     },
+    "baseTypeName":"Alchemist's Mark",
     "stats":["alchemists_mark_igniter_creates_burning_ground_%_ignite_damage","alchemists_mark_poisoner_creates_caustic_ground_%_poison_damage"],
     "constantStats":[["alchemists_mark_grant_attacker_x_flask_charges_when_hit_once_per_3s"],[]],
     "skillTypes":[],
@@ -19845,16 +19846,18 @@
         "value":[]
       }],
     "baseFlags":[],
-    "name":"Alchemist's Mark",
     "description":"Curses a single enemy, granting flask charges when you hit them and creating Burning Ground under them if your hit Ignites them, and Caustic Ground if it Poisons them. Damage modifiers do not apply to these ground effects. You can only have one Mark at a time."
   },
   "ViperStrikeAltX":{
-    "baseMods":[{
-        "value":[]
-      }],
     "qualityStats":{
       "Default":[["active_skill_poison_damage_+%_final"]]
     },
+    "weaponTypes":[],
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[[],[],[],[]],
+    "description":"Hits enemies, converting some of your physical damage to chaos damage and inflicting poison which will be affected by modifiers to skill duration. If dual wielding, deals the damage of both weapons in one strike. Requires a claw, dagger or sword.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -19980,13 +19983,10 @@
       "active_skill_poison_damage_+%_final":[[]],
       "quality_display_active_skill_poison_damage_final_is_gem":[]
     },
-    "constantStats":[[],[],[],[]],
+    "baseTypeName":"Viper Strike of the Mamba",
     "stats":[null,null,null,null,null,"cannot_poison_poisoned_enemies","quality_display_active_skill_poison_damage_final_is_gem"],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
-    "name":"Viper Strike of the Mamba",
-    "description":"Hits enemies, converting some of your physical damage to chaos damage and inflicting poison which will be affected by modifiers to skill duration. If dual wielding, deals the damage of both weapons in one strike. Requires a claw, dagger or sword."
+    "baseFlags":[]
   },
   "SmokeMine":{
     "qualityStats":{
@@ -20116,14 +20116,14 @@
     "statMap":{
       "base_movement_velocity_+%":[[[]]]
     },
+    "baseTypeName":"Smoke Mine",
     "stats":[null,null,"is_remote_mine","base_skill_is_mined",null,"disable_mine_detonation_cascade","mine_detonates_instantly","additive_mine_duration_modifiers_apply_to_buff_effect_duration","mine_cannot_rearm"],
     "constantStats":[["base_mine_duration"],[],["ground_smoke_art_variation"]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Smoke Mine",
+    "baseFlags":[],
     "description":"Throws a mine that will teleport you to it when detonated. It covers both your escape and arrival with a cloud of smoke that blinds enemies, and gives you a temporary buff to movement speed. Shares a cooldown with other Blink skills."
   },
   "SiegeBallistaAltX":{
@@ -20259,14 +20259,14 @@
         "cost":[]
       }],
     "constantStats":[[],[],["number_of_additional_forks_base"]],
+    "baseTypeName":"Siege Ballista of Splintering",
     "stats":["number_of_additional_totems_allowed",null,null,null,null,null,"projectiles_fork"],
     "baseMods":[{
         "name":"ProjectileRain"
       }],
+    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "weaponTypes":[],
-    "name":"Siege Ballista of Splintering",
     "description":"Summons a ballista totem that attacks with forking arrows.\nRequires a Bow."
   },
   "AnimateWeaponAltY":{
@@ -20396,6 +20396,7 @@
         "statInterpolation":[]
       }],
     "minionUses":[],
+    "baseTypeName":"Animate Weapon of Ranged Arms",
     "stats":{
       "11":"animate_weapon_can_only_animate_range_weapons"
     },
@@ -20424,7 +20425,6 @@
     },
     "minionList":[],
     "skillTypes":[],
-    "name":"Animate Weapon of Ranged Arms",
     "qualityStats":{
       "Default":[[]]
     }
@@ -20591,12 +20591,13 @@
             "var":"ChangedStanceRecently"
           }]]
     },
+    "baseTypeName":"Lacerate",
     "stats":[null,null,null,"active_skill_bleeding_damage_+%_final_in_blood_stance"],
     "skillTypes":[],
-    "name":"Lacerate",
     "baseFlags":[]
   },
   "Barrage":{
+    "stats":[],
     "parts":[[],[]],
     "levels":[{
         "cost":[]
@@ -20689,18 +20690,17 @@
       },{
         "cost":[]
       }],
-    "stats":[],
+    "constantStats":[[]],
     "statMap":{
       "projectiles_barrage":[]
     },
-    "constantStats":[[]],
+    "baseTypeName":"Barrage",
     "qualityStats":{
       "Default":[[]]
     },
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Barrage",
+    "weaponTypes":[],
     "description":"After a short preparation time, you fire individual projectiles repeatedly with a Bow or Wand. These projectiles have a small randomised spread. This skill cannot be Triggered."
   },
   "HeraldOfIce":{
@@ -20847,12 +20847,12 @@
       "spell_minimum_added_cold_damage":[[[]]],
       "attack_maximum_added_cold_damage":[[[]]]
     },
+    "baseTypeName":"Herald of Ice",
     "stats":["spell_minimum_added_cold_damage","spell_maximum_added_cold_damage",null,null,"secondary_minimum_base_cold_damage","secondary_maximum_base_cold_damage",null,null,null,"damage_cannot_be_reflected"],
     "constantStats":[[],[]],
+    "incrementalEffectiveness":0.023000000044703,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.023000000044703,
-    "name":"Herald of Ice",
     "description":"Grants a buff adding cold damage to spells and attacks. If you shatter an enemy, this skill will cause them to explode and deal AoE cold damage to enemies near them. This damage is not affected by modifiers to spell damage."
   },
   "CycloneAltX":{
@@ -20860,7 +20860,9 @@
       "Default":[["cyclone_attack_speed_+%_final_per_stage"]]
     },
     "weaponTypes":[],
-    "baseFlags":[],
+    "baseMods":[{
+        "value":[]
+      }],
     "constantStats":[[],["cyclone_stage_decay_time_ms"],["cyclone_melee_weapon_range_+_per_stage"],["cyclone_movement_speed_+%_final_per_stage"],[]],
     "levels":[{
         "statInterpolation":[],
@@ -20996,12 +20998,10 @@
           "value":[]
         }]
     },
+    "baseTypeName":"Cyclone of Tumult",
     "stats":[null,null,"cyclone_gain_stage_every_x_ms_while_channelling","cyclone_max_number_of_stages"],
     "skillTypes":[],
-    "name":"Cyclone of Tumult",
-    "baseMods":[{
-        "value":[]
-      }]
+    "baseFlags":[]
   },
   "ShrapnelBallistaAltX":{
     "qualityStats":{
@@ -21144,10 +21144,10 @@
     "statMap":{
       "fires_1_projectile_if_no_steel_ammo":[[[]]]
     },
+    "baseTypeName":"Shrapnel Ballista of Steel",
     "stats":{
       "11":"skill_is_steel_skill"
     },
-    "name":"Shrapnel Ballista of Steel",
     "skillTypes":[]
   },
   "AnimateWeaponAltX":{
@@ -21278,15 +21278,15 @@
         "statInterpolation":[]
       }],
     "minionUses":[],
+    "baseTypeName":"Animate Weapon of Self Reflection",
     "stats":[],
-    "statMap":{
-      "number_of_animated_weapons_allowed":[[[]]]
-    },
-    "skillTypes":[],
-    "weaponTypes":[],
-    "name":"Animate Weapon of Self Reflection",
     "qualityStats":{
       "Default":[[]]
+    },
+    "weaponTypes":[],
+    "skillTypes":[],
+    "statMap":{
+      "number_of_animated_weapons_allowed":[[[]]]
     }
   },
   "DualStrike":{
@@ -21381,18 +21381,19 @@
       "dual_strike_critical_strike_chance_+%_final_against_enemies_on_full_life":[[[]]],
       "quality_display_dual_strike_is_gem":[]
     },
+    "baseTypeName":"Dual Strike",
     "stats":[null,"quality_display_dual_strike_is_gem"],
     "constantStats":[["dual_strike_critical_strike_chance_+%_final_against_enemies_on_full_life"],[]],
+    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "weaponTypes":[],
-    "name":"Dual Strike",
     "description":"Attacks with both weapons, dealing the damage of both in one strike. Dual wield only. Does not work with wands."
   },
   "PhysCascadeTrapAltX":{
     "qualityStats":{
       "Default":[["phys_cascade_trap_number_of_cascades"]]
     },
+    "incrementalEffectiveness":0.044399999082088,
     "baseMods":[{
         "value":[]
       },{
@@ -21544,10 +21545,9 @@
       "base_skill_show_average_damage_instead_of_dps":[],
       "quality_display_phys_cascade_trap_is_gem":[]
     },
+    "baseTypeName":"Seismic Trap of Swells",
     "stats":[null,null,null,null,null,null,"quality_display_phys_cascade_trap_is_gem"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.044399999082088,
-    "name":"Seismic Trap of Swells",
     "skillTypes":[]
   },
   "CobraLash":{
@@ -21688,20 +21688,23 @@
         "cost":[],
         "baseMultiplier":1.759
       }],
+    "constantStats":[[],[],["projectile_angle_variance"],[],["cobra_lash_hit_and_ailment_damage_+%_final_for_each_remaining_chain"]],
     "statMap":{
       "cobra_lash_hit_and_ailment_damage_+%_final_for_each_remaining_chain":[[{
             "stat":"ChainRemaining"
           },[]]]
     },
-    "constantStats":[[],[],["projectile_angle_variance"],[],["cobra_lash_hit_and_ailment_damage_+%_final_for_each_remaining_chain"]],
+    "baseTypeName":"Cobra Lash",
     "stats":[],
     "baseFlags":[],
-    "skillTypes":[],
     "weaponTypes":[],
-    "name":"Cobra Lash",
+    "skillTypes":[],
     "description":"Fires a poisonous projectile based on your weapon that will chain between enemies. Requires a Dagger or Claw."
   },
   "BlinkArrow":{
+    "baseMods":[{
+        "value":[]
+      }],
     "minionSkillTypes":[],
     "levels":[{
         "statInterpolation":[],
@@ -21824,19 +21827,16 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "baseMods":[{
-        "value":[]
-      }],
     "constantStats":[[],[],[]],
     "qualityStats":{
       "Default":[[]]
     },
+    "baseTypeName":"Blink Arrow",
     "stats":[],
     "baseFlags":[],
+    "weaponTypes":[],
     "skillTypes":[],
     "minionList":[],
-    "weaponTypes":[],
-    "name":"Blink Arrow",
     "description":"Fires an arrow at the target destination. When the arrow lands, you are teleported to it and a clone is summoned at your old location. The clone is a minion that uses your bow and quiver."
   },
   "VaalAnimateWeapon":{
@@ -21966,6 +21966,7 @@
         "cost":[]
       }],
     "minionUses":[],
+    "baseTypeName":"Vaal Animate Weapon",
     "stats":[null,null,null,null,null,"vaal_animate_weapon_minimum_level_requirement","vaal_animate_weapon_raise_up_to_X_weapons_as_uniques"],
     "statMap":{
       "number_of_animated_weapons_allowed":[{
@@ -21980,12 +21981,12 @@
     },
     "minionList":[],
     "skillTypes":[],
-    "name":"Vaal Animate Weapon",
     "qualityStats":{
       "Default":[[]]
     }
   },
   "Bladefall":{
+    "constantStats":[[],["bladefall_blade_left_in_ground_for_every_X_volleys"],[],[]],
     "qualityStats":{
       "Default":[[]]
     },
@@ -22113,7 +22114,7 @@
     "statMap":{
       "quality_display_bladefall_is_gem":[]
     },
-    "constantStats":[[],["bladefall_blade_left_in_ground_for_every_X_volleys"],[],[]],
+    "baseTypeName":"Bladefall",
     "stats":[],
     "baseMods":[{
         "value":[]
@@ -22129,8 +22130,7 @@
         }
       }],
     "skillTypes":[],
-    "baseFlags":[],
-    "name":"Bladefall"
+    "baseFlags":[]
   },
   "PhysCascadeTrap":{
     "qualityStats":{
@@ -22288,9 +22288,9 @@
           "name":"SeismicPulseFrequency"
         }]
     },
+    "baseTypeName":"Seismic Trap",
     "stats":[null,null,null,null,null,null,null,null,"modifiers_to_trap_throw_speed_apply_to_seismic_trap_frequency"],
     "baseFlags":[],
-    "name":"Seismic Trap",
     "skillTypes":[]
   },
   "ImpactingSteel":{
@@ -22419,17 +22419,24 @@
         "cost":[]
       }],
     "constantStats":[[],[]],
+    "baseTypeName":"Splitting Steel",
     "stats":[],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
-    "name":"Splitting Steel",
     "description":"Fire a single projectile that splits on impact or at the targeted location, dealing area damage when it splits and again when the split projectiles explode at the end of their flight. Requires a Sword or Axe."
   },
   "VaalDetonateDead":{
     "qualityStats":{
       "Default":[["detonate_dead_%_chance_to_detonate_additional_corpse"]]
     },
+    "incrementalEffectiveness":0.034000001847744,
+    "baseMods":[{
+        "1":[],
+        "value":[]
+      }],
+    "constantStats":[[]],
+    "description":"Targets a corpse, and deals spell damage to enemies around the corpse, as well as causing the corpse to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected. This will continue to target other corpses in the area, with an increasing delay between each one, until it runs out of corpses or has destroyed 22 corpses.",
     "parts":[[],[]],
     "levels":[{
         "cost":[],
@@ -22563,17 +22570,10 @@
           "value":[]
         }]
     },
-    "constantStats":[[]],
+    "baseTypeName":"Vaal Detonate Dead",
     "stats":[],
-    "baseMods":[{
-        "1":[],
-        "value":[]
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.034000001847744,
-    "name":"Vaal Detonate Dead",
-    "description":"Targets a corpse, and deals spell damage to enemies around the corpse, as well as causing the corpse to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected. This will continue to target other corpses in the area, with an increasing delay between each one, until it runs out of corpses or has destroyed 22 corpses."
+    "skillTypes":[]
   },
   "VaalDoubleStrike":{
     "qualityStats":{
@@ -22716,11 +22716,11 @@
         "statInterpolation":[]
       }],
     "constantStats":[[],[],[],[],["maximum_number_of_summoned_doubles"]],
+    "baseTypeName":"Vaal Double Strike",
     "stats":[null,null,"doubles_have_movement_speed_+%"],
     "baseFlags":[],
-    "skillTypes":[],
     "weaponTypes":[],
-    "name":"Vaal Double Strike",
+    "skillTypes":[],
     "description":"Performs two fast strikes with a melee weapon, each of which summons a double of you for a duration to continuously attack monsters in this fashion."
   },
   "BladeTrap":{
@@ -22865,21 +22865,24 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "baseTypeName":"Blade Trap",
     "stats":[],
     "constantStats":[[],[],["weapon_trap_total_rotation_%_if_dual_wielding"],["weapon_trap_rotation_speed_+%_if_dual_wielding"],[],[]],
-    "weaponTypes":[],
-    "baseFlags":[],
     "skillTypes":[],
-    "name":"Blade Trap",
+    "baseFlags":[],
+    "weaponTypes":[],
     "description":"Throws a trap which, once triggered, swings two copies of your equipped Dagger, Claw or One Handed Sword around it in circles, each repeatedly damaging enemies it spins through."
   },
   "LightningArrow":{
-    "baseMods":[{
-        "value":[]
-      }],
     "qualityStats":{
       "Default":[[]]
     },
+    "weaponTypes":[],
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[[],[]],
+    "description":"Fires a charged arrow which damages enemies by causing them to be struck by a bolt of lightning, which also damages a number of surrounding enemies.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -23016,13 +23019,10 @@
     "statMap":{
       "quality_display_lightning_arrow_is_gem":[]
     },
-    "constantStats":[[],[]],
+    "baseTypeName":"Lightning Arrow",
     "stats":[null,null,"active_skill_shock_as_though_damage_+%_final"],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
-    "name":"Lightning Arrow",
-    "description":"Fires a charged arrow which damages enemies by causing them to be struck by a bolt of lightning, which also damages a number of surrounding enemies."
+    "baseFlags":[]
   },
   "VaalFlickerStrike":{
     "qualityStats":{
@@ -23109,6 +23109,7 @@
       },{
         "cost":[]
       }],
+    "constantStats":[[],[],["base_melee_attack_repeat_count"],[null,-70]],
     "statMap":{
       "active_skill_ailment_damage_+%_final":[{
           "flags":6144
@@ -23118,26 +23119,31 @@
           "name":"RepeatCount"
         }]
     },
-    "constantStats":[[],[],["base_melee_attack_repeat_count"],[null,-70]],
+    "baseTypeName":"Vaal Flicker Strike",
     "stats":[null,null,null,"apply_cut_debuff_on_hit"],
     "baseMods":[{
         "name":"OnlyFinalRepeat"
       },{
         "name":"FinalRepeatSumsDamage"
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Vaal Flicker Strike",
+    "weaponTypes":[],
     "description":"Repeatedly teleports to enemies and hits them, inflicting a wound but dealing no damage. After the repeating finishes, each enemy is hit by the total damage of their wounds, which are removed."
   },
   "DoubleSlashAltY":{
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "weaponTypes":[],
     "baseMods":[{
         "value":[]
       },{
         "1":[],
         "value":[]
       }],
+    "constantStats":[[]],
+    "description":"Slashes twice, releasing waves of force that damage enemies they hit. Enemies in the middle of the slashes can be hit by both. Requires a One Handed Axe or One Handed Sword.",
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -23267,21 +23273,21 @@
         "damageEffectiveness":1.516,
         "cost":[]
       }],
-    "constantStats":[[]],
+    "baseTypeName":"Lacerate of Haemorrhage",
+    "stats":[],
+    "skillTypes":[],
+    "baseFlags":[]
+  },
+  "ShrapnelShotAltY":{
     "qualityStats":{
       "Default":[[]]
     },
-    "stats":[],
-    "baseFlags":[],
     "weaponTypes":[],
-    "skillTypes":[],
-    "name":"Lacerate of Haemorrhage",
-    "description":"Slashes twice, releasing waves of force that damage enemies they hit. Enemies in the middle of the slashes can be hit by both. Requires a One Handed Axe or One Handed Sword."
-  },
-  "ShrapnelShotAltY":{
     "baseMods":[{
         "value":[]
       }],
+    "constantStats":[[],[]],
+    "description":"Fire a trio of electrical arrows that quickly dissipate, vanishing shortly after being loosed. If the arrows' flight is stopped by colliding with a target, they create a burst of lightning, damaging enemies in a cone behind the target",
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -23404,16 +23410,10 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "constantStats":[[],[]],
-    "qualityStats":{
-      "Default":[[]]
-    },
+    "baseTypeName":"Galvanic Arrow of Surging",
     "stats":[],
-    "baseFlags":[],
-    "weaponTypes":[],
     "skillTypes":[],
-    "name":"Galvanic Arrow of Surging",
-    "description":"Fire a trio of electrical arrows that quickly dissipate, vanishing shortly after being loosed. If the arrows' flight is stopped by colliding with a target, they create a burst of lightning, damaging enemies in a cone behind the target"
+    "baseFlags":[]
   },
   "ShrapnelTrap":{
     "qualityStats":{
@@ -23554,15 +23554,24 @@
       "shrapnel_trap_number_of_secondary_explosions":[[]],
       "quality_display_explosive_trap_is_gem":[]
     },
+    "baseTypeName":"Explosive Trap",
     "stats":[],
     "baseFlags":[],
-    "name":"Explosive Trap",
     "skillTypes":[]
   },
   "VolatileDead":{
     "qualityStats":{
       "Default":[[]]
     },
+    "baseMods":[{
+        "1":[],
+        "value":[]
+      },{
+        "value":[]
+      },{
+        "value":[]
+      }],
+    "constantStats":[[],[],[],[],[]],
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -23695,19 +23704,10 @@
           "value":[]
         }]
     },
-    "constantStats":[[],[],[],[],[]],
+    "baseTypeName":"Volatile Dead",
     "stats":[],
-    "baseMods":[{
-        "1":[],
-        "value":[]
-      },{
-        "value":[]
-      },{
-        "value":[]
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Volatile Dead"
+    "skillTypes":[]
   },
   "BladefallAltX":{
     "qualityStats":{
@@ -23844,14 +23844,17 @@
           "name":"Multiplier:BladefallofVolleysMaxStages"
         }]
     },
+    "baseTypeName":"Bladefall of Volleys",
     "stats":[],
     "constantStats":[[],["bladefall_damage_per_stage_+%_final"],["bladefall_critical_strike_chance_+%_per_stage"]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Bladefall of Volleys",
     "description":"Ethereal weapons rain from the sky, dealing damage to enemies in a sequence of volleys, each wider and more damaging than the last. Enemies can be hit multiple times where these overlap."
   },
   "DoubleStrikeAltY":{
+    "baseMods":[{
+        "value":[]
+      },[]],
     "qualityStats":{
       "Default":[["double_strike_attack_speed_+%_final_per_stage"]]
     },
@@ -23983,9 +23986,7 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "baseMods":[{
-        "value":[]
-      },[]],
+    "constantStats":[[],["double_strike_max_stages"]],
     "statMap":{
       "double_strike_max_stages":[{
           "name":"Multiplier:DoubleStrikeofMomentumMaxStages"
@@ -23994,15 +23995,17 @@
             "var":"DoubleStrikeofMomentumStage"
           }]]
     },
-    "constantStats":[[],["double_strike_max_stages"]],
+    "baseTypeName":"Double Strike of Momentum",
     "stats":[],
     "baseFlags":[],
-    "skillTypes":[],
     "weaponTypes":[],
-    "name":"Double Strike of Momentum",
+    "skillTypes":[],
     "description":"Performs two fast strikes with a melee weapon, gaining stages which cause this skill to attack faster. All stages are lost when you move."
   },
   "BlinkArrowAltX":{
+    "baseMods":[{
+        "value":[]
+      }],
     "minionSkillTypes":[],
     "levels":[{
         "statInterpolation":[],
@@ -24125,22 +24128,22 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "baseMods":[{
-        "value":[]
-      }],
     "constantStats":[[],[],[],["maximum_number_of_blink_mirror_arrow_rain_of_arrows_clones"]],
     "qualityStats":{
       "Default":[[]]
     },
+    "baseTypeName":"Blink Arrow of Bombarding Clones",
     "stats":[],
     "baseFlags":[],
+    "weaponTypes":[],
     "skillTypes":[],
     "minionList":[],
-    "weaponTypes":[],
-    "name":"Blink Arrow of Bombarding Clones",
     "description":"Fires an arrow at the target destination. When the arrow lands, you are teleported to it and a clone is summoned at your old location. The clone is a minion that uses your bow and quiver to fire arrows into the air to land around a target."
   },
   "PoisonArrowAltX":{
+    "baseMods":[{
+        "value":[]
+      }],
     "qualityStats":{
       "Default":[[]]
     },
@@ -24271,24 +24274,27 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "baseMods":[{
-        "value":[]
-      }],
+    "constantStats":[[],[],[]],
     "statMap":{
       "caustic_arrow_explode_on_hit_base_area_of_effect_radius":[{
           "value":[]
         }]
     },
-    "constantStats":[[],[],[]],
+    "baseTypeName":"Caustic Arrow of Poison",
     "stats":[],
     "baseFlags":[],
-    "skillTypes":[],
     "weaponTypes":[],
-    "name":"Caustic Arrow of Poison",
+    "skillTypes":[],
     "description":"Fires a poisonous arrow which deals chaos damage in an area on impact."
   },
   "ScourgeArrow":{
-    "stats":[],
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "weaponTypes":[],
+    "baseFlags":[],
+    "constantStats":[["virulent_arrow_maximum_number_of_stacks"],[],[],[],["virulent_arrow_damage_+%_final_per_stage"],[]],
+    "description":"Channel to infuse an arrow with chaos, gaining stages while it is held. Release to fire it, leaving spore pods in its wake. Each spore pod blooms, firing thorn arrows, which travel for a short time before dissipating. Modifiers that cause additional projectiles to be fired will only apply to the initial arrows, and the spore pods will be divided between those arrows.",
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -24424,7 +24430,6 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "constantStats":[["virulent_arrow_maximum_number_of_stacks"],[],[],[],["virulent_arrow_damage_+%_final_per_stage"],[]],
     "statMap":{
       "virulent_arrow_damage_+%_final_per_stage":[[[]]],
       "virulent_arrow_pod_projectile_damage_+%_final":[[[]]],
@@ -24433,17 +24438,42 @@
         }],
       "base_arrows_always_pierce":[[]]
     },
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "baseFlags":[],
-    "skillTypes":[],
-    "weaponTypes":[],
-    "name":"Scourge Arrow",
-    "description":"Channel to infuse an arrow with chaos, gaining stages while it is held. Release to fire it, leaving spore pods in its wake. Each spore pod blooms, firing thorn arrows, which travel for a short time before dissipating. Modifiers that cause additional projectiles to be fired will only apply to the initial arrows, and the spore pods will be divided between those arrows."
+    "baseTypeName":"Scourge Arrow",
+    "stats":[],
+    "skillTypes":[]
   },
   "ChargedDash":{
-    "stats":[null,null,null,"quality_display_chaged_dash_is_gem"],
+    "qualityStats":{
+      "Default":[["charged_dash_skill_inherent_movement_speed_+%_final"]]
+    },
+    "baseMods":[{
+        "value":[]
+      },{
+        "value":{
+          "value":"Start of Dash:"
+        }
+      },{
+        "value":[]
+      },{
+        "value":{
+          "value":"End of Dash:"
+        }
+      },{
+        "1":{
+          "type":"Skill",
+          "skillPartList":[]
+        },
+        "value":{
+          "key":"hitTimeMultiplier"
+        }
+      },{
+        "name":"Multiplier:ChargedDashMaxStages"
+      },{
+        "1":[],
+        "value":[]
+      }],
+    "constantStats":[[],["charged_dash_damage_+%_final",-100],["charged_dash_damage_+%_final_per_stack"],["charged_dash_channelling_damage_at_full_stacks_+%_final"],[]],
+    "description":"Channel to project an illusion which you steer. You gain stages while it moves, until it stops at a maximum total distance. Waves of area damage frequently pulse along its path, based on your attack speed. Stop channelling to teleport to the illusion, dealing a final wave of damage. Requires a Melee Weapon.",
     "parts":[{
         "name":"Channelling, No Stages"
       },{
@@ -24547,7 +24577,6 @@
         "cost":[],
         "baseMultiplier":1.415
       }],
-    "constantStats":[[],["charged_dash_damage_+%_final",-100],["charged_dash_damage_+%_final_per_stack"],["charged_dash_channelling_damage_at_full_stacks_+%_final"],["charged_dash_skill_inherent_movement_speed_+%_final"]],
     "statMap":{
       "charged_dash_channelling_damage_at_full_stacks_+%_final":[[[]]],
       "charged_dash_damage_+%_final_per_stack":[{
@@ -24560,45 +24589,38 @@
       "base_skill_show_average_damage_instead_of_dps":[],
       "charged_dash_damage_+%_final":[[[]]]
     },
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "baseMods":[{
-        "value":[]
-      },{
-        "value":{
-          "value":"Start of Dash:"
-        }
-      },{
-        "value":[]
-      },{
-        "value":{
-          "value":"End of Dash:"
-        }
-      },{
-        "1":{
-          "type":"Skill",
-          "skillPartList":[]
-        },
-        "value":{
-          "key":"hitTimeMultiplier"
-        }
-      },{
-        "name":"Multiplier:ChargedDashMaxStages"
-      },{
-        "1":[],
-        "value":[]
-      }],
-    "weaponTypes":[],
-    "skillTypes":[],
+    "baseTypeName":"Charged Dash",
+    "stats":[null,null,null,"quality_display_chaged_dash_is_gem"],
     "baseFlags":[],
-    "name":"Charged Dash",
-    "description":"Channel to project an illusion which you steer. You gain stages while it moves, until it stops at a maximum total distance. Waves of area damage frequently pulse along its path, based on your attack speed. Stop channelling to teleport to the illusion, dealing a final wave of damage. Requires a Melee Weapon."
+    "weaponTypes":[],
+    "skillTypes":[]
   },
   "ElementalHit":{
     "qualityStats":{
       "Default":[["elemental_hit_damage_+%_final_per_enemy_elemental_ailment"]]
     },
+    "incrementalEffectiveness":0.031399998813868,
+    "baseMods":[{
+        "1":{
+          "varList":["Ignited","Scorched"]
+        },
+        "2":[],
+        "value":224
+      },[{
+          "varList":["Chilled","Frozen","Brittle"]
+        },[]],[{
+          "varList":["Shocked","Sapped"]
+        },[]],{
+        "1":[],
+        "name":"Multiplier:ElementalHitAilmentOnEnemy"
+      },[[]],[[]],[[]],[[]],[[]],[[]],{
+        "1":{
+          "skillPartList":[]
+        },
+        "value":[]
+      }],
+    "constantStats":[[]],
+    "description":"Each attack with this skill will choose an element at random, and will only be able to deal damage of that element. If the attack hits an enemy, it will also deal damage in an area around them, with the radius being larger if that enemy is suffering from an ailment of the chosen element. It will avoid choosing the same element twice in a row.",
     "parts":[{
         "name":"Fire Attack"
       },{
@@ -24769,36 +24791,14 @@
           }]],
       "elemental_hit_area_of_effect_+100%_final_vs_enemy_with_associated_ailment":[]
     },
-    "constantStats":[[]],
+    "baseTypeName":"Elemental Hit",
     "stats":{
       "10":"elemental_hit_area_of_effect_+100%_final_vs_enemy_with_associated_ailment",
       "11":"elemental_hit_no_physical_chaos_damage",
       "12":"quality_display_elemental_hit_is_gem"
     },
-    "baseMods":[{
-        "1":{
-          "varList":["Ignited","Scorched"]
-        },
-        "2":[],
-        "value":224
-      },[{
-          "varList":["Chilled","Frozen","Brittle"]
-        },[]],[{
-          "varList":["Shocked","Sapped"]
-        },[]],{
-        "1":[],
-        "name":"Multiplier:ElementalHitAilmentOnEnemy"
-      },[[]],[[]],[[]],[[]],[[]],[[]],{
-        "1":{
-          "skillPartList":[]
-        },
-        "value":[]
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.031399998813868,
-    "name":"Elemental Hit",
-    "description":"Each attack with this skill will choose an element at random, and will only be able to deal damage of that element. If the attack hits an enemy, it will also deal damage in an area around them, with the radius being larger if that enemy is suffering from an ailment of the chosen element. It will avoid choosing the same element twice in a row."
+    "skillTypes":[]
   },
   "CorpseEruption":{
     "qualityStats":{
@@ -24943,9 +24943,9 @@
           "value":[]
         }]
     },
+    "baseTypeName":"Cremation",
     "stats":[],
     "baseFlags":[],
-    "name":"Cremation",
     "skillTypes":[]
   },
   "FlickerStrikeAltX":{
@@ -25037,12 +25037,12 @@
       "base_skill_show_average_damage_instead_of_dps":[],
       "flicker_strike_buff_movement_speed_+%":[[[]]]
     },
+    "baseTypeName":"Flicker Strike of Power",
     "stats":[null,null,null,"active_skill_cooldown_bypass_type_override_to_power_charge"],
     "constantStats":[[],[],["critical_strike_chance_+%_per_power_charge"],[]],
+    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "weaponTypes":[],
-    "name":"Flicker Strike of Power",
     "description":"Teleports the character to a nearby monster and attacks with a melee weapon. If no specific monster is targeted, one is picked at random. Grants a buff that increases movement speed for a duration. The cooldown can be bypassed by expending a Power Charge."
   },
   "BurningArrow":{
@@ -25203,11 +25203,11 @@
         "baseMultiplier":3.789
       }],
     "constantStats":[[],[]],
+    "baseTypeName":"Burning Arrow",
     "stats":[],
     "baseFlags":[],
     "weaponTypes":[],
-    "skillTypes":[],
-    "name":"Burning Arrow"
+    "skillTypes":[]
   },
   "FrenzyAltX":{
     "qualityStats":{
@@ -25300,13 +25300,16 @@
       "quality_display_frenzy_is_gem":[],
       "frenzy_skill_attack_damage_+%_final_per_frenzy_charge":[[[]]]
     },
+    "baseTypeName":"Frenzy of Onslaught",
     "stats":[],
     "skillTypes":[],
     "constantStats":[[],[],["frenzy_consume_charges_to_onslaught_for_ms_per_charge"]],
-    "baseFlags":[],
-    "name":"Frenzy of Onslaught"
+    "baseFlags":[]
   },
   "MirrorArrow":{
+    "baseMods":[{
+        "value":[]
+      }],
     "minionSkillTypes":[],
     "levels":[{
         "statInterpolation":[],
@@ -25429,19 +25432,16 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "baseMods":[{
-        "value":[]
-      }],
     "constantStats":[[],[],[]],
     "qualityStats":{
       "Default":[[]]
     },
+    "baseTypeName":"Mirror Arrow",
     "stats":[],
     "baseFlags":[],
+    "weaponTypes":[],
     "skillTypes":[],
     "minionList":[],
-    "weaponTypes":[],
-    "name":"Mirror Arrow",
     "description":"Fires an arrow at the target destination. When the arrow lands, a clone is summoned. The clone is a minion that uses your bow and quiver."
   },
   "VaalHaste":{
@@ -25574,14 +25574,14 @@
       "base_movement_velocity_+%":[[[]]],
       "attack_speed_+%_granted_from_skill":[[[]]]
     },
+    "baseTypeName":"Vaal Haste",
     "stats":[],
     "constantStats":[[]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Vaal Haste",
+    "baseFlags":[],
     "description":"Casts a temporary aura that increases the movement speed, attack speed and cast speed of you and your allies."
   },
   "BladeVortex":{
@@ -25741,15 +25741,21 @@
       "base_skill_show_average_damage_instead_of_dps":[],
       "blade_vortex_damage_+%_per_blade_final":[[[]]]
     },
+    "baseTypeName":"Blade Vortex",
     "stats":[],
     "baseFlags":[],
-    "name":"Blade Vortex",
     "skillTypes":[]
   },
   "DetonateDead":{
     "qualityStats":{
       "Default":[[]]
     },
+    "baseMods":[{
+        "1":[],
+        "value":[]
+      }],
+    "constantStats":[[]],
+    "description":"Targets a corpse, and deals spell damage to enemies around the corpse, as well as causing the corpse to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected.",
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -25882,21 +25888,12 @@
           "value":[]
         }]
     },
-    "constantStats":[[]],
+    "baseTypeName":"Detonate Dead",
     "stats":[],
-    "baseMods":[{
-        "1":[],
-        "value":[]
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Detonate Dead",
-    "description":"Targets a corpse, and deals spell damage to enemies around the corpse, as well as causing the corpse to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected."
+    "skillTypes":[]
   },
   "SiegeBallista":{
-    "qualityStats":{
-      "Default":[["attack_speed_+%_per_maximum_totem"]]
-    },
     "levels":[{
         "cost":[],
         "statInterpolation":[]
@@ -26025,18 +26022,21 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "qualityStats":{
+      "Default":[["attack_speed_+%_per_maximum_totem"]]
+    },
+    "constantStats":[[],[]],
     "statMap":{
       "attack_speed_+%_per_maximum_totem":[[{
             "stat":"ActiveTotemLimit"
           }]]
     },
-    "constantStats":[[],[]],
+    "baseTypeName":"Siege Ballista",
     "stats":[null,"arrow_base_number_of_targets_to_pierce"],
     "baseMods":[[]],
+    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "weaponTypes":[],
-    "name":"Siege Ballista",
     "description":"Summons a ballista totem that attacks with piercing arrows. Requires a Bow."
   },
   "ColdImpurity":{
@@ -26178,11 +26178,11 @@
       "base_immune_to_freeze":[[[]]],
       "base_maximum_cold_damage_resistance_%":[[[]]]
     },
+    "baseTypeName":"Vaal Impurity of Ice",
     "stats":[null,"aura_effect_+%",null,null,"hits_ignore_my_cold_resistance","base_immune_to_chill"],
-    "baseFlags":[],
-    "constantStats":[[],[]],
     "skillTypes":[],
-    "name":"Vaal Impurity of Ice",
+    "constantStats":[[],[]],
+    "baseFlags":[],
     "description":"Casts an aura that reduces cold damage taken and provides freeze and chill immunity to you and nearby allies, and makes hits against nearby enemies ignore their cold resistance. "
   },
   "ChargedAttackAltX":{
@@ -26333,12 +26333,15 @@
       "base_skill_show_average_damage_instead_of_dps":[],
       "blade_flurry_critical_strike_chance_per_stage_+%_final":[[[]]]
     },
+    "baseTypeName":"Blade Flurry of Incision",
     "stats":[],
     "skillTypes":[],
-    "name":"Blade Flurry of Incision",
     "baseFlags":[]
   },
   "MirrorArrowAltX":{
+    "baseMods":[{
+        "value":[]
+      }],
     "minionSkillTypes":[],
     "levels":[{
         "statInterpolation":[],
@@ -26461,19 +26464,16 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "baseMods":[{
-        "value":[]
-      }],
     "constantStats":[[],[],[],[]],
     "qualityStats":{
       "Default":[[]]
     },
+    "baseTypeName":"Mirror Arrow of Bombarding Clones",
     "stats":[],
     "baseFlags":[],
+    "weaponTypes":[],
     "skillTypes":[],
     "minionList":[],
-    "weaponTypes":[],
-    "name":"Mirror Arrow of Bombarding Clones",
     "description":"Fires an arrow at the target destination. When the arrow lands, a clone is summoned. The clone is a minion that uses your bow and quiver to fire arrows into the air to land around a target."
   },
   "FrostBladesAltX":{
@@ -26625,19 +26625,25 @@
           }
         }]
     },
+    "baseTypeName":"Frost Blades of Katabasis",
     "stats":{
       "5":"base_cold_damage_to_deal_per_minute",
       "11":"display_fixed_area"
     },
     "skillTypes":[],
     "incrementalEffectiveness":0.057500001043081,
-    "name":"Frost Blades of Katabasis",
     "baseFlags":[]
   },
   "DetonateDeadAltY":{
     "qualityStats":{
       "Default":[[]]
     },
+    "baseMods":[{
+        "1":[],
+        "value":[]
+      }],
+    "constantStats":[[]],
+    "description":"Targets a corpse, and deals spell damage to enemies around the corpse, as well as causing the corpse to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected. This will continue to target other corpses in the area, with a shorter delay between each one, until it runs out of corpses or has destroyed 8 corpses.",
     "parts":[[],[]],
     "levels":[{
         "cost":[],
@@ -26771,16 +26777,10 @@
           "value":[]
         }]
     },
-    "constantStats":[[]],
+    "baseTypeName":"Detonate Dead of Chain Reaction",
     "stats":[],
-    "baseMods":[{
-        "1":[],
-        "value":[]
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Detonate Dead of Chain Reaction",
-    "description":"Targets a corpse, and deals spell damage to enemies around the corpse, as well as causing the corpse to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected. This will continue to target other corpses in the area, with a shorter delay between each one, until it runs out of corpses or has destroyed 8 corpses."
+    "skillTypes":[]
   },
   "ArtilleryBallista":{
     "qualityStats":{
@@ -26912,12 +26912,12 @@
         "cost":[]
       }],
     "constantStats":[[],[],[],[]],
+    "baseTypeName":"Artillery Ballista",
     "stats":[],
     "baseMods":[[]],
+    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "weaponTypes":[],
-    "name":"Artillery Ballista",
     "description":"Summons a ballista totem that propels a sequence of fiery arrows into the air. The arrows impact the ground in a line, each dealing area damage to enemies around it. Requires a Bow."
   }
 }

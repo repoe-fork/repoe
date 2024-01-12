@@ -171,16 +171,16 @@
         "levelRequirement":100
       }],
     "baseEffectiveness":1.4524999856949,
+    "baseTypeName":"Vaal Spark",
     "stats":["spell_minimum_base_lightning_damage","spell_maximum_base_lightning_damage","base_is_projectile","modifiers_to_skill_effect_duration_also_affect_soul_prevention_duration","cannot_cancel_skill_before_contact_point"],
     "constantStats":[["base_skill_effect_duration",2000],["base_number_of_projectiles_in_spiral_nova"],["projectile_spiral_nova_time_ms",3000]],
     "statDescriptionScope":"skill_stat_descriptions",
-    "castTime":0.65,
+    "incrementalEffectiveness":0.02559999935329,
     "skillTypes":{
       "67":true
     },
     "baseFlags":[],
-    "incrementalEffectiveness":0.02559999935329,
-    "name":"Vaal Spark",
+    "castTime":0.65,
     "description":"Continuously launches unpredictable sparks in all directions that move randomly until they hit an enemy or expire."
   },
   "VaalIceNova":{
@@ -331,20 +331,32 @@
         "statInterpolation":[]
       }],
     "baseEffectiveness":1.7986999750137,
+    "baseTypeName":"Vaal Ice Nova",
     "stats":["spell_minimum_base_cold_damage","spell_maximum_base_cold_damage","is_area_damage"],
     "constantStats":[[null,26],["ice_nova_number_of_repeats"],["ice_nova_radius_+%_per_repeat",-20]],
-    "castTime":0.7,
+    "incrementalEffectiveness":0.036400001496077,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.036400001496077,
-    "name":"Vaal Ice Nova",
+    "castTime":0.7,
     "description":"A chilling circle of ice expands from the caster, repeating from every enemy it hits."
   },
   "CataclysmSigil":{
-    "stats":["spell_minimum_base_fire_damage","spell_maximum_base_fire_damage","sigil_attached_target_hit_damage_+%_final",null,"additive_cast_speed_modifiers_apply_to_sigil_repeat_frequency","base_skill_show_average_damage_instead_of_dps","skill_can_add_multiple_charges_per_action","console_skill_dont_chase","quality_display_sigil_attached_target_damage_is_gem"],
     "qualityStats":{
-      "Default":[[null,0.5]]
+      "Default":[["sigil_attached_target_hit_damage_+%_final",0.5]]
     },
+    "statDescriptionScope":"brand_skill_stat_descriptions",
+    "incrementalEffectiveness":0.044900000095367,
+    "baseMods":[{
+        "flags":0,
+        "type":"LIST",
+        "value":{
+          "key":"radiusSecondary",
+          "value":8
+        },
+        "name":"SkillData"
+      }],
+    "constantStats":[[null,22],["base_number_of_sigils_allowed_per_target"],["base_sigil_repeat_frequency_ms",1500],["base_secondary_skill_effect_duration",6000],[null,5000]],
+    "description":"Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, causing a fiery meteor to fall from the sky. The brand will detach if the enemy dies.",
     "levels":[{
         "3":10,
         "statInterpolation":[],
@@ -388,9 +400,7 @@
         "cost":[]
       },{
         "statInterpolation":[],
-        "cost":{
-          "Mana":22
-        }
+        "cost":[]
       },{
         "statInterpolation":[],
         "cost":[],
@@ -495,28 +505,33 @@
     "statMap":{
       "base_skill_show_average_damage_instead_of_dps":[]
     },
-    "constantStats":[[],["base_number_of_sigils_allowed_per_target"],["base_sigil_repeat_frequency_ms",1500],["base_secondary_skill_effect_duration",6000],[null,5000]],
-    "baseMods":[{
-        "flags":0,
-        "type":"LIST",
-        "value":{
-          "key":"radiusSecondary",
-          "value":8
-        },
-        "name":"SkillData"
-      }],
-    "statDescriptionScope":"brand_skill_stat_descriptions",
-    "skillTypes":[],
+    "baseTypeName":"Armageddon Brand",
+    "stats":["spell_minimum_base_fire_damage","spell_maximum_base_fire_damage",null,null,"additive_cast_speed_modifiers_apply_to_sigil_repeat_frequency","base_skill_show_average_damage_instead_of_dps","skill_can_add_multiple_charges_per_action","console_skill_dont_chase","quality_display_sigil_attached_target_damage_is_gem"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.044900000095367,
-    "name":"Armageddon Brand",
-    "description":"Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, causing a fiery meteor to fall from the sky. The brand will detach if the enemy dies."
+    "skillTypes":[]
   },
   "FrostBoltNovaAltX":{
-    "stats":[null,null,"base_cold_damage_to_deal_per_minute",null,null,"spell_damage_modifiers_apply_to_skill_dot"],
     "qualityStats":{
       "Default":[["active_skill_base_radius_+"]]
     },
+    "incrementalEffectiveness":0.049499999731779,
+    "baseMods":[{
+        "value":{
+          "key":"dotIsArea"
+        }
+      },{
+        "value":{
+          "key":"radiusLabel",
+          "value":"Initial Hit:"
+        }
+      },{
+        "value":{
+          "key":"radiusSecondaryLabel",
+          "value":"Ground Degen:"
+        }
+      }],
+    "constantStats":[[],[],["active_skill_base_secondary_area_of_effect_radius"],["frost_bolt_nova_number_of_frost_bolts_to_detonate"],["active_skill_area_of_effect_+%_final_when_cast_on_frostbolt"],["active_skill_if_used_through_frostbolt_damage_+%_final"]],
+    "description":"An icy blast explodes around the caster, dealing cold damage to enemies, and leaving behind a whirling vortex which deals cold damage over time and chills enemies caught in it. If the caster targets near their Frostbolt projectiles, it will explode from a number of those projectiles instead, destroying them.",
     "levels":[{
         "3":114.83333367482,
         "4":-57.500002079954,
@@ -730,33 +745,17 @@
           "name":"Damage"
         }]
     },
-    "constantStats":[[],[],["active_skill_base_secondary_area_of_effect_radius"],["frost_bolt_nova_number_of_frost_bolts_to_detonate"],["active_skill_area_of_effect_+%_final_when_cast_on_frostbolt"],["active_skill_if_used_through_frostbolt_damage_+%_final"]],
-    "baseMods":[{
-        "value":{
-          "key":"dotIsArea"
-        }
-      },{
-        "value":{
-          "key":"radiusLabel",
-          "value":"Initial Hit:"
-        }
-      },{
-        "value":{
-          "key":"radiusSecondaryLabel",
-          "value":"Ground Degen:"
-        }
-      }],
-    "castTime":0.75,
-    "skillTypes":[],
+    "baseTypeName":"Vortex of Projection",
+    "stats":[null,null,"base_cold_damage_to_deal_per_minute",null,null,"spell_damage_modifiers_apply_to_skill_dot"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.049499999731779,
-    "name":"Vortex of Projection",
-    "description":"An icy blast explodes around the caster, dealing cold damage to enemies, and leaving behind a whirling vortex which deals cold damage over time and chills enemies caught in it. If the caster targets near their Frostbolt projectiles, it will explode from a number of those projectiles instead, destroying them."
+    "castTime":0.75,
+    "skillTypes":[]
   },
   "IceSpear":{
     "qualityStats":{
       "Default":[["ice_spear_second_form_critical_strike_multiplier_+"]]
     },
+    "incrementalEffectiveness":0.034099999815226,
     "baseMods":[{
         "1":{
           "type":"SkillPart"
@@ -930,13 +929,13 @@
           "name":"CritMultiplier"
         }]
     },
+    "baseTypeName":"Ice Spear",
     "stats":[null,null,null,null,"quality_display_base_number_of_projectiles_is_gem"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.034099999815226,
-    "name":"Ice Spear",
     "skillTypes":[]
   },
   "EyeOfWinterAltX":{
+    "stats":[null,null,null,null,"single_primary_projectile","quality_display_eye_of_winter_is_gem","quality_display_freezing_pulse_damage_at_long_range_is_gem"],
     "qualityStats":{
       "Default":[["eye_of_winter_base_explosion_shards"]]
     },
@@ -1069,16 +1068,18 @@
           "name":"EyeOfWinterRamp"
         }]
     },
-    "stats":[null,null,null,null,"single_primary_projectile","quality_display_eye_of_winter_is_gem","quality_display_freezing_pulse_damage_at_long_range_is_gem"],
+    "baseTypeName":"Eye of Winter of Finality",
     "constantStats":[["freezing_pulse_damage_+%_final_at_long_range"],[],["projectile_firing_forward_distance_override"],["display_eye_of_winter_projectile_modifier"]],
-    "castTime":0.8,
+    "incrementalEffectiveness":0.047699999064207,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.047699999064207,
-    "name":"Eye of Winter of Finality",
+    "castTime":0.8,
     "description":"Fires a single eye projectile which cannot damage enemies. When the eye dissipates or collides with terrain, it releases a fast spiral of shards. The shards will deal cold damage to enemies they impact."
   },
   "SummonLightningGolem":{
+    "qualityStats":{
+      "Default":[["golem_buff_effect_+%"]]
+    },
     "minionSkillTypes":[],
     "levels":[{
         "statInterpolation":[],
@@ -1201,9 +1202,7 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[["golem_buff_effect_+%"]]
-    },
+    "constantStats":[["base_number_of_golems_allowed"],["display_minion_monster_type"]],
     "statMap":{
       "lightning_golem_grants_attack_and_cast_speed_+%":[{
           "1":{
@@ -1213,7 +1212,7 @@
           "name":"Speed"
         }]
     },
-    "constantStats":[["base_number_of_golems_allowed"],["display_minion_monster_type"]],
+    "baseTypeName":"Summon Lightning Golem",
     "stats":["base_actor_scale_+%","lightning_golem_grants_attack_and_cast_speed_+%","base_display_minion_actor_level","infinite_minion_duration"],
     "baseMods":[{
         "value":{
@@ -1225,17 +1224,29 @@
         "name":"Condition:HaveLightningGolem"
       }],
     "statDescriptionScope":"minion_spell_skill_stat_descriptions",
-    "minionList":["SummonedLightningGolem"],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Lightning Golem",
+    "minionList":["SummonedLightningGolem"],
     "description":"Summons a Lightning Golem that grants you increased Attack and Cast speed. The Lightning Golem fires a projectile spell, creates orbs of Lightning that zap nearby enemies, and casts a temporary aura that grants added Lightning Damage to spells and attacks used by the Golem and its nearby allies."
   },
   "HeraldOfThunder":{
-    "stats":["spell_minimum_added_lightning_damage","spell_maximum_added_lightning_damage","attack_minimum_added_lightning_damage","attack_maximum_added_lightning_damage","secondary_minimum_base_lightning_damage","secondary_maximum_base_lightning_damage",null,"never_shock","display_skill_deals_secondary_damage",null,"display_herald_of_thunder_storm","herald_of_thunder_pvp_scaling_time_uses_bolt_frequency","quality_display_herald_of_thunder_is_gem"],
     "qualityStats":{
       "Default":[["herald_of_thunder_bolt_frequency_+%"]]
     },
+    "statDescriptionScope":"buff_skill_stat_descriptions",
+    "incrementalEffectiveness":0.023000000044703,
+    "baseMods":[{
+        "value":{
+          "key":"radius"
+        }
+      },{
+        "value":{
+          "key":"showAverage",
+          "value":false
+        }
+      }],
+    "constantStats":[[],["herald_of_thunder_bolt_base_frequency",250]],
+    "description":"Grants a buff which adds lightning damage to spells and attacks. If you kill a shocked enemy, this skill will create a storm, causing lightning bolts to strike enemies around you for a duration. The damage inflicted by this skill is not affected by modifiers to spell damage.",
     "levels":[{
         "statInterpolation":[]
       },{
@@ -1386,23 +1397,10 @@
       },
       "spell_maximum_added_lightning_damage":[[[]]]
     },
-    "constantStats":[[],["herald_of_thunder_bolt_base_frequency",250]],
-    "baseMods":[{
-        "value":{
-          "key":"radius"
-        }
-      },{
-        "value":{
-          "key":"showAverage",
-          "value":false
-        }
-      }],
-    "statDescriptionScope":"buff_skill_stat_descriptions",
-    "skillTypes":[],
+    "baseTypeName":"Herald of Thunder",
+    "stats":["spell_minimum_added_lightning_damage","spell_maximum_added_lightning_damage","attack_minimum_added_lightning_damage","attack_maximum_added_lightning_damage","secondary_minimum_base_lightning_damage","secondary_maximum_base_lightning_damage",null,"never_shock","display_skill_deals_secondary_damage",null,"display_herald_of_thunder_storm","herald_of_thunder_pvp_scaling_time_uses_bolt_frequency","quality_display_herald_of_thunder_is_gem"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.023000000044703,
-    "name":"Herald of Thunder",
-    "description":"Grants a buff which adds lightning damage to spells and attacks. If you kill a shocked enemy, this skill will create a storm, causing lightning bolts to strike enemies around you for a duration. The damage inflicted by this skill is not affected by modifiers to spell damage."
+    "skillTypes":[]
   },
   "VaalLightningWarpInstant":{
     "qualityStats":{
@@ -1567,15 +1565,15 @@
         "statInterpolation":[]
       }],
     "constantStats":[["skill_override_pvp_scaling_time_ms"]],
+    "baseTypeName":"Vaal Lightning Warp",
     "stats":[null,null,"skill_effect_duration_+%"],
     "baseMods":[{
         "value":[]
       }],
     "statDescriptionScope":"variable_duration_skill_stat_descriptions",
-    "incrementalEffectiveness":0.035000000149012,
-    "baseFlags":[],
     "skillTypes":[],
-    "name":"Vaal Lightning Warp",
+    "baseFlags":[],
+    "incrementalEffectiveness":0.035000000149012,
     "description":"Casts a delayed teleport for nearby enemies to a target destination. When the teleport occurs, lightning damage is dealt to the enemies both before and after they teleport."
   },
   "Conductivity":{
@@ -1783,10 +1781,11 @@
           "name":"LightningResist"
         }]
     },
+    "baseTypeName":"Conductivity",
     "stats":[null,null,"base_lightning_damage_resistance_%","base_deal_no_damage"],
     "constantStats":[["chance_to_be_shocked_%"]],
     "statDescriptionScope":"curse_skill_stat_descriptions",
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":{
           "key":"debuff"
@@ -1794,8 +1793,7 @@
       },{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Conductivity",
+    "baseFlags":[],
     "description":"Curses all targets in an area, lowering their lightning resistance and giving them a chance to be shocked when hit."
   },
   "Soulrend":{
@@ -1994,6 +1992,7 @@
       }],
     "baseEffectiveness":4.2814998626709,
     "constantStats":[["active_skill_projectile_speed_+%_variation_final"],["base_energy_shield_leech_from_spell_damage_permyriad",400],[]],
+    "baseTypeName":"Soulrend",
     "stats":["base_chaos_damage_to_deal_per_minute","spell_minimum_base_chaos_damage","spell_maximum_base_chaos_damage",null,null,"always_pierce"],
     "baseMods":[{
         "value":[]
@@ -2001,10 +2000,9 @@
         "value":[]
       }],
     "statDescriptionScope":"debuff_skill_stat_descriptions",
+    "incrementalEffectiveness":0.056699998676777,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.056699998676777,
-    "name":"Soulrend",
     "description":"Fires a projectile that turns towards enemies in front of it, damaging and piercing through those it hits, and leeching some of that damage as energy shield. As the projectile travels, it repeatedly applies a short but powerful chaos damage over time debuff to each enemy in an area around it."
   },
   "IceNovaAltY":{
@@ -2175,12 +2173,12 @@
           "name":"FreezeAsThoughDealing"
         }]
     },
+    "baseTypeName":"Ice Nova of Deep Freeze",
     "stats":[null,null,null,"ice_nova_freeze_as_though_damage_+%_final"],
     "constantStats":[[],["base_chance_to_freeze_%"]],
+    "incrementalEffectiveness":0.043600000441074,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.043600000441074,
-    "name":"Ice Nova of Deep Freeze",
     "description":"A circle of ice expands from the caster."
   },
   "DischargeAltX":{
@@ -2311,12 +2309,12 @@
         "cost":[]
       }],
     "baseEffectiveness":1.1799999475479,
+    "baseTypeName":"Discharge of Misery",
     "stats":["spell_minimum_base_lightning_damage_per_removable_power_charge","spell_maximum_base_lightning_damage_per_removable_power_charge","spell_minimum_base_fire_damage_per_removable_endurance_charge","spell_maximum_base_fire_damage_per_removable_endurance_charge","spell_minimum_base_cold_damage_per_removable_frenzy_charge","spell_maximum_base_cold_damage_per_removable_frenzy_charge"],
     "constantStats":[[],["area_of_effect_+%_final_per_removable_power_frenzy_or_endurance_charge"]],
+    "incrementalEffectiveness":0.035999998450279,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.035999998450279,
-    "name":"Discharge of Misery",
     "description":"Discharge all the character's charges to deal elemental damage to all nearby monsters."
   },
   "Convocation":{
@@ -2470,9 +2468,10 @@
           "name":"LifeRegen"
         }]
     },
+    "baseTypeName":"Convocation",
     "stats":["life_regeneration_rate_per_minute_%"],
     "constantStats":[[]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":{
           "key":"buffMinions"
@@ -2482,8 +2481,7 @@
           "key":"buffNotPlayer"
         }
       }],
-    "skillTypes":[],
-    "name":"Convocation",
+    "baseFlags":[],
     "description":"Recalls all minions that are following you to your location, and grants them a temporary life regeneration effect."
   },
   "SummonLightningGolemAltX":{
@@ -2613,14 +2611,14 @@
       "Default":[["minion_cooldown_recovery_+%"]]
     },
     "constantStats":[[],[],[]],
+    "baseTypeName":"Summon Lightning Golem of Hordes",
     "stats":[null,null,"active_skill_no_golem_aura"],
     "baseMods":[{
         "value":[]
       },[[]]],
-    "minionList":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Lightning Golem of Hordes",
+    "minionList":[],
     "description":"Summons a Lightning Golem. The Lightning Golem fires a projectile spell, creates orbs of Lightning that zap nearby enemies, and casts a temporary aura that grants added Lightning Damage to spells and attacks used by the Golem and its nearby allies."
   },
   "VaalDiscipline":{
@@ -2757,15 +2755,15 @@
           "name":"EnergyShieldRechargeNotDelayedByDamage"
         }]
     },
+    "baseTypeName":"Vaal Discipline",
     "stats":[null,"energy_shield_recharge_not_delayed_by_damage",null,"modifiers_to_buff_effect_duration_also_affect_soul_prevention_duration"],
     "constantStats":[[]],
     "statDescriptionScope":"aura_skill_stat_descriptions",
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Vaal Discipline",
+    "baseFlags":[],
     "description":"Casts a temporary aura that prevents energy shield recharge being delayed by damage taken for you and your allies."
   },
   "Manabond":{
@@ -2906,6 +2904,7 @@
           "name":"Multiplier:ManabondUnreservedMana"
         }]
     },
+    "baseTypeName":"Manabond",
     "stats":[null,null,null,null,null,"display_manabond_length","quality_display_manabond_is_gem"],
     "baseMods":[{
         "value":[]
@@ -2923,17 +2922,21 @@
           "type":"Multiplier",
           "var":"ManabondUnreservedMana"
         }],[[]]],
+    "incrementalEffectiveness":0.041400000452995,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.041400000452995,
-    "name":"Manabond",
     "description":"Deals lightning damage based upon your missing mana in a circular area around the targeted location, as well as in four rectangular extensions whose lengths depend upon your remaining mana."
   },
   "ConduitSigilAltX":{
-    "stats":[null,null,null,null,null,null,null,"quality_display_storm_brand_is_gem",null,"brands_reattach_on_activation"],
     "qualityStats":{
       "Default":[[]]
     },
+    "incrementalEffectiveness":0.040399998426437,
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[[],[],[],["conduit_sigil_number_of_beam_targets"],[]],
+    "description":"Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, firing a beam which deals damage to the branded enemy and those around it. The brand will detach if the enemy dies.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -3061,16 +3064,11 @@
     "statMap":{
       "base_skill_show_average_damage_instead_of_dps":[]
     },
-    "constantStats":[[],[],[],["conduit_sigil_number_of_beam_targets"],[]],
-    "baseMods":[{
-        "value":[]
-      }],
-    "castTime":0.35,
-    "skillTypes":[],
+    "baseTypeName":"Storm Brand of Indecision",
+    "stats":[null,null,null,null,null,null,null,"quality_display_storm_brand_is_gem",null,"brands_reattach_on_activation"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.040399998426437,
-    "name":"Storm Brand of Indecision",
-    "description":"Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, firing a beam which deals damage to the branded enemy and those around it. The brand will detach if the enemy dies."
+    "castTime":0.35,
+    "skillTypes":[]
   },
   "FrostBombAltX":{
     "qualityStats":{
@@ -3199,15 +3197,16 @@
         "cost":[]
       }],
     "baseEffectiveness":1.5599999427795,
+    "baseTypeName":"Frost Bomb of Instability",
     "stats":[],
     "constantStats":[[],[]],
+    "incrementalEffectiveness":0.051899999380112,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.051899999380112,
-    "name":"Frost Bomb of Instability",
     "description":"Creates a crystal which lasts for a duration. When the crystal's duration ends, it explodes, dealing cold damage to enemies around it."
   },
   "FlameWhip":{
+    "constantStats":[["flame_surge_ignite_damage_as_burning_ground_damage_%"],["flame_surge_burning_ground_creation_cooldown_ms"],[null,4000]],
     "qualityStats":{
       "Default":[["flame_whip_damage_+%_final_vs_burning_enemies"]]
     },
@@ -3356,15 +3355,14 @@
           "name":"AreaOfEffect"
         }]
     },
-    "constantStats":[["flame_surge_ignite_damage_as_burning_ground_damage_%"],["flame_surge_burning_ground_creation_cooldown_ms"],[null,4000]],
+    "baseTypeName":"Flame Surge",
     "stats":[null,null,null,"active_skill_base_area_length_+","never_ignite",null,"quality_display_flame_whip_is_gem"],
     "baseMods":[{
         "value":[]
       }],
+    "incrementalEffectiveness":0.037799999117851,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.037799999117851,
-    "name":"Flame Surge",
     "description":"Strikes enemies in front of you with a surge of flame. Burning enemies are dealt more damage. If you hit an ignited enemy, will create burning ground under them. Your damage modifiers don't apply to this burning ground."
   },
   "LightningResistAura":{
@@ -3459,13 +3457,13 @@
         }],
       "base_lightning_damage_resistance_%":[[[]]]
     },
+    "baseTypeName":"Purity of Lightning",
     "stats":[null,"base_maximum_lightning_damage_resistance_%"],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Purity of Lightning",
+    "baseFlags":[],
     "description":"Casts an aura that grants lightning resistance to you and your allies."
   },
   "SummonReaperAltX":{
@@ -3591,6 +3589,7 @@
         "cost":[],
         "statInterpolation":[]
       }],
+    "constantStats":[["base_number_of_reapers_allowed"],[],[],["active_skill_minion_damage_+%_final"]],
     "statMap":{
       "active_skill_non_reaper_minion_damage_+%_final":[{
           "1":{
@@ -3613,21 +3612,21 @@
           }
         }]
     },
-    "constantStats":[["base_number_of_reapers_allowed"],[],[],["active_skill_minion_damage_+%_final"]],
+    "baseTypeName":"Summon Reaper of Revenants",
     "stats":["active_skill_non_reaper_minion_damage_+%_final","active_skill_non_reaper_minion_maximum_life_+%_final"],
     "qualityStats":{
       "Default":[["minion_movement_speed_+%"]]
     },
-    "minionList":["SummonedReaper"],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Reaper of Revenants",
+    "minionList":["SummonedReaper"],
     "description":"Summons a Reaper which uses a variety of slashing area attacks. The presence of any Reapers weakens your other non-Reaper minions, and Reapers will consume them to temporarily empower and heal themselves."
   },
   "GalvanicField":{
     "qualityStats":{
       "Default":[["base_chance_to_shock_%_from_skill"]]
     },
+    "incrementalEffectiveness":0.051399998366833,
     "baseMods":[{
         "value":[]
       }],
@@ -3790,10 +3789,10 @@
     },
     "stats":[null,null,"galvanic_field_retargeting_delay_ms","galvanic_field_damage_+%_final_per_5%_increased_damage_taken_from_shock",null,null,"quality_display_shock_chance_from_skill_is_gem"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.051399998366833,
     "skillTypes":[]
   },
   "VaalFirestorm":{
+    "constantStats":[["fire_storm_fireball_delay_ms"],["vaal_firestorm_number_of_meteors"],["firestorm_drop_burning_ground_duration_ms"],["vaal_firestorm_gem_explosion_area_of_effect_+%_final"],[]],
     "qualityStats":{
       "Default":[[]]
     },
@@ -3926,7 +3925,7 @@
           "name":"AreaOfEffectSecondary"
         }]
     },
-    "constantStats":[["fire_storm_fireball_delay_ms"],["vaal_firestorm_number_of_meteors"],["firestorm_drop_burning_ground_duration_ms"],["vaal_firestorm_gem_explosion_area_of_effect_+%_final"],[]],
+    "baseTypeName":"Vaal Firestorm",
     "stats":[null,null,"base_fire_damage_to_deal_per_minute"],
     "baseMods":[{
         "value":[]
@@ -3943,17 +3942,21 @@
           "value":"Area in which fireballs fall:"
         }
       }],
+    "incrementalEffectiveness":0.048700001090765,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.048700001090765,
-    "name":"Vaal Firestorm",
     "description":"A fixed number of flaming bolts rain down in a spiral, culminating in the central one impacting the targeted location. They explode when landing, dealing damage to nearby enemies and leaving burning ground, which deals fire damage over time."
   },
   "RighteousFire":{
-    "stats":["righteous_fire_spell_damage_+%_final"],
     "qualityStats":{
       "Default":[[]]
     },
+    "incrementalEffectiveness":0.057300001382828,
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[["base_righteous_fire_%_of_max_life_to_deal_to_nearby_per_minute",4200],["base_nonlethal_fire_damage_%_of_maximum_life_taken_per_minute",5400],["base_righteous_fire_%_of_max_energy_shield_to_deal_to_nearby_per_minute"],["base_nonlethal_fire_damage_%_of_maximum_energy_shield_taken_per_minute"],[]],
+    "description":"Engulfs you in magical fire that rapidly burns you and nearby enemies. Your spell damage is substantially increased while under this effect. The effect ends when you have 1 life remaining.",
     "levels":[{
         "statInterpolation":[]
       },{
@@ -4059,20 +4062,16 @@
             "stat":"EnergyShield"
           },[]]]
     },
-    "constantStats":[["base_righteous_fire_%_of_max_life_to_deal_to_nearby_per_minute",4200],["base_nonlethal_fire_damage_%_of_maximum_life_taken_per_minute",5400],["base_righteous_fire_%_of_max_energy_shield_to_deal_to_nearby_per_minute"],["base_nonlethal_fire_damage_%_of_maximum_energy_shield_taken_per_minute"],[]],
-    "baseMods":[{
-        "value":[]
-      }],
-    "skillTypes":[],
+    "baseTypeName":"Righteous Fire",
+    "stats":["righteous_fire_spell_damage_+%_final"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.057300001382828,
-    "name":"Righteous Fire",
-    "description":"Engulfs you in magical fire that rapidly burns you and nearby enemies. Your spell damage is substantially increased while under this effect. The effect ends when you have 1 life remaining."
+    "skillTypes":[]
   },
   "CorpseWarp":{
     "qualityStats":{
       "Default":[["spell_base_fire_damage_%_maximum_life",0.2]]
     },
+    "incrementalEffectiveness":0.046300001442432,
     "baseMods":[{
         "1":[],
         "value":{
@@ -4229,13 +4228,13 @@
           }
         }]
     },
+    "baseTypeName":"Bodyswap",
     "stats":[null,null,"corpse_explosion_monster_life_permillage_fire"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.046300001442432,
-    "name":"Bodyswap",
     "skillTypes":[]
   },
   "Ember":{
+    "stats":[],
     "parts":[{
         "name":"1 Projectile"
       },{
@@ -4364,10 +4363,10 @@
         "cost":[]
       }],
     "baseEffectiveness":0.6952999830246,
-    "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
+    "baseTypeName":"Blazing Salvo",
     "baseMods":[{
         "value":[]
       },{
@@ -4383,10 +4382,9 @@
       },{
         "name":"CannotSplit"
       }],
+    "incrementalEffectiveness":0.041799999773502,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.041799999773502,
-    "name":"Blazing Salvo",
     "description":"Fires projectiles which fly in an arc, dealing area damage on impact with either enemies or the ground near where you target. Targeting farther away causes the projectiles to spread out and land over a wider area."
   },
   "EssenceDrainAltY":{
@@ -4550,6 +4548,7 @@
       }],
     "baseEffectiveness":4.0479998588562,
     "constantStats":[[],[null,1900]],
+    "baseTypeName":"Essence Drain of Wickedness",
     "stats":[null,null,null,null,null,"quality_display_essence_drain_is_gem"],
     "baseMods":[{
         "value":[]
@@ -4558,10 +4557,9 @@
       },{
         "value":[]
       }],
+    "incrementalEffectiveness":0.052700001746416,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.052700001746416,
-    "name":"Essence Drain of Wickedness",
     "description":"Fires a piercing projectile that applies a damage over time debuff when it hits. You are healed for a portion of the debuff damage."
   },
   "CorpseWarpAltX":{
@@ -4721,9 +4719,9 @@
           "value":[]
         }]
     },
+    "baseTypeName":"Bodyswap of Sacrifice",
     "stats":[],
     "baseFlags":[],
-    "name":"Bodyswap of Sacrifice",
     "skillTypes":[]
   },
   "VaalLightningTrap":{
@@ -4857,6 +4855,7 @@
           "name":"ShockedGroundEffect"
         }]
     },
+    "baseTypeName":"Vaal Lightning Trap",
     "stats":{
       "3":"projectiles_nova",
       "4":"is_trap",
@@ -4865,10 +4864,9 @@
       "12":"quality_display_trap_duration_is_gem"
     },
     "constantStats":[["base_trap_duration"],[],[],[]],
+    "incrementalEffectiveness":0.034400001168251,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.034400001168251,
-    "name":"Vaal Lightning Trap",
     "description":"Throws a trap that launches a ring of projectiles through the enemy that set it off, dealing lightning damage to them and subsequent targets and leaving a trail of shocked ground."
   },
   "CataclysmSigilAltX":{
@@ -5002,11 +5000,11 @@
     "statMap":{
       "base_skill_show_average_damage_instead_of_dps":[]
     },
+    "baseTypeName":"Armageddon Brand of Volatility",
     "stats":[null,null,null,null,null,null,"brand_cannot_be_recalled","brand_removed_after_activating"],
     "constantStats":[[],[],[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Armageddon Brand of Volatility",
     "description":"Creates a magical brand which can attach to a nearby enemy. It activates once, causing a fiery meteor to fall from the sky, then is destroyed."
   },
   "ColdProjectileMine":{
@@ -5148,18 +5146,19 @@
           "name":"SelfCritChance"
         }]
     },
+    "baseTypeName":"Icicle Mine",
     "stats":[null,null,"base_skill_is_mined",null,"is_remote_mine",null,null,"display_additional_projectile_per_2_mines_in_detonation_sequence"],
     "constantStats":[["base_mine_duration"],["base_mine_detonation_time_ms"],["cold_projectile_mine_enemy_critical_strike_chance_+%_against_self"],[],["projectile_speed_variation_+%"],["skill_visual_scale_+%"]],
+    "incrementalEffectiveness":0.038100000470877,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.038100000470877,
-    "name":"Icicle Mine",
     "description":"Throws a mine that fires projectiles around it when detonated. These projectiles quickly dissipate as they travel, before disappearing."
   },
   "FrostFury":{
     "qualityStats":{
       "Default":[["frost_fury_max_number_of_stages"]]
     },
+    "incrementalEffectiveness":0.035500001162291,
     "baseMods":[{
         "value":[]
       }],
@@ -5314,16 +5313,16 @@
           "name":"Multiplier:WinterOrbMaxStages"
         }]
     },
+    "baseTypeName":"Winter Orb",
     "stats":[null,null,null,null,"projectile_remove_default_spread",null,null,"display_frost_fury_additive_cast_speed_modifiers_apply_to_fire_speed","projectile_behaviour_only_explode","quality_display_winter_orb_is_gem"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.035500001162291,
-    "name":"Winter Orb",
     "skillTypes":[]
   },
   "LightningTowerTrapAltY":{
     "qualityStats":{
       "Default":[["lightning_tower_trap_number_of_beams"]]
     },
+    "incrementalEffectiveness":0.048900000751019,
     "baseMods":[{
         "value":[]
       },{
@@ -5485,10 +5484,9 @@
           "name":"MaximumWaves"
         }]
     },
+    "baseTypeName":"Lightning Spire Trap of Overloading",
     "stats":[null,null,"lightning_tower_trap_base_interval_duration_ms",null,null,null,null,"quality_display_lightning_tower_trap_is_gem"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.048900000751019,
-    "name":"Lightning Spire Trap of Overloading",
     "skillTypes":[]
   },
   "SupportDarkRitualAltX":{
@@ -5596,6 +5594,20 @@
     "qualityStats":{
       "Default":[[]]
     },
+    "baseMods":[{
+        "1":[],
+        "value":[]
+      },{
+        "value":{
+          "value":"Fireball explosion:"
+        }
+      },{
+        "value":[]
+      },{
+        "value":[]
+      }],
+    "constantStats":[[],[],["firestorm_initial_impact_damage_+%_final",325],["firestorm_initial_impact_area_of_effect_+%_final"],["firestorm_max_number_of_storms"],[null,1400],[]],
+    "description":"Flaming bolts rain down over the targeted area. They explode when landing, dealing damage to nearby enemies.",
     "parts":[{
         "name":"First Impact"
       },{
@@ -5730,24 +5742,10 @@
         }],
       "firestorm_initial_impact_area_of_effect_+%_final":[[[]]]
     },
-    "constantStats":[[],[],["firestorm_initial_impact_damage_+%_final",325],["firestorm_initial_impact_area_of_effect_+%_final"],["firestorm_max_number_of_storms"],[null,1400],[]],
+    "baseTypeName":"Firestorm",
     "stats":[],
-    "baseMods":[{
-        "1":[],
-        "value":[]
-      },{
-        "value":{
-          "value":"Fireball explosion:"
-        }
-      },{
-        "value":[]
-      },{
-        "value":[]
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Firestorm",
-    "description":"Flaming bolts rain down over the targeted area. They explode when landing, dealing damage to nearby enemies."
+    "skillTypes":[]
   },
   "GalvanicFieldAltX":{
     "qualityStats":{
@@ -6045,15 +6043,16 @@
       "base_skill_show_average_damage_instead_of_dps":[],
       "lightning_tower_trap_number_of_beams":[[]]
     },
+    "baseTypeName":"Lightning Spire Trap of Zapping",
     "stats":[],
     "baseFlags":[],
-    "name":"Lightning Spire Trap of Zapping",
     "skillTypes":[]
   },
   "DarkPact":{
     "qualityStats":{
       "Default":[["skeletal_chains_aoe_%_health_dealt_as_chaos_damage"]]
     },
+    "incrementalEffectiveness":0.037999998778105,
     "baseMods":[{
         "value":[]
       }],
@@ -6220,19 +6219,21 @@
         }],
       "skeletal_chains_no_minions_damage_+%_final":[[[]]]
     },
+    "baseTypeName":"Dark Pact",
     "stats":[null,null,"skeletal_chains_no_minions_damage_+%_final",null,"skeletal_chains_no_minions_targets_self","quality_display_dark_pact_is_gem"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.037999998778105,
-    "name":"Dark Pact",
     "skillTypes":[]
   },
   "DarkRitualAltX":{
-    "baseMods":[{
-        "value":[]
-      }],
     "qualityStats":{
       "Default":[[]]
     },
+    "incrementalEffectiveness":0.047100000083447,
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[["dark_ritual_skill_effect_duration_+%_per_curse_applied"],[],[],["dark_ritual_damage_+%_final_per_curse_applied"]],
+    "description":"Applies a debuff to enemies in a small area, which deals chaos damage over Time. Linked hex curses are also applied to those enemies. The debuff deals more damage and lasts longer for each hex applied this way.  This skill cannot be used by Totems, Traps, or Mines.",
     "levels":[{
         "cost":[],
         "statInterpolation":[]
@@ -6364,13 +6365,10 @@
       "apply_linked_curses_with_dark_ritual":[],
       "cannot_cast_curses":[]
     },
-    "constantStats":[["dark_ritual_skill_effect_duration_+%_per_curse_applied"],[],[],["dark_ritual_damage_+%_final_per_curse_applied"]],
+    "baseTypeName":"Bane of Condemnation",
     "stats":[null,"display_dark_ritual_curse_max_skill_level_requirement"],
-    "baseFlags":[],
     "skillTypes":[],
-    "incrementalEffectiveness":0.047100000083447,
-    "name":"Bane of Condemnation",
-    "description":"Applies a debuff to enemies in a small area, which deals chaos damage over Time. Linked hex curses are also applied to those enemies. The debuff deals more damage and lasts longer for each hex applied this way.  This skill cannot be used by Totems, Traps, or Mines."
+    "baseFlags":[]
   },
   "Frostbite":{
     "qualityStats":{
@@ -6511,22 +6509,36 @@
           "name":"SelfFreezeChance"
         }]
     },
+    "baseTypeName":"Frostbite",
     "stats":[null,null,"base_cold_damage_resistance_%"],
     "constantStats":[["chance_to_be_frozen_%"]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       },{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Frostbite",
+    "baseFlags":[],
     "description":"Curses all targets in an area, lowering their cold resistance and giving them a chance to be frozen when hit."
   },
   "Firewall":{
     "qualityStats":{
       "Default":[["number_of_allowed_firewalls",0.05]]
     },
+    "incrementalEffectiveness":0.0625,
+    "baseMods":[{
+        "value":{
+          "value":"Flame Wall Length:"
+        }
+      },{
+        "value":[]
+      },{
+        "value":{
+          "key":"buffAllies"
+        }
+      }],
+    "constantStats":[[],["firewall_attached_projectile_effect_mtx"]],
+    "description":"Create a wall of fire for a duration, which deals burning damage to everything in its area. Each enemy that enters the wall also receives a secondary burning debuff which persists for a short duration after leaving the wall. Any projectiles fired through the wall by you and allies deal added fire damage and apply the wall's secondary debuff on hit.",
     "parts":[{
         "name":"Primary Debuff"
       },{
@@ -6769,23 +6781,9 @@
           "value":[]
         }]
     },
-    "constantStats":[[],["firewall_attached_projectile_effect_mtx"]],
     "stats":[null,"secondary_base_fire_damage_to_deal_per_minute","flame_wall_minimum_added_fire_damage","flame_wall_maximum_added_fire_damage",null,"wall_maximum_length",null,null,null,null,"quality_display_firewall_is_gem","quality_display_alt_flame_wall_is_gem"],
-    "baseMods":[{
-        "value":{
-          "value":"Flame Wall Length:"
-        }
-      },{
-        "value":[]
-      },{
-        "value":{
-          "key":"buffAllies"
-        }
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.0625,
-    "description":"Create a wall of fire for a duration, which deals burning damage to everything in its area. Each enemy that enters the wall also receives a secondary burning debuff which persists for a short duration after leaving the wall. Any projectiles fired through the wall by you and allies deal added fire damage and apply the wall's secondary debuff on hit."
+    "skillTypes":[]
   },
   "MagmaOrb":{
     "qualityStats":{
@@ -6916,14 +6914,14 @@
       }],
     "baseEffectiveness":2.5980000495911,
     "constantStats":[["monster_projectile_variation"]],
+    "baseTypeName":"Rolling Magma",
     "stats":[null,null,null,null,null,null,"display_projectiles_chain_when_impacting_ground"],
     "baseMods":[{
         "value":[]
       },[]],
+    "incrementalEffectiveness":0.045000001788139,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.045000001788139,
-    "name":"Rolling Magma",
     "description":"Lob a fiery orb that deals area damage as it hits the ground. The skill chains, bouncing forward to deal damage multiple times."
   },
   "KineticBolt":{
@@ -7132,15 +7130,16 @@
         }],
       "quality_display_spell_damage_to_attack_damage_is_gem":[]
     },
+    "baseTypeName":"Kinetic Bolt",
     "stats":["kinetic_wand_base_number_of_zig_zags",null,"skill_can_fire_wand_projectiles","kinetic_bolt_forks_apply_to_zig_zags","quality_display_spell_damage_to_attack_damage_is_gem"],
     "constantStats":[[]],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Kinetic Bolt",
+    "weaponTypes":[],
     "description":"Fire a projectile from your wand that changes direction in a zig-zag pattern at regular intervals or when hitting enemies. Each time it changes direction, a secondary projectile breaks off, flying in the direction it changed away from."
   },
   "CataclysmSigilAltY":{
+    "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
@@ -7269,13 +7268,13 @@
     "statMap":{
       "base_skill_show_average_damage_instead_of_dps":[]
     },
-    "stats":[],
+    "baseTypeName":"Armageddon Brand of Recall",
     "constantStats":[[],[],[],[],[]],
     "skillTypes":[],
-    "baseFlags":[],
-    "name":"Armageddon Brand of Recall"
+    "baseFlags":[]
   },
   "FrostBombAltY":{
+    "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
@@ -7413,11 +7412,10 @@
           "keywordFlags":524288
         }]
     },
-    "stats":[],
+    "baseTypeName":"Frost Bomb of Forthcoming",
     "constantStats":[[],["active_skill_hit_damage_+%_final_per_100ms_duration"],[],["active_skill_ailment_damage_+%_final_per_100ms_duration"]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Frost Bomb of Forthcoming",
     "description":"Creates a crystal which lasts for a duration. When the crystal's duration ends, it explodes, dealing heavy cold damage to enemies around it."
   },
   "IceNovaAltX":{
@@ -7549,11 +7547,11 @@
     "statMap":{
       "ice_nova_damage_when_cast_on_frostbolt_+%_final":[[[]]]
     },
+    "baseTypeName":"Ice Nova of Frostbolts",
     "stats":[],
     "constantStats":[[],["ice_nova_number_of_frost_bolts_to_cast_on"],[],["ice_nova_damage_when_cast_on_frostbolt_+%_final"]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Ice Nova of Frostbolts",
     "description":"A circle of ice expands from the caster. If the caster targets near their Frostbolt projectiles, it will expand from a number of those projectiles instead. If this skill would repeat when cast this way, it will instead expand again from the same projectiles after a short delay."
   },
   "Clarity":{
@@ -7712,16 +7710,17 @@
           "name":"ManaRegen"
         }]
     },
+    "baseTypeName":"Clarity",
     "stats":["base_mana_regeneration_rate_per_minute"],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Clarity",
+    "baseFlags":[],
     "description":"Casts an aura that grants mana regeneration to you and your allies."
   },
   "SummonSkeletonsAltY":{
+    "constantStats":[[null,20000],[]],
     "minionSkillTypes":[],
     "levels":[{
         "cost":[],
@@ -7847,7 +7846,7 @@
     "statMap":{
       "quality_display_summon_skeleton_is_gem":[]
     },
-    "constantStats":[[null,20000],[]],
+    "baseTypeName":"Summon Skeletons of Sorcery",
     "stats":["base_number_of_skeletons_allowed",null,"number_of_mage_skeletons_to_summon","quality_display_summon_skeleton_is_gem"],
     "qualityStats":{
       "Default":[[]]
@@ -7862,6 +7861,7 @@
     "qualityStats":{
       "Default":[[]]
     },
+    "incrementalEffectiveness":0.037200000137091,
     "baseMods":[{
         "value":[]
       },{
@@ -8002,10 +8002,9 @@
           "value":[]
         }]
     },
+    "baseTypeName":"Storm Burst",
     "stats":["spell_minimum_base_physical_damage","spell_maximum_base_physical_damage",null,"visual_hit_effect_elemental_is_holy"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.037200000137091,
-    "name":"Storm Burst",
     "skillTypes":[]
   },
   "LightningTrapAltX":{
@@ -8143,12 +8142,12 @@
         "cost":[]
       }],
     "baseEffectiveness":2.9746999740601,
+    "baseTypeName":"Lightning Trap of Sparking",
     "stats":[null,null,"shock_effect_+%","critical_strike_chance_+%_vs_shocked_enemies"],
     "constantStats":[[],["base_chance_to_shock_%"],[],["projectile_chain_from_terrain_chance_%"],[]],
+    "incrementalEffectiveness":0.043200001120567,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.043200001120567,
-    "name":"Lightning Trap of Sparking",
     "description":"Throws a trap that launches projectiles through the enemy that set it off, dealing lightning damage to them and subsequent targets."
   },
   "ContagionAltY":{
@@ -8278,21 +8277,21 @@
       }],
     "baseEffectiveness":3.5,
     "constantStats":[[],[],["contagion_spread_on_hit_affected_enemy_%"]],
+    "baseTypeName":"Contagion of Transference",
     "stats":[],
     "baseMods":[{
         "value":[]
       }],
+    "incrementalEffectiveness":0.047499999403954,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.047499999403954,
-    "name":"Contagion of Transference",
     "description":"Unleashes a vile contagion on enemies, dealing chaos damage over time. If an enemy is hit while affected by Contagion, the debuff spreads to other enemies."
   },
   "DivineTempest":{
     "qualityStats":{
       "Default":[["divine_tempest_beam_width_+%"]]
     },
-    "castTime":0.22,
+    "incrementalEffectiveness":0.04280000180006,
     "baseMods":[{
         "1":[],
         "name":"Multiplier:DivineIreMaxStages"
@@ -8434,10 +8433,10 @@
       "divine_tempest_damage_+%_final_while_channelling":[[[]]],
       "divine_tempest_ailment_damage_+%_final_per_stage":[[[]]]
     },
+    "baseTypeName":"Divine Ire",
     "stats":[null,null,"divine_tempest_beam_width_+"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.04280000180006,
-    "name":"Divine Ire",
+    "castTime":0.22,
     "skillTypes":[]
   },
   "ColdSnap":{
@@ -8607,6 +8606,7 @@
       }],
     "baseEffectiveness":2.2339000701904,
     "constantStats":[[],[],["active_skill_base_tertiary_area_of_effect_radius"],["active_skill_area_of_effect_description_mode"],["active_skill_secondary_area_of_effect_description_mode"],["active_skill_tertiary_area_of_effect_description_mode"],[],["chance_to_gain_frenzy_charge_on_killing_enemy_affected_by_cold_snap_ground_%"]],
+    "baseTypeName":"Cold Snap",
     "stats":[],
     "baseMods":[{
         "value":[]
@@ -8626,13 +8626,20 @@
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Cold Snap",
     "description":"Creates a sudden burst of cold in a targeted area, damaging enemies. Also creates an expanding area which is filled with chilled ground, and deals cold damage over time to enemies. Enemies that die while in the area have a chance to grant Frenzy Charges. The cooldown can be bypassed by expending a Frenzy Charge."
   },
   "StormbindAltX":{
     "qualityStats":{
       "Default":[["rune_paint_area_of_effect_+%_final_per_rune_level"]]
     },
+    "baseMods":[{
+        "1":[],
+        "name":"Multiplier:RuneLevel"
+      },[[]],[[]],{
+        "value":[]
+      }],
+    "constantStats":[["rune_paint_max_rune_level"],["rune_paint_damage_+%_final_per_rune_level"],["base_movement_velocity_+%"],[],[]],
+    "description":"Channel to spread runes on the ground in a growing pattern. The runes fade away after a duration, or will be immediately removed and deal damage in a circular area when detonated by Rune Blast. Enemies standing on the runes are Hindered, reducing their movement speed.",
     "parts":[{
         "name":"Unimproved"
       },{
@@ -8774,19 +8781,11 @@
       "rune_paint_max_rune_level":[],
       "quality_display_rune_paint_area_is_gem":[]
     },
-    "constantStats":[["rune_paint_max_rune_level"],["rune_paint_damage_+%_final_per_rune_level"],["base_movement_velocity_+%"],[],[]],
+    "baseTypeName":"Stormbind of Teleportation",
     "stats":[null,null,"rune_paint_mana_spend_per_rune_upgrade",null,null,null,"damage_cannot_be_reflected_or_leech_if_used_by_other_object","quality_display_rune_paint_is_gem","quality_display_rune_paint_area_is_gem"],
-    "baseMods":[{
-        "1":[],
-        "name":"Multiplier:RuneLevel"
-      },[[]],[[]],{
-        "value":[]
-      }],
-    "castTime":0.12,
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Stormbind of Teleportation",
-    "description":"Channel to spread runes on the ground in a growing pattern. The runes fade away after a duration, or will be immediately removed and deal damage in a circular area when detonated by Rune Blast. Enemies standing on the runes are Hindered, reducing their movement speed."
+    "castTime":0.12,
+    "skillTypes":[]
   },
   "Wither":{
     "qualityStats":{
@@ -8931,20 +8930,21 @@
           "name":"MovementSpeed"
         }]
     },
+    "baseTypeName":"Wither",
     "stats":[],
     "constantStats":[["chaos_damage_taken_+%"],[],["active_skill_withered_base_duration_ms"]],
     "castTime":0.28,
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       },{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Wither",
+    "baseFlags":[],
     "description":"Casts a debilitating debuff on enemies in an area, hindering their movement and also inflicts the Withered debuff, which increases the Chaos Damage they take and can stack up to 15 times."
   },
   "IceDash":{
+    "constantStats":[[]],
     "qualityStats":{
       "Default":[["skill_maximum_travel_distance_+%"]]
     },
@@ -9091,7 +9091,7 @@
         }],
       "ice_dash_cooldown_recovery_per_nearby_rare_or_unique_enemy":[[[]]]
     },
-    "constantStats":[[]],
+    "baseTypeName":"Frostblink",
     "stats":[null,null,"ice_dash_cooldown_recovery_per_nearby_normal_or_magic_enemy","ice_dash_cooldown_recovery_per_nearby_rare_or_unique_enemy"],
     "baseMods":[{
         "value":[]
@@ -9110,7 +9110,6 @@
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Frostblink",
     "description":"Teleport to a location, damaging enemies and leaving Chilled ground in an area at both ends of the teleport. Shares a cooldown with other Blink skills."
   },
   "PowerSiphon":{
@@ -9264,12 +9263,12 @@
           "name":"OneShotProj"
         }]
     },
+    "baseTypeName":"Power Siphon",
     "stats":["power_siphon_base_fire_at_x_targets","kill_enemy_on_hit_if_under_10%_life",null,"projectiles_are_not_fired"],
     "constantStats":[["chance_to_gain_power_charge_on_rare_or_unique_enemy_hit_%"],[],["critical_strike_chance_+%_final_per_power_charge_from_power_siphon"],["number_of_projectiles_override"]],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Power Siphon",
+    "weaponTypes":[],
     "description":"Fires your wand to fire a single projectile each at a number of nearby enemies, granting you a power charge if an enemy is killed by, or soon after, the hit."
   },
   "FlameDashAltY":{
@@ -9399,14 +9398,14 @@
         "cost":[]
       }],
     "constantStats":[[],["base_spell_repeat_count"]],
+    "baseTypeName":"Flame Dash of Return",
     "stats":[null,null,null,null,null,"flame_dash_repeats_target_previous_location"],
     "baseMods":[{
         "value":[]
       },[]],
+    "incrementalEffectiveness":0.052799999713898,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.052799999713898,
-    "name":"Flame Dash of Return",
     "description":"Teleport to a location, damaging enemies and leaving a trail of burning ground, then repeat the teleport in the other direction. Cannot be triggered, or used by a totem, trap or mine."
   },
   "Flammability":{
@@ -9548,16 +9547,16 @@
           "name":"FireResist"
         }]
     },
+    "baseTypeName":"Flammability",
     "stats":[null,null,"base_fire_damage_resistance_%"],
     "constantStats":[["chance_to_be_ignited_%"]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       },{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Flammability",
+    "baseFlags":[],
     "description":"Curses all targets in an area, lowering their fire resistance and giving them a chance to be ignited when hit."
   },
   "DivineTempestAltX":{
@@ -9702,12 +9701,13 @@
       "divine_tempest_ailment_damage_+%_final_per_stage":[[[]]],
       "divine_tempest_no_beam":[]
     },
+    "baseTypeName":"Divine Ire of Holy Lightning",
     "stats":[null,null,null,null,null,"divine_tempest_no_beam"],
     "baseFlags":[],
-    "name":"Divine Ire of Holy Lightning",
     "skillTypes":[]
   },
   "VaalBlight":{
+    "constantStats":[[],[],[],["display_max_blight_stacks"],["hinder_enemy_chaos_damage_taken_+%"]],
     "qualityStats":{
       "Default":[[]]
     },
@@ -9844,17 +9844,17 @@
           "name":"Multiplier:BlightMaxStages"
         }]
     },
-    "constantStats":[[],[],[],["display_max_blight_stacks"],["hinder_enemy_chaos_damage_taken_+%"]],
+    "baseTypeName":"Vaal Blight",
     "stats":[],
     "baseMods":[{
         "value":[]
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Vaal Blight",
     "description":"Apply a powerful debuff to enemies around you which deals chaos damage over time. Then applies two additional layers in a larger area, growing greatly in size each time. Enemies are also substantially hindered for a shorter secondary duration, slowing their movement."
   },
   "SpellDamageAura":{
+    "constantStats":[["create_consecrated_ground_on_hit_%_vs_rare_or_unique_enemy"]],
     "qualityStats":{
       "Default":[[]]
     },
@@ -9943,15 +9943,14 @@
       "spell_damage_aura_spell_damage_+%_final":[[[]]],
       "spell_critical_strike_chance_+%":[[[]]]
     },
-    "constantStats":[["create_consecrated_ground_on_hit_%_vs_rare_or_unique_enemy"]],
+    "baseTypeName":"Zealotry",
     "stats":["spell_damage_aura_spell_damage_+%_final","spell_critical_strike_chance_+%"],
     "baseMods":[{
         "value":[]
       }],
+    "incrementalEffectiveness":0.025000000372529,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.025000000372529,
-    "name":"Zealotry",
     "description":"Casts an aura that grants bonuses to damage and critical strike chance of spells to you and your allies, and gives a chance to create Consecrated Ground against stronger enemies."
   },
   "Wrath":{
@@ -10049,19 +10048,20 @@
       "attack_minimum_added_lightning_damage":[[[]]],
       "attack_maximum_added_lightning_damage":[[[]]]
     },
+    "baseTypeName":"Wrath",
     "stats":[null,null,null,"wrath_aura_spell_lightning_damage_+%_final"],
     "baseMods":[{
         "value":[]
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Wrath",
     "description":"Casts an aura that adds lightning damage to the attacks of you and your allies, and makes your spells deal more lightning damage."
   },
   "ExpandingFireCone":{
     "qualityStats":{
       "Default":[["expanding_fire_cone_maximum_number_of_stages"]]
     },
+    "incrementalEffectiveness":0.051300000399351,
     "baseMods":[{
         "value":[]
       },{
@@ -10228,10 +10228,9 @@
           "name":"Multiplier:IncinerateMaxStages"
         }]
     },
+    "baseTypeName":"Incinerate",
     "stats":[null,null,"expanding_fire_cone_radius_+_per_stage","expanding_fire_cone_radius_limit",null,null,"expanding_fire_cone_final_wave_always_ignite","quality_display_incinerate_is_gem_hit","quality_display_incinerate_is_gem_ingite","quality_display_incinerate_is_gem_stages"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.051300000399351,
-    "name":"Incinerate",
     "skillTypes":[]
   },
   "VaalColdSnap":{
@@ -10399,6 +10398,7 @@
       }],
     "baseEffectiveness":3.1500000953674,
     "constantStats":[[],[],[],[],[],[]],
+    "baseTypeName":"Vaal Cold Snap",
     "stats":[null,null,null,null,null,null,"vaal_cold_snap_gain_frenzy_charge_every_second_if_enemy_in_aura"],
     "baseMods":[{
         "value":[]
@@ -10409,17 +10409,25 @@
       },{
         "value":[]
       }],
+    "incrementalEffectiveness":0.0456000007689,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.0456000007689,
-    "name":"Vaal Cold Snap",
     "description":"Creates a sudden burst of cold around you, damaging enemies. This also creates a chilling area around you which expands and deals cold damage over time to surrounding enemies in addition to chilling them. Enemies that die while in the area grant Frenzy Charges, and you will passively gain Frenzy Charges while there are enemies in the area."
   },
   "ImmolationSigil":{
-    "stats":[null,null,null,null,null,null,"quality_display_wintertide_brand_is_gem"],
     "qualityStats":{
       "Default":[["immolation_brand_burn_damage_+%_final_per_stage"]]
     },
+    "incrementalEffectiveness":0.028899999335408,
+    "baseMods":[{
+        "value":[]
+      },{
+        "value":{
+          "key":"debuffTertiary"
+        }
+      }],
+    "constantStats":[[],[],["base_tertiary_skill_effect_duration"],[],[],["winter_brand_max_number_of_stages"],["active_skill_brands_allowed_on_enemy_+"],[]],
+    "description":"Creates a magical brand which can attach to a nearby enemy, dealing cold damage over time and chilling them. It periodically activates while attached, gaining stages that raise the damage. When removed, a short-duration debuff dealing the same damage over time and chill is applied to each nearby enemy. The brand keeps its charges while detached.",
     "levels":[{
         "cost":[],
         "statInterpolation":[]
@@ -10553,19 +10561,10 @@
           "name":"Multiplier:WintertideBrandMaxStages"
         }]
     },
-    "constantStats":[[],[],["base_tertiary_skill_effect_duration"],[],[],["winter_brand_max_number_of_stages"],["active_skill_brands_allowed_on_enemy_+"],[]],
-    "baseMods":[{
-        "value":[]
-      },{
-        "value":{
-          "key":"debuffTertiary"
-        }
-      }],
-    "skillTypes":[],
+    "baseTypeName":"Wintertide Brand",
+    "stats":[null,null,null,null,null,null,"quality_display_wintertide_brand_is_gem"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.028899999335408,
-    "name":"Wintertide Brand",
-    "description":"Creates a magical brand which can attach to a nearby enemy, dealing cold damage over time and chilling them. It periodically activates while attached, gaining stages that raise the damage. When removed, a short-duration debuff dealing the same damage over time and chill is applied to each nearby enemy. The brand keeps its charges while detached."
+    "skillTypes":[]
   },
   "IceNova":{
     "qualityStats":{
@@ -10693,13 +10692,14 @@
         "cost":[]
       }],
     "baseEffectiveness":2.2599999904633,
+    "baseTypeName":"Ice Nova",
     "stats":[],
     "constantStats":[[]],
     "skillTypes":[],
-    "baseFlags":[],
-    "name":"Ice Nova"
+    "baseFlags":[]
   },
   "Purge":{
+    "stats":[],
     "qualityStats":{
       "Default":[["base_penetrate_elemental_resistances_%"]]
     },
@@ -10879,12 +10879,11 @@
           "name":"LightningExposure"
         }]
     },
-    "stats":[],
+    "baseTypeName":"Wave of Conviction",
     "constantStats":[["skill_physical_damage_%_to_convert_to_fire"],[],[],[],["ignite_art_variation"],["purge_expose_resist_%_matching_highest_element_damage",-15]],
+    "incrementalEffectiveness":0.049699999392033,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.049699999392033,
-    "name":"Wave of Conviction",
     "description":"An expanding wave of energy surges forward, damaging enemies in a cone-shaped area over a duration. Each enemy hit is inflicted with Exposure matching the element of which they took the highest damage. Only one Wave of Conviction can be active at a time"
   },
   "LightningWarp":{
@@ -11018,14 +11017,14 @@
       }],
     "baseEffectiveness":0.94830000400543,
     "constantStats":[[],["max_number_of_lightning_warp_markers"]],
+    "baseTypeName":"Lightning Warp",
     "stats":[],
     "baseMods":[{
         "value":[]
       }],
+    "incrementalEffectiveness":0.043299999088049,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.043299999088049,
-    "name":"Lightning Warp",
     "description":"Waits for a duration before teleporting to a targeted destination, with the duration based on the distance and your movement speed. When the teleport occurs, lightning damage is dealt to the area around both where the player was and where they teleported to. Casting again will queue up multiple teleportations to occur in sequence."
   },
   "VaalClarity":{
@@ -11162,17 +11161,18 @@
         "value":-100
       }
     },
+    "baseTypeName":"Vaal Clarity",
     "stats":[null,"no_mana_cost"],
     "constantStats":[[]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Vaal Clarity",
+    "baseFlags":[],
     "description":"Casts a temporary aura that lets you and your allies cast skills without paying their mana costs."
   },
   "FrostBoltNova":{
+    "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
@@ -11297,8 +11297,8 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "stats":[],
     "constantStats":[[],[],[]],
+    "baseTypeName":"Vortex",
     "baseMods":[{
         "value":[]
       },{
@@ -11308,7 +11308,6 @@
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Vortex",
     "description":"An icy blast explodes around the caster, dealing cold damage to enemies, and leaving behind a whirling vortex which deals cold damage over time and chills enemies caught in it."
   },
   "GlacialCascadeAltX":{
@@ -11438,20 +11437,34 @@
       }],
     "baseEffectiveness":1.0800000429153,
     "constantStats":[[],["skill_physical_damage_%_to_convert_to_cold"]],
+    "baseTypeName":"Glacial Cascade of the Fissure",
     "stats":[null,null,null,"quality_display_glacial_cascade_num_spikes_is_gem"],
     "baseMods":[{
         "value":[]
       }],
+    "incrementalEffectiveness":0.046399999409914,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.046399999409914,
-    "name":"Glacial Cascade of the Fissure",
     "description":"Icicles emerge from the ground in a series of small bursts, each damaging enemies caught in the area."
   },
   "SanctifyAltX":{
     "qualityStats":{
       "Default":[["sanctify_wave_damage_+%_final"]]
     },
+    "incrementalEffectiveness":0.046799998730421,
+    "baseMods":[{
+        "value":[]
+      },{
+        "value":[]
+      },{
+        "value":[]
+      },{
+        "value":{
+          "value":"Shockwave:"
+        }
+      }],
+    "constantStats":[[],[],[],[]],
+    "description":"A wave of divine fire deals damage in a line, then creates Consecrated Ground and deals damage in an area around the targeted location. A larger shockwave then expands outwards, damaging enemies standing on Consecrated Ground that were not already hit.",
     "parts":[{
         "name":"Initial hit"
       },{
@@ -11584,28 +11597,15 @@
       "sanctify_wave_damage_+%_final":[[[]]],
       "quality_display_sanctify_is_gem":[]
     },
-    "constantStats":[[],[],[],[]],
+    "baseTypeName":"Purifying Flame of Revelations",
     "stats":[null,null,null,"active_skill_ground_consecration_radius_+",null,null,"quality_display_sanctify_is_gem"],
-    "baseMods":[{
-        "value":[]
-      },{
-        "value":[]
-      },{
-        "value":[]
-      },{
-        "value":{
-          "value":"Shockwave:"
-        }
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.046799998730421,
-    "name":"Purifying Flame of Revelations",
-    "description":"A wave of divine fire deals damage in a line, then creates Consecrated Ground and deals damage in an area around the targeted location. A larger shockwave then expands outwards, damaging enemies standing on Consecrated Ground that were not already hit."
+    "skillTypes":[]
   },
   "FlameWhipAltX":{
+    "constantStats":[[],["flame_surge_burning_ground_on_ignite_damage_%"],["base_chance_to_ignite_%"]],
     "qualityStats":{
-      "Default":[["flame_surge_burning_ground_on_ignite_damage_%"]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -11734,14 +11734,13 @@
       "quality_display_alt_flame_whip_is_gem":[],
       "active_skill_base_area_length_+":[[]]
     },
-    "constantStats":[[],[],["base_chance_to_ignite_%"]],
+    "baseTypeName":"Flame Surge of Combusting",
     "stats":[null,null,null,null,"quality_display_alt_flame_whip_is_gem"],
     "baseMods":[{
         "value":[]
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Flame Surge of Combusting",
     "description":"Strikes enemies in front of you with a surge of flame. If this ignites an enemy a large area of burning ground will be created under them. Your damage modifiers don't apply to this burning ground."
   },
   "Fireball":{
@@ -11873,14 +11872,14 @@
       }],
     "baseEffectiveness":2.9210000038147,
     "constantStats":[[]],
+    "baseTypeName":"Fireball",
     "stats":[null,null,null,null,"quality_display_active_skill_ignite_damage_is_gem"],
     "qualityStats":{
       "Default":[[]]
     },
+    "incrementalEffectiveness":0.047400001436472,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.047400001436472,
-    "name":"Fireball",
     "description":"Unleashes a ball of fire towards a target which explodes, damaging nearby foes."
   },
   "ColdProjectileMineAltX":{
@@ -12012,17 +12011,23 @@
     "statMap":{
       "cold_projectile_mine_enemy_critical_strike_chance_+%_against_self":[[[],[]]]
     },
+    "baseTypeName":"Icicle Mine of Fanning",
     "stats":[],
     "constantStats":[[],[],[],[],[],[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Icicle Mine of Fanning",
     "description":"Throws a mine that fires projectiles at enemies when detonated. These projectiles quickly dissipate as they travel, before disappearing."
   },
   "ShockNova":{
     "qualityStats":{
       "Default":[["shock_maximum_magnitude_+"]]
     },
+    "incrementalEffectiveness":0.049300000071526,
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[["shock_nova_ring_chance_to_shock_+%"],[]],
+    "description":"Casts a ring of Lightning around you, followed by a larger Lightning nova. Each effect hits enemies caught in their area with Lightning Damage.",
     "parts":[{
         "name":"Ring"
       },{
@@ -12153,25 +12158,22 @@
     "statMap":{
       "shock_nova_ring_chance_to_shock_+%":[[[]]]
     },
-    "constantStats":[["shock_nova_ring_chance_to_shock_+%"],[]],
+    "baseTypeName":"Shock Nova",
     "stats":[],
-    "baseMods":[{
-        "value":[]
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.049300000071526,
-    "name":"Shock Nova",
-    "description":"Casts a ring of Lightning around you, followed by a larger Lightning nova. Each effect hits enemies caught in their area with Lightning Damage."
+    "skillTypes":[]
   },
   "SummonBoneGolemAltX":{
+    "minionSkillTypes":[],
+    "incrementalEffectiveness":0.020999999716878,
     "baseMods":[{
         "value":[]
       },{
         "1":[],
         "name":"Condition:HaveCarrionGolem"
       }],
-    "minionSkillTypes":[],
+    "constantStats":[[],[],[]],
+    "description":"Summons a Carrion Golem. The Carrion Golem attacks with a series of slashes that increase in speed and damage, as well as a cascade of bone spikes.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -12293,19 +12295,17 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "constantStats":[[],[],[]],
-    "qualityStats":{
-      "Default":[[]]
-    },
+    "baseTypeName":"Summon Carrion Golem of Hordes",
     "stats":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.020999999716878,
-    "skillTypes":[],
     "minionList":["SummonedCarrionGolem"],
-    "name":"Summon Carrion Golem of Hordes",
-    "description":"Summons a Carrion Golem. The Carrion Golem attacks with a series of slashes that increase in speed and damage, as well as a cascade of bone spikes."
+    "skillTypes":[],
+    "qualityStats":{
+      "Default":[[]]
+    }
   },
   "FrostBomb":{
+    "constantStats":[[],[],[],[],["life_regeneration_rate_+%",-75]],
     "qualityStats":{
       "Default":[[]]
     },
@@ -12436,7 +12436,6 @@
           }]],
       "life_regeneration_rate_+%":[[[]]]
     },
-    "constantStats":[[],[],[],[],["life_regeneration_rate_+%",-75]],
     "stats":[],
     "baseMods":[{
         "value":{
@@ -12574,13 +12573,13 @@
       }],
     "baseEffectiveness":6.5177001953125,
     "constantStats":[[],[]],
+    "baseTypeName":"Contagion of Subsiding",
     "stats":[null,null,null,"contagion_display_spread_on_death"],
     "baseMods":[{
         "value":[]
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Contagion of Subsiding",
     "description":"Unleashes a vile contagion on enemies, dealing chaos damage over time. If an enemy dies while affected by Contagion, the debuff spreads to other enemies, but each time it spreads, it only deals three quarters as much damage as before."
   },
   "Discipline":{
@@ -12690,20 +12689,25 @@
           "name":"EnergyShieldRecharge"
         }]
     },
+    "baseTypeName":"Discipline",
     "stats":["base_maximum_energy_shield"],
     "constantStats":[["energy_shield_recharge_rate_+%"]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Discipline",
+    "baseFlags":[],
     "description":"Casts an aura that grants additional energy shield and increased energy shield recharge rate to you and your allies."
   },
   "GlacialCascade":{
     "qualityStats":{
       "Default":[["glacial_cascade_final_spike_damage_+%_final"]]
     },
+    "baseMods":[{
+        "value":[]
+      },[[]]],
+    "constantStats":[[],[],[]],
+    "description":"Icicles emerge from the ground in a series of small bursts, each damaging enemies caught in the area and knocking them back in the direction of the next burst.",
     "parts":[{
         "name":"Initial Bursts"
       },{
@@ -12835,15 +12839,10 @@
       "glacial_cascade_final_spike_damage_+%_final":[[[]]],
       "quality_display_glacial_cascade_is_gem":[]
     },
-    "constantStats":[[],[],[]],
+    "baseTypeName":"Glacial Cascade",
     "stats":[null,null,null,"global_knockback","quality_display_glacial_cascade_is_gem"],
-    "baseMods":[{
-        "value":[]
-      },[[]]],
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Glacial Cascade",
-    "description":"Icicles emerge from the ground in a series of small bursts, each damaging enemies caught in the area and knocking them back in the direction of the next burst."
+    "skillTypes":[]
   },
   "AssassinsMark":{
     "qualityStats":{
@@ -13016,6 +13015,7 @@
           "name":"SelfLifeOnKill"
         }]
     },
+    "baseTypeName":"Assassin's Mark",
     "stats":["enemy_additional_critical_strike_multiplier_against_self","life_granted_when_killed","mana_granted_when_killed"],
     "constantStats":[["enemy_additional_critical_strike_chance_against_self"],["chance_to_grant_power_charge_on_death_%"]],
     "skillTypes":[],
@@ -13023,7 +13023,6 @@
         "value":[]
       }],
     "baseFlags":[],
-    "name":"Assassin's Mark",
     "description":"Curses a single enemy, making them more vulnerable to Critical Strikes. Killing the cursed enemy will grant life and mana, and a power charge. You can only have one Mark at a time."
   },
   "Spark":{
@@ -13152,12 +13151,12 @@
         "cost":[]
       }],
     "baseEffectiveness":3.8399000167847,
+    "baseTypeName":"Spark",
     "stats":[],
     "constantStats":[[]],
+    "incrementalEffectiveness":0.033100001513958,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.033100001513958,
-    "name":"Spark",
     "description":"Launches unpredictable sparks that move randomly until they hit an enemy or expire."
   },
   "ColdSnapAltX":{
@@ -13285,11 +13284,11 @@
         "cost":[],
         "statInterpolation":[]
       }],
+    "baseTypeName":"Cold Snap of Power",
     "stats":[],
     "constantStats":[[],[],[],[],[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Cold Snap of Power",
     "description":"Creates a sudden burst of cold in a targeted area, damaging enemies. The cooldown can be bypassed by expending a Power Charge."
   },
   "SupportDarkRitual":{
@@ -13534,18 +13533,20 @@
         }],
       "base_skill_area_of_effect_+%":[[]]
     },
+    "baseTypeName":"Forbidden Rite of Soul Sacrifice",
     "stats":[null,null,null,null,null,null,null,"quality_display_forbidden_rite_is_gem"],
     "baseFlags":[],
-    "name":"Forbidden Rite of Soul Sacrifice",
     "skillTypes":[]
   },
   "DarkRitual":{
-    "baseMods":[{
-        "value":[]
-      }],
     "qualityStats":{
       "Default":[["display_linked_curse_effect_+%"]]
     },
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[["display_linked_curse_effect_+%_final"],[],[],[]],
+    "description":"Applies a debuff to enemies in an area, which deals chaos damage over Time. Linked hex curses are also applied to those enemies. The debuff deals more damage and lasts longer for each hex applied this way.  This skill cannot be used by Totems, Traps, or Mines.",
     "levels":[{
         "cost":[],
         "statInterpolation":[]
@@ -13676,11 +13677,9 @@
       "apply_linked_curses_with_dark_ritual":[],
       "display_linked_curse_effect_+%_final":[]
     },
-    "constantStats":[["display_linked_curse_effect_+%_final"],[],[],[]],
     "stats":[],
-    "baseFlags":[],
     "skillTypes":[],
-    "description":"Applies a debuff to enemies in an area, which deals chaos damage over Time. Linked hex curses are also applied to those enemies. The debuff deals more damage and lasts longer for each hex applied this way.  This skill cannot be used by Totems, Traps, or Mines."
+    "baseFlags":[]
   },
   "DisintegrateAltX":{
     "qualityStats":{
@@ -13808,17 +13807,20 @@
         "cost":[]
       }],
     "constantStats":[["disintegrate_secondary_beam_angle_+%"]],
+    "baseTypeName":"Crackling Lance of Branching",
     "stats":[],
     "baseMods":[{
         "value":[]
       }],
+    "incrementalEffectiveness":0.049899999052286,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.049899999052286,
-    "name":"Crackling Lance of Branching",
     "description":"Release a beam which deals lightning damage to enemies in a long area in front of you, and has several smaller beams branch off from it at an angle, hitting more enemies to the sides."
   },
   "SummonChaosGolem":{
+    "qualityStats":{
+      "Default":[[]]
+    },
     "minionSkillTypes":[],
     "levels":[{
         "statInterpolation":[],
@@ -13941,16 +13943,14 @@
         "statInterpolation":[],
         "cost":[]
       }],
-    "qualityStats":{
-      "Default":[[]]
-    },
+    "constantStats":[[],[]],
     "statMap":{
       "chaos_golem_grants_additional_physical_damage_reduction_%":[{
           "1":[],
           "name":"PhysicalDamageReduction"
         }]
     },
-    "constantStats":[[],[]],
+    "baseTypeName":"Summon Chaos Golem",
     "stats":[null,"chaos_golem_grants_additional_physical_damage_reduction_%"],
     "baseMods":[{
         "value":[]
@@ -13958,13 +13958,13 @@
         "1":[],
         "name":"Condition:HaveChaosGolem"
       }],
-    "minionList":["SummonedChaosGolem"],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Chaos Golem",
+    "minionList":["SummonedChaosGolem"],
     "description":"Summons a Chaos Golem that grants you Physical Damage Reduction. The Chaos Golem can cast a damage over time Chaos aura and a cascade of Chaos spikes in addition to its melee attack."
   },
   "VaalSummonSkeletons":{
+    "constantStats":[["number_of_leader_skeletons_to_summon"],[],[]],
     "minionSkillTypes":[],
     "levels":[{
         "statInterpolation":[],
@@ -14090,7 +14090,7 @@
     "statMap":{
       "quality_display_summon_skeleton_is_gem":[]
     },
-    "constantStats":[["number_of_leader_skeletons_to_summon"],[],[]],
+    "baseTypeName":"Vaal Summon Skeletons",
     "stats":["number_of_melee_skeletons_to_summon","number_of_archer_skeletons_to_summon",null,null,null,null,"skeletons_are_vaal"],
     "qualityStats":{
       "Default":[[]]
@@ -14098,10 +14098,10 @@
     "skillTypes":[],
     "baseFlags":[],
     "minionList":["RaisedSkeleton",null,"RaisedSkeletonArcher"],
-    "name":"Vaal Summon Skeletons",
     "description":"Summons an army of skeletal soldiers, archers and mages, led by a powerful general."
   },
   "SummonSkeletonsAltX":{
+    "constantStats":[[],[]],
     "minionSkillTypes":[],
     "levels":[{
         "cost":[],
@@ -14227,7 +14227,7 @@
     "statMap":{
       "quality_display_summon_skeleton_is_gem":[]
     },
-    "constantStats":[[],[]],
+    "baseTypeName":"Summon Skeletons of Archery",
     "stats":[],
     "qualityStats":{
       "Default":[[]]
@@ -14239,6 +14239,7 @@
     "description":"Summon Skeleton Archer minions at the targeted location. They fire arrows and die after a duration."
   },
   "SummonSkeletons":{
+    "constantStats":[[],[]],
     "minionSkillTypes":[],
     "levels":[{
         "cost":[],
@@ -14364,7 +14365,7 @@
     "statMap":{
       "quality_display_summon_skeleton_is_gem":[]
     },
-    "constantStats":[[],[]],
+    "baseTypeName":"Summon Skeletons",
     "stats":[],
     "qualityStats":{
       "Default":[[]]
@@ -14372,7 +14373,6 @@
     "skillTypes":[],
     "baseFlags":[],
     "minionList":[],
-    "name":"Summon Skeletons",
     "description":"Summon Skeleton Warrior minions at the targeted location. They use a melee attack and die after a duration. If made aggressive, Skeleton Warriors will also dash towards nearby enemies."
   },
   "SummonReaperAltY":{
@@ -14499,6 +14499,7 @@
         "cost":[],
         "statInterpolation":[]
       }],
+    "constantStats":[[],[],["bleed_on_hit_with_attacks_%"],["active_skill_minion_from_alternate_gem_index"]],
     "statMap":{
       "bleed_on_hit_with_attacks_%":[{
           "value":{
@@ -14522,16 +14523,15 @@
           }
         }]
     },
-    "constantStats":[[],[],["bleed_on_hit_with_attacks_%"],["active_skill_minion_from_alternate_gem_index"]],
+    "baseTypeName":"Summon Reaper of Eviscerating",
     "stats":[null,null,null,"active_skill_minion_bleeding_damage_+%_final"],
     "qualityStats":{
       "Default":[[]]
     },
     "statDescriptionScope":"single_minion_spell_skill_stat_descriptions",
-    "minionList":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Reaper of Eviscerating",
+    "minionList":[],
     "description":"Summons a powerful Reaper which passively follows you without attacking enemies. The Reaper's presence weakens your other minions, and it will consume them to temporarily empower and heal itself. Using this skill while the Reaper is already summoned causes it to dash to the targeted location and perform a powerful attack. Cannot be triggered, supported by Spell Echo or Unleash, or used by Totems, Traps, or Mines. "
   },
   "Arc":{
@@ -14665,16 +14665,17 @@
             "stat":"ChainRemaining"
           }]]
     },
+    "baseTypeName":"Arc",
     "stats":[null,null,null,"arc_enhanced_behaviour","disable_visual_hit_effect"],
     "constantStats":[["arc_damage_+%_final_for_each_remaining_chain"],["arc_chain_distance"]],
     "statDescriptionScope":"beam_skill_stat_descriptions",
+    "incrementalEffectiveness":0.039500001817942,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.039500001817942,
-    "name":"Arc",
     "description":"An arc of lightning reaches from the caster to a targeted enemy and chains to other enemies, but not immediately back. Each time the arc chains, it will also chain a secondary arc to another enemy that the main arc has not already hit, which cannot chain further."
   },
   "BallLightningAltY":{
+    "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
@@ -14800,8 +14801,8 @@
         "statInterpolation":[]
       }],
     "baseEffectiveness":0.87000000476837,
-    "stats":[],
     "constantStats":[["ball_lightning_projectile_speed_and_hit_frequency_+%_final"],[],[]],
+    "baseTypeName":"Ball Lightning of Static",
     "baseMods":[{
         "value":{
           "key":"strikeInterval"
@@ -14809,10 +14810,9 @@
       },{
         "value":[]
       }],
+    "incrementalEffectiveness":0.044300001114607,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.044300001114607,
-    "name":"Ball Lightning of Static",
     "description":"Creates a ball of lightning at a location that damages each enemy in an area around it repeatedly with bolts of lightning. Cannot be supported by Spell Echo."
   },
   "LightningImpurity":{
@@ -14951,17 +14951,29 @@
         }],
       "base_maximum_lightning_damage_resistance_%":[[[]]]
     },
+    "baseTypeName":"Vaal Impurity of Lightning",
     "stats":[null,"aura_effect_+%",null,"base_immune_to_shock","hits_ignore_my_lightning_resistance"],
-    "baseFlags":[],
-    "constantStats":[[],[]],
     "skillTypes":[],
-    "name":"Vaal Impurity of Lightning",
+    "constantStats":[[],[]],
+    "baseFlags":[],
     "description":"Casts an aura that reduces lightning damage taken and provides shock immunity to you and nearby allies, and makes hits against nearby enemies ignore their lightning resistance. "
   },
   "Blight":{
     "qualityStats":{
       "Default":[[]]
     },
+    "incrementalEffectiveness":0.033599998801947,
+    "baseMods":[[{
+          "var":"BlightStageAfterFirst"
+        }],{
+        "value":[]
+      },{
+        "value":[]
+      },{
+        "value":[]
+      }],
+    "constantStats":[[],[],[],[]],
+    "description":"Apply a debuff to enemies in front of you which deals chaos damage over time. Enemies who aren't already debuffed by Blight are also hindered for a shorter secondary duration, slowing their movement. Continued channelling adds layers of damage to the debuff, each with their own duration.",
     "parts":[{
         "name":"Manual Stacks"
       },{
@@ -15095,22 +15107,10 @@
           "name":"BlightBaseMaxStages"
         }]
     },
-    "constantStats":[[],[],[],[]],
+    "baseTypeName":"Blight",
     "stats":[],
-    "baseMods":[[{
-          "var":"BlightStageAfterFirst"
-        }],{
-        "value":[]
-      },{
-        "value":[]
-      },{
-        "value":[]
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.033599998801947,
-    "name":"Blight",
-    "description":"Apply a debuff to enemies in front of you which deals chaos damage over time. Enemies who aren't already debuffed by Blight are also hindered for a shorter secondary duration, slowing their movement. Continued channelling adds layers of damage to the debuff, each with their own duration."
+    "skillTypes":[]
   },
   "SummonRagingSpiritAltX":{
     "minionSkillTypes":[],
@@ -15236,14 +15236,14 @@
         "statInterpolation":[]
       }],
     "constantStats":[[],["base_number_of_raging_spirits_allowed"],[],["minion_actor_scale_+%"]],
+    "baseTypeName":"Summon Raging Spirit of Enormity",
     "stats":[null,"active_skill_minion_life_+%_final","minions_cannot_taunt_enemies","minion_always_crit"],
     "qualityStats":{
       "Default":[["minion_critical_strike_multiplier_+"]]
     },
-    "minionList":["SummonedRagingSpirit"],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Raging Spirit of Enormity",
+    "minionList":["SummonedRagingSpirit"],
     "description":"Summons a short-lived flaming skull that rushes at nearby enemies and attacks them rapidly, converting all its physical damage to fire. Enemies will not directly engage these spirits, and can pass through them."
   },
   "SummonRagingSpirit":{
@@ -15370,14 +15370,14 @@
         "statInterpolation":[]
       }],
     "constantStats":[[],[],[]],
+    "baseTypeName":"Summon Raging Spirit",
     "stats":[],
     "qualityStats":{
       "Default":[["summoned_raging_spirit_chance_to_spawn_additional_minion_%"]]
     },
-    "minionList":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Raging Spirit"
+    "minionList":[]
   },
   "SummonRelic":{
     "minionSkillTypes":[],
@@ -15563,6 +15563,7 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "constantStats":[["base_number_of_relics_allowed"],[]],
     "statMap":{
       "holy_relic_nova_minion_life_regeneration_rate_per_second":[[{
             "effectCond":"HolyRelicBoonActive",
@@ -15575,15 +15576,14 @@
             "effectName":"Holy Relic's Boon"
           }]]
     },
-    "constantStats":[["base_number_of_relics_allowed"],[]],
+    "baseTypeName":"Summon Holy Relic",
     "stats":["active_skill_minion_movement_velocity_+%_final","holy_relic_nova_life_regeneration_rate_per_minute","holy_relic_nova_minion_life_regeneration_rate_per_second"],
     "qualityStats":{
       "Default":[["skill_buff_effect_+%"]]
     },
-    "minionList":["HolyLivingRelic"],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Holy Relic",
+    "minionList":["HolyLivingRelic"],
     "description":"Summon a Holy Relic that stays near you. When you hit an enemy with an attack, the Holy Relic triggers a nova spell, with a very short cooldown, that deals physical damage to enemies and grants life regeneration to allies. This life regeneration is higher when applied to minions."
   },
   "BallLightningAltX":{
@@ -15737,9 +15737,9 @@
     "statMap":{
       "ball_lightning_projectile_speed_and_hit_frequency_+%_final":[[]]
     },
+    "baseTypeName":"Ball Lightning of Orbiting",
     "stats":[null,null,null,"modifiers_to_projectile_count_do_not_apply"],
     "baseFlags":[],
-    "name":"Ball Lightning of Orbiting",
     "skillTypes":[]
   },
   "SummonReaper":{
@@ -15865,6 +15865,7 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "constantStats":[[],[],[]],
     "statMap":{
       "bleed_on_hit_with_attacks_%":[{
           "value":{
@@ -15886,14 +15887,13 @@
           }
         }]
     },
-    "constantStats":[[],[],[]],
     "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
-    "minionList":[],
     "skillTypes":[],
     "baseFlags":[],
+    "minionList":[],
     "description":"Summons a powerful Reaper which uses a variety of slashing area attacks. The Reaper's presence weakens your other minions, and it will consume them to temporarily empower and heal itself. Using this skill while the Reaper is already summoned causes it to dash to the targeted location and perform a powerful attack."
   },
   "ConversionTrap":{
@@ -16043,11 +16043,11 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "baseTypeName":"Conversion Trap",
     "stats":[null,null,null,"traps_do_not_explode_on_timeout"],
-    "skillTypes":[],
-    "constantStats":[[]],
     "baseFlags":[],
-    "name":"Conversion Trap",
+    "constantStats":[[]],
+    "skillTypes":[],
     "description":"Throws a trap that, when triggered by an enemy, converts that enemy to your side for a short duration. Does not affect unique monsters or players."
   },
   "SummonChaosGolemAltX":{
@@ -16177,14 +16177,14 @@
       "Default":[[]]
     },
     "constantStats":[[],[],[]],
+    "baseTypeName":"Summon Chaos Golem of Hordes",
     "stats":[],
     "baseMods":[{
         "value":[]
       },[[]]],
-    "minionList":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Chaos Golem of Hordes",
+    "minionList":[],
     "description":"Summons a Chaos Golem. The Chaos Golem can cast a damage over time Chaos aura and a cascade of Chaos spikes in addition to its melee attack."
   },
   "SummonBoneGolemAltY":{
@@ -16333,18 +16333,19 @@
           }
         }]
     },
+    "baseTypeName":"Summon Carrion Golem of Scavenging",
     "stats":[],
     "baseFlags":[],
     "minionList":[],
     "skillTypes":[],
-    "name":"Summon Carrion Golem of Scavenging",
     "qualityStats":{
       "Default":[["minion_life_regeneration_rate_per_minute_%"]]
     }
   },
   "LightningExplosionMine":{
+    "constantStats":[[],[],["lightning_explosion_mine_aura_damage_taken_+%"]],
     "qualityStats":{
-      "Default":[["lightning_explosion_mine_aura_damage_taken_+%"]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -16476,15 +16477,14 @@
           "name":"DamageTaken"
         }]
     },
-    "constantStats":[[],[],[]],
+    "baseTypeName":"Stormblast Mine",
     "stats":[null,null,null,null,null,null,null,"quality_display_stormblast_mine_is_gem"],
     "baseMods":[{
         "value":[]
       }],
+    "incrementalEffectiveness":0.043999999761581,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.043999999761581,
-    "name":"Stormblast Mine",
     "description":"Throws a mine that deals damage in an area when detonated."
   },
   "Despair":{
@@ -16626,18 +16626,19 @@
           "name":"SelfChaosMax"
         }]
     },
+    "baseTypeName":"Despair",
     "stats":[null,null,"base_chaos_damage_resistance_%"],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       },{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Despair",
+    "baseFlags":[],
     "description":"Curses all targets in an area, lowering their chaos resistance."
   },
   "BlackHoleAltX":{
+    "stats":[null,null,"blackhole_hinder_%"],
     "qualityStats":{
       "Default":[[]]
     },
@@ -16767,12 +16768,11 @@
           "value":[]
         }]
     },
-    "stats":[null,null,"blackhole_hinder_%"],
+    "baseTypeName":"Void Sphere of Rending",
     "constantStats":[["skill_physical_damage_%_to_convert_to_chaos"],["base_blackhole_tick_rate_ms"],[],[]],
+    "incrementalEffectiveness":0.055500000715256,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.055500000715256,
-    "name":"Void Sphere of Rending",
     "description":"Creates a Void Sphere which Hinders enemies in an area around it, with the debuff being stronger on enemies closer to the sphere. It also regularly releases pulses of area damage. The Void Sphere will consume the corpses of any enemies which die in its area. Can only have one Void Sphere at a time."
   },
   "FrostBolt":{
@@ -16902,11 +16902,11 @@
         "cost":[]
       }],
     "baseEffectiveness":2.8582999706268,
+    "baseTypeName":"Frostbolt",
     "stats":[],
+    "incrementalEffectiveness":0.0472999997437,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.0472999997437,
-    "name":"Frostbolt",
     "description":"Fires a slow-moving projectile that pierces through enemies, dealing cold damage."
   },
   "SummonBoneGolem":{
@@ -17069,11 +17069,11 @@
           }
         }]
     },
+    "baseTypeName":"Summon Carrion Golem",
     "stats":["bone_golem_grants_minion_minimum_added_physical_damage","bone_golem_grants_minion_maximum_added_physical_damage"],
     "baseFlags":[],
     "minionList":[],
     "skillTypes":[],
-    "name":"Summon Carrion Golem",
     "qualityStats":{
       "Default":[[]]
     }
@@ -17207,6 +17207,7 @@
       }],
     "baseEffectiveness":2.6089999675751,
     "constantStats":[[],["vaal_storm_call_base_delay_ms"]],
+    "baseTypeName":"Vaal Storm Call",
     "stats":[null,null,null,null,"monster_stormcall_individually_trigger"],
     "baseMods":[{
         "value":[]
@@ -17221,10 +17222,9 @@
           "value":"Final Lightning Strike area:"
         }
       }],
+    "incrementalEffectiveness":0.033500000834465,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.033500000834465,
-    "name":"Vaal Storm Call",
     "description":"Sets a marker at a location. Lightning strikes random enemies around the marker repeatedly over the skill's duration, dealing damage in an area around the strike. Modifiers to the skill's duration will also affect the delay between these strikes. When the duration ends, a large bolt of lightning strikes the marker, dealing damage around it."
   },
   "KineticBoltAltX":{
@@ -17354,12 +17354,12 @@
       "active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value":[[],[]],
       "quality_display_spell_damage_to_attack_damage_is_gem":[]
     },
+    "baseTypeName":"Kinetic Bolt of Fragmentation",
     "stats":[null,null,null,null,"projectiles_can_shotgun"],
     "constantStats":[[],[],["number_of_additional_projectiles"]],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Kinetic Bolt of Fragmentation",
+    "weaponTypes":[],
     "description":"Fire a projectile from your wand that changes direction in a zig-zag pattern at regular intervals or when hitting enemies. Each time it changes direction, a secondary projectile breaks off, flying in the direction it changed away from. Multiple of these projectiles can hit the same target."
   },
   "DoomBlastAltY":{
@@ -17488,17 +17488,18 @@
         "cost":[]
       }],
     "constantStats":[[],["hexblast_%_chance_to_not_consume_hex"]],
+    "baseTypeName":"Hexblast of Havoc",
     "stats":[null,null,"hexblast_display_innate_remove_hex_100%_chance"],
     "qualityStats":{
       "Default":[[]]
     },
+    "incrementalEffectiveness":0.045499999076128,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.045499999076128,
-    "name":"Hexblast of Havoc",
     "description":"Deals chaos damage to a single enemy. If the enemy was Hexed, also deals area damage to other enemies around the target."
   },
   "StormCall":{
+    "constantStats":[[]],
     "qualityStats":{
       "Default":[["storm_call_chance_to_strike_on_cast_%"]]
     },
@@ -17627,15 +17628,14 @@
     "statMap":{
       "base_skill_show_average_damage_instead_of_dps":[]
     },
-    "constantStats":[[]],
+    "baseTypeName":"Storm Call",
     "stats":[],
     "baseMods":[{
         "value":[]
       }],
+    "incrementalEffectiveness":0.044100001454353,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.044100001454353,
-    "name":"Storm Call",
     "description":"Sets a marker at a location. After a short duration, lightning strikes the marker, dealing damage around it and causing lightning strikes at any other markers you've cast."
   },
   "PowerSiphonAltX":{
@@ -17766,14 +17766,15 @@
     "statMap":{
       "power_siphon_base_fire_at_x_targets":[[]]
     },
+    "baseTypeName":"Power Siphon of the Archmage",
     "stats":[],
     "constantStats":[[],[]],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Power Siphon of the Archmage"
+    "weaponTypes":[]
   },
   "RaiseZombie":{
+    "constantStats":[[]],
     "minionSkillTypes":[],
     "levels":[{
         "cost":[],
@@ -17899,7 +17900,7 @@
     "statMap":{
       "quality_display_raise_zombie_is_gem+%":[]
     },
-    "constantStats":[[]],
+    "baseTypeName":"Raise Zombie",
     "stats":["base_number_of_zombies_allowed",null,null,null,"quality_display_raise_zombie_is_gem"],
     "qualityStats":{
       "Default":[[]]
@@ -17907,7 +17908,6 @@
     "skillTypes":[],
     "baseFlags":[],
     "minionList":["RaisedZombie"],
-    "name":"Raise Zombie",
     "description":"Raises a zombie minion from a corpse, which will follow you and attack enemies with a melee strike."
   },
   "RuneBlast":{
@@ -17995,16 +17995,20 @@
       },{
         "cost":[]
       }],
+    "baseTypeName":"Rune Blast",
     "stats":[],
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Rune Blast",
+    "skillTypes":[],
     "description":"Channel to improve runes placed by Stormbind based on the mana you spend channelling this skill. Release to detonate the targeted rune, which will cause other runes to detonate in a chain reaction."
   },
   "Stormbind":{
     "qualityStats":{
       "Default":[[]]
     },
+    "baseMods":[[[]],[[]],[[]],{
+        "value":[]
+      }],
+    "constantStats":[[],[],[],[],[]],
     "parts":[[],[],[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -18135,14 +18139,10 @@
       "rune_paint_max_rune_level":[],
       "quality_display_rune_paint_area_is_gem":[]
     },
-    "constantStats":[[],[],[],[],[]],
+    "baseTypeName":"Stormbind",
     "stats":[],
-    "baseMods":[[[]],[[]],[[]],{
-        "value":[]
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Stormbind"
+    "skillTypes":[]
   },
   "BrandSupport":{
     "qualityStats":{
@@ -18229,11 +18229,11 @@
       },{
         "cost":[]
       }],
+    "baseTypeName":"Arcanist Brand",
     "stats":[],
-    "baseFlags":[],
-    "constantStats":[[],[],[],[]],
     "skillTypes":[],
-    "name":"Arcanist Brand",
+    "constantStats":[[],[],[],[]],
+    "baseFlags":[],
     "description":"Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, triggering linked spells. The brand will detach if the enemy dies."
   },
   "LightningTendrilsChannelledAltY":{
@@ -18370,20 +18370,24 @@
           "value":[]
         }]
     },
+    "baseTypeName":"Lightning Tendrils of Escalation",
     "stats":[],
     "constantStats":[[],["lightning_tendrils_channelled_base_radius_+_per_second_while_channelling"]],
-    "castTime":0.23,
+    "incrementalEffectiveness":0.051100000739098,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.051100000739098,
-    "name":"Lightning Tendrils of Escalation",
+    "castTime":0.23,
     "description":"While you channel this skill, it releases pulses of electrical energy, dealing lightning damage in a growing semicircular area in front of you."
   },
   "ConduitSigil":{
-    "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[[],[],[],[],[]],
+    "description":"Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, firing beams which deal damage to nearby enemies and those around them. The brand will detach if the enemy dies.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -18515,19 +18519,20 @@
     "statMap":{
       "base_skill_show_average_damage_instead_of_dps":[]
     },
-    "constantStats":[[],[],[],[],[]],
-    "baseMods":[{
-        "value":[]
-      }],
-    "skillTypes":[],
+    "baseTypeName":"Storm Brand",
+    "stats":[],
     "baseFlags":[],
-    "name":"Storm Brand",
-    "description":"Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, firing beams which deal damage to nearby enemies and those around them. The brand will detach if the enemy dies."
+    "skillTypes":[]
   },
   "DoomBlast":{
     "qualityStats":{
       "Default":[[]]
     },
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[["hexblast_hit_damage_+%_final_if_hexed"],["hexblast_ailment_damage_+%_final_if_hexed"],[]],
+    "description":"Deals chaos damage to a single enemy, dealing more damage if they are Hexed, then removing the Hex. If the enemy was Hexed, also deals area damage to other enemies around the target, boosting damage and removing Hexes from those enemies in the same way.",
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -18662,15 +18667,10 @@
           "name":"ChaosDamageUsesLowestResistance"
         }]
     },
-    "constantStats":[["hexblast_hit_damage_+%_final_if_hexed"],["hexblast_ailment_damage_+%_final_if_hexed"],[]],
+    "baseTypeName":"Hexblast",
     "stats":[null,null,"all_damage_can_ignite_freeze_shock","chaos_damage_resisted_by_lowest_resistance","spell_cast_time_added_to_cooldown_if_triggered"],
-    "baseMods":[{
-        "value":[]
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Hexblast",
-    "description":"Deals chaos damage to a single enemy, dealing more damage if they are Hexed, then removing the Hex. If the enemy was Hexed, also deals area damage to other enemies around the target, boosting damage and removing Hexes from those enemies in the same way."
+    "skillTypes":[]
   },
   "FrostWall":{
     "qualityStats":{
@@ -18798,12 +18798,12 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "baseTypeName":"Frost Wall",
     "stats":[],
     "constantStats":[["wall_expand_delay_ms"]],
+    "incrementalEffectiveness":0.034000001847744,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.034000001847744,
-    "name":"Frost Wall",
     "description":"Creates a wall of ice which holds back enemies. Targets under the wall are damaged and pushed back."
   },
   "SupportSpellslinger":{
@@ -18938,8 +18938,8 @@
       "spellslinger_mana_reservation":[]
     },
     "stats":["spellslinger_mana_reservation"],
-    "baseFlags":[],
     "skillTypes":[],
+    "baseFlags":[],
     "description":"Reserves mana based on the supported spells to cause those spells to trigger when you fire projectiles from a wand attack."
   },
   "LightningConduitAltX":{
@@ -19068,12 +19068,12 @@
         "cost":[]
       }],
     "baseEffectiveness":3.0499999523163,
+    "baseTypeName":"Lightning Conduit of the Heavens",
     "stats":[],
     "constantStats":[[]],
+    "incrementalEffectiveness":0.041999999433756,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.041999999433756,
-    "name":"Lightning Conduit of the Heavens",
     "description":"Lightning strikes a number of enemies around a targeted location. Cannot be supported by Spell Cascade."
   },
   "DamageOverTimeAura":{
@@ -19165,13 +19165,13 @@
       "delirium_skill_effect_duration_+%":[[[]]],
       "delirium_aura_damage_over_time_+%_final":[[[]]]
     },
+    "baseTypeName":"Malevolence",
     "stats":["delirium_aura_damage_over_time_+%_final",null,"delirium_skill_effect_duration_+%"],
     "baseMods":[{
         "value":[]
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Malevolence",
     "description":"Casts an aura that multiplies damage over time and increases skill effect duration of you and your allies."
   },
   "FirestormAltY":{
@@ -19300,6 +19300,7 @@
         "cost":[]
       }],
     "constantStats":[[],[],[],[],[]],
+    "baseTypeName":"Firestorm of Pelting",
     "stats":[],
     "baseMods":[{
         "value":[]
@@ -19313,8 +19314,7 @@
         }
       }],
     "skillTypes":[],
-    "baseFlags":[],
-    "name":"Firestorm of Pelting"
+    "baseFlags":[]
   },
   "BallLightning":{
     "qualityStats":{
@@ -19457,12 +19457,13 @@
     "statMap":{
       "ball_lightning_projectile_speed_and_hit_frequency_+%_final":[[]]
     },
+    "baseTypeName":"Ball Lightning",
     "stats":[],
     "baseFlags":[],
-    "name":"Ball Lightning",
     "skillTypes":[]
   },
   "RaiseZombieAltY":{
+    "constantStats":[[],[],[]],
     "minionSkillTypes":[],
     "levels":[{
         "cost":[],
@@ -19590,7 +19591,7 @@
       "minion_global_always_hit":[],
       "quality_display_raise_zombie_is_gem+%":[]
     },
-    "constantStats":[[],[],[]],
+    "baseTypeName":"Raise Zombie of Falling",
     "stats":[null,null,null,"raise_zombie_does_not_use_corpses","minion_global_always_hit"],
     "qualityStats":{
       "Default":[["minion_chance_to_deal_double_damage_%"]]
@@ -19598,10 +19599,10 @@
     "skillTypes":[],
     "baseFlags":[],
     "minionList":[],
-    "name":"Raise Zombie of Falling",
     "description":"Raises necromantic energies into the sky above a targeted location, where they coalese into a zombie minion. The minion then attacks by falling to the ground, causing an impact that deals damage in an area and kills the zombie."
   },
   "MagmaSigilAltY":{
+    "stats":[null,null,"penance_brand_base_spread_radius_+",null,null,null,"penance_brand_explodes_on_death_and_detach","penance_brand_spreads_energy"],
     "qualityStats":{
       "Default":[[]]
     },
@@ -19728,20 +19729,20 @@
         "cost":[]
       }],
     "baseEffectiveness":0.94859999418259,
-    "stats":[null,null,"penance_brand_base_spread_radius_+",null,null,null,"penance_brand_explodes_on_death_and_detach","penance_brand_spreads_energy"],
     "constantStats":[[],[],[],[],[],[]],
+    "baseTypeName":"Penance Brand of Conduction",
     "baseMods":[{
         "value":[]
       },{
         "value":[]
       }],
+    "incrementalEffectiveness":0.046720001846552,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.046720001846552,
-    "name":"Penance Brand of Conduction",
     "description":"Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, adding energy to the branded enemy and nearby enemies who do not have energy. When the brand is detached, all enemies with energy are dealt damage."
   },
   "CircleOfPower":{
+    "constantStats":[["circle_of_power_max_stages"],[]],
     "qualityStats":{
       "Default":[["circle_of_power_enemy_damage_+%_final_at_max_stages",-0.2]]
     },
@@ -19911,16 +19912,15 @@
       "quality_display_circle_of_power_damage_is_gem":[],
       "circle_of_power_min_added_lightning_per_stage":[[[],[]],[[],[]]]
     },
-    "constantStats":[["circle_of_power_max_stages"],[]],
     "stats":["circle_of_power_min_added_lightning_per_stage","circle_of_power_max_added_lightning_per_stage","base_circle_of_power_mana_spend_per_upgrade",null,"quality_display_circle_of_power_is_gem","display_sigil_of_power_stage_gain_delay","quality_display_circle_of_power_damage_is_gem"],
     "baseMods":[{
         "value":[]
       },{
         "value":[]
       }],
+    "incrementalEffectiveness":0.028000000864267,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.028000000864267,
     "description":"Places a Sigil on the ground, which grants a buff to you and allies in the area around it for a duration. The Sigil gains stages as you spend mana in its area, making the buff more powerful. You can only have one Sigil of Power at a time."
   },
   "ColdProjectileMineAltY":{
@@ -20052,13 +20052,14 @@
     "statMap":{
       "cold_projectile_mine_enemy_critical_strike_chance_+%_against_self":[[[],[]]]
     },
+    "baseTypeName":"Icicle Mine of Sabotage",
     "stats":[],
     "constantStats":[[],[],[],[],[],[]],
     "skillTypes":[],
-    "baseFlags":[],
-    "name":"Icicle Mine of Sabotage"
+    "baseFlags":[]
   },
   "TempestShield":{
+    "constantStats":[[],[]],
     "qualityStats":{
       "Default":[[]]
     },
@@ -20152,18 +20153,17 @@
         }],
       "skill_display_buff_grants_shock_immunity":[[[]]]
     },
-    "constantStats":[[],[]],
+    "baseTypeName":"Tempest Shield",
     "stats":[null,null,"shield_spell_block_%",null,null,"skill_display_buff_grants_shock_immunity"],
     "baseMods":[{
         "1":[],
         "value":{
-          "key":"triggerCounterAttack"
+          "key":"chanceToTriggerCounterattackOnBlock"
         }
       }],
+    "incrementalEffectiveness":0.038199998438358,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.038199998438358,
-    "name":"Tempest Shield",
     "description":"Enchants your shield with the power of storms, which lashes out to deal arcing lightning damage to attackers when you block them."
   },
   "SoulrendAltY":{
@@ -20292,6 +20292,7 @@
         "cost":[]
       }],
     "constantStats":[[],[],[],[],["projectile_spiral_nova_angle"]],
+    "baseTypeName":"Soulrend of the Spiral",
     "stats":[],
     "baseMods":[{
         "value":[]
@@ -20300,7 +20301,6 @@
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Soulrend of the Spiral",
     "description":"Fires a series of projectiles in a spiral that turn towards enemies in front of them, damaging and piercing through those they hit, and leeching some of that damage as energy shield. As the projectiles travel, they repeatedly apply a short but powerful chaos damage over time debuff to each enemy in an area around them."
   },
   "SparkAltX":{
@@ -20429,11 +20429,11 @@
         "cost":[]
       }],
     "baseEffectiveness":4.0900001525879,
+    "baseTypeName":"Spark of the Nova",
     "stats":[],
     "constantStats":[[],[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Spark of the Nova",
     "description":"Launches unpredictable sparks in all directions that move randomly until they hit an enemy or expire."
   },
   "ArcAltX":{
@@ -20561,11 +20561,11 @@
         "statInterpolation":[],
         "cost":[]
       }],
+    "baseTypeName":"Arc of Surging",
     "stats":[null,null,null,null,"active_skill_beam_splits_instead_of_chaining"],
     "constantStats":[[],["arc_additional_delay_ms"]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Arc of Surging",
     "description":"An arc of lightning reaches from the caster to a targeted enemy and splits to simultaneously hit several other enemies."
   },
   "FirestormAltX":{
@@ -20694,17 +20694,27 @@
         "cost":[]
       }],
     "baseEffectiveness":2.710000038147,
+    "baseTypeName":"Firestorm of Meteors",
     "stats":[],
     "constantStats":[[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Firestorm of Meteors",
     "description":"A large flaming bolt falls towards the targeted area. The bolt explodes when landing, dealing damage to nearby enemies."
   },
   "FireBeamAltX":{
     "qualityStats":{
       "Default":[["fire_beam_additional_stack_damage_+%_final"]]
     },
+    "baseMods":[{
+        "1":{
+          "var":"ScorchingRayofImmolationStageAfterFirst"
+        },
+        "name":"Condition:ScorchingRayofImmolationMaxStages"
+      },{
+        "name":"DotCanStackAsTotems"
+      }],
+    "constantStats":[[],[null,-90],["display_max_fire_beam_stacks"]],
+    "description":"Unleash a beam of fire that burns enemies it touches. Remaining in the beam raises the burning, adding a portion of the beam's damage in stages. Enemies who leave the beam continue to burn for a duration. Increasing cast speed also increases the rate at which the beam turns.",
     "parts":[{
         "name":"Manual Stages"
       },{
@@ -20837,26 +20847,17 @@
           "1":[],
           "name":"Multiplier:ScorchingRayofImmolationMaxStages"
         }],
-      "fire_beam_additional_stack_damage_+%_final":[[{
-            "var":"ScorchingRayofImmolationStageAfterFirst"
-          }]],
+      "fire_beam_additional_stack_damage_+%_final":[[[]]],
       "quality_display_firebeam_is_gem":[]
     },
-    "constantStats":[[],[null,-90],["display_max_fire_beam_stacks"]],
+    "baseTypeName":"Scorching Ray of Immolation",
     "stats":[null,null,"quality_display_firebeam_is_gem"],
-    "baseMods":[{
-        "1":[],
-        "name":"Condition:ScorchingRayofImmolationMaxStages"
-      },{
-        "name":"DotCanStackAsTotems"
-      }],
-    "castTime":0.18,
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Scorching Ray of Immolation",
-    "description":"Unleash a beam of fire that burns enemies it touches. Remaining in the beam raises the burning, adding a portion of the beam's damage in stages. Enemies who leave the beam continue to burn for a duration. Increasing cast speed also increases the rate at which the beam turns."
+    "castTime":0.18,
+    "skillTypes":[]
   },
   "VaalArcChain":{
+    "constantStats":[[],["lightning_ailment_effect_+%"],["lightning_ailment_duration_+%"],[],[],[]],
     "qualityStats":{
       "Default":[[]]
     },
@@ -20985,16 +20986,15 @@
     "statMap":{
       "arc_damage_+%_final_for_each_remaining_chain":[[[]]]
     },
-    "constantStats":[[],["lightning_ailment_effect_+%"],["lightning_ailment_duration_+%"],[],[],[]],
+    "baseTypeName":"Vaal Arc",
     "stats":[],
     "baseMods":[{
         "1":[],
         "name":"Condition:CanBeLucky"
       }],
+    "incrementalEffectiveness":0.032999999821186,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.032999999821186,
-    "name":"Vaal Arc",
     "description":"A shocking arc of lightning reaches from the caster to a targeted enemy and chains to other enemies. Each time the arc chains from an enemy, it will do so simultaneously to two further enemies, but never to enemies that have already been hit by any of these chains. Also grants a buff making your Arc damage lucky for a short duration."
   },
   "ArcticBreath":{
@@ -21164,6 +21164,7 @@
       }],
     "baseEffectiveness":1.1953999996185,
     "constantStats":[["arctic_breath_maximum_number_of_skulls_allowed"],["total_projectile_spread_angle_override"],[],[],[],[]],
+    "baseTypeName":"Creeping Frost",
     "stats":[],
     "baseMods":[{
         "value":[]
@@ -21178,7 +21179,6 @@
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Creeping Frost",
     "description":"Fire an icy projectile that bursts on impact or when reaching the targeted area, dealing area damage and creating a chilling area that deals cold damage over time. This area will creep across the ground towards nearby enemies until its duration expires."
   },
   "ClusterBurst":{
@@ -21304,14 +21304,14 @@
       "Default":[["cluster_burst_spawn_amount"]]
     },
     "constantStats":[[],["active_skill_area_damage_+%_final"]],
+    "baseTypeName":"Kinetic Blast",
     "stats":[null,null,"quality_display_active_skill_area_damage_is_gem"],
     "baseMods":[{
         "value":[]
       }],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Kinetic Blast",
+    "weaponTypes":[],
     "description":"Fires a projectile from a Wand that causes a series of small explosions surrounding its point of impact, each damaging enemies caught in the area."
   },
   "ForbiddenRite":{
@@ -21462,9 +21462,9 @@
           "value":[]
         }]
     },
+    "baseTypeName":"Forbidden Rite",
     "stats":[],
     "baseFlags":[],
-    "name":"Forbidden Rite",
     "skillTypes":[]
   },
   "EssenceDrain":{
@@ -21612,6 +21612,7 @@
         "cost":[]
       }],
     "constantStats":[[],[]],
+    "baseTypeName":"Essence Drain",
     "stats":[],
     "baseMods":[{
         "value":[]
@@ -21622,13 +21623,20 @@
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Essence Drain",
     "description":"Fires a projectile that applies a damage over time debuff when it hits. You are healed for a portion of the debuff damage. The debuff is spread by Contagion."
   },
   "FireBeam":{
     "qualityStats":{
       "Default":[[]]
     },
+    "baseMods":[{
+        "1":{
+          "var":"ScorchingRayStageAfterFirst"
+        },
+        "name":"Condition:ScorchingRayMaxStages"
+      },[]],
+    "constantStats":[[],[],[],[]],
+    "description":"Unleash a beam of fire that burns enemies it touches. Remaining in the beam raises the burning, adding a portion of the beam's damage in stages. Inflicts Fire Exposure at maximum stages. Enemies who leave the beam continue to burn for a duration. Increasing cast speed also increases the rate at which the beam turns.",
     "parts":[[],[]],
     "levels":[{
         "cost":[],
@@ -21757,24 +21765,16 @@
           "1":[],
           "name":"Multiplier:ScorchingRayMaxStages"
         }],
-      "fire_beam_additional_stack_damage_+%_final":[[{
-            "var":"ScorchingRayStageAfterFirst"
-          }]],
+      "fire_beam_additional_stack_damage_+%_final":[[[]]],
       "quality_display_firebeam_is_gem":[],
       "base_fire_damage_resistance_%":[[{
             "effectCond":"ScorchingRayMaxStages"
           }]]
     },
-    "constantStats":[[],[],[],[]],
+    "baseTypeName":"Scorching Ray",
     "stats":[],
-    "baseMods":[{
-        "1":[],
-        "name":"Condition:ScorchingRayMaxStages"
-      },[]],
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Scorching Ray",
-    "description":"Unleash a beam of fire that burns enemies it touches. Remaining in the beam raises the burning, adding a portion of the beam's damage in stages. Inflicts Fire Exposure at maximum stages. Enemies who leave the beam continue to burn for a duration. Increasing cast speed also increases the rate at which the beam turns."
+    "skillTypes":[]
   },
   "VaalRighteousFire":{
     "qualityStats":{
@@ -21907,6 +21907,7 @@
         "cost":[],
         "statInterpolation":[]
       }],
+    "stats":["vaal_righteous_fire_life_and_es_%_as_damage_per_second","vaal_righteous_fire_spell_damage_+%_final"],
     "statMap":{
       "vaal_righteous_fire_life_and_es_%_to_lose_on_use":[{
           "value":{
@@ -21920,14 +21921,13 @@
           }
         }]
     },
-    "stats":["vaal_righteous_fire_life_and_es_%_as_damage_per_second","vaal_righteous_fire_spell_damage_+%_final"],
+    "baseTypeName":"Vaal Righteous Fire",
     "constantStats":[["vaal_righteous_fire_life_and_es_%_to_lose_on_use"],[],[]],
     "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
     "baseFlags":[],
-    "name":"Vaal Righteous Fire",
     "description":"Sacrifices a portion of your Life and Energy Shield to engulf you in magical fire that rapidly burns nearby enemies for a duration. Your spell damage is increased while under this effect."
   },
   "SupportBrandSupport":{
@@ -22038,10 +22038,20 @@
     "requireSkillTypes":[]
   },
   "Flameblast":{
-    "stats":[null,null,null,null,"quality_display_flameblast_is_gem"],
     "qualityStats":{
       "Default":[["flameblast_maximum_stages"]]
     },
+    "incrementalEffectiveness":0.044599998742342,
+    "baseMods":[{
+        "value":[]
+      },{
+        "1":{
+          "var":"FlameblastStageAfterFirst"
+        },
+        "name":"PvpTvalueMultiplier"
+      }],
+    "constantStats":[["charged_blast_spell_damage_+%_final_per_stack"],["flameblast_ailment_damage_+%_final_per_stack"],[],["vaal_flameblast_radius_+_per_stage"],[]],
+    "description":"Channels to build up a large explosion, which is released when you stop using the skill. The longer you channel, the larger the area of effect and damage of the explosion.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -22168,9 +22178,7 @@
       "flameblast_ailment_damage_+%_final_per_stack":[[{
             "var":"FlameblastStage"
           }]],
-      "vaal_flameblast_radius_+_per_stage":[[{
-            "var":"FlameblastStageAfterFirst"
-          }]],
+      "vaal_flameblast_radius_+_per_stage":[[[]]],
       "flameblast_maximum_stages":[{
           "name":"Multiplier:FlameblastMaxStages"
         }],
@@ -22178,23 +22186,16 @@
       "base_skill_show_average_damage_instead_of_dps":[],
       "quality_display_flameblast_is_gem":[]
     },
-    "constantStats":[["charged_blast_spell_damage_+%_final_per_stack"],["flameblast_ailment_damage_+%_final_per_stack"],[],["vaal_flameblast_radius_+_per_stage"],[]],
-    "baseMods":[{
-        "value":[]
-      },{
-        "1":[],
-        "name":"PvpTvalueMultiplier"
-      }],
-    "skillTypes":[],
+    "baseTypeName":"Flameblast",
+    "stats":[null,null,null,null,"quality_display_flameblast_is_gem"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.044599998742342,
-    "name":"Flameblast",
-    "description":"Channels to build up a large explosion, which is released when you stop using the skill. The longer you channel, the larger the area of effect and damage of the explosion."
+    "skillTypes":[]
   },
   "WaterSphere":{
     "qualityStats":{
       "Default":[["hydro_sphere_pulse_frequency_+%"]]
     },
+    "incrementalEffectiveness":0.057799998670816,
     "baseMods":[{
         "value":[]
       }],
@@ -22386,10 +22387,9 @@
           "value":[]
         }]
     },
+    "baseTypeName":"Hydrosphere",
     "stats":[null,null,"hydrosphere_ailment_threshold",null,null,"water_sphere_does_weird_conversion_stuff","active_skill_display_suppress_physical_to_cold_damage_conversion",null,"quality_display_hydrosphere_is_gem"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.057799998670816,
-    "name":"Hydrosphere",
     "skillTypes":[]
   },
   "SparkAltY":{
@@ -22518,14 +22518,15 @@
         "cost":[]
       }],
     "baseEffectiveness":3.2999999523163,
+    "baseTypeName":"Spark of Unpredictability",
     "stats":[],
     "constantStats":[[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Spark of Unpredictability",
     "description":"Launches unpredictable sparks with that move randomly with large differences in speed and distance until they hit an enemy or expire."
   },
   "RaiseZombieAltX":{
+    "constantStats":[[],[]],
     "minionSkillTypes":[],
     "levels":[{
         "cost":[],
@@ -22664,7 +22665,7 @@
           }
         }]
     },
-    "constantStats":[[],[]],
+    "baseTypeName":"Raise Zombie of Slamming",
     "stats":[null,null,"zombie_slam_cooldown_speed_+%","zombie_slam_area_of_effect_+%"],
     "qualityStats":{
       "Default":[[]]
@@ -22672,10 +22673,10 @@
     "skillTypes":[],
     "baseFlags":[],
     "minionList":[],
-    "name":"Raise Zombie of Slamming",
     "description":"Raises a zombie minion from a corpse, which will follow you and attack enemies with a melee strike and an area of effect slam which cannot be evaded."
   },
   "RaiseSpectreAltX":{
+    "constantStats":[[],["movement_velocity_cap"],["minion_elemental_resistance_%"],["minion_critical_strike_chance_+%"],["spectres_have_base_duration_ms",30000],["base_number_of_spectres_allowed"]],
     "minionSkillTypes":[],
     "levels":[{
         "cost":[],
@@ -22844,7 +22845,7 @@
           "value":[]
         }]
     },
-    "constantStats":[[],["movement_velocity_cap"],["minion_elemental_resistance_%"],["minion_critical_strike_chance_+%"],["spectres_have_base_duration_ms",30000],["base_number_of_spectres_allowed"]],
+    "baseTypeName":"Raise Spectre of Transience",
     "stats":[null,"raised_spectre_level","accuracy_rating"],
     "qualityStats":{
       "Default":[[]]
@@ -22852,10 +22853,10 @@
     "skillTypes":[],
     "baseFlags":[],
     "minionList":[],
-    "name":"Raise Spectre of Transience",
     "description":"Raises a spectral version of a defeated foe as a temporary minion to fight for you in battle for a duration."
   },
   "LightningConduit":{
+    "constantStats":[[]],
     "qualityStats":{
       "Default":[["energy_release_damage_+%_final_per_5%_increased_damage_taken_from_shock_on_target"]]
     },
@@ -22985,7 +22986,7 @@
       "quality_display_lightning_conduit_is_gem":[],
       "energy_release_damage_+%_final_per_5%_increased_damage_taken_from_shock_on_target":[[[]]]
     },
-    "constantStats":[[]],
+    "baseTypeName":"Lightning Conduit",
     "stats":[null,null,null,null,null,"quality_display_lightning_conduit_is_gem"],
     "baseMods":[{
         "value":{
@@ -22994,7 +22995,6 @@
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Lightning Conduit",
     "description":"Lightning strikes all Shocked enemies around a targeted location, then removes Shock from those enemies. Shocks cannot expire on enemies in range while casting this spell. Cannot be supported by Spell Cascade or Unleash."
   },
   "ArcAltY":{
@@ -23125,14 +23125,15 @@
     "statMap":{
       "arc_damage_+%_final_for_each_remaining_chain":[[[]]]
     },
+    "baseTypeName":"Arc of Oscillating",
     "stats":[],
     "constantStats":[[],[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Arc of Oscillating",
     "description":"An arc of lightning reaches from the caster to a targeted enemy and chains to other enemies. Each time the arc chains, it will also chain a secondary arc to another enemy, but this secondary arc cannot chain further."
   },
   "RaiseSpectre":{
+    "constantStats":[[],[],[]],
     "minionSkillTypes":[],
     "levels":[{
         "cost":[],
@@ -23265,7 +23266,7 @@
           "value":[]
         }]
     },
-    "constantStats":[[],[],[]],
+    "baseTypeName":"Raise Spectre",
     "stats":[],
     "qualityStats":{
       "Default":[[]]
@@ -23273,7 +23274,6 @@
     "skillTypes":[],
     "baseFlags":[],
     "minionList":[],
-    "name":"Raise Spectre",
     "description":"Raises a spectral version of a defeated foe as a minion to fight for you in battle."
   },
   "FreezingPulse":{
@@ -23406,14 +23406,15 @@
     "statMap":{
       "display_what_freezing_pulse_does":[]
     },
+    "baseTypeName":"Freezing Pulse",
     "stats":[null,null,null,null,"display_what_freezing_pulse_does"],
+    "incrementalEffectiveness":0.046000000089407,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.046000000089407,
-    "name":"Freezing Pulse",
     "description":"An icy projectile which has a chance to freeze enemies it passes through. The projectile fades quickly, reducing damage and freezing chance until it dissipates."
   },
   "MortarBarrageMineAltX":{
+    "constantStats":[[],[],[]],
     "qualityStats":{
       "Default":[[]]
     },
@@ -23567,7 +23568,7 @@
           "name":"SelfFireMin"
         }]
     },
-    "constantStats":[[],[],[]],
+    "baseTypeName":"Pyroclast Mine of Sabotage",
     "stats":{
       "3":"mortar_barrage_mine_minimum_added_fire_damage_taken",
       "4":"mortar_barrage_mine_maximum_added_fire_damage_taken",
@@ -23594,13 +23595,13 @@
           "value":"Area of projectile explosions:"
         }
       }],
+    "incrementalEffectiveness":0.036100000143051,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.036100000143051,
-    "name":"Pyroclast Mine of Sabotage",
     "description":"Throws a mine that deals damage in an area when detonated, then launches fiery projectiles that rain down around it, each exploding to deal damage in a smaller area."
   },
   "MortarBarrageMine":{
+    "constantStats":[[],[],[]],
     "qualityStats":{
       "Default":[[]]
     },
@@ -23734,7 +23735,7 @@
       "mortar_barrage_mine_minimum_added_fire_damage_taken_limit":[[[]]],
       "mortar_barrage_mine_minimum_added_fire_damage_taken":[[[],[]]]
     },
-    "constantStats":[[],[],[]],
+    "baseTypeName":"Pyroclast Mine",
     "stats":[],
     "baseMods":[{
         "value":[]
@@ -23750,8 +23751,7 @@
         "value":[]
       }],
     "skillTypes":[],
-    "baseFlags":[],
-    "name":"Pyroclast Mine"
+    "baseFlags":[]
   },
   "Purity":{
     "qualityStats":{
@@ -23848,19 +23848,29 @@
           "name":"ElementalAilmentImmune"
         }]
     },
+    "baseTypeName":"Purity of Elements",
     "stats":[null,null,null,"immune_to_status_ailments"],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Purity of Elements",
+    "baseFlags":[],
     "description":"Casts an aura that grants elemental resistances and elemental ailment immunity to you and your allies."
   },
   "Sanctify":{
     "qualityStats":{
       "Default":[[],[]]
     },
+    "baseMods":[{
+        "value":[]
+      },{
+        "value":[]
+      },{
+        "value":[]
+      },{
+        "value":[]
+      }],
+    "constantStats":[[],[],[],[]],
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -23988,20 +23998,10 @@
       "sanctify_wave_damage_+%_final":[[[]]],
       "quality_display_sanctify_is_gem":[]
     },
-    "constantStats":[[],[],[],[]],
+    "baseTypeName":"Purifying Flame",
     "stats":[],
-    "baseMods":[{
-        "value":[]
-      },{
-        "value":[]
-      },{
-        "value":[]
-      },{
-        "value":[]
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Purifying Flame"
+    "skillTypes":[]
   },
   "VaalPowerSiphon":{
     "qualityStats":{
@@ -24127,17 +24127,17 @@
         "cost":[],
         "damageEffectiveness":2.11
       }],
+    "constantStats":[[],[],[]],
     "statMap":{
       "critical_strike_chance_+%_final_per_power_charge_from_power_siphon":[[[]]],
       "power_siphon_fire_at_all_targets":[]
     },
-    "constantStats":[[],[],[]],
+    "baseTypeName":"Vaal Power Siphon",
     "stats":["power_siphon_fire_at_all_targets",null,"global_always_hit"],
     "baseMods":[[]],
-    "weaponTypes":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Vaal Power Siphon",
+    "weaponTypes":[],
     "description":"Fires your wand simultaneously at all nearby enemies, culling those close to death and granting you a power charge for each. Cannot be supported by Volley."
   },
   "DisintegrateAltY":{
@@ -24267,13 +24267,13 @@
       }],
     "baseEffectiveness":2.039999961853,
     "constantStats":[[],[]],
+    "baseTypeName":"Crackling Lance of Disintegration",
     "stats":[],
     "baseMods":[{
         "value":[]
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Crackling Lance of Disintegration",
     "description":"Release a concentrated beam which deals lightning damage to enemies in a long area in front of you."
   },
   "RuneBlastAltX":{
@@ -24361,9 +24361,10 @@
       },{
         "cost":[]
       }],
+    "baseTypeName":"Rune Blast of Teleportation",
     "stats":["rune_blast_teleports_to_detonated_rune_with_100_ms_cooldown","gem_display_rune_blast_is_gem"],
-    "skillTypes":[],
     "baseFlags":[],
+    "skillTypes":[],
     "description":"Channel to improve runes placed by Stormbind based on the mana you spend channelling this skill. Release to detonate the targeted rune, which will cause other runes to detonate in a chain reaction. Detonation can teleport you to the targeted Rune."
   },
   "SoulrendAltX":{
@@ -24493,13 +24494,13 @@
       }],
     "baseEffectiveness":8.6300001144409,
     "constantStats":[[],[]],
+    "baseTypeName":"Soulrend of Reaping",
     "stats":[],
     "baseMods":[{
         "value":[]
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Soulrend of Reaping",
     "description":"Fires a projectile that deals chaos damage to enemies it hits and leeches some of that damage as energy shield."
   },
   "MagmaSigilAltX":{
@@ -24651,16 +24652,22 @@
           "value":[]
         }]
     },
+    "baseTypeName":"Penance Brand of Dissipation",
     "stats":[null,null,null,null,null,null,"penance_brand_pulses_instead_of_explode"],
     "baseFlags":[],
-    "name":"Penance Brand of Dissipation",
     "skillTypes":[]
   },
   "MagmaSigil":{
-    "stats":[null,null,null,null,null,null,"brand_atttached_duration_is_infinite"],
     "qualityStats":{
       "Default":[[]]
     },
+    "baseMods":[{
+        "value":[]
+      },{
+        "name":"Multiplier:PenanceBrandMaxEnergy"
+      }],
+    "constantStats":[[],[],[],[],[]],
+    "description":"Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, adding energy to the branded enemy. When the branded enemy reaches 20 energy, a large explosion occurs and the brand is removed.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -24787,22 +24794,21 @@
     "statMap":{
       "base_skill_show_average_damage_instead_of_dps":[]
     },
-    "constantStats":[[],[],[],[],[]],
-    "baseMods":[{
-        "value":[]
-      },{
-        "name":"Multiplier:PenanceBrandMaxEnergy"
-      }],
-    "skillTypes":[],
+    "baseTypeName":"Penance Brand",
+    "stats":[null,null,null,null,null,null,"brand_atttached_duration_is_infinite"],
     "baseFlags":[],
-    "name":"Penance Brand",
-    "description":"Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, adding energy to the branded enemy. When the branded enemy reaches 20 energy, a large explosion occurs and the brand is removed."
+    "skillTypes":[]
   },
   "OrbOfStorms":{
-    "stats":[null,null,"orb_of_storms_maximum_number_of_hits","orb_of_storms_base_bolt_frequency_ms"],
     "qualityStats":{
       "Default":[[]]
     },
+    "incrementalEffectiveness":0.04619999974966,
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[[],["orb_of_storms_base_channelling_bolt_frequency_ms"]],
+    "description":"Creates a stationary electrical orb that strikes enemies in its area of effect with beams of lightning that can then split to hit more enemies. Modifiers to cast speed will increase how frequently it does this. Casting this skill again will replace the previous orb.",
     "levels":[{
         "cost":[],
         "statInterpolation":[]
@@ -24959,15 +24965,10 @@
           }
         }]
     },
-    "constantStats":[[],["orb_of_storms_base_channelling_bolt_frequency_ms"]],
-    "baseMods":[{
-        "value":[]
-      }],
-    "skillTypes":[],
+    "baseTypeName":"Orb of Storms",
+    "stats":[null,null,"orb_of_storms_maximum_number_of_hits","orb_of_storms_base_bolt_frequency_ms"],
     "baseFlags":[],
-    "incrementalEffectiveness":0.04619999974966,
-    "name":"Orb of Storms",
-    "description":"Creates a stationary electrical orb that strikes enemies in its area of effect with beams of lightning that can then split to hit more enemies. Modifiers to cast speed will increase how frequently it does this. Casting this skill again will replace the previous orb."
+    "skillTypes":[]
   },
   "EssenceDrainAltX":{
     "qualityStats":{
@@ -25122,6 +25123,7 @@
         "cost":[]
       }],
     "constantStats":[[],["essence_drain_lose_life_from_damage_permyriad"]],
+    "baseTypeName":"Essence Drain of Desperation",
     "stats":[],
     "baseMods":[{
         "value":[]
@@ -25132,10 +25134,10 @@
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Essence Drain of Desperation",
     "description":"Fires a projectile that applies a damage over time debuff when it hits. You lose Life and Energy Shield equal to a portion of the debuff damage. The debuff is spread by Contagion."
   },
   "EyeOfWinterAltY":{
+    "stats":[null,null,null,null,null,null,"eye_of_winter_count_shards_while_flying_instead"],
     "qualityStats":{
       "Default":[[]]
     },
@@ -25265,11 +25267,10 @@
       "quality_display_eye_of_winter_is_gem":[],
       "freezing_pulse_damage_+%_final_at_long_range":[[]]
     },
-    "stats":[null,null,null,null,null,null,"eye_of_winter_count_shards_while_flying_instead"],
+    "baseTypeName":"Eye of Winter of Transience",
     "constantStats":[[],[],[],[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Eye of Winter of Transience",
     "description":"Fires a single eye projectile which releases a number shard projectiles in a spiral before dissipating. The shards will damage enemies they impact, dealing cold damage. The eye cannot damage enemies."
   },
   "Enfeeble":{
@@ -25403,6 +25404,7 @@
       "enfeeble_damage_+%_vs_rare_or_unique_final":[[[],[]]],
       "accuracy_rating_+%":[[[]]]
     },
+    "baseTypeName":"Enfeeble",
     "stats":[null,null,"accuracy_rating_+%","enfeeble_damage_+%_final","enfeeble_damage_+%_vs_rare_or_unique_final"],
     "skillTypes":[],
     "baseMods":[{
@@ -25411,7 +25413,6 @@
         "value":[]
       }],
     "baseFlags":[],
-    "name":"Enfeeble",
     "description":"Curses all targets in an area, reducing their accuracy and making them deal less damage."
   },
   "LightningTrap":{
@@ -25540,11 +25541,11 @@
         "cost":[]
       }],
     "baseEffectiveness":2.4788999557495,
+    "baseTypeName":"Lightning Trap",
     "stats":[],
     "constantStats":[[],[],[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Lightning Trap",
     "description":"Throws a trap that launches a ring of projectiles through the enemy that set it off, dealing lightning damage to them and subsequent targets."
   },
   "ElementalWeakness":{
@@ -25679,6 +25680,7 @@
           "name":"SelfElementalAilmentDuration"
         }]
     },
+    "baseTypeName":"Elemental Weakness",
     "stats":[],
     "skillTypes":[],
     "baseMods":[{
@@ -25687,7 +25689,6 @@
         "value":[]
       }],
     "baseFlags":[],
-    "name":"Elemental Weakness",
     "description":"Curses all targets in an area, lowering their elemental resistances."
   },
   "SpiritOffering":{
@@ -25821,20 +25822,21 @@
       "spirit_offering_critical_strike_chance_+%":[[[]]],
       "spirit_offering_critical_strike_multiplier_+":[[[]]]
     },
+    "baseTypeName":"Spirit Offering",
     "stats":["spirit_offering_critical_strike_chance_+%","spirit_offering_critical_strike_multiplier_+"],
     "constantStats":[[],["offering_skill_effect_duration_per_corpse"]],
     "statDescriptionScope":"offering_skill_stat_descriptions",
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       },{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Spirit Offering",
+    "baseFlags":[],
     "description":"Consumes a corpse, granting increased critical strike chance and additional critical strike multiplier to your minions. The skill consumes other nearby corpses, increasing the duration for each corpse consumed."
   },
   "EyeOfWinter":{
+    "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
@@ -25966,11 +25968,10 @@
       "quality_display_eye_of_winter_is_gem":[],
       "freezing_pulse_damage_+%_final_at_long_range":[[]]
     },
-    "stats":[],
+    "baseTypeName":"Eye of Winter",
     "constantStats":[[],[],[],[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Eye of Winter",
     "description":"Fires a single eye projectile which constantly releases shard projectiles in a spiral. The shards will damage enemies they impact, dealing cold damage. The eye cannot damage enemies. When the eye dissipates or collides with terrain, it releases a faster spiral of extra shards."
   },
   "DestructiveLink":{
@@ -26170,10 +26171,10 @@
           "name":"MainHandCritIsEqualToParent"
         }]
     },
+    "baseTypeName":"Destructive Link",
     "stats":["critical_link_grants_base_critical_strike_multiplier_+",null,"skill_cost_over_time_is_not_removed_with_skill","display_link_stuff","display_critical_link_overrides_main_hand_critical_strike_chance"],
-    "baseFlags":[],
     "skillTypes":[],
-    "name":"Destructive Link",
+    "baseFlags":[],
     "description":"Targets an allied player to apply a buff which links you to them for a duration. While linked, they use your main hand critical strike chance. If the target dies while linked, you will also die. This skill cannot be triggered, or used by Totems, Traps, or Mines."
   },
   "FleshOffering":{
@@ -26306,16 +26307,16 @@
       "attack_speed_+%_granted_from_skill":[[[]]],
       "base_movement_velocity_+%":[[[]]]
     },
+    "baseTypeName":"Flesh Offering",
     "stats":["attack_speed_+%_granted_from_skill",null,"cast_speed_+%_granted_from_skill"],
     "constantStats":[[],[]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       },{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Flesh Offering",
+    "baseFlags":[],
     "description":"Consumes a corpse, which temporarily empowers your minions with swiftness. The skill consumes other nearby corpses, increasing the duration for each corpse consumed."
   },
   "SummonChaosGolemAltY":{
@@ -26445,14 +26446,14 @@
       "Default":[["minions_have_%_chance_to_inflict_wither_on_hit"]]
     },
     "constantStats":[[],[],[]],
+    "baseTypeName":"Summon Chaos Golem of the Maelström",
     "stats":[],
     "baseMods":[{
         "value":[]
       },[[]]],
-    "minionList":[],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Chaos Golem of the Maelström",
+    "minionList":[],
     "description":"Summons a Chaos Golem. The Chaos Golem can cast a powerful damage over time Chaos aura that Withers enemies in addition to its melee attack."
   },
   "SigilRecall":{
@@ -26547,14 +26548,15 @@
           "name":"BrandAttachmentRange"
         }]
     },
+    "baseTypeName":"Brand Recall",
     "stats":[null,"recall_sigil_target_search_range_+%"],
-    "baseFlags":[],
-    "constantStats":[["brand_recall_spend_%_of_recalled_brands_cost"]],
     "skillTypes":[],
-    "name":"Brand Recall",
+    "constantStats":[["brand_recall_spend_%_of_recalled_brands_cost"]],
+    "baseFlags":[],
     "description":"Recall your brands to you, detaching them from enemies and increasing attachment range until they next attach to an enemy. Spends a portion of each recalled brand's cost to cause it to activate."
   },
   "LightningTendrilsChannelled":{
+    "constantStats":[[],["lightning_tendrils_channelled_larger_pulse_interval"]],
     "parts":[{
         "name":"Normal pulse"
       },{
@@ -26689,20 +26691,30 @@
           "type":"OVERRIDE"
         }]
     },
-    "constantStats":[[],["lightning_tendrils_channelled_larger_pulse_interval"]],
+    "baseTypeName":"Lightning Tendrils",
     "stats":[null,null,null,null,null,"lightning_tendrils_channelled_larger_pulse_always_crit"],
     "qualityStats":{
       "Default":[["base_critical_strike_multiplier_+"]]
     },
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Lightning Tendrils",
     "description":"While you channel this skill, it releases pulses of electrical energy, dealing lightning damage in a semicircular area in front of you."
   },
   "BlightAltY":{
     "qualityStats":{
       "Default":[[]]
     },
+    "baseMods":[[{
+          "var":"BlightofAtrophyStageAfterFirst"
+        }],{
+        "value":[]
+      },{
+        "value":[]
+      },{
+        "value":[]
+      }],
+    "constantStats":[[],[],[],[],["enemies_you_hinder_have_life_regeneration_rate_+%"]],
+    "description":"Apply a debuff to enemies in front of you which deals chaos damage over time. Enemies who aren't already debuffed by Blight are also hindered for a longer secondary duration, slowing their movement and reducing their life regeneration rate. Continued channelling adds layers of damage to the debuff, each with their own duration.",
     "parts":[[],[]],
     "levels":[{
         "cost":[],
@@ -26831,21 +26843,10 @@
           "name":"Multiplier:BlightofAtrophyMaxStages"
         },[[]]]
     },
-    "constantStats":[[],[],[],[],["enemies_you_hinder_have_life_regeneration_rate_+%"]],
+    "baseTypeName":"Blight of Atrophy",
     "stats":[],
-    "baseMods":[[{
-          "var":"BlightofAtrophyStageAfterFirst"
-        }],{
-        "value":[]
-      },{
-        "value":[]
-      },{
-        "value":[]
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Blight of Atrophy",
-    "description":"Apply a debuff to enemies in front of you which deals chaos damage over time. Enemies who aren't already debuffed by Blight are also hindered for a longer secondary duration, slowing their movement and reducing their life regeneration rate. Continued channelling adds layers of damage to the debuff, each with their own duration."
+    "skillTypes":[]
   },
   "ArcaneCloak":{
     "qualityStats":{
@@ -26948,21 +26949,22 @@
           "name":"Multiplier:ArcaneCloakConsumedMana"
         }]
     },
+    "baseTypeName":"Arcane Cloak",
     "stats":["arcane_cloak_consume_%_of_mana","arcane_cloak_gain_%_of_consumed_mana_as_lightning_damage",null,"display_this_skill_cooldown_does_not_recover_during_buff"],
     "constantStats":[["arcane_cloak_damage_absorbed_%"],[]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "1":[],
         "2":[],
         "name":"GuardAbsorbLimit"
       }],
-    "skillTypes":[],
-    "name":"Arcane Cloak",
+    "baseFlags":[],
     "description":"Spends a portion of your mana to grant a buff that takes some of the damage from hits for you until depleted. The buff grants added lightning damage based on the amount of mana spent by this skill. Shares a cooldown with other Guard skills."
   },
   "IceDashAltX":{
+    "constantStats":[["frostblink_damage_+%_final_per_5%_chill_effect_on_target"]],
     "qualityStats":{
-      "Default":[["frostblink_damage_+%_final_per_5%_chill_effect_on_target"]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -27090,14 +27092,13 @@
             "var":"ChillEffect"
           }]]
     },
-    "constantStats":[[]],
+    "baseTypeName":"Frostblink of Wintry Blast",
     "stats":[null,null,null,null,"remove_chill_on_enemy_when_you_hit","never_chill"],
     "baseMods":[{
         "value":[]
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Frostblink of Wintry Blast",
     "description":"Teleport to a location, damaging enemies in an area at both ends of the teleport. Deals higher damage to chilled enemies, then removes chill from them. Cannot be supported by Unleash."
   },
   "Discharge":{
@@ -27226,13 +27227,14 @@
         "statInterpolation":[]
       }],
     "baseEffectiveness":3.876699924469,
+    "baseTypeName":"Discharge",
     "stats":[],
     "constantStats":[[],[],[]],
     "skillTypes":[],
-    "baseFlags":[],
-    "name":"Discharge"
+    "baseFlags":[]
   },
   "VaalFlameblast":{
+    "constantStats":[[],[],[],[]],
     "qualityStats":{
       "Default":[["damage_+%"]]
     },
@@ -27365,24 +27367,27 @@
       "charged_blast_spell_damage_+%_final_per_stack":[[[]]],
       "vaal_flameblast_radius_+_per_stage":[[[]]]
     },
-    "constantStats":[[],[],[],[]],
+    "baseTypeName":"Vaal Flameblast",
     "stats":[],
     "baseMods":[{
         "name":"Multiplier:VaalFlameblastMaxStages"
       },{
         "value":[]
       }],
+    "incrementalEffectiveness":0.035199999809265,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.035199999809265,
-    "name":"Vaal Flameblast",
     "description":"Targets an area and builds up stages in that area based on cast speed. It explodes every 3 stages, until it reaches a maximum of 15. As it gains more stages, the area gets smaller but the damage gets higher."
   },
   "VoltaxicBurst":{
-    "stats":[null,null,null,null,null,"quality_display_voltaxic_burst_is_gem"],
     "qualityStats":{
       "Default":[["voltaxic_burst_hit_and_ailment_damage_+%_final_per_stack"]]
     },
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[["skill_lightning_damage_%_to_convert_to_chaos"],["corpse_explosion_monster_life_%_lightning"],[],[]],
+    "description":"Each cast of this spell waits for a short duration, releasing a burst of lightning and chaos spell damage in an area around you when that duration ends. Enemies killed by this damage, or shortly after, will explode. The explosions of the corpses are not affected by modifiers to spell damage, and cannot be reflected.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -27512,14 +27517,10 @@
           }]],
       "quality_display_voltaxic_burst_is_gem":[]
     },
-    "constantStats":[["skill_lightning_damage_%_to_convert_to_chaos"],["corpse_explosion_monster_life_%_lightning"],[],[]],
-    "baseMods":[{
-        "value":[]
-      }],
-    "skillTypes":[],
+    "baseTypeName":"Voltaxic Burst",
+    "stats":[null,null,null,null,null,"quality_display_voltaxic_burst_is_gem"],
     "baseFlags":[],
-    "name":"Voltaxic Burst",
-    "description":"Each cast of this spell waits for a short duration, releasing a burst of lightning and chaos spell damage in an area around you when that duration ends. Enemies killed by this damage, or shortly after, will explode. The explosions of the corpses are not affected by modifiers to spell damage, and cannot be reflected."
+    "skillTypes":[]
   },
   "Contagion":{
     "qualityStats":{
@@ -27648,13 +27649,13 @@
       }],
     "baseEffectiveness":2.2532999515533,
     "constantStats":[[],[]],
+    "baseTypeName":"Contagion",
     "stats":[],
     "baseMods":[{
         "value":[]
       }],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Contagion",
     "description":"Unleashes a vile contagion on enemies, dealing chaos damage over time. If an enemy dies while affected by Contagion, the debuff spreads to other enemies."
   },
   "FlameDash":{
@@ -27785,19 +27786,30 @@
       }],
     "baseEffectiveness":0.82279998064041,
     "constantStats":[[]],
+    "baseTypeName":"Flame Dash",
     "stats":[],
     "baseMods":[{
         "value":[]
       },[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Flame Dash",
     "description":"Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills."
   },
   "BlightAltX":{
     "qualityStats":{
       "Default":[[]]
     },
+    "baseMods":[[{
+          "var":"BlightofContagionStageAfterFirst"
+        }],{
+        "value":[]
+      },{
+        "value":[]
+      },{
+        "value":[]
+      }],
+    "constantStats":[[],[],[],[]],
+    "description":"Apply a debuff to enemies in front of you which deals chaos damage over time. Enemies who aren't already debuffed by Blight are also hindered for a shorter secondary duration, slowing their movement. Continued channelling adds layers of damage to the debuff, each with their own duration. The damaging debuff is spread by Contagion.",
     "parts":[[],[]],
     "levels":[{
         "cost":[],
@@ -27927,27 +27939,20 @@
           "name":"Multiplier:BlightofContagionMaxStages"
         },[[]]]
     },
-    "constantStats":[[],[],[],[]],
+    "baseTypeName":"Blight of Contagion",
     "stats":[],
-    "baseMods":[[{
-          "var":"BlightofContagionStageAfterFirst"
-        }],{
-        "value":[]
-      },{
-        "value":[]
-      },{
-        "value":[]
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Blight of Contagion",
-    "description":"Apply a debuff to enemies in front of you which deals chaos damage over time. Enemies who aren't already debuffed by Blight are also hindered for a shorter secondary duration, slowing their movement. Continued channelling adds layers of damage to the debuff, each with their own duration. The damaging debuff is spread by Contagion."
+    "skillTypes":[]
   },
   "FlameblastAltY":{
-    "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
+    "baseMods":[[{
+          "var":"FlameblastofContractionStageAfterFirst"
+        }]],
+    "constantStats":[[],[],[],["flameblast_base_radius_override"],[],[]],
+    "description":"Channels to concentrate an explosion, which is released when you stop using the skill. The longer you channel, the larger the damage of the explosion, but the smaller the area.",
     "levels":[{
         "statInterpolation":[],
         "cost":[]
@@ -28076,9 +28081,7 @@
       "flameblast_ailment_damage_+%_final_per_stack":[[{
             "var":"FlameblastofContractionStage"
           }]],
-      "vaal_flameblast_radius_+_per_stage":[[{
-            "var":"FlameblastofContractionStageAfterFirst"
-          }]],
+      "vaal_flameblast_radius_+_per_stage":[[[]]],
       "flameblast_maximum_stages":[{
           "name":"Multiplier:FlameblastofContractionMaxStages"
         }],
@@ -28086,12 +28089,10 @@
       "base_skill_show_average_damage_instead_of_dps":[],
       "quality_display_flameblast_is_gem":[]
     },
-    "constantStats":[[],[],[],["flameblast_base_radius_override"],[],[]],
-    "baseMods":[[[]]],
-    "skillTypes":[],
+    "baseTypeName":"Flameblast of Contraction",
+    "stats":[],
     "baseFlags":[],
-    "name":"Flameblast of Contraction",
-    "description":"Channels to concentrate an explosion, which is released when you stop using the skill. The longer you channel, the larger the damage of the explosion, but the smaller the area."
+    "skillTypes":[]
   },
   "BoneOffering":{
     "qualityStats":{
@@ -28225,22 +28226,26 @@
         }],
       "base_spell_block_%":[[[]]]
     },
+    "baseTypeName":"Bone Offering",
     "stats":["monster_base_block_%","base_spell_block_%"],
     "constantStats":[[],[],["minion_life_regeneration_rate_per_minute_%_if_blocked_recently"]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       },{
         "value":[]
       }],
-    "skillTypes":[],
-    "name":"Bone Offering",
+    "baseFlags":[],
     "description":"Consumes a corpse, granting all of your minions the power to block both attacks and spells. The skill consumes other nearby corpses, increasing the duration for each corpse consumed."
   },
   "DoomBlastAltX":{
     "qualityStats":{
       "Default":[[]]
     },
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[[],[],[]],
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -28371,14 +28376,10 @@
           "name":"ChaosDamageUsesHighestResistance"
         }]
     },
-    "constantStats":[[],[],[]],
+    "baseTypeName":"Hexblast of Contradiction",
     "stats":[null,null,null,null,null,"chaos_damage_resisted_by_highest_resistance"],
-    "baseMods":[{
-        "value":[]
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Hexblast of Contradiction"
+    "skillTypes":[]
   },
   "Skitterbots":{
     "qualityStats":{
@@ -28465,24 +28466,25 @@
       },{
         "statInterpolation":[]
       }],
+    "constantStats":[["skitterbots_trap_mine_damage_+%_final"],["display_skitterbot_limit_per_type"]],
     "statMap":{
       "skitterbots_trap_mine_damage_+%_final":[{
           "1":[],
           "keywordFlags":12288
         }]
     },
-    "constantStats":[["skitterbots_trap_mine_damage_+%_final"],["display_skitterbot_limit_per_type"]],
+    "baseTypeName":"Summon Skitterbots",
     "stats":[null,"chill_effect_+%",null,"display_skitterbot_shocking_aura","display_skitterbot_chilling_aura"],
     "baseMods":[{
         "value":[]
       }],
+    "minionList":["SkitterbotCold","SkitterbotLightning"],
     "skillTypes":[],
     "baseFlags":[],
-    "minionList":["SkitterbotCold","SkitterbotLightning"],
-    "name":"Summon Skitterbots",
     "description":"Summon a Chilling Skitterbot and a Shocking Skitterbot, which will trigger your traps and detonate your mines. Mines detonated by Skitterbots will re-arm and can then be detonated again. The Skitterbots grant you more trap and mine damage, and cannot be targeted or damaged."
   },
   "BlackHole":{
+    "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
@@ -28613,13 +28615,13 @@
           "value":[]
         }]
     },
-    "stats":[],
+    "baseTypeName":"Void Sphere",
     "constantStats":[[],[],[],[]],
     "skillTypes":[],
-    "baseFlags":[],
-    "name":"Void Sphere"
+    "baseFlags":[]
   },
   "LightningTendrilsChannelledAltX":{
+    "constantStats":[[],[],["lightning_tendrils_channelled_larger_pulse_damage_+%_final"],["lightning_tendrils_channelled_larger_pulse_area_of_effect_+%_final"]],
     "parts":[[],[]],
     "levels":[{
         "statInterpolation":[],
@@ -28747,14 +28749,13 @@
       "lightning_tendrils_channelled_larger_pulse_always_crit":[[[]]],
       "lightning_tendrils_channelled_larger_pulse_area_of_effect_+%_final":[[[]]]
     },
-    "constantStats":[[],[],["lightning_tendrils_channelled_larger_pulse_damage_+%_final"],["lightning_tendrils_channelled_larger_pulse_area_of_effect_+%_final"]],
+    "baseTypeName":"Lightning Tendrils of Eccentricity",
     "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
     "skillTypes":[],
-    "baseFlags":[],
-    "name":"Lightning Tendrils of Eccentricity"
+    "baseFlags":[]
   },
   "FrostGlobe":{
     "qualityStats":{
@@ -28957,11 +28958,11 @@
     },
     "stats":["frost_globe_health_per_stage","energy_shield_lost_per_minute","frost_globe_additional_spell_base_critical_strike_chance_per_stage"],
     "constantStats":[["frost_globe_absorb_damage_%_enemy_in_bubble"],["frost_globe_max_stages"],["frost_globe_absorb_damage_%_enemy_outside_bubble"],["frost_globe_stage_gain_interval_ms"],[]],
-    "baseFlags":[],
+    "skillTypes":[],
     "baseMods":[{
         "value":[]
       }],
-    "skillTypes":[],
+    "baseFlags":[],
     "description":"Place a Frost Shield that drains your energy shield for one second or until you run out, gaining stages while this drain occurs. The Frost Shield takes some damage from hits in place of you and allies while in its area. Enemies in the area are Chilled. You can only have one Frost Shield active at once."
   },
   "SoulLink":{
@@ -29099,18 +29100,22 @@
       "soul_link_grants_mana_regeneration_+%":[[[]]],
       "soul_link_grants_damage_taken_+%_final":[[[]]]
     },
+    "baseTypeName":"Soul Link",
     "stats":["soul_link_grants_damage_taken_+%_final"],
-    "baseFlags":[],
-    "constantStats":[["soul_link_grants_take_%_of_hit_damage_from_soul_link_source_energy_shield_before_you"]],
     "skillTypes":[],
-    "name":"Soul Link",
+    "constantStats":[["soul_link_grants_take_%_of_hit_damage_from_soul_link_source_energy_shield_before_you"]],
+    "baseFlags":[],
     "description":"Targets an allied player to apply a buff which links you to them for a duration. While linked, your Energy Shield will intercept some of the damage they would take. If the target dies while linked, you will also die. This skill cannot be triggered, or used by Totems, Traps, or Mines."
   },
   "RighteousFireAltX":{
-    "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[[],["base_righteous_fire_%_of_max_mana_to_deal_to_nearby_per_minute"],["base_nonlethal_fire_damage_%_of_maximum_mana_taken_per_minute"]],
+    "description":"Engulfs you in magical fire that rapidly burns you and nearby enemies. The effect ends when you have 1 life remaining.",
     "levels":[{
         "statInterpolation":[]
       },{
@@ -29202,18 +29207,15 @@
           }
         }]
     },
-    "constantStats":[[],["base_righteous_fire_%_of_max_mana_to_deal_to_nearby_per_minute"],["base_nonlethal_fire_damage_%_of_maximum_mana_taken_per_minute"]],
-    "baseMods":[{
-        "value":[]
-      }],
-    "skillTypes":[],
+    "baseTypeName":"Righteous Fire of Arcane Devotion",
+    "stats":[],
     "baseFlags":[],
-    "name":"Righteous Fire of Arcane Devotion",
-    "description":"Engulfs you in magical fire that rapidly burns you and nearby enemies. The effect ends when you have 1 life remaining."
+    "skillTypes":[]
   },
   "Disintegrate":{
+    "constantStats":[["disintegrate_base_radius_+_per_intensify"],["disintegrate_damage_+%_final_per_intensity"]],
     "qualityStats":{
-      "Default":[["disintegrate_damage_+%_final_per_intensity"]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -29348,14 +29350,13 @@
       "quality_display_disintegrate_is_gem":[],
       "disintegrate_damage_+%_final_per_intensity":[[[]]]
     },
-    "constantStats":[["disintegrate_base_radius_+_per_intensify"],[]],
+    "baseTypeName":"Crackling Lance",
     "stats":[null,null,null,"display_base_intensity_loss","active_skill_display_does_intensity_stuff","quality_display_disintegrate_is_gem"],
     "baseMods":[{
         "value":[]
       }],
     "skillTypes":[],
-    "baseFlags":[],
-    "name":"Crackling Lance"
+    "baseFlags":[]
   },
   "LightningTowerTrap":{
     "qualityStats":{
@@ -29510,9 +29511,9 @@
       "base_skill_show_average_damage_instead_of_dps":[],
       "lightning_tower_trap_number_of_beams":[[]]
     },
+    "baseTypeName":"Lightning Spire Trap",
     "stats":[null,null,null,null,null,null,null,null,"modifiers_to_trap_throw_speed_apply_to_lightning_spire_trap_frequency"],
     "baseFlags":[],
-    "name":"Lightning Spire Trap",
     "skillTypes":[]
   },
   "IceSiphonTrap":{
@@ -29752,12 +29753,12 @@
       "skill_life_regeneration_per_minute_per_affected_enemy":[[[],[]]],
       "skill_mana_regeneration_per_minute_per_affected_enemy":[[[],[]]]
     },
+    "baseTypeName":"Siphoning Trap",
     "stats":[null,"skill_life_regeneration_per_minute_per_affected_enemy","skill_mana_regeneration_per_minute_per_affected_enemy","skill_life_regeneration_per_minute_with_at_least_1_affected_enemy","skill_mana_regeneration_per_minute_with_at_least_1_affected_enemy",null,null,null,"quality_display_ice_siphon_trap_is_gem"],
     "constantStats":[[],[],[]],
+    "incrementalEffectiveness":0.041000001132488,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.041000001132488,
-    "name":"Siphoning Trap",
     "description":"Throws a trap that applies debuff beams to a number of nearby enemies for a duration. The beams chill enemies and deal cold damage over time. A beam is also applied to you, granting life and mana regeneration based on the number of debuff beams affecting enemies."
   },
   "DivineTempestAltY":{
@@ -29899,9 +29900,9 @@
           }]],
       "divine_tempest_ailment_damage_+%_final_per_stage":[[[]]]
     },
+    "baseTypeName":"Divine Ire of Disintegration",
     "stats":[],
     "baseFlags":[],
-    "name":"Divine Ire of Disintegration",
     "skillTypes":[]
   },
   "IceSpearAltX":{
@@ -30039,14 +30040,15 @@
             "skillPartList":[]
           }]]
     },
+    "baseTypeName":"Ice Spear of Splitting",
     "stats":[null,null,null,null,null,"modifiers_to_number_of_projectiles_instead_apply_to_splitting","projectiles_can_split_from_terrain"],
     "baseFlags":[],
-    "name":"Ice Spear of Splitting",
     "skillTypes":[]
   },
   "EnergyBlade":{
+    "constantStats":[["storm_blade_energy_shield_+%_final"],["storm_blade_minimum_lightning_damage_from_es_%"],["storm_blade_maximum_lightning_damage_from_es_%"],["storm_blade_damage_+%_final_with_two_hand_weapon"]],
     "qualityStats":{
-      "Default":[["storm_blade_energy_shield_+%_final"]]
+      "Default":[[]]
     },
     "levels":[{
         "statInterpolation":[],
@@ -30244,20 +30246,23 @@
       "storm_blade_energy_shield_+%_final":[[[]]],
       "storm_blade_maximum_lightning_damage_from_es_%":[[[],[]]]
     },
-    "constantStats":[[],["storm_blade_minimum_lightning_damage_from_es_%"],["storm_blade_maximum_lightning_damage_from_es_%"],["storm_blade_damage_+%_final_with_two_hand_weapon"]],
+    "baseTypeName":"Energy Blade",
     "stats":["storm_blade_minimum_lightning_damage","storm_blade_maximum_lightning_damage"],
     "baseFlags":[],
     "weaponTypes":[],
     "skillTypes":[],
     "incrementalEffectiveness":0.020099999383092,
-    "name":"Energy Blade",
     "description":"Grants a buff which significantly lowers your maximum Energy Shield to transform your equipped weapons into Swords formed from that energy. Casting the spell again removes the buff. Requires a Non-Bow weapon. This skill cannot be triggered."
   },
   "FlameblastAltX":{
-    "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
+    "baseMods":[[{
+          "var":"FlameblastofCelerityStageAfterFirst"
+        }]],
+    "constantStats":[[],[],[],[]],
+    "description":"Channels to build up an explosion, which is released when you stop using the skill or automatically at maximum stages. The longer you channel, the larger the area of effect and damage of the explosion.",
     "levels":[{
         "cost":[],
         "statInterpolation":[]
@@ -30383,9 +30388,7 @@
       "flameblast_base_radius_override":[{
           "value":[]
         }],
-      "vaal_flameblast_radius_+_per_stage":[[{
-            "var":"FlameblastofCelerityStageAfterFirst"
-          }]],
+      "vaal_flameblast_radius_+_per_stage":[[[]]],
       "flameblast_maximum_stages":[{
           "name":"Multiplier:FlameblastofCelerityMaxStages"
         }],
@@ -30395,12 +30398,10 @@
       "base_skill_show_average_damage_instead_of_dps":[],
       "quality_display_flameblast_is_gem":[]
     },
-    "constantStats":[[],[],[],[]],
-    "baseMods":[[[]]],
-    "skillTypes":[],
+    "baseTypeName":"Flameblast of Celerity",
+    "stats":[],
     "baseFlags":[],
-    "name":"Flameblast of Celerity",
-    "description":"Channels to build up an explosion, which is released when you stop using the skill or automatically at maximum stages. The longer you channel, the larger the area of effect and damage of the explosion."
+    "skillTypes":[]
   },
   "VaalFireballSpiralNova":{
     "parts":[[],[]],
@@ -30527,14 +30528,14 @@
       }],
     "baseEffectiveness":2.9384000301361,
     "constantStats":[[],[],[null,-720],[]],
+    "baseTypeName":"Vaal Fireball",
     "stats":[],
     "qualityStats":{
       "Default":[[]]
     },
+    "incrementalEffectiveness":0.041200000792742,
     "skillTypes":[],
     "baseFlags":[],
-    "incrementalEffectiveness":0.041200000792742,
-    "name":"Vaal Fireball",
     "description":"Launches a series of fireballs in a spiral around the caster."
   }
 }
