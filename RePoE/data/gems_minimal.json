@@ -4445,7 +4445,7 @@
   },
   {
     "active_skill": {
-      "description": "Targets a corpse, and deals spell damage to enemies around the corpse, as well as causing the corpse to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected. This will continue to target other corpses in the area, with a shorter delay between each one, until it runs out of corpses or has destroyed 8 corpses.",
+      "description": "Targets a corpse, and deals spell damage to enemies around the corpse, as well as causing the corpse to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected. This will continue to target other corpses in the area, with a shorter delay between each one, until it runs out of corpses or has destroyed 8 corpses. Cannot be supported by Spell Cascade.",
       "display_name": "Detonate Dead of Chain Reaction",
       "id": "detonate_dead_alt_y",
       "is_manually_casted": true,
@@ -4464,7 +4464,6 @@
         "Multicastable",
         "Triggerable",
         "Fire",
-        "Cascadable",
         "DestroysCorpse",
         "CanRapidFire",
         "AreaSpell"
@@ -9895,7 +9894,7 @@
         "minion_critical_strike_chance_+%": "Minions have 1000% increased Critical Strike Chance",
         "minion_elemental_resistance_%": "Minions have +30% to all Elemental Resistances",
         "movement_velocity_cap": "Minion Movement Speed is Capped",
-        "spectres_have_base_duration_ms": "Spectres have a Base Duration of 30 seconds"
+        "spectres_have_base_duration_ms": "Spectres have a Base Duration of 30 seconds\nSpectres do not travel between Areas"
       },
       "stats": [
         {
@@ -10683,6 +10682,11 @@
         },
         {
           "id": "base_skill_show_average_damage_instead_of_dps",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_wall_length_is_gem",
           "type": "implicit",
           "value": 1
         }
@@ -16633,7 +16637,7 @@
         "str": 0
       },
       "stat_text": {
-        "lightning_arrow_maximum_number_of_extra_targets\nquality_display_lightning_arrow_is_gem": "Hits up to 3 additional enemies near the target",
+        "lightning_arrow_maximum_number_of_extra_targets": "Hits up to 3 additional enemies near the target",
         "skill_physical_damage_%_to_convert_to_lightning": "50% of Physical Damage Converted to Lightning Damage"
       },
       "stats": [
@@ -16661,11 +16665,6 @@
         },
         {
           "id": "skill_can_fire_arrows",
-          "type": "implicit",
-          "value": 1
-        },
-        {
-          "id": "quality_display_lightning_arrow_is_gem",
           "type": "implicit",
           "value": 1
         }
@@ -16747,7 +16746,6 @@
         "lightning_arrow_alt_additional_strikes": "Arrows Damage final target 3 additional times after sticking in",
         "lightning_arrow_alt_strike_frequency_ms": "Lightning bolts strike every 0.5 seconds",
         "lightning_arrow_stack_limit": "10 Maximum Lightning Arrows stuck in an Enemy",
-        "quality_display_lightning_arrow_is_gem": "",
         "skill_physical_damage_%_to_convert_to_lightning": "50% of Physical Damage Converted to Lightning Damage"
       },
       "stats": [
@@ -16781,11 +16779,6 @@
         },
         {
           "id": "skill_can_fire_arrows",
-          "type": "implicit",
-          "value": 1
-        },
-        {
-          "id": "quality_display_lightning_arrow_is_gem",
           "type": "implicit",
           "value": 1
         }
@@ -32448,8 +32441,7 @@
         "base_skill_effect_duration": "Base duration is 6.00 seconds",
         "display_herald_of_thunder_storm": "Creates a storm when you Kill a Shocked Enemy",
         "herald_of_thunder_bolt_base_frequency": "Storm Hits an Enemy every 0.25 Seconds",
-        "never_shock": "Cannot inflict Shock",
-        "quality_display_herald_of_thunder_is_gem": ""
+        "never_shock": "Cannot inflict Shock"
       },
       "stats": [
         {
@@ -32513,11 +32505,6 @@
         },
         {
           "id": "herald_of_thunder_pvp_scaling_time_uses_bolt_frequency",
-          "type": "implicit",
-          "value": 1
-        },
-        {
-          "id": "quality_display_herald_of_thunder_is_gem",
           "type": "implicit",
           "value": 1
         }
@@ -39830,7 +39817,7 @@
       },
       "stat_text": {
         "base_skill_effect_duration": "Base duration is 0.60 seconds",
-        "maximum_number_of_spinning_blades": "",
+        "maximum_number_of_spinning_blades": "Can have up to 1 active spinning blade",
         "quality_display_blade_vortex_is_gem": ""
       },
       "stats": [
@@ -61215,9 +61202,9 @@
       "cost_multiplier": 150,
       "quality_stats": [
         {
-          "stat": "Supported Skills deal {melee_physical_damage_+%}% increased Melee Physical Damage",
+          "stat": "Supported Skills deal {melee_damage_+%}% increased Melee Damage",
           "stats": {
-            "melee_physical_damage_+%": 500
+            "melee_damage_+%": 500
           }
         }
       ],
@@ -65052,7 +65039,7 @@
   },
   {
     "active_skill": {
-      "description": "Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, adding energy to the branded enemy and causing a pulse that deals damage to the branded enemy and other nearby enemies. The pulse gains area of effect and damage for each energy on the branded enemy, up to 20.",
+      "description": "Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, adding energy to the branded enemy and causing a pulse that deals damage to the branded enemy and other nearby enemies. The pulse gains area of effect and damage for each energy on the branded enemy, up to 20. All energy is removed from the enemy when the brand is detached.",
       "display_name": "Penance Brand of Dissipation",
       "id": "penance_brand_alt_x",
       "is_manually_casted": true,
@@ -65599,7 +65586,7 @@
       },
       "stat_text": {
         "base_skill_effect_duration": "Base duration is 6.00 seconds",
-        "spike_slam_explosion_damage_+%_final": "Shattering Spikes deal 30% less damage",
+        "spike_slam_explosion_damage_+%_final\nquality_display_earthshatter_spike_damage_is_gem": "Shattering Spikes deal 30% less damage",
         "spike_slam_max_spikes\nquality_display_max_spikes_is_gem": "Maximum 15 Spikes",
         "spike_slam_num_spikes\nquality_display_spike_slam_is_gem": "Creates 5 fissures"
       },
@@ -65640,6 +65627,11 @@
         },
         {
           "id": "quality_display_max_spikes_is_gem",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_earthshatter_spike_damage_is_gem",
           "type": "implicit",
           "value": 1
         }
@@ -65728,7 +65720,7 @@
       },
       "stat_text": {
         "base_skill_effect_duration": "Base duration is 1.50 seconds",
-        "spike_slam_explosion_damage_+%_final": "Shattering Spikes deal 30% less damage",
+        "spike_slam_explosion_damage_+%_final\nquality_display_earthshatter_spike_damage_is_gem": "Shattering Spikes deal 30% less damage",
         "spike_slam_max_spikes\nquality_display_max_spikes_is_gem": "Maximum 15 Spikes",
         "spike_slam_num_spikes\nquality_display_spike_slam_is_gem": "Creates 5 fissures"
       },
@@ -65769,6 +65761,11 @@
         },
         {
           "id": "quality_display_max_spikes_is_gem",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_earthshatter_spike_damage_is_gem",
           "type": "implicit",
           "value": 1
         }
@@ -65856,9 +65853,9 @@
       },
       "stat_text": {
         "base_skill_effect_duration": "Base duration is 6.00 seconds",
-        "spike_slam_explosion_damage_+%_final": "Shattering Spikes deal 100% more damage",
+        "spike_slam_explosion_damage_+%_final\nquality_display_earthshatter_spike_damage_is_gem": "Shattering Spikes deal 100% more damage",
         "spike_slam_max_spikes\nquality_display_max_spikes_is_gem": "Maximum 5 Spikes",
-        "spike_slam_num_spikes": "Creates +1 fissure"
+        "spike_slam_num_spikes\nquality_display_spike_slam_is_gem": "Creates 1 fissure"
       },
       "stats": [
         {
@@ -65891,7 +65888,17 @@
           "value": 1
         },
         {
+          "id": "quality_display_spike_slam_is_gem",
+          "type": "implicit",
+          "value": 1
+        },
+        {
           "id": "quality_display_max_spikes_is_gem",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_earthshatter_spike_damage_is_gem",
           "type": "implicit",
           "value": 1
         }
@@ -67575,7 +67582,7 @@
           "value": 1
         },
         {
-          "id": "quality_display_alt_flame_wall_is_gem",
+          "id": "quality_display_wall_length_is_gem",
           "type": "implicit",
           "value": 1
         }
@@ -84199,7 +84206,7 @@
         "str": 0
       },
       "stat_text": {
-        "lightning_arrow_maximum_number_of_extra_targets": "Hits up to +3 additional enemies near the target",
+        "lightning_arrow_maximum_number_of_extra_targets": "Hits up to 3 additional enemies near the target",
         "skill_physical_damage_%_to_convert_to_lightning": "50% of Physical Damage Converted to Lightning Damage"
       },
       "stats": [
@@ -92694,7 +92701,7 @@
       "stat_text": {
         "always_pierce": "Projectiles Pierce all Targets",
         "base_number_of_arrows\nquality_display_base_additional_arrows_is_gem": "Fires 5 Arrows",
-        "lightning_arrow_maximum_number_of_extra_targets\nquality_display_lightning_arrow_is_gem": "Hits up to 3 additional enemies near the target",
+        "lightning_arrow_maximum_number_of_extra_targets": "Hits up to 3 additional enemies near the target",
         "projectiles_barrage": "Fires Projectiles sequentially",
         "projectiles_cannot_split": "Projectiles cannot Split",
         "skill_physical_damage_%_to_convert_to_lightning": "50% of Physical Damage Converted to Lightning Damage",
@@ -92772,11 +92779,6 @@
         },
         {
           "id": "skill_can_add_multiple_charges_per_action",
-          "type": "implicit",
-          "value": 1
-        },
-        {
-          "id": "quality_display_lightning_arrow_is_gem",
           "type": "implicit",
           "value": 1
         },
