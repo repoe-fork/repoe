@@ -188,11 +188,16 @@ class stat_translations(Parser_Module):
 
         tag_set: Set[str] = set()
         for in_file, out_file in _build_stat_translation_file_map(self.file_system):
-            translations = self.get_cache(TranslationFileCache)[in_file].translations
-            result = _get_stat_translations(
-                tag_set, translations, get_custom_translation_file().translations, trade_stats
-            )
-            write_json(result, self.data_path, out_file)
+            try:
+                translations = self.get_cache(TranslationFileCache)[in_file].translations
+                result = _get_stat_translations(
+                    tag_set, translations, get_custom_translation_file().translations, trade_stats
+                )
+                write_json(result, self.data_path, out_file)
+            except Exception:
+                print("Error processing", in_file)
+                # TODO: support markup TranslationQuantifier
+                # raise
         print("Possible format tags: {}".format(tag_set))
 
 

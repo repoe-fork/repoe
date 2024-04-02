@@ -37,8 +37,7 @@ class essences(Parser_Module):
         essences = {
             row["BaseItemTypesKey"]["Id"]: {
                 "name": row["BaseItemTypesKey"]["Name"],
-                "spawn_level_min": row["DropLevelMinimum"],
-                "spawn_level_max": row["DropLevelMaximum"],
+                "spawn_level_min": (row["DropLevel"] or [0])[0],
                 "level": row["Level"],
                 "item_level_restriction": row["ItemLevelRestriction"] if row["ItemLevelRestriction"] > 0 else None,
                 "type": {
