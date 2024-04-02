@@ -1351,7 +1351,7 @@
         "str": 0
       },
       "stat_text": {
-        "blade_flurry_critical_strike_chance_per_stage_+%_final": "25% more Critical Strike Chance for each Stage",
+        "blade_flurry_critical_strike_chance_per_stage_+%_final": "35% more Critical Strike Chance for each Stage",
         "display_max_charged_attack_stats": "Maximum 6 Stages",
         "quality_display_charged_attack_is_gem": ""
       },
@@ -1372,7 +1372,7 @@
         {
           "id": "blade_flurry_critical_strike_chance_per_stage_+%_final",
           "type": "constant",
-          "value": 25
+          "value": 35
         },
         {
           "id": "is_area_damage",
@@ -2289,7 +2289,7 @@
       },
       "stat_text": {
         "active_skill_merged_damage_+%_final_while_dual_wielding": "When Dual Wielding, Deals 60% Damage from each Weapon combined",
-        "chain_strike_cone_radius_+_per_x_rage": "+0.1 metres to Radius per 3 Rage",
+        "chain_strike_cone_radius_+_per_x_rage": "+0.1 metres to Radius per 5 Rage",
         "chain_strike_gain_x_rage_if_attack_hits\nquality_display_chain_hook_is_gem": "Gain 1 Rage if this Skill Hits any Enemies"
       },
       "stats": [
@@ -2301,7 +2301,7 @@
         {
           "id": "chain_strike_cone_radius_+_per_x_rage",
           "type": "constant",
-          "value": 3
+          "value": 5
         },
         {
           "id": "chain_strike_gain_x_rage_if_attack_hits",
@@ -3354,7 +3354,7 @@
   },
   {
     "active_skill": {
-      "description": "Each attack with this skill will choose an element at random, and will only be able to deal damage of that element. If the attack hits an enemy, it will also deal damage in an area around them, with the radius being larger if that enemy is suffering from an ailment of the chosen element. It will avoid choosing the same element twice in a row.",
+      "description": "Each attack with this skill will choose an element at random, and will only be able to deal damage of that element. If the attack hits an enemy, it will deal damage in an area around them, with the radius being larger if that enemy is suffering from an ailment of the chosen element. It will avoid choosing the same element twice in a row.",
       "display_name": "Elemental Hit",
       "id": "elemental_hit",
       "is_manually_casted": true,
@@ -3419,9 +3419,10 @@
         "str": 0
       },
       "stat_text": {
+        "active_skill_base_area_of_effect_radius": "Base radius is 1 metre",
         "elemental_hit_area_of_effect_+100%_final_vs_enemy_with_associated_ailment": "80% more Area Radius against Enemies affected by an Ailment of the chosen Element",
         "elemental_hit_damage_+%_final_per_enemy_elemental_ailment\nquality_display_elemental_hit_is_gem": "10% more Damage per Elemental Ailment on the Enemy",
-        "elemental_hit_no_physical_chaos_damage": "Only Deals Damage of the chosen Element\nDeals no Damage of other Damage Types"
+        "elemental_hit_no_damage_of_unchosen_elemental_type": "Only Deals Damage of the chosen Element\nDeals no Damage of other Damage Types"
       },
       "stats": [
         {
@@ -3454,6 +3455,11 @@
           "value": 10
         },
         {
+          "id": "active_skill_base_area_of_effect_radius",
+          "type": "constant",
+          "value": 10
+        },
+        {
           "id": "chance_to_freeze_shock_ignite_%",
           "type": "additional"
         },
@@ -3478,6 +3484,11 @@
           "value": 1
         },
         {
+          "id": "elemental_hit_no_damage_of_unchosen_elemental_type",
+          "type": "implicit",
+          "value": 1
+        },
+        {
           "id": "quality_display_elemental_hit_is_gem",
           "type": "implicit",
           "value": 1
@@ -3496,6 +3507,155 @@
       "lightning",
       "area",
       "random_element",
+      "bow"
+    ]
+  },
+  {
+    "active_skill": {
+      "description": "Fires a projectile with a wand or bow that deals fire, cold and lightning damage. If the projectile hits an enemy, it will deal damage in an area around them.",
+      "display_name": "Elemental Hit of the Spectrum",
+      "id": "elemental_hit_alt_x",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "elemental_hit_and_wild_strike_chance_to_inflict_scorch_brittle_sap_%": "chance_to_inflict_scorch_brittle_sap_%",
+        "elemental_hit_attack_speed_+%": "attack_speed_+%",
+        "elemental_hit_chance_to_freeze_shock_ignite_%": "chance_to_freeze_shock_ignite_%",
+        "elemental_hit_damage_+%": "damage_+%"
+      },
+      "types": [
+        "Attack",
+        "Projectile",
+        "ProjectilesFromUser",
+        "Totemable",
+        "Trappable",
+        "Mineable",
+        "Fire",
+        "Cold",
+        "Lightning",
+        "RangedAttack",
+        "MirageArcherCanUse",
+        "Area",
+        "Triggerable"
+      ],
+      "weapon_restrictions": [
+        "Bow",
+        "Wand"
+      ]
+    },
+    "base_item": {
+      "display_name": "Elemental Hit",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemElementalHit",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "discriminator": "alt_x",
+    "display_name": "Elemental Hit of the Spectrum",
+    "is_support": false,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "Ranger"
+      ],
+      "quest": "The Siren's Cadence"
+    },
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "quality_stats": [
+        {
+          "stat": "{elemental_hit_damage_+%_final_per_enemy_elemental_ailment}% more Damage per Elemental Ailment on the Enemy",
+          "stats": {
+            "elemental_hit_damage_+%_final_per_enemy_elemental_ailment": 250
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": 0
+      },
+      "stat_text": {
+        "active_skill_base_area_of_effect_radius": "Base radius is 1.5 metres",
+        "deal_no_non_elemental_damage": "Deals no Non-Elemental Damage",
+        "elemental_hit_damage_+%_final_per_enemy_elemental_ailment\nquality_display_elemental_hit_is_gem": "10% more Damage per Elemental Ailment on the Enemy"
+      },
+      "stats": [
+        {
+          "id": "attack_minimum_added_fire_damage",
+          "type": "float"
+        },
+        {
+          "id": "attack_maximum_added_fire_damage",
+          "type": "float"
+        },
+        {
+          "id": "attack_minimum_added_cold_damage",
+          "type": "float"
+        },
+        {
+          "id": "attack_maximum_added_cold_damage",
+          "type": "float"
+        },
+        {
+          "id": "attack_minimum_added_lightning_damage",
+          "type": "float"
+        },
+        {
+          "id": "attack_maximum_added_lightning_damage",
+          "type": "float"
+        },
+        {
+          "id": "elemental_hit_damage_+%_final_per_enemy_elemental_ailment",
+          "type": "constant",
+          "value": 10
+        },
+        {
+          "id": "active_skill_base_area_of_effect_radius",
+          "type": "constant",
+          "value": 15
+        },
+        {
+          "id": "chance_to_freeze_shock_ignite_%",
+          "type": "additional"
+        },
+        {
+          "id": "skill_can_fire_arrows",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_can_fire_wand_projectiles",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "elemental_hit_no_physical_chaos_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_elemental_hit_is_gem",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "deal_no_non_elemental_damage",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile",
+      "fire",
+      "cold",
+      "lightning",
+      "area",
       "bow"
     ]
   },
@@ -5077,7 +5237,7 @@
         {
           "stat": "Corpses Spawned have {maximum_life_+%_for_corpses_you_create}% increased Maximum Life",
           "stats": {
-            "maximum_life_+%_for_corpses_you_create": 1500
+            "maximum_life_+%_for_corpses_you_create": 1000
           }
         }
       ],
@@ -6580,7 +6740,7 @@
   },
   {
     "active_skill": {
-      "description": "Raises necromantic energies into the sky above a targeted location, where they coalese into a zombie minion. The minion then attacks by falling to the ground, causing an impact that deals damage in an area and kills the zombie.",
+      "description": "Raises necromantic energies into the sky above a targeted location, where they coalesce into a zombie minion. The minion then attacks by falling to the ground, causing an impact that deals damage in an area and kills the zombie.",
       "display_name": "Raise Zombie of Falling",
       "id": "raise_zombie_alt_y",
       "is_manually_casted": true,
@@ -8565,7 +8725,7 @@
         "active_skill_cooldown_bypass_type_override_to_power_charge": "",
         "add_power_charge_on_critical_strike_%": "30% chance to gain a Power Charge on Critical Strike",
         "base_skill_effect_duration": "Base duration is 3.00 seconds",
-        "critical_strike_chance_+%_per_power_charge": "30% increased Critical Strike Chance per Power Charge",
+        "critical_strike_chance_+%_per_power_charge": "50% increased Critical Strike Chance per Power Charge",
         "flicker_strike_buff_movement_speed_+%": "Buff grants 20% increased Movement Speed"
       },
       "stats": [
@@ -8582,7 +8742,7 @@
         {
           "id": "critical_strike_chance_+%_per_power_charge",
           "type": "constant",
-          "value": 30
+          "value": 50
         },
         {
           "id": "add_power_charge_on_critical_strike_%",
@@ -9021,7 +9181,7 @@
     "stat_translation_file": "stat_translations/skill",
     "static": {
       "crit_chance": 600,
-      "damage_effectiveness": 60,
+      "damage_effectiveness": 90,
       "quality_stats": [
         {
           "stat": "Fires {base_number_of_projectiles} Projectiles",
@@ -9923,20 +10083,15 @@
           "value": 30000
         },
         {
-          "id": "base_number_of_spectres_allowed",
-          "type": "constant",
-          "value": 2
-        },
-        {
-          "id": "base_number_of_spectres_allowed",
-          "type": "additional"
-        },
-        {
           "id": "raised_spectre_level",
           "type": "additional"
         },
         {
           "id": "accuracy_rating",
+          "type": "additional"
+        },
+        {
+          "id": "base_number_of_spectres_allowed",
           "type": "additional"
         }
       ]
@@ -12612,10 +12767,14 @@
         "int": 0,
         "str": 0
       },
+      "stat_text": {
+        "projectiles_hitting_self_split_into_x": "Projectiles which Hit Cursed Enemies Split towards 2 additional targets"
+      },
       "stats": [
         {
           "id": "projectiles_hitting_self_split_into_x",
-          "type": "additional"
+          "type": "additional",
+          "value": 2
         },
         {
           "id": "projectile_damage_taken_+%",
@@ -13822,7 +13981,7 @@
         "dex": 0
       },
       "stat_text": {
-        "active_skill_additive_minion_damage_modifiers_apply_to_all_damage_at_%_value": "Increases and Reductions to Minion Damage also apply\nto this Skill's Damage at 200% of their value",
+        "active_skill_additive_minion_damage_modifiers_apply_to_all_damage_at_%_value": "Increases and Reductions to Minion Damage also apply\nto this Skill's Damage at 250% of their value",
         "base_secondary_skill_effect_duration": "Base secondary duration is 20.00 seconds",
         "base_skill_effect_duration": "Base duration is 1.00 seconds"
       },
@@ -13865,7 +14024,7 @@
         {
           "id": "active_skill_additive_minion_damage_modifiers_apply_to_all_damage_at_%_value",
           "type": "constant",
-          "value": 200
+          "value": 250
         },
         {
           "id": "is_dominated",
@@ -15243,7 +15402,7 @@
         "active_skill_base_area_of_effect_radius": "Base radius is 1.2 metres",
         "base_skill_effect_duration": "Base duration is 2.00 seconds",
         "fire_storm_fireball_delay_ms": "One impact every 0.15 seconds",
-        "firestorm_max_number_of_storms": "Maximum 8 Firestorms at a time"
+        "firestorm_max_number_of_storms": "Maximum 10 Firestorms at a time"
       },
       "stats": [
         {
@@ -15267,7 +15426,7 @@
         {
           "id": "firestorm_max_number_of_storms",
           "type": "constant",
-          "value": 8
+          "value": 10
         },
         {
           "id": "base_skill_effect_duration",
@@ -16234,7 +16393,8 @@
         "ProjectilesFromUser",
         "Totemable",
         "Trappable",
-        "Mineable"
+        "Mineable",
+        "Lightning"
       ],
       "weapon_restrictions": [
         "Wand"
@@ -16312,11 +16472,11 @@
       ]
     },
     "tags": [
-      "critical",
       "intelligence",
       "grants_active_skill",
       "attack",
-      "projectile"
+      "projectile",
+      "lightning"
     ]
   },
   {
@@ -16743,7 +16903,7 @@
         "str": 0
       },
       "stat_text": {
-        "lightning_arrow_alt_additional_strikes": "Arrows Damage final target 3 additional times after sticking in",
+        "lightning_arrow_alt_additional_strikes": "Arrows Damage final target 4 additional times after sticking in",
         "lightning_arrow_alt_strike_frequency_ms": "Lightning bolts strike every 0.5 seconds",
         "lightning_arrow_stack_limit": "10 Maximum Lightning Arrows stuck in an Enemy",
         "skill_physical_damage_%_to_convert_to_lightning": "50% of Physical Damage Converted to Lightning Damage"
@@ -16770,7 +16930,7 @@
         {
           "id": "lightning_arrow_alt_additional_strikes",
           "type": "constant",
-          "value": 3
+          "value": 4
         },
         {
           "id": "lightning_arrow_alt_strike_frequency_ms",
@@ -19163,7 +19323,9 @@
       "id": "detonate_mines",
       "is_manually_casted": true,
       "is_skill_totem": false,
-      "stat_conversions": {},
+      "stat_conversions": {
+        "trigger_detonate_mines_while_moving": "detonate_mines_is_triggered_while_moving"
+      },
       "types": [
         "Spell",
         "Trappable",
@@ -20470,6 +20632,11 @@
           "value": 1750
         },
         {
+          "id": "trap_variation",
+          "type": "constant",
+          "value": 22
+        },
+        {
           "id": "active_skill_base_radius_+",
           "type": "additional"
         },
@@ -20604,6 +20771,11 @@
           "id": "base_trap_duration",
           "type": "constant",
           "value": 4000
+        },
+        {
+          "id": "trap_variation",
+          "type": "constant",
+          "value": 22
         },
         {
           "id": "trap_%_chance_to_trigger_twice",
@@ -21458,7 +21630,7 @@
         {
           "stat": "{skill_area_angle_+%}% increased Area of Effect angle",
           "stats": {
-            "skill_area_angle_+%": 3000
+            "skill_area_angle_+%": 4000
           }
         }
       ],
@@ -21467,6 +21639,7 @@
         "str": 0
       },
       "stat_text": {
+        "active_skill_base_area_of_effect_radius": "Base radius is 2.4 metres",
         "skill_physical_damage_%_to_convert_to_cold": "60% of Physical Damage Converted to Cold Damage"
       },
       "stats": [
@@ -21484,11 +21657,136 @@
           "value": 60
         },
         {
+          "id": "active_skill_base_area_of_effect_radius",
+          "type": "constant",
+          "value": 24
+        },
+        {
           "id": "active_skill_chill_as_though_damage_+%_final",
           "type": "additional"
         },
         {
           "id": "skill_can_fire_arrows",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile",
+      "area",
+      "cold",
+      "bow"
+    ]
+  },
+  {
+    "active_skill": {
+      "description": "Fires a piercing arrow that converts some physical damage to cold on its target and converts all physical damage to cold in two cones perpendicular to the target.",
+      "display_name": "Ice Shot of Penetration",
+      "id": "ice_shot_alt_x",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "ice_shot_additional_pierce_per_10_old": "projectiles_pierce_1_additional_target_per_10_stat_value",
+        "ice_shot_area_angle_+%": "skill_area_angle_+%",
+        "ice_shot_damage_+%": "damage_+%",
+        "ice_shot_damage_+%_to_chilled_enemies": "damage_+%_vs_chilled_enemies",
+        "ice_shot_duration_+%": "skill_effect_duration_+%",
+        "ice_shot_pierce_+": "projectile_base_number_of_targets_to_pierce",
+        "ice_shot_radius_+%": "base_skill_area_of_effect_+%",
+        "lightning_arrow_and_ice_shot_all_damage_can_ignite": "all_damage_can_ignite",
+        "lightning_arrow_and_ice_shot_ignite_damage_+100%_final_chance": "ignite_damage_+100%_final_chance"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Projectile",
+        "ProjectilesFromUser",
+        "Area",
+        "Cold",
+        "Triggerable",
+        "MirageArcherCanUse",
+        "Totemable",
+        "Trappable",
+        "Mineable"
+      ],
+      "weapon_restrictions": [
+        "Bow"
+      ]
+    },
+    "base_item": {
+      "display_name": "Ice Shot",
+      "experience_type": "GemProgression1",
+      "id": "Metadata/Items/Gems/SkillGemIceShot",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "discriminator": "alt_x",
+    "display_name": "Ice Shot of Penetration",
+    "is_support": false,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "Ranger"
+      ],
+      "quest": "Enemy at the Gate"
+    },
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "attack_speed_multiplier": -25,
+      "quality_stats": [
+        {
+          "stat": "{skill_area_angle_+%}% increased Area of Effect angle",
+          "stats": {
+            "skill_area_angle_+%": 4000
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": 0
+      },
+      "stat_text": {
+        "modifiers_to_projectile_count_do_not_apply": "Modifiers to number of Projectiles do not apply to this Skill",
+        "projectile_base_number_of_targets_to_pierce": "Projectiles Pierce 3 additional Targets",
+        "skill_physical_damage_%_to_convert_to_cold": "60% of Physical Damage Converted to Cold Damage"
+      },
+      "stats": [
+        {
+          "id": "skill_physical_damage_%_to_convert_to_cold",
+          "type": "constant",
+          "value": 60
+        },
+        {
+          "id": "active_skill_base_area_of_effect_radius",
+          "type": "constant",
+          "value": 26
+        },
+        {
+          "id": "projectile_base_number_of_targets_to_pierce",
+          "type": "constant",
+          "value": 3
+        },
+        {
+          "id": "active_skill_chill_as_though_damage_+%_final",
+          "type": "additional"
+        },
+        {
+          "id": "active_skill_base_area_of_effect_radius",
+          "type": "additional"
+        },
+        {
+          "id": "skill_can_fire_arrows",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "modifiers_to_projectile_count_do_not_apply",
           "type": "implicit",
           "value": 1
         }
@@ -23926,6 +24224,281 @@
         },
         {
           "id": "expanding_fire_cone_final_wave_always_ignite",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_incinerate_is_gem_hit",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_incinerate_is_gem_ingite",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_incinerate_is_gem_stages",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "tags": [
+      "intelligence",
+      "grants_active_skill",
+      "spell",
+      "fire",
+      "channelling",
+      "area"
+    ]
+  },
+  {
+    "active_skill": {
+      "description": "Continuously launches a torrent of fire from your hand, repeatedly damaging enemies. As you channel this spell longer, the flames spread wider close to you and spread longer directly in front of you. When you stop channelling you release a slow-moving wave of fire damage over a very large area that will apply a powerful Ignite.",
+      "display_name": "Incinerate of Expanse",
+      "id": "expanding_fire_cone_alt_x",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "expanding_fire_cone_additional_maximum_number_of_stages": "expanding_fire_cone_maximum_number_of_stages",
+        "expanding_fire_cone_area_of_effect_+%": "base_skill_area_of_effect_+%",
+        "flameblast_and_incinerate_base_cooldown_modifier_ms": "base_cooldown_modifier_ms",
+        "flameblast_and_incinerate_cannot_inflict_status_ailments": "cannot_inflict_status_ailments",
+        "incinerate_damage_+%": "damage_+%"
+      },
+      "types": [
+        "Spell",
+        "Damage",
+        "Totemable",
+        "Fire",
+        "Channel",
+        "Area",
+        "AreaSpell",
+        "Cooldown"
+      ],
+      "weapon_restrictions": []
+    },
+    "base_item": {
+      "display_name": "Incinerate",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemIncinerate",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 300,
+    "color": "b",
+    "discriminator": "alt_x",
+    "display_name": "Incinerate of Expanse",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": 500,
+      "damage_effectiveness": -50,
+      "quality_stats": [
+        {
+          "stat": "Final wave deals {expanding_fire_cone_release_hit_damage_+%_final}% more Damage with Hits\nFinal wave deals {grant_expanding_fire_cone_release_ignite_damage_+%_final}% more Damage with Ignite",
+          "stats": {
+            "expanding_fire_cone_release_hit_damage_+%_final": 5000,
+            "grant_expanding_fire_cone_release_ignite_damage_+%_final": 2500
+          }
+        }
+      ],
+      "stat_requirements": {
+        "dex": 0,
+        "str": 0
+      },
+      "stat_text": {
+        "expanding_fire_cone_angle_+%_per_stage": "100% increased angle per stage, up to 300%",
+        "expanding_fire_cone_final_wave_always_ignite": "Final wave always Ignites",
+        "expanding_fire_cone_maximum_number_of_stages\nquality_display_incinerate_is_gem_stages": "4 maximum Stages",
+        "expanding_fire_cone_release_hit_damage_+%_final\nquality_display_incinerate_is_gem_hit": "Final wave deals 700% more Damage with Hits",
+        "flamethrower_damage_+%_per_stage_final": "25% more Damage with Hits and Ailments for each stage",
+        "grant_expanding_fire_cone_release_ignite_damage_+%_final\nquality_display_incinerate_is_gem_ingite": "Final wave deals 400% more Damage with Ignite"
+      },
+      "stats": [
+        {
+          "id": "spell_minimum_base_fire_damage",
+          "type": "float"
+        },
+        {
+          "id": "spell_maximum_base_fire_damage",
+          "type": "float"
+        },
+        {
+          "id": "expanding_fire_cone_maximum_number_of_stages",
+          "type": "constant",
+          "value": 4
+        },
+        {
+          "id": "grant_expanding_fire_cone_release_ignite_damage_+%_final",
+          "type": "constant",
+          "value": 400
+        },
+        {
+          "id": "expanding_fire_cone_release_hit_damage_+%_final",
+          "type": "constant",
+          "value": 700
+        },
+        {
+          "id": "flamethrower_damage_+%_per_stage_final",
+          "type": "constant",
+          "value": 25
+        },
+        {
+          "id": "expanding_fire_cone_angle_+%_per_stage",
+          "type": "constant",
+          "value": 100
+        },
+        {
+          "id": "expanding_fire_cone_radius_+_per_stage",
+          "type": "additional"
+        },
+        {
+          "id": "expanding_fire_cone_radius_limit",
+          "type": "additional"
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_can_add_multiple_charges_per_action",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "expanding_fire_cone_final_wave_always_ignite",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_incinerate_is_gem_hit",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_incinerate_is_gem_ingite",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_incinerate_is_gem_stages",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "tags": [
+      "intelligence",
+      "grants_active_skill",
+      "spell",
+      "fire",
+      "channelling",
+      "area"
+    ]
+  },
+  {
+    "active_skill": {
+      "description": "Continuously launches a torrent of fire from your hand, repeatedly damaging enemies. As you channel this spell longer, the flames spread wider close to you and spread longer directly in front of you.",
+      "display_name": "Incinerate of Venting",
+      "id": "expanding_fire_cone_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "expanding_fire_cone_additional_maximum_number_of_stages": "expanding_fire_cone_maximum_number_of_stages",
+        "expanding_fire_cone_area_of_effect_+%": "base_skill_area_of_effect_+%",
+        "flameblast_and_incinerate_base_cooldown_modifier_ms": "base_cooldown_modifier_ms",
+        "flameblast_and_incinerate_cannot_inflict_status_ailments": "cannot_inflict_status_ailments",
+        "incinerate_damage_+%": "damage_+%"
+      },
+      "types": [
+        "Spell",
+        "Damage",
+        "Totemable",
+        "Fire",
+        "Channel",
+        "Area",
+        "AreaSpell",
+        "Cooldown"
+      ],
+      "weapon_restrictions": []
+    },
+    "base_item": {
+      "display_name": "Incinerate",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemIncinerate",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 170,
+    "color": "b",
+    "discriminator": "alt_y",
+    "display_name": "Incinerate of Venting",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": 500,
+      "damage_effectiveness": -50,
+      "quality_stats": [
+        {
+          "stat": "{expanding_fire_cone_maximum_number_of_stages} to maximum Stages",
+          "stats": {
+            "expanding_fire_cone_maximum_number_of_stages": 100
+          }
+        }
+      ],
+      "stat_requirements": {
+        "dex": 0,
+        "str": 0
+      },
+      "stat_text": {
+        "expanding_fire_cone_angle_+%_per_stage": "100% increased angle per stage, up to 300%",
+        "expanding_fire_cone_maximum_number_of_stages\nquality_display_incinerate_is_gem_stages": "12 maximum Stages",
+        "flamethrower_damage_+%_per_stage_final": "25% more Damage with Hits and Ailments for each stage",
+        "quality_display_incinerate_is_gem_hit": "",
+        "quality_display_incinerate_is_gem_ingite": ""
+      },
+      "stats": [
+        {
+          "id": "spell_minimum_base_fire_damage",
+          "type": "float"
+        },
+        {
+          "id": "spell_maximum_base_fire_damage",
+          "type": "float"
+        },
+        {
+          "id": "expanding_fire_cone_maximum_number_of_stages",
+          "type": "constant",
+          "value": 12
+        },
+        {
+          "id": "flamethrower_damage_+%_per_stage_final",
+          "type": "constant",
+          "value": 25
+        },
+        {
+          "id": "expanding_fire_cone_angle_+%_per_stage",
+          "type": "constant",
+          "value": 100
+        },
+        {
+          "id": "expanding_fire_cone_radius_+_per_stage",
+          "type": "additional"
+        },
+        {
+          "id": "expanding_fire_cone_radius_limit",
+          "type": "additional"
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_can_add_multiple_charges_per_action",
           "type": "implicit",
           "value": 1
         },
@@ -27088,8 +27661,7 @@
       },
       "stat_text": {
         "cast_on_death_%": "100% chance to Trigger Supported Non-Minion Spells on Death",
-        "no_cost": "Supported Skills Cost nothing",
-        "spell_uncastable_if_triggerable\nspell_only_castable_on_death": "You cannot Cast Supported Triggerable Spells directly"
+        "no_cost": "Supported Skills Cost nothing"
       },
       "stats": [
         {
@@ -27177,9 +27749,6 @@
       "stat_requirements": {
         "dex": 0
       },
-      "stat_text": {
-        "spell_uncastable_if_triggerable": "You cannot Cast Supported Triggerable Spells directly"
-      },
       "stats": [
         {
           "id": "cast_on_damage_taken_%",
@@ -27264,9 +27833,6 @@
       ],
       "stat_requirements": {
         "str": 0
-      },
-      "stat_text": {
-        "spell_uncastable_if_triggerable": "You cannot Cast Supported Triggerable Spells directly"
       },
       "stats": [
         {
@@ -27514,7 +28080,7 @@
       },
       "stat_text": {
         "base_skill_effect_duration": "Base duration is 15.00 seconds",
-        "number_of_animated_weapons_allowed\nquality_display_animate_weapon_is_gem": "Maximum 5 Animated Weapons"
+        "number_of_animated_weapons_allowed\nquality_display_animate_weapon_is_gem": "Maximum 6 Animated Weapons"
       },
       "stats": [
         {
@@ -27546,7 +28112,7 @@
         {
           "id": "number_of_animated_weapons_allowed",
           "type": "additional",
-          "value": 5
+          "value": 6
         },
         {
           "id": "quality_display_animate_weapon_is_gem",
@@ -29541,7 +30107,7 @@
   },
   {
     "active_skill": {
-      "description": "Creates a ball of lightning at a location that damages each enemy in an area around it repeatedly with bolts of lightning. Cannot be supported by Spell Echo.",
+      "description": "Creates a ball of lightning at a location that damages each enemy in an area around it repeatedly with bolts of lightning. Cannot be supported by Spell Echo or used by Totems.",
       "display_name": "Ball Lightning of Static",
       "id": "ball_lightning_alt_y",
       "is_manually_casted": true,
@@ -29558,7 +30124,6 @@
         "Spell",
         "Damage",
         "Area",
-        "Totemable",
         "Trappable",
         "Mineable",
         "Triggerable",
@@ -30300,7 +30865,7 @@
       "stat_text": {
         "base_chance_to_ignite_%": "25% chance to Ignite enemies",
         "base_skill_effect_duration": "Base duration is 4.00 seconds",
-        "flame_surge_burning_ground_on_ignite_damage_%\nquality_display_alt_flame_whip_is_gem": "Igniting Enemies creates Burning Ground, no more than once per second\nBurning Ground deals 25% of Fire Damage per second of inflicted Ignite"
+        "flame_surge_burning_ground_on_ignite_damage_%\nquality_display_alt_flame_whip_is_gem": "Igniting Enemies creates Burning Ground, no more than once per second\nBurning Ground deals 35% of Fire Damage per second of inflicted Ignite"
       },
       "stats": [
         {
@@ -30319,7 +30884,7 @@
         {
           "id": "flame_surge_burning_ground_on_ignite_damage_%",
           "type": "constant",
-          "value": 25
+          "value": 35
         },
         {
           "id": "base_chance_to_ignite_%",
@@ -31382,13 +31947,6 @@
     "color": "b",
     "display_name": "Convocation",
     "is_support": false,
-    "quest_reward": {
-      "act": 3,
-      "classes": [
-        "Witch"
-      ],
-      "quest": "Lost in Love"
-    },
     "stat_translation_file": "stat_translations/buff_skill",
     "static": {
       "cooldown": 3000,
@@ -31432,6 +31990,91 @@
       "grants_active_skill",
       "spell",
       "duration"
+    ]
+  },
+  {
+    "active_skill": {
+      "description": "Recalls all minions that are following you to your location, and grants them a temporary life regeneration effect.",
+      "display_name": "Convocation",
+      "id": "convocation",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "convocation_buff_effect_+%": "skill_buff_effect_+%",
+        "convocation_cooldown_speed_+%": "base_cooldown_speed_+%"
+      },
+      "types": [
+        "Spell",
+        "Buff",
+        "Duration",
+        "Triggerable",
+        "Minion",
+        "Instant",
+        "Cooldown"
+      ],
+      "weapon_restrictions": []
+    },
+    "base_item": {
+      "display_name": "Convocation",
+      "experience_type": "GemProgressionSingleLevel",
+      "id": "Metadata/Items/Gems/SkillGemConvocationNew",
+      "max_level": 1,
+      "release_state": "released"
+    },
+    "cast_time": 0,
+    "color": "b",
+    "display_name": "Convocation",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/buff_skill",
+    "static": {
+      "cooldown": 3000,
+      "costs": {
+        "Mana": 6
+      },
+      "quality_stats": [
+        {
+          "stat": "{skill_effect_duration_+%}% increased Skill Effect Duration\n{base_cooldown_speed_+%}% increased Cooldown Recovery Rate",
+          "stats": {
+            "base_cooldown_speed_+%": 1000,
+            "skill_effect_duration_+%": 1000
+          }
+        }
+      ],
+      "required_level": 31,
+      "stat_requirements": {
+        "dex": 0,
+        "int": 73,
+        "str": 0
+      },
+      "stat_text": {
+        "base_skill_effect_duration": "Base duration is 2.00 seconds",
+        "life_regeneration_rate_per_minute_%": "Regenerate 2% of Life per second"
+      },
+      "stats": [
+        {
+          "id": "base_skill_effect_duration",
+          "type": "constant",
+          "value": 2000
+        },
+        {
+          "id": "life_regeneration_rate_per_minute_%",
+          "type": "constant",
+          "value": 120
+        },
+        {
+          "id": "base_deal_no_damage",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "stored_uses": 1
+    },
+    "tags": [
+      "intelligence",
+      "grants_active_skill",
+      "spell",
+      "duration",
+      "minion"
     ]
   },
   {
@@ -31869,11 +32512,12 @@
     },
     "stat_translation_file": "stat_translations/skill",
     "static": {
+      "attack_speed_multiplier": -20,
       "quality_stats": [
         {
-          "stat": "Fires {tornado_shot_num_of_secondary_projectiles} secondary Projectiles",
+          "stat": "{base_projectile_speed_+%}% increased Projectile Speed",
           "stats": {
-            "tornado_shot_num_of_secondary_projectiles": 50
+            "base_projectile_speed_+%": 2000
           }
         }
       ],
@@ -33484,7 +34128,7 @@
   },
   {
     "active_skill": {
-      "description": "Fires a projectile from a Wand that causes a series of small explosions surrounding its point of impact, each damaging enemies caught in the area.",
+      "description": "Fires a projectile from a Wand that causes a series of area explosions in a secondary radius around its point of impact, each damaging enemies.",
       "display_name": "Kinetic Blast",
       "id": "kinetic_blast",
       "is_manually_casted": true,
@@ -33531,7 +34175,7 @@
     "static": {
       "quality_stats": [
         {
-          "stat": "Creates {cluster_burst_spawn_amount} explosions",
+          "stat": "Kinetic Blast creates {cluster_burst_spawn_amount} additional explosions",
           "stats": {
             "cluster_burst_spawn_amount": 50
           }
@@ -33543,7 +34187,9 @@
       },
       "stat_text": {
         "active_skill_area_damage_+%_final\nquality_display_active_skill_area_damage_is_gem": "35% less Area Damage",
-        "cluster_burst_spawn_amount": "Creates 4 explosions"
+        "active_skill_area_of_effect_description_mode\nactive_skill_base_area_of_effect_radius": "Base explosion radius is 1.4 metres",
+        "active_skill_base_secondary_area_of_effect_radius": "Base secondary radius is 2 metres",
+        "cluster_burst_spawn_amount": "Kinetic Blast creates 4 additional explosions"
       },
       "stats": [
         {
@@ -33555,6 +34201,21 @@
           "id": "active_skill_area_damage_+%_final",
           "type": "constant",
           "value": -35
+        },
+        {
+          "id": "active_skill_base_area_of_effect_radius",
+          "type": "constant",
+          "value": 14
+        },
+        {
+          "id": "active_skill_base_secondary_area_of_effect_radius",
+          "type": "constant",
+          "value": 20
+        },
+        {
+          "id": "active_skill_area_of_effect_description_mode",
+          "type": "constant",
+          "value": 1
         },
         {
           "id": "base_is_projectile",
@@ -33579,6 +34240,136 @@
       "attack",
       "projectile",
       "area"
+    ]
+  },
+  {
+    "active_skill": {
+      "description": "Fires a projectile from a Wand that causes a series of area explosions in a secondary radius around its point of impact, each damaging enemies.",
+      "display_name": "Kinetic Blast of Clustering",
+      "id": "kinetic_blast_alt_x",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "kinetic_blast_damage_+%": "damage_+%",
+        "kinetic_blast_radius_+%": "base_skill_area_of_effect_+%",
+        "kinetic_bolt_blast_and_power_siphon_base_stun_threshold_reduction_+%": "base_stun_threshold_reduction_+%",
+        "kinetic_bolt_blast_and_power_siphon_chance_to_double_stun_duration_%": "chance_to_double_stun_duration_%"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Projectile",
+        "ProjectilesFromUser",
+        "Area",
+        "Trappable",
+        "Mineable",
+        "Totemable",
+        "Physical"
+      ],
+      "weapon_restrictions": [
+        "Wand"
+      ]
+    },
+    "base_item": {
+      "display_name": "Kinetic Blast",
+      "experience_type": "GemProgression28",
+      "id": "Metadata/Items/Gems/SkillGemKineticBlast",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "b",
+    "discriminator": "alt_x",
+    "display_name": "Kinetic Blast of Clustering",
+    "is_support": false,
+    "quest_reward": {
+      "act": 3,
+      "classes": [
+        "Witch"
+      ],
+      "quest": "Sever the Right Hand"
+    },
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "quality_stats": [
+        {
+          "stat": "Kinetic Blast creates {cluster_burst_spawn_amount} additional explosions",
+          "stats": {
+            "cluster_burst_spawn_amount": 50
+          }
+        }
+      ],
+      "stat_requirements": {
+        "dex": 0,
+        "str": 0
+      },
+      "stat_text": {
+        "active_skill_area_of_effect_description_mode\nactive_skill_base_area_of_effect_radius": "Base explosion radius is 1.9 metres",
+        "active_skill_base_secondary_area_of_effect_radius": "Base secondary radius is 2.8 metres",
+        "cluster_burst_spawn_amount": "Kinetic Blast creates 3 additional explosions",
+        "kinetic_blast_modifiers_to_number_of_projectiles_instead_apply_to_number_of_clusters": "Modifiers to number of Projectiles instead apply to the number of Explosions",
+        "projectiles_cannot_split": "Projectiles cannot Split",
+        "quality_display_active_skill_area_damage_is_gem": ""
+      },
+      "stats": [
+        {
+          "id": "active_skill_base_area_of_effect_radius",
+          "type": "constant",
+          "value": 19
+        },
+        {
+          "id": "active_skill_base_secondary_area_of_effect_radius",
+          "type": "constant",
+          "value": 28
+        },
+        {
+          "id": "active_skill_area_of_effect_description_mode",
+          "type": "constant",
+          "value": 1
+        },
+        {
+          "id": "cluster_burst_spawn_amount",
+          "type": "constant",
+          "value": 3
+        },
+        {
+          "id": "added_physical_damage_to_attacks_equal_to_%_maximum_mana",
+          "type": "additional"
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_can_fire_wand_projectiles",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_active_skill_area_damage_is_gem",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "kinetic_blast_modifiers_to_number_of_projectiles_instead_apply_to_number_of_clusters",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "projectiles_cannot_split",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "tags": [
+      "intelligence",
+      "grants_active_skill",
+      "attack",
+      "projectile",
+      "area",
+      "physical"
     ]
   },
   {
@@ -34549,7 +35340,6 @@
         "str": 0
       },
       "stat_text": {
-        "attack_unusable_if_triggerable": "You cannot use this Attack directly",
         "melee_counterattack_trigger_on_block_%": "Trigger this Skill when you Block"
       },
       "stats": [
@@ -34655,7 +35445,6 @@
         "int": 0
       },
       "stat_text": {
-        "attack_unusable_if_triggerable": "You cannot use this Attack directly",
         "melee_counterattack_trigger_on_block_%": "Trigger this Skill when you Block"
       },
       "stats": [
@@ -34960,7 +35749,6 @@
         "int": 0
       },
       "stat_text": {
-        "attack_unusable_if_triggerable": "You cannot use this Attack directly",
         "melee_counterattack_trigger_on_hit_%": "30% chance to Trigger this Skill when Hit"
       },
       "stats": [
@@ -36660,7 +37448,7 @@
       },
       "stat_text": {
         "active_skill_area_of_effect_description_mode\nactive_skill_base_area_of_effect_radius": "Main Hand Base radius is 1.1 metres",
-        "active_skill_main_hand_weapon_damage_+%_final": "50% more Damage with Main Hand Weapon",
+        "active_skill_main_hand_weapon_damage_+%_final": "80% more Damage with Main Hand Weapon",
         "active_skill_secondary_area_of_effect_description_mode\nactive_skill_base_secondary_area_of_effect_radius": "Off Hand Base radius is 3.1 metres",
         "quality_display_ice_crash_is_gem": "",
         "skill_physical_damage_%_to_convert_to_cold": "100% of Physical Damage Converted to Cold Damage"
@@ -36674,7 +37462,7 @@
         {
           "id": "active_skill_main_hand_weapon_damage_+%_final",
           "type": "constant",
-          "value": 50
+          "value": 80
         },
         {
           "id": "active_skill_base_area_of_effect_radius",
@@ -38061,6 +38849,11 @@
           "value": 1
         },
         {
+          "id": "display_projectiles_chain_when_impacting_ground",
+          "type": "constant",
+          "value": 1
+        },
+        {
           "id": "number_of_chains",
           "type": "additional"
         },
@@ -38075,11 +38868,6 @@
         },
         {
           "id": "base_is_projectile",
-          "type": "implicit",
-          "value": 1
-        },
-        {
-          "id": "display_projectiles_chain_when_impacting_ground",
           "type": "implicit",
           "value": 1
         },
@@ -39802,7 +40590,7 @@
     "stat_translation_file": "stat_translations/skill",
     "static": {
       "crit_chance": 600,
-      "damage_effectiveness": 60,
+      "damage_effectiveness": 100,
       "quality_stats": [
         {
           "stat": "Base duration is {base_skill_effect_duration/milliseconds_to_seconds_2dp} seconds",
@@ -40529,6 +41317,7 @@
       "is_skill_totem": true,
       "skill_totem_life_multiplier": 1.0,
       "stat_conversions": {
+        "number_of_additional_siege_ballistae_per_200_dexterity": "number_of_additional_totems_per_200_dexterity",
         "siege_and_shrapnel_ballista_attack_speed_+%_per_maximum_totem": "attack_speed_+%_per_maximum_totem",
         "siege_ballista_attack_speed_+%": "attack_speed_+%",
         "siege_ballista_damage_+%": "damage_+%",
@@ -40651,6 +41440,7 @@
       "is_skill_totem": true,
       "skill_totem_life_multiplier": 1.0,
       "stat_conversions": {
+        "number_of_additional_siege_ballistae_per_200_dexterity": "number_of_additional_totems_per_200_dexterity",
         "siege_and_shrapnel_ballista_attack_speed_+%_per_maximum_totem": "attack_speed_+%_per_maximum_totem",
         "siege_ballista_attack_speed_+%": "attack_speed_+%",
         "siege_ballista_damage_+%": "damage_+%",
@@ -41204,7 +41994,7 @@
       "stat_text": {
         "active_skill_minion_life_+%_final": "Minions have 50% less Maximum Life",
         "base_number_of_golems_allowed": "Maximum 1 Summoned Golem",
-        "stone_golem_grants_melee_damage_removed_from_stone_golem_before_life_or_es_%": "Golems grant 10% of Melee Damage is taken from your Stone Golems' Life before you"
+        "stone_golem_grants_melee_damage_removed_from_stone_golem_before_life_or_es_%": "Golems grant 15% of Melee Damage is taken from your Stone Golems' Life before you"
       },
       "stats": [
         {
@@ -41225,7 +42015,7 @@
         {
           "id": "stone_golem_grants_melee_damage_removed_from_stone_golem_before_life_or_es_%",
           "type": "constant",
-          "value": 10
+          "value": 15
         },
         {
           "id": "active_skill_minion_life_+%_final",
@@ -42585,7 +43375,7 @@
       },
       "stat_text": {
         "base_skill_effect_duration": "Base duration is 3.80 seconds",
-        "essence_drain_lose_life_from_damage_permyriad": "Lose Life and Energy Shield equal to 0.2% of Debuff Damage",
+        "essence_drain_lose_life_from_damage_permyriad": "Lose Life and Energy Shield equal to 0.3% of Debuff Damage",
         "quality_display_essence_drain_is_gem": "",
         "spell_damage_modifiers_apply_to_skill_dot": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect"
       },
@@ -42614,7 +43404,7 @@
         {
           "id": "essence_drain_lose_life_from_damage_permyriad",
           "type": "constant",
-          "value": 20
+          "value": 30
         },
         {
           "id": "spell_damage_modifiers_apply_to_skill_dot",
@@ -47946,7 +48736,7 @@
     "stat_translation_file": "stat_translations/skill",
     "static": {
       "crit_chance": 600,
-      "damage_effectiveness": 20,
+      "damage_effectiveness": 40,
       "quality_stats": [
         {
           "stat": "Causes {shrapnel_trap_number_of_secondary_explosions} smaller explosions",
@@ -47990,12 +48780,12 @@
         {
           "id": "active_skill_base_secondary_area_of_effect_radius",
           "type": "constant",
-          "value": 30
+          "value": 24
         },
         {
           "id": "active_skill_base_tertiary_area_of_effect_radius",
           "type": "constant",
-          "value": 13
+          "value": 7
         },
         {
           "id": "active_skill_area_of_effect_description_mode",
@@ -48845,7 +49635,7 @@
         "base_trap_duration\nquality_display_trap_duration_is_gem": "Trap lasts 4 seconds",
         "is_trap": "",
         "lightning_tower_trap_base_interval_duration_ms": "Strikes every 1.00 seconds",
-        "lightning_tower_trap_number_of_beams\nquality_display_lightning_tower_trap_is_gem": "Strikes 6 Areas"
+        "lightning_tower_trap_number_of_beams\nquality_display_lightning_tower_trap_is_gem": "Strikes 8 Areas"
       },
       "stats": [
         {
@@ -48869,7 +49659,7 @@
         {
           "id": "lightning_tower_trap_number_of_beams",
           "type": "constant",
-          "value": 6
+          "value": 8
         },
         {
           "id": "lightning_tower_trap_base_interval_duration_ms",
@@ -50623,7 +51413,7 @@
         "base_arrows_always_pierce": "Arrows Pierce all Targets",
         "scourge_arrow_X_pods_per_projectile": "Each Arrow leaves 1 Spore Pod",
         "skill_physical_damage_%_to_convert_to_chaos": "60% of Physical Damage Converted to Chaos Damage",
-        "virulent_arrow_number_of_pod_projectiles\nquality_display_scourge_arrow_is_gem": "Each Spore Pod fires 5 Thorn Arrows",
+        "virulent_arrow_number_of_pod_projectiles\nquality_display_scourge_arrow_is_gem": "Each Spore Pod fires 4 Thorn Arrows",
         "virulent_arrow_pod_projectile_damage_+%_final": "Thorn Arrows deal 50% less Damage"
       },
       "stats": [
@@ -50638,7 +51428,7 @@
         {
           "id": "virulent_arrow_number_of_pod_projectiles",
           "type": "constant",
-          "value": 5
+          "value": 4
         },
         {
           "id": "skill_physical_damage_%_to_convert_to_chaos",
@@ -51150,7 +51940,7 @@
   },
   {
     "active_skill": {
-      "description": "Summon a Holy Relic that stays near you. When you hit an enemy with an attack, the Holy Relic triggers a nova spell, with a very short cooldown, that deals physical damage to enemies and grants life regeneration to allies. This life regeneration is higher when applied to minions.",
+      "description": "Summon a Holy Relic that stays near you. When you hit an enemy with an attack, the Holy Relic triggers a nova spell with a short cooldown, that deals physical damage to enemies and grants life regeneration to allies in an area around it. This life regeneration is higher when applied to minions.",
       "display_name": "Summon Holy Relic",
       "id": "summon_relic",
       "is_manually_casted": true,
@@ -51161,7 +51951,8 @@
         "Area",
         "Triggered",
         "Duration",
-        "Physical"
+        "Physical",
+        "Nova"
       ],
       "stat_conversions": {},
       "types": [
@@ -51248,6 +52039,121 @@
         },
         {
           "id": "infinite_minion_duration",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "stored_uses": 1
+    },
+    "tags": [
+      "intelligence",
+      "grants_active_skill",
+      "minion",
+      "spell"
+    ]
+  },
+  {
+    "active_skill": {
+      "description": "Summon a Holy Relic that stays near you. When you hit an enemy with an attack, the Holy Relic triggers a spell with a short cooldown, that deals physical damage to enemies in an area around a nearby enemy.",
+      "display_name": "Summon Holy Relic of Conviction",
+      "id": "summon_relic_alt_x",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "minion_types": [
+        "Damage",
+        "Spell",
+        "Area",
+        "Triggered",
+        "Physical"
+      ],
+      "stat_conversions": {},
+      "types": [
+        "Triggerable",
+        "Mineable",
+        "Minion",
+        "MinionsCanExplode",
+        "Multicastable",
+        "Spell",
+        "Totemable",
+        "Trappable",
+        "CreatesMinion",
+        "Cooldown"
+      ],
+      "weapon_restrictions": []
+    },
+    "base_item": {
+      "display_name": "Summon Holy Relic",
+      "experience_type": "GemProgression4",
+      "id": "Metadata/Items/Gems/SkillGemSummonRelic",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "b",
+    "discriminator": "alt_x",
+    "display_name": "Summon Holy Relic of Conviction",
+    "is_support": false,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "Templar"
+      ],
+      "quest": "Breaking Some Eggs"
+    },
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "cooldown": 2000,
+      "quality_stats": [
+        {
+          "stat": "Minions have {minion_cooldown_recovery_+%}% increased Cooldown Recovery Rate",
+          "stats": {
+            "minion_cooldown_recovery_+%": 1000
+          }
+        }
+      ],
+      "stat_requirements": {
+        "dex": 0
+      },
+      "stat_text": {
+        "base_number_of_relics_allowed": "Maximum 2 Summoned Holy Relics",
+        "minions_cannot_taunt_enemies": "Minions cannot Taunt Enemies"
+      },
+      "stats": [
+        {
+          "id": "base_number_of_relics_allowed",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "display_minion_monster_type",
+          "type": "constant",
+          "value": 16
+        },
+        {
+          "id": "active_skill_minion_from_alternate_gem_index",
+          "type": "constant",
+          "value": 1
+        },
+        {
+          "id": "active_skill_minion_movement_velocity_+%_final",
+          "type": "additional"
+        },
+        {
+          "id": "base_display_minion_actor_level",
+          "type": "additional"
+        },
+        {
+          "id": "minions_cannot_taunt_enemies",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "infinite_minion_duration",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "holy_relic_targets_nearest_enemy",
           "type": "implicit",
           "value": 1
         }
@@ -52084,7 +52990,7 @@
       "max_level": 20,
       "release_state": "released"
     },
-    "cast_time": 350,
+    "cast_time": 750,
     "color": "b",
     "discriminator": "alt_x",
     "display_name": "Storm Brand of Indecision",
@@ -52099,12 +53005,12 @@
     "stat_translation_file": "stat_translations/skill",
     "static": {
       "crit_chance": 600,
-      "damage_effectiveness": -15,
+      "damage_effectiveness": -40,
       "quality_stats": [
         {
           "stat": "",
           "stats": {
-            "sigil_attached_target_hit_damage_+%_final": 1000
+            "sigil_attached_target_hit_damage_+%_final": 500
           }
         }
       ],
@@ -54700,8 +55606,8 @@
         "dex": 0
       },
       "stat_text": {
-        "active_skill_area_of_effect_+%_final": "30% less Area of Effect",
-        "divine_tempest_hit_damage_+%_final_per_stage\ndivine_tempest_ailment_damage_+%_final_per_stage\ndivine_tempest_no_beam": "Burst deals 100% more Damage with Hits per Stage after the first\nBurst deals 60% more Damage with Ailments per Stage after the first",
+        "active_skill_area_of_effect_+%_final": "20% less Area of Effect",
+        "divine_tempest_hit_damage_+%_final_per_stage\ndivine_tempest_ailment_damage_+%_final_per_stage\ndivine_tempest_no_beam": "Burst deals 120% more Damage with Hits per Stage after the first\nBurst deals 80% more Damage with Ailments per Stage after the first",
         "skill_physical_damage_%_to_convert_to_lightning": "50% of Physical Damage Converted to Lightning Damage"
       },
       "stats": [
@@ -54721,12 +55627,12 @@
         {
           "id": "divine_tempest_hit_damage_+%_final_per_stage",
           "type": "constant",
-          "value": 100
+          "value": 120
         },
         {
           "id": "divine_tempest_ailment_damage_+%_final_per_stage",
           "type": "constant",
-          "value": 60
+          "value": 80
         },
         {
           "id": "shock_art_variation",
@@ -54736,7 +55642,7 @@
         {
           "id": "active_skill_area_of_effect_+%_final",
           "type": "constant",
-          "value": -30
+          "value": -20
         },
         {
           "id": "divine_tempest_base_number_of_nearby_enemies_to_zap",
@@ -56960,7 +57866,7 @@
     "stat_translation_file": "stat_translations/skill",
     "static": {
       "crit_chance": 500,
-      "damage_effectiveness": 80,
+      "damage_effectiveness": 150,
       "quality_stats": [
         {
           "stat": "{skill_maximum_travel_distance_+%}% increased maximum travel distance",
@@ -57050,7 +57956,8 @@
         "Totemable",
         "Trappable",
         "Mineable",
-        "Multicastable"
+        "Multicastable",
+        "DynamicCooldown"
       ],
       "weapon_restrictions": []
     },
@@ -57079,7 +57986,7 @@
     "stat_translation_file": "stat_translations/skill",
     "static": {
       "crit_chance": 500,
-      "damage_effectiveness": 80,
+      "damage_effectiveness": 100,
       "quality_stats": [
         {
           "stat": "{frostblink_damage_+%_final_per_5%_chill_effect_on_target}% more Damage with Hits per 5% Chill Effect on Enemy",
@@ -57095,7 +58002,8 @@
       "stat_text": {
         "frostblink_damage_+%_final_per_5%_chill_effect_on_target": "15% more Damage with Hits per 5% Chill Effect on Enemy",
         "never_chill": "Cannot inflict Chill",
-        "remove_chill_on_enemy_when_you_hit": "Removes Chill after Damaging"
+        "remove_chill_on_enemy_when_you_hit": "Removes Chill after Damaging",
+        "spell_cast_time_added_to_cooldown_if_triggered": "This Spell's Cast Time is added to its Cooldown if Triggered"
       },
       "stats": [
         {
@@ -57127,6 +58035,11 @@
         },
         {
           "id": "never_chill",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "spell_cast_time_added_to_cooldown_if_triggered",
           "type": "implicit",
           "value": 1
         }
@@ -59774,6 +60687,7 @@
       "is_skill_totem": true,
       "skill_totem_life_multiplier": 1.0,
       "stat_conversions": {
+        "number_of_additional_shrapnel_ballistae_per_200_strength": "number_of_additional_totems_per_200_strength",
         "shrapnel_ballista_attack_speed_+%": "attack_speed_+%",
         "shrapnel_ballista_num_additional_arrows": "number_of_additional_projectiles",
         "shrapnel_ballista_num_pierce": "projectile_base_number_of_targets_to_pierce",
@@ -59919,6 +60833,7 @@
       "is_skill_totem": true,
       "skill_totem_life_multiplier": 1.0,
       "stat_conversions": {
+        "number_of_additional_shrapnel_ballistae_per_200_strength": "number_of_additional_totems_per_200_strength",
         "shrapnel_ballista_attack_speed_+%": "attack_speed_+%",
         "shrapnel_ballista_num_additional_arrows": "number_of_additional_projectiles",
         "shrapnel_ballista_num_pierce": "projectile_base_number_of_targets_to_pierce",
@@ -59963,7 +60878,7 @@
     },
     "stat_translation_file": "stat_translations/skill",
     "static": {
-      "attack_speed_multiplier": -60,
+      "attack_speed_multiplier": -50,
       "quality_stats": [
         {
           "stat": "{base_projectile_speed_+%}% increased Projectile Speed",
@@ -60524,6 +61439,305 @@
         },
         {
           "id": "quality_display_base_additional_arrows_is_gem",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "totem",
+      "area",
+      "fire",
+      "projectile",
+      "bow"
+    ]
+  },
+  {
+    "active_skill": {
+      "description": "Summons a ballista totem that propels a sequence of fiery arrows into the air. The arrows impact the ground in two perpendicular lines, each dealing area damage to enemies around it. Requires a Bow.",
+      "display_name": "Artillery Ballista of Cross Strafe",
+      "id": "artillery_ballista_totem_alt_x",
+      "is_manually_casted": true,
+      "is_skill_totem": true,
+      "skill_totem_life_multiplier": 1.0,
+      "stat_conversions": {
+        "artillery_ballista_fire_pen_+%": "base_reduce_enemy_fire_resistance_%",
+        "artillery_ballista_num_additional_arrows": "number_of_additional_projectiles",
+        "blast_rain_artillery_ballista_all_damage_can_poison": "all_damage_can_poison",
+        "blast_rain_artillery_ballista_poison_damage_+100%_final_chance": "poison_damage_+100%_final_chance"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Trappable",
+        "Mineable",
+        "SummonsTotem",
+        "Area",
+        "Fire",
+        "ProjectileNumber",
+        "ProjectileSpeed",
+        "AttackInPlaceIsDefault",
+        "TotemsAreBallistae"
+      ],
+      "weapon_restrictions": [
+        "Bow"
+      ]
+    },
+    "base_item": {
+      "display_name": "Artillery Ballista",
+      "experience_type": "GemProgression28",
+      "id": "Metadata/Items/Gems/SkillGemArtilleryBallista",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "discriminator": "alt_x",
+    "display_name": "Artillery Ballista of Cross Strafe",
+    "is_support": false,
+    "quest_reward": {
+      "act": 3,
+      "classes": [
+        "Ranger"
+      ],
+      "quest": "Sever the Right Hand"
+    },
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "attack_speed_multiplier": -50,
+      "quality_stats": [
+        {
+          "stat": "Fires {base_number_of_arrows} Arrows",
+          "stats": {
+            "base_number_of_arrows": 50
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": 0
+      },
+      "stat_text": {
+        "artillery_ballista_cross_strafe_pattern": "Arrows fall in two perpendicular lines",
+        "base_number_of_arrows\nquality_display_base_additional_arrows_is_gem": "Fires 6 Arrows",
+        "base_totem_duration": "Totem lasts 8 seconds",
+        "is_totem\nis_ranged_attack_totem": "Summons a Ballista Totem which uses this Skill",
+        "skill_physical_damage_%_to_convert_to_fire": "100% of Physical Damage Converted to Fire Damage"
+      },
+      "stats": [
+        {
+          "id": "base_totem_range",
+          "type": "constant",
+          "value": 80
+        },
+        {
+          "id": "base_totem_duration",
+          "type": "constant",
+          "value": 8000
+        },
+        {
+          "id": "base_number_of_arrows",
+          "type": "constant",
+          "value": 6
+        },
+        {
+          "id": "skill_physical_damage_%_to_convert_to_fire",
+          "type": "constant",
+          "value": 100
+        },
+        {
+          "id": "attack_skills_additional_ballista_totems_allowed",
+          "type": "additional"
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_skill_is_totemified",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_totem",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_can_fire_arrows",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_ranged_attack_totem",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_base_additional_arrows_is_gem",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "artillery_ballista_cross_strafe_pattern",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "totem",
+      "area",
+      "fire",
+      "projectile",
+      "bow"
+    ]
+  },
+  {
+    "active_skill": {
+      "description": "Summons a ballista totem that propels a number of fiery arrows into the air, each targeting a specific enemy. Arrows deal area damage to enemies around it on landing. Requires a Bow.",
+      "display_name": "Artillery Ballista of Focus Fire",
+      "id": "artillery_ballista_totem_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": true,
+      "skill_totem_life_multiplier": 1.0,
+      "stat_conversions": {
+        "artillery_ballista_fire_pen_+%": "base_reduce_enemy_fire_resistance_%",
+        "artillery_ballista_num_additional_arrows": "number_of_additional_projectiles",
+        "blast_rain_artillery_ballista_all_damage_can_poison": "all_damage_can_poison",
+        "blast_rain_artillery_ballista_poison_damage_+100%_final_chance": "poison_damage_+100%_final_chance"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Trappable",
+        "Mineable",
+        "SummonsTotem",
+        "Area",
+        "Fire",
+        "ProjectileNumber",
+        "ProjectileSpeed",
+        "AttackInPlaceIsDefault",
+        "TotemsAreBallistae"
+      ],
+      "weapon_restrictions": [
+        "Bow"
+      ]
+    },
+    "base_item": {
+      "display_name": "Artillery Ballista",
+      "experience_type": "GemProgression28",
+      "id": "Metadata/Items/Gems/SkillGemArtilleryBallista",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "discriminator": "alt_y",
+    "display_name": "Artillery Ballista of Focus Fire",
+    "is_support": false,
+    "quest_reward": {
+      "act": 3,
+      "classes": [
+        "Ranger"
+      ],
+      "quest": "Sever the Right Hand"
+    },
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "attack_speed_multiplier": -50,
+      "quality_stats": [
+        {
+          "stat": "Fires {base_number_of_arrows} Arrows",
+          "stats": {
+            "base_number_of_arrows": 50
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": 0
+      },
+      "stat_text": {
+        "base_number_of_arrows\nquality_display_base_additional_arrows_is_gem\nartillery_ballista_number_of_arrows_is_equal_to_number_of_nearby_targets": "Fires up to 5 Arrows at different targets",
+        "base_totem_duration": "Totem lasts 8 seconds",
+        "is_totem\nis_ranged_attack_totem": "Summons a Ballista Totem which uses this Skill",
+        "skill_physical_damage_%_to_convert_to_fire": "100% of Physical Damage Converted to Fire Damage"
+      },
+      "stats": [
+        {
+          "id": "base_totem_range",
+          "type": "constant",
+          "value": 80
+        },
+        {
+          "id": "base_totem_duration",
+          "type": "constant",
+          "value": 8000
+        },
+        {
+          "id": "base_number_of_arrows",
+          "type": "constant",
+          "value": 5
+        },
+        {
+          "id": "skill_physical_damage_%_to_convert_to_fire",
+          "type": "constant",
+          "value": 100
+        },
+        {
+          "id": "attack_skills_additional_ballista_totems_allowed",
+          "type": "additional"
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_skill_is_totemified",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_totem",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_can_fire_arrows",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_ranged_attack_totem",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_base_additional_arrows_is_gem",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "artillery_ballista_number_of_arrows_is_equal_to_number_of_nearby_targets",
           "type": "implicit",
           "value": 1
         }
@@ -63689,9 +64903,9 @@
     "static": {
       "quality_stats": [
         {
-          "stat": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at {active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value}% of their value",
+          "stat": "Projectile changes direction {kinetic_wand_base_number_of_zig_zags} times",
           "stats": {
-            "active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value": 2500
+            "kinetic_wand_base_number_of_zig_zags": 50
           }
         }
       ],
@@ -63700,17 +64914,11 @@
         "str": 0
       },
       "stat_text": {
-        "active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value\nquality_display_spell_damage_to_attack_damage_is_gem": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 200% of their value",
         "kinetic_bolt_forks_apply_to_zig_zags": "Modifiers which would cause projectiles to Fork instead cause them to change direction additional times",
         "kinetic_wand_base_number_of_zig_zags": "Projectile changes direction 2 times",
         "number_of_additional_projectiles": "Fires 2 additional Projectiles"
       },
       "stats": [
-        {
-          "id": "active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value",
-          "type": "constant",
-          "value": 200
-        },
         {
           "id": "kinetic_wand_base_number_of_zig_zags",
           "type": "constant",
@@ -63733,11 +64941,6 @@
         },
         {
           "id": "kinetic_bolt_forks_apply_to_zig_zags",
-          "type": "implicit",
-          "value": 1
-        },
-        {
-          "id": "quality_display_spell_damage_to_attack_damage_is_gem",
           "type": "implicit",
           "value": 1
         },
@@ -64253,9 +65456,9 @@
       "cost_multiplier": 100,
       "quality_stats": [
         {
-          "stat": "Supported Skills have {base_mana_cost_-%/negate}% increased Mana Cost",
+          "stat": "Supported Skills deal {spell_damage_+%}% increased Spell Damage",
           "stats": {
-            "base_mana_cost_-%": -500
+            "spell_damage_+%": 500
           }
         }
       ],
@@ -64264,26 +65467,17 @@
         "str": 0
       },
       "stat_text": {
-        "manaweave_cost_equals_%_unreserved_mana\nmanaweave_added_lightning_damage_%_cost_if_payable": "Supported Skills have base Mana Cost equal to 5% of Unreserved Maximum Mana, if that value is higher\nSupported Skills gain Added Lightning Damage equal to 75% of Mana Cost, if Mana Cost is not higher than the maximum you could spend"
+        "manaweave_cost_equals_%_unreserved_mana": "Supported Skills have added Mana Cost equal to 5% of Unreserved Maximum Mana"
       },
       "stats": [
-        {
-          "id": "global_minimum_added_lightning_damage",
-          "type": "float"
-        },
-        {
-          "id": "global_maximum_added_lightning_damage",
-          "type": "float"
-        },
         {
           "id": "manaweave_cost_equals_%_unreserved_mana",
           "type": "constant",
           "value": 5
         },
         {
-          "id": "manaweave_added_lightning_damage_%_cost_if_payable",
-          "type": "constant",
-          "value": 75
+          "id": "archmage_gain_lightning_damage_%_of_max_unreserved_mana",
+          "type": "additional"
         }
       ]
     },
@@ -64301,7 +65495,9 @@
         "RemoteMined",
         "HasReservation",
         "Vaal",
-        "Arcane"
+        "Arcane",
+        "Orb",
+        "Brand"
       ],
       "letter": "^",
       "supports_gems_only": false
@@ -64897,7 +66093,7 @@
   },
   {
     "active_skill": {
-      "description": "Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, adding energy to the branded enemy. When the branded enemy reaches 20 energy, a large explosion occurs and the brand is removed.",
+      "description": "Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, adding energy to the branded enemy. When the branded enemy reaches 20 energy, a large explosion occurs and the brand is removed. All energy is removed from the enemy when the brand is detached.",
       "display_name": "Penance Brand",
       "id": "penance_brand",
       "is_manually_casted": true,
@@ -65088,7 +66284,7 @@
     "stat_translation_file": "stat_translations/skill",
     "static": {
       "crit_chance": 600,
-      "damage_effectiveness": -35,
+      "damage_effectiveness": -50,
       "quality_stats": [
         {
           "stat": "",
@@ -65104,10 +66300,10 @@
         "additive_cast_speed_modifiers_apply_to_sigil_repeat_frequency": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
         "base_number_of_sigils_allowed_per_target": "Your Skills can have an additional Brand Attached to an Enemy",
         "base_secondary_skill_effect_duration": "Base secondary duration is 6.00 seconds",
-        "base_sigil_repeat_frequency_ms": "Activates every 0.6 seconds while Attached",
+        "base_sigil_repeat_frequency_ms": "Activates every 0.75 seconds while Attached",
         "base_skill_effect_duration": "Base duration is 5.00 seconds",
-        "magma_brand_ailment_damage_+%_final_per_additional_pustule": "Pulses deal 40% more Damage with Ailments per Energy after the first",
-        "magma_brand_hit_damage_+%_final_per_additional_pustule": "Pulses deal 60% more Damage with Hits per Energy after the first",
+        "magma_brand_ailment_damage_+%_final_per_additional_pustule": "Pulses deal 30% more Damage with Ailments per Energy after the first",
+        "magma_brand_hit_damage_+%_final_per_additional_pustule": "Pulses deal 30% more Damage with Hits per Energy after the first",
         "penance_brand_pulses_instead_of_explode": "+0.1 metres to Pulse radius per Energy",
         "skill_physical_damage_%_to_convert_to_lightning": "50% of Physical Damage Converted to Lightning Damage"
       },
@@ -65138,12 +66334,12 @@
         {
           "id": "magma_brand_ailment_damage_+%_final_per_additional_pustule",
           "type": "constant",
-          "value": 40
+          "value": 30
         },
         {
           "id": "magma_brand_hit_damage_+%_final_per_additional_pustule",
           "type": "constant",
-          "value": 60
+          "value": 30
         },
         {
           "id": "base_skill_effect_duration",
@@ -65153,7 +66349,7 @@
         {
           "id": "base_sigil_repeat_frequency_ms",
           "type": "constant",
-          "value": 600
+          "value": 750
         },
         {
           "id": "is_area_damage",
@@ -65958,7 +67154,7 @@
     "secondary_granted_effect": "GeneralsCrySupport",
     "stat_translation_file": "stat_translations/skill",
     "static": {
-      "cooldown": 4000,
+      "cooldown": 3000,
       "quality_stats": [
         {
           "stat": "Maximum {maximum_number_of_spiritual_cry_warriors} Summoned Mirage Warriors",
@@ -66562,7 +67758,7 @@
       },
       "stat_text": {
         "active_skill_base_area_of_effect_radius": "Base radius is 2.2 metres",
-        "base_blackhole_tick_rate_ms": "Pulses every 0.40 seconds",
+        "base_blackhole_tick_rate_ms": "Pulses every 0.30 seconds",
         "base_skill_effect_duration": "Base duration is 2.00 seconds",
         "skill_physical_damage_%_to_convert_to_chaos": "40% of Physical Damage Converted to Chaos Damage"
       },
@@ -66583,7 +67779,7 @@
         {
           "id": "base_blackhole_tick_rate_ms",
           "type": "constant",
-          "value": 400
+          "value": 300
         },
         {
           "id": "base_skill_effect_duration",
@@ -68543,8 +69739,7 @@
       "stat_text": {
         "base_chaos_damage_to_deal_per_minute": "Deals 758.3 Base Chaos Damage per second",
         "cast_on_gain_skill": "This Spell is Triggered when Gained",
-        "no_cost": "This Skill Costs nothing",
-        "spell_uncastable_if_triggerable": "You cannot Cast this Spell directly"
+        "no_cost": "This Skill Costs nothing"
       },
       "stats": [
         {
@@ -68980,7 +70175,7 @@
       "max_level": 20,
       "release_state": "released"
     },
-    "cast_time": 700,
+    "cast_time": 800,
     "color": "r",
     "discriminator": "alt_x",
     "display_name": "Exsanguinate of Transmission",
@@ -68995,12 +70190,12 @@
     "stat_translation_file": "stat_translations/skill",
     "static": {
       "crit_chance": 600,
-      "damage_effectiveness": -45,
+      "damage_effectiveness": -40,
       "quality_stats": [
         {
           "stat": "Base duration is {base_skill_effect_duration/milliseconds_to_seconds_2dp} seconds",
           "stats": {
-            "base_skill_effect_duration": 75000
+            "base_skill_effect_duration": 100000
           }
         }
       ],
@@ -72719,7 +73914,7 @@
   },
   {
     "active_skill": {
-      "description": "Each attack with this skill will choose an element at random, and will only be able to deal damage of that element. If the attack hits an enemy, it will also deal damage in an area around them, with the radius being larger if that enemy is suffering from an ailment of the chosen element. It will avoid choosing the same element twice in a row.",
+      "description": "Each attack with this skill will choose an element at random, and will only be able to deal damage of that element. If the attack hits an enemy, it will deal damage in an area around them, with the radius being larger if that enemy is suffering from an ailment of the chosen element. It will avoid choosing the same element twice in a row.",
       "display_name": "Elemental Hit",
       "id": "elemental_hit",
       "is_manually_casted": true,
@@ -72774,9 +73969,10 @@
         "str": 0
       },
       "stat_text": {
+        "active_skill_base_area_of_effect_radius": "Base radius is 1.3 metres",
         "elemental_hit_area_of_effect_+100%_final_vs_enemy_with_associated_ailment": "80% more Area Radius against Enemies affected by an Ailment of the chosen Element",
         "elemental_hit_damage_+%_final_per_enemy_elemental_ailment": "+10% more Damage per Elemental Ailment on the Enemy",
-        "elemental_hit_no_physical_chaos_damage": "Only Deals Damage of the chosen Element\nDeals no Damage of other Damage Types"
+        "elemental_hit_no_damage_of_unchosen_elemental_type": "Only Deals Damage of the chosen Element\nDeals no Damage of other Damage Types"
       },
       "stats": [
         {
@@ -72804,9 +74000,9 @@
           "type": "float"
         },
         {
-          "id": "active_skill_area_of_effect_radius_+%_final",
+          "id": "active_skill_base_area_of_effect_radius",
           "type": "constant",
-          "value": 30
+          "value": 13
         },
         {
           "id": "elemental_hit_damage_+%_final_per_enemy_elemental_ailment",
@@ -72838,6 +74034,11 @@
         },
         {
           "id": "elemental_hit_no_physical_chaos_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "elemental_hit_no_damage_of_unchosen_elemental_type",
           "type": "implicit",
           "value": 1
         }
@@ -74154,6 +75355,11 @@
           "value": 1
         },
         {
+          "id": "display_projectiles_chain_when_impacting_ground",
+          "type": "constant",
+          "value": 1
+        },
+        {
           "id": "number_of_chains",
           "type": "additional"
         },
@@ -74168,11 +75374,6 @@
         },
         {
           "id": "base_is_projectile",
-          "type": "implicit",
-          "value": 1
-        },
-        {
-          "id": "display_projectiles_chain_when_impacting_ground",
           "type": "implicit",
           "value": 1
         }
@@ -75193,7 +76394,7 @@
       "max_level": 10,
       "release_state": "released"
     },
-    "cast_time": 0,
+    "cast_time": 750,
     "color": "b",
     "display_name": "Vortex",
     "is_support": false,
@@ -75552,6 +76753,7 @@
       "is_skill_totem": true,
       "skill_totem_life_multiplier": 1.0,
       "stat_conversions": {
+        "number_of_additional_siege_ballistae_per_200_dexterity": "number_of_additional_totems_per_200_dexterity",
         "siege_and_shrapnel_ballista_attack_speed_+%_per_maximum_totem": "attack_speed_+%_per_maximum_totem",
         "siege_ballista_attack_speed_+%": "attack_speed_+%",
         "siege_ballista_damage_+%": "damage_+%",
@@ -75740,6 +76942,11 @@
           "id": "base_skill_effect_duration",
           "type": "constant",
           "value": 1750
+        },
+        {
+          "id": "trap_variation",
+          "type": "constant",
+          "value": 22
         },
         {
           "id": "active_skill_base_radius_+",
@@ -80615,7 +81822,7 @@
       },
       "stat_text": {
         "absolution_blast_chance_to_summon_on_hitting_rare_or_unique_%": "25% chance to Summon a Sentinel of Absolution on Hitting a Rare or Unique Enemy",
-        "active_skill_additive_minion_damage_modifiers_apply_to_all_damage_at_%_value": "Increases and Reductions to Minion Damage also apply\nto this Skill's Damage at 200% of their value",
+        "active_skill_additive_minion_damage_modifiers_apply_to_all_damage_at_%_value": "Increases and Reductions to Minion Damage also apply\nto this Skill's Damage at 250% of their value",
         "base_secondary_skill_effect_duration": "Base secondary duration is 10.00 seconds",
         "base_skill_effect_duration": "Base duration is 1.00 seconds",
         "max_number_of_absolution_sentinels": "Maximum 2 Summoned Sentinels of Absolution",
@@ -80668,7 +81875,7 @@
         {
           "id": "active_skill_additive_minion_damage_modifiers_apply_to_all_damage_at_%_value",
           "type": "constant",
-          "value": 200
+          "value": 250
         },
         {
           "id": "base_display_minion_actor_level",
@@ -80890,8 +82097,7 @@
         "str": 0
       },
       "stat_text": {
-        "cast_on_death_%": "100% chance to Trigger Supported Non-Minion Spells on Death",
-        "spell_uncastable_if_triggerable\nspell_only_castable_on_death": "You cannot Cast Supported Triggerable Spells directly"
+        "cast_on_death_%": "100% chance to Trigger Supported Non-Minion Spells on Death"
       },
       "stats": [
         {
@@ -87097,9 +88303,9 @@
       },
       "quality_stats": [
         {
-          "stat": "Deals up to {shield_crush_damage_+%_final_from_distance}% more Damage with Hits to closer targets",
+          "stat": "Central wave has {shield_crush_helmet_enchantment_aoe_+%_final}% more Area of Effect",
           "stats": {
-            "shield_crush_damage_+%_final_from_distance": 500
+            "shield_crush_helmet_enchantment_aoe_+%_final": 2000
           }
         }
       ],
@@ -88304,7 +89510,7 @@
       },
       "stat_text": {
         "active_skill_base_area_of_effect_radius": "Base radius is 1.8 metres",
-        "additional_base_critical_strike_chance": "+8% to Critical Strike Chance",
+        "additional_base_critical_strike_chance": "+10% to Critical Strike Chance",
         "flask_throw_charges_used_per_projectile": "Can consume Charges from Ruby, Sapphire, and Topaz Flasks\nConsumes 1 Charge per Projectile Fired from 1 Flask of each valid type, if possible"
       },
       "stats": [
@@ -88335,7 +89541,7 @@
         {
           "id": "additional_base_critical_strike_chance",
           "type": "constant",
-          "value": 800
+          "value": 1000
         },
         {
           "id": "flask_throw_charges_used_per_projectile",
@@ -88934,6 +90140,161 @@
   },
   {
     "active_skill": {
+      "description": "Throws a single bottle that releases a burst when it hits the ground, dealing unarmed attack damage in an area with a chance to poison. The skill chains, bouncing randomly to deal damage multiple times. Can consume charges from a Life flask to add further damage. Requires an empty main hand, and no off-hand weapon.",
+      "display_name": "Poisonous Concoction of Bouncing",
+      "id": "poisonous_concoction_alt_x",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "poisonous_concoction_damage_+%": "damage_+%",
+        "poisonous_concoction_flask_charges_consumed_+%": "flask_charges_used_+%",
+        "poisonous_concoction_skill_area_of_effect_+%": "base_skill_area_of_effect_+%"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Area",
+        "Triggerable",
+        "Chaos",
+        "Damage",
+        "Projectile",
+        "ProjectilesFromUser",
+        "RequiresOffHandNotWeapon",
+        "Chains"
+      ],
+      "weapon_restrictions": [
+        "Unarmed"
+      ]
+    },
+    "base_item": {
+      "display_name": "Poisonous Concoction",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemPoisonousConcoction",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "discriminator": "alt_x",
+    "display_name": "Poisonous Concoction of Bouncing",
+    "is_support": false,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "Ranger"
+      ],
+      "quest": "The Siren's Cadence"
+    },
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "quality_stats": [
+        {
+          "stat": "{withered_on_hit_for_2_seconds_%_chance}% chance to inflict Withered for 2 seconds on Hit",
+          "stats": {
+            "withered_on_hit_for_2_seconds_%_chance": 1000
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": 0
+      },
+      "stat_text": {
+        "active_skill_base_area_of_effect_radius": "Base radius is 1.8 metres",
+        "additional_base_critical_strike_chance": "+6% to Critical Strike Chance",
+        "base_chance_to_poison_on_hit_%": "40% chance to Poison on Hit",
+        "display_flask_throw_allowed_flask_types\nflask_throw_charges_used_per_projectile": "Consumes 8 Charges per Projectile Fired from 1 Life Flask, if possible",
+        "display_projectiles_chain_when_impacting_ground": "Projectiles can Chain when impacting the ground\nProjectiles Chain in random directions",
+        "modifiers_to_number_of_projectiles_instead_apply_to_chaining": "Modifiers to number of Projectiles instead apply to the number of times this Skill Chains",
+        "number_of_chains": "Chains +2 Times"
+      },
+      "stats": [
+        {
+          "id": "attack_minimum_added_chaos_damage",
+          "type": "float"
+        },
+        {
+          "id": "attack_maximum_added_chaos_damage",
+          "type": "float"
+        },
+        {
+          "id": "additional_base_critical_strike_chance",
+          "type": "constant",
+          "value": 600
+        },
+        {
+          "id": "base_chance_to_poison_on_hit_%",
+          "type": "constant",
+          "value": 40
+        },
+        {
+          "id": "display_flask_throw_allowed_flask_types",
+          "type": "constant",
+          "value": 1
+        },
+        {
+          "id": "flask_throw_charges_used_per_projectile",
+          "type": "constant",
+          "value": 8
+        },
+        {
+          "id": "active_skill_base_area_of_effect_radius",
+          "type": "constant",
+          "value": 18
+        },
+        {
+          "id": "number_of_chains",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "display_projectiles_chain_when_impacting_ground",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "flask_throw_added_chaos_damage_%_of_flask_life_to_recover",
+          "type": "additional"
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "console_skill_dont_chase",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "visual_hit_effect_chaos_is_green",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "modifiers_to_number_of_projectiles_instead_apply_to_chaining",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "area",
+      "chaos",
+      "projectile",
+      "chaining"
+    ]
+  },
+  {
+    "active_skill": {
       "description": "[DNT] Call the wild. Maybe it will answer.",
       "display_name": "[DNT] Call of the Wild",
       "id": "call_of_the_wild",
@@ -89165,7 +90526,7 @@
         "number_of_tornados_allowed": "Maximum 1 Tornado",
         "tornado_base_damage_interval_ms": "Deals Damage every 0.25 seconds",
         "tornado_damage_absorbed_%": "Reflects 10% of Damage Taken to Enemies",
-        "tornado_hinder": "",
+        "tornado_hinder": "Enemies in range are Hindered",
         "tornado_maximum_number_of_hits": "During initial Duration, can be hit by your Projectiles up to 20 times"
       },
       "stats": [
@@ -89246,6 +90607,154 @@
       "physical",
       "area",
       "orb"
+    ]
+  },
+  {
+    "active_skill": {
+      "description": "Create a Tornado of a random element that hinders and repeatedly damages enemies around it, converting physical damage to its element. The Tornado will chase down enemies for a duration.",
+      "display_name": "Tornado of Elemental Turbulence",
+      "id": "tornado_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "tornado_damage_+%": "damage_+%",
+        "tornado_skill_area_of_effect_+%": "base_skill_area_of_effect_+%"
+      },
+      "types": [
+        "Spell",
+        "Duration",
+        "Trappable",
+        "Totemable",
+        "Mineable",
+        "Triggerable",
+        "Damage",
+        "Physical",
+        "Area",
+        "Orb",
+        "AreaSpell",
+        "Fire",
+        "Cold",
+        "Lightning",
+        "RandomElement",
+        "Multicastable",
+        "CanRapidFire"
+      ],
+      "weapon_restrictions": []
+    },
+    "base_item": {
+      "display_name": "Tornado",
+      "experience_type": "GemProgression34",
+      "id": "Metadata/Items/Gems/SkillGemTornado",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 750,
+    "color": "g",
+    "discriminator": "alt_y",
+    "display_name": "Tornado of Elemental Turbulence",
+    "is_support": false,
+    "quest_reward": {
+      "act": 4,
+      "classes": [
+        "Ranger",
+        "Shadow"
+      ],
+      "quest": "Breaking the Seal"
+    },
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": 500,
+      "damage_effectiveness": -35,
+      "quality_stats": [
+        {
+          "stat": "Tornado has {tornado_movement_speed_+%}% increased Movement Speed",
+          "stats": {
+            "tornado_movement_speed_+%": 2000
+          }
+        }
+      ],
+      "stat_requirements": {
+        "str": 0
+      },
+      "stat_text": {
+        "base_skill_effect_duration": "Base duration is 4.00 seconds",
+        "elemental_strike_physical_damage_%_to_convert": "100% of Physical Damage Converted to Fire, Cold or Lightning Damage",
+        "number_of_tornados_allowed": "Maximum 3 Tornadoes",
+        "tornado_base_damage_interval_ms": "Deals Damage every 0.25 seconds",
+        "tornado_hinder": "Enemies in range are Hindered"
+      },
+      "stats": [
+        {
+          "id": "spell_minimum_base_physical_damage",
+          "type": "float"
+        },
+        {
+          "id": "spell_maximum_base_physical_damage",
+          "type": "float"
+        },
+        {
+          "id": "tornado_base_damage_interval_ms",
+          "type": "constant",
+          "value": 250
+        },
+        {
+          "id": "number_of_tornados_allowed",
+          "type": "constant",
+          "value": 3
+        },
+        {
+          "id": "skill_override_pvp_scaling_time_ms",
+          "type": "constant",
+          "value": 1000
+        },
+        {
+          "id": "base_skill_effect_duration",
+          "type": "constant",
+          "value": 4000
+        },
+        {
+          "id": "elemental_strike_physical_damage_%_to_convert",
+          "type": "constant",
+          "value": 100
+        },
+        {
+          "id": "tornado_movement_speed_+%",
+          "type": "additional"
+        },
+        {
+          "id": "skill_can_add_multiple_charges_per_action",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "damage_cannot_be_reflected_or_leech_if_used_by_other_object",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "tornado_hinder",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "spell",
+      "duration",
+      "physical",
+      "area",
+      "orb",
+      "fire",
+      "cold",
+      "lightning",
+      "random_element"
     ]
   },
   {
@@ -90586,7 +92095,7 @@
       },
       "stat_text": {
         "base_chance_to_shock_%_from_skill\nquality_display_shock_chance_from_skill_is_gem": "Aura grants 20% chance to Shock",
-        "base_galvanic_field_beam_delay_ms": "Fires a beam every 0.40 seconds",
+        "base_galvanic_field_beam_delay_ms": "Fires a beam every 0.30 seconds",
         "base_skill_effect_duration": "Base duration is 6.00 seconds",
         "galvanic_field_maximum_number_of_spheres": "Maximum 1 Field",
         "galvanic_field_retargeting_delay_ms": "Can target each enemy only once every 0.80 seconds",
@@ -90624,7 +92133,7 @@
         {
           "id": "base_galvanic_field_beam_delay_ms",
           "type": "constant",
-          "value": 400
+          "value": 300
         },
         {
           "id": "never_shock",
@@ -93062,7 +94571,7 @@
         {
           "stat": "{skill_area_angle_+%}% increased Area of Effect angle",
           "stats": {
-            "skill_area_angle_+%": 3000
+            "skill_area_angle_+%": 4000
           }
         }
       ],
@@ -95001,6 +96510,203 @@
       "attack",
       "strength",
       "support"
+    ]
+  },
+  {
+    "active_skill": {
+      "description": "While this skill is active, supported spells will be repeatedly triggered.",
+      "display_name": "Automation",
+      "id": "automation",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {},
+      "types": [
+        "Spell",
+        "Instant",
+        "HasReservation",
+        "Cooldown"
+      ],
+      "weapon_restrictions": []
+    },
+    "base_item": {
+      "display_name": "Automation",
+      "experience_type": "GemProgression24",
+      "id": "Metadata/Items/Gems/SkillGemAutomation",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 0,
+    "color": "b",
+    "display_name": "Automation",
+    "is_support": false,
+    "secondary_granted_effect": "SupportAutomation",
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "cooldown": 600,
+      "quality_stats": [],
+      "stat_requirements": {
+        "str": 0
+      },
+      "stat_text": {
+        "automation_behaviour": "Each Supported Spell will Trigger when its Cooldown is over"
+      },
+      "stats": [
+        {
+          "id": "automation_behaviour",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "stored_uses": 1
+    },
+    "tags": [
+      "trigger",
+      "intelligence",
+      "grants_active_skill",
+      "spell"
+    ]
+  },
+  {
+    "active_skill": {
+      "description": "While this skill is active, a supported warcry will be repeatedly triggered, and all your warcry skills will share cooldowns.",
+      "display_name": "Call to Arms",
+      "id": "call_to_arms",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {},
+      "types": [
+        "Spell",
+        "Instant",
+        "HasReservation",
+        "Cooldown"
+      ],
+      "weapon_restrictions": []
+    },
+    "base_item": {
+      "display_name": "Call to Arms",
+      "experience_type": "GemProgression24",
+      "id": "Metadata/Items/Gems/SkillGemCallToArms",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 0,
+    "color": "r",
+    "display_name": "Call to Arms",
+    "is_support": false,
+    "secondary_granted_effect": "SupportCallToArms",
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "cooldown": 600,
+      "quality_stats": [],
+      "stat_requirements": {
+        "dex": 0,
+        "int": 0
+      },
+      "stat_text": {
+        "call_to_arms_behaviour": "A Supported Warcry will Trigger when their Cooldown is over",
+        "warcry_skills_share_cooldowns": "All your Warcries share their Cooldowns"
+      },
+      "stats": [
+        {
+          "id": "call_to_arms_behaviour",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "warcry_skills_share_cooldowns",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "stored_uses": 1
+    },
+    "tags": [
+      "warcry",
+      "trigger",
+      "strength",
+      "grants_active_skill",
+      "spell"
+    ]
+  },
+  {
+    "base_item": {
+      "display_name": "Sacred Wisps Support",
+      "experience_type": "GemProgression18",
+      "id": "Metadata/Items/Gems/SupportGemSacredWisps",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "color": "b",
+    "display_name": "Sacred Wisps Support",
+    "is_support": true,
+    "quest_reward": {
+      "act": 2,
+      "classes": [
+        "Witch"
+      ],
+      "quest": "Sharp and Cruel"
+    },
+    "secondary_granted_effect": "SummonSacredWisp",
+    "stat_translation_file": "stat_translations/support_gem",
+    "static": {
+      "cost_multiplier": 140,
+      "quality_stats": [
+        {
+          "stat": "Supported Skills deal {attack_damage_+%}% increased Attack Damage",
+          "stats": {
+            "attack_damage_+%": 500
+          }
+        }
+      ],
+      "stat_requirements": {
+        "dex": 0,
+        "str": 0
+      },
+      "stat_text": {
+        "summon_sacred_wisps_on_hit": "Supported Skills will Trigger Summon Sacred Wisps on Hit",
+        "supported_skill_can_only_use_wand": "Supported Skills can only be used with Wands"
+      },
+      "stats": [
+        {
+          "id": "skill_used_by_sacred_wisp_damage_+%_final",
+          "type": "additional"
+        },
+        {
+          "id": "summon_sacred_wisps_on_hit",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "supported_skill_can_only_use_wand",
+          "type": "implicit",
+          "value": 1
+        }
+      ]
+    },
+    "support_gem": {
+      "added_minion_types": null,
+      "added_types": null,
+      "allowed_types": [
+        "RangedAttack"
+      ],
+      "excluded_types": [
+        "Vaal",
+        "SummonsTotem",
+        "Trapped",
+        "RemoteMined",
+        "Minion"
+      ],
+      "letter": "M",
+      "supports_gems_only": false
+    },
+    "tags": [
+      "attack",
+      "intelligence",
+      "support",
+      "grants_active_skill",
+      "trigger",
+      "duration",
+      "spell"
     ]
   },
   {

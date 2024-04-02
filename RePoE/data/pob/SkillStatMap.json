@@ -72,9 +72,9 @@
   "skill_physical_damage_%_to_convert_to_cold":[{
       "name":"SkillPhysicalDamageConvertToCold"
     }],
-  "damage_+%_while_life_leeching":[[{
+  "damage_+%_while_mana_leeching":[[{
         "type":"Condition",
-        "var":"LeechingLife"
+        "var":"LeechingMana"
       }]],
   "base_avoid_stun_%":[{
       "name":"AvoidStun"
@@ -132,10 +132,8 @@
         "key":"CritMultiplier"
       }
     }],
-  "mine_projectile_speed_+%_per_frenzy_charge":[{
-      "1":[],
-      "name":"ProjectileSpeed",
-      "keywordFlags":8192
+  "faster_burn_%":[{
+      "name":"IgniteBurnFaster"
     }],
   "spell_maximum_base_cold_damage_+_per_10_intelligence":[{
       "1":{
@@ -259,14 +257,9 @@
   "base_fire_damage_resistance_%":[{
       "name":"FireResist"
     }],
-  "override_off_hand_base_critical_strike_chance_to_5%":{
-    "1":{
-      "value":{
-        "key":"setOffHandBaseCritChance"
-      }
-    },
-    "value":5
-  },
+  "skill_lightning_damage_%_to_convert_to_chaos":[{
+      "name":"SkillLightningDamageConvertToChaos"
+    }],
   "support_cast_on_mana_spent":[{
       "1":[],
       "2":[],
@@ -364,8 +357,8 @@
   "chance_to_deal_double_damage_%":[{
       "name":"DoubleDamageChance"
     }],
-  "reduce_enemy_elemental_resistance_%":[{
-      "name":"ElementalPenetration"
+  "chance_to_be_pierced_%":[{
+      "name":"SelfPierceChance"
     }],
   "base_life_leech_from_chaos_damage_permyriad":[{
       "name":"ChaosDamageLifeLeech"
@@ -508,7 +501,9 @@
       "name":"EnemySapEffect"
     }],
   "minimum_added_cold_damage_per_frenzy_charge":[[[]]],
-  "buff_effect_duration_+%_per_removable_endurance_charge_limited_to_5":[[[]]],
+  "buff_effect_duration_+%_per_removable_endurance_charge_limited_to_5":[[{
+        "limit":5
+      }]],
   "skill_triggered_by_snipe":[{
       "1":[],
       "value":{
@@ -549,8 +544,8 @@
   "chaos_dot_multiplier_+":[{
       "name":"ChaosDotMultiplier"
     }],
-  "modifiers_to_projectile_count_do_not_apply":[{
-      "name":"NoAdditionalProjectiles"
+  "projectiles_always_pierce_you":[{
+      "name":"AlwaysPierceSelf"
     }],
   "base_minion_duration_+%":[[{
         "skillType":88
@@ -614,7 +609,9 @@
       "name":"FireMin"
     }],
   "global_maximum_added_lightning_damage":[[]],
-  "base_projectile_speed_+%":[[]],
+  "base_projectile_speed_+%":[{
+      "name":"ProjectileSpeed"
+    }],
   "active_skill_base_tertiary_area_of_effect_radius":[{
       "value":{
         "key":"radiusTertiary"
@@ -681,10 +678,15 @@
   "base_number_of_spectres_allowed":[{
       "name":"ActiveSpectreLimit"
     }],
-  "modifiers_to_number_of_projectiles_instead_apply_to_splitting":[[],{
+  "modifiers_to_number_of_projectiles_instead_apply_to_splitting":[{
+      "name":"NoAdditionalProjectiles"
+    },{
       "name":"AdditionalProjectilesAddSplitsInstead"
     }],
-  "mine_critical_strike_chance_+%_per_power_charge":[[[]]],
+  "mine_critical_strike_chance_+%_per_power_charge":[{
+      "1":[],
+      "keywordFlags":8192
+    }],
   "additional_base_critical_strike_chance":[[]],
   "link_buff_effect_on_self_+%":[{
       "name":"LinkEffectOnSelf"
@@ -1015,8 +1017,8 @@
   "lightning_ailment_duration_+%":[[],{
       "name":"EnemySapDuration"
     }],
-  "mana_leech_on_any_damage_when_hit_permyriad":[{
-      "name":"SelfDamageManaLeech"
+  "chance_to_be_frozen_%":[{
+      "name":"SelfFreezeChance"
     }],
   "base_mana_cost_-%":[{
       "name":"ManaCost"
@@ -1040,9 +1042,12 @@
     }],
   "melee_physical_damage_+%":[[]],
   "curse_effect_+%":[[]],
+  "projectiles_cannot_split":[{
+      "name":"CannotSplit"
+    }],
   "hit_damage_+%":[[]],
-  "base_inflict_fire_exposure_on_hit_%_chance":[{
-      "name":"FireExposureChance"
+  "display_this_skill_cooldown_does_not_recover_during_buff":[{
+      "name":"NoCooldownRecoveryInDuration"
     }],
   "base_stun_duration_+%":[{
       "name":"EnemyStunDuration"
@@ -1123,7 +1128,7 @@
       "1":[],
       "name":"PierceAllTargets"
     }],
-  "spell_minimum_added_cold_damage":[[]],
+  "spell_minimum_added_fire_damage":[[]],
   "base_cooldown_speed_+%":[[]],
   "melee_counterattack_trigger_on_block_%":[{
       "1":[],
@@ -1173,6 +1178,7 @@
     }],
   "quality_display_trap_duration_is_gem":[],
   "quality_display_sigil_attached_target_damage_is_gem":[],
+  "quality_display_animate_weapon_is_gem":[],
   "active_skill_cast_speed_+%_final":[[]],
   "aura_effect_+%":[[]],
   "support_makes_skill_mine_pvp_damage_+%_final":[{
@@ -1189,23 +1195,26 @@
       "1":[],
       "name":"PhysicalDegen"
     }],
-  "quality_display_animate_weapon_is_gem":[],
+  "quality_display_base_number_of_projectiles_is_gem":[],
   "cold_damage_%_to_add_as_fire":[{
       "name":"ColdDamageGainAsFire"
     }],
   "supported_curse_skill_gem_level_+":[{
       "value":[]
     }],
-  "quality_display_base_number_of_projectiles_is_gem":[],
-  "chance_to_be_frozen_%":[{
-      "name":"SelfFreezeChance"
+  "life_granted_when_killed":[{
+      "name":"SelfLifeOnKill"
     }],
   "quality_display_base_additional_arrows_is_gem":[],
+  "additive_cast_speed_modifiers_apply_to_sigil_repeat_frequency":[],
   "lightning_damage_taken_+%":[{
       "name":"LightningDamageTaken"
     }],
-  "brand_cannot_be_recalled":[{
-      "name":"Condition:CannotRecallBrand"
+  "supported_aura_skill_gem_level_+":[{
+      "1":{
+        "skillType":43
+      },
+      "value":[]
     }],
   "additional_critical_strike_chance_permyriad_while_affected_by_elusive":[[{
         "var":"Elusive"
@@ -1214,15 +1223,10 @@
       },{
         "varList":["UsingSword","UsingAxe","UsingMace"]
       }]],
-  "supported_aura_skill_gem_level_+":[{
-      "1":{
-        "skillType":43
-      },
-      "value":[]
-    }],
+  "area_of_effect_+%_while_not_dual_wielding":[[[]]],
   "mine_laying_speed_+%":[[]],
   "active_skill_ailment_damage_+%_final":[[]],
-  "secondary_maximum_base_lightning_damage":[{
+  "secondary_minimum_base_lightning_damage":[{
       "value":[]
     }],
   "mana_leech_from_any_damage_permyriad":[[]],
@@ -1233,20 +1237,23 @@
     },{
       "name":"DealNoLightning"
     }],
-  "area_of_effect_+%_while_not_dual_wielding":[[[]]],
+  "attack_skills_additional_ballista_totems_allowed":[{
+      "1":{
+        "skillType":125
+      },
+      "name":"ActiveTotemLimit"
+    }],
   "base_physical_damage_%_to_convert_to_lightning":[{
       "name":"PhysicalDamageConvertToLightning"
     }],
   "active_skill_freeze_duration_+%_final":[[]],
-  "off_hand_local_minimum_added_fire_damage":[{
-      "value":{
-        "key":"setOffHandFireMin"
-      }
-    }],
   "base_cannot_be_damaged":[{
       "name":"Condition:CannotBeDamaged"
     }],
   "physical_damage_reduction_rating_+%":[[]],
+  "kill_enemy_on_hit_if_under_10%_life":[{
+      "name":"CullPercent"
+    }],
   "damage_+%_vs_enemies_on_full_life":[[{
         "var":"FullLife"
       }]],
@@ -1255,21 +1262,27 @@
         "mod":[]
       }
     }],
-  "kill_enemy_on_hit_if_under_10%_life":[{
-      "name":"CullPercent"
-    }],
   "base_added_cooldown_count":[{
       "name":"AdditionalCooldownUses"
+    }],
+  "base_bleed_on_hit_still_%_of_physical_damage_to_deal_per_minute":[{
+      "value":{
+        "key":"bleedBasePercent"
+      }
     }],
   "base_mana_regeneration_rate_per_minute":[{
       "name":"ManaRegen"
     }],
-  "active_skill_damage_+%_final_when_cast_on_frostbolt":[[[]]],
   "discharge_damage_+%_if_3_charge_types_removed":[[[],[],{
         "var":"RemovablePowerCharge"
       }]],
   "withered_on_hit_for_2_seconds_%_chance":[{
       "name":"Condition:CanWither"
+    }],
+  "minions_have_%_chance_to_inflict_wither_on_hit":[{
+      "value":{
+        "mod":[]
+      }
     }],
   "base_life_regeneration_rate_per_minute":[{
       "name":"LifeRegen"
@@ -1288,19 +1301,17 @@
         "key":"triggeredByMirageArcher"
       }
     }],
-  "minions_have_%_chance_to_inflict_wither_on_hit":[{
-      "value":{
-        "mod":[]
-      }
-    }],
   "withered_on_hit_chance_%":[[]],
   "damage_+%_if_you_have_consumed_a_corpse_recently":[[{
         "var":"ConsumedCorpseRecently"
       }]],
-  "stun_duration_+%_vs_enemies_that_are_on_full_life":[[[]]],
   "snipe_triggered_skill_damage_+%_final":[[]],
+  "stun_duration_+%_vs_enemies_that_are_on_full_life":[[[]]],
   "snipe_triggered_skill_hit_damage_+%_final_per_stage":[{
       "name":"snipeHitMulti"
+    }],
+  "snipe_triggered_skill_ailment_damage_+%_final_per_stage":[{
+      "name":"snipeAilmentMulti"
     }],
   "triggered_vicious_hex_explosion":[{
       "1":[],
@@ -1309,21 +1320,21 @@
         "key":"triggeredWhenHexEnds"
       }
     }],
-  "snipe_triggered_skill_ailment_damage_+%_final_per_stage":[{
-      "name":"snipeAilmentMulti"
-    }],
-  "damage_+%_while_es_leeching":[[{
-        "var":"LeechingEnergyShield"
-      }]],
   "channelled_skill_damage_+%":[[{
         "skillType":57
       }]],
+  "damage_+%_while_es_leeching":[[{
+        "var":"LeechingEnergyShield"
+      }]],
+  "secondary_maximum_base_fire_damage":[{
+      "value":[]
+    }],
   "spell_damage_+%":[[]],
   "brand_atttached_duration_is_infinite":[{
       "name":"UnlimitedBrandDuration"
     }],
-  "secondary_maximum_base_fire_damage":[{
-      "value":[]
+  "brand_cannot_be_recalled":[{
+      "name":"Condition:CannotRecallBrand"
     }],
   "critical_strike_chance_against_enemies_on_full_life_+%":[[[]]],
   "supported_minion_skill_gem_level_+":[{
@@ -1332,28 +1343,27 @@
       },
       "value":[]
     }],
-  "additive_cast_speed_modifiers_apply_to_sigil_repeat_frequency":[],
-  "spell_maximum_added_physical_damage":[[]],
   "base_sigil_repeat_frequency_ms":[{
       "value":{
         "key":"repeatFrequency"
       }
     }],
+  "spell_maximum_added_physical_damage":[[]],
   "active_skill_brands_allowed_on_enemy_+":[[]],
+  "base_reservation_efficiency_+%":[{
+      "name":"ReservationEfficiency"
+    }],
   "base_physical_damage_over_time_taken_+%":[{
       "name":"PhysicalDamageTakenOverTime"
     }],
-  "base_reservation_efficiency_+%":[{
-      "name":"ReservationEfficiency"
+  "base_life_reservation_efficiency_+%":[{
+      "name":"LifeReservationEfficiency"
     }],
   "shock_minimum_damage_taken_increase_%+":[{
       "name":"ShockMinimum"
     }],
   "number_of_melee_skeletons_to_summon":[{
       "name":"MinionPerCastCount"
-    }],
-  "base_life_reservation_efficiency_+%":[{
-      "name":"LifeReservationEfficiency"
     }],
   "base_mana_reservation_efficiency_+%":[{
       "name":"ManaReservationEfficiency"
@@ -1364,6 +1374,7 @@
   "base_life_reservation_+%":[{
       "name":"LifeReserved"
     }],
+  "active_skill_damage_+%_final_when_cast_on_frostbolt":[[[]]],
   "attack_skills_have_added_lightning_damage_equal_to_%_of_maximum_mana":[[{
         "type":"PercentStat",
         "stat":"Mana"
@@ -1372,13 +1383,11 @@
       "1":[],
       "value":[]
     }],
-  "arrow_base_number_of_targets_to_pierce":[[]],
+  "curse_cast_speed_+%":[[]],
   "cannot_poison_poisoned_enemies":[{
       "name":"Condition:SinglePoison"
     }],
-  "curse_cast_speed_+%":[[]],
   "curse_skill_effect_duration_+%":[[]],
-  "base_spell_cooldown_speed_+%":[[]],
   "triggered_by_spiritual_cry":[{
       "1":{
         "skillType":24
@@ -1388,11 +1397,17 @@
         "key":"triggeredByGeneralsCry"
       }
     }],
+  "base_spell_cooldown_speed_+%":[[]],
   "curse_effect_+%_vs_players":[{
       "name":"CurseEffectAgainstPlayer"
     }],
   "warcry_grant_damage_+%_to_exerted_attacks":[{
       "name":"ExertIncrease"
+    }],
+  "golem_cooldown_recovery_+%":[{
+      "value":{
+        "mod":[]
+      }
     }],
   "chance_to_double_stun_duration_%":[{
       "name":"DoubleEnemyStunDurationChance"
@@ -1405,17 +1420,14 @@
       "1":[],
       "value":[]
     }],
-  "golem_cooldown_recovery_+%":[{
-      "value":{
-        "mod":[]
-      }
-    }],
   "golem_buff_effect_+%":[[]],
   "base_physical_damage_reduction_rating":[[]],
   "number_of_mage_skeletons_to_summon":[[]],
-  "totems_regenerate_%_life_per_minute":[[]],
   "number_of_archer_skeletons_to_summon":[[]],
-  "offering_spells_effect_+%":[[]],
+  "totems_regenerate_%_life_per_minute":[[]],
+  "base_inflict_fire_exposure_on_hit_%_chance":[{
+      "name":"FireExposureChance"
+    }],
   "base_spell_cast_time_ms_override":[{
       "value":{
         "key":"castTimeOverride"
@@ -1433,13 +1445,13 @@
   "base_number_of_arbalists":[{
       "name":"ActiveArbalistLimit"
     }],
+  "base_number_of_golems_allowed":[{
+      "name":"ActiveGolemLimit"
+    }],
   "attack_speed_+%_with_atleast_20_rage":[[{
         "threshold":20,
         "var":"Rage"
       }]],
-  "base_number_of_golems_allowed":[{
-      "name":"ActiveGolemLimit"
-    }],
   "base_number_of_raging_spirits_allowed":[{
       "name":"ActiveRagingSpiritLimit"
     }],
@@ -1449,19 +1461,22 @@
   "base_number_of_zombies_allowed":[{
       "name":"ActiveZombieLimit"
     }],
-  "base_self_critical_strike_multiplier_-%":[{
-      "name":"SelfCritMultiplier"
-    }],
   "minion_ailment_damage_+%":[{
       "value":{
         "mod":[]
       }
+    }],
+  "base_self_critical_strike_multiplier_-%":[{
+      "name":"SelfCritMultiplier"
     }],
   "minion_life_regeneration_rate_per_minute_%":[{
       "value":{
         "mod":[]
       }
     }],
+  "active_skill_main_hand_weapon_damage_+%_final":[[{
+        "var":"MainHandAttack"
+      }]],
   "poison_duration_is_skill_duration":[{
       "value":{
         "key":"poisonDurationIsSkillDuration"
@@ -1472,18 +1487,14 @@
       "name":"ShockAsThoughDealing"
     }],
   "always_shock":[[]],
-  "active_skill_main_hand_weapon_damage_+%_final":[[{
-        "var":"MainHandAttack"
-      }]],
-  "warcry_speed_+%":[{
-      "name":"WarcrySpeed"
-    }],
   "summon_fire_resistance_+":[{
       "value":{
         "mod":[]
       }
     }],
-  "all_damage_can_freeze":[[],[],[],[]],
+  "warcry_speed_+%":[{
+      "name":"WarcrySpeed"
+    }],
   "minion_additional_physical_damage_reduction_%":[{
       "value":{
         "mod":{
@@ -1491,8 +1502,14 @@
         }
       }
     }],
-  "off_hand_maximum_added_fire_damage_per_15_shield_armour":[[[],[]]],
+  "all_damage_can_freeze":[[],[],[],[]],
   "minion_maximum_life_+%":[{
+      "value":{
+        "mod":[]
+      }
+    }],
+  "off_hand_maximum_added_fire_damage_per_15_shield_armour":[[[],[]]],
+  "minion_critical_strike_chance_+%":[{
       "value":{
         "mod":[]
       }
@@ -1505,24 +1522,19 @@
         "key":"duration"
       }
     }],
-  "minion_critical_strike_chance_+%":[{
-      "value":{
-        "mod":[]
-      }
-    }],
   "minion_damage_+%_on_full_life":[{
       "value":{
         "mod":[[]]
       }
     }],
-  "bleed_duration_is_skill_duration":[{
-      "value":{
-        "key":"bleedDurationIsSkillDuration"
-      }
-    }],
   "minion_melee_damage_+%":[{
       "value":{
         "mod":[]
+      }
+    }],
+  "bleed_duration_is_skill_duration":[{
+      "value":{
+        "key":"bleedDurationIsSkillDuration"
       }
     }],
   "unique_cospris_malice_cold_spells_triggered":[{
@@ -1541,18 +1553,20 @@
   "summon_totem_cast_speed_+%":[{
       "name":"TotemPlacementSpeed"
     }],
+  "off_hand_local_maximum_added_cold_damage":[{
+      "value":{
+        "key":"setOffHandColdMax"
+      }
+    }],
   "supported_lightning_skill_gem_level_+":[{
       "1":[],
       "value":[]
     }],
-  "attack_skills_additional_ballista_totems_allowed":[{
-      "1":{
-        "skillType":125
-      },
-      "name":"ActiveTotemLimit"
-    }],
   "number_of_additional_totems_allowed":[[]],
-  "base_penetrate_elemental_resistances_%":[[]],
+  "mine_projectile_speed_+%_per_frenzy_charge":[[[]]],
+  "base_penetrate_elemental_resistances_%":[{
+      "name":"ElementalPenetration"
+    }],
   "impale_debuff_effect_+%":[{
       "name":"ImpaleEffect"
     }],
@@ -1560,9 +1574,9 @@
   "base_number_of_totems_allowed":[[]],
   "attack_maximum_added_chaos_damage":[[]],
   "active_skill_area_damage_+%_final":[[]],
-  "off_hand_local_minimum_added_physical_damage":[{
+  "override_off_hand_base_critical_strike_chance_to_5%":[{
       "value":{
-        "key":"setOffHandPhysicalMin"
+        "key":"setOffHandBaseCritChance"
       }
     }],
   "triggered_skill_damage_+%":[{
@@ -1586,7 +1600,9 @@
       },
       "value":[]
     }],
-  "physical_damage_taken_+%":[[]],
+  "trauma_strike_self_damage_per_trauma":[{
+      "name":"TraumaSelfDamageTakenLife"
+    }],
   "attack_critical_strike_chance_+%":[[]],
   "nightblade_elusive_grants_critical_strike_multiplier_+_to_supported_skills":[{
       "1":{
@@ -1597,9 +1613,7 @@
       },
       "name":"NightbladeElusiveCritMultiplier"
     }],
-  "life_granted_when_killed":[{
-      "name":"SelfLifeOnKill"
-    }],
+  "cast_speed_+%_granted_from_skill":[[]],
   "no_mana_cost":{
     "1":[],
     "value":-100
@@ -1650,9 +1664,10 @@
   "base_chance_to_deal_triple_damage_%":[{
       "name":"TripleDamageChance"
     }],
-  "display_this_skill_cooldown_does_not_recover_during_buff":[{
-      "name":"NoCooldownRecoveryInDuration"
-    }],
+  "projectile_damage_+%_if_pierced_enemy":[[{
+        "type":"StatThreshold",
+        "stat":"PiercedCount"
+      }]],
   "skill_has_trigger_from_unique_item":[{
       "1":[],
       "value":{
@@ -1681,11 +1696,7 @@
         "skillType":74
       }]],
   "attack_maximum_added_physical_damage_with_weapons":[[]],
-  "base_bleed_on_hit_still_%_of_physical_damage_to_deal_per_minute":[{
-      "value":{
-        "key":"bleedBasePercent"
-      }
-    }],
+  "offering_spells_effect_+%":[[]],
   "base_skill_cost_life_instead_of_mana_%":[{
       "name":"HybridManaAndLifeCost_Life"
     }],
@@ -1793,9 +1804,7 @@
       }
     }],
   "active_skill_quality_duration_+%_final":[[]],
-  "projectile_behaviour_only_explode":[{
-      "name":"CannotSplit"
-    }],
+  "projectile_behaviour_only_explode":[[]],
   "global_poison_on_hit":[{
       "name":"PoisonChance"
     }],
@@ -1905,10 +1914,7 @@
       "1":[],
       "value":[]
     }],
-  "projectile_damage_+%_final_if_pierced_enemy":[[{
-        "type":"StatThreshold",
-        "stat":"PiercedCount"
-      }]],
+  "projectile_damage_+%_final_if_pierced_enemy":[[[]]],
   "consecrated_ground_enemy_damage_taken_+%":[{
       "1":[],
       "2":{
@@ -1924,9 +1930,7 @@
       }
     }],
   "freeze_duration_+%":[[]],
-  "chance_to_be_pierced_%":[{
-      "name":"SelfPierceChance"
-    }],
+  "physical_damage_taken_+%":[[]],
   "bleeding_damage_+%":[[]],
   "base_chance_to_poison_on_hit_%":[[]],
   "attack_maximum_added_cold_damage":[[]],
@@ -1936,7 +1940,8 @@
   "strong_casting":[{
       "name":"IronWill"
     }],
-  "secondary_minimum_base_lightning_damage":[{
+  "spell_minimum_base_cold_damage_per_removable_frenzy_charge":[{
+      "1":[],
       "value":[]
     }],
   "always_pierce":[[]],
@@ -1971,31 +1976,28 @@
   "base_mana_reservation_+%":[{
       "name":"ManaReserved"
     }],
+  "arrow_base_number_of_targets_to_pierce":[[]],
   "minimum_added_fire_damage_vs_ignited_enemies":[[[]]],
   "spell_maximum_base_fire_damage_per_removable_endurance_charge":[{
       "1":[],
       "value":[]
     }],
-  "damaging_ailments_deal_damage_+%_faster":[[],[],{
-      "name":"IgniteBurnFaster"
+  "chance_to_be_ignited_%":[{
+      "name":"SelfIgniteChance"
     }],
-  "projectile_damage_+%_if_pierced_enemy":[[[]]],
-  "spell_minimum_base_cold_damage_per_removable_frenzy_charge":[{
-      "1":[],
-      "value":[]
+  "modifiers_to_number_of_projectiles_instead_apply_to_chaining":[[],{
+      "name":"AdditionalProjectilesAddChainsInstead"
     }],
   "number_of_additional_curses_allowed":[{
       "name":"EnemyCurseLimit"
     }],
+  "modifiers_to_projectile_count_do_not_apply":[[]],
   "number_of_additional_projectiles":[[]],
   "base_reduce_enemy_fire_resistance_%":[{
       "name":"FirePenetration"
     }],
   "additional_beam_only_chains":[{
       "name":"BeamChainCountMax"
-    }],
-  "projectiles_always_pierce_you":[{
-      "name":"AlwaysPierceSelf"
     }],
   "mana_granted_when_killed":[{
       "name":"SelfManaOnKill"
@@ -2006,8 +2008,8 @@
   "skill_area_of_effect_+%_final_in_sand_stance":[[{
         "var":"SandStance"
       }]],
-  "skill_lightning_damage_%_to_convert_to_chaos":[{
-      "name":"SkillLightningDamageConvertToChaos"
+  "secondary_maximum_base_lightning_damage":[{
+      "value":[]
     }],
   "lightning_damage_cannot_shock":[{
       "name":"LightningCannotShock"
@@ -2019,28 +2021,28 @@
   "mana_granted_when_hit_by_attacks":[{
       "name":"SelfManaOnHit"
     }],
-  "chance_to_be_ignited_%":[{
-      "name":"SelfIgniteChance"
-    }],
   "off_hand_minimum_added_physical_damage_per_15_shield_armour_and_evasion_rating":[[[],[],{
         "statList":[]
       }]],
-  "cast_speed_+%_granted_from_skill":[[]],
-  "chance_to_bleed_on_hit_%_chance_in_blood_stance":[[[]]],
-  "trauma_strike_self_damage_per_trauma":[{
-      "name":"TraumaSelfDamageTakenLife"
+  "base_self_shock_duration_-%":[{
+      "name":"SelfShockDuration"
     }],
+  "mana_leech_on_any_damage_when_hit_permyriad":[{
+      "name":"SelfDamageManaLeech"
+    }],
+  "chance_to_bleed_on_hit_%_chance_in_blood_stance":[[[]]],
+  "reduce_enemy_elemental_resistance_%":[[]],
   "quality_display_base_duration_is_quality":[],
   "physical_weapon_damage_+%_per_10_str":[[[]]],
   "cannot_pierce":[{
       "name":"CannotPierce"
     }],
+  "damaging_ailments_deal_damage_+%_faster":[[],[],[]],
   "active_skill_base_area_of_effect_radius":[{
       "value":{
         "key":"radius"
       }
     }],
-  "spell_maximum_added_cold_damage":[[]],
   "accuracy_rating_+%":[[]],
   "attack_damage_+%":[[]],
   "base_mana_leech_from_elemental_damage_permyriad":[{
@@ -2057,9 +2059,9 @@
       "name":"UnarmedRange"
     }],
   "base_poison_damage_+%":[[]],
-  "off_hand_local_maximum_added_cold_damage":[{
+  "off_hand_local_minimum_added_physical_damage":[{
       "value":{
-        "key":"setOffHandColdMax"
+        "key":"setOffHandPhysicalMin"
       }
     }],
   "cannot_be_stunned_while_leeching":[{
@@ -2067,17 +2069,19 @@
         "var":"Leeching"
       }
     }],
-  "base_self_shock_duration_-%":[{
-      "name":"SelfShockDuration"
+  "off_hand_local_minimum_added_fire_damage":[{
+      "value":{
+        "key":"setOffHandFireMin"
+      }
     }],
   "off_hand_minimum_added_cold_damage_per_15_shield_evasion":[[[],[]]],
-  "damage_+%_while_mana_leeching":[[{
-        "var":"LeechingMana"
-      }]],
-  "faster_burn_%":[[]],
   "spells_impale_on_hit_%_chance":[[]],
+  "spell_maximum_added_cold_damage":[[]],
+  "spell_minimum_added_cold_damage":[[]],
   "base_deal_no_chaos_damage":[{
       "name":"DealNoChaos"
     }],
-  "spell_minimum_added_fire_damage":[[]]
+  "damage_+%_while_life_leeching":[[{
+        "var":"LeechingLife"
+      }]]
 }
