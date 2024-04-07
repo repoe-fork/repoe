@@ -95,6 +95,8 @@ def _convert(tr: Translation, tag_set: Set[str], all_trade_stats: dict[str, list
             "index_handlers": _convert_handlers(n_ids, s.quantifier.index_handlers),
             "reminder_text": next(iter(extra_strings.values())) if extra_strings else None,
         }
+        if "markup" in s.quantifier.string_handlers:
+            value["is_markup"] = True
         english.append(value)
     return {
         "ids": ids,
@@ -196,8 +198,7 @@ class stat_translations(Parser_Module):
                 write_json(result, self.data_path, out_file)
             except Exception:
                 print("Error processing", in_file)
-                # TODO: support markup TranslationQuantifier
-                # raise
+                raise
         print("Possible format tags: {}".format(tag_set))
 
 
