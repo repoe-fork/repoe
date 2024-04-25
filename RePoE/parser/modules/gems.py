@@ -266,14 +266,20 @@ class GemConverter:
             stats.append({"id": k["Id"], "value": 1, "type": "flag"})
         r["stats"] = stats
 
-        stat_text = {}
-        value_map = {v["id"]: v["value"] for v in stats if v["value"]}
-        trans = self.translation_file.get_translation(value_map.keys(), value_map, full_result=True, lang=self.language)
-        for i, stats in enumerate(trans.found_ids):
-            stats = [stat for stat in stats if value_map.get(stat, None)]
-            stat_text["\n".join(stats)] = trans.found_lines[i]
+        try:
+            stat_text = {}
+            value_map = {v["id"]: v["value"] for v in stats if v["value"]}
+            trans = self.translation_file.get_translation(
+                value_map.keys(), value_map, full_result=True, lang=self.language
+            )
+            for i, stats in enumerate(trans.found_ids):
+                stats = [stat for stat in stats if value_map.get(stat, None)]
+                stat_text["\n".join(stats)] = trans.found_lines[i]
 
-        r["stat_text"] = stat_text
+            r["stat_text"] = stat_text
+        except Exception:
+            print("Error processing stat text for", stats)
+            pass
 
         q_stats = []
         for ge in gesspl["GrantedEffects"]:
