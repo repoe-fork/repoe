@@ -13,9 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          sparse-checkout: .github
           token: ${{ secrets.VERSION_COMMIT_PAT }}
 
-      - run: rm .git/hooks/post-checkout
+      - run: rm .git/hooks/*
 
       - name: Run GitHub Actions Version Updater
         uses: saadmk11/github-actions-version-updater@v0.8.1
