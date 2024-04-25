@@ -101,7 +101,7 @@ class stat_translations(Parser_Module):
                 result.append(value)
             except Exception:
                 print("Error processing", s)
-                raise
+                continue
 
         return {
             "ids": ids,
