@@ -244,7 +244,7 @@ class base_items(Parser_Module):
             }
             _convert_flask_buff(flask_types[item_id], root[item_id])
 
-            if item["ItemVisualIdentity"]["DDSFile"]:
+            if self.language == "English" and item["ItemVisualIdentity"]["DDSFile"]:
                 export_image(item["ItemVisualIdentity"]["DDSFile"], self.data_path, self.file_system)
 
         print(f"Skipped the following item classes for base_items {skipped_item_classes}")
