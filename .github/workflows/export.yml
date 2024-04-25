@@ -14,30 +14,30 @@ jobs:
 
     steps:
     - name: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4.1.4
       with:
         path: RePoE
     - name: checkout pypoe
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4.1.4
       with:
         repository: lvlvllvlvllvlvl/PyPoE
         path: PyPoE
     - name: checkout pob
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4.1.4
       with:
         repository: PathOfBuildingCommunity/PathOfBuilding
         path: PathOfBuilding
-    - uses: leafo/gh-actions-lua@v9
+    - uses: leafo/gh-actions-lua@v10.0.0
       with:
         luaVersion: luajit
-    - uses: leafo/gh-actions-luarocks@v4
+    - uses: leafo/gh-actions-luarocks@v4.3.0
     - name: install a lua dependencies
       run: |
         luarocks install dkjson
     - name: Install poetry
       run: pipx install poetry
     - name: setup python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5.1.0
       with:
         python-version: '3.11'
         cache: poetry
@@ -60,14 +60,14 @@ jobs:
       working-directory: RePoE/RePoE/data/
     - name: commit changes
       id: autocommit
-      uses: stefanzweifel/git-auto-commit-action@v4
+      uses: stefanzweifel/git-auto-commit-action@v5.0.1
       with:
         repository: RePoE
         commit_message: "[skip ci] Automated export"
     - id: date
       run: echo "ym=$(date +'%Y-%m')" >> "$GITHUB_OUTPUT"
     - name: lfs cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4.0.2
       if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
       with:
         path: |
@@ -79,7 +79,7 @@ jobs:
       working-directory: RePoE
     - name: upload gh-pages artifact
       if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
-      uses: actions/upload-pages-artifact@v1
+      uses: actions/upload-pages-artifact@v3.0.1
       with:
         path: RePoE/RePoE/data/
 
@@ -100,9 +100,9 @@ jobs:
     steps:
       - name: deploy gh-pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4.0.5
       - name: trigger poetrage
-        uses: peter-evans/repository-dispatch@v2
+        uses: peter-evans/repository-dispatch@v3.0.0
         with:
           token: ${{ secrets.VERSION_COMMIT_PAT }}
           repository: lvlvllvlvllvlvl/poetrage
