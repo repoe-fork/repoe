@@ -64,6 +64,15 @@ jobs:
       with:
         repository: RePoE
         commit_message: "[skip ci] Automated export"
+    - id: date
+      run: echo "ym=$(date +'%Y-%m')" >> "$GITHUB_OUTPUT"
+    - name: lfs cache
+      uses: actions/cache@v3
+      if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
+      with:
+        path: |
+          .git/lfs
+        key: lfs-${{ steps.date.outputs.ym }}
     - name: lfs pull
       if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
       run: git lfs pull
