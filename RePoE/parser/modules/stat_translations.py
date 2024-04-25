@@ -20,123 +20,117 @@ from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, get_stat_translation_file_name, write_json
 
 
-def _convert_tags(n_ids: int, tags: List[int], tags_types: List[str]) -> List[str]:
-    f = ["ignore" for _ in range(n_ids)]
-    for tag, tag_type in zip(tags, tags_types):
-        if tag_type == "+d":
-            f[tag] = "+#"
-        elif tag_type == "d":
-            f[tag] = "#"
-        elif tag_type == "":
-            f[tag] = "#"
-        else:
-            print("Unknown tag type:", tag_type)
-    return f
+class stat_translations(Parser_Module):
+    def _convert_tags(self, n_ids: int, tags: List[int], tags_types: List[str]) -> List[str]:
+        f = ["ignore" for _ in range(n_ids)]
+        for tag, tag_type in zip(tags, tags_types):
+            if tag_type == "+d":
+                f[tag] = "+#"
+            elif tag_type == "d":
+                f[tag] = "#"
+            elif tag_type == "":
+                f[tag] = "#"
+            else:
+                print("Unknown tag type:", tag_type)
+        return f
 
+    def _convert_range(self, translation_range: List[TranslationRange]) -> Union[List[Dict[str, int]], List[Dict]]:
+        rs = []
+        for r in translation_range:
+            r_dict = {}
+            if r.min is not None:
+                r_dict["min"] = r.min
+            if r.max is not None:
+                r_dict["max"] = r.max
+            if r.negated:
+                r_dict["negated"] = True
+            rs.append(r_dict)
+        return rs
 
-def _convert_range(translation_range: List[TranslationRange]) -> Union[List[Dict[str, int]], List[Dict]]:
-    rs = []
-    for r in translation_range:
-        r_dict = {}
-        if r.min is not None:
-            r_dict["min"] = r.min
-        if r.max is not None:
-            r_dict["max"] = r.max
-        if r.negated:
-            r_dict["negated"] = True
-        rs.append(r_dict)
-    return rs
+    def _convert_handlers(self, n_ids: int, index_handlers: Dict) -> Union[List[List[str]], List[List]]:
+        hs: List[List[str]] = [[] for _ in range(n_ids)]
+        for handler_name, ids in index_handlers.items():
+            for i in ids:
+                # Indices in the handler dict are 1-based
+                hs[i - 1].append(handler_name)
+        return hs
 
+    def _convert(self, tr: Translation, tag_set: Set[str], all_trade_stats: dict[str, list[dict]]) -> Dict[str, Any]:
+        ids = tr.ids
+        n_ids = len(ids)
+        result = []
+        trade_stats = defaultdict(list)
+        for s in tr.get_language(self.language).strings:
+            tags = self._convert_tags(n_ids, s.tags, s.tags_types)
+            tag_set.update(tags)
 
-def _convert_handlers(n_ids: int, index_handlers: Dict) -> Union[List[List[str]], List[List]]:
-    hs: List[List[str]] = [[] for _ in range(n_ids)]
-    for handler_name, ids in index_handlers.items():
-        for i in ids:
-            # Indices in the handler dict are 1-based
-            hs[i - 1].append(handler_name)
-    return hs
+            def placeholder(*_):
+                return "#"
 
-
-def _convert(tr: Translation, tag_set: Set[str], all_trade_stats: dict[str, list[dict]]) -> Dict[str, Any]:
-    ids = tr.ids
-    n_ids = len(ids)
-    english = []
-    trade_stats = defaultdict(list)
-    for s in tr.get_language("English").strings:
-        tags = _convert_tags(n_ids, s.tags, s.tags_types)
-        tag_set.update(tags)
-
-        def placeholder(*_):
-            return "#"
-
-        trade_format, _, _, extra_strings, _ = s.format_string(
-            [1 for _ in s.translation.ids],
-            [False for _ in s.translation.ids],
-            use_placeholder=placeholder,
-        )
-        if trade_format in all_trade_stats:
-            for trade_stat in all_trade_stats[trade_format]:
-                trade_stats[trade_stat["id"]] = trade_stat
-        elif "\n" in trade_format:
-            for line in trade_format.splitlines():
-                if line in all_trade_stats:
-                    for trade_stat in all_trade_stats[line]:
-                        trade_stats[trade_stat["id"]] = trade_stat
-        else:
-            trade_format = re.sub(r"\d+", "#", trade_format)
+            trade_format, _, _, extra_strings, _ = s.format_string(
+                [1 for _ in s.translation.ids],
+                [False for _ in s.translation.ids],
+                use_placeholder=placeholder,
+            )
             if trade_format in all_trade_stats:
                 for trade_stat in all_trade_stats[trade_format]:
                     trade_stats[trade_stat["id"]] = trade_stat
+            elif "\n" in trade_format:
+                for line in trade_format.splitlines():
+                    if line in all_trade_stats:
+                        for trade_stat in all_trade_stats[line]:
+                            trade_stats[trade_stat["id"]] = trade_stat
+            else:
+                trade_format = re.sub(r"\d+", "#", trade_format)
+                if trade_format in all_trade_stats:
+                    for trade_stat in all_trade_stats[trade_format]:
+                        trade_stats[trade_stat["id"]] = trade_stat
 
-        value = {
-            "condition": _convert_range(s.range),
-            "string": s.as_format_string,
-            "format": tags,
-            "index_handlers": _convert_handlers(n_ids, s.quantifier.index_handlers),
-            "reminder_text": next(iter(extra_strings.values())) if extra_strings else None,
+            value = {
+                "condition": self._convert_range(s.range),
+                "string": s.as_format_string,
+                "format": tags,
+                "index_handlers": self._convert_handlers(n_ids, s.quantifier.index_handlers),
+                "reminder_text": next(iter(extra_strings.values())) if extra_strings else None,
+            }
+            if "markup" in s.quantifier.string_handlers:
+                value["is_markup"] = True
+            result.append(value)
+        return {
+            "ids": ids,
+            self.language: result,
+            "trade_stats": list(trade_stats.values()) if trade_stats else None,
         }
-        if "markup" in s.quantifier.string_handlers:
-            value["is_markup"] = True
-        english.append(value)
-    return {
-        "ids": ids,
-        "English": english,
-        "trade_stats": list(trade_stats.values()) if trade_stats else None,
-    }
 
+    def _get_stat_translations(
+        self, tag_set: Set[str], translations: List[Translation], custom_translations: List[Translation], trade_stats
+    ) -> List[Dict[str, Any]]:
+        previous = set()
+        root = []
+        for tr in translations:
+            id_str = " ".join(tr.ids)
+            if id_str in previous:
+                print("Duplicate id", tr.ids)
+                continue
+            previous.add(id_str)
+            root.append(self._convert(tr, tag_set, trade_stats))
+        for tr in custom_translations:
+            id_str = " ".join(tr.ids)
+            if id_str in previous:
+                continue
+            previous.add(id_str)
+            result = self._convert(tr, tag_set, trade_stats)
+            result["hidden"] = True
+            root.append(result)
+        return root
 
-def _get_stat_translations(
-    tag_set: Set[str], translations: List[Translation], custom_translations: List[Translation], trade_stats
-) -> List[Dict[str, Any]]:
-    previous = set()
-    root = []
-    for tr in translations:
-        id_str = " ".join(tr.ids)
-        if id_str in previous:
-            print("Duplicate id", tr.ids)
-            continue
-        previous.add(id_str)
-        root.append(_convert(tr, tag_set, trade_stats))
-    for tr in custom_translations:
-        id_str = " ".join(tr.ids)
-        if id_str in previous:
-            continue
-        previous.add(id_str)
-        result = _convert(tr, tag_set, trade_stats)
-        result["hidden"] = True
-        root.append(result)
-    return root
+    def _build_stat_translation_file_map(self, file_system: FileSystem) -> Iterator[Tuple[str, str]]:
+        node = file_system.build_directory()
+        for game_file in node["Metadata"]["StatDescriptions"].children.keys():
+            out_file = get_stat_translation_file_name(game_file)
+            if out_file:
+                yield game_file, out_file
 
-
-def _build_stat_translation_file_map(file_system: FileSystem) -> Iterator[Tuple[str, str]]:
-    node = file_system.build_directory()
-    for game_file in node["Metadata"]["StatDescriptions"].children.keys():
-        out_file = get_stat_translation_file_name(game_file)
-        if out_file:
-            yield game_file, out_file
-
-
-class stat_translations(Parser_Module):
     def write(self) -> None:
         install_data_dependant_quantifiers(self.relational_reader)
 
@@ -189,10 +183,11 @@ class stat_translations(Parser_Module):
                 trade_stats[k] = sorted(v, key=lambda v: v.get("id", ""))
 
         tag_set: Set[str] = set()
-        for in_file, out_file in _build_stat_translation_file_map(self.file_system):
+
+        for in_file, out_file in self._build_stat_translation_file_map(self.file_system):
             try:
                 translations = self.get_cache(TranslationFileCache)[in_file].translations
-                result = _get_stat_translations(
+                result = self._get_stat_translations(
                     tag_set, translations, get_custom_translation_file().translations, trade_stats
                 )
                 write_json(result, self.data_path, out_file)

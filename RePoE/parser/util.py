@@ -31,6 +31,7 @@ def write_json(
     data_path: str,
     file_name: str,
 ) -> None:
+    os.makedirs(os.path.join(data_path, *file_name.split("/")[:-1]), exist_ok=True)
     print("Writing '" + str(file_name) + ".json' ...", end="", flush=True)
     json.dump(root_obj, io.open(data_path + file_name + ".json", mode="w"), indent=2, sort_keys=True)
     print(" Done!")
@@ -68,14 +69,18 @@ def load_file_system(ggpk_path: str) -> FileSystem:
     return FileSystem(ggpk_path)
 
 
-def create_relational_reader(file_system: FileSystem) -> RelationalReader:
+def create_relational_reader(file_system: FileSystem, language: str) -> RelationalReader:
     opt = {
         "use_dat_value": False,
         "auto_build_index": True,
         "x64": True,
     }
     return RelationalReader(
-        path_or_file_system=file_system, files=["Stats.dat64"], specification=generated.specification, read_options=opt
+        path_or_file_system=file_system,
+        files=["Stats.dat64"],
+        specification=generated.specification,
+        read_options=opt,
+        language=language,
     )
 
 

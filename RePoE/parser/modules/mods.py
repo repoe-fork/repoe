@@ -73,7 +73,7 @@ class mods(Parser_Module):
         for mod in self.relational_reader["Mods.dat64"]:
             domain = MOD_DOMAIN_FIX.get(mod["Id"], mod["Domain"])
 
-            lines = get_translation(mod, translation_cache).lines
+            lines = get_translation(mod, translation_cache, lang=self.language).lines
 
             obj = {
                 "required_level": mod["Level"],

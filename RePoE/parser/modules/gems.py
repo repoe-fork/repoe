@@ -115,9 +115,11 @@ class GemConverter:
         file_system: FileSystem,
         relational_reader: RelationalReader,
         translation_file_cache: TranslationFileCache,
+        language: str,
     ) -> None:
         self.relational_reader = relational_reader
         self.translation_file_cache = translation_file_cache
+        self.language = language
 
         self.gepls: Dict[str, List[DatRecord]] = {}
         for gepl in self.relational_reader["GrantedEffectsPerLevel.dat64"]:
@@ -266,7 +268,7 @@ class GemConverter:
 
         stat_text = {}
         value_map = {v["id"]: v["value"] for v in stats if v["value"]}
-        trans = self.translation_file.get_translation(value_map.keys(), value_map, full_result=True)
+        trans = self.translation_file.get_translation(value_map.keys(), value_map, full_result=True, lang=self.language)
         for i, stats in enumerate(trans.found_ids):
             stats = [stat for stat in stats if value_map.get(stat, None)]
             stat_text["\n".join(stats)] = trans.found_lines[i]
@@ -287,7 +289,7 @@ class GemConverter:
                     tag_count = -1
                     for value in sorted(set([min(1000, abs(v)) for v in stats.values() if v] + [25])):
                         trans = self.translation_file.get_translation(
-                            stats.keys(), {k: v / value for k, v in stats.items()}, full_result=True
+                            stats.keys(), {k: v / value for k, v in stats.items()}, full_result=True, lang=self.language
                         )
                         tags = sum(len(i.tags) for i in trans.string_instances)
                         if sum(len(i.tags) for i in trans.string_instances) > tag_count:
@@ -438,7 +440,9 @@ class gems(Parser_Module):
         gems: dict[str, dict] = {}
         skill_gems = []
         relational_reader = self.relational_reader
-        converter = GemConverter(self.file_system, relational_reader, self.get_cache(TranslationFileCache))
+        converter = GemConverter(
+            self.file_system, relational_reader, self.get_cache(TranslationFileCache), self.language
+        )
         xp: Dict[int, Dict[int, int]] = {}
         rewards: Dict[int, Dict[str, Any]] = {}
 

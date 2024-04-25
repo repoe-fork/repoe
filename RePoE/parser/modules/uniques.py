@@ -88,11 +88,16 @@ def get_wiki_data():
 class uniques(Parser_Module):
     def write(self) -> None:
         root = {}
-        html = """<!DOCTYPE html>
+        html = (
+            """<!DOCTYPE html>
 <html>
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
- <title>Unique Icons</title>
+ <title>"""
+            + escape(
+                self.relational_reader["ClientStrings.dat64"].index["Id"]["TutorialPanelRarityTiersSubtitle1"]["Text"]
+            )
+            + """</title>
  <style type="text/css">
   BODY { font-family : monospace, sans-serif;  color: black;}
   A:visited { text-decoration : none; margin : 0px; padding : 0px;}
@@ -102,9 +107,11 @@ class uniques(Parser_Module):
  </style>
 </head>
 <body>"""
+        )
         for item in self.relational_reader["UniqueStashLayout.dat64"]:
-            name = item["WordsKey"]["Text"]
+            name = item["WordsKey"]["Text2"]
             root[item.rowid] = {
+                "id": item["WordsKey"]["Text"],
                 "name": name,
                 "item_class": item["UniqueStashTypesKey"]["Id"],
                 "inventory_width": item[5] or item["UniqueStashTypesKey"]["Width"],
@@ -113,10 +120,10 @@ class uniques(Parser_Module):
                 "renamed_version": item["RenamedVersion"]
                 and {
                     "rowid": item["RenamedVersion"].rowid,
-                    "name": item["RenamedVersion"]["WordsKey"]["Text"],
+                    "name": item["RenamedVersion"]["WordsKey"]["Text2"],
                 },
                 "base_version": item["BaseVersion"]
-                and {"rowid": item["BaseVersion"].rowid, "name": item["BaseVersion"]["WordsKey"]["Text"]},
+                and {"rowid": item["BaseVersion"].rowid, "name": item["BaseVersion"]["WordsKey"]["Text2"]},
                 "visual_identity": {
                     "id": item["ItemVisualIdentityKey"]["Id"],
                     "dds_file": item["ItemVisualIdentityKey"]["DDSFile"],
@@ -137,8 +144,9 @@ class uniques(Parser_Module):
         )
 
         write_json(root, self.data_path, "uniques")
-        write_json(get_wiki_data(), self.data_path, "uniques_poewiki")
         write_text(html, self.data_path, "uniques.html")
+        if self.language == "English":
+            write_json(get_wiki_data(), self.data_path, "uniques_poewiki")
 
 
 if __name__ == "__main__":

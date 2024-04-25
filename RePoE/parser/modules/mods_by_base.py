@@ -105,9 +105,10 @@ class mods_by_base(Parser_Module):
         item_class_map = {k.replace(" ", "") + "_ModsKey": k for k in item_classes}
         item_class_map["OneHandThrustingSword_ModsKey"] = "Thrusting One Hand Sword"
         for essence in essences:
-            name = essence["BaseItemTypesKey"]["Name"]
-            if name == "Remnant of Corruption":
+            essence_item = essence["BaseItemTypesKey"]
+            if essence_item["Id"] == "Metadata/Items/Currency/CurrencyCorruptMonolith":
                 continue
+            name = essence_item["Name"]
             level = name.split()[0]
             type = name.split()[-1]
             for key in keys:
