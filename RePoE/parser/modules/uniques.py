@@ -130,7 +130,7 @@ class uniques(Parser_Module):
                 },
             }
 
-            if item["ItemVisualIdentityKey"]["DDSFile"]:
+            if self.language == "English" and item["ItemVisualIdentityKey"]["DDSFile"]:
                 ddsfile: str = item["ItemVisualIdentityKey"]["DDSFile"]
                 name = escape(name) + (" (Alternate Art)" if item["IsAlternateArt"] else "")
                 html = html + f"\n\t<a href='{quote(ddsfile.replace('.dds', '.png'))}'>{name}</a><br>"
