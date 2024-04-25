@@ -24,14 +24,16 @@ class stat_translations(Parser_Module):
     def _convert_tags(self, n_ids: int, tags: List[int], tags_types: List[str]) -> List[str]:
         f = ["ignore" for _ in range(n_ids)]
         for tag, tag_type in zip(tags, tags_types):
-            if tag_type == "+d":
+            if tag >= n_ids:
+                continue
+            if tag_type in ["+", "+d"]:
                 f[tag] = "+#"
             elif tag_type == "d":
                 f[tag] = "#"
             elif tag_type == "":
                 f[tag] = "#"
             else:
-                print("Unknown tag type:", tag_type)
+                raise Exception("Unknown tag type:", tag_type)
         return f
 
     def _convert_range(self, translation_range: List[TranslationRange]) -> Union[List[Dict[str, int]], List[Dict]]:
@@ -61,41 +63,46 @@ class stat_translations(Parser_Module):
         result = []
         trade_stats = defaultdict(list)
         for s in tr.get_language(self.language).strings:
-            tags = self._convert_tags(n_ids, s.tags, s.tags_types)
-            tag_set.update(tags)
+            try:
+                tags = self._convert_tags(n_ids, s.tags, s.tags_types)
+                tag_set.update(tags)
 
-            def placeholder(*_):
-                return "#"
+                def placeholder(*_):
+                    return "#"
 
-            trade_format, _, _, extra_strings, _ = s.format_string(
-                [1 for _ in s.translation.ids],
-                [False for _ in s.translation.ids],
-                use_placeholder=placeholder,
-            )
-            if trade_format in all_trade_stats:
-                for trade_stat in all_trade_stats[trade_format]:
-                    trade_stats[trade_stat["id"]] = trade_stat
-            elif "\n" in trade_format:
-                for line in trade_format.splitlines():
-                    if line in all_trade_stats:
-                        for trade_stat in all_trade_stats[line]:
-                            trade_stats[trade_stat["id"]] = trade_stat
-            else:
-                trade_format = re.sub(r"\d+", "#", trade_format)
+                trade_format, _, _, extra_strings, _ = s.format_string(
+                    [1 for _ in s.translation.ids],
+                    [False for _ in s.translation.ids],
+                    use_placeholder=placeholder,
+                )
                 if trade_format in all_trade_stats:
                     for trade_stat in all_trade_stats[trade_format]:
                         trade_stats[trade_stat["id"]] = trade_stat
+                elif "\n" in trade_format:
+                    for line in trade_format.splitlines():
+                        if line in all_trade_stats:
+                            for trade_stat in all_trade_stats[line]:
+                                trade_stats[trade_stat["id"]] = trade_stat
+                else:
+                    trade_format = re.sub(r"\d+", "#", trade_format)
+                    if trade_format in all_trade_stats:
+                        for trade_stat in all_trade_stats[trade_format]:
+                            trade_stats[trade_stat["id"]] = trade_stat
 
-            value = {
-                "condition": self._convert_range(s.range),
-                "string": s.as_format_string,
-                "format": tags,
-                "index_handlers": self._convert_handlers(n_ids, s.quantifier.index_handlers),
-                "reminder_text": next(iter(extra_strings.values())) if extra_strings else None,
-            }
-            if "markup" in s.quantifier.string_handlers:
-                value["is_markup"] = True
-            result.append(value)
+                value = {
+                    "condition": self._convert_range(s.range),
+                    "string": s.as_format_string,
+                    "format": tags,
+                    "index_handlers": self._convert_handlers(n_ids, s.quantifier.index_handlers),
+                    "reminder_text": next(iter(extra_strings.values())) if extra_strings else None,
+                }
+                if "markup" in s.quantifier.string_handlers:
+                    value["is_markup"] = True
+                result.append(value)
+            except Exception:
+                print("Error processing", s)
+                raise
+
         return {
             "ids": ids,
             self.language: result,

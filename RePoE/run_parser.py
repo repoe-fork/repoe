@@ -55,7 +55,7 @@ def main():
 
         for name in selected_module_names:
             parser_module = next(m for m in modules if m.__name__ == name)
-            print("Running module '%s'" % parser_module.__name__)
+            print(f"Running module '{parser_module.__name__}' ({language})")
             parser_module(file_system=file_system, data_path=data_path, relational_reader=rr, language=language).write()
 
     # This forces the globals to be up to date with what we just parsed,
