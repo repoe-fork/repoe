@@ -1,5 +1,5 @@
+from importlib import import_module
 import io
-import json
 import os
 import traceback
 from hashlib import md5
@@ -10,6 +10,7 @@ from PIL import Image
 from PyPoE.poe.file.dat import RelationalReader
 from PyPoE.poe.file.file_system import FileSystem
 from PyPoE.poe.file.specification.data import generated
+from pydantic import BaseModel
 
 from RePoE import __DATA_PATH__
 from RePoE.parser import Parser_Module
@@ -31,27 +32,29 @@ def write_json(
     data_path: str,
     file_name: str,
 ) -> None:
+    model_name = file_name.split("/")[0]
+    mod = import_module("RePoE.model." + model_name)
+    try:
+        write_model(mod.Model(root_obj), data_path, file_name)
+    except Exception:
+        print("Model:", mod.__file__, "Schema:", os.path.abspath(f"./schema/{model_name}.schema.json"))
+        raise
+
+
+def write_model(
+    root_obj: BaseModel,
+    data_path: str,
+    file_name: str,
+) -> None:
     os.makedirs(os.path.join(data_path, *file_name.split("/")[:-1]), exist_ok=True)
     print("Writing '" + str(file_name) + ".json' ...", end="", flush=True)
-    json.dump(root_obj, io.open(data_path + file_name + ".json", mode="w"), indent=2, sort_keys=True)
+    with io.open(data_path + file_name + ".json", mode="w") as out:
+        out.write(root_obj.model_dump_json(indent=2))
     print(" Done!")
     print("Writing '" + str(file_name) + ".min.json' ...", end="", flush=True)
-    json.dump(
-        minimize(root_obj),
-        io.open(data_path + file_name + ".min.json", mode="w"),
-        separators=(",", ":"),
-        sort_keys=True,
-    )
+    with io.open(data_path + file_name + ".min.json", mode="w") as out:
+        out.write(root_obj.model_dump_json(exclude_unset=True, exclude_none=True))
     print(" Done!")
-
-
-def minimize(value):
-    if isinstance(value, dict):
-        return {k: minimize(v) for k, v in value.items() if v is not None}
-    elif isinstance(value, list):
-        return [minimize(v) for v in value]
-    else:
-        return value
 
 
 def write_text(

@@ -34,7 +34,7 @@ class lab_layout(Parser_Module):
 
     def areas(self, areas, difficulty):
         if not areas:
-            return None
+            return []
         match difficulty:
             case 1:
                 return [area["Id"] for area in areas["Normal_WorldAreasKeys"]]

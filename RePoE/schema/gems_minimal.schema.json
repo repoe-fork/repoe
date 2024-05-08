@@ -302,21 +302,24 @@
             "title": "Reservations"
         },
         "StatRequirements": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "dex": {
-                    "type": "integer"
+            "allOf": [
+                {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
                 },
-                "str": {
-                    "type": "integer"
-                },
-                "int": {
-                    "type": "integer"
+                {
+                    "type": "object",
+                    "properties": {
+                        "int": true,
+                        "str": true,
+                        "dex": true
+                    }
                 }
-            },
-            "required": [],
-            "title": "StatRequirements"
+            ],
+            "title": "StatRequirements",
+            "$comment": "workaround for https://github.com/pydantic/pydantic/issues/8240, should just be 3 integer properties"
         },
         "Stat": {
             "type": "object",

@@ -110,7 +110,7 @@ class uniques(Parser_Module):
         )
         for item in self.relational_reader["UniqueStashLayout.dat64"]:
             name = item["WordsKey"]["Text2"]
-            root[item.rowid] = {
+            root[str(item.rowid)] = {
                 "id": item["WordsKey"]["Text"],
                 "name": name,
                 "item_class": item["UniqueStashTypesKey"]["Id"],

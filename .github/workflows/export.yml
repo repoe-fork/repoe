@@ -49,10 +49,20 @@ jobs:
       run: |
         find PathOfBuilding/src/Data/ -type d | sed 's|PathOfBuilding/src/Data|RePoE/RePoE/data/pob|g' | while read DIR; do mkdir -p $DIR; done
         find PathOfBuilding/src/Data/ -name '*.lua' -exec lua RePoE/lua/Generate.lua '{}' RePoE/RePoE/data/pob/ \;
-    - name: install and run repoe
+    - name: install repoe
       run: |
         poetry install
         poetry run pypoe_schema_import -a stable
+      working-directory: RePoE/RePoE
+    - name: update models
+      run: |
+        for i in *.schema.json
+        do
+          poetry run datamodel-codegen --input $i --input-file-type jsonschema --output ../model/${i/.schema.json/.py} --output-model-type pydantic_v2.BaseModel
+        done
+      working-directory: RePoE/RePoE/schema
+    - name: run export
+      run: |
         poetry run repoe all -l all -f "https://patch.poecdn.com/$(<version.txt)/"
       working-directory: RePoE/RePoE
     - name: generate index.html

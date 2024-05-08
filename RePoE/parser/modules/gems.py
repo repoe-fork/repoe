@@ -417,14 +417,14 @@ class GemConverter:
         gepls_dict = {}
         for gepl in gepls:
             gepl_converted = self._convert_gepl(gepl, gess, gesspls[gepl["Level"]], multipliers, is_support, xp)
-            gepls_dict[gepl["Level"]] = gepl_converted
+            gepls_dict[str(gepl["Level"])] = gepl_converted
         obj["per_level"] = gepls_dict
 
         # GrantedEffectsPerLevel that do not change with level
         # makes using the json harder, but makes the json *a lot* smaller (would be like 3 times larger)
         obj["static"] = {}
         if len(gepls) >= 1:
-            representative = gepls_dict[gepls[0]["Level"]]
+            representative = gepls_dict[str(gepls[0]["Level"])]
             static, _ = _handle_dict(representative, gepls_dict.values())
             if static is not None:
                 obj["static"] = static
