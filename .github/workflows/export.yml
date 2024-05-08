@@ -60,6 +60,7 @@ jobs:
         do
           poetry run datamodel-codegen --input $i --input-file-type jsonschema --output ../model/${i/.schema.json/.py} --output-model-type pydantic_v2.BaseModel
         done
+        poetry run generate-schema-doc ./ ../data/
       working-directory: RePoE/RePoE/schema
     - name: run export
       run: |
