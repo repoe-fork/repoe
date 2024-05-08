@@ -3,7 +3,16 @@ from collections import OrderedDict
 
 import requests
 
-
+from RePoE.model.mods_by_base import (
+    EssenceModLevels,
+    EssenceMods,
+    ItemClasses,
+    ModTypes,
+    ModWeights,
+    SynthModGroups,
+    TagSet,
+    TagSets,
+)
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, write_json
 
@@ -29,7 +38,7 @@ include_classes = set(
 
 class mods_by_base(Parser_Module):
     def write(self) -> None:
-        root = {}
+        root = ItemClasses({})
 
         with open(self.data_path + "base_items.min.json") as f:
             base_items: dict[str, dict] = json.load(f)
@@ -48,10 +57,10 @@ class mods_by_base(Parser_Module):
             influence_tags = item_class.get("influence_tags", [])
             if not (influence_tags or item_class.get("category_id", None) in include_classes):
                 continue
-            by_class: dict = root.setdefault(item_class["name"], {})
-            by_tags: dict = by_class.setdefault(",".join(base["tags"]), {})
-            by_tags.setdefault("bases", []).append(base_id)
-            mods_data: dict = by_tags.setdefault("mods", {})
+            by_class = root.root.setdefault(item_class["name"], TagSets({}))
+            by_tags: TagSet = by_class.root.setdefault(",".join(base["tags"]), TagSet(bases=[], mods={}))
+            by_tags.bases.append(base_id)
+            mods_data = by_tags.mods
             tags = OrderedDict.fromkeys(base["tags"])
             restart = True
             while restart:
@@ -75,9 +84,9 @@ class mods_by_base(Parser_Module):
                                 gen_type = gen_type + "_" + influence["tag"].split("_")[-1]
                             else:
                                 continue
-                        mod_generation: dict = mods_data.setdefault(gen_type, {})
-                        mod_group: dict = mod_generation.setdefault(mod["type"], {})
-                        mod_group[mod_id] = weight
+                        mod_generation = mods_data.root.setdefault(gen_type, ModTypes({}))
+                        mod_group = mod_generation.root.setdefault(mod["type"], ModWeights({}))
+                        mod_group.root[mod_id] = weight
                         for added_tag in mod.get("adds_tags", []):
                             if added_tag not in tags:
                                 restart = tags[added_tag] = True
@@ -91,12 +100,14 @@ class mods_by_base(Parser_Module):
             "&group+by=synthesis_mods.mod_ids__full%2Csynthesis_mods.item_class_ids__full&order+by=&limit=2000"
         ).json():
             for item_class in synth["item_classes"]:
-                results: dict[str, dict] = root[item_classes[item_class]["name"]].setdefault("synthesis", {})
+                results: SynthModGroups = root.root[item_classes[item_class]["name"]].root.setdefault(
+                    "synthesis", SynthModGroups({})
+                )
                 for mod_id in synth["mods"]:
                     if mod_id == "SynthesisImplicitMaximumAttackDodge1":
                         mod_id = "SynthesisImplicitSpellDamageSuppressed1_"
                     mod = mods[mod_id]
-                    group = results.setdefault(mod["type"], [])
+                    group = results.root.setdefault(mod["type"], [])
                     if mod_id not in group:
                         group.append(mod_id)
 
@@ -112,8 +123,10 @@ class mods_by_base(Parser_Module):
             level = name.split()[0]
             type = name.split()[-1]
             for key in keys:
-                result = root[item_classes[item_class_map[key]]["name"]].setdefault("essences", {})
-                result.setdefault(type, {})[level] = essence[key]["Id"]
+                essence_levels: EssenceModLevels = root.root[item_classes[item_class_map[key]]["name"]].root.setdefault(
+                    "essences", EssenceModLevels({})
+                )
+                essence_levels.root.setdefault(type, EssenceMods({})).root[level] = essence[key]["Id"]
 
         write_json(root, self.data_path, "mods_by_base")
 

@@ -4,11 +4,27 @@
     "definitions": {
         "ItemClasses": {
             "type": "object",
-            "items": {
+            "additionalProperties": {
                 "$ref": "#/definitions/TagSets"
             }
         },
         "TagSets": {
+            "type": "object",
+            "additionalProperties": {
+                "oneOf": [
+                    {
+                        "$ref": "#/definitions/TagSet"
+                    },
+                    {
+                        "$ref": "#/definitions/SynthModGroups"
+                    },
+                    {
+                        "$ref": "#/definitions/EssenceModLevels"
+                    }
+                ]
+            }
+        },
+        "TagSet": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -21,24 +37,49 @@
                 "mods": {
                     "$ref": "#/definitions/GenerationTypes"
                 }
-            }
+            },
+            "required": [
+                "bases",
+                "mods"
+            ]
         },
         "GenerationTypes": {
             "type": "object",
-            "items": {
+            "additionalProperties": {
                 "$ref": "#/definitions/ModTypes"
             }
         },
         "ModTypes": {
             "type": "object",
-            "items": {
+            "additionalProperties": {
                 "$ref": "#/definitions/ModWeights"
             }
         },
         "ModWeights": {
             "type": "object",
-            "items": {
+            "additionalProperties": {
                 "type": "integer"
+            }
+        },
+        "SynthModGroups": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            }
+        },
+        "EssenceModLevels": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/EssenceMods"
+            }
+        },
+        "EssenceMods": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
             }
         }
     }
