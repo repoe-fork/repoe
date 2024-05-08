@@ -1,0 +1,771 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/GemsMinimalSchemaElement"
+    },
+    "definitions": {
+        "GemsMinimalSchemaElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "active_skill": {
+                    "$ref": "#/definitions/ActiveSkill"
+                },
+                "base_item": {
+                    "$ref": "#/definitions/BaseItem"
+                },
+                "cast_time": {
+                    "type": "integer"
+                },
+                "color": {
+                    "$ref": "#/definitions/Color"
+                },
+                "display_name": {
+                    "type": "string"
+                },
+                "is_support": {
+                    "type": "boolean"
+                },
+                "stat_translation_file": {
+                    "$ref": "#/definitions/StatTranslationFile"
+                },
+                "static": {
+                    "$ref": "#/definitions/Static"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Tag"
+                    }
+                },
+                "secondary_granted_effect": {
+                    "type": "string"
+                },
+                "quest_reward": {
+                    "$ref": "#/definitions/QuestReward"
+                },
+                "discriminator": {
+                    "$ref": "#/definitions/Discriminator"
+                },
+                "support_gem": {
+                    "$ref": "#/definitions/SupportGem"
+                }
+            },
+            "required": [
+                "base_item",
+                "color",
+                "display_name",
+                "is_support",
+                "stat_translation_file",
+                "static",
+                "tags"
+            ],
+            "title": "GemsMinimalSchemaElement"
+        },
+        "ActiveSkill": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "display_name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "is_manually_casted": {
+                    "type": "boolean"
+                },
+                "is_skill_totem": {
+                    "type": "boolean"
+                },
+                "stat_conversions": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "types": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MinionTypeElement"
+                    }
+                },
+                "weapon_restrictions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/WeaponRestriction"
+                    }
+                },
+                "minion_types": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MinionTypeElement"
+                    }
+                },
+                "skill_totem_life_multiplier": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "description",
+                "display_name",
+                "id",
+                "is_manually_casted",
+                "is_skill_totem",
+                "stat_conversions",
+                "types",
+                "weapon_restrictions"
+            ],
+            "title": "ActiveSkill"
+        },
+        "BaseItem": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "display_name": {
+                    "type": "string"
+                },
+                "experience_type": {
+                    "$ref": "#/definitions/ExperienceType"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "max_level": {
+                    "type": "integer"
+                },
+                "release_state": {
+                    "$ref": "#/definitions/ReleaseState"
+                }
+            },
+            "required": [
+                "display_name",
+                "experience_type",
+                "id",
+                "max_level",
+                "release_state"
+            ],
+            "title": "BaseItem"
+        },
+        "QuestReward": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "act": {
+                    "type": "integer"
+                },
+                "classes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Class"
+                    }
+                },
+                "quest": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "act",
+                "classes",
+                "quest"
+            ],
+            "title": "QuestReward"
+        },
+        "Static": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "crit_chance": {
+                    "type": "integer"
+                },
+                "damage_effectiveness": {
+                    "type": "integer"
+                },
+                "quality_stats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/QualityStat"
+                    }
+                },
+                "stat_requirements": {
+                    "$ref": "#/definitions/StatRequirements"
+                },
+                "stat_text": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "stats": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/Stat"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    }
+                },
+                "vaal": {
+                    "$ref": "#/definitions/Vaal"
+                },
+                "costs": {
+                    "$ref": "#/definitions/Costs"
+                },
+                "attack_speed_multiplier": {
+                    "type": "integer"
+                },
+                "cooldown": {
+                    "type": "integer"
+                },
+                "stored_uses": {
+                    "type": "integer"
+                },
+                "cost_multiplier": {
+                    "type": "integer"
+                },
+                "cooldown_bypass_type": {
+                    "$ref": "#/definitions/CooldownBypassType"
+                },
+                "required_level": {
+                    "type": "integer"
+                },
+                "experience": {
+                    "type": "integer"
+                },
+                "reservations": {
+                    "$ref": "#/definitions/Reservations"
+                },
+                "damage_multiplier": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "quality_stats",
+                "stat_requirements"
+            ],
+            "title": "Static"
+        },
+        "Costs": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Mana": {
+                    "type": "integer"
+                },
+                "ManaPercent": {
+                    "type": "integer"
+                }
+            },
+            "required": [],
+            "title": "Costs"
+        },
+        "QualityStat": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "stat": {
+                    "type": "string"
+                },
+                "stats": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "required": [
+                "stat",
+                "stats"
+            ],
+            "title": "QualityStat"
+        },
+        "Reservations": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "mana_percent": {
+                    "type": "number"
+                },
+                "mana_flat": {
+                    "type": "integer"
+                }
+            },
+            "required": [],
+            "title": "Reservations"
+        },
+        "StatRequirements": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "dex": {
+                    "type": "integer"
+                },
+                "str": {
+                    "type": "integer"
+                },
+                "int": {
+                    "type": "integer"
+                }
+            },
+            "required": [],
+            "title": "StatRequirements"
+        },
+        "Stat": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "$ref": "#/definitions/StatType"
+                },
+                "value": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "title": "Stat"
+        },
+        "Vaal": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "souls": {
+                    "type": "integer"
+                },
+                "stored_uses": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "souls",
+                "stored_uses"
+            ],
+            "title": "Vaal"
+        },
+        "SupportGem": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "allowed_types": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MinionTypeElement"
+                    }
+                },
+                "letter": {
+                    "type": "string"
+                },
+                "supports_gems_only": {
+                    "type": "boolean"
+                },
+                "excluded_types": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MinionTypeElement"
+                    }
+                },
+                "added_types": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MinionTypeElement"
+                    }
+                },
+                "added_minion_types": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MinionTypeElement"
+                    }
+                }
+            },
+            "required": [
+                "letter",
+                "supports_gems_only"
+            ],
+            "title": "SupportGem"
+        },
+        "MinionTypeElement": {
+            "type": "string",
+            "enum": [
+                "Attack",
+                "Melee",
+                "MeleeSingleTarget",
+                "Multistrikeable",
+                "Spell",
+                "Damage",
+                "Area",
+                "Projectile",
+                "Chains",
+                "Duration",
+                "SummonsTotem",
+                "Trapped",
+                "RemoteMined",
+                "DamageOverTime",
+                "Channel",
+                "RangedAttack",
+                "ProjectilesFromUser",
+                "Warcry",
+                "RandomElement",
+                "Fire",
+                "Cold",
+                "Lightning",
+                "ThresholdJewelSpellDamage",
+                "ThresholdJewelProjectile",
+                "ThresholdJewelRangedAttack",
+                "Chaos",
+                "Rain",
+                "ProjectileSpeed",
+                "Movement",
+                "ChillingArea",
+                "CausesBurning",
+                "Aura",
+                "Buff",
+                "Triggered",
+                "Physical",
+                "Nova",
+                "Trappable",
+                "Totemable",
+                "Mineable",
+                "Multicastable",
+                "Triggerable",
+                "CanRapidFire",
+                "AreaSpell",
+                "ProjectileSpiral",
+                "Vaal",
+                "Travel",
+                "Slam",
+                "Cooldown",
+                "ThresholdJewelArea",
+                "DualWieldOnly",
+                "DualWieldRequiresDifferentTypes",
+                "RequiresShield",
+                "MirageArcherCanUse",
+                "Instant",
+                "Guard",
+                "InstantShiftAttackForLeftMouse",
+                "Cascadable",
+                "DestroysCorpse",
+                "SingleMainProjectile",
+                "Minion",
+                "MinionsCanExplode",
+                "CreatesMinion",
+                "InstantNoRepeatWhenHeld",
+                "DegenOnlySpellDamage",
+                "TotemCastsAlone",
+                "AppliesCurse",
+                "Hex",
+                "Mark",
+                "ProjectileNumber",
+                "ProjectilesNotFromUser",
+                "HasReservation",
+                "TotemCastsWhenNotDetached",
+                "CanHaveBlessing",
+                "ThresholdJewelDuration",
+                "AuraAffectsEnemies",
+                "AuraNotOnCaster",
+                "NoVolley",
+                "ThresholdJewelChaining",
+                "ElementalStatus",
+                "NonHitChill",
+                "ProjectilesNumberModifiersNotApplied",
+                "Blink",
+                "Orb",
+                "Herald",
+                "MinionsAreUndamagable",
+                "InbuiltTrigger",
+                "Golem",
+                "AttackInPlaceIsDefault",
+                "TotemsAreBallistae",
+                "Steel",
+                "Brand",
+                "AuraDuration",
+                "Banner",
+                "FixedCastTime",
+                "Stance",
+                "DynamicCooldown",
+                "AppliesMaim",
+                "KillNoDamageModifiers",
+                "Arcane",
+                "ZeroReservation",
+                "LateConsumeCooldown",
+                "InnateTrauma",
+                "RequiresOffHandNotWeapon",
+                "Link",
+                "ReservationBecomesCost",
+                "Blessing",
+                "PreventHexTransfer",
+                "AND",
+                "OR",
+                "FixedSpeedProjectile",
+                "NOT",
+                "NonRepeatable",
+                "SkillGrantedBySupport",
+                "NoRuthless",
+                "MinionsPersistWhenSkillRemoved",
+                "OtherThingUsesSkill"
+            ],
+            "title": "MinionTypeElement"
+        },
+        "WeaponRestriction": {
+            "type": "string",
+            "enum": [
+                "One Hand Sword",
+                "Thrusting One Hand Sword",
+                "One Hand Axe",
+                "One Hand Mace",
+                "Sceptre",
+                "Staff",
+                "Two Hand Sword",
+                "Two Hand Axe",
+                "Two Hand Mace",
+                "Warstaff",
+                "Claw",
+                "Dagger",
+                "Rune Dagger",
+                "Unarmed",
+                "Shield",
+                "Bow",
+                "Wand",
+                "FishingRod"
+            ],
+            "title": "WeaponRestriction"
+        },
+        "ExperienceType": {
+            "type": "string",
+            "enum": [
+                "GemProgression1",
+                "GemProgression12",
+                "GemProgression10",
+                "GemProgression28",
+                "GemProgression34",
+                "GemProgression16",
+                "GemProgression4",
+                "GemProgression8",
+                "GemProgression38",
+                "GemProgression31",
+                "GemProgressionSingleLevel",
+                "GemProgression18",
+                "GemProgression24",
+                "GemProgressionExceptional",
+                "GemProgressionBrandRecall",
+                "GemProgressionBloodAndSand",
+                "GemProgressionPlus1",
+                "GemProgressionPlus2",
+                "GemProgressionPlus3",
+                "GemProgressionPlus4",
+                "GemProgressionPlus5",
+                "GemProgressionPlus6",
+                "GemProgressionPlus7",
+                "GemProgressionExceptionalPlus",
+                "GemProgressionRoyale1",
+                "GemProgressionRoyale4",
+                "GemProgressionPlayTest"
+            ],
+            "title": "ExperienceType"
+        },
+        "ReleaseState": {
+            "type": "string",
+            "enum": [
+                "released",
+                "unreleased",
+                "legacy"
+            ],
+            "title": "ReleaseState"
+        },
+        "Color": {
+            "type": "string",
+            "enum": [
+                "b",
+                "r",
+                "g",
+                "w"
+            ],
+            "title": "Color"
+        },
+        "Discriminator": {
+            "type": "string",
+            "enum": [
+                "alt_x",
+                "alt_y"
+            ],
+            "title": "Discriminator"
+        },
+        "Class": {
+            "type": "string",
+            "enum": [
+                "Witch",
+                "Templar",
+                "Scion",
+                "Marauder",
+                "Duelist",
+                "Ranger",
+                "Shadow",
+                "Sorcière",
+                "Templier",
+                "Héritière",
+                "Maraudeur",
+                "Duelliste",
+                "Rôdeuse",
+                "Ombre",
+                "Hexe",
+                "Templer",
+                "Adelstochter",
+                "Marodeur",
+                "Duellant",
+                "Waldläuferin",
+                "Schatten",
+                "ウィッチ",
+                "テンプラー",
+                "サイオン",
+                "マローダー",
+                "デュエリスト",
+                "レンジャー",
+                "シャドウ",
+                "위치",
+                "템플러",
+                "사이온",
+                "머라우더",
+                "듀얼리스트",
+                "레인저",
+                "쉐도우",
+                "Bruxa",
+                "Templário",
+                "Herdeira",
+                "Duelista",
+                "Caçadora",
+                "Sombra",
+                "Ведьма",
+                "Жрец",
+                "Дворянка",
+                "Дикарь",
+                "Дуэлянт",
+                "Охотница",
+                "Бандит",
+                "Bruja",
+                "Templario",
+                "Heredera",
+                "Guerrero",
+                "Cazadora",
+                "女巫",
+                "聖騎士",
+                "貴族",
+                "野蠻人",
+                "決鬥者",
+                "遊俠",
+                "暗影刺客"
+            ],
+            "title": "Class"
+        },
+        "StatTranslationFile": {
+            "type": "string",
+            "enum": [
+                "stat_translations/skill",
+                "stat_translations/buff_skill",
+                "stat_translations/support_gem",
+                "stat_translations/minion_spell_skill",
+                "stat_translations/debuff_skill",
+                "stat_translations/curse_skill",
+                "stat_translations/variable_duration_skill",
+                "stat_translations/minion_attack_skill",
+                "stat_translations/aura_skill",
+                "stat_translations/beam_skill",
+                "stat_translations/single_minion_spell_skill",
+                "stat_translations/offering_skill",
+                "stat_translations/minion_skill",
+                "stat_translations/brand_skill",
+                "stat_translations/banner_aura_skill",
+                "stat_translations/secondary_debuff_skill",
+                "stat_translations/minion_spell_damage_skill"
+            ],
+            "title": "StatTranslationFile"
+        },
+        "CooldownBypassType": {
+            "type": "string",
+            "enum": [
+                "expend_frenzy_charge",
+                "expend_power_charge",
+                "expend_endurance_charge"
+            ],
+            "title": "CooldownBypassType"
+        },
+        "StatType": {
+            "type": "string",
+            "enum": [
+                "float",
+                "constant",
+                "additional",
+                "implicit",
+                "flag"
+            ],
+            "title": "StatType"
+        },
+        "Tag": {
+            "type": "string",
+            "enum": [
+                "intelligence",
+                "grants_active_skill",
+                "projectile",
+                "spell",
+                "area",
+                "fire",
+                "vaal",
+                "cold",
+                "nova",
+                "strength",
+                "attack",
+                "movement",
+                "travel",
+                "slam",
+                "melee",
+                "dexterity",
+                "channelling",
+                "lightning",
+                "physical",
+                "critical",
+                "warcry",
+                "duration",
+                "strike",
+                "random_element",
+                "bow",
+                "guard",
+                "support",
+                "minion",
+                "chaos",
+                "low_max_level",
+                "trigger",
+                "trap",
+                "curse",
+                "hex",
+                "mark",
+                "chaining",
+                "aura",
+                "totem",
+                "mine",
+                "exceptional",
+                "blink",
+                "orb",
+                "herald",
+                "golem",
+                "arcane",
+                "brand",
+                "banner",
+                "stance",
+                "awakened",
+                "link",
+                "blessing"
+            ],
+            "title": "Tag"
+        }
+    }
+}

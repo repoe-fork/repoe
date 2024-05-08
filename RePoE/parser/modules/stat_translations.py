@@ -158,7 +158,14 @@ class stat_translations(Parser_Module):
                     "dat_file": handler.table.file_name,
                     "value_column": handler.value_column,
                     "index_column": handler.index_column,
-                    "predicate": f"{handler.predicate[0]}={handler.predicate[1]}" if handler.predicate else None,
+                    "predicate": (
+                        {
+                            "column": handler.predicate[0],
+                            "value": handler.predicate[1],
+                        }
+                        if handler.predicate
+                        else None
+                    ),
                     "values": {
                         r[handler.index_column] if handler.index_column else r.rowid: r[handler.value_column]
                         for r in handler.table

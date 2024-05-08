@@ -1,0 +1,90 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "additionalProperties": {
+        "$ref": "#/definitions/AudioSchemaValue"
+    },
+    "definitions": {
+        "AudioSchemaValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "mono": {
+                    "type": "string"
+                },
+                "npcs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Npc"
+                    }
+                },
+                "stereo": {
+                    "$ref": "#/definitions/Stereo"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "video": {
+                    "$ref": "#/definitions/Video"
+                }
+            },
+            "required": [
+                "mono",
+                "npcs",
+                "stereo",
+                "text",
+                "video"
+            ],
+            "title": "AudioSchemaValue"
+        },
+        "Npc": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "short_name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "name",
+                "short_name"
+            ],
+            "title": "Npc"
+        },
+        "Stereo": {
+            "type": "string",
+            "enum": [
+                "",
+                "Audio/Dialogue/NPC/MalachaiS/M23_FinalHeart_Stereo_01.ogg",
+                "Audio/Dialogue/NPC/MalachaiS/M22a_MalachaiHeal_Stereo_01.ogg",
+                "Audio/Dialogue/NPC/MalachaiS/M22b_MalachaiHeal_Stereo_01.ogg",
+                "Audio/Dialogue/NPC/MalachaiS/M22c_MalachaiHeal_Stereo_01.ogg",
+                "Audio/Dialogue/NPC/MalachaiS/M21_PietySlain_Stereo.ogg",
+                "Audio/Dialogue/NPC/MalachaiS/M12_Intro_Witch_Stereo.ogg",
+                "Audio/Dialogue/NPC/MalachaiS/M13_Intro_Duelist_Stereo.ogg",
+                "Audio/Dialogue/NPC/MalachaiS/M14_Intro_Templar_Stereo.ogg",
+                "Audio/Dialogue/NPC/MalachaiS/M15_Intro_Ranger_Stereo.ogg",
+                "Audio/Dialogue/NPC/MalachaiS/M16_Intro_Shadow_Stereo.ogg",
+                "Audio/Dialogue/NPC/MalachaiS/M17_Intro_Marauder_Stereo.ogg",
+                "Audio/Dialogue/NPC/MalachaiS/M18_Intro_Scion_Stereo.ogg",
+                "Audio/Dialogue/NPC/MalachaiS/M19a_PietyFree_Stereo_01.ogg"
+            ],
+            "title": "Stereo"
+        },
+        "Video": {
+            "type": "string",
+            "enum": [
+                "",
+                "Art/Videos/Cinematic_KitavaStatueBreak.bk2"
+            ],
+            "title": "Video"
+        }
+    }
+}

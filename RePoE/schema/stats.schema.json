@@ -1,0 +1,44 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "additionalProperties": {
+        "$ref": "#/definitions/StatsSchemaValue"
+    },
+    "definitions": {
+        "StatsSchemaValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "alias": {
+                    "$ref": "#/definitions/Alias"
+                },
+                "is_aliased": {
+                    "type": "boolean"
+                },
+                "is_local": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "alias",
+                "is_aliased",
+                "is_local"
+            ],
+            "title": "StatsSchemaValue"
+        },
+        "Alias": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "when_in_off_hand": {
+                    "type": "string"
+                },
+                "when_in_main_hand": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "title": "Alias"
+        }
+    }
+}

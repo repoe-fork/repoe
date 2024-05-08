@@ -1,0 +1,286 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/StatTranslationsSchemaElement"
+    },
+    "definitions": {
+        "StatTranslationsSchemaElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "English": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/English"
+                    }
+                },
+                "ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "trade_stats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TradeStat"
+                    }
+                },
+                "hidden": {
+                    "type": "boolean"
+                },
+                "French": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/English"
+                    }
+                },
+                "German": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/English"
+                    }
+                },
+                "Japanese": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/English"
+                    }
+                },
+                "Korean": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/English"
+                    }
+                },
+                "Portuguese": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/English"
+                    }
+                },
+                "Russian": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/English"
+                    }
+                },
+                "Spanish": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/English"
+                    }
+                },
+                "Thai": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/English"
+                    }
+                },
+                "Traditional Chinese": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/English"
+                    }
+                }
+            },
+            "required": [
+                "ids"
+            ],
+            "title": "StatTranslationsSchemaElement"
+        },
+        "English": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "condition": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Condition"
+                    }
+                },
+                "format": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Format"
+                    }
+                },
+                "index_handlers": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/IndexHandler"
+                        }
+                    }
+                },
+                "string": {
+                    "type": "string"
+                },
+                "reminder_text": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "condition",
+                "format",
+                "index_handlers",
+                "string"
+            ],
+            "title": "English"
+        },
+        "Condition": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "negated": {
+                    "type": "boolean"
+                }
+            },
+            "required": [],
+            "title": "Condition"
+        },
+        "TradeStat": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "type": {
+                    "$ref": "#/definitions/Type"
+                },
+                "option": {
+                    "$ref": "#/definitions/TradeStatOption"
+                }
+            },
+            "required": [
+                "id",
+                "text",
+                "type"
+            ],
+            "title": "TradeStat"
+        },
+        "TradeStatOption": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/OptionElement"
+                    }
+                }
+            },
+            "required": [
+                "options"
+            ],
+            "title": "TradeStatOption"
+        },
+        "OptionElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "text": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "text"
+            ],
+            "title": "OptionElement"
+        },
+        "Format": {
+            "type": "string",
+            "enum": [
+                "ignore",
+                "#",
+                "+#"
+            ],
+            "title": "Format"
+        },
+        "IndexHandler": {
+            "type": "string",
+            "enum": [
+                "negate",
+                "times_twenty",
+                "canonical_stat",
+                "divide_by_one_hundred_2dp_if_required",
+                "per_minute_to_per_second",
+                "milliseconds_to_seconds",
+                "display_indexable_support",
+                "divide_by_one_hundred",
+                "milliseconds_to_seconds_2dp_if_required",
+                "deciseconds_to_seconds",
+                "old_leech_percent",
+                "old_leech_permyriad",
+                "locations_to_metres",
+                "times_one_point_five",
+                "30%_of_value",
+                "display_indexable_skill",
+                "divide_by_one_thousand",
+                "divide_by_twelve",
+                "divide_by_six",
+                "per_minute_to_per_second_2dp_if_required",
+                "60%_of_value",
+                "double",
+                "negate_and_double",
+                "per_minute_to_per_second_0dp",
+                "milliseconds_to_seconds_0dp",
+                "mod_value_to_item_class",
+                "milliseconds_to_seconds_2dp",
+                "multiplicative_damage_modifier",
+                "divide_by_one_hundred_2dp",
+                "per_minute_to_per_second_1dp",
+                "divide_by_ten_1dp_if_required",
+                "milliseconds_to_seconds_1dp",
+                "divide_by_fifty",
+                "per_minute_to_per_second_2dp",
+                "plus_two_hundred",
+                "divide_by_ten_0dp",
+                "divide_by_one_hundred_and_negate",
+                "tree_expansion_jewel_passive",
+                "passive_hash",
+                "divide_by_ten_1dp",
+                "affliction_reward_type",
+                "divide_by_five",
+                "divide_by_two_0dp",
+                "divide_by_fifteen_0dp",
+                "divide_by_three",
+                "divide_by_twenty_then_double_0dp",
+                "divide_by_twenty",
+                "weapon_tree_unique_base_type_name",
+                "divide_by_four"
+            ],
+            "title": "IndexHandler"
+        },
+        "Type": {
+            "type": "string",
+            "enum": [
+                "explicit",
+                "enchant",
+                "implicit",
+                "crafted",
+                "fractured",
+                "scourge",
+                "pseudo",
+                "sanctum"
+            ],
+            "title": "Type"
+        }
+    }
+}

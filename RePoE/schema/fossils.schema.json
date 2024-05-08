@@ -1,0 +1,260 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "additionalProperties": {
+        "$ref": "#/definitions/FossilsSchemaValue"
+    },
+    "definitions": {
+        "FossilsSchemaValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "added_mods": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EdMod"
+                    }
+                },
+                "allowed_tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AllowedTag"
+                    }
+                },
+                "blocked_descriptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BlockedDescription"
+                    }
+                },
+                "changes_quality": {
+                    "type": "boolean"
+                },
+                "corrupted_essence_chance": {
+                    "type": "integer"
+                },
+                "descriptions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "forbidden_tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ForbiddenTag"
+                    }
+                },
+                "forced_mods": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EdMod"
+                    }
+                },
+                "mirrors": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "negative_mod_weights": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TiveModWeight"
+                    }
+                },
+                "positive_mod_weights": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TiveModWeight"
+                    }
+                },
+                "rolls_lucky": {
+                    "type": "boolean"
+                },
+                "rolls_white_sockets": {
+                    "type": "boolean"
+                },
+                "sell_price_mods": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SellPriceMod"
+                    }
+                }
+            },
+            "required": [
+                "added_mods",
+                "allowed_tags",
+                "blocked_descriptions",
+                "changes_quality",
+                "corrupted_essence_chance",
+                "descriptions",
+                "forbidden_tags",
+                "forced_mods",
+                "mirrors",
+                "name",
+                "negative_mod_weights",
+                "positive_mod_weights",
+                "rolls_lucky",
+                "rolls_white_sockets",
+                "sell_price_mods"
+            ],
+            "title": "FossilsSchemaValue"
+        },
+        "TiveModWeight": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "tag": {
+                    "$ref": "#/definitions/Tag"
+                },
+                "weight": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "tag",
+                "weight"
+            ],
+            "title": "TiveModWeight"
+        },
+        "EdMod": {
+            "type": "string",
+            "enum": [
+                "DelveStrengthGemLevel1",
+                "DelveDexterityGemLevel1",
+                "DelveIntelligenceGemLevel1",
+                "DelveWeaponVaalSoulCost1h1_",
+                "DelveWeaponVaalSoulCost2h1",
+                "DelveArmourVaalSoulsOnKill1_",
+                "DelveGlovesVaalSkillCriticalChance1",
+                "DelveAmuletVaalSkillDuration1",
+                "DelveJewelryVaalSkillDamage1",
+                "DelveJewelVaalSoulsOnKill1",
+                "DelveAbyssJewelSocket1"
+            ],
+            "title": "EdMod"
+        },
+        "AllowedTag": {
+            "type": "string",
+            "enum": [
+                "weapon",
+                "helmet",
+                "boots",
+                "gloves",
+                "body_armour",
+                "shield",
+                "amulet",
+                "belt",
+                "ring",
+                "quiver",
+                "map"
+            ],
+            "title": "AllowedTag"
+        },
+        "BlockedDescription": {
+            "type": "string",
+            "enum": [
+                "LessAttack",
+                "MoreElemental",
+                "GreatlyMoreElemental",
+                "LessCaster",
+                "MoreLightning",
+                "GreatlyMoreLightning",
+                "MoreFire",
+                "GreatlyMoreFire",
+                "MoreLife",
+                "GreatlyMoreLife",
+                "MoreBleedPoison",
+                "GreatlyMoreAilment",
+                "MoreAttribute",
+                "GreatlyMoreAttribute",
+                "MoreCold",
+                "GreatlyMoreCold",
+                "MoreDefences",
+                "GreatlyMoreDefences",
+                "MorePhysical",
+                "GreatlyMorePhysical",
+                "MoreSpeed",
+                "GreatlyMoreSpeed",
+                "MoreChaos",
+                "GreatlyMoreChaos",
+                "MoreCritical",
+                "GreatlyMoreCritical",
+                "MoreMana",
+                "GreatlyMoreMana",
+                "GreatlyMoreResistance",
+                "MoreResistance",
+                "MoreAilment",
+                "GreatlyMoreMinion",
+                "MoreMinion",
+                "GreatlyMoreGem",
+                "MoreGem",
+                "GreatlyMoreDamage",
+                "MoreDamage",
+                "GreatlyMoreCurse",
+                "MoreCurse",
+                "GreatlyMoreCaster",
+                "MoreCaster",
+                "GreatlyMoreAura",
+                "MoreAura",
+                "GreatlyMoreAttack",
+                "MoreAttack"
+            ],
+            "title": "BlockedDescription"
+        },
+        "ForbiddenTag": {
+            "type": "string",
+            "enum": [
+                "heist_contract",
+                "heist_blueprint",
+                "heist_equipment"
+            ],
+            "title": "ForbiddenTag"
+        },
+        "Tag": {
+            "type": "string",
+            "enum": [
+                "caster",
+                "attack",
+                "elemental",
+                "bleed",
+                "poison",
+                "lightning",
+                "chaos",
+                "fire",
+                "cold",
+                "life",
+                "defences",
+                "attribute",
+                "critical",
+                "gem",
+                "physical",
+                "speed",
+                "mana",
+                "minion",
+                "aura",
+                "curse",
+                "resistance",
+                "ailment",
+                "damage"
+            ],
+            "title": "Tag"
+        },
+        "SellPriceMod": {
+            "type": "string",
+            "enum": [
+                "DoubleModSellPrice1",
+                "DoubleModSellPrice2",
+                "DoubleModSellPrice3_",
+                "DoubleModSellPrice4",
+                "DoubleModSellPrice5_",
+                "DoubleModSellPrice6",
+                "DoubleModSellPrice7",
+                "DoubleModSellPrice8",
+                "DoubleModSellPrice9"
+            ],
+            "title": "SellPriceMod"
+        }
+    }
+}

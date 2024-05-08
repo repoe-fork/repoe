@@ -1,0 +1,114 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "additionalProperties": {
+        "$ref": "#/definitions/UniquesSchemaValue"
+    },
+    "definitions": {
+        "UniquesSchemaValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "inventory_height": {
+                    "type": "integer"
+                },
+                "inventory_width": {
+                    "type": "integer"
+                },
+                "is_alternate_art": {
+                    "type": "boolean"
+                },
+                "item_class": {
+                    "$ref": "#/definitions/ItemClass"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "visual_identity": {
+                    "$ref": "#/definitions/VisualIdentity"
+                },
+                "renamed_version": {
+                    "$ref": "#/definitions/Version"
+                },
+                "base_version": {
+                    "$ref": "#/definitions/Version"
+                }
+            },
+            "required": [
+                "id",
+                "inventory_height",
+                "inventory_width",
+                "is_alternate_art",
+                "item_class",
+                "name",
+                "visual_identity"
+            ],
+            "title": "UniquesSchemaValue"
+        },
+        "Version": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "rowid": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "name",
+                "rowid"
+            ],
+            "title": "Version"
+        },
+        "VisualIdentity": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "dds_file": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "dds_file",
+                "id"
+            ],
+            "title": "VisualIdentity"
+        },
+        "ItemClass": {
+            "type": "string",
+            "enum": [
+                "Axe",
+                "Sword",
+                "Amulet",
+                "Ring",
+                "Bow",
+                "Body Armour",
+                "Dagger",
+                "Helmet",
+                "Mace",
+                "Quiver",
+                "Boots",
+                "Gloves",
+                "Belt",
+                "Shield",
+                "Wand",
+                "Claw",
+                "Staff",
+                "Map",
+                "Flask",
+                "Jewel",
+                "Watchstone",
+                "HeistContract"
+            ],
+            "title": "ItemClass"
+        }
+    }
+}

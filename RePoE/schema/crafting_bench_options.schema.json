@@ -1,0 +1,154 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/CraftingBenchOptionsSchemaElement"
+    },
+    "definitions": {
+        "CraftingBenchOptionsSchemaElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "actions": {
+                    "$ref": "#/definitions/Actions"
+                },
+                "bench_tier": {
+                    "type": "integer"
+                },
+                "cost": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
+                },
+                "item_classes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ItemClass"
+                    }
+                },
+                "master": {
+                    "$ref": "#/definitions/Master"
+                }
+            },
+            "required": [
+                "actions",
+                "bench_tier",
+                "cost",
+                "item_classes",
+                "master"
+            ],
+            "title": "CraftingBenchOptionsSchemaElement"
+        },
+        "Actions": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "change_socket_count": {
+                    "type": "integer"
+                },
+                "link_sockets": {
+                    "type": "integer"
+                },
+                "color_sockets": {
+                    "type": "string"
+                },
+                "add_explicit_mod": {
+                    "type": "string"
+                },
+                "remove_crafted_mods": {
+                    "type": "boolean"
+                },
+                "add_enchant_mod": {
+                    "type": "string"
+                },
+                "remove_enchantments": {
+                    "type": "boolean"
+                }
+            },
+            "required": [],
+            "title": "Actions"
+        },
+        "ItemClass": {
+            "type": "string",
+            "enum": [
+                "Dagger",
+                "Rune Dagger",
+                "One Hand Axe",
+                "One Hand Mace",
+                "One Hand Sword",
+                "Claw",
+                "Sceptre",
+                "Thrusting One Hand Sword",
+                "Two Hand Axe",
+                "Two Hand Mace",
+                "Two Hand Sword",
+                "Staff",
+                "Warstaff",
+                "Wand",
+                "Bow",
+                "Body Armour",
+                "Gloves",
+                "Boots",
+                "Helmet",
+                "Shield",
+                "Ring",
+                "Amulet",
+                "Belt",
+                "Quiver",
+                "LifeFlask",
+                "ManaFlask",
+                "HybridFlask",
+                "UtilityFlask",
+                "UtilityFlaskCritical"
+            ],
+            "title": "ItemClass"
+        },
+        "Master": {
+            "type": "string",
+            "enum": [
+                "Jun, Veiled Master",
+                "Niko, Master of the Depths",
+                "Sister Cassia",
+                "Einhar, Beastmaster",
+                "Jun, Maître-cryptologue",
+                "Niko, Maître des Profondeurs",
+                "Sœur Cassia",
+                "Einhar, Maître des Bêtes",
+                "Jun, Meisterin der Verhüllung",
+                "Niko, Meister der Tiefen",
+                "Schwester Cassia",
+                "Einhar, Meister der Bestien",
+                "ヴェールの達人、ジュン",
+                "深淵のマスター、ニコ",
+                "シスターカシア",
+                "ビーストマスター、アイナー",
+                "장막의 대가 준",
+                "지하의 대가 니코",
+                "수녀 카시아",
+                "야수의 대가 아인하르",
+                "Jun, Mestre Oculta",
+                "Niko, Mestre das Profundezas",
+                "Irmã Cassia",
+                "Einhar, Mestre das Bestas",
+                "Джун, Скрытый мастер",
+                "Нико, Мастер глубин",
+                "Сестра Кассия",
+                "Эйнар, Мастер зверей",
+                "Jun, Maestra de Encriptación",
+                "Niko, Maestro de las Profundidades",
+                "Hermana Cassia",
+                "Einhar Frey, Maestro de Bestias",
+                "จุน มาสเตอร์แห่งการผนึก",
+                "นิโค้ มาสเตอร์แห่งเหมืองลึก",
+                "แม่ชีแคสเซีย",
+                "ไอนาร์ มาสเตอร์แห่งสรรพสัตว์",
+                "幻隱大師瓊恩",
+                "挖掘大師尼科",
+                "修女卡西亞",
+                "野獸大師埃哈"
+            ],
+            "title": "Master"
+        }
+    }
+}

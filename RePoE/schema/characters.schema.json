@@ -1,0 +1,105 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/CharactersSchemaElement"
+    },
+    "definitions": {
+        "CharactersSchemaElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "base_stats": {
+                    "$ref": "#/definitions/BaseStats"
+                },
+                "integer_id": {
+                    "type": "integer"
+                },
+                "metadata_id": {
+                    "$ref": "#/definitions/MetadataID"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "base_stats",
+                "integer_id",
+                "metadata_id",
+                "name"
+            ],
+            "title": "CharactersSchemaElement"
+        },
+        "BaseStats": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "dexterity": {
+                    "type": "integer"
+                },
+                "intelligence": {
+                    "type": "integer"
+                },
+                "life": {
+                    "type": "integer"
+                },
+                "mana": {
+                    "type": "integer"
+                },
+                "strength": {
+                    "type": "integer"
+                },
+                "unarmed": {
+                    "$ref": "#/definitions/Unarmed"
+                }
+            },
+            "required": [
+                "dexterity",
+                "intelligence",
+                "life",
+                "mana",
+                "strength",
+                "unarmed"
+            ],
+            "title": "BaseStats"
+        },
+        "Unarmed": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "attack_time": {
+                    "type": "integer"
+                },
+                "max_physical_damage": {
+                    "type": "integer"
+                },
+                "min_physical_damage": {
+                    "type": "integer"
+                },
+                "range": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "attack_time",
+                "max_physical_damage",
+                "min_physical_damage",
+                "range"
+            ],
+            "title": "Unarmed"
+        },
+        "MetadataID": {
+            "type": "string",
+            "enum": [
+                "Metadata/Characters/Str/Str",
+                "Metadata/Characters/Int/Int",
+                "Metadata/Characters/StrDexInt/StrDexInt",
+                "Metadata/Characters/Dex/Dex",
+                "Metadata/Characters/StrDex/StrDex",
+                "Metadata/Characters/DexInt/DexInt",
+                "Metadata/Characters/StrInt/StrInt"
+            ],
+            "title": "MetadataID"
+        }
+    }
+}

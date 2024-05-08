@@ -30,12 +30,14 @@ class fossils(Parser_Module):
                 "rolls_lucky": row["HasLuckyRolls"],
                 "rolls_white_sockets": row["CanRollWhiteSockets"],
                 "sell_price_mods": [mod["Id"] for mod in row["SellPrice_ModsKeys"]],
-                "descriptions": [
-                    description["Description"] for description in row["DelveCraftingModifierDescriptionsKeys"]
-                ],
-                "blocked_descriptions": [
-                    description["Id"] for description in row["BlockedDelveCraftingModifierDescriptionsKeys"]
-                ],
+                "descriptions": {
+                    description["Id"]: description["Description"]
+                    for description in row["DelveCraftingModifierDescriptionsKeys"]
+                },
+                "blocked_descriptions": {
+                    description["Id"]: description["Description"]
+                    for description in row["BlockedDelveCraftingModifierDescriptionsKeys"]
+                },
             }
 
         write_json(root, self.data_path, "fossils")
