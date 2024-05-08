@@ -67,7 +67,9 @@ jobs:
         poetry run repoe all -l all -f "https://patch.poecdn.com/$(<version.txt)/"
       working-directory: RePoE/RePoE
     - name: generate index.html
-      run: find -type d -exec tree {} -H '.' --dirsfirst -F -L 1 -T "RePoE - Game version $(cat ../version.txt)" -I index.html --noreport --charset utf-8 -o {}/index.html \;
+      run: |
+        find -type d -exec tree {} -H '.' --dirsfirst -F -L 1 -T "RePoE - Game version $(cat ../version.txt)" -I 'index.html|schema_doc*' --noreport --charset utf-8 -o {}/index.html \;
+        sed -i 's|<h1>RePoE|<h1><a href="https://github.com/lvlvllvlvllvlvl/RePoE">RePoE</a>|' index.html
       working-directory: RePoE/RePoE/data/
     - name: commit changes
       id: autocommit
