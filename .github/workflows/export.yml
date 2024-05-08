@@ -83,8 +83,7 @@ jobs:
       uses: actions/cache@v4.0.2
       if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
       with:
-        path: |
-          .git/lfs
+        path: RePoE/.git/lfs
         key: lfs-${{ steps.date.outputs.ym }}
     - name: lfs pull
       if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
