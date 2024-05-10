@@ -1,5 +1,4 @@
 import argparse
-import locale
 import os
 from importlib import reload
 
@@ -51,7 +50,6 @@ def main():
         selected_module_names = [m for m in module_names if m != "all"]
 
     for language in LANGS.keys() if args.language == "all" else [args.language]:
-        locale.setlocale(locale.LC_ALL, LANGS[language])
 
         data_path = __DATA_PATH__ if language == "English" else os.path.join(__DATA_PATH__, language, "")
 

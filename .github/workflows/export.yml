@@ -13,13 +13,6 @@ jobs:
       changes_detected: ${{ steps.autocommit.outputs.changes_detected }}
 
     steps:
-    - name: generate locales
-      run: |
-        sudo apt-get update && sudo apt-get install locales -y
-        for lang in en_US fr_FR de_DE ja_JP ko_KR pt_BR ru_RU es_ES th_TH zh_TW
-        do
-          sudo locale-gen $lang.UTF-8
-        done
     - name: checkout
       uses: actions/checkout@v4.1.4
       with:
@@ -67,7 +60,7 @@ jobs:
         do
           poetry run datamodel-codegen --input $i --input-file-type jsonschema --output ../model/${i/.schema.json/.py} --output-model-type pydantic_v2.BaseModel --disable-timestamp
         done
-        poetry run generate-schema-doc ./ ../data/
+        poetry run generate-schema-doc --config footer_show_time=false ./ ../data/
       working-directory: RePoE/RePoE/schema
     - name: run export
       run: |
