@@ -14,34 +14,12 @@
                     },
                     {
                         "$ref": "#/definitions/CanonicalLine"
+                    },
+                    {
+                        "$ref": "#/definitions/Noop"
                     }
                 ]
             },
-            "properties": {
-                "reminderstring": {
-                    "$ref": "#/definitions/CanonicalLine"
-                },
-                "tq_noop": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                        "type": {
-                            "type": "string",
-                            "enum": [
-                                "int"
-                            ],
-                            "title": "Type"
-                        }
-                    },
-                    "required": [
-                        "type"
-                    ]
-                }
-            },
-            "required": [
-                "reminderstring",
-                "tq_noop"
-            ],
             "title": "StatValueHandlersSchema"
         },
         "IntHandler": {
@@ -49,13 +27,13 @@
             "additionalProperties": false,
             "properties": {
                 "addend": {
-                    "type": "integer"
+                    "type": "number"
                 },
                 "divisor": {
-                    "type": "integer"
+                    "type": "number"
                 },
                 "multiplier": {
-                    "type": "integer"
+                    "type": "number"
                 },
                 "precision": {
                     "type": "integer"
@@ -88,7 +66,7 @@
                 "type": {
                     "type": "string",
                     "enum": [
-                        "string"
+                        "relational"
                     ]
                 },
                 "value_column": {
@@ -96,8 +74,10 @@
                 },
                 "values": {
                     "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
+                    "patternProperties": {
+                        "^\\d+$": {
+                            "type": "string"
+                        }
                     }
                 },
                 "predicate": {
@@ -105,13 +85,23 @@
                 }
             },
             "required": [
-                "dat_file",
-                "index_column",
                 "type",
+                "dat_file",
                 "value_column",
                 "values"
             ],
             "title": "RelationalData"
+        },
+        "Predicate": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "column": {
+                    "type": "string"
+                },
+                "value": true
+            },
+            "title": "Predicate"
         },
         "CanonicalLine": {
             "type": "object",
@@ -129,16 +119,21 @@
             ],
             "title": "CanonicalLine"
         },
-        "Predicate": {
+        "Noop": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "column": {
-                    "type": "string"
-                },
-                "value": true
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "noop"
+                    ]
+                }
             },
-            "title": "Predicate"
+            "required": [
+                "type"
+            ],
+            "title": "Noop"
         }
     }
 }

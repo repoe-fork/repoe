@@ -58,7 +58,7 @@ jobs:
       run: |
         for i in *.schema.json
         do
-          poetry run datamodel-codegen --input $i --input-file-type jsonschema --output ../model/${i/.schema.json/.py} --output-model-type pydantic_v2.BaseModel
+          poetry run datamodel-codegen --input $i --input-file-type jsonschema --output ../model/${i/.schema.json/.py} --output-model-type pydantic_v2.BaseModel --disable-timestamp
         done
         poetry run generate-schema-doc ./ ../data/
       working-directory: RePoE/RePoE/schema

@@ -1,0 +1,147 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "additionalProperties": {
+        "$ref": "#/definitions/Stat"
+    },
+    "definitions": {
+        "Stat": {
+            "type": "object",
+            "properties": {
+                "files": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "generated_name": {
+                    "type": "string"
+                },
+                "tokens": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Token"
+                    }
+                }
+            },
+            "required": [
+                "files",
+                "generated_name",
+                "tokens"
+            ]
+        },
+        "Token": {
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/Literal"
+                },
+                {
+                    "$ref": "#/definitions/NumberRule"
+                },
+                {
+                    "$ref": "#/definitions/EnumRule"
+                },
+                {
+                    "$ref": "#/definitions/UnknownRule"
+                }
+            ]
+        },
+        "Literal": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "literal"
+                    ]
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type",
+                "value"
+            ]
+        },
+        "NumberRule": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "number"
+                    ]
+                },
+                "index": {
+                    "type": "integer"
+                },
+                "stat": {
+                    "type": "string"
+                },
+                "stat_value_handlers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "index",
+                "stat"
+            ]
+        },
+        "EnumRule": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "enum"
+                    ]
+                },
+                "index": {
+                    "type": "integer"
+                },
+                "stat": {
+                    "type": "string"
+                },
+                "stat_value_handler": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type",
+                "index",
+                "stat",
+                "stat_value_handler"
+            ]
+        },
+        "UnknownRule": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "unknown"
+                    ]
+                },
+                "index": {
+                    "type": "integer"
+                },
+                "stat": {
+                    "type": "string"
+                },
+                "stat_value_handler": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type",
+                "index",
+                "stat"
+            ]
+        }
+    }
+}

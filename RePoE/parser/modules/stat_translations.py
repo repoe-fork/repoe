@@ -8,6 +8,7 @@ from PyPoE.poe.file.translations import (
     Translation,
     TranslationFileCache,
     TranslationRange,
+    TranslationQuantifier,
     TranslationQuantifierHandler,
     TQNumberFormat,
     TQRelationalData,
@@ -16,8 +17,11 @@ from PyPoE.poe.file.translations import (
 )
 from urllib.request import urlopen, Request
 
+from RePoE.model import stats_by_file
+from RePoE.model import stat_value_handlers
+from RePoE.model.stat_translations import Stat
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import call_with_default_args, get_stat_translation_file_name, write_json
+from RePoE.parser.util import call_with_default_args, get_stat_translation_file_name, write_json, write_model
 
 
 class stat_translations(Parser_Module):
@@ -89,15 +93,63 @@ class stat_translations(Parser_Module):
                         for trade_stat in all_trade_stats[trade_format]:
                             trade_stats[trade_stat["id"]] = trade_stat
 
-                value = {
-                    "condition": self._convert_range(s.range),
-                    "string": s.as_format_string,
-                    "format": tags,
-                    "index_handlers": self._convert_handlers(n_ids, s.quantifier.index_handlers),
-                    "reminder_text": next(iter(extra_strings.values())) if extra_strings else None,
-                }
+                value = Stat(
+                    condition=self._convert_range(s.range),
+                    string=s.as_format_string,
+                    format=tags,
+                    index_handlers=self._convert_handlers(n_ids, s.quantifier.index_handlers),
+                    reminder_text=next(iter(extra_strings.values())) if extra_strings else None,
+                )
                 if "markup" in s.quantifier.string_handlers:
-                    value["is_markup"] = True
+                    value.is_markup = True
+
+                if value.string in self.lookup.root:
+                    self.lookup.root[value.string].files.append(self.current_file)
+                else:
+                    try:
+                        tokens = []
+                        for i, tag in enumerate(s.tags):
+                            if s.strings[i]:
+                                tokens.append(stats_by_file.Literal(type="literal", value=s.strings[i]))
+                            handler = next(
+                                iter(
+                                    TranslationQuantifierHandler.handlers[h.root]
+                                    for h in value.index_handlers[tag]
+                                    if "canonical" not in h.root
+                                ),
+                                None,
+                            )
+                            if not handler:
+                                tokens.append(stats_by_file.NumberRule(type="number", index=tag, stat=ids[tag]))
+                            elif isinstance(handler, TQNumberFormat):
+                                tokens.append(
+                                    stats_by_file.NumberRule(
+                                        type="number",
+                                        index=tag,
+                                        stat=ids[tag],
+                                        stat_value_handlers=[h.root for h in value.index_handlers[tag]],
+                                    )
+                                )
+                            elif isinstance(handler, TQRelationalData):
+                                tokens.append(
+                                    stats_by_file.EnumRule(
+                                        type="enum", index=tag, stat=ids[tag], stat_value_handler=handler.id
+                                    )
+                                )
+                            else:
+                                tokens.append(
+                                    stats_by_file.UnknownRule(
+                                        type="unknown", index=tag, stat=ids[tag], stat_value_handler=handler.id
+                                    )
+                                )
+
+                        if s.strings[-1]:
+                            tokens.append(stats_by_file.Literal(type="literal", value=s.strings[-1]))
+                        self.lookup.root[value.string] = stats_by_file.Stat(
+                            files=[self.current_file], generated_name=f"Stat_{len(self.lookup.root)}", tokens=tokens
+                        )
+                    except Exception as e:
+                        print(e)
                 result.append(value)
             except Exception:
                 print("Error processing", s)
@@ -139,42 +191,49 @@ class stat_translations(Parser_Module):
                 yield game_file, out_file
 
     def write(self) -> None:
+        self.lookup = stats_by_file.Model({})
         install_data_dependant_quantifiers(self.relational_reader)
 
         quantifiers = {}
         for handler_name, handler in TranslationQuantifierHandler.handlers.items():
             if isinstance(handler, TQNumberFormat):
-                quantifiers[handler_name] = {
-                    "type": handler.type.name.lower(),
-                    "multiplier": handler.multiplier if handler.multiplier != 1 else None,
-                    "divisor": handler.divisor if handler.divisor != 1 else None,
-                    "addend": handler.addend if handler.addend != 0 else None,
-                    "precision": handler.dp,
-                    "fixed": handler.fixed if handler.fixed else None,
-                }
+                quantifiers[handler_name] = stat_value_handlers.IntHandler(
+                    **{
+                        "type": handler.type.name.lower(),
+                        "multiplier": handler.multiplier if handler.multiplier != 1 else None,
+                        "divisor": handler.divisor if handler.divisor != 1 else None,
+                        "addend": handler.addend if handler.addend != 0 else None,
+                        "precision": handler.dp,
+                        "fixed": handler.fixed if handler.fixed else None,
+                    }
+                )
             elif isinstance(handler, TQRelationalData):
-                quantifiers[handler_name] = {
-                    "type": handler.type.name.lower(),
-                    "dat_file": handler.table.file_name,
-                    "value_column": handler.value_column,
-                    "index_column": handler.index_column,
-                    "predicate": (
-                        {
-                            "column": handler.predicate[0],
-                            "value": handler.predicate[1],
-                        }
-                        if handler.predicate
-                        else None
-                    ),
-                    "values": {
-                        r[handler.index_column] if handler.index_column else r.rowid: r[handler.value_column]
-                        for r in handler.table
-                        if r[handler.value_column]
-                        and (not handler.predicate or r[handler.predicate[0]] == handler.predicate[1])
-                    },
-                }
-            elif not handler.type.name == "tq_noop":
-                quantifiers[handler_name] = {"type": handler.type.name.lower()}
+                quantifiers[handler_name] = stat_value_handlers.RelationalData(
+                    **{
+                        "type": "relational",
+                        "dat_file": handler.table.file_name,
+                        "value_column": handler.value_column,
+                        "index_column": handler.index_column,
+                        "predicate": (
+                            {
+                                "column": handler.predicate[0],
+                                "value": handler.predicate[1],
+                            }
+                            if handler.predicate
+                            else None
+                        ),
+                        "values": {
+                            str(r[handler.index_column] if handler.index_column else r.rowid): r[handler.value_column]
+                            for r in handler.table
+                            if r[handler.value_column]
+                            and (not handler.predicate or r[handler.predicate[0]] == handler.predicate[1])
+                        },
+                    }
+                )
+            elif handler.type == TranslationQuantifier.QuantifierTypes.STRING:
+                quantifiers[handler_name] = stat_value_handlers.CanonicalLine(type=handler.type.name.lower())
+            else:
+                quantifiers[handler_name] = stat_value_handlers.Noop(type="noop")
         write_json(quantifiers, self.data_path, "stat_value_handlers")
 
         with urlopen(
@@ -200,6 +259,7 @@ class stat_translations(Parser_Module):
 
         for in_file, out_file in self._build_stat_translation_file_map(self.file_system):
             try:
+                self.current_file = out_file
                 translations = self.get_cache(TranslationFileCache)[in_file].translations
                 result = self._get_stat_translations(
                     tag_set, translations, get_custom_translation_file().translations, trade_stats
@@ -208,6 +268,7 @@ class stat_translations(Parser_Module):
             except Exception:
                 print("Error processing", in_file)
                 raise
+        write_model(self.lookup, self.data_path, "stats_by_file")
         print("Possible format tags: {}".format(tag_set))
 
 
