@@ -10,7 +10,7 @@ from pydantic import BaseModel, RootModel
 
 
 class Type(Enum):
-    literal = "literal"
+    literal = 'literal'
 
 
 class Literal(BaseModel):
@@ -19,7 +19,7 @@ class Literal(BaseModel):
 
 
 class Type1(Enum):
-    number = "number"
+    number = 'number'
 
 
 class NumberRule(BaseModel):
@@ -30,7 +30,7 @@ class NumberRule(BaseModel):
 
 
 class Type2(Enum):
-    enum = "enum"
+    enum = 'enum'
 
 
 class EnumRule(BaseModel):
@@ -41,7 +41,7 @@ class EnumRule(BaseModel):
 
 
 class Type3(Enum):
-    unknown = "unknown"
+    unknown = 'unknown'
 
 
 class UnknownRule(BaseModel):
