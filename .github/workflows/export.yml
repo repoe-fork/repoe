@@ -13,6 +13,13 @@ jobs:
       changes_detected: ${{ steps.autocommit.outputs.changes_detected }}
 
     steps:
+    - name: generate locales
+      run: |
+        sudo apt-get update && sudo apt-get install locales -y
+        for lang in en_US fr_FR de_DE ja_JP ko_KR pt_BR ru_RU es_ES th_TH zh_TW
+        do
+          sudo locale-gen $lang.UTF-8
+        done
     - name: checkout
       uses: actions/checkout@v4.1.4
       with:
