@@ -65,7 +65,8 @@ class stat_translations(Parser_Module):
         ids = tr.ids
         n_ids = len(ids)
         result = []
-        trade_stats = defaultdict(list)
+        trade_stats = {}
+        partial_trade_stats = {}
         for s in tr.get_language(self.language).strings:
             try:
                 tags = self._convert_tags(n_ids, s.tags, s.tags_types)
@@ -86,7 +87,7 @@ class stat_translations(Parser_Module):
                     for line in trade_format.splitlines():
                         if line in all_trade_stats:
                             for trade_stat in all_trade_stats[line]:
-                                trade_stats[trade_stat["id"]] = trade_stat
+                                partial_trade_stats[trade_stat["id"]] = trade_stat
                 else:
                     trade_format = re.sub(r"\d+", "#", trade_format)
                     if trade_format in all_trade_stats:
@@ -158,7 +159,13 @@ class stat_translations(Parser_Module):
         return {
             "ids": ids,
             self.language: result,
-            "trade_stats": list(trade_stats.values()) if trade_stats else None,
+            "trade_stats": (
+                list(trade_stats.values())
+                if trade_stats
+                else list(partial_trade_stats.values())
+                if partial_trade_stats
+                else None
+            ),
         }
 
     def _get_stat_translations(
