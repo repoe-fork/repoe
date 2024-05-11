@@ -131,6 +131,8 @@ class stat_translations(Parser_Module):
 
     def _add_values_to_lookup(self, values: list[Stat], strings: list[TranslationString], ids: list[str]):
         for value, s in zip(values, strings):
+            if not value:
+                continue
             if value.string in self.lookup.root:
                 self.lookup.root[value.string].files.append(self.current_file)
             else:
