@@ -10,12 +10,12 @@ from pydantic import BaseModel, ConfigDict, RootModel, constr
 
 
 class Type(Enum):
-    int = 'int'
+    int = "int"
 
 
 class IntHandler(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     addend: Optional[float] = None
     divisor: Optional[float] = None
@@ -26,54 +26,50 @@ class IntHandler(BaseModel):
 
 
 class Type1(Enum):
-    relational = 'relational'
+    relational = "relational"
 
 
 class Predicate(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     column: Optional[str] = None
     value: Optional[Any] = None
 
 
 class Type2(Enum):
-    string = 'string'
+    string = "string"
 
 
 class CanonicalLine(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     type: Type2
 
 
 class Type3(Enum):
-    noop = 'noop'
+    noop = "noop"
 
 
 class Noop(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     type: Type3
 
 
 class RelationalData(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     dat_file: str
     index_column: Optional[str] = None
     type: Type1
     value_column: str
-    values: Dict[constr(pattern=r'^\d+$'), str]
+    values: Dict[constr(pattern=r"^\d+$"), str]
     predicate: Optional[Predicate] = None
 
 
 class StatValueHandlersSchema(RootModel[Optional[Dict[str, Union[IntHandler, RelationalData, CanonicalLine, Noop]]]]):
     root: Optional[Dict[str, Union[IntHandler, RelationalData, CanonicalLine, Noop]]] = None
-
-
-class Model(RootModel[StatValueHandlersSchema]):
-    root: StatValueHandlersSchema

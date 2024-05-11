@@ -288,7 +288,9 @@ class stat_translations(Parser_Module):
                 print("Error processing", in_file)
                 raise
         clientstrings = self.relational_reader["ClientStrings.dat64"]
-        for stat, stringid in tf._CLIENT_STRINGS_LOOKUP.items():
+        for stat, stringid in list(tf._CLIENT_STRINGS_LOOKUP.items()) + [
+            ("", "StatDescripotionTreeExpansionJewelGrantedSmallStat")
+        ]:
             clientstring: str = clientstrings.index["Id"][stringid]["Text"]
             tokens = intersperse(clientstring.split("{0}"), stat)
             self.lookup.root[clientstring] = stats_by_file.Stat(

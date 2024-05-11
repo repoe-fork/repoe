@@ -1,27 +1,24 @@
 {
     "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/StatValueHandlersSchema",
-    "definitions": {
-        "StatValueHandlersSchema": {
-            "type": "object",
-            "additionalProperties": {
-                "oneOf": [
-                    {
-                        "$ref": "#/definitions/IntHandler"
-                    },
-                    {
-                        "$ref": "#/definitions/RelationalData"
-                    },
-                    {
-                        "$ref": "#/definitions/CanonicalLine"
-                    },
-                    {
-                        "$ref": "#/definitions/Noop"
-                    }
-                ]
+    "type": "object",
+    "additionalProperties": {
+        "oneOf": [
+            {
+                "$ref": "#/definitions/IntHandler"
             },
-            "title": "StatValueHandlersSchema"
-        },
+            {
+                "$ref": "#/definitions/RelationalData"
+            },
+            {
+                "$ref": "#/definitions/CanonicalLine"
+            },
+            {
+                "$ref": "#/definitions/Noop"
+            }
+        ]
+    },
+    "title": "StatValueHandlersSchema",
+    "definitions": {
         "IntHandler": {
             "type": "object",
             "additionalProperties": false,
