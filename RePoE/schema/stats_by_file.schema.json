@@ -36,13 +36,16 @@
                     "$ref": "#/definitions/Literal"
                 },
                 {
-                    "$ref": "#/definitions/NumberRule"
+                    "$ref": "#/definitions/Number"
                 },
                 {
-                    "$ref": "#/definitions/EnumRule"
+                    "$ref": "#/definitions/Enum"
                 },
                 {
-                    "$ref": "#/definitions/UnknownRule"
+                    "$ref": "#/definitions/Unknown"
+                },
+                {
+                    "$ref": "#/definitions/NestedStat"
                 }
             ]
         },
@@ -64,8 +67,9 @@
                 "value"
             ]
         },
-        "NumberRule": {
+        "Number": {
             "type": "object",
+            "description": "Matches a number of the form /[+-]?\\d*\\.?\\d+/",
             "properties": {
                 "type": {
                     "type": "string",
@@ -92,8 +96,9 @@
                 "stat"
             ]
         },
-        "EnumRule": {
+        "Enum": {
             "type": "object",
+            "description": "Integer stat values mapped to rows of a dat file.",
             "properties": {
                 "type": {
                     "type": "string",
@@ -108,6 +113,7 @@
                     "type": "string"
                 },
                 "stat_value_handler": {
+                    "description": "Reference to the entry in stat_value_handlers.json where the enum values can be found.",
                     "type": "string"
                 }
             },
@@ -118,8 +124,9 @@
                 "stat_value_handler"
             ]
         },
-        "UnknownRule": {
+        "Unknown": {
             "type": "object",
+            "description": "How to handle this item is not known. At the current time only the 'sells for an additional unique <base item type>' crucible mod has an unknown token.",
             "properties": {
                 "type": {
                     "type": "string",
@@ -141,6 +148,25 @@
                 "type",
                 "index",
                 "stat"
+            ]
+        },
+        "NestedStat": {
+            "type": "object",
+            "description": "Matches any other stat - used by 'While a ... is in your Presence, <stat>' mods",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "nested"
+                    ]
+                },
+                "added_stat": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type",
+                "added_stat"
             ]
         }
     }

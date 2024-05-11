@@ -6,11 +6,11 @@ from __future__ import annotations
 from enum import Enum
 from typing import Dict, List, Optional, Union
 
-from pydantic import BaseModel, RootModel
+from pydantic import BaseModel, Field, RootModel
 
 
 class Type(Enum):
-    literal = 'literal'
+    literal = "literal"
 
 
 class Literal(BaseModel):
@@ -19,10 +19,10 @@ class Literal(BaseModel):
 
 
 class Type1(Enum):
-    number = 'number'
+    number = "number"
 
 
-class NumberRule(BaseModel):
+class Number(BaseModel):
     type: Type1
     index: int
     stat: str
@@ -30,29 +30,40 @@ class NumberRule(BaseModel):
 
 
 class Type2(Enum):
-    enum = 'enum'
+    enum = "enum"
 
 
-class EnumRule(BaseModel):
+class EnumModel(BaseModel):
     type: Type2
     index: int
     stat: str
-    stat_value_handler: str
+    stat_value_handler: str = Field(
+        ..., description="Reference to the entry in stat_value_handlers.json where the enum values can be found."
+    )
 
 
 class Type3(Enum):
-    unknown = 'unknown'
+    unknown = "unknown"
 
 
-class UnknownRule(BaseModel):
+class Unknown(BaseModel):
     type: Type3
     index: int
     stat: str
     stat_value_handler: Optional[str] = None
 
 
-class Token(RootModel[Union[Literal, NumberRule, EnumRule, UnknownRule]]):
-    root: Union[Literal, NumberRule, EnumRule, UnknownRule]
+class Type4(Enum):
+    nested = "nested"
+
+
+class NestedStat(BaseModel):
+    type: Type4
+    added_stat: str
+
+
+class Token(RootModel[Union[Literal, Number, EnumModel, Unknown, NestedStat]]):
+    root: Union[Literal, Number, EnumModel, Unknown, NestedStat]
 
 
 class Stat(BaseModel):
