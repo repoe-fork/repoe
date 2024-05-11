@@ -71,5 +71,5 @@ class RelationalData(BaseModel):
     predicate: Optional[Predicate] = None
 
 
-class StatValueHandlersSchema(RootModel[Optional[Dict[str, Union[IntHandler, RelationalData, CanonicalLine, Noop]]]]):
+class Model(RootModel[Optional[Dict[str, Union[IntHandler, RelationalData, CanonicalLine, Noop]]]]):
     root: Optional[Dict[str, Union[IntHandler, RelationalData, CanonicalLine, Noop]]] = None
