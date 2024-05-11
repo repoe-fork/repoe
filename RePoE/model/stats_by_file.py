@@ -10,7 +10,7 @@ from pydantic import BaseModel, Field, RootModel
 
 
 class Type(Enum):
-    literal = "literal"
+    literal = 'literal'
 
 
 class Literal(BaseModel):
@@ -19,7 +19,7 @@ class Literal(BaseModel):
 
 
 class Type1(Enum):
-    number = "number"
+    number = 'number'
 
 
 class Number(BaseModel):
@@ -30,7 +30,7 @@ class Number(BaseModel):
 
 
 class Type2(Enum):
-    enum = "enum"
+    enum = 'enum'
 
 
 class EnumModel(BaseModel):
@@ -38,12 +38,12 @@ class EnumModel(BaseModel):
     index: int
     stat: str
     stat_value_handler: str = Field(
-        ..., description="Reference to the entry in stat_value_handlers.json where the enum values can be found."
+        ..., description='Reference to the entry in stat_value_handlers.json where the enum values can be found.'
     )
 
 
 class Type3(Enum):
-    unknown = "unknown"
+    unknown = 'unknown'
 
 
 class Unknown(BaseModel):
@@ -54,7 +54,7 @@ class Unknown(BaseModel):
 
 
 class Type4(Enum):
-    nested = "nested"
+    nested = 'nested'
 
 
 class NestedStat(BaseModel):
