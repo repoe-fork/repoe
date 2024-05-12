@@ -10,7 +10,7 @@ from pydantic import BaseModel, ConfigDict, RootModel
 
 class ItemClassesSchema1(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     category: Optional[str] = None
     category_id: Optional[str] = None

@@ -10,7 +10,7 @@ from pydantic import BaseModel, ConfigDict, Field, RootModel
 
 class TiveModWeight(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     tag: str
     weight: int
@@ -18,7 +18,7 @@ class TiveModWeight(BaseModel):
 
 class FossilsSchema1(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     added_mods: List[str]
     allowed_tags: List[str]
@@ -38,7 +38,7 @@ class FossilsSchema1(BaseModel):
 
 
 class FossilsSchema(RootModel[Optional[Dict[str, FossilsSchema1]]]):
-    root: Optional[Dict[str, FossilsSchema1]] = Field(None, title='MetadataItemsCurrencyCurrencyDelveCraftingAbyss')
+    root: Optional[Dict[str, FossilsSchema1]] = Field(None, title="MetadataItemsCurrencyCurrencyDelveCraftingAbyss")
 
 
 class Model(RootModel[FossilsSchema]):

@@ -10,7 +10,7 @@ from pydantic import BaseModel, ConfigDict, RootModel
 
 class UniquesPoewikiSchemaElement(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     base_item: str
     base_item_id: Optional[str] = None

@@ -10,7 +10,7 @@ from pydantic import BaseModel, ConfigDict, RootModel
 
 class ClusterJewelNotablesSchemaElement(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     id: str
     jewel_stat: str

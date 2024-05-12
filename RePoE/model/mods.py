@@ -10,7 +10,7 @@ from pydantic import BaseModel, ConfigDict, RootModel
 
 class GrantsEffect(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     granted_effect_id: str
     level: int
@@ -18,7 +18,7 @@ class GrantsEffect(BaseModel):
 
 class Stat(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     id: str
     max: int
@@ -47,7 +47,7 @@ class ImplicitTag(RootModel[str]):
 
 class NWeight(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     tag: Tag
     weight: int
@@ -55,7 +55,7 @@ class NWeight(BaseModel):
 
 class ModsSchemaValue(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     adds_tags: List[AddsTag]
     domain: Domain

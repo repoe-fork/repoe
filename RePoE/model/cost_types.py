@@ -10,7 +10,7 @@ from pydantic import BaseModel, ConfigDict, RootModel
 
 class CostTypesSchemaValue(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     format_text: str
     stat: str

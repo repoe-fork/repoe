@@ -34,7 +34,7 @@ class GenerationTypes(RootModel[Optional[Dict[str, ModTypes]]]):
 
 class TagSet(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     bases: List[str]
     mods: GenerationTypes

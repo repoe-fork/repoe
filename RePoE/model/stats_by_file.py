@@ -10,24 +10,24 @@ from pydantic import BaseModel, ConfigDict, Field, RootModel
 
 
 class Type(Enum):
-    literal = 'literal'
+    literal = "literal"
 
 
 class Literal(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     type: Type
     value: str
 
 
 class Type1(Enum):
-    number = 'number'
+    number = "number"
 
 
 class Number(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     type: Type1
     index: int
@@ -36,28 +36,28 @@ class Number(BaseModel):
 
 
 class Type2(Enum):
-    enum = 'enum'
+    enum = "enum"
 
 
 class EnumModel(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     type: Type2
     index: int
     stat: str
     stat_value_handler: str = Field(
-        ..., description='Reference to the entry in stat_value_handlers.json where the enum values can be found.'
+        ..., description="Reference to the entry in stat_value_handlers.json where the enum values can be found."
     )
 
 
 class Type3(Enum):
-    unknown = 'unknown'
+    unknown = "unknown"
 
 
 class Unknown(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     type: Type3
     index: int
@@ -66,12 +66,12 @@ class Unknown(BaseModel):
 
 
 class Type4(Enum):
-    nested = 'nested'
+    nested = "nested"
 
 
 class NestedStat(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     type: Type4
     added_stat: str
@@ -83,7 +83,7 @@ class Token(RootModel[Union[Literal, Number, EnumModel, Unknown, NestedStat]]):
 
 class Stat(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     files: List[str]
     generated_name: str

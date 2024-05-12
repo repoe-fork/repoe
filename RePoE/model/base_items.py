@@ -11,7 +11,7 @@ from pydantic import BaseModel, ConfigDict, RootModel
 
 class GrantsBuff(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     id: str
     stats: Dict[str, int]
@@ -19,7 +19,7 @@ class GrantsBuff(BaseModel):
 
 class Armour(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     max: int
     min: int
@@ -27,7 +27,7 @@ class Armour(BaseModel):
 
 class Requirements(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     dexterity: int
     intelligence: int
@@ -37,7 +37,7 @@ class Requirements(BaseModel):
 
 class VisualIdentity(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     dds_file: str
     id: str
@@ -52,10 +52,10 @@ class ItemClass(RootModel[str]):
 
 
 class ReleaseState(Enum):
-    released = 'released'
-    unique_only = 'unique_only'
-    unreleased = 'unreleased'
-    legacy = 'legacy'
+    released = "released"
+    unique_only = "unique_only"
+    unreleased = "unreleased"
+    legacy = "legacy"
 
 
 class Tag(RootModel[str]):
@@ -64,7 +64,7 @@ class Tag(RootModel[str]):
 
 class Properties(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     armour: Optional[Armour] = None
     energy_shield: Optional[Armour] = None
@@ -90,7 +90,7 @@ class Properties(BaseModel):
 
 class BaseItemsSchemaValue(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     domain: Domain
     drop_level: int

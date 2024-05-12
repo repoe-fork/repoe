@@ -10,7 +10,7 @@ from pydantic import BaseModel, ConfigDict, RootModel
 
 class Npc(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     id: str
     name: str
@@ -27,7 +27,7 @@ class Video(RootModel[str]):
 
 class AudioSchemaValue(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     mono: str
     npcs: List[Npc]

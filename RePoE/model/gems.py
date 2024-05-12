@@ -11,7 +11,7 @@ from pydantic import BaseModel, ConfigDict, RootModel
 
 class PerLevelCosts(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     Mana: Optional[int] = None
     Life: Optional[int] = None
@@ -21,7 +21,7 @@ class PerLevelCosts(BaseModel):
 
 class PerLevelReservations(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     mana_flat: Optional[int] = None
     mana_percent: Optional[float] = None
@@ -35,7 +35,7 @@ class StatRequirements(BaseModel):
 
 class StaticCosts(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     Mana: Optional[int] = None
     Life: Optional[int] = None
@@ -44,7 +44,7 @@ class StaticCosts(BaseModel):
 
 class QualityStat(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     stat: str
     stats: Dict[str, int]
@@ -52,7 +52,7 @@ class QualityStat(BaseModel):
 
 class StaticReservations(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     mana_percent: Optional[float] = None
     life_percent: Optional[float] = None
@@ -61,7 +61,7 @@ class StaticReservations(BaseModel):
 
 class Vaal(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     souls: int
     stored_uses: int
@@ -80,29 +80,29 @@ class ExperienceType(RootModel[str]):
 
 
 class ReleaseState(Enum):
-    released = 'released'
-    unreleased = 'unreleased'
-    legacy = 'legacy'
+    released = "released"
+    unreleased = "unreleased"
+    legacy = "legacy"
 
 
 class Color(Enum):
-    r = 'r'
-    g = 'g'
-    w = 'w'
-    b = 'b'
+    r = "r"
+    g = "g"
+    w = "w"
+    b = "b"
 
 
 class Discriminator(Enum):
-    alt_x = 'alt_x'
-    alt_y = 'alt_y'
+    alt_x = "alt_x"
+    alt_y = "alt_y"
 
 
 class StatType(Enum):
-    float = 'float'
-    constant = 'constant'
-    additional = 'additional'
-    implicit = 'implicit'
-    flag = 'flag'
+    float = "float"
+    constant = "constant"
+    additional = "additional"
+    implicit = "implicit"
+    flag = "flag"
 
 
 class Class(RootModel[str]):
@@ -114,9 +114,9 @@ class StatTranslationFile(RootModel[str]):
 
 
 class CooldownBypassType(Enum):
-    expend_frenzy_charge = 'expend_frenzy_charge'
-    expend_power_charge = 'expend_power_charge'
-    expend_endurance_charge = 'expend_endurance_charge'
+    expend_frenzy_charge = "expend_frenzy_charge"
+    expend_power_charge = "expend_power_charge"
+    expend_endurance_charge = "expend_endurance_charge"
 
 
 class Tag(RootModel[str]):
@@ -125,7 +125,7 @@ class Tag(RootModel[str]):
 
 class ActiveSkill(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     description: str
     display_name: str
@@ -141,7 +141,7 @@ class ActiveSkill(BaseModel):
 
 class BaseItem(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     display_name: str
     experience_type: ExperienceType
@@ -152,7 +152,7 @@ class BaseItem(BaseModel):
 
 class Stat(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     value: Optional[int] = None
     id: Optional[str] = None
@@ -161,7 +161,7 @@ class Stat(BaseModel):
 
 class QuestReward(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     act: int
     classes: List[Class]
@@ -170,7 +170,7 @@ class QuestReward(BaseModel):
 
 class Static(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     crit_chance: Optional[int] = None
     damage_effectiveness: Optional[int] = None
@@ -193,7 +193,7 @@ class Static(BaseModel):
 
 class SupportGem(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     allowed_types: Optional[List[MinionTypeElement]] = None
     excluded_types: Optional[List[MinionTypeElement]] = None
@@ -205,7 +205,7 @@ class SupportGem(BaseModel):
 
 class PerLevel(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     costs: Optional[PerLevelCosts] = None
     experience: Optional[int] = None
@@ -223,7 +223,7 @@ class PerLevel(BaseModel):
 
 class GemsSchemaValue(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     active_skill: Optional[ActiveSkill] = None
     base_item: Optional[BaseItem] = None

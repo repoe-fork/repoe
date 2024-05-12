@@ -10,7 +10,7 @@ from pydantic import BaseModel, ConfigDict, RootModel
 
 class Unarmed(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     attack_time: int
     max_physical_damage: int
@@ -24,7 +24,7 @@ class MetadataID(RootModel[str]):
 
 class BaseStats(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     dexterity: int
     intelligence: int
@@ -36,7 +36,7 @@ class BaseStats(BaseModel):
 
 class CharactersSchemaElement(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     base_stats: BaseStats
     integer_id: int

@@ -10,7 +10,7 @@ from pydantic import BaseModel, ConfigDict, RootModel
 
 class Actions(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     change_socket_count: Optional[int] = None
     link_sockets: Optional[int] = None
@@ -31,7 +31,7 @@ class Master(RootModel[str]):
 
 class CraftingBenchOptionsSchemaElement(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     actions: Actions
     bench_tier: int

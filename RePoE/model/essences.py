@@ -10,7 +10,7 @@ from pydantic import BaseModel, ConfigDict, Field, RootModel
 
 class Type(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     is_corruption_only: bool
     tier: int
@@ -18,35 +18,35 @@ class Type(BaseModel):
 
 class EssenceMods(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     Amulet: Optional[str] = None
     Belt: Optional[str] = None
-    Body_Armour: Optional[str] = Field(None, alias='Body Armour')
+    Body_Armour: Optional[str] = Field(None, alias="Body Armour")
     Boots: Optional[str] = None
     Bow: Optional[str] = None
     Claw: Optional[str] = None
     Dagger: Optional[str] = None
     Gloves: Optional[str] = None
     Helmet: Optional[str] = None
-    One_Hand_Axe: Optional[str] = Field(None, alias='One Hand Axe')
-    One_Hand_Mace: Optional[str] = Field(None, alias='One Hand Mace')
-    One_Hand_Sword: Optional[str] = Field(None, alias='One Hand Sword')
+    One_Hand_Axe: Optional[str] = Field(None, alias="One Hand Axe")
+    One_Hand_Mace: Optional[str] = Field(None, alias="One Hand Mace")
+    One_Hand_Sword: Optional[str] = Field(None, alias="One Hand Sword")
     Quiver: Optional[str] = None
     Ring: Optional[str] = None
     Sceptre: Optional[str] = None
     Shield: Optional[str] = None
     Staff: Optional[str] = None
-    Thrusting_One_Hand_Sword: Optional[str] = Field(None, alias='Thrusting One Hand Sword')
-    Two_Hand_Axe: Optional[str] = Field(None, alias='Two Hand Axe')
-    Two_Hand_Mace: Optional[str] = Field(None, alias='Two Hand Mace')
-    Two_Hand_Sword: Optional[str] = Field(None, alias='Two Hand Sword')
+    Thrusting_One_Hand_Sword: Optional[str] = Field(None, alias="Thrusting One Hand Sword")
+    Two_Hand_Axe: Optional[str] = Field(None, alias="Two Hand Axe")
+    Two_Hand_Mace: Optional[str] = Field(None, alias="Two Hand Mace")
+    Two_Hand_Sword: Optional[str] = Field(None, alias="Two Hand Sword")
     Wand: Optional[str] = None
 
 
 class Essence(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     item_level_restriction: Optional[int] = None
     level: int

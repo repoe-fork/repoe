@@ -11,7 +11,7 @@ from pydantic import BaseModel, ConfigDict, Field, RootModel
 
 class Condition(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     min: Optional[int] = None
     max: Optional[int] = None
@@ -20,16 +20,16 @@ class Condition(BaseModel):
 
 class OptionElement(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     id: int
     text: str
 
 
 class Format(Enum):
-    ignore = 'ignore'
-    field_ = '#'
-    field__ = '+#'
+    ignore = "ignore"
+    field_ = "#"
+    field__ = "+#"
 
 
 class IndexHandler(RootModel[str]):
@@ -42,7 +42,7 @@ class Type(RootModel[str]):
 
 class Stat(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     condition: List[Condition]
     format: List[Format]
@@ -54,14 +54,14 @@ class Stat(BaseModel):
 
 class TradeStatOption(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     options: List[OptionElement]
 
 
 class TradeStat(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     id: str
     text: str
@@ -71,7 +71,7 @@ class TradeStat(BaseModel):
 
 class StatTranslationsSchemaElement(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     English: Optional[List[Stat]] = None
     ids: List[str]
@@ -85,7 +85,7 @@ class StatTranslationsSchemaElement(BaseModel):
     Russian: Optional[List[Stat]] = None
     Spanish: Optional[List[Stat]] = None
     Thai: Optional[List[Stat]] = None
-    Traditional_Chinese: Optional[List[Stat]] = Field(None, alias='Traditional Chinese')
+    Traditional_Chinese: Optional[List[Stat]] = Field(None, alias="Traditional Chinese")
 
 
 class Model(RootModel[List[StatTranslationsSchemaElement]]):

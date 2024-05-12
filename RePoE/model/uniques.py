@@ -10,7 +10,7 @@ from pydantic import BaseModel, ConfigDict, RootModel
 
 class Version(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     name: str
     rowid: int
@@ -18,7 +18,7 @@ class Version(BaseModel):
 
 class VisualIdentity(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     dds_file: str
     id: str
@@ -30,7 +30,7 @@ class ItemClass(RootModel[str]):
 
 class UniquesSchemaValue(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     id: str
     inventory_height: int

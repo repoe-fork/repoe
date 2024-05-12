@@ -10,37 +10,37 @@ from pydantic import BaseModel, ConfigDict, RootModel
 
 
 class Group(Enum):
-    MandatoryGoldDoor = 'MandatoryGoldDoor'
+    MandatoryGoldDoor = "MandatoryGoldDoor"
 
 
 class Override(Enum):
-    BottleneckOverride = 'BottleneckOverride'
-    Weylin03 = 'Weylin03'
-    Weylin04 = 'Weylin04'
-    FinalBossEasy = 'FinalBossEasy'
-    FinalBoss = 'FinalBoss'
-    AirlockEntry = 'AirlockEntry'
-    Boss1_Sec1 = 'Boss1_Sec1'
-    Boss2_Sec1 = 'Boss2_Sec1'
-    Weylin01 = 'Weylin01'
-    Weylin02 = 'Weylin02'
-    Boss2_Sec2 = 'Boss2_Sec2'
-    Boss1_Sec2 = 'Boss1_Sec2'
+    BottleneckOverride = "BottleneckOverride"
+    Weylin03 = "Weylin03"
+    Weylin04 = "Weylin04"
+    FinalBossEasy = "FinalBossEasy"
+    FinalBoss = "FinalBoss"
+    AirlockEntry = "AirlockEntry"
+    Boss1_Sec1 = "Boss1_Sec1"
+    Boss2_Sec1 = "Boss2_Sec1"
+    Weylin01 = "Weylin01"
+    Weylin02 = "Weylin02"
+    Boss2_Sec2 = "Boss2_Sec2"
+    Boss1_Sec2 = "Boss1_Sec2"
 
 
 class Secret(Enum):
-    SilverKey = 'SilverKey'
-    SilverDoorReward = 'SilverDoorReward'
-    GoldKey = 'GoldKey'
-    GoldDoor = 'GoldDoor'
-    Gauntlet = 'Gauntlet'
-    GoldDoorModal = 'GoldDoorModal'
-    Trinket = 'Trinket'
+    SilverKey = "SilverKey"
+    SilverDoorReward = "SilverDoorReward"
+    GoldKey = "GoldKey"
+    GoldDoor = "GoldDoor"
+    Gauntlet = "Gauntlet"
+    GoldDoorModal = "GoldDoorModal"
+    Trinket = "Trinket"
 
 
 class Room(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     areas: List[str]
     connections: List[int]
@@ -54,7 +54,7 @@ class Room(BaseModel):
 
 class Section(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     difficulty: int
     rooms: List[Room]

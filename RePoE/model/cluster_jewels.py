@@ -11,7 +11,7 @@ from pydantic import BaseModel, ConfigDict, Field, RootModel
 
 class PassiveSkill(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     id: str
     name: str
@@ -20,20 +20,20 @@ class PassiveSkill(BaseModel):
 
 
 class MetadataItemsJewelsJewelPassiveTreeExpansionLargeSize(Enum):
-    Large = 'Large'
+    Large = "Large"
 
 
 class MetadataItemsJewelsJewelPassiveTreeExpansionMediumSize(Enum):
-    Medium = 'Medium'
+    Medium = "Medium"
 
 
 class MetadataItemsJewelsJewelPassiveTreeExpansionSmallSize(Enum):
-    Small = 'Small'
+    Small = "Small"
 
 
 class MetadataItemsJewelsJewelPassiveTreeExpansionLarge(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     max_skills: int
     min_skills: int
@@ -48,7 +48,7 @@ class MetadataItemsJewelsJewelPassiveTreeExpansionLarge(BaseModel):
 
 class MetadataItemsJewelsJewelPassiveTreeExpansionMedium(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     max_skills: int
     min_skills: int
@@ -63,7 +63,7 @@ class MetadataItemsJewelsJewelPassiveTreeExpansionMedium(BaseModel):
 
 class MetadataItemsJewelsJewelPassiveTreeExpansionSmall(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     max_skills: int
     min_skills: int
@@ -78,16 +78,16 @@ class MetadataItemsJewelsJewelPassiveTreeExpansionSmall(BaseModel):
 
 class ClusterJewelsSchema(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     Metadata_Items_Jewels_JewelPassiveTreeExpansionLarge: MetadataItemsJewelsJewelPassiveTreeExpansionLarge = Field(
-        ..., alias='Metadata/Items/Jewels/JewelPassiveTreeExpansionLarge'
+        ..., alias="Metadata/Items/Jewels/JewelPassiveTreeExpansionLarge"
     )
     Metadata_Items_Jewels_JewelPassiveTreeExpansionMedium: MetadataItemsJewelsJewelPassiveTreeExpansionMedium = Field(
-        ..., alias='Metadata/Items/Jewels/JewelPassiveTreeExpansionMedium'
+        ..., alias="Metadata/Items/Jewels/JewelPassiveTreeExpansionMedium"
     )
     Metadata_Items_Jewels_JewelPassiveTreeExpansionSmall: MetadataItemsJewelsJewelPassiveTreeExpansionSmall = Field(
-        ..., alias='Metadata/Items/Jewels/JewelPassiveTreeExpansionSmall'
+        ..., alias="Metadata/Items/Jewels/JewelPassiveTreeExpansionSmall"
     )
 
 

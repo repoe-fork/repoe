@@ -10,7 +10,7 @@ from pydantic import BaseModel, ConfigDict, RootModel
 
 class Alias(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     when_in_off_hand: Optional[str] = None
     when_in_main_hand: Optional[str] = None
@@ -18,7 +18,7 @@ class Alias(BaseModel):
 
 class StatsSchemaValue(BaseModel):
     model_config = ConfigDict(
-        extra='forbid',
+        extra="forbid",
     )
     alias: Alias
     is_aliased: bool
