@@ -140,10 +140,12 @@ class stat_translations(Parser_Module):
                     files=[self.current_file],
                     generated_name=f"Stat_{len(self.lookup.root)}",
                     tokens=self._get_tokens(value, s, ids),
-                    implied_stats=self._get_mandatory_values(value, ids),
+                    implied_stats=self._get_implied_stats(
+                        value, [None if i in s.tags else id for i, id in enumerate(ids)]
+                    ),
                 )
 
-    def _get_tokens(self, value, s, ids):
+    def _get_tokens(self, value: Stat, s: TranslationString, ids: list[str]):
         try:
             tokens = []
             for i, tag in enumerate(s.tags):
@@ -183,19 +185,29 @@ class stat_translations(Parser_Module):
         except Exception as e:
             print(e)
 
-    def _get_mandatory_values(self, value: Stat, ids: list[str]):
+    def _get_implied_stats(self, value: Stat, ids: list[str]):
         result = {}
         for id, condition in zip(ids, value.condition):
-            if condition.min is None:
-                pass
+            if not id:
+                continue
+            elif condition.min is None and condition.max is None:
+                continue
             elif condition.min == condition.max:
-                if not condition.negated:
-                    result[id] = condition.min
-                elif condition.min == 0:
-                    result[id] = 1
+                if condition.negated:
+                    if condition.min == 0:
+                        result[id] = 1
+                    else:
+                        # Only !0 exists currently
+                        # This function would probably skip other values anyway
+                        print("Unexpected non-zero negated condition", condition, id)
                 else:
-                    print("Found negated condition with value", condition.min)
-                    pass
+                    result[id] = condition.min
+            elif condition.negated:
+                print("Unexpected non-zero negated condition", condition, id)
+            elif condition.max is None and condition.min > 0:
+                result[id] = condition.min
+            elif condition.min is None and condition.max < 0:
+                result[id] = condition.max
 
         return result if result else None
 
