@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 from enum import Enum
-from typing import Any, Dict, Optional, Union
+from typing import Dict, Optional, Union
 
 from pydantic import BaseModel, ConfigDict, RootModel, constr
 
@@ -34,7 +34,7 @@ class Predicate(BaseModel):
         extra='forbid',
     )
     column: Optional[str] = None
-    value: Optional[Any] = None
+    value: Optional[int] = None
 
 
 class Type2(Enum):

@@ -6,7 +6,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import Dict, List, Optional, Union
 
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, ConfigDict, Field, RootModel
 
 
 class Type(Enum):
@@ -14,6 +14,9 @@ class Type(Enum):
 
 
 class Literal(BaseModel):
+    model_config = ConfigDict(
+        extra='forbid',
+    )
     type: Type
     value: str
 
@@ -23,6 +26,9 @@ class Type1(Enum):
 
 
 class Number(BaseModel):
+    model_config = ConfigDict(
+        extra='forbid',
+    )
     type: Type1
     index: int
     stat: str
@@ -34,6 +40,9 @@ class Type2(Enum):
 
 
 class EnumModel(BaseModel):
+    model_config = ConfigDict(
+        extra='forbid',
+    )
     type: Type2
     index: int
     stat: str
@@ -47,6 +56,9 @@ class Type3(Enum):
 
 
 class Unknown(BaseModel):
+    model_config = ConfigDict(
+        extra='forbid',
+    )
     type: Type3
     index: int
     stat: str
@@ -58,6 +70,9 @@ class Type4(Enum):
 
 
 class NestedStat(BaseModel):
+    model_config = ConfigDict(
+        extra='forbid',
+    )
     type: Type4
     added_stat: str
 
@@ -67,6 +82,9 @@ class Token(RootModel[Union[Literal, Number, EnumModel, Unknown, NestedStat]]):
 
 
 class Stat(BaseModel):
+    model_config = ConfigDict(
+        extra='forbid',
+    )
     files: List[str]
     generated_name: str
     tokens: List[Token]
