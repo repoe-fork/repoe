@@ -136,50 +136,68 @@ class stat_translations(Parser_Module):
             if value.string in self.lookup.root:
                 self.lookup.root[value.string].files.append(self.current_file)
             else:
-                try:
-                    tokens = []
-                    for i, tag in enumerate(s.tags):
-                        if s.strings[i]:
-                            tokens.append(stats_by_file.Literal(type="literal", value=s.strings[i]))
-                        handler = next(
-                            iter(
-                                TranslationQuantifierHandler.handlers[h.root]
-                                for h in value.index_handlers[tag]
-                                if "canonical" not in h.root
-                            ),
-                            None,
-                        )
-                        if not handler:
-                            tokens.append(stats_by_file.Number(type="number", index=tag, stat=ids[tag]))
-                        elif isinstance(handler, TQNumberFormat):
-                            tokens.append(
-                                stats_by_file.Number(
-                                    type="number",
-                                    index=tag,
-                                    stat=ids[tag],
-                                    stat_value_handlers=[h.root for h in value.index_handlers[tag]],
-                                )
-                            )
-                        elif isinstance(handler, TQRelationalData):
-                            tokens.append(
-                                stats_by_file.EnumModel(
-                                    type="enum", index=tag, stat=ids[tag], stat_value_handler=handler.id
-                                )
-                            )
-                        else:
-                            tokens.append(
-                                stats_by_file.Unknown(
-                                    type="unknown", index=tag, stat=ids[tag], stat_value_handler=handler.id
-                                )
-                            )
+                self.lookup.root[value.string] = stats_by_file.Stat(
+                    files=[self.current_file],
+                    generated_name=f"Stat_{len(self.lookup.root)}",
+                    tokens=self._get_tokens(value, s, ids),
+                    implied_stats=self._get_mandatory_values(value, ids),
+                )
 
-                    if s.strings[-1]:
-                        tokens.append(stats_by_file.Literal(type="literal", value=s.strings[-1]))
-                    self.lookup.root[value.string] = stats_by_file.Stat(
-                        files=[self.current_file], generated_name=f"Stat_{len(self.lookup.root)}", tokens=tokens
+    def _get_tokens(self, value, s, ids):
+        try:
+            tokens = []
+            for i, tag in enumerate(s.tags):
+                if s.strings[i]:
+                    tokens.append(stats_by_file.Literal(type="literal", value=s.strings[i]))
+                handler = next(
+                    iter(
+                        TranslationQuantifierHandler.handlers[h.root]
+                        for h in value.index_handlers[tag]
+                        if "canonical" not in h.root
+                    ),
+                    None,
+                )
+                if not handler:
+                    tokens.append(stats_by_file.Number(type="number", index=tag, stat=ids[tag]))
+                elif isinstance(handler, TQNumberFormat):
+                    tokens.append(
+                        stats_by_file.Number(
+                            type="number",
+                            index=tag,
+                            stat=ids[tag],
+                            stat_value_handlers=[h.root for h in value.index_handlers[tag]],
+                        )
                     )
-                except Exception as e:
-                    print(e)
+                elif isinstance(handler, TQRelationalData):
+                    tokens.append(
+                        stats_by_file.EnumModel(type="enum", index=tag, stat=ids[tag], stat_value_handler=handler.id)
+                    )
+                else:
+                    tokens.append(
+                        stats_by_file.Unknown(type="unknown", index=tag, stat=ids[tag], stat_value_handler=handler.id)
+                    )
+
+            if s.strings[-1]:
+                tokens.append(stats_by_file.Literal(type="literal", value=s.strings[-1]))
+            return tokens
+        except Exception as e:
+            print(e)
+
+    def _get_mandatory_values(self, value: Stat, ids: list[str]):
+        result = {}
+        for id, condition in zip(ids, value.condition):
+            if condition.min is None:
+                pass
+            elif condition.min == condition.max:
+                if not condition.negated:
+                    result[id] = condition.min
+                elif condition.min == 0:
+                    result[id] = 1
+                else:
+                    print("Found negated condition with value", condition.min)
+                    pass
+
+        return result if result else None
 
     def _get_stat_translations(
         self, translations: List[Translation], custom_translations: List[Translation]
