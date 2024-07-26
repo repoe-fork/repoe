@@ -145,8 +145,6 @@ class uniques(Parser_Module):
 
         write_json(root, self.data_path, "uniques")
         write_text(html, self.data_path, "uniques.html")
-        if self.language == "English":
-            write_json(get_wiki_data(), self.data_path, "uniques_poewiki")
 
 
 if __name__ == "__main__":
