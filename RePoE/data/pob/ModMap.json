@@ -1,9 +1,6 @@
 {
   "AffixData":{
-    "of Skirmishing":{
-      "type":"check",
-      "tooltipLines":[]
-    },
+    "Abhorrent":[],
     "of Drought":{
       "label":"Gains reduced Flask Charges:",
       "tooltipLines":["Players gain %d%% reduced Flask Charges"],
@@ -12,7 +9,7 @@
     },
     "Empowered":{
       "values":[0,15,20],
-      "tooltipLines":["Monsters have a %d%% chance to cause Elemental Ailments on Hit"]
+      "tooltipLines":["Monsters have a %d%% chance to Ignite, Freeze and Shock on Hit"]
     },
     "Demonic":[],
     "Buffered":{
@@ -27,6 +24,7 @@
       "values":[25,null,60]
     },
     "of Stasis":{
+      "type":"check",
       "label":"Cannot Regen ^xE05030Life^7, ^x7070FFMana ^7or ^x88FFFFES?",
       "tooltipLines":["Players cannot Regenerate Life, Mana or Energy Shield"]
     },
@@ -64,19 +62,16 @@
       "tooltipLines":["Players have %d%% less Recovery Rate of Life and Energy Shield"],
       "values":[]
     },
-    "Otherworldly":[],
     "Lunar":[],
-    "of Imprecision":{
-      "values":[],
-      "tooltipLines":["Players have %d%% less Accuracy Rating"]
+    "Fecund":{
+      "values":[[],[],[]],
+      "tooltipLines":["(%d to %d)%% more Monster Life"]
     },
     "Impaling":{
       "values":[],
-      "tooltipLines":["Monsters have %d%% chance to Impale with Attacks"]
+      "tooltipLines":["Monsters' Attacks have %d%% chance to Impale on Hit"]
     },
-    "of Blinding":{
-      "tooltipLines":["Monsters Blind on Hit"]
-    },
+    "of Carnage":[],
     "Slithering":[],
     "of Desecration":[],
     "Emanant":[],
@@ -110,49 +105,51 @@
     "Feral":[],
     "Unwavering":{
       "values":[[[null,19]],[[null,24]],[[]]],
-      "tooltipLines":["(%d to %d)%% more Monster Life","Monsters cannot be Stunned"]
+      "tooltipLines":[null,"Monsters cannot be Stunned"]
     },
     "of Insulation":{
       "label":"Enemy avoid Elemental Ailments:",
       "tooltipLines":["Monsters have %d%% chance to Avoid Elemental Ailments"],
       "values":[]
     },
-    "Anarchic":[],
     "Chaining":[],
     "of Venom":{
       "tooltipLines":["Monsters Poison on Hit"]
     },
     "Profane":{
       "values":[[[],[]],[[],[100]],[[31,35],[]]],
-      "tooltipLines":["Monsters deal (%d to %d)%% extra Physical Damage as Chaos","Monsters Inflict Withered for %d seconds on Hit"]
+      "tooltipLines":["Monsters gain (%d to %d)%% of their Physical Damage as Extra Chaos Damage","Monsters Inflict Withered for %d seconds on Hit"]
     },
     "Capricious":[],
     "of Toughness":{
       "values":[[],[],[36]],
       "tooltipLines":["Monsters take (%d to %d)%% reduced Extra Damage from Critical Strikes"]
     },
-    "of Enervation":[],
+    "of Power":[],
     "of Impedance":[],
-    "of Carnage":[],
     "Conflagrating":{
       "tooltipLines":["All Monster Damage from Hits always Ignites"]
     },
-    "of Power":[],
+    "of Giants":[],
     "Burning":{
       "values":[[],[],[]],
       "tooltipLines":["Monsters deal (%d to %d)%% extra Physical Damage as Fire"]
     },
-    "of Endurance":[],
-    "Solar":[],
+    "of Imprecision":{
+      "values":[],
+      "tooltipLines":["Players have %d%% less Accuracy Rating"]
+    },
+    "of Flames":[],
     "Titan's":{
       "values":[[],[null,55],[]],
       "tooltipLines":["Unique Boss has %d%% increased Life","Unique Boss has %d%% increased Area of Effect"]
     },
-    "of Flames":[],
+    "of Enervation":[],
     "Unstoppable":{
-      "tooltipLines":["Monsters cannot be Taunted","Monsters' Action Speed cannot be modified to below base value"]
+      "values":[[]],
+      "tooltipLines":["Monsters cannot be Taunted","Monsters' Action Speed cannot be modified to below Base Value","Monsters' Movement Speed cannot be modified to below Base Value"]
     },
-    "of Giants":[],
+    "of Endurance":[],
     "Splitting":[],
     "Enthralled":[],
     "Overlord's":{
@@ -165,20 +162,18 @@
     },
     "of Congealment":{
       "label":"Cannot Leech ^xE05030Life ^7/ ^x7070FFMana?",
-      "tooltipLines":["Cannot Leech from Monsters"]
+      "tooltipLines":["Monsters cannot be Leeched from"]
     },
     "of Fatigue":{
       "values":[],
       "tooltipLines":["Players have %d%% less Cooldown Recovery Rate"]
     },
-    "Resistant":{
-      "label":"Enemy has Elemental / ^xD02090Chaos ^7Resist:",
-      "tooltipLines":["+%d%% Monster Elemental Resistances","+%d%% Monster Chaos Resistance"],
-      "values":[[],[],[]]
+    "Hexproof":{
+      "label":"Enemy is Hexproof?",
+      "tooltipLines":["Monsters are Hexproof"]
     },
-    "of Deadliness":{
-      "values":[[[160,200],[]],[[260,300],[]],[[360,400],[41]]],
-      "tooltipLines":["Monsters have (%d to %d)%% increased Critical Strike Chance","+(%d to %d)%% to Monster Critical Strike Multiplier"]
+    "of Blinding":{
+      "tooltipLines":["Monsters Blind on Hit"]
     },
     "of Doubt":{
       "values":[],
@@ -192,7 +187,7 @@
     "of Exposure":{
       "tooltip":"Mid tier: 5-8%\nHigh tier: 9-12%",
       "label":"-X% maximum Resistances:",
-      "tooltipLines":["minus (%d to %d)%% maximum Player Resistances"],
+      "tooltipLines":["Players have minus (%d to %d)%% to all maximum Resistances"],
       "values":[[],[5,8],[9,12]]
     },
     "Fleet":{
@@ -200,18 +195,19 @@
       "tooltipLines":["(%d to %d)%% increased Monster Movement Speed","(%d to %d)%% increased Monster Attack Speed","(%d to %d)%% increased Monster Cast Speed"]
     },
     "Feasting":[],
-    "Hexproof":{
-      "label":"Enemy is Hexproof?",
-      "tooltipLines":["Monsters are Hexproof"]
+    "of Deadliness":{
+      "values":[[[160,200],[]],[[260,300],[]],[[360,400],[41]]],
+      "tooltipLines":["Monsters have (%d to %d)%% increased Critical Strike Chance","+(%d to %d)%% to Monster Critical Strike Multiplier"]
     },
     "Antagonist's":[],
-    "Fecund":{
-      "values":[[],[],[]],
-      "tooltipLines":[]
+    "Resistant":{
+      "label":"Enemy has Elemental / ^xD02090Chaos ^7Resist:",
+      "tooltipLines":["+%d%% Monster Elemental Resistances","+%d%% Monster Chaos Resistance"],
+      "values":[[],[],[]]
     },
     "of Frenzy":[],
     "Twinned":[],
-    "Abhorrent":[]
+    "Solar":[]
   },
   "Prefix":[{
       "label":"None",

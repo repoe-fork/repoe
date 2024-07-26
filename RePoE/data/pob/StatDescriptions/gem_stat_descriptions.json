@@ -2259,12 +2259,12 @@
     "stats":["support_ancestral_slam_big_hit_hit_damage_+%_final"],
     "lang":{
       "English":[{
-          "text":"Ancestrally Boosted Slams deal {0}% more Damage with Hits",
+          "text":"Ancestrally Boosted Slams deal {0}% more Damage with Hits and Ailments",
           "limit":[[]]
         },{
           "1":[],
           "limit":[[]],
-          "text":"Ancestrally Boosted Slams deal {0}% less Damage with Hits"
+          "text":"Ancestrally Boosted Slams deal {0}% less Damage with Hits and Ailments"
         }]
     }
   },
@@ -2727,11 +2727,11 @@
     }
   },
   "230":{
-    "stats":["attack_minimum_added_physical_damage_with_at_least_10_rage","attack_maximum_added_physical_damage_with_at_least_10_rage"],
+    "stats":["attack_minimum_added_physical_damage_with_at_least_10_rage"],
     "lang":{
       "English":[{
-          "text":"Supported Attacks deal {0} to {1} added Physical Damage with Weapons while you have at least 10 Rage",
-          "limit":[[],[]]
+          "text":"Supported Skills to have {0}% increased Attack Speed while you have at least 10",
+          "limit":[[]]
         }]
     }
   },
@@ -6315,7 +6315,7 @@
   "support_storm_barrier_damage_buff_uses_time_threshold":643,
   "support_remote_mine_2_base_mine_detonation_time_ms":621,
   "secondary_base_fire_damage_to_deal_per_minute":134,
-  "support_momentum_attack_speed_+%_per_stack":591,
+  "global_minimum_added_cold_damage":372,
   "support_bane_curse_effect_+%_final":139,
   "base_life_cost_+%":24,
   "support_slower_projectiles_damage_+%_final":631,
@@ -6347,7 +6347,6 @@
   },
   "recover_permyriad_life_on_skill_use":479,
   "global_maximum_added_fire_damage_vs_burning_enemies":575,
-  "global_maximum_added_cold_damage":372,
   "support_spell_cascade_area_delay_+%":633,
   "damage_+%_if_you_have_consumed_a_corpse_recently":315,
   "578":{
@@ -6368,7 +6367,7 @@
   "support_bonechill_cold_damage_+%_final":525,
   "trap_critical_strike_multiplier_+_per_power_charge":671,
   "firestorm_drop_burning_ground_duration_ms":356,
-  "mirage_archer_number_of_additional_projectiles":441,
+  "support_cruelty_hit_damage_+%_final":98,
   "display_totems_no_infusion":342,
   "support_recent_ignites_damage_per_recent_ignite_+%_final_minimum":614,
   "support_minion_instability_minion_base_fire_area_damage_per_minute":188,
@@ -6404,11 +6403,36 @@
     }
   },
   "damage_+%_per_power_charge":323,
-  "support_focused_ballista_totem_damage_+%_final":551,
+  "support_minion_use_focussed_target":586,
   "fortify_duration_+%":357,
   "support_vicious_projectiles_physical_damage_+%_final":655,
   "apply_overpowered_on_enemy_block_reduced_block_and_spell_block_%":221,
+  "701":{
+    "stats":["base_mana_cost_-%_final"],
+    "lang":{
+      "English":[{
+          "text":"Supported Skills have {0}% less Mana Cost",
+          "limit":[[]]
+        },{
+          "1":[],
+          "limit":[[]],
+          "text":"Supported Skills have {0}% more Mana Cost"
+        }]
+    }
+  },
   "ignites_apply_fire_resistance_+":383,
+  "700":{
+    "stats":["minions_are_defensive"],
+    "lang":{
+      "English":[{
+          "1":{
+            "v":"ReminderTextDefensiveMinions"
+          },
+          "limit":[[]],
+          "text":"Minions from Supported Skills are Defensive"
+        }]
+    }
+  },
   "base_melee_attack_repeat_count":109,
   "supported_physical_skill_gem_level_+":661,
   "562":{
@@ -6430,33 +6454,7 @@
   "reduce_enemy_elemental_resistance_%":73,
   "quality_display_lifetap_is_gem":563,
   "base_life_leech_from_chaos_damage_permyriad":262,
-  "700":{
-    "stats":["minions_are_defensive"],
-    "lang":{
-      "English":[{
-          "1":{
-            "v":"ReminderTextDefensiveMinions"
-          },
-          "limit":[[]],
-          "text":"Minions from Supported Skills are Defensive"
-        }]
-    }
-  },
-  "640":{
-    "stats":["support_spellslinger_damage_+%_final"],
-    "lang":{
-      "English":[{
-          "text":"Supported Skills deal {0}% more Damage with Hits and Ailments",
-          "limit":[[]]
-        },{
-          "1":[],
-          "limit":[[]],
-          "text":"Supported Skills deal {0}% less Damage with Hits and Ailments"
-        }]
-    }
-  },
-  "minion_attack_speed_+%":424,
-  "support_multiple_projectiles_critical_strike_chance_+%_final":34,
+  "support_anticipation_charge_gain_interval_ms":695,
   "698":{
     "stats":["support_remote_mine_2_chance_to_deal_double_damage_%_against_enemies_near_mines"],
     "lang":{
@@ -6466,6 +6464,8 @@
         }]
     }
   },
+  "minion_attack_speed_+%":424,
+  "support_multiple_projectiles_critical_strike_chance_+%_final":34,
   "696":{
     "stats":["support_spell_rapid_fire_repeat_use_damage_+%_final"],
     "lang":{
@@ -6476,6 +6476,19 @@
           "1":[],
           "limit":[[]],
           "text":"Supported Skills deal {0}% less Damage when Reoccurring"
+        }]
+    }
+  },
+  "695":{
+    "stats":["support_anticipation_charge_gain_interval_ms","virtual_support_anticipation_charge_gain_interval_ms","support_anticipation_rapid_fire_count","skill_max_unleash_seals"],
+    "lang":{
+      "English":[{
+          "limit":[[],[],[],[]],
+          "1":[],
+          "2":{
+            "v":"ReminderTextReoccurringSpell"
+          },
+          "text":"Supported Spells gain a Seal every {0} seconds, to a maximum of {2} Seals\nSupported Spells are Unsealed when cast, and their effects Reoccur for each Seal lost"
         }]
     }
   },
@@ -6493,23 +6506,10 @@
     }
   },
   "kill_enemy_on_hit_if_under_10%_life":42,
-  "695":{
-    "stats":["support_anticipation_charge_gain_interval_ms","virtual_support_anticipation_charge_gain_interval_ms","support_anticipation_rapid_fire_count","skill_max_unleash_seals"],
-    "lang":{
-      "English":[{
-          "limit":[[],[],[],[]],
-          "1":[],
-          "2":{
-            "v":"ReminderTextReoccurringSpell"
-          },
-          "text":"Supported Spells gain a Seal every {0} seconds, to a maximum of {2} Seals\nSupported Spells are Unsealed when cast, and their effects Reoccur for each Seal lost"
-        }]
-    }
-  },
-  "projectile_return_%_chance":79,
+  "support_withered_base_duration_ms":167,
+  "maximum_life_leech_amount_per_leech_+%":409,
   "physical_damage_+%":468,
   "chance_to_summon_support_ghost_on_hitting_rare_or_unique_%":298,
-  "melee_attack_number_of_spirit_strikes":26,
   "692":{
     "stats":["weapon_elemental_damage_+%"],
     "lang":{
@@ -6523,16 +6523,20 @@
         }]
     }
   },
-  "support_bloodlust_melee_physical_damage_+%_final_vs_bleeding_enemies":146,
-  "638":{
-    "stats":["support_spell_weapon_damage_gain_%_of_one_hand_melee_weapon_damage_as_added_spell_damage"],
+  "637":{
+    "stats":["support_spell_echo_final_repeat_damage_+%_final"],
     "lang":{
       "English":[{
-          "text":"Supported Skills have Added Spell Damage equal to {0}% of\nDamage of Equipped One Handed Melee Weapons\nIf two Weapons are Equipped, each contributes 60% as much Added Damage",
+          "text":"Final Repeat of Supported Skills deals {0}% more Damage",
           "limit":[[]]
+        },{
+          "1":[],
+          "limit":[[]],
+          "text":"Final Repeat of Supported Skills deals {0}% less Damage"
         }]
     }
   },
+  "support_bloodlust_melee_physical_damage_+%_final_vs_bleeding_enemies":146,
   "688":{
     "stats":["triggered_skill_damage_+%"],
     "lang":{
@@ -6546,21 +6550,21 @@
         }]
     }
   },
+  "687":{
+    "stats":["triggered_by_spiritual_cry"],
+    "lang":{
+      "English":[{
+          "text":"Supported Skills are used by Mirage Warriors Summoned by General's Cry\nSupported Skills count as Triggered",
+          "limit":[[]]
+        }]
+    }
+  },
   "maximum_added_cold_damage_per_frenzy_charge":419,
   "666":{
     "stats":["skill_can_only_use_non_melee_weapons"],
     "lang":{
       "English":[{
           "text":"Supported Skills can only be used with Bows or Wands",
-          "limit":[[]]
-        }]
-    }
-  },
-  "687":{
-    "stats":["triggered_by_spiritual_cry"],
-    "lang":{
-      "English":[{
-          "text":"Supported Skills are used by Mirage Warriors Summoned by General's Cry\nSupported Skills count as Triggered",
           "limit":[[]]
         }]
     }
@@ -6577,21 +6581,22 @@
         }]
     }
   },
+  "trap_trigger_radius_+%_per_power_charge":677,
   "cold_ailment_effect_+%":304,
   "minion_damage_+%":432,
-  "mine_laying_speed_+%":417,
-  "570":{
-    "stats":["support_manaforged_arrows_damage_+%_final"],
+  "569":{
+    "stats":["support_maimed_enemies_physical_damage_taken_+%"],
     "lang":{
       "English":[{
+          "text":"Enemies Maimed by Supported Skills take {0}% increased Physical Damage",
           "limit":[[]]
         },{
           "1":[],
-          "limit":[[]]
+          "limit":[[]],
+          "text":"Enemies Maimed by Supported Skills take {0}% reduced Physical Damage"
         }]
     }
   },
-  "support_swift_affliction_skill_effect_and_damaging_ailment_duration_+%_final":648,
   "683":{
     "stats":["trigger_prismatic_burst_on_hit_%_chance"],
     "lang":{
@@ -6604,14 +6609,28 @@
         }]
     }
   },
-  "base_mine_duration":57,
-  "local_gem_dex_requirement_+%":399,
+  "support_swift_affliction_skill_effect_and_damaging_ailment_duration_+%_final":648,
   "682":{
     "stats":["trigger_on_trigger_link_target_hit"],
     "lang":{
       "English":[{
           "text":"Supported Spells are Triggered by Intuitive Link",
           "limit":[[]]
+        }]
+    }
+  },
+  "base_mine_duration":57,
+  "summon_mirage_archer_on_hit":510,
+  "680":{
+    "stats":["trigger_brand_support_hit_damage_+%_final_vs_branded_enemy"],
+    "lang":{
+      "English":[{
+          "text":"Supported Skills Deal {0}% more Damage with Hits against Branded Enemy",
+          "limit":[[]]
+        },{
+          "1":[],
+          "limit":[[]],
+          "text":"Supported Skills Deal {0}% less Damage with Hits against Branded Enemy"
         }]
     }
   },
@@ -6630,36 +6649,6 @@
     }
   },
   "cast_while_channelling_time_ms":130,
-  "680":{
-    "stats":["trigger_brand_support_hit_damage_+%_final_vs_branded_enemy"],
-    "lang":{
-      "English":[{
-          "text":"Supported Skills Deal {0}% more Damage with Hits against Branded Enemy",
-          "limit":[[]]
-        },{
-          "1":[],
-          "limit":[[]],
-          "text":"Supported Skills Deal {0}% less Damage with Hits against Branded Enemy"
-        }]
-    }
-  },
-  "deal_chaos_damage_per_second_for_10_seconds_on_hit":337,
-  "627":{
-    "stats":["support_scion_onslaught_for_3_seconds_on_hitting_unique_enemy_%_chance","support_scion_onslaught_on_unique_hit_duration_ms"],
-    "lang":{
-      "English":[{
-          "1":[],
-          "limit":[[],[]],
-          "text":"Supported Skills have {0}% chance to grant Onslaught for 3 seconds when\nyou Hit a Unique Enemy"
-        }]
-    }
-  },
-  "base_ailment_damage_+%":241,
-  "support_pure_shock_shock_as_though_damage_+%_final":609,
-  "minion_block_%":425,
-  "minion_cooldown_recovery_+%":430,
-  "support_efficacy_damage_over_time_+%_final":92,
-  "recover_%_life_when_stunning_an_enemy_permyriad":477,
   "679":{
     "stats":["trauma_duration_ms","boneshatter_trauma_base_duration_ms","support_trauma_base_duration_ms","trauma_strike_self_damage_per_trauma"],
     "lang":{
@@ -6696,6 +6685,24 @@
         }]
     }
   },
+  "deal_chaos_damage_per_second_for_10_seconds_on_hit":337,
+  "627":{
+    "stats":["support_scion_onslaught_for_3_seconds_on_hitting_unique_enemy_%_chance","support_scion_onslaught_on_unique_hit_duration_ms"],
+    "lang":{
+      "English":[{
+          "1":[],
+          "limit":[[],[]],
+          "text":"Supported Skills have {0}% chance to grant Onslaught for 3 seconds when\nyou Hit a Unique Enemy"
+        }]
+    }
+  },
+  "base_ailment_damage_+%":241,
+  "support_pure_shock_shock_as_though_damage_+%_final":609,
+  "minion_block_%":425,
+  "minion_cooldown_recovery_+%":430,
+  "support_efficacy_damage_over_time_+%_final":92,
+  "recover_%_life_when_stunning_an_enemy_permyriad":477,
+  "trauma_strike_self_damage_per_trauma":679,
   "611":{
     "stats":["support_rage_gain_rage_on_melee_hit_cooldown_ms"],
     "lang":{
@@ -6705,12 +6712,10 @@
           "2":{
             "v":"ReminderTextRage"
           },
-          "text":"Supported Skills grant 1 Rage on Melee Hit, no more than once every {0} seconds"
+          "text":"Supported Skills grant 3 Rage on Melee Hit"
         }]
     }
   },
-  "projectile_damage_+%":471,
-  "trap_duration_+%":64,
   "677":{
     "stats":["trap_trigger_radius_+%_per_power_charge"],
     "lang":{
@@ -6724,11 +6729,35 @@
         }]
     }
   },
+  "trap_duration_+%":64,
+  "566":{
+    "stats":["support_locus_mine_damage_+%_final"],
+    "lang":{
+      "English":[{
+          "limit":[[]]
+        },{
+          "1":[],
+          "limit":[[]]
+        }]
+    }
+  },
   "support_barrage_attack_time_+%_per_projectile_fired":521,
   "added_damage_+%_final":212,
   "damage_+%_while_an_ailment_on_you":330,
-  "apply_linked_curses_on_hit_%":121,
-  "summon_sacred_wisps_on_hit":511,
+  "675":{
+    "stats":["trap_throwing_speed_+%_per_frenzy_charge"],
+    "lang":{
+      "English":[{
+          "text":"Supported Skills have {0}% increased Trap Throwing Speed per Frenzy Charge",
+          "limit":[[]]
+        },{
+          "1":[],
+          "limit":[[]],
+          "text":"Supported Skills have {0}% reduced Trap Throwing Speed per Frenzy Charge"
+        }]
+    }
+  },
+  "ignite_duration_+%":382,
   "support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final":544,
   "projectile_maximum_range_override":473,
   "spellslinger_trigger_on_wand_attack_%":128,
@@ -6745,21 +6774,6 @@
         }]
     }
   },
-  "675":{
-    "stats":["trap_throwing_speed_+%_per_frenzy_charge"],
-    "lang":{
-      "English":[{
-          "text":"Supported Skills have {0}% increased Trap Throwing Speed per Frenzy Charge",
-          "limit":[[]]
-        },{
-          "1":[],
-          "limit":[[]],
-          "text":"Supported Skills have {0}% reduced Trap Throwing Speed per Frenzy Charge"
-        }]
-    }
-  },
-  "support_ancestral_slam_big_hit_hit_damage_+%_final":191,
-  "cast_on_death_%":126,
   "674":{
     "stats":["trap_throwing_speed_+%"],
     "lang":{
@@ -6773,8 +6787,8 @@
         }]
     }
   },
-  "from_quality_brand_activation_rate_+%_final_if_75%_attached_duration_expired":360,
-  "support_slashing_buff_attack_speed_+%_final_to_grant":630,
+  "support_ancestral_slam_big_hit_hit_damage_+%_final":191,
+  "cast_on_death_%":126,
   "673":{
     "stats":["trap_spread_+%"],
     "lang":{
@@ -6788,6 +6802,8 @@
         }]
     }
   },
+  "from_quality_brand_activation_rate_+%_final_if_75%_attached_duration_expired":360,
+  "support_slashing_buff_attack_speed_+%_final_to_grant":630,
   "672":{
     "stats":["trap_damage_+%"],
     "lang":{
@@ -6801,11 +6817,9 @@
         }]
     }
   },
+  "support_burning_damage_+%_final":528,
   "base_life_leech_from_attack_damage_permyriad":261,
   "trap_throwing_speed_+%":674,
-  "support_burning_damage_+%_final":528,
-  "chance_to_freeze_shock_ignite_%":292,
-  "non_damaging_ailment_effect_+%":450,
   "670":{
     "stats":["transfer_hexes_to_X_nearby_enemies_on_kill"],
     "lang":{
@@ -6818,10 +6832,9 @@
         }]
     }
   },
-  "base_life_reservation_efficiency_+%":263,
-  "ancestral_slam_stun_threshold_reduction_+%":220,
-  "cleave_+1_base_radius_per_nearby_enemy_up_to_10":302,
-  "support_remote_mine_hit_damage_+%_final":624,
+  "chance_to_freeze_shock_ignite_%":292,
+  "non_damaging_ailment_effect_+%":450,
+  "support_trauma_stun_duration_+%_per_trauma":653,
   "668":{
     "stats":["supported_strike_skill_gem_level_+"],
     "lang":{
@@ -6831,6 +6844,9 @@
         }]
     }
   },
+  "regenerate_%_life_over_1_second_on_skill_use":483,
+  "cleave_+1_base_radius_per_nearby_enemy_up_to_10":302,
+  "support_remote_mine_hit_damage_+%_final":624,
   "667":{
     "stats":["supported_skill_can_only_use_wand"],
     "lang":{
@@ -6850,7 +6866,7 @@
         }]
     }
   },
-  "withered_on_hit_chance_%":155,
+  "chance_to_ignore_hexproof_%":294,
   "663":{
     "stats":["skill_can_only_use_bow"],
     "lang":{
@@ -6860,7 +6876,8 @@
         }]
     }
   },
-  "maximum_life_leech_amount_per_leech_+%":409,
+  "support_spell_weapon_damage_gain_%_of_one_hand_melee_weapon_damage_as_added_spell_damage":638,
+  "support_corrupting_cry_corrupted_blood_base_physical_damage_to_deal_per_minute":538,
   "661":{
     "stats":["supported_physical_skill_gem_level_+"],
     "lang":{
@@ -6870,17 +6887,12 @@
         }]
     }
   },
-  "565":{
-    "stats":["support_locus_mine_cannot_detonate_mines_within_X_units"],
+  "564":{
+    "stats":["support_locus_mine_base_mine_duration"],
     "lang":{
       "English":[{
           "1":[],
-          "limit":[[]],
-          "text":"Mines from Supported Skills can't be Detonated while within {0} metre of you"
-        },{
-          "1":[],
-          "limit":[[]],
-          "text":"Mines from Supported Skills can't be Detonated while within {0} metres of you"
+          "limit":[[]]
         }]
     }
   },
@@ -6902,8 +6914,6 @@
         }]
     }
   },
-  "support_ignite_proliferation_radius":39,
-  "support_locus_mine_cannot_detonate_mines_within_X_units":565,
   "657":{
     "stats":["supported_chaos_skill_gem_level_+"],
     "lang":{
@@ -6913,8 +6923,10 @@
         }]
     }
   },
-  "multistrike_damage_+%_final_on_first_repeat":444,
-  "overwhelm_%_physical_damage_reduction_while_max_fortification":459,
+  "support_ignite_proliferation_radius":39,
+  "support_locus_mine_cannot_detonate_mines_within_X_units":565,
+  "minion_elemental_resistance_%":184,
+  "multistrike_damage_+%_final_on_third_repeat":446,
   "655":{
     "stats":["support_vicious_projectiles_physical_damage_+%_final"],
     "lang":{
@@ -6926,9 +6938,7 @@
         }]
     }
   },
-  "aura_effect_+%":33,
-  "keystone_point_blank":43,
-  "support_hypothermia_cold_damage_over_time_+%_final":558,
+  "trap_trigger_radius_+%":676,
   "653":{
     "stats":["support_trauma_stun_duration_+%_per_trauma"],
     "lang":{
@@ -6942,12 +6952,8 @@
         }]
     }
   },
-  "skill_effect_and_damaging_ailment_duration_+%":494,
-  "minion_cast_speed_+%":427,
-  "support_brand_area_of_effect_+%_final":526,
-  "minion_projectile_speed_+%":438,
-  "channelled_skill_damage_+%":300,
-  "gain_1_rage_on_use_%_chance":362,
+  "keystone_point_blank":43,
+  "skill_buff_effect_+%":490,
   "652":{
     "stats":["support_trauma_melee_damage_+%_final_per_trauma"],
     "lang":{
@@ -6961,7 +6967,12 @@
         }]
     }
   },
-  "skill_is_blessing_skill":488,
+  "skill_effect_and_damaging_ailment_duration_+%":494,
+  "minion_cast_speed_+%":427,
+  "support_brand_area_of_effect_+%_final":526,
+  "minion_projectile_speed_+%":438,
+  "channelled_skill_damage_+%":300,
+  "gain_1_rage_on_use_%_chance":362,
   "651":{
     "stats":["support_trap_hit_damage_+%_final"],
     "lang":{
@@ -6975,8 +6986,7 @@
         }]
     }
   },
-  "base_chance_to_ignite_%":247,
-  "projectiles_fork":77,
+  "skill_is_blessing_skill":488,
   "650":{
     "stats":["support_trap_and_mine_damage_trap_throwing_speed_+%_final"],
     "lang":{
@@ -6990,7 +7000,22 @@
         }]
     }
   },
-  "active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value":209,
+  "base_chance_to_ignite_%":247,
+  "projectiles_fork":77,
+  "support_minion_damage_+%_final":576,
+  "647":{
+    "stats":["support_storm_barrier_skill_type_damage_taken_when_hit_+%_final"],
+    "lang":{
+      "English":[{
+          "limit":[[]],
+          "1":[],
+          "2":{
+            "v":"ReminderTextDamageTypes"
+          },
+          "text":"While Channelling a Supported Skill, take {0}% less Damage from Hits"
+        }]
+    }
+  },
   "547":{
     "stats":["support_executioner_refresh_stolen_mod_on_hitting_rare_or_unique_monster_chance_%"],
     "lang":{
@@ -7001,58 +7026,25 @@
     }
   },
   "keystone_strong_bowman":45,
-  "647":{
-    "stats":["support_storm_barrier_skill_type_damage_taken_when_hit_+%_final"],
+  "support_reduced_duration_skill_effect_duration_+%_final":149,
+  "support_spell_rapid_fire_repeat_use_damage_+%_final":696,
+  "chance_to_gain_frenzy_charge_on_killing_frozen_enemy_%":293,
+  "561":{
+    "stats":["support_lifetap_spent_life_threshold"],
     "lang":{
       "English":[{
           "limit":[[]],
           "1":[],
           "2":{
-            "v":"ReminderTextDamageTypes"
+            "v":"ReminderTextLifetap"
           },
-          "text":"While Channelling a Supported Skill, take {0}% less Damage from Hits of types matching the Skill Gem's Tags"
+          "text":"Gain Lifetap after Spending a total of {0} Life on Upfront\nCosts and Effects of a Supported Skill"
         }]
     }
   },
-  "number_of_mines_to_place":47,
-  "support_spell_rapid_fire_repeat_use_damage_+%_final":696,
-  "chance_to_gain_frenzy_charge_on_killing_frozen_enemy_%":293,
   "base_chance_to_destroy_corpse_on_kill_%_vs_ignited":245,
   "support_cast_on_crit_spell_damage_+%_final":19,
-  "563":{
-    "stats":["support_base_lifetap_buff_duration","quality_display_lifetap_is_gem"],
-    "lang":{
-      "English":[{
-          "1":[],
-          "limit":[[],[]],
-          "text":"Lifetap lasts {0:+d} seconds"
-        },{
-          "1":[],
-          "limit":[[],[]],
-          "text":"Lifetap lasts {0} second"
-        },{
-          "1":[],
-          "limit":[[],[]],
-          "text":"Lifetap lasts {0} seconds"
-        }]
-    }
-  },
-  "624":{
-    "stats":["support_remote_mine_hit_damage_+%_final"],
-    "lang":{
-      "English":[{
-          "text":"Supported Skills deal {0}% more Mine Damage with Hits",
-          "limit":[[]]
-        },{
-          "1":[],
-          "limit":[[]],
-          "text":"Supported Skills deal {0}% less Mine Damage with Hits"
-        }]
-    }
-  },
-  "base_number_of_traps_allowed":62,
-  "intensity_loss_frequency_while_moving_+%":391,
-  "base_trap_duration":56,
+  "support_hypothermia_damage_+%_vs_chilled_enemies_final":559,
   "642":{
     "stats":["support_storm_barrier_damage_buff_base_duration_ms"],
     "lang":{
@@ -7067,6 +7059,9 @@
         }]
     }
   },
+  "base_number_of_traps_allowed":62,
+  "intensity_loss_frequency_while_moving_+%":391,
+  "base_trap_duration":56,
   "641":{
     "stats":["support_spiritual_cry_damage_+%_final"],
     "lang":{
@@ -7075,6 +7070,19 @@
         },{
           "1":[],
           "limit":[[]]
+        }]
+    }
+  },
+  "640":{
+    "stats":["support_spellslinger_damage_+%_final"],
+    "lang":{
+      "English":[{
+          "text":"Supported Skills deal {0}% more Damage with Hits and Ailments",
+          "limit":[[]]
+        },{
+          "1":[],
+          "limit":[[]],
+          "text":"Supported Skills deal {0}% less Damage with Hits and Ailments"
         }]
     }
   },
@@ -7092,7 +7100,15 @@
   },
   "trigger_on_attack_hit_against_rare_or_unique":681,
   "damage_penetrates_%_elemental_resistances_while_all_resonance_is_25":196,
-  "mine_detonation_radius_+%":415,
+  "638":{
+    "stats":["support_spell_weapon_damage_gain_%_of_one_hand_melee_weapon_damage_as_added_spell_damage"],
+    "lang":{
+      "English":[{
+          "text":"Supported Skills have Added Spell Damage equal to {0}% of\nDamage of Equipped One Handed Melee Weapons\nIf two Weapons are Equipped, each contributes 60% as much Added Damage",
+          "limit":[[]]
+        }]
+    }
+  },
   "691":{
     "stats":["warcry_speed_+%"],
     "lang":{
@@ -7103,19 +7119,6 @@
           "1":[],
           "limit":[[]],
           "text":"Supported Skills have {0}% reduced Warcry Speed"
-        }]
-    }
-  },
-  "637":{
-    "stats":["support_spell_echo_final_repeat_damage_+%_final"],
-    "lang":{
-      "English":[{
-          "text":"Final Repeat of Supported Skills deals {0}% more Damage",
-          "limit":[[]]
-        },{
-          "1":[],
-          "limit":[[]],
-          "text":"Final Repeat of Supported Skills deals {0}% less Damage"
         }]
     }
   },
@@ -7142,7 +7145,6 @@
         }]
     }
   },
-  "refresh_bleeding_duration_on_hit_%_chance":482,
   "633":{
     "stats":["support_spell_cascade_area_delay_+%"],
     "lang":{
@@ -7156,35 +7158,35 @@
         }]
     }
   },
-  "support_corrupting_cry_warcry_and_first_exerted_attack_applies_corrupted_blood_for_X_ms":540,
+  "refresh_bleeding_duration_on_hit_%_chance":482,
+  "support_minion_defensive_stance_minion_damage_taken_+%_final":579,
   "elemental_damage_+%":345,
   "global_maximum_added_lightning_damage":374,
   "base_projectile_speed_+%":271,
-  "cast_on_damage_taken_damage_+%_final":117,
-  "damage_over_time_+%":316,
+  "support_overpowered_base_duration_ms":594,
+  "support_debilitate_hit_damage_max_poison_stacks":84,
   "support_fortify_ailment_damage_+%_final_from_melee_hits":552,
-  "minion_critical_strike_chance_+%":431,
-  "support_lifetap_spent_life_threshold":561,
-  "base_killed_monster_dropped_item_rarity_+%":260,
-  "cruelty_effect_+%":312,
-  "avoid_interruption_while_using_this_skill_%":239,
-  "support_innervate_maximum_added_lightning_damage":169,
-  "gain_power_charge_on_kill_with_hit_%":366,
-  "number_of_projectiles_+%_final_from_locus_mine_support":456,
-  "support_ruthless_big_hit_damage_+%_final":172,
-  "619":{
-    "stats":["elemental_damage_+%_final_per_righteous_charge"],
+  "618":{
+    "stats":["critical_strike_chance_+%_per_righteous_charge"],
     "lang":{
       "English":[{
-          "text":"Supported Skills deal {0}% more Elemental Damage per Inspiration Charge",
+          "text":"Supported Skills have {0}% increased Critical Strike Chance per Inspiration Charge",
           "limit":[[]]
         },{
           "1":[],
           "limit":[[]],
-          "text":"Supported Skills deal {0}% less Elemental Damage per Inspiration Charge"
+          "text":"Supported Skills have {0}% reduced Critical Strike Chance per Inspiration Charge"
         }]
     }
   },
+  "support_lifetap_spent_life_threshold":561,
+  "base_killed_monster_dropped_item_rarity_+%":260,
+  "cruelty_effect_+%":312,
+  "avoid_interruption_while_using_this_skill_%":239,
+  "support_innervate_minimum_added_lightning_damage":169,
+  "gain_power_charge_on_kill_with_hit_%":366,
+  "number_of_projectiles_+%_final_from_locus_mine_support":456,
+  "support_ruthless_big_hit_damage_+%_final":172,
   "625":{
     "stats":["support_sacrifice_sacrifice_%_of_current_life","support_sacrifice_gain_%_of_sacrificed_life_as_added_chaos_damage"],
     "lang":{
@@ -7194,6 +7196,19 @@
         },{
           "text":"Supported Spells Sacrifice {0}% of your current Life when Cast",
           "limit":[[],[]]
+        }]
+    }
+  },
+  "624":{
+    "stats":["support_remote_mine_hit_damage_+%_final"],
+    "lang":{
+      "English":[{
+          "text":"Supported Skills deal {0}% more Mine Damage with Hits",
+          "limit":[[]]
+        },{
+          "1":[],
+          "limit":[[]],
+          "text":"Supported Skills deal {0}% less Mine Damage with Hits"
         }]
     }
   },
@@ -7217,8 +7232,6 @@
         }]
     }
   },
-  "projectile_number_to_split":76,
-  "chill_effect_+%":176,
   "622":{
     "stats":["support_remote_mine_2_damage_+%_final"],
     "lang":{
@@ -7230,6 +7243,8 @@
         }]
     }
   },
+  "projectile_number_to_split":76,
+  "chill_effect_+%":176,
   "621":{
     "stats":["support_remote_mine_2_base_mine_detonation_time_ms"],
     "lang":{
@@ -7239,7 +7254,29 @@
         }]
     }
   },
-  "support_debilitate_poison_damage_+%_final":85,
+  "615":{
+    "stats":["support_recent_minions_life_leech_from_any_damage_permyriad_from_wakened_fury"],
+    "lang":{
+      "English":[{
+          "1":[],
+          "limit":[[]],
+          "text":"Wakened Fury grants {0}% of Damage Leeched as Life"
+        }]
+    }
+  },
+  "619":{
+    "stats":["elemental_damage_+%_final_per_righteous_charge"],
+    "lang":{
+      "English":[{
+          "text":"Supported Skills deal {0}% more Elemental Damage per Inspiration Charge",
+          "limit":[[]]
+        },{
+          "1":[],
+          "limit":[[]],
+          "text":"Supported Skills deal {0}% less Elemental Damage per Inspiration Charge"
+        }]
+    }
+  },
   "628":{
     "stats":["support_scion_onslaught_on_killing_blow_%_chance","support_scion_onslaught_on_killing_blow_duration_ms","virtual_support_scion_onslaught_on_killing_blow_duration_ms"],
     "lang":{
@@ -7252,19 +7289,6 @@
     }
   },
   "support_remote_mine_2_base_mine_duration":58,
-  "618":{
-    "stats":["critical_strike_chance_+%_per_righteous_charge"],
-    "lang":{
-      "English":[{
-          "text":"Supported Skills have {0}% increased Critical Strike Chance per Inspiration Charge",
-          "limit":[[]]
-        },{
-          "1":[],
-          "limit":[[]],
-          "text":"Supported Skills have {0}% reduced Critical Strike Chance per Inspiration Charge"
-        }]
-    }
-  },
   "617":{
     "stats":["support_reduce_enemy_block_and_spell_block_%"],
     "lang":{
@@ -7286,19 +7310,10 @@
   },
   "minion_larger_aggro_radius":699,
   "support_ancestral_slam_big_hit_ailment_damage_+%_final":192,
-  "attack_damage_+%":227,
+  "global_minimum_added_physical_damage":375,
   "is_totem":53,
   "damage_+%_if_lost_endurance_charge_in_past_8_seconds":319,
-  "615":{
-    "stats":["support_recent_minions_life_leech_from_any_damage_permyriad_from_wakened_fury"],
-    "lang":{
-      "English":[{
-          "1":[],
-          "limit":[[]],
-          "text":"Wakened Fury grants {0}% of Damage Leeched as Life"
-        }]
-    }
-  },
+  "multiple_projectiles_projectile_spread_+%":442,
   "604":{
     "stats":["support_projectile_attack_speed_+%_final"],
     "lang":{
@@ -7314,18 +7329,6 @@
   },
   "support_storm_barrier_skill_type_damage_+%_final":646,
   "killing_blow_consumes_corpse_restore_x_mana":393,
-  "base_totem_duration":54,
-  "596":{
-    "stats":["support_parallel_projectiles_damage_+%_final"],
-    "lang":{
-      "English":[{
-          "limit":[[]]
-        },{
-          "1":[],
-          "limit":[[]]
-        }]
-    }
-  },
   "613":{
     "stats":["support_recent_ignites_ignite_damage_per_recent_ignite_+%_final","support_recent_ignites_ignite_damage_per_recent_ignite_+%_final_maximum"],
     "lang":{
@@ -7341,7 +7344,17 @@
         }]
     }
   },
-  "blood_price_gain_%_maximum_life_as_added_physical_damage_with_weapons_while_on_low_life":281,
+  "596":{
+    "stats":["support_parallel_projectiles_damage_+%_final"],
+    "lang":{
+      "English":[{
+          "limit":[[]]
+        },{
+          "1":[],
+          "limit":[[]]
+        }]
+    }
+  },
   "612":{
     "stats":["support_rapid_activation_brand_activation_rate_+%_final"],
     "lang":{
@@ -7355,16 +7368,7 @@
         }]
     }
   },
-  "588":{
-    "stats":["support_mirage_archer_base_duration"],
-    "lang":{
-      "English":[{
-          "1":[],
-          "limit":[[]],
-          "text":"Mirage Archer lasts {0} seconds"
-        }]
-    }
-  },
+  "blood_price_gain_%_maximum_life_as_added_physical_damage_with_weapons_while_on_low_life":281,
   "610":{
     "stats":["support_greater_volley_projectile_damage_+%_final"],
     "lang":{
@@ -7376,6 +7380,17 @@
         }]
     }
   },
+  "588":{
+    "stats":["support_mirage_archer_base_duration"],
+    "lang":{
+      "English":[{
+          "1":[],
+          "limit":[[]],
+          "text":"Mirage Archer lasts {0} seconds"
+        }]
+    }
+  },
+  "trap_damage_+%":672,
   "additional_critical_strike_chance_permyriad_while_dead":215,
   "chance_to_intimidate_on_hit_%":296,
   "580":{
@@ -7394,9 +7409,6 @@
   "cannot_inflict_status_ailments":156,
   "chance_to_inflict_additional_impale_%":295,
   "support_chain_hit_damage_+%_final":80,
-  "supported_curse_skill_gem_level_+":658,
-  "support_conflagration_ignites_from_stunning_melee_hits_duration_+%":536,
-  "support_locus_mine_damage_+%_final":566,
   "608":{
     "stats":["support_pure_shock_damage_+%_final"],
     "lang":{
@@ -7408,8 +7420,9 @@
         }]
     }
   },
-  "remote_mined_by_support":484,
-  "support_ancestor_slam_totem_attack_speed_+%_final":515,
+  "support_conflagration_ignites_from_stunning_melee_hits_duration_+%":536,
+  "support_locus_mine_damage_+%_final":566,
+  "support_pulverise_melee_area_damage_+%_final":607,
   "606":{
     "stats":["support_pulverise_attack_speed_+%_final"],
     "lang":{
@@ -7421,17 +7434,21 @@
         }]
     }
   },
-  "554":{
-    "stats":["support_ghost_base_duration"],
+  "support_ancestor_slam_totem_attack_speed_+%_final":515,
+  "553":{
+    "stats":["support_fortify_melee_damage_+%_final"],
     "lang":{
       "English":[{
+          "text":"Supported Skills deal {0}% more Melee Damage",
+          "limit":[[]]
+        },{
           "1":[],
           "limit":[[]],
-          "text":"Phantasms last {0} seconds"
+          "text":"Supported Skills deal {0}% less Melee Damage"
         }]
     }
   },
-  "add_power_charge_on_kill_%_chance":211,
+  "is_remote_mine":47,
   "603":{
     "stats":["support_projectile_attack_physical_damage_+%_final"],
     "lang":{
@@ -7445,9 +7462,10 @@
         }]
     }
   },
+  "add_power_charge_on_kill_%_chance":211,
+  "support_attack_skills_elemental_damage_+%_final":9,
   "additional_base_critical_strike_chance":213,
-  "chance_to_place_an_additional_mine_%":297,
-  "support_ghost_base_duration":554,
+  "attack_speed_+%_with_atleast_20_rage":236,
   "599":{
     "stats":["support_phys_chaos_projectile_spell_physical_projectile_damage_+%_final"],
     "lang":{
@@ -7461,10 +7479,7 @@
         }]
     }
   },
-  "reduce_enemy_chaos_resistance_%":480,
-  "ancestor_totem_buff_effect_+%":218,
-  "base_skill_area_of_effect_+%":29,
-  "support_chance_to_bleed_bleeding_damage_+%_final":531,
+  "chance_to_crush_on_hit_%":288,
   "597":{
     "stats":["support_phys_chaos_projectile_chaos_damage_over_time_+%_final"],
     "lang":{
@@ -7478,6 +7493,9 @@
         }]
     }
   },
+  "ancestor_totem_buff_effect_+%":218,
+  "base_skill_area_of_effect_+%":29,
+  "support_chance_to_bleed_bleeding_damage_+%_final":531,
   "595":{
     "stats":["support_parallel_projectile_number_of_points_per_side"],
     "lang":{
@@ -7490,9 +7508,9 @@
         }]
     }
   },
+  "summon_sacred_wisps_on_hit":511,
   "global_reduce_enemy_block_%":376,
   "melee_splash_area_of_effect_+%_final":414,
-  "manaweave_added_cold_damage_%_cost_if_payable":406,
   "592":{
     "stats":["support_momentum_base_buff_duration_ms","support_momentum_buff_duration_ms","support_momentum_max_stacks"],
     "lang":{
@@ -7523,10 +7541,7 @@
         }]
     }
   },
-  "base_bleed_duration_+%":243,
-  "damage_vs_enemies_on_low_life_+%":335,
-  "minion_grant_puppet_master_buff_to_parent_on_hit_%":434,
-  "support_phys_chaos_projectile_spell_physical_projectile_damage_+%_final":599,
+  "active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value":209,
   "589":{
     "stats":["support_mirage_archer_damage_+%_final"],
     "lang":{
@@ -7540,7 +7555,9 @@
         }]
     }
   },
-  "base_skill_reserve_life_instead_of_mana":36,
+  "damage_vs_enemies_on_low_life_+%":335,
+  "support_innervate_gain_buff_on_killing_shocked_enemy":168,
+  "support_phys_chaos_projectile_spell_physical_projectile_damage_+%_final":599,
   "586":{
     "stats":["support_minion_use_focussed_target"],
     "lang":{
@@ -7550,6 +7567,8 @@
         }]
     }
   },
+  "base_skill_reserve_life_instead_of_mana":36,
+  "support_focused_ballista_totem_damage_+%_final":551,
   "516":{
     "stats":["support_anticipation_charge_gain_frequency_+%"],
     "lang":{
@@ -7564,10 +7583,6 @@
     }
   },
   "support_chaos_attacks_damage_+%_final":532,
-  "freeze_duration_+%":359,
-  "support_minion_focus_fire_critical_strike_multiplier_+_vs_focused_target":581,
-  "mark_skills_curse_effect_+%":205,
-  "cast_linked_spells_on_attack_crit_%":123,
   "584":{
     "stats":["support_minion_offensive_stance_minion_damage_+%_final_while_you_have_puppet_master"],
     "lang":{
@@ -7578,6 +7593,22 @@
           "1":[],
           "limit":[[]],
           "text":"Minions from Supported Skills deal {0}% less Damage while you have Feeding Frenzy"
+        }]
+    }
+  },
+  "support_minion_focus_fire_critical_strike_multiplier_+_vs_focused_target":581,
+  "mark_skills_curse_effect_+%":205,
+  "impale_support_physical_damage_+%_final":387,
+  "583":{
+    "stats":["support_minion_maximum_life_+%_final"],
+    "lang":{
+      "English":[{
+          "text":"Supported Skills have {0}% more Minion maximum Life",
+          "limit":[[]]
+        },{
+          "1":[],
+          "limit":[[]],
+          "text":"Supported Skills have {0}% less Minion maximum Life"
         }]
     }
   },
@@ -7593,25 +7624,10 @@
         }]
     }
   },
-  "boneshatter_trauma_base_duration_ms":679,
-  "support_rapid_activation_brand_skill_only_secondary_duration_+%_final":151,
   "damage_+%_per_200_mana_spent_recently":320,
   "gain_frenzy_charge_on_kill_vs_enemies_with_5+_poisons_%":364,
   "base_chance_to_shock_%":248,
-  "583":{
-    "stats":["support_minion_maximum_life_+%_final"],
-    "lang":{
-      "English":[{
-          "text":"Supported Skills have {0}% more Minion maximum Life",
-          "limit":[[]]
-        },{
-          "1":[],
-          "limit":[[]],
-          "text":"Supported Skills have {0}% less Minion maximum Life"
-        }]
-    }
-  },
-  "global_minimum_added_fire_damage":373,
+  "support_scion_onslaught_duration_+%":626,
   "548":{
     "stats":["support_faster_ailments_ailment_duration_+%_final"],
     "lang":{
@@ -7627,22 +7643,8 @@
         }]
     }
   },
-  "support_corrupting_cry_area_of_effect_+%_final":537,
+  "support_blunt_chance_to_trigger_shockwave_on_hit_%":524,
   "infernal_legion_minions_have_burning_effect_radius_+":189,
-  "545":{
-    "stats":["support_executioner_damage_vs_enemies_on_low_life_+%_final"],
-    "lang":{
-      "English":[{
-          "text":"Supported Skills deal {0}% more Damage with Hits and Ailments against Enemies on Low Life",
-          "limit":[[]]
-        },{
-          "1":[],
-          "limit":[[]],
-          "text":"Supported Skills deal {0}% less Damage with Hits and Ailments against Enemies on Low Life"
-        }]
-    }
-  },
-  "support_autocast_warcries":520,
   "579":{
     "stats":["support_minion_defensive_stance_minion_damage_taken_+%_final"],
     "lang":{
@@ -7656,10 +7658,9 @@
         }]
     }
   },
-  "support_momentum_stack_while_channelling_ms":590,
-  "support_minion_damage_+%_final":576,
-  "number_of_additional_traps_allowed":455,
-  "support_spell_cascade_number_of_cascades_per_side":636,
+  "support_autocast_warcries":520,
+  "unleash_support_seal_gain_frequency_+%_while_channelling":689,
+  "hit_and_poison_damage_+%_per_poison_on_enemy":380,
   "576":{
     "stats":["support_minion_damage_+%_final"],
     "lang":{
@@ -7671,7 +7672,20 @@
         }]
     }
   },
-  "support_conflagration_ignites_from_stunning_melee_hits_count_as_coming_from_critical_strike":534,
+  "number_of_additional_traps_allowed":455,
+  "support_spell_cascade_number_of_cascades_per_side":636,
+  "support_controlled_destruction_spell_damage_+%_final":89,
+  "574":{
+    "stats":["support_minefield_mine_throwing_speed_+%_final"],
+    "lang":{
+      "English":[{
+          "limit":[[]]
+        },{
+          "1":[],
+          "limit":[[]]
+        }]
+    }
+  },
   "572":{
     "stats":["support_melee_physical_damage_attack_speed_+%_final"],
     "lang":{
@@ -7685,17 +7699,6 @@
   },
   "support_reduced_duration_damage_+%_final":148,
   "elemental_damage_cannot_be_reflected":344,
-  "574":{
-    "stats":["support_minefield_mine_throwing_speed_+%_final"],
-    "lang":{
-      "English":[{
-          "limit":[[]]
-        },{
-          "1":[],
-          "limit":[[]]
-        }]
-    }
-  },
   "573":{
     "stats":["support_minefield_mine_damage_+%_final"],
     "lang":{
@@ -7707,13 +7710,24 @@
         }]
     }
   },
-  "chaining_range_+%":284,
-  "trigger_vicious_hex_explosion_when_curse_ends":125,
   "571":{
     "stats":["support_manaforged_arrows_damage_+%_final_per_mana_spent"],
     "lang":{
       "English":[{
           "text":"Supported Skills deal {0}% more Damage with Hits and Ailments per 1 Mana Cost",
+          "limit":[[]]
+        }]
+    }
+  },
+  "chaining_range_+%":284,
+  "trigger_vicious_hex_explosion_when_curse_ends":125,
+  "570":{
+    "stats":["support_manaforged_arrows_damage_+%_final"],
+    "lang":{
+      "English":[{
+          "limit":[[]]
+        },{
+          "1":[],
           "limit":[[]]
         }]
     }
@@ -7728,20 +7742,9 @@
         }]
     }
   },
-  "569":{
-    "stats":["support_maimed_enemies_physical_damage_taken_+%"],
-    "lang":{
-      "English":[{
-          "text":"Enemies Maimed by Supported Skills take {0}% increased Physical Damage",
-          "limit":[[]]
-        },{
-          "1":[],
-          "limit":[[]],
-          "text":"Enemies Maimed by Supported Skills take {0}% reduced Physical Damage"
-        }]
-    }
-  },
+  "base_chance_to_freeze_%":246,
   "support_lifetap_damage_+%_final_while_buffed":562,
+  "support_corrupting_cry_warcry_and_first_exerted_attack_applies_corrupted_blood_for_X_ms":540,
   "676":{
     "stats":["trap_trigger_radius_+%"],
     "lang":{
@@ -7755,18 +7758,21 @@
         }]
     }
   },
-  "fire_dot_multiplier_+":355,
+  "support_multicast_cast_speed_+%_final":111,
   "chance_to_fork_extra_projectile_%":290,
   "%_chance_to_gain_frenzy_charge_on_mine_detonated_targeting_an_enemy":461,
   "support_arcane_surge_base_duration_ms":162,
-  "566":{
-    "stats":["support_locus_mine_damage_+%_final"],
+  "565":{
+    "stats":["support_locus_mine_cannot_detonate_mines_within_X_units"],
     "lang":{
       "English":[{
-          "limit":[[]]
+          "1":[],
+          "limit":[[]],
+          "text":"Mines from Supported Skills can't be Detonated while within {0} metre of you"
         },{
           "1":[],
-          "limit":[[]]
+          "limit":[[]],
+          "text":"Mines from Supported Skills can't be Detonated while within {0} metres of you"
         }]
     }
   },
@@ -7785,12 +7791,21 @@
   "support_maimed_enemies_physical_damage_taken_+%":569,
   "damage_+%_on_full_energy_shield":327,
   "support_gem_mine_damage_+%_final":16,
-  "564":{
-    "stats":["support_locus_mine_base_mine_duration"],
+  "563":{
+    "stats":["support_base_lifetap_buff_duration","quality_display_lifetap_is_gem"],
     "lang":{
       "English":[{
           "1":[],
-          "limit":[[]]
+          "limit":[[],[]],
+          "text":"Lifetap lasts {0:+d} seconds"
+        },{
+          "1":[],
+          "limit":[[],[]],
+          "text":"Lifetap lasts {0} second"
+        },{
+          "1":[],
+          "limit":[[],[]],
+          "text":"Lifetap lasts {0} seconds"
         }]
     }
   },
@@ -7809,22 +7824,7 @@
   },
   "lightning_damage_+%":398,
   "base_physical_damage_to_deal_per_minute":133,
-  "elusive_effect_+%":346,
-  "561":{
-    "stats":["support_lifetap_spent_life_threshold"],
-    "lang":{
-      "English":[{
-          "limit":[[]],
-          "1":[],
-          "2":{
-            "v":"ReminderTextLifetap"
-          },
-          "text":"Gain Lifetap after Spending a total of {0} Life on Upfront\nCosts and Effects of a Supported Skill"
-        }]
-    }
-  },
-  "support_unbound_ailments_ailment_damage_+%_final":654,
-  "support_trap_and_mine_damage_+%_final":103,
+  "attack_maximum_added_physical_damage_with_weapons_per_trauma":232,
   "560":{
     "stats":["support_innervate_chance_to_gain_buff_on_shock_vs_unique_%"],
     "lang":{
@@ -7837,7 +7837,10 @@
         }]
     }
   },
-  "support_spirit_strike_damage_+%_final":81,
+  "support_unbound_ailments_ailment_damage_+%_final":654,
+  "support_trap_and_mine_damage_+%_final":103,
+  "nightblade_elusive_grants_critical_strike_multiplier_+_to_supported_skills":447,
+  "support_trigger_link_damage_+%_final":22,
   "support_power_charge_on_crit_damage_+%_final_per_power_charge":602,
   "629":{
     "stats":["support_slashing_buff_base_duration_ms"],
@@ -7853,11 +7856,6 @@
         }]
     }
   },
-  "attack_minimum_added_physical_damage_per_10_rage":229,
-  "support_manaforged_arrows_damage_+%_final_per_mana_spent":571,
-  "infusion_grants_life_regeneration_rate_per_minute_%":389,
-  "cannot_cause_bleeding":279,
-  "skill_aura_also_disables_non_blessing_mana_reservation_skills":489,
   "556":{
     "stats":["support_guardians_blessing_aura_only_enabled_while_support_minion_is_summoned"],
     "lang":{
@@ -7867,8 +7865,10 @@
         }]
     }
   },
-  "support_minefield_mine_damage_+%_final":573,
-  "skill_can_only_use_bow":663,
+  "support_manaforged_arrows_damage_+%_final_per_mana_spent":571,
+  "infusion_grants_life_regeneration_rate_per_minute_%":389,
+  "cannot_cause_bleeding":279,
+  "skill_aura_also_disables_non_blessing_mana_reservation_skills":489,
   "555":{
     "stats":["support_greater_projectile_intensity_projectile_damage_+%_final"],
     "lang":{
@@ -7877,6 +7877,18 @@
         },{
           "1":[],
           "limit":[[]]
+        }]
+    }
+  },
+  "support_minefield_mine_damage_+%_final":573,
+  "skill_can_only_use_bow":663,
+  "554":{
+    "stats":["support_ghost_base_duration"],
+    "lang":{
+      "English":[{
+          "1":[],
+          "limit":[[]],
+          "text":"Phantasms last {0} seconds"
         }]
     }
   },
@@ -7892,27 +7904,21 @@
         }]
     }
   },
-  "553":{
-    "stats":["support_fortify_melee_damage_+%_final"],
+  "trigger_prismatic_burst_on_hit_%_chance":683,
+  "support_rain_projectile_damage_+%_final":14,
+  "support_vicious_projectiles_chaos_damage_+%_final":656,
+  "freeze_applies_cold_resistance_+":358,
+  "515":{
+    "stats":["support_ancestor_slam_totem_attack_speed_+%_final"],
     "lang":{
       "English":[{
-          "text":"Supported Skills deal {0}% more Melee Damage",
           "limit":[[]]
         },{
           "1":[],
-          "limit":[[]],
-          "text":"Supported Skills deal {0}% less Melee Damage"
+          "limit":[[]]
         }]
     }
   },
-  "support_trauma_melee_damage_+%_final_per_trauma":652,
-  "cast_on_damage_taken_threshold":129,
-  "freeze_applies_cold_resistance_+":358,
-  "minion_burning_damage_+%":426,
-  "mine_projectile_speed_+%_per_frenzy_charge":418,
-  "support_chills_also_grant_cold_damage_taken_per_minute_+%":178,
-  "support_area_concentrate_area_damage_+%_final":11,
-  "support_trap_hit_damage_+%_final":651,
   "546":{
     "stats":["support_executioner_gain_one_rare_monster_mod_on_kill_ms"],
     "lang":{
@@ -7922,6 +7928,22 @@
           },
           "limit":[[]],
           "text":"Killing Blows from Supported Strike Skills with Melee Weapons against Rare Monsters grant one of their Modifiers for {0} seconds"
+        }]
+    }
+  },
+  "support_chills_also_grant_cold_damage_taken_per_minute_+%":178,
+  "support_area_concentrate_area_damage_+%_final":11,
+  "number_of_chains":75,
+  "545":{
+    "stats":["support_executioner_damage_vs_enemies_on_low_life_+%_final"],
+    "lang":{
+      "English":[{
+          "text":"Supported Skills deal {0}% more Damage with Hits and Ailments against Enemies on Low Life",
+          "limit":[[]]
+        },{
+          "1":[],
+          "limit":[[]],
+          "text":"Supported Skills deal {0}% less Damage with Hits and Ailments against Enemies on Low Life"
         }]
     }
   },
@@ -7937,8 +7959,6 @@
   "projectiles_pierce_all_targets_in_x_range":475,
   "totem_life_+%":199,
   "skill_effect_duration_+%_while_dead":496,
-  "support_storm_barrier_skill_type_damage_taken_when_hit_+%_final":647,
-  "support_lesser_multiple_projectile_damage_+%_final":15,
   "543":{
     "stats":["support_energy_shield_leech_damage_+%_on_full_energy_shield_final"],
     "lang":{
@@ -7952,14 +7972,12 @@
         }]
     }
   },
+  "support_lesser_multiple_projectile_damage_+%_final":15,
+  "attack_maximum_added_physical_damage_per_10_rage":229,
   "number_of_warcries_exerting_this_action":392,
   "support_slower_projectiles_projectile_speed_+%_final":147,
   "parent":"stat_descriptions",
   "melee_range_+":413,
-  "minion_ailment_damage_+%":423,
-  "snipe_triggered_skill_ailment_damage_+%_final_per_stage":504,
-  "enemy_phys_reduction_%_penalty_vs_hit":349,
-  "support_cast_on_crit_quality_attack_damage_+%_final":529,
   "541":{
     "stats":["support_corrupting_cry_warcry_applies_X_stacks_of_corrupted_blood"],
     "lang":{
@@ -7972,6 +7990,9 @@
         }]
     }
   },
+  "snipe_triggered_skill_ailment_damage_+%_final_per_stage":504,
+  "enemy_phys_reduction_%_penalty_vs_hit":349,
+  "support_cast_on_crit_quality_attack_damage_+%_final":529,
   "540":{
     "stats":["support_corrupting_cry_warcry_and_first_exerted_attack_applies_corrupted_blood_for_X_ms"],
     "lang":{
@@ -7982,7 +8003,6 @@
         }]
     }
   },
-  "support_divine_cry_damage_+%_final":542,
   "539":{
     "stats":["support_corrupting_cry_exerted_attack_applies_X_stacks_of_corrupted_blood_on_first_hit"],
     "lang":{
@@ -7995,7 +8015,7 @@
         }]
     }
   },
-  "support_ruthless_big_hit_max_count":171,
+  "support_divine_cry_damage_+%_final":542,
   "538":{
     "stats":["support_corrupting_cry_corrupted_blood_base_physical_damage_to_deal_per_minute"],
     "lang":{
@@ -8006,6 +8026,7 @@
         }]
     }
   },
+  "support_ruthless_big_hit_max_count":171,
   "536":{
     "stats":["support_conflagration_ignites_from_stunning_melee_hits_duration_+%"],
     "lang":{
@@ -8019,7 +8040,6 @@
         }]
     }
   },
-  "enemies_you_shock_take_%_increased_physical_damage":348,
   "535":{
     "stats":["support_conflagration_ignites_from_stunning_melee_hits_deal_damage_+%_final_per_200ms_stun"],
     "lang":{
@@ -8033,7 +8053,7 @@
         }]
     }
   },
-  "multistrike_damage_+%_final_on_second_repeat":445,
+  "enemies_you_shock_take_%_increased_physical_damage":348,
   "534":{
     "stats":["support_conflagration_ignites_from_stunning_melee_hits_count_as_coming_from_critical_strike"],
     "lang":{
@@ -8043,16 +8063,17 @@
         }]
     }
   },
-  "523":{
-    "stats":["support_blood_thirst_damage_+%_final"],
+  "multistrike_damage_+%_final_on_second_repeat":445,
+  "522":{
+    "stats":["support_barrage_trap_and_mine_throwing_time_+%_final_per_projectile_fired"],
     "lang":{
       "English":[{
-          "text":"Supported Attacks deal {0}% more Damage",
+          "text":"Supported Skills have {0}% more Trap and Mine Throwing Time per Projectile",
           "limit":[[]]
         },{
           "1":[],
           "limit":[[]],
-          "text":"Supported Attacks deal {0}% less Damage"
+          "text":"Supported Skills have {0}% less Trap and Mine Throwing Time per Projectile"
         }]
     }
   },
@@ -8069,8 +8090,8 @@
         }]
     }
   },
+  "gem_display_quality_has_no_effect":369,
   "skill_physical_damage_%_to_convert_to_lightning":500,
-  "support_spell_cascade_damage_+%_final":635,
   "527":{
     "stats":["support_brand_damage_+%_final"],
     "lang":{
@@ -8082,8 +8103,23 @@
         }]
     }
   },
+  "support_momentum_attack_speed_+%_per_stack":591,
   "base_mana_cost_+":200,
+  "trap_spread_+%":673,
   "sigil_repeat_frequency_+%":487,
+  "525":{
+    "stats":["support_bonechill_cold_damage_+%_final"],
+    "lang":{
+      "English":[{
+          "text":"Supported Skills deal {0}% more Cold Damage",
+          "limit":[[]]
+        },{
+          "1":[],
+          "limit":[[]],
+          "text":"Supported Skills deal {0}% less Cold Damage"
+        }]
+    }
+  },
   "517":{
     "stats":["support_arcane_surge_spell_damage_+%_final_while_you_have_arcane_surge"],
     "lang":{
@@ -8099,21 +8135,6 @@
   },
   "strong_casting":46,
   "cannot_cast_curses":122,
-  "525":{
-    "stats":["support_bonechill_cold_damage_+%_final"],
-    "lang":{
-      "English":[{
-          "text":"Supported Skills deal {0}% more Cold Damage",
-          "limit":[[]]
-        },{
-          "1":[],
-          "limit":[[]],
-          "text":"Supported Skills deal {0}% less Cold Damage"
-        }]
-    }
-  },
-  "minion_chance_to_taunt_on_hit_%":429,
-  "%_chance_to_gain_power_charge_on_trap_triggered_by_an_enemy":464,
   "524":{
     "stats":["support_blunt_chance_to_trigger_shockwave_on_hit_%"],
     "lang":{
@@ -8123,6 +8144,21 @@
         },{
           "text":"Supported Skills will Trigger Shockwave on Melee Hit",
           "limit":[[]]
+        }]
+    }
+  },
+  "minion_chance_to_taunt_on_hit_%":429,
+  "%_chance_to_gain_power_charge_on_trap_triggered_by_an_enemy":464,
+  "523":{
+    "stats":["support_blood_thirst_damage_+%_final"],
+    "lang":{
+      "English":[{
+          "text":"Supported Attacks deal {0}% more Damage",
+          "limit":[[]]
+        },{
+          "1":[],
+          "limit":[[]],
+          "text":"Supported Attacks deal {0}% less Damage"
         }]
     }
   },
@@ -8138,21 +8174,6 @@
     }
   },
   "support_recent_minions_virtual_gain_adrenaline_and_wakened_fury_when_summoned_ms":616,
-  "522":{
-    "stats":["support_barrage_trap_and_mine_throwing_time_+%_final_per_projectile_fired"],
-    "lang":{
-      "English":[{
-          "text":"Supported Skills have {0}% more Trap and Mine Throwing Time per Projectile",
-          "limit":[[]]
-        },{
-          "1":[],
-          "limit":[[]],
-          "text":"Supported Skills have {0}% less Trap and Mine Throwing Time per Projectile"
-        }]
-    }
-  },
-  "global_hit_causes_monster_flee_%":370,
-  "minion_life_leech_from_elemental_damage_permyriad":435,
   "520":{
     "stats":["support_autocast_warcries"],
     "lang":{
@@ -8162,24 +8183,16 @@
         }]
     }
   },
+  "global_hit_causes_monster_flee_%":370,
+  "minion_life_leech_from_elemental_damage_permyriad":435,
+  "throw_traps_in_circle_radius":52,
   "support_corrupting_cry_warcry_applies_X_stacks_of_corrupted_blood":541,
-  "gain_endurance_charge_on_melee_stun_%":363,
+  "mine_throwing_speed_+%_per_frenzy_charge":182,
   "549":{
     "stats":["support_flamewood_totems_trigger_infernal_bolt_when_hit"],
     "lang":{
       "English":[{
           "text":"Totems from Supported Skills gain the Avenging Flame\nSkill and Trigger it when Hit by an Enemy",
-          "limit":[[]]
-        }]
-    }
-  },
-  "515":{
-    "stats":["support_ancestor_slam_totem_attack_speed_+%_final"],
-    "lang":{
-      "English":[{
-          "limit":[[]]
-        },{
-          "1":[],
           "limit":[[]]
         }]
     }
@@ -8193,6 +8206,7 @@
         }]
     }
   },
+  "chance_to_summon_support_ghost_on_killing_blow_%":175,
   "support_multiple_attack_damage_+%_final":113,
   "557":{
     "stats":["support_guardians_blessing_minion_physical_damage_%_of_maximum_life_and_ES_taken_per_minute"],
@@ -8205,17 +8219,17 @@
     }
   },
   "support_locus_mine_base_mine_duration":564,
-  "base_deal_no_chaos_damage":253,
-  "support_debilitate_hit_damage_max_poison_stacks":84,
+  "mirage_archer_number_of_additional_projectiles":441,
+  "support_spell_weapon_damage_gain_%_of_one_hand_melee_weapon_damage_as_added_spell_damage_while_wielding_two_different_weapon_types":639,
   "accuracy_rating":207,
-  "attack_minimum_added_physical_damage_with_weapons_per_trauma":232,
+  "local_gem_dex_requirement_+%":399,
   "link_skills_deal_cold_dot_to_enemies_in_beam_aoe":44,
-  "attack_skills_additional_ballista_totems_allowed":59,
+  "freeze_duration_+%":359,
   "support_poison_poison_damage_+%_final":86,
   "critical_strike_chance_+%_per_righteous_charge":618,
   "damage_vs_cursed_enemies_per_enemy_curse_+%":334,
   "minimum_number_of_projectiles_to_fire_is_1":420,
-  "aura_cannot_affect_self":145,
+  "ancestral_slam_stun_threshold_reduction_+%":220,
   "693":{
     "stats":["wither_applies_additional_wither_%"],
     "lang":{
@@ -8225,9 +8239,7 @@
         }]
     }
   },
-  "base_cooldown_modifier_ms":249,
-  "attack_minimum_added_physical_damage_with_at_least_10_rage":230,
-  "skill_buff_effect_+%":490,
+  "support_momentum_movement_speed_+%_per_stack_removed":593,
   "685":{
     "stats":["triggered_by_divine_cry"],
     "lang":{
@@ -8238,12 +8250,12 @@
     }
   },
   "base_critical_strike_multiplier_+":70,
-  "minion_elemental_resistance_%":184,
-  "support_pulverise_melee_area_damage_+%_final":607,
+  "triggered_by_brand_support":684,
+  "base_cold_damage_to_deal_per_minute":135,
   "support_arcane_surge_gain_buff_on_mana_use_threshold":159,
   "melee_damage_vs_bleeding_enemies_+%":411,
-  "base_inflict_fire_exposure_on_hit_%_chance":257,
-  "unleash_support_seal_gain_frequency_+%_while_not_channelling":690,
+  "support_rage_gain_rage_on_melee_hit_cooldown_ms":611,
+  "onslaught_time_granted_on_killing_shocked_enemy_ms":457,
   "669":{
     "stats":["tornado_base_damage_interval_ms"],
     "lang":{
@@ -8260,15 +8272,15 @@
   },
   "chill_duration_+%":177,
   "blind_duration_+%":67,
-  "base_reduce_enemy_fire_resistance_%":71,
+  "global_minimum_added_fire_damage":373,
   "trap_throwing_speed_+%_per_frenzy_charge":675,
-  "base_reservation_+%":273,
+  "support_rapid_activation_brand_skill_only_primary_duration_+%_final":150,
   "no_cost":448,
   "number_of_additional_projectiles":453,
   "base_curse_duration_+%":251,
-  "chance_to_ignore_hexproof_%":294,
-  "global_minimum_added_chaos_damage":371,
   "support_melee_splash_damage_+%_final":106,
+  "global_minimum_added_chaos_damage":371,
+  "cast_linked_spells_on_attack_crit_%":123,
   "645":{
     "stats":["support_storm_barrier_physical_damage_taken_when_hit_+%_final"],
     "lang":{
@@ -8282,12 +8294,13 @@
         }]
     }
   },
-  "cruelty_duration_+%":161,
-  "chance_to_unnerve_on_hit_%":299,
+  "chance_to_place_an_additional_mine_%":297,
+  "support_energy_shield_leech_damage_+%_on_full_energy_shield_final":543,
   "base_mana_cost_-%":25,
-  "support_blunt_chance_to_trigger_shockwave_on_hit_%":524,
+  "recover_%_maximum_life_on_cull":478,
   "greater_projectile_intensity_projectile_damage_+%_final_per_intensity":377,
-  "hit_and_poison_damage_+%_per_poison_on_enemy":380,
+  "projectile_return_%_chance":79,
+  "base_reduce_enemy_fire_resistance_%":71,
   "630":{
     "stats":["support_slashing_buff_attack_speed_+%_final_to_grant"],
     "lang":{
@@ -8304,9 +8317,9 @@
   "damage_+%":317,
   "attack_and_cast_speed_+%_during_onslaught":225,
   "summon_lightning_resistance_+":120,
-  "active_skill_withered_base_duration_ms":165,
-  "support_faster_ailments_ailment_duration_+%_final":548,
-  "support_multithrow_damage_+%_final":115,
+  "base_cooldown_modifier_ms":249,
+  "minion_recover_%_maximum_life_on_hit":439,
+  "support_spell_boost_area_of_effect_+%_final_per_charge":632,
   "614":{
     "stats":["support_recent_ignites_damage_per_recent_ignite_+%_final","support_recent_ignites_damage_per_recent_ignite_+%_final_minimum"],
     "lang":{
@@ -8324,10 +8337,12 @@
     }
   },
   "%_chance_to_gain_frenzy_charge_on_trap_triggered_by_an_enemy":462,
+  "minion_burning_damage_+%":426,
+  "projectile_chance_to_not_pierce_%":470,
   "melee_physical_damage_+%":412,
   "supported_skill_can_only_use_dagger_and_claw":664,
   "curse_effect_+%":138,
-  "damage_+%_for_non_minions":318,
+  "support_executioner_damage_vs_enemies_on_low_life_+%_final":545,
   "598":{
     "stats":["support_phys_chaos_projectile_physical_damage_over_time_+%_final"],
     "lang":{
@@ -8341,9 +8356,9 @@
         }]
     }
   },
-  "support_cast_while_channelling_triggered_skill_non_damaging_ailment_effect_+%":530,
+  "support_trauma_melee_damage_+%_final_per_trauma":652,
   "hit_damage_+%":381,
-  "crush_for_2_seconds_on_hit_%_chance":313,
+  "damage_+%_per_frenzy_charge":322,
   "590":{
     "stats":["support_momentum_stack_while_channelling_base_ms","support_momentum_stack_while_channelling_ms"],
     "lang":{
@@ -8358,8 +8373,9 @@
         }]
     }
   },
-  "faster_burn_%":352,
-  "cast_linked_spells_on_melee_kill_%":124,
+  "number_of_additional_curses_allowed":451,
+  "critical_ailment_dot_multiplier_+":310,
+  "overwhelm_%_physical_damage_reduction_while_max_fortification":459,
   "582":{
     "stats":["support_minion_focus_fire_damage_+%_final_vs_focussed_target"],
     "lang":{
@@ -8373,36 +8389,39 @@
         }]
     }
   },
-  "base_inflict_cold_exposure_on_hit_%_chance":256,
+  "support_ruthless_big_hit_stun_base_duration_override_ms":174,
+  "base_inflict_fire_exposure_on_hit_%_chance":257,
   "support_blood_thirst_damage_+%_final":523,
   "area_of_effect_+%_while_dead":31,
-  "base_chance_to_freeze_%":246,
+  "you_and_enemy_movement_velocity_+%_while_affected_by_ailment_you_inflicted":694,
+  "cast_on_damage_taken_%":129,
+  "base_reservation_+%":273,
   "support_innervate_buff_base_duration_ms":170,
-  "base_damage_+%_while_an_ailment_on_you":252,
-  "damage_+%_when_on_full_life":328,
-  "global_minimum_added_physical_damage":375,
-  "support_greater_volley_projectile_damage_+%_final":610,
-  "impale_support_physical_damage_+%_final":387,
-  "impale_phys_reduction_%_penalty":386,
+  "wither_applies_additional_wither_%":693,
+  "support_cast_while_channelling_triggered_skill_damage_+%_final":21,
+  "minimum_power_from_quality":421,
+  "damage_+%_while_mana_leeching":333,
+  "support_slashing_damage_+%_final_from_distance":102,
+  "damage_over_time_+%":316,
+  "skill_physical_damage_%_to_convert_to_fire":499,
   "support_recent_minions_life_leech_from_any_damage_permyriad_from_wakened_fury":615,
   "spell_critical_strike_chance_+%":505,
   "mana_gain_per_target":105,
   "summon_totem_cast_speed_+%":512,
-  "freeze_mine_cold_resistance_+_while_frozen":157,
+  "hits_grant_cruelty":198,
+  "support_projectile_attack_physical_damage_+%_final":603,
   "hex_transfer_on_death_range_+%":378,
-  "trigger_prismatic_burst_on_hit_%_chance":683,
+  "fire_dot_multiplier_+":355,
   "support_better_ailments_hit_damage_+%_final":95,
   "faster_poison_%":353,
-  "trigger_brand_support_hit_damage_+%_final_vs_branded_enemy":680,
+  "trigger_on_trigger_link_target_hit":682,
+  "attack_maximum_added_physical_damage_with_at_least_10_rage":230,
+  "support_cast_while_channelling_triggered_skill_non_damaging_ailment_effect_+%":530,
   "attack_and_cast_speed_+%":224,
-  "trap_spread_+%":673,
-  "trap_damage_+%":672,
-  "base_chance_to_poison_on_hit_%":154,
-  "mine_critical_strike_chance_+%_per_power_charge":183,
   "non_curse_aura_effect_+%":449,
-  "mine_detonation_speed_+%":416,
-  "support_projectile_attack_speed_+%_final":604,
-  "mine_duration_+%":65,
+  "critical_strike_chance_+%_vs_blinded_enemies":311,
+  "support_greater_projectile_intensity_projectile_damage_+%_final":555,
+  "support_additional_trap_mine_%_chance_for_3_additional_trap_mine":51,
   "518":{
     "stats":["support_aura_duration_base_buff_duration"],
     "lang":{
@@ -8426,12 +8445,11 @@
         }]
     }
   },
-  "base_stun_duration_+%":277,
+  "supported_elemental_skill_gem_level_+":659,
   "returning_projectiles_always_pierce":201,
   "damaging_ailments_deal_damage_+%_faster":336,
   "base_cooldown_speed_+%":250,
-  "chance_to_crush_on_hit_%":288,
-  "minion_additional_physical_damage_reduction_%":422,
+  "supported_curse_skill_gem_level_+":658,
   "number_of_additional_traps_to_throw":48,
   "542":{
     "stats":["support_divine_cry_damage_+%_final"],
@@ -8445,7 +8463,7 @@
     }
   },
   "gain_resonance_of_majority_damage_on_hit_for_2_seconds":194,
-  "damage_+%_per_endurance_charge":321,
+  "base_stun_duration_+%":277,
   "550":{
     "stats":["support_focused_ballista_totem_attack_speed_+%_final"],
     "lang":{
@@ -8458,8 +8476,8 @@
     }
   },
   "minion_chance_to_deal_double_damage_%":428,
-  "base_inflict_lightning_exposure_on_hit_%_chance":258,
-  "deathmark_minion_damage_+%_final":339,
+  "mine_duration_+%":65,
+  "minion_ailment_damage_+%":423,
   "558":{
     "stats":["support_hypothermia_cold_damage_over_time_+%_final"],
     "lang":{
@@ -8473,16 +8491,18 @@
         }]
     }
   },
-  "minion_life_regeneration_rate_per_minute_%":206,
+  "support_minion_totem_resistance_elemental_damage_+%_final":585,
+  "support_trap_and_mine_damage_mine_throwing_speed_+%_final":649,
+  "support_storm_barrier_physical_damage_taken_when_hit_+%_final":645,
   "reduce_enemy_dodge_%":481,
-  "base_reservation_efficiency_+%":272,
+  "mine_critical_strike_chance_+%_per_power_charge":183,
   "number_of_additional_remote_mines_allowed":454,
   "attack_skill_mana_leech_from_any_damage_permyriad":233,
   "projectiles_rain":38,
-  "minion_maximum_life_+%":436,
+  "mine_detonation_speed_+%":416,
   "triggered_by_spiritual_cry":687,
-  "base_spell_repeat_count":110,
-  "minion_recover_%_maximum_life_on_hit":439,
+  "support_arcane_surge_spell_damage_+%_final_while_you_have_arcane_surge":517,
+  "maximum_energy_shield_leech_amount_per_leech_+%":407,
   "694":{
     "stats":["you_and_enemy_movement_velocity_+%_while_affected_by_ailment_you_inflicted"],
     "lang":{
@@ -8496,8 +8516,8 @@
         }]
     }
   },
-  "elemental_damage_+%_final_per_righteous_charge":619,
-  "accuracy_rating_+%":208,
+  "support_chilling_areas_also_grant_cold_damage_taken_per_minute_+%":180,
+  "support_spell_cascade_damage_+%_final":635,
   "support_split_projectile_damage_+%_final":82,
   "support_scion_onslaught_on_unique_hit_duration_ms":627,
   "global_chance_to_blind_on_hit_%":66,
@@ -8516,13 +8536,13 @@
         }]
     }
   },
-  "support_scion_onslaught_duration_+%":626,
-  "cold_damage_%_to_add_as_fire":305,
-  "detonate_dead_%_chance_to_detonate_additional_corpse":340,
+  "minion_critical_strike_chance_+%":431,
+  "support_barrage_damage_+%_final":12,
+  "base_mine_detonation_time_ms":266,
   "base_skill_is_instant":7,
-  "ignore_self_damage_from_trauma_chance_%":384,
-  "support_ruthless_big_hit_stun_base_duration_override_ms":174,
-  "trap_trigger_radius_+%":676,
+  "base_inflict_lightning_exposure_on_hit_%_chance":258,
+  "deathmark_minion_damage_+%_final":339,
+  "support_sacrifice_gain_%_of_sacrificed_life_as_added_chaos_damage":625,
   "662":{
     "stats":["supported_skill_can_only_use_axe_and_sword"],
     "lang":{
@@ -8533,8 +8553,8 @@
     }
   },
   "additional_critical_strike_chance_permyriad_while_affected_by_elusive":216,
-  "support_spell_weapon_damage_gain_%_of_one_hand_melee_weapon_damage_as_added_spell_damage_while_wielding_two_different_weapon_types":639,
-  "projectile_chance_to_not_pierce_%":470,
+  "support_corrupting_cry_area_of_effect_+%_final":537,
+  "base_number_of_remote_mines_allowed":63,
   "654":{
     "stats":["support_unbound_ailments_ailment_damage_+%_final"],
     "lang":{
@@ -8567,7 +8587,7 @@
     }
   },
   "base_physical_damage_%_to_convert_to_lightning":268,
-  "summon_fire_resistance_+":118,
+  "cold_damage_%_to_add_as_fire":305,
   "639":{
     "stats":["support_spell_weapon_damage_gain_%_of_one_hand_melee_weapon_damage_as_added_spell_damage_while_wielding_two_different_weapon_types"],
     "lang":{
@@ -8579,7 +8599,7 @@
   },
   "support_spellslinger_damage_+%_final":640,
   "support_conflagration_ignites_from_stunning_melee_hits_deal_damage_+%_final_per_200ms_stun":535,
-  "damage_+%_vs_enemies_per_freeze_shock_ignite":325,
+  "minion_damage_+%_on_full_life":433,
   "631":{
     "stats":["support_slower_projectiles_damage_+%_final"],
     "lang":{
@@ -8591,8 +8611,8 @@
         }]
     }
   },
-  "projectile_damage_+%_vs_nearby_enemies":474,
-  "support_rapid_activation_brand_activation_rate_+%_final":612,
+  "base_life_gain_per_target":104,
+  "support_arcane_surge_duration_ms":166,
   "623":{
     "stats":["support_remote_mine_damage_+%_final_per_mine_detonation_cascade"],
     "lang":{
@@ -8606,12 +8626,12 @@
         }]
     }
   },
-  "support_anticipation_charge_gain_interval_ms":695,
+  "support_rapid_activation_brand_skill_only_secondary_duration_+%_final":151,
+  "support_rapid_activation_brand_activation_rate_+%_final":612,
   "aura_skill_no_reservation":238,
   "minion_fire_damage_taken_+%":187,
-  "support_storm_barrier_damage_+%_final":644,
+  "skill_can_own_mirage_archers":491,
   "minions_inflict_exposure_on_hit_%_chance":440,
-  "regenerate_%_life_over_1_second_on_skill_use":483,
   "607":{
     "stats":["support_pulverise_melee_area_damage_+%_final"],
     "lang":{
@@ -8625,50 +8645,50 @@
         }]
     }
   },
-  "%_chance_to_gain_power_charge_on_mine_detonated_targeting_an_enemy":463,
+  "minion_maximum_life_+%":436,
+  "support_cast_on_melee_kill_spell_damage_+%_final":20,
   "attack_damage_+%_per_1000_accuracy_rating":228,
   "parallel_projectile_firing_point_x_dist_+%":460,
-  "shock_effect_+%_with_critical_strikes":486,
   "damage_+%_while_es_leeching":331,
   "maim_on_hit_%":403,
   "chance_to_fortify_on_melee_hit_+%":291,
-  "skill_cold_damage_%_to_convert_to_fire":492,
-  "skill_convert_%_physical_damage_to_random_element":493,
+  "damage_+%_vs_enemies_on_full_life":324,
+  "support_phys_chaos_projectile_chaos_damage_over_time_+%_final":597,
   "support_parallel_projectile_number_of_points_per_side":595,
   "supported_minion_skill_gem_level_+":660,
   "lose_all_righteous_charges_on_mana_use_threshold":620,
+  "support_momentum_stack_while_channelling_base_ms":590,
   "supported_skill_can_only_use_axe_mace_and_staff":697,
   "support_base_cruelty_duration_ms":163,
-  "onslaught_time_granted_on_killing_shocked_enemy_ms":457,
-  "support_additional_trap_mine_%_chance_for_3_additional_trap_mine":51,
-  "you_and_enemy_movement_velocity_+%_while_affected_by_ailment_you_inflicted":694,
+  "support_multithrow_damage_+%_final":115,
   "cover_in_ash_on_hit_%":309,
-  "chaos_damage_+%":301,
-  "close_combat_damage_to_close_range_+%":303,
+  "support_multiple_attacks_melee_attack_speed_+%_final":112,
   "snipe_triggered_skill_damage_+%_final":502,
-  "support_minion_use_focussed_target":586,
-  "support_corrupting_cry_corrupted_blood_base_physical_damage_to_deal_per_minute":538,
+  "support_trap_hit_damage_+%_final":651,
+  "support_autocast_instant_spells":519,
+  "support_totem_damage_+%_final":17,
   "support_elemental_proliferation_damage_+%_final":6,
-  "fire_damage_+%":354,
-  "base_spell_cooldown_speed_+%":276,
+  "support_mirage_archer_base_duration":588,
+  "support_minion_focus_fire_damage_+%_final_vs_focussed_target":582,
   "support_brutality_physical_damage_+%_final":96,
-  "spell_damage_+%":506,
+  "base_spell_cooldown_speed_+%":276,
+  "support_minion_offensive_stance_minion_damage_+%_final_while_you_have_puppet_master":584,
+  "life_leech_from_any_damage_permyriad":396,
   "base_cost_+%":23,
   "chance_to_double_stun_duration_%":289,
   "support_manaforged_arrows_mana_cost_%_threshold":686,
   "spell_damage_modifiers_apply_to_skill_dot":137,
   "display_base_intensity_loss":341,
-  "support_minefield_mine_throwing_speed_+%_final":574,
-  "support_cruelty_hit_damage_+%_final":98,
+  "support_remote_mine_2_chance_to_deal_double_damage_%_against_enemies_near_mines":698,
+  "support_locus_mine_throw_mines_in_an_arc":568,
   "triggered_by_divine_cry":685,
-  "minion_fire_damage_%_of_maximum_life_taken_per_minute":186,
-  "summon_mirage_archer_on_hit":510,
-  "inc_aoe_plus_more_area_damage_+%_final":388,
-  "minion_movement_speed_+%":437,
-  "support_additional_trap_mine_%_chance_for_1_additional_trap_mine":49,
+  "gain_endurance_charge_on_melee_stun":363,
+  "attack_minimum_added_physical_damage_with_weapons":231,
+  "support_ghost_base_duration":554,
+  "no_spirit_strikes":27,
   "support_blasphemy_curse_effect_+%_final":140,
-  "additional_chance_to_freeze_chilled_enemies_%":214,
-  "attack_speed_+%_with_atleast_20_rage":236,
+  "support_faster_ailments_ailment_duration_+%_final":548,
+  "projectile_damage_+%_vs_nearby_enemies":474,
   "519":{
     "stats":["support_autocast_instant_spells"],
     "lang":{
@@ -8678,16 +8698,15 @@
         }]
     }
   },
-  "support_ancestral_slam_big_hit_area_+%":193,
-  "support_efficacy_spell_damage_+%_final":90,
-  "attack_maximum_added_physical_damage_with_weapons":231,
-  "throw_traps_in_circle_radius":52,
   "physical_damage_%_to_add_as_fire":466,
+  "support_executioner_gain_one_rare_monster_mod_on_kill_ms":546,
+  "base_mana_cost_-%_final":701,
+  "bleed_on_hit_base_duration":144,
+  "support_void_manipulation_chaos_damage_+%_final":88,
   "local_gem_str_requirement_+%":401,
   "base_poison_duration_+%":270,
-  "unleash_support_seal_gain_frequency_+%_while_channelling":689,
-  "support_void_manipulation_chaos_damage_+%_final":88,
-  "add_power_charge_on_critical_strike_%":210,
+  "additional_chance_to_freeze_chilled_enemies_%":214,
+  "support_debilitate_poison_damage_+%_final":85,
   "overpowered_effect_+%":458,
   "warcry_speed_+%":691,
   "support_remote_mine_damage_+%_final_per_mine_detonation_cascade":623,
@@ -8702,8 +8721,9 @@
         }]
     }
   },
-  "support_guardians_blessing_minion_physical_damage_%_of_maximum_life_and_ES_taken_per_minute":557,
-  "ancestor_totem_grants_owner_area_of_effect_+%_with_melee_skills":219,
+  "apply_linked_curses_on_hit_%":121,
+  "support_damage_while_on_full_life_+%_final":8,
+  "add_power_charge_on_critical_strike_%":210,
   "559":{
     "stats":["support_hypothermia_damage_+%_vs_chilled_enemies_final"],
     "lang":{
@@ -8720,8 +8740,8 @@
     }
   },
   "cast_on_death_damage_+%_final_while_dead":116,
-  "support_attack_skills_elemental_damage_+%_final":9,
-  "support_rain_projectile_damage_+%_final":14,
+  "support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount":179,
+  "support_guardians_blessing_minion_physical_damage_%_of_maximum_life_and_ES_taken_per_minute":557,
   "567":{
     "stats":["support_locus_mine_mines_always_target_your_location"],
     "lang":{
@@ -8733,7 +8753,7 @@
   },
   "support_trap_and_mine_damage_trap_throwing_speed_+%_final":650,
   "support_echo_damage_+%_final":5,
-  "support_attack_totem_attack_speed_+%_final":143,
+  "projectile_additional_return_chance_%":202,
   "575":{
     "stats":["global_minimum_added_fire_damage_vs_burning_enemies","global_maximum_added_fire_damage_vs_burning_enemies"],
     "lang":{
@@ -8743,20 +8763,19 @@
         }]
     }
   },
-  "support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount":179,
-  "support_minion_defensive_stance_minion_damage_taken_+%_final":579,
+  "weapon_elemental_damage_+%":692,
+  "impale_debuff_effect_+%":385,
   "gain_elusive_on_crit_%_chance":152,
   "base_number_of_totems_allowed":60,
-  "support_spell_boost_area_damage_+%_final_per_charge":632,
+  "support_controlled_destruction_critical_strike_chance_+%_final":69,
+  "placing_traps_cooldown_recovery_+%":469,
   "inspiration_charge_duration_+%":390,
-  "triggered_skill_damage_+%":688,
-  "support_arcane_surge_mana_regeneration_rate_+%":160,
-  "support_barrage_damage_+%_final":12,
+  "support_minion_focus_fire_critical_strike_chance_+%_vs_focused_target":580,
   "base_skill_cost_life_instead_of_mana":35,
   "base_aura_area_of_effect_+%":32,
   "supported_chaos_skill_gem_level_+":657,
-  "support_better_ailments_ailment_damage_+%_final":94,
   "support_fortify_melee_damage_+%_final":553,
+  "elemental_damage_+%_final_per_righteous_charge":619,
   "671":{
     "stats":["trap_critical_strike_multiplier_+_per_power_charge"],
     "lang":{
@@ -8767,20 +8786,18 @@
     }
   },
   "support_maim_chance_physical_damage_+%_final":101,
-  "quality_display_swiftbrand_is_gem":150,
-  "attack_critical_strike_chance_+%":226,
-  "support_cast_on_melee_kill_spell_damage_+%_final":20,
+  "shock_effect_+%_with_critical_strikes":486,
   "support_chance_to_ignite_fire_damage_+%_final":97,
+  "attack_critical_strike_chance_+%":226,
   "static_strike_base_zap_frequency_ms":508,
   "support_rapid_decay_damage_over_time_+%_final":91,
   "base_reduce_enemy_lightning_resistance_%":74,
-  "support_minion_focus_fire_critical_strike_chance_+%_vs_focused_target":580,
-  "placing_traps_cooldown_recovery_+%":469,
-  "impale_debuff_effect_+%":385,
-  "support_controlled_destruction_critical_strike_chance_+%_final":69,
-  "weapon_elemental_damage_+%":692,
-  "support_controlled_destruction_spell_damage_+%_final":89,
-  "projectile_additional_return_chance_%":202,
+  "support_attack_totem_attack_speed_+%_final":143,
+  "reduce_enemy_chaos_resistance_%":480,
+  "triggered_skill_damage_+%":688,
+  "support_spirit_strike_damage_+%_final":81,
+  "manaweave_added_cold_damage_%_cost_if_payable":406,
+  "ancestor_totem_grants_owner_area_of_effect_+%_with_melee_skills":219,
   "632":{
     "stats":["support_spell_boost_area_damage_+%_final_per_charge","support_spell_boost_area_of_effect_+%_final_per_charge"],
     "lang":{
@@ -8804,8 +8821,7 @@
     }
   },
   "support_parallel_projectiles_damage_+%_final":596,
-  "nightblade_elusive_grants_critical_strike_multiplier_+_to_supported_skills":447,
-  "support_damage_while_on_full_life_+%_final":8,
+  "support_conflagration_ignites_from_stunning_melee_hits_count_as_coming_from_critical_strike":534,
   "curse_area_of_effect_+%":314,
   "support_pulverise_attack_speed_+%_final":606,
   "support_added_cooldown_count_if_not_instant":513,
@@ -8824,10 +8840,10 @@
     }
   },
   "base_skill_cost_life_instead_of_mana_%":274,
-  "support_executioner_gain_one_rare_monster_mod_on_kill_ms":546,
-  "bleed_on_hit_base_duration":144,
-  "support_fork_projectile_damage_+%_final":83,
-  "no_spirit_strikes":27,
+  "support_arcane_surge_cast_speed_+%":160,
+  "support_efficacy_spell_damage_+%_final":90,
+  "support_ancestral_slam_big_hit_area_+%":193,
+  "inc_aoe_plus_more_area_damage_+%_final":388,
   "600":{
     "stats":["support_phys_proj_attack_damage_bleeing_and_poison_damage_+%_final_from_projectile_hits"],
     "lang":{
@@ -8840,51 +8856,50 @@
         }]
     }
   },
-  "support_greater_projectile_intensity_projectile_damage_+%_final":555,
+  "support_additional_trap_mine_%_chance_for_1_additional_trap_mine":49,
   "support_storm_barrier_damage_buff_base_duration_ms":642,
-  "hits_grant_cruelty":198,
+  "minion_movement_speed_+%":437,
   "burn_damage_+%":282,
-  "base_mine_detonation_time_ms":266,
-  "support_innervate_gain_buff_on_killing_shocked_enemy":168,
+  "minion_fire_damage_%_of_maximum_life_taken_per_minute":186,
+  "support_minefield_mine_throwing_speed_+%_final":574,
+  "support_hypothermia_cold_damage_over_time_+%_final":558,
   "extra_target_targeting_distance_+%":28,
   "physical_damage_%_to_add_as_lightning":467,
-  "life_leech_from_any_damage_permyriad":396,
-  "support_minion_offensive_stance_minion_damage_+%_final_while_you_have_puppet_master":584,
+  "fire_damage_+%":354,
+  "spell_damage_+%":506,
   "faster_bleed_%":351,
   "physical_damage_%_to_add_as_chaos":465,
-  "support_mirage_archer_base_duration":588,
-  "support_totem_damage_+%_final":17,
-  "support_autocast_instant_spells":519,
+  "close_combat_damage_to_close_range_+%":303,
+  "chaos_damage_+%":301,
   "cold_damage_+%":306,
   "hit_and_poison_damage_+%":379,
-  "support_multicast_cast_speed_+%_final":111,
-  "support_multiple_projectile_damage_+%_final":13,
-  "skill_can_own_mirage_archers":491,
-  "support_minion_focus_fire_damage_+%_final_vs_focussed_target":582,
   "support_additional_trap_mine_%_chance_for_2_additional_trap_mine":50,
-  "multistrike_damage_+%_final_on_third_repeat":446,
-  "support_phys_proj_attack_damage_bleeing_and_poison_damage_+%_final_from_projectile_hits":600,
-  "damage_+%_vs_enemies_on_full_life":324,
+  "skill_convert_%_physical_damage_to_random_element":493,
+  "skill_cold_damage_%_to_convert_to_fire":492,
+  "%_chance_to_gain_power_charge_on_mine_detonated_targeting_an_enemy":463,
+  "remote_mined_by_support":484,
+  "support_storm_barrier_damage_+%_final":644,
+  "support_projectile_attack_speed_+%_final":604,
   "support_ruthless_blow_ailment_damage_from_melee_hits_+%_final":173,
-  "support_rage_gain_rage_on_melee_hit_cooldown_ms":611,
-  "base_number_of_remote_mines_allowed":63,
+  "mine_laying_speed_+%":417,
   "global_poison_on_hit":153,
-  "support_aura_duration_base_buff_duration":518,
-  "support_hypothermia_damage_+%_vs_chilled_enemies_final":559,
-  "support_arcane_surge_duration_ms":166,
-  "base_life_gain_per_target":104,
+  "support_reduce_enemy_block_and_spell_block_%":617,
+  "summon_fire_resistance_+":118,
+  "aura_effect_+%":33,
+  "cast_on_damage_taken_damage_+%_final":117,
+  "damage_+%_vs_enemies_per_freeze_shock_ignite":325,
+  "mine_detonation_radius_+%":415,
+  "minion_life_regeneration_rate_per_minute_%":206,
   "support_slashing_buff_base_duration_ms":629,
   "additional_projectiles_per_intensity":217,
-  "maximum_energy_shield_leech_amount_per_leech_+%":407,
+  "detonate_dead_%_chance_to_detonate_additional_corpse":340,
   "number_of_additional_forks_base":78,
-  "support_reduced_duration_skill_effect_duration_+%_final":149,
-  "support_remote_mine_2_chance_to_deal_double_damage_%_against_enemies_near_mines":698,
-  "ranged_attack_totem_only_attacks_when_owner_attacks":476,
+  "accuracy_rating_+%":208,
   "minion_maximum_all_elemental_resistances_%":185,
   "skill_can_only_use_non_melee_weapons":666,
   "support_pure_shock_damage_+%_final":608,
   "support_phys_chaos_projectile_physical_damage_over_time_+%_final":598,
-  "support_chilling_areas_also_grant_cold_damage_taken_per_minute_+%":180,
+  "minion_additional_physical_damage_reduction_%":422,
   "528":{
     "stats":["support_burning_damage_+%_final"],
     "lang":{
@@ -8899,9 +8914,9 @@
     }
   },
   "transfer_hexes_to_X_nearby_enemies_on_kill":670,
-  "support_spell_weapon_damage_gain_%_of_one_hand_melee_weapon_damage_as_added_spell_damage":638,
-  "support_reduce_enemy_block_and_spell_block_%":617,
-  "support_arcane_surge_spell_damage_+%_final_while_you_have_arcane_surge":517,
+  "mine_projectile_speed_+%_per_frenzy_charge":418,
+  "base_reservation_efficiency_+%":272,
+  "base_spell_repeat_count":110,
   "summon_2_totems":61,
   "support_return_returning_projectiles_damage_+%_final":87,
   "544":{
@@ -8917,8 +8932,8 @@
         }]
     }
   },
-  "support_trap_and_mine_damage_mine_throwing_speed_+%_final":649,
-  "support_minion_totem_resistance_elemental_damage_+%_final":585,
+  "damage_+%_per_endurance_charge":321,
+  "trigger_brand_support_hit_damage_+%_final_vs_branded_enemy":680,
   "552":{
     "stats":["support_fortify_ailment_damage_+%_final_from_melee_hits"],
     "lang":{
@@ -8932,13 +8947,11 @@
         }]
     }
   },
-  "support_trauma_stun_duration_+%_per_trauma":653,
-  "support_vicious_projectiles_chaos_damage_+%_final":656,
+  "active_skill_withered_base_duration_ms":165,
   "elemental_damage_+%_final_per_5_lowest_resonance":195,
   "tornado_base_damage_interval_ms":669,
-  "support_withered_base_duration_ms":167,
-  "wither_applies_additional_wither_%":693,
-  "supported_elemental_skill_gem_level_+":659,
+  "support_phys_proj_attack_damage_bleeing_and_poison_damage_+%_final_from_projectile_hits":600,
+  "withered_on_hit_chance_%":155,
   "568":{
     "stats":["support_locus_mine_throw_mines_in_an_arc"],
     "lang":{
@@ -8948,23 +8961,22 @@
         }]
     }
   },
-  "supported_skill_can_only_use_wand":667,
-  "mine_throwing_speed_+%_per_frenzy_charge":182,
-  "critical_strike_chance_+%_vs_blinded_enemies":311,
+  "base_inflict_cold_exposure_on_hit_%_chance":256,
+  "base_chance_to_poison_on_hit_%":154,
   "minimum_attack_damage_+%_final_from_volatility_support":204,
-  "trap_trigger_radius_+%_per_power_charge":677,
+  "faster_burn_%":352,
   "support_mirage_archer_damage_+%_final":589,
-  "support_sacrifice_sacrifice_%_of_current_life":625,
-  "trigger_on_trigger_link_target_hit":682,
+  "base_bleed_duration_+%":243,
   "gain_vaal_soul_on_hit_cooldown_ms":368,
-  "triggered_by_brand_support":684,
-  "support_projectile_attack_physical_damage_+%_final":603,
+  "support_multiple_projectile_damage_+%_final":13,
+  "freeze_mine_cold_resistance_+_while_frozen":157,
   "triggered_spell_spell_damage_+%":18,
-  "skill_physical_damage_%_to_convert_to_fire":499,
+  "impale_phys_reduction_%_penalty":386,
   "knockback_chance_%_at_close_range":394,
-  "support_slashing_damage_+%_final_from_distance":102,
-  "minimum_power_from_quality":421,
-  "support_cast_while_channelling_triggered_skill_damage_+%_final":21,
+  "support_greater_volley_projectile_damage_+%_final":610,
+  "chance_to_unnerve_on_hit_%":299,
+  "damage_+%_when_on_full_life":328,
+  "base_damage_+%_while_an_ailment_on_you":252,
   "664":{
     "stats":["supported_skill_can_only_use_dagger_and_claw"],
     "lang":{
@@ -8978,7 +8990,8 @@
     }
   },
   "base_mana_reservation_+%":265,
-  "support_multiple_attacks_melee_attack_speed_+%_final":112,
+  "unleash_support_seal_gain_frequency_+%_while_not_channelling":690,
+  "support_storm_barrier_skill_type_damage_taken_when_hit_+%_final":647,
   "656":{
     "stats":["support_vicious_projectiles_chaos_damage_+%_final"],
     "lang":{
@@ -8990,9 +9003,9 @@
         }]
     }
   },
-  "critical_ailment_dot_multiplier_+":310,
-  "recover_%_maximum_life_on_cull":478,
-  "number_of_additional_curses_allowed":451,
+  "multistrike_damage_+%_final_on_first_repeat":444,
+  "melee_attack_number_of_spirit_strikes":26,
+  "cast_linked_spells_on_melee_kill_%":124,
   "648":{
     "stats":["support_swift_affliction_skill_effect_and_damaging_ailment_duration_+%_final"],
     "lang":{
@@ -9008,25 +9021,26 @@
         }]
     }
   },
-  "damage_+%_per_frenzy_charge":322,
-  "number_of_chains":75,
-  "support_executioner_damage_vs_enemies_on_low_life_+%_final":545,
-  "gem_display_quality_has_no_effect":369,
+  "aura_cannot_affect_self":145,
+  "attack_skills_additional_ballista_totems_allowed":59,
+  "crush_for_2_seconds_on_hit_%_chance":313,
+  "support_fork_projectile_damage_+%_final":83,
   "base_all_ailment_duration_+%":242,
-  "multiple_projectiles_projectile_spread_+%":442,
+  "damage_+%_for_non_minions":318,
   "multistrike_area_of_effect_+%_per_repeat":443,
   "static_strike_zap_speed_+%":509,
-  "support_overpowered_base_duration_ms":594,
+  "base_totem_duration":54,
   "base_use_life_in_place_of_mana":37,
   "support_executioner_refresh_stolen_mod_on_hitting_rare_or_unique_monster_chance_%":547,
-  "support_locus_mine_throw_mines_in_an_arc":568,
-  "minion_damage_+%_on_full_life":433,
+  "ignore_self_damage_from_trauma_chance_%":384,
+  "elusive_effect_+%":346,
+  "cruelty_duration_+%":161,
   "support_additional_totem_damage_+%_final":93,
-  "support_energy_shield_leech_damage_+%_on_full_energy_shield_final":543,
+  "minion_grant_puppet_master_buff_to_parent_on_hit_%":434,
   "base_life_reservation_+%":264,
-  "support_phys_chaos_projectile_chaos_damage_over_time_+%_final":597,
+  "attack_damage_+%":227,
   "support_remote_mine_2_damage_+%_final":622,
-  "support_trigger_link_damage_+%_final":22,
+  "projectile_damage_+%":471,
   "609":{
     "stats":["support_pure_shock_shock_as_though_damage_+%_final"],
     "lang":{
@@ -9040,9 +9054,8 @@
         }]
     }
   },
-  "base_cold_damage_to_deal_per_minute":135,
-  "damage_+%_while_mana_leeching":333,
-  "support_momentum_movement_speed_+%_per_stack_removed":593,
+  "support_aura_duration_base_buff_duration":518,
+  "base_life_reservation_efficiency_+%":263,
   "601":{
     "stats":["support_pierce_projectile_damage_+%_final"],
     "lang":{
@@ -9069,8 +9082,9 @@
         }]
     }
   },
+  "support_better_ailments_ailment_damage_+%_final":94,
   "enemies_you_shock_movement_speed_+%":347,
-  "ignite_duration_+%":382,
+  "ranged_attack_totem_only_attacks_when_owner_attacks":476,
   "585":{
     "stats":["support_minion_totem_resistance_elemental_damage_+%_final"],
     "lang":{
@@ -9084,9 +9098,9 @@
         }]
     }
   },
-  "support_storm_barrier_physical_damage_taken_when_hit_+%_final":645,
+  "supported_skill_can_only_use_wand":667,
   "support_guardians_blessing_aura_only_enabled_while_support_minion_is_summoned":556,
-  "chance_to_summon_support_ghost_on_killing_blow_%":175,
+  "base_deal_no_chaos_damage":253,
   "577":{
     "stats":["support_minion_damage_minion_life_+%_final"],
     "lang":{

@@ -2,9 +2,10 @@
   "TriggeredBoneNova":{
     "levels":{
       "20":{
-        "cooldown":0.5,
+        "baseMultiplier":1.5,
         "PvPDamageMultiplier":-80,
-        "levelRequirement":1
+        "storedUses":1,
+        "cooldown":0.5
       }
     },
     "color":4,
@@ -26,33 +27,16 @@
     "name":"Default Attack",
     "description":"Strike your foes down with a powerful blow."
   },
-  "ElementalAegis":{
+  "UnboundAvatar":{
     "levels":{
-      "20":{
-        "1":1000,
-        "statInterpolation":[]
-      },
-      "1":{
-        "1":50,
-        "statInterpolation":[]
-      }
+      "20":[]
     },
-    "statMap":{
-      "aegis_unique_shield_max_value":[{
-          "1":{
-            "type":"GlobalEffect",
-            "effectType":"Buff"
-          },
-          "type":"MAX",
-          "name":"ElementalAegisValue"
-        }]
-    },
-    "stats":["aegis_unique_shield_max_value","cast_on_gain_skill",null,"no_cost"],
-    "constantStats":[["active_skill_display_aegis_variation",2],["aegis_recharge_delay_ms",10000]],
-    "skillTypes":[],
+    "color":2,
+    "stats":[],
     "baseFlags":[],
-    "name":"Elemental Aegis",
-    "description":"Calls forth a protective aegis which takes elemental damage from hits for you until depleted. The aegis will be restored to its full value after a short delay if you stop taking elemental damage from hits, or if depleted."
+    "skillTypes":[],
+    "name":"Unbound Avatar",
+    "description":""
   },
   "TriggeredSummonSpider":{
     "minionSkillTypes":[],
@@ -68,6 +52,8 @@
             "var":"RaisedSpider"
           },
           "2":{
+            "type":"GlobalEffect",
+            "effectType":"Buff",
             "effectName":"Raised Spider"
           },
           "type":"INC",
@@ -207,7 +193,7 @@
         }]
     },
     "stats":[],
-    "constantStats":[["base_chaos_damage_resistance_%",-20],[],["cast_on_skill_use_%"]],
+    "constantStats":[["base_chaos_damage_resistance_%",-20],[null,10000],["cast_on_skill_use_%"]],
     "statDescriptionScope":"debuff_skill_stat_descriptions",
     "castTime":0.21,
     "skillTypes":[],
@@ -272,6 +258,7 @@
         "5":14,
         "cooldown":1.2,
         "statInterpolation":[],
+        "manaReservationPercent":50,
         "levelRequirement":60
       },
       "15":{
@@ -314,7 +301,8 @@
     "levels":{
       "16":{
         "baseMultiplier":1.15,
-        "cooldown":0.15
+        "cooldown":0.15,
+        "damageEffectiveness":1.7
       }
     },
     "constantStats":[[],["attack_trigger_on_melee_hit_%"]],
@@ -502,7 +490,6 @@
     "levels":{
       "20":{
         "cost":[],
-        "cooldown":1.5,
         "damageEffectiveness":5.1,
         "statInterpolation":[]
       }
@@ -551,12 +538,44 @@
     "levels":{
       "20":[]
     },
-    "stats":[],
+    "stats":["cast_on_gain_skill",null,"no_cost"],
     "constantStats":[["desecrate_corpse_level"]],
     "skillTypes":[],
     "baseFlags":[],
     "name":"Corpse Walk",
     "description":"Spawns corpses around you while you move. The corpses will be chosen from the monsters in the current area and any Spectres that have existed in this instance."
+  },
+  "EnemyExplode":{
+    "parts":[{
+        "name":"This Source Only"
+      },{
+        "name":"This Source Only, Ignoring Chance"
+      },{
+        "name":"Average Of All Sources"
+      }],
+    "levels":[[]],
+    "stats":[null,null,"display_skill_deals_secondary_damage","damage_cannot_be_reflected","skill_can_add_multiple_charges_per_action"],
+    "baseMods":[{
+        "value":[]
+      },{
+        "value":{
+          "key":"showAverage"
+        }
+      },{
+        "value":[]
+      },{
+        "value":{
+          "key":"corpseExplosionLifeMultiplier"
+        }
+      },{
+        "1":[],
+        "value":{
+          "key":"hitChanceIsExplodeChance"
+        }
+      }],
+    "baseFlags":[],
+    "name":"On Kill Monster Explosion",
+    "skillTypes":[]
   },
   "TriggeredIcicleNova":{
     "levels":{
@@ -565,9 +584,7 @@
     "constantStats":[[],["trigger_on_hit_vs_frozen_enemy_%"],[],["skill_physical_damage_%_to_convert_to_cold"]],
     "stats":[null,null,null,"never_freeze"],
     "baseMods":[{
-        "value":{
-          "key":"showAverage"
-        }
+        "value":[]
       }],
     "skillTypes":[],
     "baseFlags":[],
@@ -712,6 +729,113 @@
     "name":"Summon Volatile Anomaly",
     "description":"Creates an orb which moves towards nearby enemies, exploding after a duration or when it gets close enough. The explosion deals cold spell damage in an area, and leaves behind a Vortex on the ground for a secondary duration which continues to deal cold damage over time and chill enemies caught in it."
   },
+  "SupportEarthbreaker":{
+    "qualityStats":{
+      "Default":[["totem_damage_+%"]]
+    },
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "2":11,
+        "statInterpolation":[]
+      },{
+        "1":49,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":55,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":61,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":67,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "excludeSkillTypes":[],
+    "stats":["totem_support_gem_level","support_ancestor_slam_totem_damage_+%_final","base_skill_is_totemified","is_totem","leap_slam_no_epk","totem_targets_ignoring_action_distance","force_lite_skill_effects"],
+    "constantStats":[["base_totem_duration",12000],["base_totem_range"],["ancestor_totem_parent_activiation_range"],["summon_totem_cast_speed_+%"],["support_ancestor_slam_totem_attack_speed_+%_final"],["support_skill_totem_type_override"]],
+    "statMap":{
+      "ancestor_totem_grants_owner_area_of_effect_+%_with_melee_skills":[{
+          "flags":256,
+          "name":"AreaOfEffect"
+        }],
+      "support_ancestor_slam_totem_attack_speed_+%_final":[[]],
+      "support_ancestor_slam_totem_damage_+%_final":[[]]
+    },
+    "addFlags":[],
+    "description":"Supports slam skills, causing them to summon an ancestor totem that uses the skill for you while you're near it. Being near it grants you increased area of effect for melee skills.",
+    "name":"Earthbreaker",
+    "addSkillTypes":[],
+    "requireSkillTypes":[103]
+  },
   "SupportTriggerSpellOnSkillUse":{
     "excludeSkillTypes":[],
     "stats":[],
@@ -721,35 +845,23 @@
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "EnemyExplode":{
-    "parts":[{
-        "name":"This Source Only"
-      },{
-        "name":"This Source Only, Ignoring Chance"
-      },{
-        "name":"Average Of All Sources"
-      }],
+  "SupportUniqueCastCurseOnCurse":{
+    "excludeSkillTypes":[null,null,null,63],
+    "stats":["cannot_cast_curses"],
     "levels":[[]],
-    "stats":[null,null,"display_skill_deals_secondary_damage","damage_cannot_be_reflected","skill_can_add_multiple_charges_per_action"],
-    "baseMods":[{
-        "value":[]
-      },{
-        "value":[]
-      },{
-        "value":[]
-      },{
-        "value":{
-          "key":"corpseExplosionLifeMultiplier"
-        }
-      },{
-        "1":[],
-        "value":{
-          "key":"hitChanceIsExplodeChance"
-        }
-      }],
-    "baseFlags":[],
-    "name":"On Kill Monster Explosion",
-    "skillTypes":[]
+    "constantStats":[["cast_when_cast_curse_%"]],
+    "name":"Vixen's Entrapment",
+    "addSkillTypes":[],
+    "requireSkillTypes":[79]
+  },
+  "SupportTriggerSpellFromHelmet":{
+    "excludeSkillTypes":[],
+    "stats":[],
+    "levels":[[]],
+    "constantStats":[["skill_triggered_when_you_focus_chance_%"]],
+    "name":"Focus",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
   },
   "TriggeredShockedGround":{
     "levels":[null,null,null,null,null,null,null,null,null,[]],
@@ -763,14 +875,37 @@
     "name":"Shock Ground",
     "description":"Creates a patch of Shocked Ground in a radius around you."
   },
-  "SupportUniqueCastCurseOnCurse":{
-    "excludeSkillTypes":[null,null,null,63],
-    "stats":["cannot_cast_curses"],
-    "levels":[[]],
-    "constantStats":[["cast_when_cast_curse_%"]],
-    "name":"Vixen's Entrapment",
-    "addSkillTypes":[],
-    "requireSkillTypes":[79]
+  "VaalBreach":{
+    "qualityStats":{
+      "Default":[["base_cast_speed_+%"]]
+    },
+    "levels":[{
+        "cost":[]
+      },{
+        "cost":[]
+      },{
+        "cost":[]
+      },{
+        "cost":[]
+      },{
+        "cost":[]
+      },{
+        "cost":[]
+      },{
+        "cost":[]
+      },{
+        "cost":[]
+      },{
+        "cost":[]
+      },{
+        "cost":[]
+      }],
+    "baseTypeName":"Vaal Breach",
+    "stats":[null,"display_vaal_breach_no_drops_xp","cannot_cancel_skill_before_contact_point"],
+    "castTime":2.5,
+    "skillTypes":[],
+    "baseFlags":[],
+    "description":"Creates a breach, making you vulnerable to its powerful inhabitants."
   },
   "ColdAegis":{
     "levels":{
@@ -779,11 +914,12 @@
     "statMap":{
       "aegis_unique_shield_max_value":[{
           "1":[],
+          "type":"MAX",
           "name":"ColdAegisValue"
         }]
     },
     "stats":[],
-    "constantStats":[[],[],[]],
+    "constantStats":[["aegis_unique_shield_max_value",1000],["active_skill_display_aegis_variation"],["aegis_recharge_delay_ms"]],
     "skillTypes":[],
     "baseFlags":[],
     "name":"Cold Aegis",
@@ -798,29 +934,16 @@
     "name":"Embrace Madness",
     "description":"Grants Glorious Madness. Using this skill again will remove Glorious Madness and the Touched Debuffs it inflicts, but you will be unable to Embrace Madness again until the cooldown expires."
   },
-  "CatsStealthTriggeredIntimidatingCry":{
+  "HiddenBlade":{
     "levels":{
-      "20":{
-        "cost":[]
-      }
+      "20":[]
     },
-    "constantStats":[["intimidating_cry_enemy_phys_reduction_%_penalty_vs_hit_per_5_MP"],["skill_empowers_next_x_melee_attacks"],["warcry_speed_+%"],[null,4900]],
-    "statMap":{
-      "skill_empowers_next_x_melee_attacks":[{
-          "name":"IntimidatingExertedAttacks"
-        }],
-      "intimidating_cry_enemy_phys_reduction_%_penalty_vs_hit_per_5_MP":[{
-          "name":"IntimidatingPDRPer5MP"
-        }]
-    },
-    "stats":["base_deal_no_attack_damage","base_deal_no_spell_damage","base_deal_no_secondary_damage","cannot_cancel_skill_before_contact_point","warcry_count_power_from_enemies","cast_on_lose_cats_stealth","intimidating_cry_empowerd_attacks_deal_double_damage_display","enemies_taunted_by_your_warcies_are_intimidated","use_intimidating_cry_buff_visual_for_intimidate"],
-    "baseMods":[{
-        "value":[]
-      }],
-    "skillTypes":[],
+    "stats":[],
     "baseFlags":[],
-    "name":"Intimidating Cry",
-    "description":"Performs a warcry, taunting nearby enemies to attack the user and exerting subsequent attacks. Grants a buff which lowers the effect of enemy physical damage reduction against your hits."
+    "skillTypes":[],
+    "weaponTypes":[],
+    "name":"Unseen Strike",
+    "description":"Launches a spinning blade that deals weapon damage to enemies. If firing multiple projectiles, they will be fired in a circle."
   },
   "SpiderAspect":{
     "levels":{
@@ -882,48 +1005,26 @@
     "name":"Summon Harbinger of Time",
     "description":"Summons an immortal Harbinger minion. The minion will occasionally create an aura on you that increases the Action Speed of you, and all allies and enemies near you."
   },
-  "VaalBreach":{
-    "qualityStats":{
-      "Default":[["base_cast_speed_+%"]]
-    },
-    "levels":[{
-        "cost":[]
-      },{
-        "cost":[]
-      },{
-        "cost":[]
-      },{
-        "cost":[]
-      },{
-        "cost":[]
-      },{
-        "cost":[]
-      },{
-        "cost":[]
-      },{
-        "cost":[]
-      },{
-        "cost":[]
-      },{
-        "cost":[]
-      }],
-    "baseTypeName":"Vaal Breach",
-    "stats":[null,"display_vaal_breach_no_drops_xp"],
-    "castTime":2.5,
-    "skillTypes":[],
-    "baseFlags":[],
-    "description":"Creates a breach, making you vulnerable to its powerful inhabitants."
-  },
-  "HiddenBlade":{
+  "Unhinge":{
     "levels":{
       "20":[]
     },
+    "stats":["display_unhinge_grant_insane"],
+    "skillTypes":[],
+    "baseFlags":[],
+    "name":"Unhinge",
+    "description":"Relinquish your grip on reality."
+  },
+  "SummonEssenceSpirits":{
+    "minionSkillTypes":[],
+    "levels":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+    "constantStats":[["active_skill_minion_added_damage_+%_final",-15],["number_of_monsters_to_summon"]],
     "stats":[],
     "baseFlags":[],
     "skillTypes":[],
-    "weaponTypes":[],
-    "name":"Unseen Strike",
-    "description":"Launches a spinning blade that deals weapon damage to enemies. If firing multiple projectiles, they will be fired in a circle."
+    "minionList":["SummonedEssenceSpirit"],
+    "name":"Spectral Spirits",
+    "description":"Summons three invulnerable spectral skulls that rush at nearby enemies and attack them rapidly. Enemies will not engage these spirits, and can pass through them."
   },
   "VaalAuraElementalDamageHealing":{
     "levels":{
@@ -950,15 +1051,34 @@
     "name":"Gluttony of Elements",
     "description":"Casts an aura that causes taking elemental damage to heal you and nearby allies instead."
   },
-  "Unhinge":{
+  "VampiricIcon":{
     "levels":{
       "20":[]
     },
-    "stats":["display_unhinge_grant_insane"],
+    "statMap":{
+      "vampiric_icon_max_bleeding_beam_targets":[{
+          "1":[],
+          "name":"Multiplier:ThirstForBloodMaxTargets"
+        }],
+      "vampiric_icon_bleeding_damage_+%_final":[{
+          "1":[],
+          "keywordFlags":4194304
+        }],
+      "skill_life_regeneration_per_minute_per_affected_enemy":[{
+          "1":{
+            "limitVar":"ThirstForBloodMaxTargets",
+            "var":"NearbyBleedingEnemies"
+          },
+          "2":[],
+          "name":"LifeRegen"
+        }]
+    },
+    "stats":[],
+    "constantStats":[["vampiric_icon_max_bleeding_beam_targets"],["skill_life_regeneration_per_minute_per_affected_enemy",24000],["vampiric_icon_bleeding_damage_+%_final"]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Unhinge",
-    "description":"Relinquish your grip on reality."
+    "name":"Thirst for Blood",
+    "description":"Reserves some of your life to cause bleeding you inflict to be stronger, and grant life regeneration based on the number bleeding enemies nearby."
   },
   "PhysicalAegis":{
     "levels":{
@@ -1056,22 +1176,46 @@
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "Quieten":{
+  "BirdAspect":{
     "levels":{
       "20":{
-        "cost":[]
+        "statInterpolation":[]
+      },
+      "30":{
+        "statInterpolation":[]
       }
     },
-    "baseMods":[{
-        "value":[]
-      }],
-    "constantStats":[[]],
-    "stats":["curse_pacifies_after_60%",null,"display_skill_fixed_duration_buff"],
-    "baseFlags":[],
-    "statDescriptionScope":"curse_skill_stat_descriptions",
+    "statMap":{
+      "chance_to_deal_double_damage_%":[{
+          "1":{
+            "effectCond":"AviansMightActive",
+            "effectName":"Avian's Might"
+          },
+          "name":"DoubleDamageChance"
+        }],
+      "minion_movement_speed_+%":[{
+          "1":{
+            "effectCond":"AviansFlightActive",
+            "effectName":"Avian's Flight"
+          },
+          "value":{
+            "mod":[]
+          }
+        }],
+      "minion_chance_to_deal_double_damage_%":[{
+          "1":[],
+          "value":{
+            "mod":[]
+          }
+        }],
+      "base_movement_velocity_+%":[[[]]]
+    },
+    "stats":["chance_to_deal_double_damage_%","minion_chance_to_deal_double_damage_%","base_movement_velocity_+%"],
+    "constantStats":[[],[]],
     "skillTypes":[],
-    "name":"Pacify",
-    "description":"Curses all targets in an area, having no effect at first, but causing them to deal no damage once 60% of the curse's duration has expired."
+    "baseFlags":[],
+    "name":"Aspect of the Avian",
+    "description":"While active, grants the Avian's Might and Avian's Flight buffs in sequence. Avian's Might grants you and your minions a chance to deal Double Damage with hits for a duration. Avian's Flight grants you and your minions increased Movement Speed for a secondary duration."
   },
   "SupportTriggerBowSkillOnBowAttack":{
     "excludeSkillTypes":[],
@@ -1081,38 +1225,21 @@
     "addSkillTypes":[],
     "requireSkillTypes":[47]
   },
-  "VolatileDeadChaos":{
-    "constantStats":[["volatile_dead_base_number_of_corpses_to_consume"],["corpse_explosion_monster_life_%_chaos"],["volatile_dead_max_cores_allowed"],[],[],["active_skill_base_secondary_area_of_effect_radius"]],
+  "SupportCursePillarTriggerCurses":{
+    "levels":{
+      "20":[]
+    },
+    "excludeSkillTypes":[],
+    "stats":[],
+    "constantStats":[["number_of_additional_curses_allowed"]],
     "baseMods":[{
         "value":{
-          "key":"radiusLabel",
-          "value":"Orb explosion:"
-        }
-      },{
-        "value":{
-          "key":"radiusSecondaryLabel",
-          "value":"Corpse explosion:"
+          "key":"manaReservationPercent"
         }
       }],
-    "levels":{
-      "15":{
-        "damageEffectiveness":1.4,
-        "statInterpolation":[],
-        "levelRequirement":59
-      }
-    },
-    "statMap":{
-      "volatile_dead_core_explosion_radius_+":[{
-          "value":[]
-        }]
-    },
-    "stats":["spell_minimum_base_chaos_damage","spell_maximum_base_chaos_damage"],
-    "baseFlags":[],
-    "incrementalEffectiveness":0.0337999984622,
-    "skillTypes":[],
-    "castTime":0.8,
-    "name":"Stalking Pustule",
-    "description":"A corpse near the targeted location explodes, dealing damage in a small area and creating an orb which moves towards nearby enemies before dealing spell damage in a larger area. The explosion of the corpse is not affected by modifiers to spell damage, and cannot be reflected."
+    "name":"Doedre's Effigy",
+    "addSkillTypes":[],
+    "requireSkillTypes":[null,108]
   },
   "TentacleSmash":{
     "levels":{
@@ -1146,9 +1273,6 @@
       },{
         "statInterpolation":[]
       },{
-        "statInterpolation":[],
-        "levelRequirement":11
-      },{
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -1175,8 +1299,9 @@
       },{
         "statInterpolation":[]
       },{
-        "statInterpolation":[],
-        "levelRequirement":67
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
       },{
         "statInterpolation":[]
       },{
@@ -1209,43 +1334,67 @@
     "name":"Fire Burst",
     "description":"A burst of flame errupts from the location of a hit, dealing fire damage."
   },
-  "VampiricIcon":{
+  "SummonHarbingerOfTimeUber":{
+    "levels":[[]],
+    "constantStats":[[]],
+    "stats":[],
+    "baseMods":[[{
+          "modCond":"GreaterHarbingerOfTime",
+          "effectName":"Greater Harbinger of Time"
+        }],{
+        "value":[]
+      }],
+    "skillTypes":[],
+    "baseFlags":[],
+    "name":"Summon Greater Harbinger of Time",
+    "description":"Summons an immortal Harbinger minion. The minion will occasionally create an aura on you that increases the Action Speed of you and all allies near you."
+  },
+  "SummonRadiantSentinel":{
+    "minionSkillTypes":[],
+    "statDescriptionScope":"single_minion_spell_skill_stat_descriptions",
+    "minionList":["GuardianSentinel"],
+    "baseFlags":[],
+    "constantStats":[[],[null,20000],["minion_actor_level_is_user_level_up_to_maximum",85]],
+    "description":"Summons a Sentinel of Radiance which follows you and attacks enemies in melee, while burning enemies around it and taking a portion of damage from hits for you. You can only have one Sentinel of Radiance.",
     "levels":{
-      "20":[]
+      "20":{
+        "2":1200,
+        "statInterpolation":[],
+        "cost":[]
+      }
     },
+    "baseEffectiveness":2.0517001152039,
     "statMap":{
-      "vampiric_icon_max_bleeding_beam_targets":[{
-          "1":[],
-          "name":"Multiplier:ThirstForBloodMaxTargets"
+      "minion_actor_level_is_user_level_up_to_maximum":[{
+          "value":{
+            "key":"minionLevelIsPlayerLevel"
+          }
         }],
-      "vampiric_icon_bleeding_damage_+%_final":[{
-          "1":[],
-          "keywordFlags":4194304
-        }],
-      "skill_life_regeneration_per_minute_per_affected_enemy":[{
-          "1":{
-            "limitVar":"ThirstForBloodMaxTargets",
-            "var":"NearbyBleedingEnemies"
+      "radiant_sentinel_minion_fire_%_of_life_to_deal_nearby_per_minute":[{
+          "value":{
+            "mod":{
+              "name":"Multiplier:GuardianSentinelFireAuraBaseDamage"
+            }
+          }
+        },{
+          "value":{
+            "skillId":"GuardianSentinelFireAura"
           },
-          "2":[],
-          "name":"LifeRegen"
+          "name":"ExtraMinionSkill"
+        }],
+      "radiant_sentinel_minion_burning_effect_radius":[{
+          "value":{
+            "mod":{
+              "name":"Multiplier:GuardianSentinelFireAuraRadius"
+            }
+          }
         }]
     },
-    "stats":[],
-    "constantStats":[["vampiric_icon_max_bleeding_beam_targets"],["skill_life_regeneration_per_minute_per_affected_enemy",24000],["vampiric_icon_bleeding_damage_+%_final"]],
+    "stats":["radiant_sentinel_minion_burning_effect_radius","radiant_sentinel_minion_fire_%_of_life_to_deal_nearby_per_minute"],
+    "incrementalEffectiveness":0.043200001120567,
     "skillTypes":[],
-    "baseFlags":[],
-    "name":"Thirst for Blood",
-    "description":"Reserves some of your life to cause bleeding you inflict to be stronger, and grant life regeneration based on the number bleeding enemies nearby."
-  },
-  "SummonHarbingerOfTheArcaneUber":{
-    "levels":[[]],
-    "stats":[],
-    "constantStats":[[]],
-    "skillTypes":[],
-    "baseFlags":[],
-    "name":"Summon Greater Harbinger of the Arcane",
-    "description":"Summons an immortal Harbinger minion. The minion has two buff spells it will cast on you: Arcane Surge, granting More Spell Damage and increased Mana Regeneration, and a buff that grants Chance to Shock and Lightning Penetration."
+    "name":"Summon Sentinel of Radiance",
+    "castTime":0.75
   },
   "PenanceMark":{
     "levels":{
@@ -1316,96 +1465,23 @@
     "name":"Summon Bestial Ursa",
     "description":"Summons a Bestial Ursa. In addition to its melee attack, the Bestial Ursa uses a powerful Ground Slam and Rallying Cry. This minion's hits cannot be evaded. Enemies will not engage this minion directly, and they are immune to damage."
   },
-  "SummonHarbingerOfBrutality":{
-    "levels":[[]],
-    "stats":[],
-    "constantStats":[[]],
-    "skillTypes":[],
-    "baseFlags":[],
-    "name":"Summon Harbinger of Brutality",
-    "description":"Summons an immortal Harbinger minion. When you are near a rare or unique enemy, the minion will occasionally grant you a buff giving significantly increased Damage, Attack Speed, and Movement Speed, and reducing the Damage you take."
-  },
-  "SummonRadiantSentinel":{
+  "TriggeredSummonGhostOnKill":{
     "minionSkillTypes":[],
-    "statDescriptionScope":"single_minion_spell_skill_stat_descriptions",
-    "minionList":["GuardianSentinel"],
-    "baseFlags":[],
-    "constantStats":[[],[null,20000],["minion_actor_level_is_user_level_up_to_maximum",85]],
-    "description":"Summons a Sentinel of Radiance which follows you and attacks enemies in melee, while burning enemies around it and taking a portion of damage from hits for you. You can only have one Sentinel of Radiance.",
     "levels":{
-      "20":{
-        "2":1200,
-        "statInterpolation":[],
-        "cost":[]
-      }
+      "20":[]
     },
-    "baseEffectiveness":2.0517001152039,
+    "constantStats":[["trigger_on_corpse_consume_%_chance"],[null,15000],["base_number_of_support_ghosts_allowed"],["phantasm_minimum_added_physical_damage_to_grant"],["phantasm_maximum_added_physical_damage_to_grant"]],
     "statMap":{
-      "minion_actor_level_is_user_level_up_to_maximum":[{
-          "value":{
-            "key":"minionLevelIsPlayerLevel"
-          }
-        }],
-      "radiant_sentinel_minion_fire_%_of_life_to_deal_nearby_per_minute":[{
-          "value":{
-            "mod":{
-              "name":"Multiplier:GuardianSentinelFireAuraBaseDamage"
-            }
-          }
-        },{
-          "value":{
-            "skillId":"GuardianSentinelFireAura"
-          },
-          "name":"ExtraMinionSkill"
-        }],
-      "radiant_sentinel_minion_burning_effect_radius":[{
-          "value":{
-            "mod":{
-              "name":"Multiplier:GuardianSentinelFireAuraRadius"
-            }
-          }
+      "base_number_of_support_ghosts_allowed":[{
+          "name":"ActivePhantasmLimit"
         }]
     },
-    "stats":["radiant_sentinel_minion_burning_effect_radius","radiant_sentinel_minion_fire_%_of_life_to_deal_nearby_per_minute"],
-    "incrementalEffectiveness":0.043200001120567,
-    "skillTypes":[],
-    "name":"Summon Sentinel of Radiance",
-    "castTime":0.75
-  },
-  "SummonHarbingerOfStormsUber":{
-    "minionSkillTypes":[],
-    "levels":[[]],
-    "stats":[],
-    "constantStats":[[]],
-    "skillTypes":[],
-    "baseFlags":[],
-    "name":"Summon Greater Harbinger of Storms",
-    "description":"Summons an immortal Harbinger minion. The minion will occasionally apply a Chill or Shock with increased effect to an enemy that chains to other nearby enemies."
-  },
-  "GoreShockwave":{
-    "levels":[{
-        "baseMultiplier":1.6,
-        "statInterpolation":[]
-      },null,null,null,{
-        "baseMultiplier":1.81,
-        "statInterpolation":[]
-      }],
-    "constantStats":[["attack_trigger_on_melee_hit_with_atleast_150_strength_%"]],
-    "stats":[null,"base_cooldown_speed_+%"],
+    "stats":["skill_can_own_support_ghosts"],
     "baseFlags":[],
     "skillTypes":[],
-    "weaponTypes":[],
-    "name":"Gore Shockwave",
-    "description":"Deals attack damage in an area."
-  },
-  "SummonHarbingerOfDirections":{
-    "levels":[[]],
-    "stats":[],
-    "constantStats":[[]],
-    "skillTypes":[],
-    "baseFlags":[],
-    "name":"Summon Harbinger of Directions",
-    "description":"Summons an immortal Harbinger minion. The minion will cast a random buff on you that grants one or all of the following: 1 additional Projectile, +1 Chain, Pierce 1 additional Target, or Projectiles Fork."
+    "minionList":["SummonedPhantasm"],
+    "name":"Triggered Summon Phantasm",
+    "description":"Summons a Phantasm minion, which uses a piercing projectile spell that deals physical damage."
   },
   "SummonHarbingerOfStorms":{
     "minionSkillTypes":[],
@@ -1417,6 +1493,16 @@
     "name":"Summon Harbinger of Storms",
     "description":"Summons an immortal Harbinger minion. The minion will occasionally apply a Chill or Shock to an enemy that chains to other nearby enemies."
   },
+  "SummonHarbingerOfStormsUber":{
+    "minionSkillTypes":[],
+    "levels":[[]],
+    "stats":[],
+    "constantStats":[[]],
+    "skillTypes":[],
+    "baseFlags":[],
+    "name":"Summon Greater Harbinger of Storms",
+    "description":"Summons an immortal Harbinger minion. The minion will occasionally apply a Chill or Shock with increased effect to an enemy that chains to other nearby enemies."
+  },
   "SummonHarbingerOfFocus":{
     "levels":[[]],
     "stats":[],
@@ -1425,6 +1511,32 @@
     "baseFlags":[],
     "name":"Summon Harbinger of Focus",
     "description":"Summons an immortal Harbinger minion. While you are channelling, the minion will occasionally cast a buff on you that reduces the Damage you take, and makes you avoid all Stuns and Elemental Ailments."
+  },
+  "SummonHarbingerOfDirections":{
+    "levels":[[]],
+    "stats":[],
+    "constantStats":[[]],
+    "skillTypes":[],
+    "baseFlags":[],
+    "name":"Summon Harbinger of Directions",
+    "description":"Summons an immortal Harbinger minion. The minion will cast a random buff on you that grants one or all of the following: 1 additional Projectile, +1 Chain, Pierce 1 additional Target, or Projectiles Fork."
+  },
+  "SummonHarbingerOfBrutality":{
+    "levels":[[]],
+    "stats":[],
+    "constantStats":[[]],
+    "skillTypes":[],
+    "baseFlags":[],
+    "name":"Summon Harbinger of Brutality",
+    "description":"Summons an immortal Harbinger minion. When you are near a rare or unique enemy, the minion will occasionally grant you a buff giving significantly increased Damage, Attack Speed, and Movement Speed, and reducing the Damage you take."
+  },
+  "SummonHarbingerOfTheArcane":{
+    "levels":[[]],
+    "stats":[],
+    "skillTypes":[],
+    "baseFlags":[],
+    "name":"Summon Harbinger of the Arcane",
+    "description":"Summons an immortal Harbinger minion. The minion will occasionally cast Arcane Surge on you, granting More Spell Damage and increased Mana Regeneration."
   },
   "SummonBeastialRhoa":{
     "baseMods":[{
@@ -1467,8 +1579,7 @@
     "minionSkillTypes":[],
     "levels":{
       "10":{
-        "statInterpolation":[],
-        "levelRequirement":55
+        "statInterpolation":[]
       },
       "25":{
         "statInterpolation":[]
@@ -1504,13 +1615,14 @@
     "name":"Summon Spectral Wolf",
     "description":"Summons a spectral wolf companion that attacks nearby enemies and dies after a duration. Each spectral wolf grants you a buff that adds damage to your attacks. If you have the maximum number of them, refreshes the duration and life of an existing one instead."
   },
-  "SummonHarbingerOfTheArcane":{
+  "SummonHarbingerOfFocusUber":{
     "levels":[[]],
     "stats":[],
+    "constantStats":[[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Harbinger of the Arcane",
-    "description":"Summons an immortal Harbinger minion. The minion will occasionally cast Arcane Surge on you, granting More Spell Damage and increased Mana Regeneration."
+    "name":"Summon Greater Harbinger of Focus",
+    "description":"Summons an immortal Harbinger minion. While you are channelling, the minion will occasionally cast a buff on you that reduces the Damage you take, makes you avoid all Stuns and Elemental Ailments, and prevents Curses affecting you."
   },
   "RepeatingShockwave":{
     "levels":[null,null,null,null,null,null,[]],
@@ -1529,7 +1641,8 @@
     "stats":[],
     "baseFlags":[],
     "skillTypes":[],
-    "name":"Primal Aegis"
+    "name":"Primal Aegis",
+    "description":"Calls forth a protective aegis which takes elemental damage from hits for you until depleted. The aegis will be restored to its full value after a short delay if you stop taking elemental damage from hits, or if depleted."
   },
   "SupportGreaterSpellEcho":{
     "levels":{
@@ -1564,20 +1677,14 @@
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "SummonHarbingerOfTimeUber":{
+  "SummonHarbingerOfBrutalityUber":{
     "levels":[[]],
-    "constantStats":[[]],
     "stats":[],
-    "baseMods":[[{
-          "modCond":"GreaterHarbingerOfTime",
-          "effectName":"Greater Harbinger of Time"
-        }],{
-        "value":[]
-      }],
+    "constantStats":[[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Greater Harbinger of Time",
-    "description":"Summons an immortal Harbinger minion. The minion will occasionally create an aura on you that increases the Action Speed of you and all allies near you."
+    "name":"Summon Greater Harbinger of Brutality",
+    "description":"Summons an immortal Harbinger minion. When you are near a rare or unique enemy, the minion will occasionally grant you a buff giving significantly increased Damage, Attack Speed, and Movement Speed, reducing the Damage you take, and causing Bleeding Enemies that you Kill to Explode, dealing 10% of their maximum Life as Physical Damage."
   },
   "FireAegis":{
     "levels":{
@@ -1618,32 +1725,67 @@
     "name":"Contaminate",
     "description":"Creates a patch of Fungal Ground at the targeted location."
   },
-  "SummonHarbingerOfFocusUber":{
+  "SummonHarbingerOfTheArcaneUber":{
     "levels":[[]],
     "stats":[],
     "constantStats":[[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Summon Greater Harbinger of Focus",
-    "description":"Summons an immortal Harbinger minion. While you are channelling, the minion will occasionally cast a buff on you that reduces the Damage you take, makes you avoid all Stuns and Elemental Ailments, and prevents Curses affecting you."
+    "name":"Summon Greater Harbinger of the Arcane",
+    "description":"Summons an immortal Harbinger minion. The minion has two buff spells it will cast on you: Arcane Surge, granting More Spell Damage and increased Mana Regeneration, and a buff that grants Chance to Shock and Lightning Penetration."
   },
   "Focus":{
     "levels":[[]],
-    "stats":["base_skill_is_instant","fixed_skill_effect_duration"],
+    "stats":["base_skill_is_instant","fixed_skill_effect_duration","display_skill_fixed_duration_buff"],
     "constantStats":[[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Focus",
     "description":"Focus your power, granting yourself the Focused buff."
   },
-  "SummonHarbingerOfBrutalityUber":{
-    "levels":[[]],
-    "stats":[],
-    "constantStats":[[]],
-    "skillTypes":[],
+  "AnimateGuardianWeapon":{
+    "minionSkillTypes":[],
+    "castTime":0.8,
     "baseFlags":[],
-    "name":"Summon Greater Harbinger of Brutality",
-    "description":"Summons an immortal Harbinger minion. When you are near a rare or unique enemy, the minion will occasionally grant you a buff giving significantly increased Damage, Attack Speed, and Movement Speed, reducing the Damage you take, and causing Bleeding Enemies that you Kill to Explode, dealing 10% of their maximum Life as Physical Damage."
+    "constantStats":[[]],
+    "description":"Animates a copy of your Animated Guardian's main-hand weapon to fight by your side.",
+    "levels":{
+      "20":{
+        "2":126,
+        "3":184,
+        "statInterpolation":[],
+        "cooldown":0.05
+      },
+      "18":{
+        "3":159,
+        "statInterpolation":[]
+      }
+    },
+    "minionUses":[],
+    "stats":["chance_to_trigger_on_animate_weapon_kill_%","attack_minimum_added_physical_damage","attack_maximum_added_physical_damage","number_of_animated_weapons_allowed","chance_to_trigger_on_animate_guardian_kill_%"],
+    "skillTypes":[],
+    "minionList":["AnimatedWeapon"],
+    "name":"Animate Guardian's Weapon",
+    "statMap":{
+      "attack_maximum_added_physical_damage":[{
+          "value":{
+            "mod":[]
+          }
+        }],
+      "active_skill_damage_+%_final":[{
+          "value":{
+            "mod":[]
+          }
+        }],
+      "number_of_animated_weapons_allowed":[{
+          "1":[],
+          "name":"Multiplier:AnimatedWeapon"
+        }],
+      "attack_minimum_added_physical_damage":[{
+          "value":{
+            "mod":[]
+          }
+        }]
+    }
   },
   "GemDetonateMines":{
     "qualityStats":{
@@ -1682,35 +1824,6 @@
     "skillTypes":[],
     "name":"Commandment of Inferno",
     "description":"Drops a meteor from above on a nearby foe, dealing fire damage in an area around them."
-  },
-  "MerveilWarp":{
-    "levels":{
-      "20":{
-        "cost":[]
-      }
-    },
-    "stats":[],
-    "constantStats":[[null,1500]],
-    "skillTypes":[],
-    "baseFlags":[],
-    "name":"Illusory Warp",
-    "description":"Teleport to a target destination. Chilled ground is spread in an area around both where the caster was and where they teleported to."
-  },
-  "SupportCursePillarTriggerCurses":{
-    "levels":{
-      "20":[]
-    },
-    "excludeSkillTypes":[],
-    "stats":[],
-    "constantStats":[["number_of_additional_curses_allowed"]],
-    "baseMods":[{
-        "value":{
-          "key":"manaReservationPercent"
-        }
-      }],
-    "name":"Doedre's Effigy",
-    "addSkillTypes":[],
-    "requireSkillTypes":[null,108]
   },
   "SummonArbalists":{
     "minionSkillTypes":[],
@@ -1819,6 +1932,55 @@
     "name":"Storm Cascade",
     "description":"Lightning crackles in a series of small bursts, each damaging enemies caught in the area."
   },
+  "VolatileDeadChaos":{
+    "constantStats":[["volatile_dead_base_number_of_corpses_to_consume"],["corpse_explosion_monster_life_%_chaos"],["volatile_dead_max_cores_allowed"],[],[],["active_skill_base_secondary_area_of_effect_radius"]],
+    "baseMods":[{
+        "value":{
+          "key":"radiusLabel",
+          "value":"Orb explosion:"
+        }
+      },{
+        "value":{
+          "key":"radiusSecondaryLabel",
+          "value":"Corpse explosion:"
+        }
+      }],
+    "levels":{
+      "15":{
+        "damageEffectiveness":1.4,
+        "statInterpolation":[],
+        "levelRequirement":59
+      }
+    },
+    "statMap":{
+      "volatile_dead_core_explosion_radius_+":[{
+          "value":[]
+        }]
+    },
+    "stats":["spell_minimum_base_chaos_damage","spell_maximum_base_chaos_damage"],
+    "baseFlags":[],
+    "incrementalEffectiveness":0.0337999984622,
+    "skillTypes":[],
+    "name":"Stalking Pustule",
+    "description":"A corpse near the targeted location explodes, dealing damage in a small area and creating an orb which moves towards nearby enemies before dealing spell damage in a larger area. The explosion of the corpse is not affected by modifiers to spell damage, and cannot be reflected."
+  },
+  "SpiritBurst":{
+    "baseMods":[{
+        "value":[]
+      }],
+    "levels":{
+      "20":{
+        "statInterpolation":[]
+      }
+    },
+    "baseEffectiveness":1.875,
+    "constantStats":[["trigger_on_skill_use_%_if_you_have_a_spirit_charge"],[]],
+    "stats":[],
+    "baseFlags":[],
+    "skillTypes":[],
+    "name":"Spirit Burst",
+    "description":"Consumes a spirit charge to fire projectiles which deals physical damage."
+  },
   "AvianTornado":{
     "baseMods":[{
         "value":[]
@@ -1890,34 +2052,6 @@
     "name":"Blood Offering",
     "description":"Consumes a corpse, and sacrifices a portion of your life, granting your minions life regeneration based on the life sacrificed, and a bonus to damage. The skill consumes other nearby corpses, increasing the duration and life regeneration for each corpse consumed."
   },
-  "SpiritBurst":{
-    "baseMods":[{
-        "value":[]
-      }],
-    "levels":{
-      "20":{
-        "statInterpolation":[]
-      }
-    },
-    "baseEffectiveness":1.875,
-    "constantStats":[["trigger_on_skill_use_%_if_you_have_a_spirit_charge"],[]],
-    "stats":[],
-    "baseFlags":[],
-    "skillTypes":[],
-    "name":"Spirit Burst",
-    "description":"Consumes a spirit charge to fire projectiles which deals physical damage."
-  },
-  "SummonEssenceSpirits":{
-    "minionSkillTypes":[],
-    "levels":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
-    "constantStats":[["active_skill_minion_added_damage_+%_final",-15],["number_of_monsters_to_summon"]],
-    "stats":[],
-    "baseFlags":[],
-    "skillTypes":[],
-    "minionList":["SummonedEssenceSpirit"],
-    "name":"Spectral Spirits",
-    "description":"Summons three invulnerable spectral skulls that rush at nearby enemies and attack them rapidly. Enemies will not engage these spirits, and can pass through them."
-  },
   "ShieldShatter":{
     "constantStats":[["trigger_on_block_%_chance"],[]],
     "baseMods":[{
@@ -1955,6 +2089,38 @@
     "name":"Shield Shatter",
     "description":"Your shield shatters, dealing physical spell damage to enemies in an area, based on the shield's quality. For a short duration after this, you will be unable to block and will gain no defences from your shield, but your spells will deal added physical damage."
   },
+  "ShadeForm":{
+    "levels":{
+      "20":[]
+    },
+    "stats":[],
+    "constantStats":[[],["stealth_+%"],["trigger_on_skill_use_from_chest_%"]],
+    "skillTypes":[],
+    "baseFlags":[],
+    "name":"Shade Form",
+    "description":"Makes you immune to physical damage, and harder for enemies to detect, for a duration."
+  },
+  "Ravenous":{
+    "levels":{
+      "20":{
+        "cost":[]
+      }
+    },
+    "statMap":{
+      "ravenous_buff_magnitude":[{
+          "1":[{
+              "effectCond":"RavenousCorpseConsumed"
+            }],
+          "mult":-1
+        },[[[]]]]
+    },
+    "constantStats":[["ravenous_buff_magnitude"]],
+    "stats":[],
+    "baseFlags":[],
+    "skillTypes":[],
+    "name":"Ravenous",
+    "description":"Consumes a targeted corpse, granting you a buff that gives you bonuses against enemies of the same monster category as the corpse."
+  },
   "UniqueMirageWarriors":{
     "levels":{
       "20":[]
@@ -1967,26 +2133,99 @@
           "name":"SaviourMirageWarriorLessDamage"
         }]
     },
-    "stats":[null,null,"display_mirage_warriors_no_spirit_strikes","force_lite_skill_effects"],
+    "stats":[null,null,"display_mirage_warriors_no_spirit_strikes"],
     "constantStats":[[],["maximum_number_of_mirage_warriors"],["skill_used_by_mirage_warrior_damage_+%_final"]],
     "skillTypes":[],
     "baseFlags":[],
     "name":"Reflection",
     "description":"When you attack with The Saviour and deal a critical strike, this skill can summon a Mirage Saviour. Summoned Mirage Saviours will fight for you using whichever of your attack skills you dealt the critical strike with that caused them to be summoned. Mirage Saviours will not be resummoned using the same skills if you already have the maximum number of them."
   },
-  "ShadeForm":{
+  "Quieten":{
+    "levels":{
+      "20":{
+        "cost":[]
+      }
+    },
+    "baseMods":[{
+        "value":[]
+      }],
+    "constantStats":[[]],
+    "stats":["curse_pacifies_after_60%"],
+    "baseFlags":[],
+    "statDescriptionScope":"curse_skill_stat_descriptions",
+    "skillTypes":[],
+    "name":"Pacify",
+    "description":"Curses all targets in an area, having no effect at first, but causing them to deal no damage once 60% of the curse's duration has expired."
+  },
+  "TouchOfFire":{
     "levels":{
       "20":[]
     },
-    "stats":[],
-    "constantStats":[[],["stealth_+%"],["trigger_on_skill_use_from_chest_%"]],
+    "statMap":{
+      "display_touch_of_fire":[{
+          "1":[],
+          "name":"FlameTouched"
+        }]
+    },
+    "stats":["display_touch_of_fire"],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Shade Form",
-    "description":"Makes you immune to physical damage, and harder for enemies to detect, for a duration."
+    "name":"Approaching Flames",
+    "description":"Become touched by the flames of the Cleansing Fire."
+  },
+  "IcestormUniqueStaff12":{
+    "constantStats":[["spell_minimum_base_cold_damage_+_per_10_intelligence"],["spell_maximum_base_cold_damage_+_per_10_intelligence"],[],[null,200],[],["firestorm_drop_ground_ice_duration_ms",500],["skill_effect_duration_per_100_int"],["firestorm_max_number_of_storms"],[]],
+    "levels":[{
+        "cost":[]
+      }],
+    "statMap":{
+      "skill_effect_duration_per_100_int":[{
+          "1":{
+            "stat":"Int"
+          },
+          "name":"Duration"
+        }]
+    },
+    "stats":[null,null,"skill_is_ice_storm"],
+    "baseMods":[{
+        "value":{
+          "key":"radiusSecondary"
+        }
+      },{
+        "value":{
+          "value":"Ice projectile:"
+        }
+      },{
+        "value":{
+          "value":"Target area:"
+        }
+      }],
+    "skillTypes":[],
+    "baseFlags":[],
+    "name":"Icestorm",
+    "description":"Icy bolts rain down over the targeted area. They explode when landing, dealing damage to nearby enemies and chilling them, as well as causing patches of chilled ground. Skill damage is based on Intelligence."
+  },
+  "AtziriUniqueStaffFlameblast":{
+    "baseMods":[{
+        "value":[]
+      }],
+    "levels":{
+      "20":{
+        "damageEffectiveness":8.5,
+        "statInterpolation":[]
+      }
+    },
+    "baseEffectiveness":4.0500001907349,
+    "constantStats":[[],["base_reduce_enemy_fire_resistance_%"],[]],
+    "stats":[],
+    "baseFlags":[],
+    "incrementalEffectiveness":0.055500000715256,
+    "skillTypes":[],
+    "name":"Flames of Judgement",
+    "description":"Creates markers at your location and a targeted location, which grow over time based on cast speed, then explode, dealing fire damage. Cannot be supported by Spell Cascade."
   },
   "BloodSacramentUnique":{
-    "constantStats":[["flameblast_hundred_times_radius_+_per_1%_life_reserved"],["flameblast_damage_+%_final_per_10_life_reserved"],["flameblast_ailment_damage_+%_final_per_10_life_reserved"],["life_leech_from_any_damage_permyriad",200]],
+    "constantStats":[["flameblast_hundred_times_radius_+_per_1%_life_reserved"],["flameblast_damage_+%_final_per_10_life_reserved"],["flameblast_ailment_damage_+%_final_per_10_life_reserved"],["life_leech_from_any_damage_permyriad"]],
     "baseMods":[{
         "value":[]
       },{
@@ -2026,87 +2265,69 @@
     "name":"Blood Sacrament",
     "description":"Channel this skill to reserve more and more of your life, building up power in a marker on the ground under you. Release to deal physical damage in an area based on how much life you reserved. Cannot be cast by Totems."
   },
-  "IcestormUniqueStaff12":{
-    "constantStats":[["spell_minimum_base_cold_damage_+_per_10_intelligence"],["spell_maximum_base_cold_damage_+_per_10_intelligence"],[],[],[],["firestorm_drop_ground_ice_duration_ms",500],["skill_effect_duration_per_100_int"],["firestorm_max_number_of_storms"],[]],
-    "levels":[{
-        "cost":[]
-      }],
+  "ElementalAegis":{
+    "levels":{
+      "20":{
+        "statInterpolation":[]
+      },
+      "1":{
+        "statInterpolation":[]
+      }
+    },
     "statMap":{
-      "skill_effect_duration_per_100_int":[{
-          "1":{
-            "stat":"Int"
-          },
-          "name":"Duration"
+      "aegis_unique_shield_max_value":[{
+          "1":[],
+          "name":"ElementalAegisValue"
         }]
     },
-    "stats":[null,null,"skill_is_ice_storm"],
-    "baseMods":[{
-        "value":{
-          "key":"radiusSecondary"
-        }
-      },{
-        "value":{
-          "value":"Ice projectile:"
-        }
-      },{
-        "value":{
-          "value":"Target area:"
-        }
-      }],
+    "stats":[],
+    "constantStats":[[],[]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Icestorm",
-    "description":"Icy bolts rain down over the targeted area. They explode when landing, dealing damage to nearby enemies and chilling them, as well as causing patches of chilled ground. Skill damage is based on Intelligence."
+    "name":"Elemental Aegis"
   },
-  "CreateSmokeCloud":{
+  "Barkskin":{
     "levels":{
       "20":[]
     },
-    "stats":[],
-    "constantStats":[[],["chance_to_cast_when_your_trap_is_triggered_%"]],
-    "skillTypes":[],
-    "baseFlags":[],
-    "name":"Fog of War",
-    "description":"Creates a Smoke Cloud in an area, which blinds enemies within it."
-  },
-  "SupportCastOnManaSpent":{
-    "excludeSkillTypes":[],
-    "stats":["support_cast_on_mana_spent"],
-    "levels":[[]],
-    "name":"Kitava's Thirst",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportTriggerSpellFromHelmet":{
-    "excludeSkillTypes":[],
-    "stats":[],
-    "levels":[[]],
-    "constantStats":[["skill_triggered_when_you_focus_chance_%"]],
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "DeathWalk":{
-    "levels":{
-      "20":[]
+    "statMap":{
+      "max_barkskin_stacks":[{
+          "1":[],
+          "name":"Multiplier:BarkskinMaxStacks"
+        },{
+          "1":[],
+          "name":"Multiplier:MissingBarkskinStacks"
+        }],
+      "physical_attack_damage_taken_+_per_barkskin_stack":[{
+          "1":{
+            "limitVar":"BarkskinMaxStacks",
+            "var":"BarkskinStacks"
+          },
+          "2":{
+            "effectName":"Barkskin"
+          },
+          "name":"PhysicalDamageTakenFromAttacks"
+        }],
+      "chance_to_evade_attacks_+%_final_per_missing_barkskin_stack":[{
+          "1":{
+            "var":"MissingBarkskinStacks"
+          },
+          "2":[],
+          "name":"EvadeChance"
+        }]
     },
-    "constantStats":[["corpse_explosion_monster_life_%"]],
+    "constantStats":[["max_barkskin_stacks"],["physical_attack_damage_taken_+_per_barkskin_stack"],["chance_to_evade_attacks_+%_final_per_missing_barkskin_stack"]],
     "stats":[],
-    "baseMods":[{
-        "value":[]
-      },{
-        "value":[]
-      }],
-    "skillTypes":[],
     "baseFlags":[],
-    "name":"Death Walk",
-    "description":"While you walk, this skill causes corpses near your steps to explode, dealing fire damage in an area. The explosions of the corpses are not affected by modifiers to spell damage, and cannot be reflected."
+    "skillTypes":[],
+    "description":"Adopt the power of the Viridian Wildwood, gradually covering your body in bark. Getting hit by enemy attacks causes bark to be removed. You have higher armour the more bark builds up, but higher chance to evade when less covered in bark."
   },
   "ChaosDegenAuraUnique":{
     "levels":{
       "20":[],
       "1":[]
     },
-    "constantStats":[["base_chaos_damage_to_deal_per_minute",45500]],
+    "constantStats":[["base_chaos_damage_to_deal_per_minute",60000]],
     "stats":[],
     "baseMods":[{
         "value":[]
@@ -2212,101 +2433,71 @@
     "name":"Lightning Bolt",
     "description":"A bolt of lightning strikes an area, dealing lightning damage."
   },
+  "DeathWalk":{
+    "levels":{
+      "20":[]
+    },
+    "constantStats":[["corpse_explosion_monster_life_%"]],
+    "stats":[],
+    "baseMods":[{
+        "value":[]
+      },{
+        "value":[]
+      }],
+    "skillTypes":[],
+    "baseFlags":[],
+    "name":"Death Walk",
+    "description":"While you walk, this skill causes corpses near your steps to explode, dealing fire damage in an area. The explosions of the corpses are not affected by modifiers to spell damage, and cannot be reflected."
+  },
+  "CatsStealthTriggeredIntimidatingCry":{
+    "levels":{
+      "20":{
+        "cost":[]
+      }
+    },
+    "constantStats":[["intimidating_cry_movement_speed_per_5_MP"],["skill_empowers_next_x_melee_attacks"],["warcry_speed_+%"],[null,4900]],
+    "statMap":{
+      "skill_empowers_next_x_melee_attacks":[{
+          "name":"IntimidatingExertedAttacks"
+        }],
+      "intimidating_cry_movement_speed_per_5_MP":[{
+          "name":"IntimidatingMovementSpeedPer5MP"
+        }]
+    },
+    "stats":["base_deal_no_attack_damage","base_deal_no_spell_damage","base_deal_no_secondary_damage",null,"warcry_count_power_from_enemies","cast_on_lose_cats_stealth","intimidating_cry_empowerd_attacks_deal_double_damage_display","enemies_taunted_by_your_warcies_are_intimidated","use_intimidating_cry_buff_visual_for_intimidate"],
+    "baseMods":[{
+        "value":[]
+      }],
+    "skillTypes":[],
+    "baseFlags":[],
+    "name":"Intimidating Cry",
+    "description":"Performs a warcry, taunting nearby enemies to attack the user and exerting subsequent attacks. Grants a buff which lowers the effect of enemy physical damage reduction against your hits."
+  },
   "FieryImpactHeistMaceImplicit":{
     "levels":{
       "20":[],
       "10":{
         "cooldown":1.8
       },
-      "15":[]
+      "15":{
+        "cooldown":1.6
+      }
     },
     "constantStats":[["skill_physical_damage_%_to_convert_to_fire"]],
     "stats":[],
     "baseFlags":[],
     "skillTypes":[],
     "weaponTypes":[],
-    "name":"Fiery Impact"
+    "name":"Fiery Impact",
+    "description":"Deals attack damage in an area."
   },
-  "AtziriUniqueStaffFlameblast":{
-    "baseMods":[{
-        "value":[]
-      }],
-    "levels":{
-      "20":{
-        "damageEffectiveness":8.5,
-        "statInterpolation":[]
-      }
-    },
-    "baseEffectiveness":4.0500001907349,
-    "constantStats":[[],["base_reduce_enemy_fire_resistance_%"],[]],
-    "stats":[],
-    "baseFlags":[],
-    "incrementalEffectiveness":0.055500000715256,
-    "skillTypes":[],
-    "name":"Flames of Judgement",
-    "description":"Creates markers at your location and a targeted location, which grow over time based on cast speed, then explode, dealing fire damage. Cannot be supported by Spell Cascade."
-  },
-  "Barkskin":{
-    "levels":{
-      "20":[]
-    },
-    "statMap":{
-      "max_barkskin_stacks":[{
-          "1":[],
-          "name":"Multiplier:BarkskinMaxStacks"
-        },{
-          "1":[],
-          "name":"Multiplier:MissingBarkskinStacks"
-        }],
-      "armour_+%_per_barkskin_stack":[{
-          "1":{
-            "limitVar":"BarkskinMaxStacks",
-            "var":"BarkskinStacks"
-          },
-          "2":{
-            "effectName":"Barkskin"
-          },
-          "name":"Armour"
-        }],
-      "physical_attack_damage_taken_+_per_barkskin_stack":[{
-          "1":[],
-          "2":[],
-          "name":"PhysicalDamageTakenFromAttacks"
-        }],
-      "chance_to_evade_attacks_+%_final_per_missing_barkskin_stack":[{
-          "1":{
-            "var":"MissingBarkskinStacks"
-          },
-          "2":[],
-          "name":"EvadeChance"
-        }]
-    },
-    "constantStats":[["max_barkskin_stacks"],["armour_+%_per_barkskin_stack"],["physical_attack_damage_taken_+_per_barkskin_stack"],["chance_to_evade_attacks_+%_final_per_missing_barkskin_stack"]],
-    "stats":[],
-    "baseFlags":[],
-    "skillTypes":[],
-    "description":"Adopt the power of the Viridian Wildwood, gradually covering your body in bark. Getting hit by enemy attacks causes bark to be removed. You have higher armour the more bark builds up, but higher chance to evade when less covered in bark."
-  },
-  "Ravenous":{
-    "levels":{
-      "20":{
-        "cost":[]
-      }
-    },
-    "statMap":{
-      "ravenous_buff_magnitude":[{
-          "1":[{
-              "effectCond":"RavenousCorpseConsumed"
-            }],
-          "mult":-1
-        },[[[]]]]
-    },
-    "constantStats":[["ravenous_buff_magnitude"]],
-    "stats":[],
-    "baseFlags":[],
-    "skillTypes":[],
-    "name":"Ravenous",
-    "description":"Consumes a targeted corpse, granting you a buff that gives you bonuses against enemies of the same monster category as the corpse."
+  "SupportCastOnManaSpent":{
+    "excludeSkillTypes":[],
+    "stats":["support_cast_on_mana_spent"],
+    "levels":[[]],
+    "name":"Kitava's Thirst",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
   },
   "CatAspect":{
     "levels":{
@@ -2354,23 +2545,179 @@
     "baseFlags":[],
     "description":"Creates a portal to the current area's town."
   },
-  "TriggeredSummonGhostOnKill":{
-    "minionSkillTypes":[],
-    "levels":{
-      "20":[]
+  "SupportAuraDuration":{
+    "qualityStats":{
+      "Default":[["aura_effect_+%"]]
     },
-    "constantStats":[["trigger_on_corpse_consume_%_chance"],[null,15000],["base_number_of_support_ghosts_allowed"],["phantasm_minimum_added_physical_damage_to_grant"],["phantasm_maximum_added_physical_damage_to_grant"]],
+    "excludeSkillTypes":[],
+    "stats":["support_aura_duration_base_buff_duration",null,"base_mana_cost_+","skill_is_blessing_skill"],
+    "levels":[{
+        "1":9000,
+        "statInterpolation":[]
+      },{
+        "1":9100,
+        "statInterpolation":[]
+      },{
+        "1":9200,
+        "statInterpolation":[]
+      },{
+        "1":9300,
+        "3":115,
+        "statInterpolation":[]
+      },{
+        "1":9400,
+        "3":121,
+        "statInterpolation":[]
+      },{
+        "1":9500,
+        "3":128,
+        "statInterpolation":[]
+      },{
+        "1":9600,
+        "3":135,
+        "statInterpolation":[]
+      },{
+        "1":9700,
+        "3":141,
+        "statInterpolation":[]
+      },{
+        "1":9800,
+        "3":148,
+        "statInterpolation":[]
+      },{
+        "1":9900,
+        "3":155,
+        "statInterpolation":[]
+      },{
+        "3":163,
+        "statInterpolation":[]
+      },{
+        "1":10100,
+        "3":169,
+        "statInterpolation":[]
+      },{
+        "1":10200,
+        "3":176,
+        "statInterpolation":[]
+      },{
+        "1":10300,
+        "statInterpolation":[]
+      },{
+        "1":10400,
+        "3":189,
+        "statInterpolation":[]
+      },{
+        "1":10500,
+        "3":198,
+        "statInterpolation":[]
+      },{
+        "1":10600,
+        "3":205,
+        "statInterpolation":[]
+      },{
+        "1":10700,
+        "3":209,
+        "statInterpolation":[]
+      },{
+        "1":10800,
+        "3":220,
+        "statInterpolation":[]
+      },{
+        "1":10900,
+        "3":233,
+        "statInterpolation":[]
+      },{
+        "1":11000,
+        "3":244,
+        "statInterpolation":[]
+      },{
+        "1":11100,
+        "3":253,
+        "statInterpolation":[]
+      },{
+        "1":11200,
+        "3":260,
+        "statInterpolation":[]
+      },{
+        "1":11300,
+        "3":269,
+        "statInterpolation":[]
+      },{
+        "1":11400,
+        "3":278,
+        "statInterpolation":[]
+      },{
+        "1":11500,
+        "3":285,
+        "statInterpolation":[]
+      },{
+        "1":11600,
+        "3":294,
+        "statInterpolation":[]
+      },{
+        "1":11700,
+        "3":303,
+        "statInterpolation":[]
+      },{
+        "1":11800,
+        "3":310,
+        "statInterpolation":[]
+      },{
+        "1":11900,
+        "3":319,
+        "statInterpolation":[]
+      },{
+        "1":11950,
+        "3":338,
+        "statInterpolation":[]
+      },{
+        "3":348,
+        "statInterpolation":[]
+      },{
+        "1":12050,
+        "3":358,
+        "statInterpolation":[]
+      },{
+        "1":12100,
+        "3":368,
+        "statInterpolation":[]
+      },{
+        "1":12150,
+        "3":379,
+        "statInterpolation":[]
+      },{
+        "1":12200,
+        "3":389,
+        "statInterpolation":[]
+      },{
+        "1":12250,
+        "3":399,
+        "statInterpolation":[]
+      },{
+        "1":12300,
+        "3":409,
+        "statInterpolation":[]
+      },{
+        "1":12350,
+        "3":419,
+        "statInterpolation":[]
+      },{
+        "1":12400,
+        "3":429,
+        "statInterpolation":[]
+      }],
+    "constantStats":[["base_spell_cast_time_ms_override"]],
     "statMap":{
-      "base_number_of_support_ghosts_allowed":[{
-          "name":"ActivePhantasmLimit"
+      "support_aura_duration_base_buff_duration":[{
+          "value":{
+            "key":"auraDuration"
+          }
         }]
     },
-    "stats":["skill_can_own_support_ghosts"],
-    "baseFlags":[],
-    "skillTypes":[],
-    "minionList":["SummonedPhantasm"],
-    "name":"Triggered Summon Phantasm",
-    "description":"Summons a Phantasm minion, which uses a piercing projectile spell that deals physical damage."
+    "description":"Supports aura skills that create permanent auras around you, changing their reservation to a cost and making them temporary. Cannot support banner or stance skills.",
+    "name":"Divine Blessing",
+    "addSkillTypes":[null,119],
+    "requireSkillTypes":[]
   },
   "SummonGuardianRelic":{
     "minionSkillTypes":[],
@@ -2392,105 +2739,42 @@
     "name":"Summon Elemental Relic",
     "description":"Summons a Relic of a random element that stays near you. Depending on the element chosen, the relic minion will have an Anger, Hatred, or Wrath aura. These relics explode when they die, dealing elemental damage to enemies around them. If you already have a relic of the chosen element, its duration will be refreshed instead of summoning a new one."
   },
-  "BirdAspect":{
-    "levels":{
-      "20":{
-        "statInterpolation":[]
-      },
-      "30":{
-        "statInterpolation":[]
-      }
-    },
-    "statMap":{
-      "chance_to_deal_double_damage_%":[{
-          "1":{
-            "effectCond":"AviansMightActive",
-            "effectName":"Avian's Might"
-          },
-          "name":"DoubleDamageChance"
-        }],
-      "minion_movement_speed_+%":[{
-          "1":{
-            "effectCond":"AviansFlightActive",
-            "effectName":"Avian's Flight"
-          },
-          "value":{
-            "mod":[]
-          }
-        }],
-      "minion_chance_to_deal_double_damage_%":[{
-          "1":[],
-          "value":{
-            "mod":[]
-          }
-        }],
-      "base_movement_velocity_+%":[[[]]]
-    },
-    "stats":["chance_to_deal_double_damage_%","minion_chance_to_deal_double_damage_%","base_movement_velocity_+%"],
-    "constantStats":[[],[]],
-    "skillTypes":[],
-    "baseFlags":[],
-    "name":"Aspect of the Avian",
-    "description":"While active, grants the Avian's Might and Avian's Flight buffs in sequence. Avian's Might grants you and your minions a chance to deal Double Damage with hits for a duration. Avian's Flight grants you and your minions increased Movement Speed for a secondary duration."
-  },
-  "AnimateGuardianWeapon":{
-    "minionSkillTypes":[],
-    "baseFlags":[],
-    "constantStats":[[]],
-    "description":"Animates a copy of your Animated Guardian's main-hand weapon to fight by your side.",
-    "levels":{
-      "20":{
-        "2":126,
-        "3":184,
-        "statInterpolation":[],
-        "cooldown":0.05
-      },
-      "18":{
-        "3":159,
-        "statInterpolation":[]
-      }
-    },
-    "minionUses":[],
-    "stats":["chance_to_trigger_on_animate_weapon_kill_%","attack_minimum_added_physical_damage","attack_maximum_added_physical_damage","number_of_animated_weapons_allowed","chance_to_trigger_on_animate_guardian_kill_%"],
-    "skillTypes":[],
-    "minionList":["AnimatedWeapon"],
-    "name":"Animate Guardian's Weapon",
-    "statMap":{
-      "attack_maximum_added_physical_damage":[{
-          "value":{
-            "mod":[]
-          }
-        }],
-      "active_skill_damage_+%_final":[{
-          "value":{
-            "mod":[]
-          }
-        }],
-      "number_of_animated_weapons_allowed":[{
-          "1":[],
-          "name":"Multiplier:AnimatedWeapon"
-        }],
-      "attack_minimum_added_physical_damage":[{
-          "value":{
-            "mod":[]
-          }
-        }]
-    }
-  },
-  "TouchOfFire":{
+  "CreateSmokeCloud":{
     "levels":{
       "20":[]
     },
-    "statMap":{
-      "display_touch_of_fire":[{
-          "1":[],
-          "name":"FlameTouched"
-        }]
-    },
-    "stats":["display_touch_of_fire"],
+    "stats":[],
+    "constantStats":[[],["chance_to_cast_when_your_trap_is_triggered_%"]],
     "skillTypes":[],
     "baseFlags":[],
-    "name":"Approaching Flames",
-    "description":"Become touched by the flames of the Cleansing Fire."
+    "name":"Fog of War",
+    "description":"Creates a Smoke Cloud in an area, which blinds enemies within it."
+  },
+  "GoreShockwave":{
+    "levels":[{
+        "statInterpolation":[]
+      },null,null,null,{
+        "baseMultiplier":1.81,
+        "statInterpolation":[]
+      }],
+    "constantStats":[["attack_trigger_on_melee_hit_with_atleast_150_strength_%"]],
+    "stats":[null,"base_cooldown_speed_+%"],
+    "baseFlags":[],
+    "skillTypes":[],
+    "weaponTypes":[],
+    "name":"Gore Shockwave"
+  },
+  "MerveilWarp":{
+    "levels":{
+      "20":{
+        "cost":[]
+      }
+    },
+    "stats":[],
+    "constantStats":[[null,1500]],
+    "skillTypes":[],
+    "baseFlags":[],
+    "name":"Illusory Warp",
+    "description":"Teleport to a target destination. Chilled ground is spread in an area around both where the caster was and where they teleported to."
   }
 }
