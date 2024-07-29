@@ -282,12 +282,10 @@
     "addSkillTypes":[],
     "requireSkillTypes":[null,14]
   },
-  "SupportImpale":{
-    "qualityStats":{
-      "Default":[["impale_debuff_effect_+%"]]
-    },
+  "SupportAwakenedColdPenetration":{
+    "plusVersionOf":"SupportColdPenetration",
     "excludeSkillTypes":[],
-    "stats":[],
+    "stats":["base_reduce_enemy_cold_resistance_%","base_inflict_cold_exposure_on_hit_%_chance"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -297,22 +295,81 @@
       },{
         "statInterpolation":[]
       },{
-        "1":6,
+        "1":39,
         "statInterpolation":[]
       },{
-        "1":7,
         "statInterpolation":[]
       },{
-        "1":9,
         "statInterpolation":[]
       },{
-        "1":10,
+        "statInterpolation":[]
+      },{
+        "1":41,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":43,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "2":10,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":45,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":47,
+        "statInterpolation":[]
+      }],
+    "qualityStats":{
+      "Default":[["cold_damage_+%"]]
+    },
+    "description":"Supports any skill that hits enemies, making those hits penetrate enemy cold resistance.",
+    "name":"Awakened Cold Penetration",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportBlockChanceReduction":{
+    "qualityStats":{
+      "Default":[["global_reduce_enemy_block_%",0.25]]
+    },
+    "excludeSkillTypes":[],
+    "stats":["support_reduce_enemy_block_and_spell_block_%"],
+    "levels":[{
+        "statInterpolation":[],
+        "levelRequirement":18
+      },{
+        "1":11,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
         "statInterpolation":[]
       },{
         "1":12,
         "statInterpolation":[]
       },{
+        "statInterpolation":[]
+      },{
         "1":13,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
         "statInterpolation":[]
       },{
         "1":15,
@@ -321,7 +378,17 @@
         "1":16,
         "statInterpolation":[]
       },{
-        "1":18,
+        "statInterpolation":[]
+      },{
+        "1":17,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
         "statInterpolation":[]
       },{
         "1":19,
@@ -351,26 +418,183 @@
       },{
         "statInterpolation":[]
       },{
-        "1":39,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
       },{
         "statInterpolation":[]
       },{
-        "1":43,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":45,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
       },{
         "statInterpolation":[]
       },{
-        "1":47,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "constantStats":[["support_overpowered_base_duration_ms",4000],["apply_overpowered_on_enemy_block_reduced_block_and_spell_block_%",5]],
+    "statMap":{
+      "global_reduce_enemy_block_%":[{
+          "type":"BASE",
+          "name":"reduceEnemyBlock"
+        }],
+      "support_reduce_enemy_block_and_spell_block_%":[[]]
+    },
+    "description":"Supports any skill that hits enemies.",
+    "name":"Block Chance Reduction",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportAwakenedDeadlyAilments":{
+    "plusVersionOf":"SupportDeadlyAilments",
+    "excludeSkillTypes":[],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "stats":["support_better_ailments_ailment_damage_+%_final"],
+    "constantStats":[["support_better_ailments_hit_damage_+%_final",-80]],
+    "qualityStats":{
+      "Default":[["damage_over_time_+%"]]
+    },
+    "statMap":{
+      "support_better_ailments_ailment_damage_+%_final":[{
+          "keywordFlags":14680064
+        }],
+      "support_better_ailments_hit_damage_+%_final":[[]]
+    },
+    "name":"Awakened Deadly Ailments",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportAwakenedCastOnCriticalStrike":{
+    "plusVersionOf":"SupportCastOnCriticalStrike",
+    "levels":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+    "excludeSkillTypes":[],
+    "constantStats":[["cast_linked_spells_on_attack_crit_%"]],
+    "stats":[],
+    "qualityStats":{
+      "Default":[["attack_critical_strike_chance_+%"]]
+    },
+    "statMap":{
+      "support_cast_on_crit_spell_damage_+%_final":[]
+    },
+    "description":"Must support both an attack skill and a spell skill to work. The attack skill will trigger a spell when it critically strikes an enemy. Cannot support totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.",
+    "name":"Awakened Cast On Critical Strike",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportCloseCombat":{
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -384,244 +608,49 @@
       },{
         "statInterpolation":[]
       }],
-    "constantStats":[["attacks_impale_on_hit_%_chance"]],
-    "statMap":{
-      "impale_phys_reduction_%_penalty":{
-        "1":{
-          "type":"BASE",
-          "name":"EnemyImpalePhysicalDamageReduction"
-        },
-        "mult":-1
-      },
-      "impale_support_physical_damage_+%_final":[{
-          "name":"PhysicalDamage"
-        }]
-    },
-    "description":"Supports attack skills.",
-    "name":"Impale",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportGemMirageArcher":{
     "qualityStats":{
-      "Default":[["attack_damage_+%"]]
+      "Default":[["close_combat_damage_to_close_range_+%"]]
     },
-    "excludeSkillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "1":-40,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":-39,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":-38,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":-37,
-        "statInterpolation":[]
-      },{
-        "1":-36,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
+    "baseMods":[{
+        "type":"FLAG",
+        "name":"Condition:SupportedByCloseCombat"
       }],
-    "stats":["support_mirage_archer_damage_+%_final","skill_can_own_mirage_archers","summon_mirage_archer_on_hit","disable_skill_if_weapon_not_bow"],
-    "constantStats":[["support_mirage_archer_base_duration",4000],["support_mirage_archer_attack_speed_+%_final",-60],["mirage_archer_projectile_additional_height_offset",-138]],
-    "statMap":{
-      "summon_mirage_archer_on_hit":[{
-          "name":"MirageArcherMaxCount"
-        }],
-      "support_mirage_archer_attack_speed_+%_final":[{
-          "name":"MirageArcherLessAttackSpeed"
-        }],
-      "support_mirage_archer_base_duration":{
-        "1":{
-          "name":"MirageArcherDuration"
-        },
-        "div":1000
-      },
-      "support_mirage_archer_damage_+%_final":[{
-          "name":"MirageArcherLessDamage"
-        }]
-    },
-    "description":"Supports attack skills that can be used with bows. Supported skills can only be used with bows. Cannot support Vaal skills, minion skills, movement skills, or skills used by totems, traps, or mines.",
-    "name":"Mirage Archer",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportPhysicalProjectileAttackDamage":{
-    "qualityStats":{
-      "Default":[["physical_damage_+%"]]
-    },
     "excludeSkillTypes":[],
-    "stats":["support_projectile_attack_physical_damage_+%_final","support_phys_chaos_projectile_physical_damage_over_time_+%_final","support_phys_chaos_projectile_chaos_damage_over_time_+%_final"],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":41,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "constantStats":[["support_projectile_attack_speed_+%_final",-10]],
+    "constantStats":[["support_slashing_buff_base_duration_ms",2000],["support_slashing_buff_attack_speed_+%_final_to_grant"]],
+    "stats":["support_slashing_damage_+%_final_from_distance","supported_by_slashing","supported_skill_can_only_use_axe_and_sword"],
     "statMap":{
-      "support_projectile_attack_speed_+%_final":[{
-          "flags":1025,
+      "supported_skill_can_only_use_axe_and_sword":[],
+      "support_slashing_buff_attack_speed_+%_final_to_grant":[{
+          "1":{
+            "type":"GlobalEffect",
+            "effectCond":"CombatRushActive",
+            "effectType":"Buff",
+            "effectName":"Combat Rush"
+          },
+          "2":{
+            "type":"Condition",
+            "var":"SupportedByCloseCombat"
+          },
+          "3":{
+            "type":"SkillType"
+          },
           "name":"Speed"
         }],
-      "support_projectile_attack_physical_damage_+%_final":[[]],
-      "support_phys_chaos_projectile_physical_damage_over_time_+%_final":[{
-          "keywordFlags":16777216
+      "close_combat_damage_to_close_range_+%":[{
+          "1":{
+            "var":"AtCloseRange"
+          },
+          "flags":257,
+          "type":"INC"
         }],
-      "support_phys_chaos_projectile_chaos_damage_over_time_+%_final":[{
-          "name":"ChaosDamage",
-          "keywordFlags":268435456
-        }]
+      "support_slashing_damage_+%_final_from_distance":[[{
+            "type":"MeleeProximity",
+            "ramp":[]
+          }]]
     },
-    "description":"Supports projectile attack skills.",
-    "name":"Vicious Projectiles",
+    "weaponTypes":[],
+    "description":"Supports melee attack skills. Cannot support skills which create minions.",
+    "name":"Close Combat",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
@@ -634,8 +663,7 @@
       },{
         "statInterpolation":[]
       },{
-        "statInterpolation":[],
-        "levelRequirement":17
+        "statInterpolation":[]
       },{
         "statInterpolation":[]
       },{
@@ -690,6 +718,7 @@
         "1":-11,
         "statInterpolation":[]
       },{
+        "1":-10,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -733,6 +762,75 @@
     "weaponTypes":[],
     "description":"Supports bow attack skills that fire arrows forwards as projectiles. These skills will instead fire a payload arrow into the air to land at a targeted location. The supported skills' arrows will then fire out in a circle from where it lands. Cannot support skills that already fire arrows into the air, channelled skills, or skills that create Minions.",
     "name":"Arrow Nova",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportAwakenedViciousProjectiles":{
+    "plusVersionOf":"SupportViciousProjectiles",
+    "excludeSkillTypes":[],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "stats":["support_projectile_attack_physical_damage_+%_final","support_phys_chaos_projectile_physical_damage_over_time_+%_final","support_phys_chaos_projectile_chaos_damage_over_time_+%_final"],
+    "constantStats":[["support_projectile_attack_speed_+%_final"]],
+    "qualityStats":{
+      "Default":[["physical_damage_+%"]]
+    },
+    "statMap":{
+      "support_projectile_attack_speed_+%_final":[{
+          "flags":1025
+        }],
+      "support_projectile_attack_physical_damage_+%_final":[{
+          "name":"PhysicalDamage"
+        }],
+      "support_phys_chaos_projectile_physical_damage_over_time_+%_final":[{
+          "keywordFlags":16777216
+        }],
+      "support_phys_chaos_projectile_chaos_damage_over_time_+%_final":[{
+          "name":"ChaosDamage",
+          "keywordFlags":268435456
+        }]
+    },
+    "description":"Supports projectile attack skills.",
+    "name":"Awakened Vicious Projectiles",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
@@ -805,6 +903,7 @@
       },{
         "statInterpolation":[]
       },{
+        "1":-1,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -826,7 +925,7 @@
         "statInterpolation":[]
       }],
     "excludeSkillTypes":[null,null,null,null,null,null,85],
-    "constantStats":[["number_of_additional_mines_to_place"],["support_locus_mine_base_mine_duration",5000],["support_locus_mine_cannot_detonate_mines_within_X_units"],["support_remote_mine_2_base_mine_detonation_time_ms",250],["support_makes_skill_mine_pvp_damage_+%_final"],["number_of_projectiles_+%_final_from_locus_mine_support"]],
+    "constantStats":[["number_of_additional_mines_to_place"],["support_locus_mine_base_mine_duration",5000],["support_locus_mine_cannot_detonate_mines_within_X_units"],["support_remote_mine_2_base_mine_detonation_time_ms",250],["support_makes_skill_mine_pvp_damage_+%_final",-60],["number_of_projectiles_+%_final_from_locus_mine_support"]],
     "stats":["support_locus_mine_damage_+%_final","support_locus_mine_throw_mines_in_an_arc","support_locus_mine_mines_always_target_your_location","base_skill_is_mined","is_remote_mine","disable_skill_if_melee_attack","base_skill_show_average_damage_instead_of_dps","remote_mined_by_support","minimum_number_of_projectiles_to_fire_is_1"],
     "statMap":{
       "number_of_projectiles_+%_final_from_locus_mine_support":[{
@@ -954,19 +1053,7 @@
       },{
         "statInterpolation":[]
       },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":11,
-        "statInterpolation":[]
-      },{
+        "1":6,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -1011,7 +1098,6 @@
       },{
         "statInterpolation":[]
       },{
-        "2":5,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -1022,15 +1108,27 @@
       },{
         "statInterpolation":[]
       },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "2":7,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "2":9,
         "statInterpolation":[]
       }],
     "stats":["trap_throwing_speed_+%","support_trap_damage_+%_final","base_skill_is_trapped",null,null,"is_trap","quality_display_trap_duration_is_gem"],
     "constantStats":[["base_trap_duration"],["support_makes_skill_trap_pvp_damage_+%_final"]],
     "statMap":{
       "base_skill_show_average_damage_instead_of_dps":[{
-          "1":{
-            "type":"SkillType"
-          },
+          "1":[],
           "type":"LIST",
           "value":{
             "key":"showAverage"
@@ -1132,7 +1230,6 @@
         "statInterpolation":[]
       }],
     "constantStats":[["global_chance_to_blind_on_hit_%"]],
-    "description":"Supports any skill that hits enemies.",
     "name":"Blind",
     "addSkillTypes":[],
     "requireSkillTypes":[]
@@ -1267,12 +1364,60 @@
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "SupportDeadlyAilmentsPlus":{
-    "plusVersionOf":"SupportDeadlyAilments",
-    "excludeSkillTypes":[],
+  "SupportBarrage":{
     "levels":[{
         "statInterpolation":[]
       },{
+        "1":-68,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":-67,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":-66,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":-65,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":-64,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":-63,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":-62,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":-61,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -1289,6 +1434,10 @@
       },{
         "statInterpolation":[]
       },{
+        "1":-59,
+        "statInterpolation":[]
+      },{
+        "1":-58,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -1299,30 +1448,40 @@
       },{
         "statInterpolation":[]
       },{
+        "1":-57,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
       },{
         "statInterpolation":[]
       },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
+        "1":-56,
         "statInterpolation":[]
       }],
-    "stats":["support_better_ailments_ailment_damage_+%_final"],
-    "constantStats":[["support_better_ailments_hit_damage_+%_final",-80]],
     "qualityStats":{
-      "Default":[["damage_over_time_+%"]]
+      "Default":[[]]
     },
+    "excludeSkillTypes":[],
+    "constantStats":[[],["support_barrage_attack_time_+%_per_projectile_fired"],["support_barrage_trap_and_mine_throwing_time_+%_final_per_projectile_fired"]],
+    "stats":["support_barrage_damage_+%_final","projectiles_barrage","skill_can_only_use_non_melee_weapons"],
     "statMap":{
-      "support_better_ailments_ailment_damage_+%_final":[{
-          "keywordFlags":14680064
+      "projectiles_barrage":[{
+          "1":{
+            "varList":["UsingBow","UsingWand"]
+          },
+          "name":"SequentialProjectiles"
         }],
-      "support_better_ailments_hit_damage_+%_final":[[]]
+      "skill_can_only_use_non_melee_weapons":[],
+      "support_barrage_damage_+%_final":[[{
+            "varList":[]
+          }]],
+      "number_of_additional_projectiles":[[{
+            "varList":[]
+          }]]
     },
-    "name":"Awakened Deadly Ailments",
+    "weaponTypes":[],
+    "description":"Supports projectile attack skills that use bows or wands. Cannot support triggered skills, channelled skills, or skills that create Minions.",
+    "name":"Barrage Support",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
@@ -1512,7 +1671,159 @@
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "SupportDebilitate":{
+  "SupportAwakenedGreaterMultipleProjectiles":{
+    "plusVersionOf":"SupportGreaterMultipleProjectiles",
+    "excludeSkillTypes":[],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "stats":[],
+    "constantStats":[[],[]],
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "statMap":{
+      "support_multiple_projectile_damage_+%_final":[[]]
+    },
+    "name":"Awakened Greater Multiple Projectiles",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportDeadlyAilments":{
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "excludeSkillTypes":[],
+    "stats":[],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "constantStats":[[]],
+    "statMap":{
+      "support_better_ailments_ailment_damage_+%_final":[[]],
+      "support_better_ailments_hit_damage_+%_final":[[]]
+    },
+    "name":"Deadly Ailments",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportVileToxins":{
     "qualityStats":{
       "Default":[["base_poison_damage_+%"]]
     },
@@ -1618,248 +1929,24 @@
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "SupportDeadlyAilments":{
+  "SupportCastOnCriticalStrike":{
     "qualityStats":{
       "Default":[[]]
     },
     "excludeSkillTypes":[],
+    "levels":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     "stats":[],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
     "constantStats":[[]],
     "statMap":{
-      "support_better_ailments_ailment_damage_+%_final":[[]],
-      "support_better_ailments_hit_damage_+%_final":[[]]
+      "support_cast_on_crit_spell_damage_+%_final":[]
     },
-    "name":"Deadly Ailments",
+    "name":"Cast On Critical Strike",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "SupportPuncturingWeapon":{
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "3":102,
-        "statInterpolation":[]
-      },{
-        "3":104,
-        "statInterpolation":[]
-      },{
-        "3":106,
-        "statInterpolation":[]
-      },{
-        "3":108,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "3":112,
-        "statInterpolation":[]
-      },{
-        "3":114,
-        "statInterpolation":[]
-      },{
-        "3":116,
-        "statInterpolation":[]
-      },{
-        "3":118,
-        "statInterpolation":[]
-      },{
-        "3":120,
-        "statInterpolation":[]
-      },{
-        "3":122,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "3":126,
-        "statInterpolation":[]
-      },{
-        "3":128,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "3":132,
-        "statInterpolation":[]
-      },{
-        "3":134,
-        "statInterpolation":[]
-      },{
-        "3":136,
-        "statInterpolation":[]
-      },{
-        "3":138,
-        "statInterpolation":[]
-      },{
-        "3":140,
-        "statInterpolation":[]
-      },{
-        "3":142,
-        "statInterpolation":[]
-      },{
-        "2":110,
-        "3":144,
-        "statInterpolation":[]
-      },{
-        "3":146,
-        "statInterpolation":[]
-      },{
-        "3":148,
-        "statInterpolation":[]
-      },{
-        "3":150,
-        "statInterpolation":[]
-      },{
-        "3":152,
-        "statInterpolation":[]
-      },{
-        "3":154,
-        "statInterpolation":[]
-      },{
-        "3":156,
-        "statInterpolation":[]
-      },{
-        "3":158,
-        "statInterpolation":[]
-      },{
-        "2":130,
-        "3":159,
-        "statInterpolation":[]
-      },{
-        "3":160,
-        "statInterpolation":[]
-      },{
-        "3":161,
-        "statInterpolation":[]
-      },{
-        "3":162,
-        "statInterpolation":[]
-      },{
-        "3":163,
-        "statInterpolation":[]
-      },{
-        "3":164,
-        "statInterpolation":[]
-      },{
-        "3":165,
-        "statInterpolation":[]
-      },{
-        "3":166,
-        "statInterpolation":[]
-      },{
-        "3":167,
-        "statInterpolation":[]
-      },{
-        "3":168,
-        "statInterpolation":[]
-      }],
-    "qualityStats":{
-      "Default":[["critical_strike_chance_+%"]]
-    },
-    "baseMods":[{
-        "type":"FLAG",
-        "name":"SupportedByNightblade"
-      },{
-        "1":{
-          "type":"GlobalEffect",
-          "effectType":"Buff"
-        },
-        "name":"Condition:CanBeElusive"
-      }],
+  "SupportAwakenedSwiftAffliction":{
+    "plusVersionOf":"SupportSwiftAffliction",
     "excludeSkillTypes":[],
-    "constantStats":[["gain_elusive_on_crit_%_chance"]],
-    "stats":["elusive_effect_+%","additional_critical_strike_chance_permyriad_while_affected_by_elusive","nightblade_elusive_grants_critical_strike_multiplier_+_to_supported_skills","supported_skill_can_only_use_dagger_and_claw","supported_by_nightblade"],
-    "statMap":{
-      "supported_skill_can_only_use_dagger_and_claw":[]
-    },
-    "weaponTypes":[],
-    "description":"Supports attack skills. Cannot support skills which create minions.",
-    "name":"Nightblade",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportManaforgedArrows":{
     "levels":[{
         "statInterpolation":[]
       },{
@@ -1900,74 +1987,18 @@
         "statInterpolation":[]
       },{
         "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
       }],
+    "stats":["support_rapid_decay_damage_over_time_+%_final"],
+    "constantStats":[["support_swift_affliction_skill_effect_and_damaging_ailment_duration_+%_final"]],
     "qualityStats":{
-      "Default":[["base_cooldown_speed_+%"]]
+      "Default":[[]]
     },
-    "constantStats":[["triggered_by_manaforged_arrows_support_%_chance"],["support_manaforged_arrows_damage_+%_final_per_mana_spent"],["support_manaforged_arrows_mana_cost_%_threshold"]],
-    "excludeSkillTypes":[],
-    "stats":["support_manaforged_arrows_damage_+%_final"],
     "statMap":{
-      "support_manaforged_arrows_damage_+%_final_per_mana_spent":[[{
-            "type":"PerStat",
-            "stat":"ManaCost"
-          }]],
-      "support_manaforged_arrows_mana_cost_%_threshold":[{
-          "1":[],
-          "value":{
-            "key":"triggeredByManaforged"
-          }
-        },{
-          "value":{
-            "key":"ManaForgedArrowsPercentThreshold"
-          }
-        }],
-      "support_manaforged_arrows_damage_+%_final":[[]]
+      "support_rapid_decay_damage_over_time_+%_final":[[]]
     },
-    "weaponTypes":[],
-    "description":"Supports bow attack skills, causing them to trigger when you've spent enough mana in total on other bow attacks. Cannot modify the skills of minions. Cannot support totems, traps, mines, Vaal skills, or channelling skills",
-    "name":"Manaforged Arrows",
-    "addSkillTypes":[null,101],
+    "description":"Supports any skill that has a duration, or can hit enemies to inflict ailments on them.",
+    "name":"Awakened Swift Affliction",
+    "addSkillTypes":[],
     "requireSkillTypes":[]
   },
   "SupportChain":{
@@ -2064,226 +2095,11 @@
     "description":"Supports projectile skills, and any other skills that chain.",
     "name":"Chain",
     "addSkillTypes":[],
-    "requireSkillTypes":[]
+    "requireSkillTypes":[null,null,null,null,102]
   },
-  "SupportCullingStrike":{
+  "SupportSwiftAffliction":{
     "qualityStats":{
-      "Default":[["recover_%_maximum_life_on_cull",0.1]]
-    },
-    "excludeSkillTypes":[],
-    "stats":["damage_+%","kill_enemy_on_hit_if_under_10%_life"],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "description":"Supports any skill that hits enemies. If enemies are left below 10% of maximum life after being hit by these skills, they will be killed.",
-    "name":"Culling Strike",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportCastOnDeath":{
-    "qualityStats":{
-      "Default":[["area_of_effect_+%_while_dead"]]
-    },
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[],
-        "PvPDamageMultiplier":-85,
-        "manaMultiplier":-100
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":176,
-        "statInterpolation":[]
-      },{
-        "1":184,
-        "statInterpolation":[]
-      },{
-        "1":192,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":208,
-        "statInterpolation":[]
-      },{
-        "1":216,
-        "statInterpolation":[]
-      },{
-        "1":224,
-        "statInterpolation":[]
-      },{
-        "1":232,
-        "statInterpolation":[]
-      },{
-        "1":236,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":244,
-        "statInterpolation":[]
-      },{
-        "1":248,
-        "statInterpolation":[]
-      },{
-        "1":252,
-        "statInterpolation":[]
-      },{
-        "1":256,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":264,
-        "statInterpolation":[]
-      },{
-        "1":268,
-        "statInterpolation":[]
-      },{
-        "1":272,
-        "statInterpolation":[]
-      }],
-    "excludeSkillTypes":[],
-    "stats":["cast_on_death_damage_+%_final_while_dead","spell_uncastable_if_triggerable","spell_only_castable_on_death",null,"no_cost"],
-    "constantStats":[["cast_on_death_%"]],
-    "statMap":{
-      "area_of_effect_+%_while_dead":[{
-          "type":"INC",
-          "name":"AreaOfEffect"
-        }],
-      "no_cost":[],
-      "cast_on_death_damage_+%_final_while_dead":[[]]
-    },
-    "baseMods":[{
-        "value":{
-          "key":"triggeredOnDeath"
-        }
-      }],
-    "description":"Each supported spell skill will be triggered when you die. Cannot support skills used by totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.",
-    "name":"Cast on Death",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportAdditionalCooldown":{
-    "qualityStats":{
-      "Default":[[null,0.25]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
     "stats":[],
@@ -2368,9 +2184,256 @@
       },{
         "statInterpolation":[]
       }],
-    "constantStats":[["support_added_cooldown_count_if_not_instant"]],
-    "description":"Supports skills with cooldowns.\nCannot support triggered skills.",
-    "name":"Second Wind",
+    "constantStats":[[]],
+    "statMap":{
+      "support_rapid_decay_damage_over_time_+%_final":[[]]
+    },
+    "name":"Swift Affliction",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportCastOnDeath":{
+    "qualityStats":{
+      "Default":[["area_of_effect_+%_while_dead"]]
+    },
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[],
+        "PvPDamageMultiplier":-85,
+        "manaMultiplier":-100
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":104,
+        "statInterpolation":[]
+      },{
+        "1":112,
+        "statInterpolation":[]
+      },{
+        "1":120,
+        "statInterpolation":[]
+      },{
+        "1":128,
+        "statInterpolation":[]
+      },{
+        "1":136,
+        "statInterpolation":[]
+      },{
+        "1":144,
+        "statInterpolation":[]
+      },{
+        "1":152,
+        "statInterpolation":[]
+      },{
+        "1":160,
+        "statInterpolation":[]
+      },{
+        "1":168,
+        "statInterpolation":[]
+      },{
+        "1":176,
+        "statInterpolation":[]
+      },{
+        "1":184,
+        "statInterpolation":[]
+      },{
+        "1":192,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":208,
+        "statInterpolation":[]
+      },{
+        "1":216,
+        "statInterpolation":[]
+      },{
+        "1":224,
+        "statInterpolation":[]
+      },{
+        "1":232,
+        "statInterpolation":[]
+      },{
+        "1":236,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":244,
+        "statInterpolation":[]
+      },{
+        "1":248,
+        "statInterpolation":[]
+      },{
+        "1":252,
+        "statInterpolation":[]
+      },{
+        "1":256,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":264,
+        "statInterpolation":[]
+      },{
+        "1":268,
+        "statInterpolation":[]
+      },{
+        "1":272,
+        "statInterpolation":[]
+      }],
+    "excludeSkillTypes":[],
+    "stats":["cast_on_death_damage_+%_final_while_dead","spell_uncastable_if_triggerable","spell_only_castable_on_death",null,"no_cost"],
+    "constantStats":[["cast_on_death_%"]],
+    "statMap":{
+      "area_of_effect_+%_while_dead":[{
+          "name":"AreaOfEffect"
+        }],
+      "no_cost":[],
+      "cast_on_death_damage_+%_final_while_dead":[[]]
+    },
+    "baseMods":[{
+        "value":{
+          "key":"triggeredOnDeath"
+        }
+      }],
+    "description":"Each supported spell skill will be triggered when you die. Cannot support skills used by totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.",
+    "name":"Cast on Death",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportRupture":{
+    "qualityStats":{
+      "Default":[["critical_strike_chance_+%"]]
+    },
+    "excludeSkillTypes":[],
+    "stats":["support_rupture_bleeding_damage_taken_+%_final","critical_strikes_that_inflict_bleeding_also_rupture"],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "constantStats":[["support_rupture_bleeding_time_passed_+%_final"]],
+    "statMap":{
+      "support_rupture_bleeding_time_passed_+%_final":[{
+          "1":{
+            "effectType":"Debuff"
+          },
+          "2":{
+            "var":"RuptureStack"
+          },
+          "name":"DamageTaken",
+          "keywordFlags":4194304
+        }],
+      "support_rupture_bleeding_damage_taken_+%_final":[{
+          "1":[],
+          "2":[],
+          "name":"BleedExpireRate"
+        }],
+      "critical_strikes_that_inflict_bleeding_also_rupture":[{
+          "1":[],
+          "name":"Condition:CanInflictRupture"
+        }]
+    },
+    "description":"Supports attack skills.",
+    "name":"Rupture",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
@@ -2593,7 +2656,12 @@
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "SupportSlashingWeapon":{
+  "SupportFasterAttacks":{
+    "qualityStats":{
+      "Default":[["attack_speed_+%"]]
+    },
+    "excludeSkillTypes":[],
+    "stats":[],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -2675,47 +2743,145 @@
       },{
         "statInterpolation":[]
       }],
-    "qualityStats":{
-      "Default":[["close_combat_damage_to_close_range_+%"]]
-    },
-    "baseMods":[{
-        "name":"Condition:SupportedByCloseCombat"
-      }],
-    "excludeSkillTypes":[],
-    "constantStats":[["support_slashing_buff_base_duration_ms",2000],["support_slashing_buff_attack_speed_+%_final_to_grant"]],
-    "stats":["support_slashing_damage_+%_final_from_distance","supported_by_slashing","supported_skill_can_only_use_axe_and_sword"],
-    "statMap":{
-      "supported_skill_can_only_use_axe_and_sword":[],
-      "support_slashing_buff_attack_speed_+%_final_to_grant":[[{
-            "effectCond":"CombatRushActive",
-            "effectName":"Combat Rush"
-          },{
-            "type":"Condition",
-            "var":"SupportedByCloseCombat"
-          },[]]],
-      "close_combat_damage_to_close_range_+%":[{
-          "1":{
-            "var":"AtCloseRange"
-          },
-          "flags":257
-        }],
-      "support_slashing_damage_+%_final_from_distance":[[{
-            "type":"MeleeProximity",
-            "ramp":[]
-          }]]
-    },
-    "weaponTypes":[],
-    "description":"Supports melee attack skills. Cannot support skills which create minions.",
-    "name":"Close Combat",
+    "name":"Faster Attacks",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "SupportAdditionalTrapMine":{
+  "SupportNightblade":{
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "3":106,
+        "statInterpolation":[]
+      },{
+        "3":108,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "3":114,
+        "statInterpolation":[]
+      },{
+        "3":116,
+        "statInterpolation":[]
+      },{
+        "3":118,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "3":122,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "3":126,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "3":132,
+        "statInterpolation":[]
+      },{
+        "3":134,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "3":138,
+        "statInterpolation":[]
+      },{
+        "3":140,
+        "statInterpolation":[]
+      },{
+        "3":142,
+        "statInterpolation":[]
+      },{
+        "2":110,
+        "statInterpolation":[]
+      },{
+        "3":146,
+        "statInterpolation":[]
+      },{
+        "3":148,
+        "statInterpolation":[]
+      },{
+        "3":150,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "3":154,
+        "statInterpolation":[]
+      },{
+        "3":156,
+        "statInterpolation":[]
+      },{
+        "3":158,
+        "statInterpolation":[]
+      },{
+        "2":130,
+        "3":159,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "3":161,
+        "statInterpolation":[]
+      },{
+        "3":162,
+        "statInterpolation":[]
+      },{
+        "3":163,
+        "statInterpolation":[]
+      },{
+        "3":164,
+        "statInterpolation":[]
+      },{
+        "3":165,
+        "statInterpolation":[]
+      },{
+        "3":166,
+        "statInterpolation":[]
+      },{
+        "3":167,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
     "qualityStats":{
-      "Default":[[],[]]
+      "Default":[[]]
     },
+    "baseMods":[{
+        "name":"SupportedByNightblade"
+      },{
+        "1":[],
+        "name":"Condition:CanBeElusive"
+      }],
     "excludeSkillTypes":[],
-    "stats":["support_additional_trap_mine_%_chance_for_1_additional_trap_mine","support_additional_trap_mine_%_chance_for_2_additional_trap_mine","support_additional_trap_mine_%_chance_for_3_additional_trap_mine"],
+    "constantStats":[["gain_elusive_on_crit_%_chance"]],
+    "stats":["elusive_effect_+%","additional_critical_strike_chance_permyriad_while_affected_by_elusive","nightblade_elusive_grants_critical_strike_multiplier_+_to_supported_skills","supported_skill_can_only_use_dagger_and_claw","supported_by_nightblade"],
+    "statMap":{
+      "supported_skill_can_only_use_dagger_and_claw":[]
+    },
+    "weaponTypes":[],
+    "description":"Supports attack skills. Cannot support skills which create minions.",
+    "name":"Nightblade",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportAwakenedEnhance":{
+    "plusVersionOf":"SupportEnhance",
+    "excludeSkillTypes":[],
+    "stats":["supported_active_skill_gem_quality_%"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -2756,7 +2922,31 @@
         "statInterpolation":[]
       },{
         "statInterpolation":[]
-      },{
+      }],
+    "qualityStats":{
+      "Default":[["local_gem_experience_gain_+%"]]
+    },
+    "statMap":{
+      "supported_active_skill_gem_quality_%":[{
+          "value":{
+            "key":"quality",
+            "keyword":"grants_active_skill"
+          },
+          "name":"SupportedGemProperty"
+        }]
+    },
+    "description":"Supports any skill gem. Once this gem reaches level 2 or above, will raise the quality of supported gems. Cannot support skills that don't come from gems.",
+    "name":"Awakened Enhance",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportAdvancedTraps":{
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "excludeSkillTypes":[],
+    "stats":["placing_traps_cooldown_recovery_+%"],
+    "levels":[{
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -2783,10 +2973,60 @@
       },{
         "statInterpolation":[]
       },{
+        "1":89,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
       },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":101,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":107,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":113,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":119,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":125,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":137,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":143,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":149,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":155,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -2797,9 +3037,9 @@
       },{
         "statInterpolation":[]
       }],
-    "constantStats":[["throw_traps_in_circle_radius"],["multi_trap_and_mine_support_flags"]],
-    "description":"Supports skills which throw Traps or Mines.",
-    "name":"Swift Assembly",
+    "constantStats":[["multi_trap_and_mine_support_flags"]],
+    "description":"Supports skills which throw traps.",
+    "name":"Advanced Traps",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
@@ -2884,10 +3124,12 @@
       },{
         "statInterpolation":[]
       },{
+        "1":-36,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
       },{
+        "1":-37,
         "statInterpolation":[]
       }],
     "statMap":{
@@ -2900,29 +3142,102 @@
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "SupportCastOnCritPlus":{
-    "plusVersionOf":"SupportCastOnCrit",
-    "levels":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
-    "excludeSkillTypes":[],
-    "constantStats":[["cast_linked_spells_on_attack_crit_%"]],
-    "stats":[],
-    "qualityStats":{
-      "Default":[["attack_critical_strike_chance_+%"]]
-    },
-    "statMap":{
-      "support_cast_on_crit_spell_damage_+%_final":[]
-    },
-    "description":"Must support both an attack skill and a spell skill to work. The attack skill will trigger a spell when it critically strikes an enemy. Cannot support totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.",
-    "name":"Awakened Cast On Critical Strike",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportRapidDecay":{
+  "SupportEnhance":{
     "qualityStats":{
       "Default":[[]]
     },
     "excludeSkillTypes":[],
-    "stats":["support_rapid_decay_damage_over_time_+%_final"],
+    "stats":[],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "statMap":{
+      "supported_active_skill_gem_quality_%":[{
+          "value":[]
+        }]
+    },
+    "name":"Enhance",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportAwakenedAddedColdDamage":{
+    "plusVersionOf":"SupportAddedColdDamage",
+    "baseEffectiveness":5.1399998664856,
+    "excludeSkillTypes":[],
+    "stats":["global_minimum_added_cold_damage","global_maximum_added_cold_damage","supported_cold_skill_gem_level_+"],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":0.80000001192093,
+        "2":1.2000000476837,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "incrementalEffectiveness":0.0043999999761581,
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "name":"Awakened Added Cold Damage",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportAwakenedVoidManipulation":{
+    "plusVersionOf":"SupportVoidManipulation",
+    "excludeSkillTypes":[],
+    "stats":["support_void_manipulation_chaos_damage_+%_final","supported_chaos_skill_gem_level_+","deal_no_elemental_damage"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -2963,53 +3278,15 @@
         "statInterpolation":[]
       },{
         "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
       }],
-    "constantStats":[["support_swift_affliction_skill_effect_and_damaging_ailment_duration_+%_final"]],
-    "statMap":{
-      "support_rapid_decay_damage_over_time_+%_final":[[]]
+    "qualityStats":{
+      "Default":[["chaos_damage_+%"]]
     },
-    "description":"Supports any skill that has a duration, or can hit enemies to inflict ailments on them.",
-    "name":"Swift Affliction",
+    "statMap":{
+      "support_void_manipulation_chaos_damage_+%_final":[[]]
+    },
+    "description":"Supports any skill that deals damage.",
+    "name":"Awakened Void Manipulation",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
@@ -3095,7 +3372,6 @@
       },{
         "statInterpolation":[]
       },{
-        "3":89,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -3109,14 +3385,14 @@
     "description":"Supports skills that summon ballista totems. Cannot modify the skills of minions.",
     "name":"Focused Ballista",
     "addSkillTypes":[],
-    "requireSkillTypes":[125]
+    "requireSkillTypes":[]
   },
-  "SupportAdditionalQuality":{
+  "SupportTrapAndMineDamage":{
     "qualityStats":{
-      "Default":[["local_gem_experience_gain_+%"]]
+      "Default":[["damage_+%"]]
     },
     "excludeSkillTypes":[],
-    "stats":["supported_active_skill_gem_quality_%"],
+    "stats":["support_trap_and_mine_damage_+%_final"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -3137,24 +3413,90 @@
         "statInterpolation":[]
       },{
         "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
       }],
+    "constantStats":[["support_trap_and_mine_damage_trap_throwing_speed_+%_final"],["support_trap_and_mine_damage_mine_throwing_speed_+%_final"]],
     "statMap":{
-      "supported_active_skill_gem_quality_%":[{
-          "value":{
-            "key":"quality",
-            "keyword":"grants_active_skill"
-          },
-          "name":"SupportedGemProperty"
+      "support_trap_and_mine_damage_mine_throwing_speed_+%_final":[{
+          "name":"MineLayingSpeed"
+        }],
+      "support_trap_and_mine_damage_+%_final":[{
+          "keywordFlags":12288
+        }],
+      "support_trap_and_mine_damage_trap_throwing_speed_+%_final":[{
+          "name":"TrapThrowingSpeed"
         }]
     },
-    "description":"Supports any skill gem. Once this gem reaches level 2 or above, will raise the quality of supported gems. Cannot support skills that don't come from gems.",
-    "name":"Enhance",
+    "description":"Supports skills which throw Traps or Mines.",
+    "name":"Trap and Mine Damage",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "SupportViciousProjectilesPlus":{
-    "plusVersionOf":"SupportPhysicalProjectileAttackDamage",
+  "SupportChargedTraps":{
+    "qualityStats":{
+      "Default":[[]]
+    },
     "excludeSkillTypes":[],
+    "stats":["%_chance_to_gain_power_charge_on_trap_triggered_by_an_enemy","%_chance_to_gain_frenzy_charge_on_trap_triggered_by_an_enemy"],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -3195,28 +3537,66 @@
         "statInterpolation":[]
       },{
         "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
       }],
-    "stats":[],
-    "constantStats":[[]],
-    "qualityStats":{
-      "Default":[[]]
-    },
+    "constantStats":[["trap_throwing_speed_+%_per_frenzy_charge"],["trap_critical_strike_multiplier_+_per_power_charge"]],
     "statMap":{
-      "support_projectile_attack_speed_+%_final":[[]],
-      "support_projectile_attack_physical_damage_+%_final":[[]],
-      "support_phys_chaos_projectile_physical_damage_over_time_+%_final":[[]],
-      "support_phys_chaos_projectile_chaos_damage_over_time_+%_final":[[]]
+      "trap_trigger_radius_":[{
+          "1":{
+            "var":"PowerCharge"
+          },
+          "name":"TrapTriggerAreaOfEffect"
+        }]
     },
-    "name":"Awakened Vicious Projectiles",
+    "name":"Charged Traps",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
   "SupportVoidManipulation":{
     "qualityStats":{
-      "Default":[["chaos_damage_+%"]]
+      "Default":[[]]
     },
     "excludeSkillTypes":[],
-    "stats":["support_void_manipulation_chaos_damage_+%_final","deal_no_elemental_damage"],
+    "stats":[],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -3301,7 +3681,6 @@
     "statMap":{
       "support_void_manipulation_chaos_damage_+%_final":[[]]
     },
-    "description":"Supports any skill that deals damage.",
     "name":"Void Manipulation",
     "addSkillTypes":[],
     "requireSkillTypes":[]
@@ -3317,7 +3696,6 @@
         "2":1.5,
         "statInterpolation":[]
       },{
-        "1":0.80000001192093,
         "2":2.2000000476837,
         "statInterpolation":[]
       },{
@@ -3378,7 +3756,6 @@
       },{
         "statInterpolation":[]
       },{
-        "2":1.2000000476837,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -3402,61 +3779,6 @@
     "incrementalEffectiveness":0.03999999910593,
     "constantStats":[["base_chance_to_poison_on_hit_%"]],
     "name":"Chance to Poison",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportVoidManipulationPlus":{
-    "plusVersionOf":"SupportVoidManipulation",
-    "excludeSkillTypes":[],
-    "stats":[null,"supported_chaos_skill_gem_level_+"],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "statMap":{
-      "support_void_manipulation_chaos_damage_+%_final":[[]]
-    },
-    "name":"Awakened Void Manipulation",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
@@ -3652,213 +3974,6 @@
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "SupportColdPenetrationPlus":{
-    "plusVersionOf":"SupportColdPenetration",
-    "excludeSkillTypes":[],
-    "stats":["base_reduce_enemy_cold_resistance_%","base_inflict_cold_exposure_on_hit_%_chance"],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "qualityStats":{
-      "Default":[["cold_damage_+%"]]
-    },
-    "description":"Supports any skill that hits enemies, making those hits penetrate enemy cold resistance.",
-    "name":"Awakened Cold Penetration",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportBlockReduction":{
-    "qualityStats":{
-      "Default":[["global_reduce_enemy_block_%"]]
-    },
-    "excludeSkillTypes":[],
-    "stats":["support_reduce_enemy_block_and_spell_block_%"],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "constantStats":[["support_overpowered_base_duration_ms"],["apply_overpowered_on_enemy_block_reduced_block_and_spell_block_%"]],
-    "statMap":{
-      "global_reduce_enemy_block_%":[{
-          "name":"reduceEnemyBlock"
-        }],
-      "support_reduce_enemy_block_and_spell_block_%":[[]]
-    },
-    "name":"Block Chance Reduction",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportSwiftAfflictionPlus":{
-    "plusVersionOf":"SupportRapidDecay",
-    "excludeSkillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "stats":[],
-    "constantStats":[[]],
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "statMap":{
-      "support_rapid_decay_damage_over_time_+%_final":[[]]
-    },
-    "name":"Awakened Swift Affliction",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
   "SupportCriticalStrikeAffliction":{
     "qualityStats":{
       "Default":[["critical_ailment_dot_multiplier_+"]]
@@ -3917,7 +4032,6 @@
         "1":105,
         "statInterpolation":[]
       },{
-        "1":107,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -3929,7 +4043,6 @@
       },{
         "statInterpolation":[]
       },{
-        "1":113,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -3946,7 +4059,6 @@
       },{
         "statInterpolation":[]
       },{
-        "1":119,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -3954,60 +4066,6 @@
         "statInterpolation":[]
       }],
     "name":"Critical Strike Affliction",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportAddedColdDamagePlus":{
-    "plusVersionOf":"SupportAddedColdDamage",
-    "baseEffectiveness":5.1399998664856,
-    "excludeSkillTypes":[],
-    "stats":["global_minimum_added_cold_damage","global_maximum_added_cold_damage","supported_cold_skill_gem_level_+"],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "incrementalEffectiveness":0.0043999999761581,
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "name":"Awakened Added Cold Damage",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
@@ -4235,16 +4293,108 @@
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "SupportMultiTrap":{
+  "SupportSecondWind":{
+    "qualityStats":{
+      "Default":[["base_cooldown_speed_+%"]]
+    },
+    "excludeSkillTypes":[],
+    "stats":[],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "constantStats":[["support_added_cooldown_count_if_not_instant"]],
+    "description":"Supports skills with cooldowns.\nCannot support triggered skills.",
+    "name":"Second Wind",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportClusterTraps":{
     "qualityStats":{
       "Default":[["trap_trigger_radius_+%"]]
     },
     "excludeSkillTypes":[],
-    "stats":["support_multithrow_damage_+%_final"],
+    "stats":["support_clustertrap_damage_+%_final"],
     "levels":[{
         "statInterpolation":[]
       },{
-        "1":-58,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -4253,14 +4403,28 @@
       },{
         "statInterpolation":[]
       },{
-        "1":-57,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
       },{
         "statInterpolation":[]
       },{
-        "1":-56,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -4272,7 +4436,13 @@
       },{
         "statInterpolation":[]
       },{
+        "statInterpolation":[]
+      },{
         "1":-54,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -4280,13 +4450,7 @@
         "1":-53,
         "statInterpolation":[]
       },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
         "1":-52,
-        "statInterpolation":[]
-      },{
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -4304,47 +4468,142 @@
       },{
         "statInterpolation":[]
       },{
-        "1":-49,
         "statInterpolation":[]
       },{
+        "statInterpolation":[]
+      },{
+        "1":-49,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
       },{
         "1":-48,
         "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":-47,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":-46,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":-45,
-        "statInterpolation":[]
       }],
-    "constantStats":[["number_of_additional_traps_to_throw"],["number_of_additional_traps_allowed"],[]],
+    "constantStats":[["number_of_additional_traps_to_throw"],["number_of_additional_traps_allowed"],["throw_traps_in_circle_radius"],[]],
     "statMap":{
-      "support_multithrow_damage_+%_final":[[]]
+      "support_clustertrap_damage_+%_final":[[]]
     },
-    "description":"Supports traps skills, making them throw extra traps in a line.",
-    "name":"Multiple Traps",
+    "description":"Supports traps skills, making them throw extra traps randomly around the targeted location.",
+    "name":"Cluster Traps",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "SupportChaosAttacks":{
+  "SupportManaforgedArrows":{
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "1":-40,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":-39,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":-38,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "constantStats":[["triggered_by_manaforged_arrows_support_%_chance"],["support_manaforged_arrows_damage_+%_final_per_mana_spent"],["support_manaforged_arrows_mana_cost_%_threshold"]],
+    "excludeSkillTypes":[],
+    "stats":["support_manaforged_arrows_damage_+%_final"],
+    "statMap":{
+      "support_manaforged_arrows_damage_+%_final_per_mana_spent":[[{
+            "type":"PerStat",
+            "stat":"ManaCost"
+          }]],
+      "support_manaforged_arrows_mana_cost_%_threshold":[{
+          "1":[],
+          "value":{
+            "key":"triggeredByManaforged"
+          }
+        },{
+          "value":{
+            "key":"ManaForgedArrowsPercentThreshold"
+          }
+        }],
+      "support_manaforged_arrows_damage_+%_final":[[]]
+    },
+    "weaponTypes":[],
+    "description":"Supports bow attack skills, causing them to trigger when you've spent enough mana in total on other bow attacks. Cannot modify the skills of minions. Cannot support totems, traps, mines, Vaal skills, or channelling skills",
+    "name":"Manaforged Arrows",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportWitheringTouch":{
     "qualityStats":{
       "Default":[[]]
     },
@@ -4436,529 +4695,7 @@
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "SupportTrapAndMineDamage":{
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "excludeSkillTypes":[],
-    "stats":["support_trap_and_mine_damage_+%_final"],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "constantStats":[["support_trap_and_mine_damage_trap_throwing_speed_+%_final"],["support_trap_and_mine_damage_mine_throwing_speed_+%_final"]],
-    "statMap":{
-      "support_trap_and_mine_damage_mine_throwing_speed_+%_final":[{
-          "name":"MineLayingSpeed"
-        }],
-      "support_trap_and_mine_damage_+%_final":[{
-          "keywordFlags":12288
-        }],
-      "support_trap_and_mine_damage_trap_throwing_speed_+%_final":[{
-          "name":"TrapThrowingSpeed"
-        }]
-    },
-    "name":"Trap and Mine Damage",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportCastOnCritTriggeredPlus":{
-    "plusVersionOf":"SupportCastOnCritTriggered",
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[],
-        "cooldown":0.15
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "excludeSkillTypes":[],
-    "stats":["support_cast_on_crit_spell_damage_+%_final","base_spell_cooldown_speed_+%",null,"triggered_skill_uses_main_hand_or_averaged_attack_time_for_pvp_scaling","cast_spell_on_linked_attack_crit"],
-    "qualityStats":{
-      "Default":[["spell_critical_strike_chance_+%"]]
-    },
-    "statMap":{
-      "support_cast_on_crit_spell_damage_+%_final":[[]]
-    },
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportChainPlus":{
-    "plusVersionOf":"SupportChain",
-    "excludeSkillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "stats":[],
-    "constantStats":[[],[]],
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "statMap":{
-      "support_chain_hit_damage_+%_final":[[]]
-    },
-    "name":"Awakened Chain",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportAdditionalQualityPlus":{
-    "plusVersionOf":"SupportAdditionalQuality",
-    "excludeSkillTypes":[],
-    "stats":[],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "statMap":{
-      "supported_active_skill_gem_quality_%":[{
-          "value":[]
-        }]
-    },
-    "name":"Awakened Enhance",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportGreaterMultipleProjectilesPlus":{
-    "plusVersionOf":"SupportGreaterMultipleProjectiles",
-    "excludeSkillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "stats":[],
-    "constantStats":[[],[]],
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "statMap":{
-      "support_multiple_projectile_damage_+%_final":[[]]
-    },
-    "name":"Awakened Greater Multiple Projectiles",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportTrapCooldown":{
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "excludeSkillTypes":[],
-    "stats":["placing_traps_cooldown_recovery_+%"],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":137,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":143,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":149,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":155,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "constantStats":[[]],
-    "description":"Supports skills which throw traps.",
-    "name":"Advanced Traps",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportClusterTrap":{
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "excludeSkillTypes":[],
-    "stats":["support_clustertrap_damage_+%_final"],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "1":-61,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":-59,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "constantStats":[[],[],[],[]],
-    "statMap":{
-      "support_clustertrap_damage_+%_final":[[]]
-    },
-    "description":"Supports traps skills, making them throw extra traps randomly around the targeted location.",
-    "name":"Cluster Traps",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportParallelProjectiles":{
+  "SupportVolley":{
     "qualityStats":{
       "Default":[[]]
     },
@@ -5053,12 +4790,8 @@
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "SupportColdPenetration":{
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "excludeSkillTypes":[],
-    "stats":[],
+  "SupportCastOnCritTriggeredPlus":{
+    "plusVersionOf":"SupportCastOnCritTriggered",
     "levels":[{
         "statInterpolation":[]
       },{
@@ -5086,47 +4819,8 @@
       },{
         "statInterpolation":[]
       },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
+        "statInterpolation":[],
+        "cooldown":0.15
       },{
         "statInterpolation":[]
       },{
@@ -5140,625 +4834,11 @@
       },{
         "statInterpolation":[]
       }],
-    "name":"Cold Penetration",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportAddedColdDamage":{
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "baseEffectiveness":0.58050000667572,
     "excludeSkillTypes":[],
-    "stats":[],
-    "incrementalEffectiveness":0.035900000482798,
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "name":"Added Cold Damage",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportArrowNovaPlus":{
+    "stats":["support_cast_on_crit_spell_damage_+%_final","base_spell_cooldown_speed_+%",null,"triggered_skill_uses_main_hand_or_averaged_attack_time_for_pvp_scaling","cast_spell_on_linked_attack_crit"],
     "qualityStats":{
-      "Default":[[]]
+      "Default":[["spell_critical_strike_chance_+%"]]
     },
-    "excludeSkillTypes":[],
-    "weaponTypes":[],
-    "constantStats":[[]],
-    "statMap":{
-      "support_rain_projectile_damage_+%_final":[[]]
-    },
-    "stats":[],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "plusVersionOf":"SupportArrowNova",
-    "addSkillTypes":[],
-    "name":"Awakened Arrow Nova",
-    "requireSkillTypes":[]
-  },
-  "SupportBarrage":{
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "1":-68,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":-67,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":-66,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":-65,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":-64,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":-63,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":-62,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "excludeSkillTypes":[],
-    "constantStats":[[],["support_barrage_attack_time_+%_per_projectile_fired"],["support_barrage_trap_and_mine_throwing_time_+%_final_per_projectile_fired"]],
-    "stats":["support_barrage_damage_+%_final","projectiles_barrage","skill_can_only_use_non_melee_weapons"],
-    "statMap":{
-      "projectiles_barrage":[{
-          "1":{
-            "varList":["UsingBow","UsingWand"]
-          },
-          "name":"SequentialProjectiles"
-        }],
-      "skill_can_only_use_non_melee_weapons":[],
-      "support_barrage_damage_+%_final":[[{
-            "varList":[]
-          }]],
-      "number_of_additional_projectiles":[[{
-            "varList":[]
-          }]]
-    },
-    "weaponTypes":[],
-    "description":"Supports projectile attack skills that use bows or wands. Cannot support triggered skills, channelled skills, or skills that create Minions.",
-    "name":"Barrage Support",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportCastOnCrit":{
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "excludeSkillTypes":[],
-    "levels":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
-    "stats":[],
-    "constantStats":[[]],
-    "statMap":{
-      "support_cast_on_crit_spell_damage_+%_final":[]
-    },
-    "name":"Cast On Critical Strike",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportForkPlus":{
-    "plusVersionOf":"SupportFork",
-    "excludeSkillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "stats":[],
-    "constantStats":[["number_of_additional_forks_base"],[]],
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "statMap":{
-      "support_fork_projectile_damage_+%_final":[[]]
-    },
-    "description":"Supports projectile skills, making their projectiles fork into two projectiles the first two times they hit an enemy and don't pierce it.",
-    "name":"Awakened Fork",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportFasterAttack":{
-    "qualityStats":{
-      "Default":[["attack_speed_+%"]]
-    },
-    "excludeSkillTypes":[],
-    "stats":[],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "name":"Faster Attacks",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportFrenzyChargeOnSlayingFrozenEnemy":{
-    "qualityStats":{
-      "Default":[["damage_+%_per_frenzy_charge"]]
-    },
-    "baseEffectiveness":0.51819998025894,
-    "excludeSkillTypes":[],
-    "stats":["minimum_added_cold_damage_per_frenzy_charge","maximum_added_cold_damage_per_frenzy_charge",null,null,"chance_to_gain_frenzy_charge_on_killing_frozen_enemy_%"],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "1":0.079999998211861,
-        "2":0.11999999731779,
-        "3":0.36000001430511,
-        "4":0.54000002145767,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "incrementalEffectiveness":0.03770000115037,
-    "constantStats":[["base_chance_to_freeze_%"]],
-    "description":"Supports any skill you use to hit enemies yourself. Cannot support skills used by totems, traps, or mines.",
-    "name":"Ice Bite",
-    "addSkillTypes":[],
-    "requireSkillTypes":[]
-  },
-  "SupportCastOnCritTriggered":{
-    "qualityStats":{
-      "Default":[[]]
-    },
-    "excludeSkillTypes":[],
-    "stats":[],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
     "statMap":{
       "support_cast_on_crit_spell_damage_+%_final":[[]]
     },
@@ -5857,21 +4937,21 @@
     "addSkillTypes":[],
     "requireSkillTypes":[null,109]
   },
-  "SupportReturningProjectiles":{
+  "SupportAddedColdDamage":{
     "qualityStats":{
       "Default":[[]]
     },
+    "baseEffectiveness":0.58050000667572,
     "excludeSkillTypes":[],
-    "stats":["support_return_returning_projectiles_damage_+%_final","projectiles_return","returning_projectiles_always_pierce"],
+    "stats":[],
+    "incrementalEffectiveness":0.035900000482798,
     "levels":[{
         "statInterpolation":[]
       },{
-        "1":-70,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
       },{
-        "1":-69,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -5946,11 +5026,11 @@
       },{
         "statInterpolation":[]
       }],
-    "name":"Returning Projectiles",
+    "name":"Added Cold Damage",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "SupportDamageAgainstChilled":{
+  "SupportHypothermia":{
     "qualityStats":{
       "Default":[["additional_chance_to_freeze_chilled_enemies_%"]]
     },
@@ -6055,12 +5135,12 @@
     "addSkillTypes":[],
     "requireSkillTypes":[]
   },
-  "SupportGemFrenzyPowerOnTrapTrigger":{
+  "SupportColdPenetration":{
     "qualityStats":{
       "Default":[[]]
     },
     "excludeSkillTypes":[],
-    "stats":["%_chance_to_gain_power_charge_on_trap_triggered_by_an_enemy","%_chance_to_gain_frenzy_charge_on_trap_triggered_by_an_enemy"],
+    "stats":[],
     "levels":[{
         "statInterpolation":[]
       },{
@@ -6142,16 +5222,1051 @@
       },{
         "statInterpolation":[]
       }],
-    "constantStats":[["trap_throwing_speed_+%_per_frenzy_charge"],["trap_critical_strike_multiplier_+_per_power_charge"]],
+    "name":"Cold Penetration",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportAwakenedFork":{
+    "plusVersionOf":"SupportFork",
+    "excludeSkillTypes":[],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "stats":[],
+    "constantStats":[["number_of_additional_forks_base"],[]],
+    "qualityStats":{
+      "Default":[[]]
+    },
     "statMap":{
-      "trap_trigger_radius_":[{
-          "1":{
-            "var":"PowerCharge"
-          },
-          "name":"TrapTriggerAreaOfEffect"
+      "support_fork_projectile_damage_+%_final":[[]]
+    },
+    "description":"Supports projectile skills, making their projectiles fork into two projectiles the first two times they hit an enemy and don't pierce it.",
+    "name":"Awakened Fork",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportSwiftAssembly":{
+    "qualityStats":{
+      "Default":[[],[]]
+    },
+    "excludeSkillTypes":[],
+    "stats":["support_additional_trap_mine_%_chance_for_1_additional_trap_mine","support_additional_trap_mine_%_chance_for_2_additional_trap_mine","support_additional_trap_mine_%_chance_for_3_additional_trap_mine"],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "constantStats":[[],[]],
+    "name":"Swift Assembly",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportAwakenedChain":{
+    "plusVersionOf":"SupportChain",
+    "excludeSkillTypes":[],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "stats":[],
+    "constantStats":[[],[]],
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "statMap":{
+      "support_chain_hit_damage_+%_final":[[]]
+    },
+    "name":"Awakened Chain",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportMirageArcher":{
+    "qualityStats":{
+      "Default":[["attack_damage_+%"]]
+    },
+    "excludeSkillTypes":[],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "stats":["support_mirage_archer_damage_+%_final","skill_can_own_mirage_archers","summon_mirage_archer_on_hit","disable_skill_if_weapon_not_bow"],
+    "constantStats":[["support_mirage_archer_base_duration"],["support_mirage_archer_attack_speed_+%_final"],["mirage_archer_projectile_additional_height_offset",-138]],
+    "statMap":{
+      "summon_mirage_archer_on_hit":[{
+          "name":"MirageArcherMaxCount"
+        }],
+      "support_mirage_archer_attack_speed_+%_final":[{
+          "name":"MirageArcherLessAttackSpeed"
+        }],
+      "support_mirage_archer_base_duration":{
+        "1":{
+          "name":"MirageArcherDuration"
+        },
+        "div":1000
+      },
+      "support_mirage_archer_damage_+%_final":[{
+          "name":"MirageArcherLessDamage"
         }]
     },
-    "name":"Charged Traps",
+    "description":"Supports attack skills that can be used with bows. Supported skills can only be used with bows. Cannot support Vaal skills, minion skills, movement skills, or skills used by totems, traps, or mines.",
+    "name":"Mirage Archer",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportAwakenedArrowNova":{
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "excludeSkillTypes":[],
+    "weaponTypes":[],
+    "constantStats":[[]],
+    "statMap":{
+      "support_rain_projectile_damage_+%_final":[[]]
+    },
+    "stats":[],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "plusVersionOf":"SupportArrowNova",
+    "addSkillTypes":[],
+    "name":"Awakened Arrow Nova",
+    "requireSkillTypes":[]
+  },
+  "SupportMultipleTraps":{
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "excludeSkillTypes":[],
+    "stats":["support_multithrow_damage_+%_final"],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":-47,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":-46,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":-45,
+        "statInterpolation":[]
+      }],
+    "constantStats":[[],[],[]],
+    "statMap":{
+      "support_multithrow_damage_+%_final":[[]]
+    },
+    "description":"Supports traps skills, making them throw extra traps in a line.",
+    "name":"Multiple Traps",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportCullingStrike":{
+    "qualityStats":{
+      "Default":[["recover_%_maximum_life_on_cull",0.1]]
+    },
+    "excludeSkillTypes":[],
+    "stats":[null,"kill_enemy_on_hit_if_under_10%_life"],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "description":"Supports any skill that hits enemies. If enemies are left below 10% of maximum life after being hit by these skills, they will be killed.",
+    "name":"Culling Strike",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportCastOnCritTriggered":{
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "excludeSkillTypes":[],
+    "stats":[],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "statMap":{
+      "support_cast_on_crit_spell_damage_+%_final":[[]]
+    },
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportViciousProjectiles":{
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "excludeSkillTypes":[],
+    "stats":[],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "constantStats":[[]],
+    "statMap":{
+      "support_projectile_attack_speed_+%_final":[[]],
+      "support_projectile_attack_physical_damage_+%_final":[[]],
+      "support_phys_chaos_projectile_physical_damage_over_time_+%_final":[[]],
+      "support_phys_chaos_projectile_chaos_damage_over_time_+%_final":[[]]
+    },
+    "name":"Vicious Projectiles",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportIceBite":{
+    "qualityStats":{
+      "Default":[["damage_+%_per_frenzy_charge"]]
+    },
+    "baseEffectiveness":0.51819998025894,
+    "excludeSkillTypes":[],
+    "stats":["minimum_added_cold_damage_per_frenzy_charge","maximum_added_cold_damage_per_frenzy_charge",null,null,"chance_to_gain_frenzy_charge_on_killing_frozen_enemy_%"],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "1":0.079999998211861,
+        "2":0.11999999731779,
+        "3":0.36000001430511,
+        "4":0.54000002145767,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "incrementalEffectiveness":0.03770000115037,
+    "constantStats":[["base_chance_to_freeze_%"]],
+    "description":"Supports any skill you use to hit enemies yourself. Cannot support skills used by totems, traps, or mines.",
+    "name":"Ice Bite",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportImpale":{
+    "qualityStats":{
+      "Default":[["impale_debuff_effect_+%"]]
+    },
+    "excludeSkillTypes":[],
+    "stats":[],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "constantStats":[["attacks_impale_on_hit_%_chance"]],
+    "statMap":{
+      "impale_phys_reduction_%_penalty":[{
+          "name":"EnemyImpalePhysicalDamageReduction"
+        }],
+      "impale_support_physical_damage_+%_final":[[]]
+    },
+    "name":"Impale",
+    "addSkillTypes":[],
+    "requireSkillTypes":[]
+  },
+  "SupportReturningProjectiles":{
+    "qualityStats":{
+      "Default":[[]]
+    },
+    "excludeSkillTypes":[],
+    "stats":["support_return_returning_projectiles_damage_+%_final","projectiles_return","returning_projectiles_always_pierce"],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "1":-70,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":-69,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "name":"Returning Projectiles",
     "addSkillTypes":[],
     "requireSkillTypes":[]
   }
