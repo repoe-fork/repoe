@@ -86,6 +86,11 @@ class Properties(BaseModel):
     physical_damage_max: Optional[int] = None
     physical_damage_min: Optional[int] = None
     range: Optional[int] = None
+    mana_burn_ms: Optional[int] = None
+    cooldown_ms: Optional[int] = None
+    monster_id: Optional[str] = None
+    monster_ability_text: Optional[str] = None
+    monster_category: Optional[str] = None
 
 
 class BaseItemsSchemaValue(BaseModel):

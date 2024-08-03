@@ -9,8 +9,8 @@ from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, export_image, get_release_state, write_json
 
 
-def _create_default_dict(relation: DatReader) -> Dict:
-    d = {row["BaseItemTypesKey"]["Id"]: row for row in relation if row["BaseItemTypesKey"] is not None}
+def _create_default_dict(relation: DatReader, col="BaseItemTypesKey") -> Dict:
+    d = {row[col]["Id"]: row for row in relation if row[col] is not None}
     return defaultdict(lambda: None, d)
 
 
@@ -103,67 +103,20 @@ def _convert_currency_properties(currency_row: Optional[DatRecord], properties: 
     properties["stack_size_currency_tab"] = currency_row["CurrencyTab_StackSize"]
 
 
-ITEM_CLASS_WHITELIST = {
-    "LifeFlask",
-    "ManaFlask",
-    "HybridFlask",
-    "Currency",
-    "Amulet",
-    "Ring",
-    "Claw",
-    "Dagger",
-    "Rune Dagger",
-    "Wand",
-    "One Hand Sword",
-    "Thrusting One Hand Sword",
-    "One Hand Axe",
-    "One Hand Mace",
-    "Bow",
-    "Staff",
-    "Warstaff",
-    "Two Hand Sword",
-    "Two Hand Axe",
-    "Two Hand Mace",
-    "Active Skill Gem",
-    "Support Skill Gem",
-    "Quiver",
-    "Belt",
-    "Gloves",
-    "Boots",
-    "Body Armour",
-    "Helmet",
-    "Shield",
-    "StackableCurrency",
-    "Sceptre",
-    "UtilityFlask",
-    "UtilityFlaskCritical",
-    "FishingRod",
-    "Jewel",
-    "AbyssJewel",
-    "DivinationCard",
-    "Map",
-    "MapFragment",
-    "AtlasRegionUpgradeItem",
-    "ExpeditionLogbook",
-    "IncubatorStackable",
-    "AtlasUpgradeItem",
-    "SentinelDrone",
-    "DelveStackableSocketableCurrency",
-    "DelveSocketableCurrency",
-    "QuestItem",
-    "HeistContract",
-    "HeistBlueprint",
-    "HeistEquipmentWeapon",
-    "HeistEquipmentTool",
-    "HeistEquipmentUtility",
-    "HeistEquipmentReward",
-    "MemoryLine",
-    "Relic",
-    "SanctumSpecialRelic",
-    "GiftBox",
-    "Breachstone",
-    "VaultKey",
-}
+def _convert_tincture_properties(tincture_row: Optional[DatRecord], properties: Dict[str, Any]) -> None:
+    if tincture_row is None:
+        return
+    properties["mana_burn_ms"] = tincture_row["DebuffInterval"]
+    properties["cooldown_ms"] = tincture_row["Cooldown"]
+
+
+def _convert_corpse_properties(corpse_row: Optional[DatRecord], properties: Dict[str, Any]) -> None:
+    if corpse_row is None:
+        return
+    properties["monster_id"] = corpse_row["MonsterVariety"]["Id"]
+    properties["monster_ability_text"] = corpse_row["MonsterAbilities"]
+    properties["monster_category"] = corpse_row["MonsterCategory"]["Name"]
+
 
 ITEM_CLASS_BLACKLIST = {
     "LabyrinthTrinket",
@@ -198,6 +151,8 @@ class base_items(Parser_Module):
         flask_charges = _create_default_dict(relational_reader["ComponentCharges.dat64"])
         weapon_types = _create_default_dict(relational_reader["WeaponTypes.dat64"])
         currency_type = _create_default_dict(relational_reader["CurrencyItems.dat64"])
+        tincture_type = _create_default_dict(relational_reader["Tinctures.dat64"], "BaseItem")
+        corpse_type = _create_default_dict(relational_reader["ItemisedCorpse.dat64"], "BaseItem")
         # Not covered here: SkillGems.dat64 (see gems.py), Essences.dat64 (see essences.py)
 
         root = {}
@@ -205,11 +160,6 @@ class base_items(Parser_Module):
         for item in relational_reader["BaseItemTypes.dat64"]:
             if item["ItemClassesKey"]["Id"] in ITEM_CLASS_BLACKLIST:
                 skipped_item_classes.add(item["ItemClassesKey"]["Id"])
-                continue
-            elif item["ItemClassesKey"]["Id"] in ITEM_CLASS_WHITELIST:
-                pass
-            else:
-                print(f"Unknown item class, not in whitelist or blacklist: {item['ItemClassesKey']['Id']}")
                 continue
 
             it_path = item["InheritsFrom"] + ".it"
@@ -223,6 +173,8 @@ class base_items(Parser_Module):
             _convert_flask_charge_properties(flask_charges[item_id], properties)
             _convert_weapon_properties(weapon_types[item_id], properties)
             _convert_currency_properties(currency_type[item_id], properties)
+            _convert_tincture_properties(tincture_type[item_id], properties)
+            _convert_corpse_properties(corpse_type[item_id], properties)
             root[item_id] = {
                 "name": item["Name"],
                 "item_class": item["ItemClassesKey"]["Id"],
@@ -238,9 +190,11 @@ class base_items(Parser_Module):
                 "requirements": _convert_requirements(attribute_requirements[item_id], item["DropLevel"]),
                 "properties": properties,
                 "release_state": get_release_state(item_id).name,
-                "domain": mod_domain.name.lower()
-                if mod_domain and mod_domain is not MOD_DOMAIN.MODS_DISALLOWED
-                else "undefined",
+                "domain": (
+                    mod_domain.name.lower()
+                    if mod_domain and mod_domain is not MOD_DOMAIN.MODS_DISALLOWED
+                    else "undefined"
+                ),
             }
             _convert_flask_buff(flask_types[item_id], root[item_id])
 
