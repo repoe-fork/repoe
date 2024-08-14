@@ -102,6 +102,7 @@ class BaseItemsSchemaValue(BaseModel):
     implicits: List[str]
     inventory_height: int
     inventory_width: int
+    inherits_from: Optional[str] = None
     item_class: ItemClass
     name: str
     properties: Properties

@@ -6,7 +6,7 @@ from PyPoE.poe.file.dat import DatReader, DatRecord
 from PyPoE.poe.file.it import ITFileCache
 
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import call_with_default_args, export_image, get_release_state, write_json
+from RePoE.parser.util import call_with_default_args, export_image, get_release_state, write_json, write_any_json
 
 
 def _create_default_dict(relation: DatReader, col="BaseItemTypesKey") -> Dict:
@@ -156,14 +156,17 @@ class base_items(Parser_Module):
         # Not covered here: SkillGems.dat64 (see gems.py), Essences.dat64 (see essences.py)
 
         root = {}
+        itfiles = {}
         skipped_item_classes = set()
         for item in relational_reader["BaseItemTypes.dat64"]:
             if item["ItemClassesKey"]["Id"] in ITEM_CLASS_BLACKLIST:
                 skipped_item_classes.add(item["ItemClassesKey"]["Id"])
                 continue
 
-            it_path = item["InheritsFrom"] + ".it"
-            inherited_tags = list(self.get_cache(ITFileCache)[it_path]["Base"]["tag"])
+            it_path = item["InheritsFrom"]
+            itfile = self.get_cache(ITFileCache)[it_path + ".it"]
+            itfiles[it_path] = itfile
+            inherited_tags = list(itfile["Base"]["tag"])
             mod_domain = MOD_DOMAIN(item["ModDomain"])
             item_id = item["Id"]
             properties: Dict = {}
@@ -178,6 +181,7 @@ class base_items(Parser_Module):
             root[item_id] = {
                 "name": item["Name"],
                 "item_class": item["ItemClassesKey"]["Id"],
+                "inherits_from": it_path,
                 "inventory_width": item["Width"],
                 "inventory_height": item["Height"],
                 "drop_level": item["DropLevel"],
@@ -203,6 +207,8 @@ class base_items(Parser_Module):
 
         print(f"Skipped the following item classes for base_items {skipped_item_classes}")
         write_json(root, self.data_path, "base_items")
+        for k, v in itfiles.items():
+            write_any_json(v, self.data_path, k)
 
 
 if __name__ == "__main__":

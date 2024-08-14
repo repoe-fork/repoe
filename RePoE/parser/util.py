@@ -1,26 +1,24 @@
-from importlib import import_module
 import io
+import json
 import os
 import traceback
 from hashlib import md5
+from importlib import import_module
 from io import BytesIO
 from typing import Any, Optional
 
 from PIL import Image
+from pydantic import BaseModel
 from PyPoE.poe.file.dat import RelationalReader
 from PyPoE.poe.file.file_system import FileSystem
 from PyPoE.poe.file.specification.data import generated
-from pydantic import BaseModel
 
 from RePoE import __DATA_PATH__
 from RePoE.parser import Parser_Module
-from RePoE.parser.constants import (
-    LEGACY_ITEMS,
-    STAT_DESCRIPTION_NAMING_EXCEPTIONS,
-    UNIQUE_ONLY_ITEMS,
-    UNRELEASED_ITEMS,
-    ReleaseState,
-)
+from RePoE.parser.constants import (LEGACY_ITEMS,
+                                    STAT_DESCRIPTION_NAMING_EXCEPTIONS,
+                                    UNIQUE_ONLY_ITEMS, UNRELEASED_ITEMS,
+                                    ReleaseState)
 
 
 def get_id_or_none(relational_file_cell):
@@ -57,6 +55,25 @@ def write_model(
     print(" Done!")
 
 
+def write_any_json(
+    root_obj: Any,
+    data_path: str,
+    file_name: str,
+) -> None:
+    os.makedirs(os.path.join(data_path, *file_name.split("/")[:-1]), exist_ok=True)
+    print("Writing '" + str(file_name) + ".json' ...", end="", flush=True)
+    json.dump(root_obj, io.open(data_path + file_name + ".json", mode="w"), indent=2, sort_keys=True)
+    print(" Done!")
+    print("Writing '" + str(file_name) + ".min.json' ...", end="", flush=True)
+    json.dump(
+        root_obj,
+        io.open(data_path + file_name + ".min.json", mode="w"),
+        separators=(",", ":"),
+        sort_keys=True,
+    )
+    print(" Done!")
+
+
 def write_text(
     text: str,
     data_path: str,
@@ -87,13 +104,16 @@ def create_relational_reader(file_system: FileSystem, language: str) -> Relation
     )
 
 
-DEFAULT_GGPK_PATH = "C:/Program Files (x86)/Grinding Gear Games/Path of Exile"
+DEFAULT_GGPK_PATH = "/mnt/c/Program Files (x86)/Grinding Gear Games/Path of Exile"
 
 
 def call_with_default_args(module: type[Parser_Module]):
     file_system = load_file_system(DEFAULT_GGPK_PATH)
     return module(
-        file_system=file_system, data_path=__DATA_PATH__, relational_reader=create_relational_reader(file_system)
+        file_system=file_system,
+        data_path=__DATA_PATH__,
+        relational_reader=create_relational_reader(file_system, "English"),
+        language="English",
     ).write()
 
 
