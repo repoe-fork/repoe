@@ -207,8 +207,9 @@ class base_items(Parser_Module):
 
         print(f"Skipped the following item classes for base_items {skipped_item_classes}")
         write_json(root, self.data_path, "base_items")
-        for k, v in itfiles.items():
-            write_any_json(v, self.data_path, k)
+        if self.language == "English":
+            for k, v in itfiles.items():
+                write_any_json(v, self.data_path, k)
 
 
 if __name__ == "__main__":
