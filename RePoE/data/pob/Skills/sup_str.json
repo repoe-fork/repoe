@@ -4849,16 +4849,9 @@
     "stats":["attack_speed_+%_with_at_least_10_rage"],
     "constantStats":[["gain_x_rage_on_attack_hit"]],
     "statMap":{
-      "support_rage_gain_rage_on_melee_hit_cooldown_ms":[{
-          "1":{
-            "type":"GlobalEffect",
-            "effectType":"Buff",
-            "effectName":"Rage"
-          },
-          "name":"Condition:CanGainRage"
-        }],
       "attack_speed_+%_with_at_least_10_rage":[[{
-            "type":"MultiplierThreshold"
+            "type":"MultiplierThreshold",
+            "var":"Rage"
           }]]
     },
     "description":"Supports melee attack skills. Minions cannot gain rage.",
@@ -5999,6 +5992,7 @@
     "statMap":{
       "support_maimed_enemies_physical_damage_taken_+%":[{
           "1":{
+            "type":"GlobalEffect",
             "effectType":"Debuff",
             "effectName":"Maim"
           },
