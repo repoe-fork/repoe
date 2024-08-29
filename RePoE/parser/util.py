@@ -15,10 +15,13 @@ from PyPoE.poe.file.specification.data import generated
 
 from RePoE import __DATA_PATH__
 from RePoE.parser import Parser_Module
-from RePoE.parser.constants import (LEGACY_ITEMS,
-                                    STAT_DESCRIPTION_NAMING_EXCEPTIONS,
-                                    UNIQUE_ONLY_ITEMS, UNRELEASED_ITEMS,
-                                    ReleaseState)
+from RePoE.parser.constants import (
+    LEGACY_ITEMS,
+    STAT_DESCRIPTION_NAMING_EXCEPTIONS,
+    UNIQUE_ONLY_ITEMS,
+    UNRELEASED_ITEMS,
+    ReleaseState,
+)
 
 
 def get_id_or_none(relational_file_cell):
@@ -143,7 +146,15 @@ def get_stat_translation_file_name(game_file: str) -> Optional[str]:
         return None
 
 
-def export_image(ddsfile: str, data_path: str, file_system: FileSystem) -> None:
+def export_image(
+    ddsfile: str,
+    data_path: str,
+    file_system: FileSystem,
+    outfile: str | None = None,
+    box: tuple[int, int, int, int] | None = None,
+    check_hash=True,
+    extensions=[".png", ".webp"],
+) -> None:
     try:
         bytes = file_system.extract_dds(file_system.get_file(ddsfile))
     except Exception:
@@ -156,22 +167,25 @@ def export_image(ddsfile: str, data_path: str, file_system: FileSystem) -> None:
     if bytes[:4] != b"DDS ":
         print(f"{ddsfile} was not a dds file")
         return
-    dest = os.path.join(data_path, os.path.splitext(ddsfile)[0])
+    dest = os.path.join(data_path, os.path.splitext(outfile or ddsfile)[0])
     os.makedirs(os.path.dirname(dest), exist_ok=True)
 
-    # output images can vary slightly for the same input;
-    # hash the input data to avoid committing unnecessary changes
-    hashfile = dest + ".dds.md5sum"
-    exists = os.path.isfile(hashfile) and os.path.isfile(dest + ".png") and os.path.isfile(dest + ".webp")
-    with open(hashfile, "r+" if os.path.isfile(hashfile) else "w") as f:
-        hash = md5(bytes).hexdigest()
-        if exists and hash == f.read():
-            return
-        else:
-            f.seek(0)
-            f.write(hash)
-            f.truncate()
+    if check_hash:
+        # output images can vary slightly for the same input;
+        # hash the input data to avoid committing unnecessary changes
+        hashfile = dest + ".dds.md5sum"
+        exists = os.path.isfile(hashfile) and os.path.isfile(dest + ".png") and os.path.isfile(dest + ".webp")
+        with open(hashfile, "r+" if os.path.isfile(hashfile) else "w") as f:
+            hash = md5(bytes).hexdigest()
+            if exists and hash == f.read():
+                return
+            else:
+                f.seek(0)
+                f.write(hash)
+                f.truncate()
 
     with Image.open(BytesIO(bytes)) as image:
-        image.save(dest + ".png")
-        image.save(dest + ".webp")
+        if box:
+            image = image.crop(box)
+        for ext in extensions:
+            image.save(dest + ext)
