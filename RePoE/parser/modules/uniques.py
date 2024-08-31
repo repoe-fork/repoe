@@ -130,11 +130,14 @@ class uniques(Parser_Module):
                 },
             }
 
-            if self.language == "English" and item["ItemVisualIdentityKey"]["DDSFile"]:
+            if item["ItemVisualIdentityKey"]["DDSFile"]:
                 ddsfile: str = item["ItemVisualIdentityKey"]["DDSFile"]
                 name = escape(name) + (" (Alternate Art)" if item["IsAlternateArt"] else "")
-                html = html + f"\n\t<a href='{quote(ddsfile.replace('.dds', '.png'))}'>{name}</a><br>"
-                export_image(ddsfile, self.data_path, self.file_system)
+                href = ("" if self.language == "English" else "../") + ddsfile.replace(".dds", ".png")
+                html = html + f"\n\t<a href='{quote(href)}'>{name}</a><br>"
+                if self.language == "English":
+                    export_image(ddsfile, self.data_path, self.file_system)
+
         html = (
             html
             + """

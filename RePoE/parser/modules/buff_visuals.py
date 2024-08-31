@@ -1,6 +1,8 @@
 from collections import defaultdict
 from functools import cache
+import html
 import json
+from os import path
 import re
 
 from PyPoE.poe.file.dat import DatRecord
@@ -8,7 +10,8 @@ from PyPoE.poe.file.idl import IDLFile
 from PyPoE.poe.file.translations import TranslationFileCache
 
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import call_with_default_args, export_image, write_json
+from RePoE.parser.modules.buffs import BUFF_CATEGORIES
+from RePoE.parser.util import call_with_default_args, export_image, write_json, write_text
 
 BUFF_SOURCES = [
     {"dat": "BuffDefinitions", "key": "BuffVisualsKey"},
@@ -29,6 +32,8 @@ class buff_visuals(Parser_Module):
             self.relational_reader[definition["dat"] + ".dat64"].build_index(definition["key"])
 
         root = {}
+        by_icon = defaultdict(list)
+        id_by_icon = defaultdict(list)
 
         for record in self.relational_reader["BuffVisuals.dat64"]:
             visuals = {}
@@ -61,14 +66,6 @@ class buff_visuals(Parser_Module):
                 for row in self.relational_reader[definition["dat"] + ".dat64"].index[definition["key"]][record]:
                     source = self.source(row)
                     sources[definition["dat"]].append(source)
-            if "name" not in visuals:
-                source = [source for sourcetype in sources.values() for source in sourcetype if "name" in source]
-                if len(source) == 1:
-                    visuals["name"] = source[0].pop("name")
-            if "description" not in visuals:
-                source = [source for sourcetype in sources.values() for source in sourcetype if "description" in source]
-                if len(source) == 1:
-                    visuals["description"] = source[0].pop("description")
 
             if sources:
                 visuals["sources"] = sources
@@ -78,11 +75,79 @@ class buff_visuals(Parser_Module):
                 sounds.update(self.epkfile(epkfile))
 
             if sounds:
-                visuals["sounds"] = list(sounds)
+                visuals["sounds"] = sorted(sounds)
 
             root[record["Id"]] = visuals
+            if "icon" in visuals:
+                by_icon[visuals["icon"]].append(visuals)
+                id_by_icon[visuals["icon"]].append(record["Id"])
 
         write_json(root, self.data_path, "buff_visuals")
+        write_text(
+            f"""<!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <title>status effects ({self.language})</title>
+ <style type="text/css">
+  BODY {{ font-family : monospace, sans-serif;  color: black;}}
+  A:visited {{ text-decoration : none; margin : 0px; padding : 0px;}}
+  A:link    {{ text-decoration : none; margin : 0px; padding : 0px;}}
+  A:hover   {{ text-decoration: underline; background-color : yellow; margin : 0px; padding : 0px;}}
+  A:active  {{ margin : 0px; padding : 0px;}}
+  IMG {{ max-width: 64px; max-height: 64px;}}
+ </style>
+ <script>
+ function openAll() {{
+  document.querySelectorAll('details').forEach(e => e.setAttribute('open', true));
+ }}
+ function closeAll() {{
+  document.querySelectorAll('details').forEach(e => e.removeAttribute('open'));
+ }}
+ </script>
+</head>
+<body>
+{"".join(f'''
+  <div>
+    <h3>{' / '.join(sorted(set([buff["name"] for buff in buffs if "name" in buff] or [
+        source["name"]
+        for buff in buffs
+        for sources in buff.get("sources", {}).values()
+        for source in sources
+        if "name" in source
+    ])))}</h3>
+    <img src="./{html.escape(path.splitext(icon)[0])}.png" alt="status icon">
+    <details>
+      <summary>Details
+        <button onclick="openAll()">Show all</button>
+        <button onclick="closeAll()">Hide all</button>
+      </summary>
+      <p>BuffVisuals id(s): {", ".join(id_by_icon[icon])}</p>
+      <ul>{"".join(self.html(buff) for buff in buffs)}</ul>
+    </details>
+  </div>''' for icon, buffs in by_icon.items())}
+</body>
+</html>""",
+            self.data_path,
+            "buff_visuals.html",
+        )
+
+    def html(self, buff, type=""):
+        return (
+            (
+                f"""
+        <li>
+          <h4>{html.escape(buff["name"])}{f" ({buff['buff_category']})" if "buff_category" in buff else ""}</h4>
+          {f"<p>{html.escape(buff['description'])}</p>" if "description" in buff else ""}
+          {f"<p>{type} id: {buff['id']}" if "id" in buff else ""}
+          {f"<p>buff id: {buff['buff_id']}" if "buff_id" in buff else ""}
+        </li>
+"""
+                if "name" in buff
+                else ""
+            )
+            + "".join(self.html(buff, k) for k, buffs in buff.get("sources", {}).items() for buff in buffs)
+        )
 
     @cache
     def epkfile(self, epkfile):
@@ -121,10 +186,26 @@ class buff_visuals(Parser_Module):
             result["id"] = row["Id"]
         if "BaseType" in row.parent.columns_all:
             result["item"] = row["BaseType"]["Id"]
+
+        for col in ["BuffDefinitionsKey", "BuffDefinitionsKey1", "BuffDefinitionsKey2"]:
+            if col in row.parent.columns_all and row[col]:
+                buff = row[col]
+                result["buff_id"] = buff["Id"]
+                if buff["BuffCategory"] in BUFF_CATEGORIES:
+                    result["buff_category"] = BUFF_CATEGORIES[buff["BuffCategory"]]
+                if buff["Name"]:
+                    result["name"] = buff["Name"]
+                if buff["Description"]:
+                    result["description"] = buff["Description"]
+                break
+
         if "Name" in row.parent.columns_all and row["Name"]:
             result["name"] = row["Name"]
         if "Description" in row.parent.columns_all and row["Description"]:
             result["description"] = row["Description"]
+        if "BuffCategory" in row.parent.columns_all and row["BuffCategory"] in BUFF_CATEGORIES:
+            result["buff_category"] = BUFF_CATEGORIES[row["BuffCategory"]]
+
         return result
 
 
