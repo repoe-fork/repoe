@@ -69,7 +69,7 @@ jobs:
     - name: generate index.html
       run: |
         find -type d -exec tree {} -H '.' --dirsfirst -F -L 1 -T "RePoE - Game version $(cat ../version.txt)" -I 'index.html|schema_doc*' --noreport --charset utf-8 -o {}/index.html \;
-        sed -i 's|<h1>RePoE|<h1><a href="https://github.com/lvlvllvlvllvlvl/RePoE">RePoE</a>|' index.html
+        sed -i 's|<h1>RePoE|<h1><a href="https://github.com/repoe-fork/repoe-fork">RePoE</a>|' index.html
       working-directory: RePoE/RePoE/data/
     - name: commit changes
       id: autocommit
@@ -79,16 +79,6 @@ jobs:
         commit_message: "[skip ci] Automated export"
     - id: date
       run: echo "ym=$(date +'%Y-%m')" >> "$GITHUB_OUTPUT"
-    - name: lfs cache
-      uses: actions/cache@v4.0.2
-      if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
-      with:
-        path: RePoE/.git/lfs
-        key: lfs-${{ steps.date.outputs.ym }}
-    - name: lfs pull
-      if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
-      run: git lfs pull
-      working-directory: RePoE
     - name: upload gh-pages artifact
       if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
       uses: actions/upload-pages-artifact@v3.0.1
@@ -113,9 +103,3 @@ jobs:
       - name: deploy gh-pages
         id: deployment
         uses: actions/deploy-pages@v4.0.5
-      - name: trigger poetrage
-        uses: peter-evans/repository-dispatch@v3.0.0
-        with:
-          token: ${{ secrets.VERSION_COMMIT_PAT }}
-          repository: lvlvllvlvllvlvl/poetrage
-          event-type: build
