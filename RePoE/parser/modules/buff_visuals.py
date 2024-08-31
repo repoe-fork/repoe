@@ -30,6 +30,7 @@ class buff_visuals(Parser_Module):
         self.tc: TranslationFileCache = self.get_cache(TranslationFileCache)
         for definition in BUFF_SOURCES:
             self.relational_reader[definition["dat"] + ".dat64"].build_index(definition["key"])
+        self.img_path = "" if self.language == "English" else "../"
 
         root = {}
         by_icon = defaultdict(list)
@@ -91,32 +92,20 @@ class buff_visuals(Parser_Module):
  <title>status effects ({self.language})</title>
  <style type="text/css">
   BODY {{ font-family : monospace, sans-serif;  color: black;}}
-  A:visited {{ text-decoration : none; margin : 0px; padding : 0px;}}
-  A:link    {{ text-decoration : none; margin : 0px; padding : 0px;}}
-  A:hover   {{ text-decoration: underline; background-color : yellow; margin : 0px; padding : 0px;}}
-  A:active  {{ margin : 0px; padding : 0px;}}
   IMG {{ max-width: 64px; max-height: 64px;}}
  </style>
- <script>
- function openAll() {{
-  document.querySelectorAll('details').forEach(e => e.setAttribute('open', true));
- }}
- function closeAll() {{
-  document.querySelectorAll('details').forEach(e => e.removeAttribute('open'));
- }}
- </script>
 </head>
 <body>
 {"".join(f'''
-  <div>
-    <h3>{' / '.join(sorted(set([buff["name"] for buff in buffs if "name" in buff] or [
+  <div id="{html.escape(icon)}">
+    <h3>{html.escape(' / '.join(sorted(set([buff["name"] for buff in buffs if "name" in buff] or [
         source["name"]
         for buff in buffs
         for sources in buff.get("sources", {}).values()
         for source in sources
         if "name" in source
-    ])))}</h3>
-    <img src="./{html.escape(path.splitext(icon)[0])}.png" alt="status icon">
+    ]))))}</h3>
+    <img src="{self.img_path}{html.escape(path.splitext(icon)[0])}.png" alt="status icon">
     <details>
       <summary>Details
         <button onclick="openAll()">Show all</button>
@@ -126,10 +115,52 @@ class buff_visuals(Parser_Module):
       <ul>{"".join(self.html(buff) for buff in buffs)}</ul>
     </details>
   </div>''' for icon, buffs in by_icon.items())}
+<script>
+function openAll() {{
+  document.querySelectorAll('details').forEach(e => e.setAttribute('open', true));
+}}
+function closeAll() {{
+  document.querySelectorAll('details').forEach(e => e.removeAttribute('open'));
+}}
+if (window.location.hash) {{
+  document.getElementById(window.location.hash.substring(1))?.querySelector('details')?.setAttribute('open', true);
+}}
+</script>
 </body>
 </html>""",
             self.data_path,
             "buff_visuals.html",
+        )
+        write_text(
+            f"""<!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <title>status effects ({self.language})</title>
+ <style type="text/css">
+  BODY {{ font-family : monospace, sans-serif;  color: black;}}
+  IMG {{ max-width: 64px; max-height: 64px; padding: 0 2px;}}
+  DIV {{ float: left;}}
+ </style>
+</head>
+<body>
+{"".join(f'''
+  <div>
+    <a href="buff_visuals.html#{html.escape(icon)}">
+        <img src="{self.img_path}{html.escape(path.splitext(icon)[0])}.png" alt="status icon" title="{
+            html.escape(' / '.join(sorted(set([buff["name"] for buff in buffs if "name" in buff] or [
+                source["name"]
+                for buff in buffs
+                for sources in buff.get("sources", {}).values()
+                for source in sources
+                if "name" in source
+            ]))))}">
+    </a>
+  </div>''' for icon, buffs in by_icon.items())}
+</body>
+</html>""",
+            self.data_path,
+            "buff_visuals_grid.html",
         )
 
     def html(self, buff, type=""):
