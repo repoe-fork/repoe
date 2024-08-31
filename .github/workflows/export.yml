@@ -77,8 +77,6 @@ jobs:
       with:
         repository: RePoE
         commit_message: "[skip ci] Automated export"
-    - id: date
-      run: echo "ym=$(date +'%Y-%m')" >> "$GITHUB_OUTPUT"
     - name: upload gh-pages artifact
       if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
       uses: actions/upload-pages-artifact@v3.0.1

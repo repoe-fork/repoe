@@ -2,7 +2,6 @@ import io
 import json
 import os
 import traceback
-from hashlib import md5
 from importlib import import_module
 from io import BytesIO
 from typing import Any, Optional
@@ -148,13 +147,13 @@ def get_stat_translation_file_name(game_file: str) -> Optional[str]:
 
 exported_images = set()
 
+
 def export_image(
     ddsfile: str,
     data_path: str,
     file_system: FileSystem,
     outfile: str | None = None,
     box: tuple[int, int, int, int] | None = None,
-    check_hash=True,
     extensions=[".png", ".webp"],
 ) -> None:
     dest = os.path.join(data_path, os.path.splitext(outfile or ddsfile)[0])
@@ -175,20 +174,6 @@ def export_image(
     if bytes[:4] != b"DDS ":
         print(f"{ddsfile} was not a dds file")
         return
-
-    if check_hash:
-        # output images can vary slightly for the same input;
-        # hash the input data to avoid committing unnecessary changes
-        hashfile = dest + ".dds.md5sum"
-        exists = os.path.isfile(hashfile) and os.path.isfile(dest + ".png") and os.path.isfile(dest + ".webp")
-        with open(hashfile, "r+" if os.path.isfile(hashfile) else "w") as f:
-            hash = md5(bytes).hexdigest()
-            if exists and hash == f.read():
-                return
-            else:
-                f.seek(0)
-                f.write(hash)
-                f.truncate()
 
     with Image.open(BytesIO(bytes)) as image:
         if box:
