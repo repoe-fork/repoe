@@ -2,8 +2,7 @@
 
 Repository of Path of Exile resources for tool developers.
 
-Forked from [brather1ng/RePoE](https://github.com/brather1ng/RePoE); not using GitHub fork
-functionality due to [a bug](https://github.com/git-lfs/git-lfs/issues/1906).
+Forked from [brather1ng/RePoE](https://github.com/brather1ng/RePoE).
 
 Contains data about stats, mods, base items, gems and more. See the `data`
 folder for those files and the `docs` folder for their documentation.
