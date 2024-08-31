@@ -1,0 +1,167 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "additionalProperties": {
+        "$ref": "#/definitions/BuffsSchemaValue"
+    },
+    "definitions": {
+        "BuffsSchemaValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "invisible": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "removable": {
+                    "type": "boolean"
+                },
+                "stats": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "visuals": {
+                    "type": "string"
+                },
+                "category": {
+                    "$ref": "#/definitions/Category"
+                },
+                "sources": {
+                    "$ref": "#/definitions/Sources"
+                },
+                "templates": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/Template"
+                    }
+                },
+                "stack_limit": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "description",
+                "invisible",
+                "name",
+                "removable",
+                "stats",
+                "visuals"
+            ],
+            "title": "Buffs"
+        },
+        "Sources": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/Source"
+                }
+            },
+            "propertyNames": {
+                "enum": [
+                    "BlightTowerAuras",
+                    "BlightedSporeAuras",
+                    "CorpseTypeTags",
+                    "ExplodingStormBuffs",
+                    "Flasks",
+                    "LabyrinthSecretEffects",
+                    "LabyrinthTrinkets",
+                    "Mods",
+                    "PassiveSkills",
+                    "PlayerConditions",
+                    "RitualRuneTypes",
+                    "UltimatumModifiers"
+                ]
+            },
+            "required": [],
+            "title": "Sources"
+        },
+        "Source": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "item": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "template": {
+                    "type": "string"
+                },
+                "stat_text": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "stats": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "title": "Source"
+        },
+        "Template": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "aura_radius_metres": {
+                    "type": "number"
+                },
+                "stats": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
+                },
+                "stat_text": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "visuals": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "title": "Template"
+        },
+        "Category": {
+            "type": "string",
+            "enum": [
+                "Debuff",
+                "Charge",
+                "Buff",
+                "Active skill",
+                "Aspect",
+                "PVP team",
+                "Link",
+                "PVP flag",
+                "Mark",
+                "Hex",
+                "Stolen",
+                "Flask",
+                "Labyrinth trap",
+                "Herald",
+                "Buff shrine",
+                "Spell shrine",
+                "Tincture"
+            ],
+            "title": "Category"
+        }
+    }
+}

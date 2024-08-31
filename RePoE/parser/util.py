@@ -146,6 +146,8 @@ def get_stat_translation_file_name(game_file: str) -> Optional[str]:
         return None
 
 
+exported_images = set()
+
 def export_image(
     ddsfile: str,
     data_path: str,
@@ -155,6 +157,12 @@ def export_image(
     check_hash=True,
     extensions=[".png", ".webp"],
 ) -> None:
+    dest = os.path.join(data_path, os.path.splitext(outfile or ddsfile)[0])
+    if dest in exported_images:
+        return
+    exported_images.add(dest)
+    os.makedirs(os.path.dirname(dest), exist_ok=True)
+
     try:
         bytes = file_system.extract_dds(file_system.get_file(ddsfile))
     except Exception:
@@ -167,8 +175,6 @@ def export_image(
     if bytes[:4] != b"DDS ":
         print(f"{ddsfile} was not a dds file")
         return
-    dest = os.path.join(data_path, os.path.splitext(outfile or ddsfile)[0])
-    os.makedirs(os.path.dirname(dest), exist_ok=True)
 
     if check_hash:
         # output images can vary slightly for the same input;

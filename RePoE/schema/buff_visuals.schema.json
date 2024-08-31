@@ -1,0 +1,78 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "additionalProperties": {
+        "$ref": "#/definitions/BuffVisualsSchemaValue"
+    },
+    "definitions": {
+        "BuffVisualsSchemaValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "sources": {
+                    "$ref": "#/definitions/Sources"
+                },
+                "sounds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "custom_frame": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "title": "BuffVisuals"
+        },
+        "Sources": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/Source"
+                }
+            },
+            "propertyNames": {
+                "enum": [
+                    "BuffDefinitions",
+                    "BuffTemplates",
+                    "ExplodingStormBuffs",
+                    "LegionFactions",
+                    "DroneBaseTypes"
+                ]
+            },
+            "required": [],
+            "title": "Sources"
+        },
+        "Source": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "item": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "title": "Source"
+        }
+    }
+}
