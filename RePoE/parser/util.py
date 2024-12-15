@@ -8,9 +8,10 @@ from typing import Any, Optional
 
 from PIL import Image
 from pydantic import BaseModel
+import requests
 from PyPoE.poe.file.dat import RelationalReader
 from PyPoE.poe.file.file_system import FileSystem
-from PyPoE.poe.file.specification.data import generated
+from PyPoE.poe.file.specification.data import generated, poe2
 
 from RePoE import __DATA_PATH__
 from RePoE.parser import Parser_Module
@@ -86,12 +87,14 @@ def write_text(
         out.write(text)
     print(" Done!")
 
+def get_cdn_url(n: int):
+    return requests.get(f"https://lvlvllvlvllvlvl.github.io/poecdn-bundle-index/poe{n}/urls.json").json()["urls"][0]
 
 def load_file_system(ggpk_path: str) -> FileSystem:
     return FileSystem(ggpk_path)
 
 
-def create_relational_reader(file_system: FileSystem, language: str) -> RelationalReader:
+def create_relational_reader(file_system: FileSystem, language: str, poe2spec: bool) -> RelationalReader:
     opt = {
         "use_dat_value": False,
         "auto_build_index": True,
@@ -100,7 +103,7 @@ def create_relational_reader(file_system: FileSystem, language: str) -> Relation
     return RelationalReader(
         path_or_file_system=file_system,
         files=["Stats.dat64"],
-        specification=generated.specification,
+        specification=poe2.specification if poe2spec else generated.specification,
         read_options=opt,
         language=language,
     )

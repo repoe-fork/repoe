@@ -13,75 +13,76 @@ jobs:
       changes_detected: ${{ steps.autocommit.outputs.changes_detected }}
 
     steps:
-    - name: checkout
-      uses: actions/checkout@v4.2.0
-      with:
-        path: RePoE
-    - name: checkout pypoe
-      uses: actions/checkout@v4.2.0
-      with:
-        repository: lvlvllvlvllvlvl/PyPoE
-        path: PyPoE
-    - name: checkout pob
-      uses: actions/checkout@v4.2.0
-      with:
-        repository: PathOfBuildingCommunity/PathOfBuilding
-        path: PathOfBuilding
-    - uses: leafo/gh-actions-lua@v10.0.0
-      with:
-        luaVersion: luajit-openresty
-    - uses: leafo/gh-actions-luarocks@v4.3.0
-    - name: install a lua dependencies
-      run: |
-        luarocks install dkjson
-    - name: Install poetry
-      run: pipx install poetry
-    - name: setup python
-      uses: actions/setup-python@v5.2.0
-      with:
-        python-version: '3.11'
-        cache: poetry
-    - name: clean data dir
-      run: find RePoE/RePoE/data/ '(' -name '*.json' -o -name '*.html' -o -name '*.txt' ')' -delete -print | wc -l
-    - name: copy text files
-      run: cp RePoE/RePoE/*.txt RePoE/RePoE/data/
-    - name: lua export
-      run: |
-        find PathOfBuilding/src/Data/ -type d | sed 's|PathOfBuilding/src/Data|RePoE/RePoE/data/pob|g' | while read DIR; do mkdir -p $DIR; done
-        find PathOfBuilding/src/Data/ -name '*.lua' -exec lua RePoE/lua/Generate.lua '{}' RePoE/RePoE/data/pob/ \;
-    - name: install repoe
-      run: |
-        poetry install
-        poetry run pypoe_schema_import -a stable
-      working-directory: RePoE/RePoE
-    - name: update models
-      run: |
-        for i in *.schema.json
-        do
-          poetry run datamodel-codegen --input $i --input-file-type jsonschema --output ../model/${i/.schema.json/.py} --output-model-type pydantic_v2.BaseModel --disable-timestamp --use-double-quotes
-        done
-        poetry run generate-schema-doc --config footer_show_time=false ./ ../data/
-      working-directory: RePoE/RePoE/schema
-    - name: run export
-      run: |
-        poetry run repoe all -l all -f "https://patch.poecdn.com/$(<version.txt)/"
-      working-directory: RePoE/RePoE
-    - name: generate index.html
-      run: |
-        find -type d -exec tree {} -H '.' --dirsfirst -F -L 1 -T "RePoE - Game version $(cat ../version.txt)" -I 'index.html|schema_doc*' --noreport --charset utf-8 -o {}/index.html \;
-        sed -i 's|<h1>RePoE|<h1><a href="https://github.com/repoe-fork/repoe-fork">RePoE</a>|' index.html
-      working-directory: RePoE/RePoE/data/
-    - name: commit changes
-      id: autocommit
-      uses: stefanzweifel/git-auto-commit-action@v5.0.1
-      with:
-        repository: RePoE
-        commit_message: "[skip ci] Automated export"
-    - name: upload gh-pages artifact
-      if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
-      uses: actions/upload-pages-artifact@v3.0.1
-      with:
-        path: RePoE/RePoE/data/
+      - name: checkout
+        uses: actions/checkout@v4.2.0
+        with:
+          path: RePoE
+      - name: checkout pypoe
+        uses: actions/checkout@v4.2.0
+        with:
+          repository: lvlvllvlvllvlvl/PyPoE
+          path: PyPoE
+      - name: checkout pob
+        uses: actions/checkout@v4.2.0
+        with:
+          repository: PathOfBuildingCommunity/PathOfBuilding
+          path: PathOfBuilding
+      - uses: leafo/gh-actions-lua@v10.0.0
+        with:
+          luaVersion: luajit-openresty
+      - uses: leafo/gh-actions-luarocks@v4.3.0
+      - name: install a lua dependencies
+        run: |
+          luarocks install dkjson
+      - name: Install poetry
+        run: pipx install poetry
+      - name: setup python
+        uses: actions/setup-python@v5.2.0
+        with:
+          python-version: "3.11"
+          cache: poetry
+      - name: clean data dir
+        run: find RePoE/RePoE/data/ '(' -name '*.json' -o -name '*.html' -o -name '*.txt' ')' -delete -print | wc -l
+      - name: copy text files
+        run: cp RePoE/RePoE/*.txt RePoE/RePoE/data/
+      - name: lua export
+        run: |
+          find PathOfBuilding/src/Data/ -type d | sed 's|PathOfBuilding/src/Data|RePoE/RePoE/data/pob|g' | while read DIR; do mkdir -p $DIR; done
+          find PathOfBuilding/src/Data/ -name '*.lua' -exec lua RePoE/lua/Generate.lua '{}' RePoE/RePoE/data/pob/ \;
+      - name: install repoe
+        run: |
+          poetry install
+          poetry run pypoe_schema_import -a stable
+        working-directory: RePoE/RePoE
+      - name: update models
+        run: |
+          for i in *.schema.json
+          do
+            poetry run datamodel-codegen --input $i --input-file-type jsonschema --output ../model/${i/.schema.json/.py} --output-model-type pydantic_v2.BaseModel --disable-timestamp --use-double-quotes
+          done
+          poetry run generate-schema-doc --config footer_show_time=false ./ ../data/
+        working-directory: RePoE/RePoE/schema
+      - name: run export
+        run: |
+          poetry run repoe all -l all
+          poetry run repoe all -l all --poe2
+        working-directory: RePoE/RePoE
+      - name: generate index.html
+        run: |
+          find -type d -exec tree {} -H '.' --dirsfirst -F -L 1 -T "RePoE - Game version $(cat ../version.txt)" -I 'index.html|schema_doc*' --noreport --charset utf-8 -o {}/index.html \;
+          sed -i 's|<h1>RePoE|<h1><a href="https://github.com/repoe-fork/repoe-fork">RePoE</a>|' index.html
+        working-directory: RePoE/RePoE/data/
+      - name: commit changes
+        id: autocommit
+        uses: stefanzweifel/git-auto-commit-action@v5.0.1
+        with:
+          repository: RePoE
+          commit_message: "[skip ci] Automated export"
+      - name: upload gh-pages artifact
+        if: github.event_name == 'workflow_dispatch' || steps.autocommit.outputs.changes_detected == 'true'
+        uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          path: RePoE/RePoE/data/
 
   deploy:
     runs-on: ubuntu-latest
