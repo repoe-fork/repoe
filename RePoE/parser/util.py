@@ -87,8 +87,10 @@ def write_text(
         out.write(text)
     print(" Done!")
 
+
 def get_cdn_url(n: int):
     return requests.get(f"https://lvlvllvlvllvlvl.github.io/poecdn-bundle-index/poe{n}/urls.json").json()["urls"][0]
+
 
 def load_file_system(ggpk_path: str) -> FileSystem:
     return FileSystem(ggpk_path)
@@ -102,7 +104,6 @@ def create_relational_reader(file_system: FileSystem, language: str, poe2spec: b
     }
     return RelationalReader(
         path_or_file_system=file_system,
-        files=["Stats.dat64"],
         specification=poe2.specification if poe2spec else generated.specification,
         read_options=opt,
         language=language,
