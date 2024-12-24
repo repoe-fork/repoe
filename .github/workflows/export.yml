@@ -69,7 +69,7 @@ jobs:
         working-directory: RePoE/RePoE
       - name: generate index.html
         run: |
-          find -type d -exec tree {} -H '.' --dirsfirst -F -L 1 -T "RePoE - Game version $(cat ../version.txt)" -I 'index.html|schema_doc*' --noreport --charset utf-8 -o {}/index.html \;
+          find -type d -exec tree {} -H '.' --dirsfirst -F -L 1 -T "RePoE - Game version $(cat ../version.txt) / $(cat ../version2.txt)" -I 'index.html|schema_doc*' --noreport --charset utf-8 -o {}/index.html \;
           sed -i 's|<h1>RePoE|<h1><a href="https://github.com/repoe-fork/repoe-fork">RePoE</a>|' index.html
         working-directory: RePoE/RePoE/data/
       - name: commit changes
