@@ -11,7 +11,7 @@ from PyPoE.poe.file.translations import TranslationFileCache
 
 from RePoE.parser import Parser_Module
 from RePoE.parser.modules.buffs import BUFF_CATEGORIES
-from RePoE.parser.util import call_with_default_args, export_image, write_json, write_text
+from RePoE.parser.util import call_with_default_args, export_image, write_json, write_text, crop
 
 BUFF_SOURCES = [
     {"dat": "BuffDefinitions", "key": "BuffVisualsKey"},
@@ -59,7 +59,7 @@ class buff_visuals(Parser_Module):
                         self.data_path,
                         self.file_system,
                         image.destination,
-                        (image.x1, image.y1, image.x2 + 1, image.y2 + 1),
+                        compose=crop(image.x1, image.y1, image.x2 + 1, image.y2 + 1),
                     )
 
             sources = defaultdict(list)

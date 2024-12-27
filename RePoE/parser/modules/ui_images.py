@@ -1,6 +1,6 @@
 from typing import Iterator
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import call_with_default_args, export_image
+from RePoE.parser.util import call_with_default_args, export_image, crop
 from PyPoE.poe.file.idl import IDLFile, IDLRecord
 
 IMAGES_TO_EXPORT = set("Art/2DArt/UIImages/InGame/" + image for image in ["Buff", "Debuff", "Flask", "Charges"])
@@ -20,7 +20,7 @@ class ui_images(Parser_Module):
                     self.data_path,
                     self.file_system,
                     record.destination,
-                    (record.x1, record.y1, record.x2 + 1, record.y2 + 1),
+                    compose=crop(record.x1, record.y1, record.x2 + 1, record.y2 + 1),
                 )
 
 

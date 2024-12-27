@@ -2,6 +2,7 @@ import io
 import json
 import os
 import traceback
+from collections.abc import Callable
 from importlib import import_module
 from io import BytesIO
 from typing import Any, Optional
@@ -29,9 +30,9 @@ def get_id_or_none(relational_file_cell):
 
 
 def write_json(
-    root_obj: Any,
-    data_path: str,
-    file_name: str,
+        root_obj: Any,
+        data_path: str,
+        file_name: str,
 ) -> None:
     model_name = file_name.split("/")[0]
     mod = import_module("RePoE.model." + model_name)
@@ -43,25 +44,26 @@ def write_json(
 
 
 def write_model(
-    root_obj: BaseModel,
-    data_path: str,
-    file_name: str,
+        root_obj: BaseModel,
+        data_path: str,
+        file_name: str,
 ) -> None:
     os.makedirs(os.path.join(data_path, *file_name.split("/")[:-1]), exist_ok=True)
-    print("Writing '" + str(file_name) + ".json' ...", end="", flush=True)
-    with io.open(data_path + file_name + ".json", mode="w") as out:
+    path = os.path.abspath(data_path + file_name)
+    print("Writing '" + path + ".json' ...", end="", flush=True)
+    with io.open(path + ".json", mode="w") as out:
         out.write(root_obj.model_dump_json(indent=2))
     print(" Done!")
-    print("Writing '" + str(file_name) + ".min.json' ...", end="", flush=True)
-    with io.open(data_path + file_name + ".min.json", mode="w") as out:
+    print("Writing '" + path + ".min.json' ...", end="", flush=True)
+    with io.open(path + ".min.json", mode="w") as out:
         out.write(root_obj.model_dump_json(exclude_unset=True, exclude_none=True))
     print(" Done!")
 
 
 def write_any_json(
-    root_obj: Any,
-    data_path: str,
-    file_name: str,
+        root_obj: Any,
+        data_path: str,
+        file_name: str,
 ) -> None:
     os.makedirs(os.path.join(data_path, *file_name.split("/")[:-1]), exist_ok=True)
     print("Writing '" + str(file_name) + ".json' ...", end="", flush=True)
@@ -78,9 +80,9 @@ def write_any_json(
 
 
 def write_text(
-    text: str,
-    data_path: str,
-    file_name: str,
+        text: str,
+        data_path: str,
+        file_name: str,
 ) -> None:
     print("Writing '" + str(file_name) + "' ...", end="", flush=True)
     with io.open(data_path + file_name, mode="w") as out:
@@ -152,13 +154,24 @@ def get_stat_translation_file_name(game_file: str) -> Optional[str]:
 exported_images = set()
 
 
+def crop(x1, y1, x2, y2):
+    return lambda image: image.crop((x1, y1, x2, y2))
+
+
+def compose_flask(img: Image):
+    layer1 = img.crop((78, 0, 156, 156))
+    layer2 = img.crop((156, 0, 234, 156))
+    layer3 = img.crop((0, 0, 78, 156))
+    return Image.alpha_composite(layer1, Image.alpha_composite(layer2, layer3))
+
+
 def export_image(
-    ddsfile: str,
-    data_path: str,
-    file_system: FileSystem,
-    outfile: str | None = None,
-    box: tuple[int, int, int, int] | None = None,
-    extensions=[".png", ".webp"],
+        ddsfile: str,
+        data_path: str,
+        file_system: FileSystem,
+        outfile: str | None = None,
+        extensions=[".png", ".webp"],
+        compose: Callable[[Image], Image] | None = None
 ) -> None:
     dest = os.path.join(data_path, os.path.splitext(outfile or ddsfile)[0])
     if dest in exported_images:
@@ -180,7 +193,7 @@ def export_image(
         return
 
     with Image.open(BytesIO(bytes)) as image:
-        if box:
-            image = image.crop(box)
+        if compose:
+            image = compose(image)
         for ext in extensions:
             image.save(dest + ext)
