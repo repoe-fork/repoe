@@ -14,7 +14,7 @@ from PyPoE.poe.file.dat import RelationalReader
 from PyPoE.poe.file.file_system import FileSystem
 from PyPoE.poe.file.specification.data import generated, poe2
 
-from RePoE import __DATA_PATH__
+from RePoE import __DATA_PATH__, __POE2_DATA_PATH__
 from RePoE.parser import Parser_Module
 from RePoE.parser.constants import (
     LEGACY_ITEMS,
@@ -115,12 +115,12 @@ def create_relational_reader(file_system: FileSystem, language: str, poe2spec: b
 DEFAULT_GGPK_PATH = "/mnt/c/Program Files (x86)/Grinding Gear Games/Path of Exile"
 
 
-def call_with_default_args(module: type[Parser_Module]):
-    file_system = load_file_system(DEFAULT_GGPK_PATH)
+def call_with_default_args(module: type[Parser_Module], poe2spec=False):
+    file_system = load_file_system(get_cdn_url(2 if poe2spec else 1))
     return module(
         file_system=file_system,
-        data_path=__DATA_PATH__,
-        relational_reader=create_relational_reader(file_system, "English"),
+        data_path=__POE2_DATA_PATH__ if poe2spec else __DATA_PATH__,
+        relational_reader=create_relational_reader(file_system, "English", poe2spec),
         language="English",
     ).write()
 

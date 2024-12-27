@@ -1,6 +1,7 @@
 import re
 from html import escape
 from urllib.parse import quote
+
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, export_image, write_json, write_text, compose_flask
 
@@ -51,7 +52,9 @@ class uniques(Parser_Module):
         Unique stash tab contents
     </h2>""")
 
-        for item in self.relational_reader["UniqueStashLayout.dat64"]:
+        stash_type = ""
+        for item in sorted(self.relational_reader["UniqueStashLayout.dat64"],
+                           key=lambda i: (i["UniqueStashTypesKey"]["Name"], i["WordsKey"]["Text2"])):
             name = item["WordsKey"]["Text2"]
             names.discard(name)
             root[str(item.rowid)] = {
@@ -76,6 +79,9 @@ class uniques(Parser_Module):
             }
 
             if item["ItemVisualIdentityKey"]["DDSFile"]:
+                if stash_type != item["UniqueStashTypesKey"]["Name"]:
+                    stash_type = item["UniqueStashTypesKey"]["Name"]
+                    html = html + f"\n\t<h3>{escape(stash_type)}</h3>"
                 ddsfile: str = item["ItemVisualIdentityKey"]["DDSFile"]
                 ddsfiles.pop(ddsfile, None)
                 composition = item["ItemVisualIdentityKey"]["Composition"]
@@ -122,4 +128,4 @@ class uniques(Parser_Module):
 
 
 if __name__ == "__main__":
-    call_with_default_args(uniques)
+    call_with_default_args(uniques, True)
