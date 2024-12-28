@@ -1,6 +1,7 @@
 import io
 import json
 import os
+import sys
 import traceback
 from collections.abc import Callable
 from importlib import import_module
@@ -115,7 +116,7 @@ def create_relational_reader(file_system: FileSystem, language: str, poe2spec: b
 DEFAULT_GGPK_PATH = "/mnt/c/Program Files (x86)/Grinding Gear Games/Path of Exile"
 
 
-def call_with_default_args(module: type[Parser_Module], poe2spec=False):
+def call_with_default_args(module: type[Parser_Module], poe2spec='poe2' in sys.argv[0]):
     file_system = load_file_system(get_cdn_url(2 if poe2spec else 1))
     return module(
         file_system=file_system,
