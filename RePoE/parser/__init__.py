@@ -24,7 +24,7 @@ class Parser_Module:
 
     def get_cache(self, cache_type: type) -> AbstractFileCache:
         if cache_type not in self.caches:
-            self.caches[cache_type] = cache_type(self.file_system)
+            self.caches[cache_type] = cache_type(self.file_system, sequel=2)
         return self.caches[cache_type]
 
     def write(self) -> None:
