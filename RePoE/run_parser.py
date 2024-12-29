@@ -57,14 +57,21 @@ def main():
 
     for language in LANGS.keys() if args.language == "all" else [args.language]:
 
-
         data_path = __POE2_DATA_PATH__ if args.poe2 else __DATA_PATH__
         data_path = data_path if language == "English" else os.path.join(data_path, language, "")
         rr = create_relational_reader(file_system, language, args.poe2)
+        caches = {}
 
         for parser_module in modules:
             print(f"Running module '{parser_module.__name__}' ({language})")
-            parser_module(file_system=file_system, data_path=data_path, relational_reader=rr, language=language).write()
+            parser_module(
+                file_system=file_system,
+                data_path=data_path,
+                relational_reader=rr,
+                language=language,
+                caches=caches,
+                sequel=2 if args.poe2 else 1,
+            ).write()
 
     # This forces the globals to be up to date with what we just parsed,
     # in case someone uses `run_parser` within a script

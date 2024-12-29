@@ -40,7 +40,8 @@ def write_json(
     try:
         write_model(mod.Model(root_obj), data_path, file_name)
     except Exception:
-        print("Model:", mod.__file__, "Schema:", os.path.abspath(f"./schema/{model_name}.schema.json"))
+        print("Model:", mod.__file__, "Schema:",
+              os.path.abspath(f"./schema/{model_name}.schema.json"))
         raise
 
 
@@ -68,7 +69,8 @@ def write_any_json(
 ) -> None:
     os.makedirs(os.path.join(data_path, *file_name.split("/")[:-1]), exist_ok=True)
     print("Writing '" + str(file_name) + ".json' ...", end="", flush=True)
-    json.dump(root_obj, io.open(data_path + file_name + ".json", mode="w"), indent=2, sort_keys=True)
+    json.dump(root_obj, io.open(data_path + file_name + ".json", mode="w"), indent=2,
+              sort_keys=True)
     print(" Done!")
     print("Writing '" + str(file_name) + ".min.json' ...", end="", flush=True)
     json.dump(
@@ -92,14 +94,17 @@ def write_text(
 
 
 def get_cdn_url(n: int):
-    return requests.get(f"https://lvlvllvlvllvlvl.github.io/poecdn-bundle-index/poe{n}/urls.json").json()["urls"][0]
+    return \
+    requests.get(f"https://lvlvllvlvllvlvl.github.io/poecdn-bundle-index/poe{n}/urls.json").json()[
+        "urls"][0]
 
 
 def load_file_system(ggpk_path: str) -> FileSystem:
     return FileSystem(ggpk_path)
 
 
-def create_relational_reader(file_system: FileSystem, language: str, poe2spec: bool) -> RelationalReader:
+def create_relational_reader(file_system: FileSystem, language: str,
+                             poe2spec: bool) -> RelationalReader:
     opt = {
         "use_dat_value": False,
         "auto_build_index": True,
@@ -123,6 +128,8 @@ def call_with_default_args(module: type[Parser_Module], poe2spec='poe2' in sys.a
         data_path=__POE2_DATA_PATH__ if poe2spec else __DATA_PATH__,
         relational_reader=create_relational_reader(file_system, "English", poe2spec),
         language="English",
+        caches={},
+        sequel=2 if poe2spec else 1,
     ).write()
 
 
