@@ -6,7 +6,8 @@ from PyPoE.poe.file.dat import DatReader, DatRecord
 from PyPoE.poe.file.it import ITFileCache
 
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import call_with_default_args, export_image, get_release_state, write_json, write_any_json
+from RePoE.parser.util import call_with_default_args, export_image, get_release_state, write_json, \
+    write_any_json
 
 
 def _create_default_dict(relation: DatReader, col="BaseItemTypesKey") -> Dict:
@@ -24,7 +25,8 @@ def _add_if_not_zero(value: int, key: str, obj: Dict[str, Any]) -> None:
         obj[key] = value
 
 
-def _convert_requirements(attribute_requirements: Optional[DatRecord], drop_level: int) -> Optional[Dict[str, int]]:
+def _convert_requirements(attribute_requirements: Optional[DatRecord], drop_level: int) -> Optional[
+    Dict[str, int]]:
     if attribute_requirements is None:
         return None
     return {
@@ -75,7 +77,8 @@ def _convert_flask_buff(flask_row: Optional[DatRecord], item_object: Dict[str, A
         item_object["grants_buff"]["stats"][stat["Id"]] = value
 
 
-def _convert_flask_charge_properties(flask_row: Optional[DatRecord], properties: Dict[str, Any]) -> None:
+def _convert_flask_charge_properties(flask_row: Optional[DatRecord],
+                                     properties: Dict[str, Any]) -> None:
     if flask_row is None:
         return
     properties["charges_max"] = flask_row["MaxCharges"]
@@ -92,7 +95,8 @@ def _convert_weapon_properties(weapon_row: Optional[DatRecord], properties: Dict
     properties["range"] = weapon_row["RangeMax"]
 
 
-def _convert_currency_properties(currency_row: Optional[DatRecord], properties: Dict[str, Any]) -> None:
+def _convert_currency_properties(currency_row: Optional[DatRecord],
+                                 properties: Dict[str, Any]) -> None:
     if currency_row is None:
         return
     properties["stack_size"] = currency_row["StackSize"]
@@ -129,7 +133,8 @@ ITEM_CLASS_BLACKLIST = {
 class base_items(Parser_Module):
     def write(self) -> None:
         relational_reader = self.relational_reader
-        attribute_requirements = _create_default_dict(relational_reader["AttributeRequirements.dat64"])
+        attribute_requirements = _create_default_dict(
+            relational_reader["AttributeRequirements.dat64"], col="BaseItemType")
         armour_types = _create_default_dict(relational_reader["ArmourTypes.dat64"])
         shield_types = _create_default_dict(relational_reader["ShieldTypes.dat64"])
         flask_types = _create_default_dict(relational_reader["Flasks.dat64"])
@@ -142,8 +147,8 @@ class base_items(Parser_Module):
         itfiles = {}
         skipped_item_classes = set()
         for item in relational_reader["BaseItemTypes.dat64"]:
-            if item["ItemClassesKey"]["Id"] in ITEM_CLASS_BLACKLIST:
-                skipped_item_classes.add(item["ItemClassesKey"]["Id"])
+            if item["ItemClass"]["Id"] in ITEM_CLASS_BLACKLIST:
+                skipped_item_classes.add(item["ItemClass"]["Id"])
                 continue
 
             it_path = item["InheritsFrom"]
@@ -161,7 +166,7 @@ class base_items(Parser_Module):
             _convert_currency_properties(currency_type[item_id], properties)
             root[item_id] = {
                 "name": item["Name"],
-                "item_class": item["ItemClassesKey"]["Id"],
+                "item_class": item["ItemClass"]["Id"],
                 "inherits_from": it_path,
                 "inventory_width": item["Width"],
                 "inventory_height": item["Height"],
@@ -172,7 +177,10 @@ class base_items(Parser_Module):
                     "id": item["ItemVisualIdentity"]["Id"],
                     "dds_file": item["ItemVisualIdentity"]["DDSFile"],
                 },
-                "requirements": _convert_requirements(attribute_requirements[item_id], item["DropLevel"]),
+                "requirements": _convert_requirements(
+                    attribute_requirements[item_id],
+                    item["DropLevel"],
+                ),
                 "properties": properties,
                 "release_state": get_release_state(item_id).name,
                 "domain": (
@@ -184,7 +192,8 @@ class base_items(Parser_Module):
             _convert_flask_buff(flask_types[item_id], root[item_id])
 
             if self.language == "English" and item["ItemVisualIdentity"]["DDSFile"]:
-                export_image(item["ItemVisualIdentity"]["DDSFile"], self.data_path, self.file_system)
+                export_image(item["ItemVisualIdentity"]["DDSFile"], self.data_path,
+                             self.file_system)
 
         print(f"Skipped the following item classes for base_items {skipped_item_classes}")
         write_json(root, self.data_path, "base_items")

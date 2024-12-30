@@ -14,7 +14,7 @@ from RePoE.parser.modules.buffs import BUFF_CATEGORIES
 from RePoE.parser.util import call_with_default_args, export_image, write_json, write_text, crop
 
 BUFF_SOURCES = [
-    {"dat": "BuffDefinitions", "key": "BuffVisualsKey"},
+    {"dat": "BuffDefinitions", "key": "BuffVisual"},
     {"dat": "BuffTemplates", "key": "BuffVisualsKey"},
 ]
 
@@ -215,17 +215,15 @@ if (window.location.hash) {{
         if "BaseType" in row.parent.columns_all:
             result["item"] = row["BaseType"]["Id"]
 
-        for col in ["BuffDefinitionsKey", "BuffDefinitionsKey1", "BuffDefinitionsKey2"]:
-            if col in row.parent.columns_all and row[col]:
-                buff = row[col]
-                result["buff_id"] = buff["Id"]
-                if buff["BuffCategory"] in BUFF_CATEGORIES:
-                    result["buff_category"] = BUFF_CATEGORIES[buff["BuffCategory"]]
-                if buff["Name"]:
-                    result["name"] = buff["Name"]
-                if buff["Description"]:
-                    result["description"] = buff["Description"]
-                break
+        if "BuffDefinition" in row.parent.columns_all and row["BuffDefinition"]:
+            buff = row["BuffDefinition"]
+            result["buff_id"] = buff["Id"]
+            if buff["BuffCategory"] in BUFF_CATEGORIES:
+                result["buff_category"] = BUFF_CATEGORIES[buff["BuffCategory"]]
+            if buff["Name"]:
+                result["name"] = buff["Name"]
+            if buff["Description"]:
+                result["description"] = buff["Description"]
 
         if "Name" in row.parent.columns_all and row["Name"]:
             result["name"] = row["Name"]

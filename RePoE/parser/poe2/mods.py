@@ -85,15 +85,15 @@ class mods(Parser_Module):
                 "text": "\n".join(lines) if lines else None,
                 "domain": domain.name.lower(),
                 "name": mod["Name"],
-                "type": mod["ModTypeKey"]["Name"],
+                "type": mod["ModType"]["Name"],
                 "generation_type": mod["GenerationType"].name.lower() if mod["GenerationType"] else "<unknown>",
                 "groups": [family["Id"] for family in mod["Families"]],
                 "spawn_weights": _convert_spawn_weights(mod["SpawnWeight"]),
                 "generation_weights": _convert_generation_weights(mod["GenerationWeight"]),
-                "grants_effects": _convert_granted_effects(mod["GrantedEffectsPerLevelKeys"]),
+                "grants_effects": _convert_granted_effects(mod["GrantedEffectsPerLevel"]),
                 "is_essence_only": mod["IsEssenceOnlyModifier"] > 0,
-                "adds_tags": _convert_tags_keys(mod["TagsKeys"]),
-                "implicit_tags": _convert_tags_keys(mod["ImplicitTagsKeys"]),
+                "adds_tags": _convert_tags_keys(mod["Tags"]),
+                "implicit_tags": _convert_tags_keys(mod["ImplicitTags"]),
             }
             if mod["Id"] in root:
                 print("Duplicate mod id:", mod["Id"])
