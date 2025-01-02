@@ -42,15 +42,15 @@ def convert_gem(
 
     _convert_base_item_specific(skill_gem["BaseItemType"], obj)
 
-    obj["support_name"] = gem_effect["SupportName"]
-    obj["support_text"] = gem_effect["SupportText"]
-    obj["skill_name"] = gem_effect["Name"]
+    obj["support_name"] = gem_effect["SupportName"] or None
+    obj["support_text"] = gem_effect["SupportText"] or None
+    obj["skill_name"] = gem_effect["Name"] or None
 
-    obj["crafting_types"] = [t["Name"] for t in skill_gem["CraftingTypes"]]
+    obj["crafting_types"] = [t["Name"] for t in skill_gem["CraftingTypes"]] or None
     obj["crafting_level"] = skill_gem["CraftingLevel"]
 
-    obj["tutorial_video"] = skill_gem["TutorialVideo"]
-    obj["ui_image"] = skill_gem["UI_Image"]
+    obj["tutorial_video"] = skill_gem["TutorialVideo"] or None
+    obj["ui_image"] = skill_gem["UI_Image"] or None
 
     return obj
 

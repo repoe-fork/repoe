@@ -49,6 +49,7 @@ class Category(Enum):
     Buff_shrine = "Buff shrine"
     Spell_shrine = "Spell shrine"
     Tincture = "Tincture"
+    Charm = "Charm"
 
 
 class Sources(RootModel[Optional[Dict[str, List[Source]]]]):

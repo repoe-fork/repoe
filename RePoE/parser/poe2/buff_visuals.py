@@ -1,22 +1,17 @@
-from collections import defaultdict
-from functools import cache
 import html
 import json
-from os import path
 import re
+from collections import defaultdict
+from functools import cache
+from os import path
 
 from PyPoE.poe.file.dat import DatRecord
 from PyPoE.poe.file.idl import IDLFile
 from PyPoE.poe.file.translations import TranslationFileCache
 
 from RePoE.parser import Parser_Module
-from RePoE.parser.modules.buffs import BUFF_CATEGORIES
+from RePoE.parser.poe2.buffs import BUFF_CATEGORIES, BUFF_SOURCES
 from RePoE.parser.util import call_with_default_args, export_image, write_json, write_text, crop
-
-BUFF_SOURCES = [
-    {"dat": "BuffDefinitions", "key": "BuffVisual"},
-    {"dat": "BuffTemplates", "key": "BuffVisualsKey"},
-]
 
 
 class buff_visuals(Parser_Module):
@@ -61,7 +56,10 @@ class buff_visuals(Parser_Module):
 
             sources = defaultdict(list)
             for definition in BUFF_SOURCES:
-                for row in self.relational_reader[definition["dat"] + ".dat64"].index[definition["key"]][record]:
+                for row in \
+                        self.relational_reader[definition["dat"] + ".dat64"].index[
+                            definition["key"]][
+                            record]:
                     source = self.source(row)
                     sources[definition["dat"]].append(source)
 
@@ -96,12 +94,12 @@ class buff_visuals(Parser_Module):
 {"".join(f'''
   <div id="{html.escape(icon)}">
     <h3>{html.escape(' / '.join(sorted(set([buff["name"] for buff in buffs if "name" in buff] or [
-        source["name"]
-        for buff in buffs
-        for sources in buff.get("sources", {}).values()
-        for source in sources
-        if "name" in source
-    ]))))}</h3>
+                source["name"]
+                for buff in buffs
+                for sources in buff.get("sources", {}).values()
+                for source in sources
+                if "name" in source
+            ]))))}</h3>
     <img src="{self.img_path}{html.escape(path.splitext(icon)[0])}.png" alt="status icon">
     <details>
       <summary>Details
@@ -162,8 +160,8 @@ if (window.location.hash) {{
 
     def html(self, buff, type=""):
         return (
-            (
-                f"""
+                (
+                    f"""
         <li>
           <h4>{html.escape(buff["name"])}{f" ({buff['buff_category']})" if "buff_category" in buff else ""}</h4>
           {f"<p>{html.escape(buff['description'])}</p>" if "description" in buff else ""}
@@ -171,10 +169,11 @@ if (window.location.hash) {{
           {f"<p>buff id: {buff['buff_id']}" if "buff_id" in buff else ""}
         </li>
 """
-                if "name" in buff
-                else ""
-            )
-            + "".join(self.html(buff, k) for k, buffs in buff.get("sources", {}).items() for buff in buffs)
+                    if "name" in buff
+                    else ""
+                )
+                + "".join(
+            self.html(buff, k) for k, buffs in buff.get("sources", {}).items() for buff in buffs)
         )
 
     @cache
