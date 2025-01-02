@@ -29,7 +29,7 @@ class Parser_Module:
 
     def get_cache(self, cache_type: type) -> AbstractFileCache:
         if cache_type not in self.caches:
-            if type == TranslationFileCache:
+            if cache_type == TranslationFileCache:
                 self.caches[cache_type] = cache_type(self.file_system, sequel=self.sequel)
             else:
                 self.caches[cache_type] = cache_type(self.file_system)
