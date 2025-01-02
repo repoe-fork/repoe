@@ -231,11 +231,10 @@ class GemsSchemaValue(BaseModel):
     color: Color
     display_name: Optional[str] = None
     is_support: bool
-    per_level: Optional[Dict[str, PerLevel]] = None
-    stat_sets: Optional[Dict[str, Dict[str, PerLevel]]] = None
+    per_level: Dict[str, PerLevel]
     quest_reward: Optional[QuestReward] = None
     stat_translation_file: StatTranslationFile
-    static: Optional[Static] = None
+    static: Static
     tags: Optional[List[Tag]] = None
     discriminator: Optional[Discriminator] = None
     secondary_granted_effect: Optional[str] = None
