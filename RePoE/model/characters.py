@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Optional
 
 from pydantic import BaseModel, ConfigDict, RootModel
 
@@ -42,6 +42,7 @@ class CharactersSchemaElement(BaseModel):
     integer_id: int
     metadata_id: MetadataID
     name: str
+    description: Optional[str] = None
 
 
 class Model(RootModel[List[CharactersSchemaElement]]):

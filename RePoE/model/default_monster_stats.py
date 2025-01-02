@@ -17,6 +17,7 @@ class DefaultMonsterStatsSchemaValue(BaseModel):
     armour: int
     evasion: int
     life: int
+    experience: Optional[int] = None
     physical_damage: float
 
 

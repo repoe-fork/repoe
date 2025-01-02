@@ -27,6 +27,7 @@ class Category(Enum):
     Buff_shrine = "Buff shrine"
     Spell_shrine = "Spell shrine"
     Tincture = "Tincture"
+    Charm = "Charm"
 
 
 class Source(BaseModel):

@@ -1,6 +1,6 @@
 from typing import Any, Dict, List, Optional, Union
 
-from PyPoE.poe.constants import MOD_DOMAIN
+from PyPoE.poe.constants import IntEnumOverride
 from PyPoE.poe.file.dat import DatRecord
 from PyPoE.poe.file.translations import install_data_dependant_quantifiers, TranslationFileCache
 from PyPoE.poe.sim.mods import get_translation
@@ -9,12 +9,53 @@ from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, write_json
 
 
+class MOD_DOMAIN(IntEnumOverride):
+    ITEM = 1
+    FLASK = 2
+    MONSTER = 3
+    CHEST = 4
+    STRONGBOX = 5
+    AREA = 6
+    UNKNOWN1 = 7
+    TEMPLAR_RELIC = 8
+    UNKNOWN3 = 9
+    CRAFTED = 10
+    # Corruptions, item limits, jewel mods, other stuff?
+    MISC = 11
+    ATLAS = 12
+    LEAGUESTONE = 13
+    ABYSS_JEWEL = 14
+    MAP_DEVICE = 15
+    DUMMY = 16
+    DELVE = 17
+    DELVE_AREA = 18
+    SYNTHESIS_A = 19
+    SYNTHESIS_GLOBALS = 20
+    SYNTHESIS_BONUS = 21
+    AFFLICTION_JEWEL = 22
+    HEIST_AREA = 23
+    HEIST_NPC = 24
+    HEIST_TRINKET = 25
+    WATCHSTONE = 26
+    VEILED = 27
+    EXPEDITION_RELIC = 28
+    UNVEILED = 29
+    SENTINEL = 31
+    MEMORY_LINES = 32
+    SANCTUM_RELIC = 33
+    TOWER = 34
+    ULTIMATUM = 35
+
+    # Items that can't have mods (may need to increase the number when new values are added)
+    MODS_DISALLOWED = 36
+
+
 def _convert_stats(
-    stats: Union[
-        List[List[Optional[int]]],
-        List[List[Union[DatRecord, int]]],
-        List[Union[List[Optional[int]], List[Union[DatRecord, int]]]],
-    ]
+        stats: Union[
+            List[List[Optional[int]]],
+            List[List[Union[DatRecord, int]]],
+            List[Union[List[Optional[int]], List[Union[DatRecord, int]]]],
+        ]
 ) -> List[Dict[str, Any]]:
     # 'Stats' is a virtual field that is an array of ['Stat1', ..., 'Stat5'].
     # 'Stat{i}' is a virtual field that is an array of ['StatsKey{i}', 'Stat{i}Min', 'Stat{i}Max']
@@ -54,7 +95,8 @@ def _convert_granted_effects(granted_effects_per_level: List[DatRecord]) -> List
         return {}
     # These two identify a row in GrantedEffectsPerLevel.dat64
     return [
-        {"granted_effect_id": gepl["GrantedEffect"]["Id"], "level": gepl["Level"]} for gepl in granted_effects_per_level
+        {"granted_effect_id": gepl["GrantedEffect"]["Id"], "level": gepl["Level"]} for gepl in
+        granted_effects_per_level
     ]
 
 
@@ -70,8 +112,13 @@ class mods(Parser_Module):
         root = {}
         translation_cache = self.get_cache(TranslationFileCache)
         install_data_dependant_quantifiers(self.relational_reader)
+        prices = self.relational_reader["GoldModPrices.dat64"]
+        prices.build_index("Mod")
         for mod in self.relational_reader["Mods.dat64"]:
             domain = MOD_DOMAIN_FIX.get(mod["Id"], mod["Domain"])
+            price = prices.index["Mod"][mod]
+            if isinstance(price, list):
+                price = next(iter(price), None)
 
             try:
                 lines = get_translation(mod, translation_cache, lang=self.language).lines
@@ -86,14 +133,17 @@ class mods(Parser_Module):
                 "domain": domain.name.lower(),
                 "name": mod["Name"],
                 "type": mod["ModType"]["Name"],
-                "generation_type": mod["GenerationType"].name.lower() if mod["GenerationType"] else "<unknown>",
+                "generation_type": mod["GenerationType"].name.lower() if mod[
+                    "GenerationType"] else "<unknown>",
                 "groups": [family["Id"] for family in mod["Families"]],
-                "spawn_weights": _convert_spawn_weights(mod["SpawnWeight"]),
+                "spawn_weights": _convert_spawn_weights(
+                    zip(price["Tags"], price["SpawnWeight"])) if price else [],
                 "generation_weights": _convert_generation_weights(mod["GenerationWeight"]),
                 "grants_effects": _convert_granted_effects(mod["GrantedEffectsPerLevel"]),
                 "is_essence_only": mod["IsEssenceOnlyModifier"] > 0,
                 "adds_tags": _convert_tags_keys(mod["Tags"]),
                 "implicit_tags": _convert_tags_keys(mod["ImplicitTags"]),
+                "gold_value": price["Value"] if price else None
             }
             if mod["Id"] in root:
                 print("Duplicate mod id:", mod["Id"])
@@ -110,7 +160,6 @@ MOD_DOMAIN_FIX = {
     "LifeGainOnEndurangeChargeConsumptionUniqueBodyStrInt6": MOD_DOMAIN.ITEM,
     "ReturningProjectilesUniqueDescentBow1": MOD_DOMAIN.ITEM,
 }
-
 
 if __name__ == "__main__":
     call_with_default_args(mods)

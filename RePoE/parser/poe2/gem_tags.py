@@ -6,8 +6,7 @@ class gem_tags(Parser_Module):
     def write(self) -> None:
         root = {}
         for tag in self.relational_reader["GemTags.dat64"]:
-            name = tag["Tag"]
-            root[tag["Id"]] = name if name != "" else None
+            root[tag["Id"]] = tag["Name"] or None
         write_json(root, self.data_path, "gem_tags")
 
 

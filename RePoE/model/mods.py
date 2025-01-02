@@ -71,6 +71,7 @@ class ModsSchemaValue(BaseModel):
     stats: List[Stat]
     text: Optional[str] = None
     type: str
+    gold_value: Optional[float] = None
 
 
 class Model(RootModel[Optional[Dict[str, ModsSchemaValue]]]):
