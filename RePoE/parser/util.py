@@ -34,8 +34,9 @@ def write_json(
         root_obj: Any,
         data_path: str,
         file_name: str,
+        model_name = ""
 ) -> None:
-    model_name = file_name.split("/")[0]
+    model_name = model_name or file_name.split("/")[0]
     mod = import_module("RePoE.model." + model_name)
     try:
         write_model(mod.Model(root_obj), data_path, file_name)
