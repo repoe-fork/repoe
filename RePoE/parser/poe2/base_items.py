@@ -6,7 +6,8 @@ from PyPoE.poe.file.it import ITFileCache
 
 from RePoE.parser import Parser_Module
 from RePoE.parser.poe2.mods import MOD_DOMAIN
-from RePoE.parser.util import call_with_default_args, get_release_state, write_json, write_any_json
+from RePoE.parser.util import call_with_default_args, export_image, get_release_state, write_json, \
+    write_any_json
 
 
 def _create_default_dict(relation: DatReader, col="BaseItemTypesKey") -> Dict:
@@ -189,6 +190,10 @@ class base_items(Parser_Module):
                 ),
             }
             _convert_flask_buff(flask_types[item_id], root[item_id])
+
+            if self.language == "English" and item["ItemVisualIdentity"]["DDSFile"]:
+                export_image(item["ItemVisualIdentity"]["DDSFile"], self.data_path,
+                             self.file_system)
 
         print(f"Skipped the following item classes for base_items {skipped_item_classes}")
         write_json(root, self.data_path, "base_items")
