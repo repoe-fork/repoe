@@ -245,7 +245,9 @@ class stat_translations(Parser_Module):
             if child.is_file:
                 yield path + child.name.replace("\\", "/")
             else:
-                yield from self._build_stat_translation_file_map(child, path + child.name + "/")
+                # about 3GB of data
+                # yield from self._build_stat_translation_file_map(child, path + child.name + "/")
+                pass
 
     def write(self) -> None:
         self.lookup = stats_by_file.Model({})
