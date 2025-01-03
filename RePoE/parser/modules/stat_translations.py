@@ -125,8 +125,8 @@ class stat_translations(Parser_Module):
                 value.is_markup = True
 
             return value
-        except Exception:
-            print("Error processing", s)
+        except Exception as e:
+            print("Error processing stat", s, e)
             return None
 
     def _add_values_to_lookup(self, values: list[Stat], strings: list[TranslationString], ids: list[str]):
@@ -216,13 +216,13 @@ class stat_translations(Parser_Module):
     ) -> List[Dict[str, Any]]:
         previous = set()
         root = []
-        for tr in translations:
+        for tr in reversed(translations):
             id_str = " ".join(tr.ids)
             if id_str in previous:
-                print("Duplicate id", tr.ids)
                 continue
             previous.add(id_str)
             root.append(self._convert(tr))
+        root.reverse()
         for tr in custom_translations:
             id_str = " ".join(tr.ids)
             if id_str in previous:
@@ -312,10 +312,9 @@ class stat_translations(Parser_Module):
                 self.current_file = out_file
                 tf = self.get_cache(TranslationFileCache)[in_file]
                 translations = tf.translations
-                result = self._get_stat_translations(translations, get_custom_translation_file().translations)
-                write_json(result, self.data_path, out_file)
-            except Exception:
-                print("Error processing", in_file)
+                self._get_stat_translations(translations, get_custom_translation_file().translations)
+            except Exception as e:
+                print("Error processing file", in_file, e)
                 raise
         clientstrings = self.relational_reader["ClientStrings.dat64"]
         for stat, stringid in list(tf._CLIENT_STRINGS_LOOKUP.items()) + [

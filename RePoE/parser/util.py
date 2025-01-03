@@ -34,7 +34,7 @@ def write_json(
         root_obj: Any,
         data_path: str,
         file_name: str,
-        model_name = ""
+        model_name=""
 ) -> None:
     model_name = model_name or file_name.split("/")[0]
     mod = import_module("RePoE.model." + model_name)
@@ -96,8 +96,9 @@ def write_text(
 
 def get_cdn_url(n: int):
     return \
-    requests.get(f"https://lvlvllvlvllvlvl.github.io/poecdn-bundle-index/poe{n}/urls.json").json()[
-        "urls"][0]
+        requests.get(
+            f"https://lvlvllvlvllvlvl.github.io/poecdn-bundle-index/poe{n}/urls.json").json()[
+            "urls"][0]
 
 
 def load_file_system(ggpk_path: str) -> FileSystem:
@@ -122,13 +123,17 @@ def create_relational_reader(file_system: FileSystem, language: str,
 DEFAULT_GGPK_PATH = "/mnt/c/Program Files (x86)/Grinding Gear Games/Path of Exile"
 
 
-def call_with_default_args(module: type[Parser_Module], poe2spec='poe2' in sys.argv[0]):
+def call_with_default_args(
+        module: type[Parser_Module],
+        poe2spec='poe2' in sys.argv[0],
+        language="English",
+):
     file_system = load_file_system(get_cdn_url(2 if poe2spec else 1))
     return module(
         file_system=file_system,
         data_path=__POE2_DATA_PATH__ if poe2spec else __DATA_PATH__,
-        relational_reader=create_relational_reader(file_system, "English", poe2spec),
-        language="English",
+        relational_reader=create_relational_reader(file_system, language, poe2spec),
+        language=language,
         caches={},
         sequel=2 if poe2spec else 1,
     ).write()

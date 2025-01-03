@@ -129,8 +129,8 @@ class stat_translations(Parser_Module):
                 value.is_markup = True
 
             return value
-        except Exception:
-            print("Error processing", s)
+        except Exception as e:
+            print("Error processing stat", s, e)
             return None
 
     def _add_values_to_lookup(self, values: list[Stat], strings: list[TranslationString],
@@ -219,22 +219,25 @@ class stat_translations(Parser_Module):
         return result if result else None
 
     def _get_stat_translations(
-            self, translations: List[Translation], custom_translations: List[Translation]
+            self, translations: List[Translation],
+            custom_translations: List[Translation] = None,
+            file_name: str = None,
     ) -> List[Dict[str, Any]]:
-        previous = set()
+        seen = set()
         root = []
-        for tr in translations:
+        for tr in reversed(translations):
             id_str = " ".join(tr.ids)
-            if id_str in previous:
-                print("Duplicate id", tr.ids)
+            if id_str in seen:
+                print("Duplicate id", tr.ids, "in file", file_name)
                 continue
-            previous.add(id_str)
+            seen.add(id_str)
             root.append(self._convert(tr))
-        for tr in custom_translations:
+        root.reverse()
+        for tr in custom_translations or []:
             id_str = " ".join(tr.ids)
-            if id_str in previous:
+            if id_str in seen:
                 continue
-            previous.add(id_str)
+            seen.add(id_str)
             result = self._convert(tr)
             result["hidden"] = True
             root.append(result)
@@ -327,15 +330,9 @@ class stat_translations(Parser_Module):
             try:
                 self.current_file = file
                 tf = self.get_cache(TranslationFileCache)[file]
-                translations = tf.translations
-                result = self._get_stat_translations(translations,
-                                                     get_custom_translation_file().translations)
-                write_json(result, self.data_path,
-                           file.replace(".csd", "")
-                           .replace("Metadata/StatDescriptions", "stat_translations"),
-                           "stat_translations")
-            except Exception:
-                print("Error processing", file)
+                self._get_stat_translations(tf.translations, file_name=file)
+            except Exception as e:
+                print("Error processing file", file, e)
                 raise
 
         write_model(self.lookup, self.data_path, "stats_by_file")

@@ -281,7 +281,7 @@ class GemConverter:
 
         try:
             stat_text = {}
-            keep_prev = [stat["Id"] for stat in gess["Keys0"]]
+            keep_prev = [stat["Id"] for stat in gess["CopiedStats"]]
             value_map = {v["id"]: v["value"] for v in prev_stats if
                          v["value"] and v["id"] in keep_prev}
             if keep_prev and not value_map:
