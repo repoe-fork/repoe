@@ -95,13 +95,15 @@ def write_text(
 
 
 def get_cdn_url(n: int):
-    return \
-        requests.get(
-            f"https://lvlvllvlvllvlvl.github.io/poecdn-bundle-index/poe{n}/urls.json").json()[
-            "urls"][0]
+    data = requests.get(
+        f"https://lvlvllvlvllvlvl.github.io/poecdn-bundle-index/poe{n}/urls.json"
+    ).json()
+    print("Got game version data", data)
+    return data["urls"][0]
 
 
 def load_file_system(ggpk_path: str) -> FileSystem:
+    print("Reading game data from", ggpk_path)
     return FileSystem(ggpk_path)
 
 

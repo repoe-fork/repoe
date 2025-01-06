@@ -26,6 +26,7 @@ LANGS = {
 
 
 def main():
+    print("Initializing RePoE")
     modules1 = get_parser_modules()
     modules2 = get_poe2_modules()
 
