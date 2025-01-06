@@ -14,7 +14,7 @@ from PyPoE.poe.file.translations import (
     TQNumberFormat,
     TQRelationalData,
     get_custom_translation_file,
-    install_data_dependant_quantifiers,
+    install_data_dependant_quantifiers, TranslationFile,
 )
 from urllib.request import urlopen, Request
 
@@ -219,17 +219,18 @@ class stat_translations(Parser_Module):
         return result if result else None
 
     def _get_stat_translations(
-            self, translations: List[Translation],
+            self, tf: TranslationFile,
             custom_translations: List[Translation] = None,
             file_name: str = None,
     ) -> List[Dict[str, Any]]:
         seen = set()
         root = []
-        for tr in reversed(translations):
+        for tr in reversed(tf.translations):
             id_str = " ".join(tr.ids)
+            if tr.parent is not tf:
+                continue
             if id_str in seen:
                 print("Duplicate id", tr.ids, "in file", file_name)
-                continue
             seen.add(id_str)
             root.append(self._convert(tr))
         root.reverse()
@@ -248,8 +249,7 @@ class stat_translations(Parser_Module):
             if child.is_file:
                 yield path + child.name.replace("\\", "/")
             else:
-                # about 3GB of data
-                # yield from self._build_stat_translation_file_map(child, path + child.name + "/")
+                yield from self._build_stat_translation_file_map(child, path + child.name + "/")
                 pass
 
     def write(self) -> None:
@@ -330,7 +330,10 @@ class stat_translations(Parser_Module):
             try:
                 self.current_file = file
                 tf = self.get_cache(TranslationFileCache)[file]
-                self._get_stat_translations(tf.translations, file_name=file)
+                result = self._get_stat_translations(tf, file_name=file)
+                filename = file.replace("Metadata/StatDescriptions", "stat_translations")
+                filename = filename.replace(".csd", "")
+                write_json(result, self.data_path, filename, "stat_translations")
             except Exception as e:
                 print("Error processing file", file, e)
                 raise

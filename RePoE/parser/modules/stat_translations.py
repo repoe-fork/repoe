@@ -14,7 +14,7 @@ from PyPoE.poe.file.translations import (
     TQNumberFormat,
     TQRelationalData,
     get_custom_translation_file,
-    install_data_dependant_quantifiers,
+    install_data_dependant_quantifiers, TranslationFile,
 )
 from urllib.request import urlopen, Request
 
@@ -212,12 +212,14 @@ class stat_translations(Parser_Module):
         return result if result else None
 
     def _get_stat_translations(
-        self, translations: List[Translation], custom_translations: List[Translation]
+        self, tf: TranslationFile, custom_translations: List[Translation]
     ) -> List[Dict[str, Any]]:
         previous = set()
         root = []
-        for tr in reversed(translations):
+        for tr in reversed(tf.translations):
             id_str = " ".join(tr.ids)
+            if tr.parent is not tf:
+                continue
             if id_str in previous:
                 continue
             previous.add(id_str)
@@ -311,8 +313,8 @@ class stat_translations(Parser_Module):
             try:
                 self.current_file = out_file
                 tf = self.get_cache(TranslationFileCache)[in_file]
-                translations = tf.translations
-                self._get_stat_translations(translations, get_custom_translation_file().translations)
+                result = self._get_stat_translations(tf, get_custom_translation_file().translations)
+                write_json(result, self.data_path, out_file)
             except Exception as e:
                 print("Error processing file", in_file, e)
                 raise
