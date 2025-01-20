@@ -9,31 +9,45 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "mono": {
-                    "type": "string"
-                },
                 "npcs": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/Npc"
                     }
                 },
-                "stereo": {
-                    "$ref": "#/definitions/Stereo"
+                "characters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "events": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "text": {
                     "type": "string"
                 },
+                "audio": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "mono": {
+                    "type": "string"
+                },
+                "stereo": {
+                    "type": "string"
+                },
                 "video": {
-                    "$ref": "#/definitions/Video"
+                    "type": "string"
                 }
             },
             "required": [
-                "mono",
-                "npcs",
-                "stereo",
-                "text",
-                "video"
+                "text"
             ],
             "title": "AudioSchemaValue"
         },
@@ -57,12 +71,6 @@
                 "short_name"
             ],
             "title": "Npc"
-        },
-        "Stereo": {
-            "type": "string"
-        },
-        "Video": {
-            "type": "string"
         }
     }
 }
