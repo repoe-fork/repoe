@@ -21,7 +21,7 @@ class audio(Parser_Module):
         for event in self.relational_reader["CharacterEventTextAudio.dat64"]:
             for audio in event["TextAudio"]:
                 root[audio["Id"]] = {
-                    "events": [event["Event"]],
+                    "events": [event["Event"]["Id"]],
                     "characters": [event["Character"]["Name"]],
                     "text": audio["Text"],
                     "audio": [audio["SoundFile"]],
