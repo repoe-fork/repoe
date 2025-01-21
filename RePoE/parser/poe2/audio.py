@@ -19,13 +19,13 @@ class audio(Parser_Module):
                 "audio": audio["AudioFiles"],
             }
         for event in self.relational_reader["CharacterEventTextAudio.dat64"]:
-            audio = event["TextAudio"]
-            root[audio["Id"]] = {
-                "events": [event["Event"]],
-                "characters": [event["Character"]["Name"]],
-                "text": audio["Text"],
-                "audio": [audio["SoundFile"]],
-            }
+            for audio in event["TextAudio"]:
+                root[audio["Id"]] = {
+                    "events": [event["Event"]],
+                    "characters": [event["Character"]["Name"]],
+                    "text": audio["Text"],
+                    "audio": [audio["SoundFile"]],
+                }
 
         write_json(root, self.data_path, "audio")
 
