@@ -17,23 +17,18 @@ class Npc(BaseModel):
     short_name: str
 
 
-class Stereo(RootModel[str]):
-    root: str
-
-
-class Video(RootModel[str]):
-    root: str
-
-
 class AudioSchemaValue(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
     )
-    mono: str
-    npcs: List[Npc]
-    stereo: Stereo
+    npcs: Optional[List[Npc]] = None
+    characters: Optional[List[str]] = None
+    events: Optional[List[str]] = None
     text: str
-    video: Video
+    audio: Optional[List[str]] = None
+    mono: Optional[str] = None
+    stereo: Optional[str] = None
+    video: Optional[str] = None
 
 
 class Model(RootModel[Optional[Dict[str, AudioSchemaValue]]]):
