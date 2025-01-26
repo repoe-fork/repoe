@@ -1,6 +1,5 @@
-from PyPoE.poe.file.dat import DatRecord, RelationalReader
-from PyPoE.poe.file.file_system import FileSystem
-from PyPoE.poe.file.shared.cache import AbstractFileCache
+from PyPoE.poe.file.dat import DatRecord
+from PyPoE.poe.file.dgr import DGRFile
 
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, write_any_json
@@ -37,6 +36,9 @@ class world_areas(Parser_Module):
         result = {key: self.process_value(row[pascal_case(key)]) for key in AREA_KEYS}
         if row in self.packs.index["WorldAreas"]:
             result["packs"] = [self.process_pack(p) for p in self.packs.index["WorldAreas"][row]]
+        if row["Topologies"]:
+            result["layouts"] = [self.process_layout(l) for l in row["Topologies"]]
+
         return result
 
     def process_value(self, val):
@@ -62,6 +64,28 @@ class world_areas(Parser_Module):
                 for monster, count in zip(pack["AdditionalMonsters"], pack["AdditionalCounts"])
             }
         return result
+
+    def process_layout(self, row: DatRecord):
+        graph = None
+        try:
+            file = DGRFile()
+            file.read(self.file_system.get_file(row["DGRFile"]))
+            graph = vars(file)
+        except FileNotFoundError:
+            print("Graph not found", row["DGRFile"])
+        except Exception:
+            print("Error processing topology", row)
+            raise
+
+        return {
+            "id": row["Id"],
+            "file": row["DGRFile"],
+            "graph": graph,
+            "unknown": [
+                row[f] for f in row.parent.specification.fields.keys()
+                if f not in ["Id", "DGRFile"]
+            ],
+        }
 
 
 if __name__ == "__main__":
