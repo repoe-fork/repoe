@@ -24,6 +24,7 @@ class world_areas(Parser_Module):
         super().__init__(*args, **kwargs)
         self.packs = self.relational_reader["MonsterPacks.dat64"]
         self.pack_entries = self.relational_reader["MonsterPackEntries.dat64"]
+        self.graphs = {}
 
     def write(self) -> None:
         self.packs.build_index("WorldAreas")
@@ -31,6 +32,9 @@ class world_areas(Parser_Module):
 
         root = [self.process_row(area) for area in self.relational_reader["WorldAreas.dat64"]]
         write_any_json(root, self.data_path, "world_areas")
+        if self.language == "English":
+            for k, v in self.graphs.items():
+                write_any_json(v, self.data_path, k)
 
     def process_row(self, row: DatRecord):
         result = {key: self.process_value(row[pascal_case(key)]) for key in AREA_KEYS}
@@ -66,21 +70,21 @@ class world_areas(Parser_Module):
         return result
 
     def process_layout(self, row: DatRecord):
-        graph = None
+        dgr_file = row["DGRFile"]
         try:
-            file = DGRFile()
-            file.read(self.file_system.get_file(row["DGRFile"]))
-            graph = vars(file)
+            if dgr_file not in self.graphs:
+                file = DGRFile()
+                file.read(self.file_system.get_file(dgr_file))
+                self.graphs[dgr_file] = vars(file)
         except FileNotFoundError:
-            print("Graph not found", row["DGRFile"])
+            print("Graph not found", dgr_file)
         except Exception:
             print("Error processing topology", row)
             raise
 
         return {
             "id": row["Id"],
-            "file": row["DGRFile"],
-            "graph": graph,
+            "file": dgr_file,
             "unknown": [
                 row[f] for f in row.parent.specification.fields.keys()
                 if f not in ["Id", "DGRFile"]
