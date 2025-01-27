@@ -1,5 +1,7 @@
 from PyPoE.poe.file.dat import DatRecord
 from PyPoE.poe.file.dgr import DGRFile
+from PyPoE.poe.file.file_set import FileSet
+from PyPoE.poe.file.tsi import TSIFile
 
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, write_any_json
@@ -25,6 +27,7 @@ class world_areas(Parser_Module):
         self.packs = self.relational_reader["MonsterPacks.dat64"]
         self.pack_entries = self.relational_reader["MonsterPackEntries.dat64"]
         self.graphs = {}
+        self.cache = {}
 
     def write(self) -> None:
         self.packs.build_index("WorldAreas")
@@ -71,16 +74,7 @@ class world_areas(Parser_Module):
 
     def process_layout(self, row: DatRecord):
         dgr_file = row["DGRFile"]
-        try:
-            if dgr_file not in self.graphs:
-                file = DGRFile()
-                file.read(self.file_system.get_file(dgr_file))
-                self.graphs[dgr_file] = vars(file)
-        except FileNotFoundError:
-            print("Graph not found", dgr_file)
-        except Exception:
-            print("Error processing topology", row)
-            raise
+        self.process_graph(dgr_file)
 
         return {
             "id": row["Id"],
@@ -90,6 +84,60 @@ class world_areas(Parser_Module):
                 if f not in ["Id", "DGRFile"]
             ],
         }
+
+    def process_graph(self, filename):
+        if filename in self.graphs:
+            return
+        try:
+            file = DGRFile()
+            file.read(self.file_system.get_file(filename))
+            val = vars(file)
+            if "MasterFile" in file.data:
+                master = self.process_master(file.data["MasterFile"])
+                if master:
+                    val["master"] = master
+                    base = file.data["MasterFile"]
+                    base = base[:base.rfind('/') + 1]
+                    if "RoomSet" in master:
+                        val["room_set"] = self.process_fileset(base + master["RoomSet"])
+                    if "TileSet" in master:
+                        val["tile_set"] = self.process_fileset(base + master["TileSet"])
+            self.graphs[filename] = val
+        except FileNotFoundError:
+            print("Graph not found", filename)
+        except Exception:
+            print("Error in topology", filename)
+            raise
+
+    def process_master(self, filename: str):
+        if filename in self.cache:
+            return self.cache[filename]
+        try:
+            file = TSIFile()
+            file.read(self.file_system.get_file(filename))
+            self.cache[filename] = file.data
+            return file.data
+        except FileNotFoundError:
+            print("File not found", filename)
+            self.cache[filename] = None
+        except Exception:
+            print("Error parsing file", filename)
+            raise
+
+    def process_fileset(self, filename: str):
+        if filename in self.cache:
+            return self.cache[filename]
+        file = FileSet()
+        try:
+            file.read(self.file_system.get_file(filename))
+            self.cache[filename] = file.files
+            return file.files
+        except FileNotFoundError:
+            print("File not found", filename)
+            self.cache[filename] = None
+        except Exception:
+            print("Error parsing file", filename, file)
+            raise
 
 
 if __name__ == "__main__":
