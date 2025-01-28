@@ -3,7 +3,7 @@ from typing import Any, Dict, Optional
 from PyPoE.poe.file.dat import DatRecord
 
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import call_with_default_args, get_release_state, write_any_json
+from RePoE.parser.util import call_with_default_args, export_image, get_release_state, write_any_json
 
 
 def _convert_base_item_specific(
@@ -23,6 +23,7 @@ def _convert_base_item_specific(
 def convert_gem(
         skill_gem: DatRecord,
         gem_effect: DatRecord,
+        support_gem_icons: Dict[int, str]
 ) -> Dict[str, Any]:
     obj = {}
 
@@ -52,6 +53,11 @@ def convert_gem(
     obj["tutorial_video"] = skill_gem["TutorialVideo"] or None
     obj["ui_image"] = skill_gem["UI_Image"] or None
 
+    if obj["gem_type"] != "support":
+        obj["icon_dds_file"] = gem_effect["GrantedEffect"]["ActiveSkill"]["Icon_DDSFile"]
+    else:
+        obj["icon_dds_file"] = support_gem_icons[skill_gem.rowid]
+
     return obj
 
 
@@ -59,6 +65,10 @@ class skill_gems(Parser_Module):
     def write(self) -> None:
         skill_gems = []
         relational_reader = self.relational_reader
+
+        support_gem_icons = {}
+        for support in relational_reader["SupportGems.dat64"]:
+            support_gem_icons[support["SkillGem"]] = support["Icon"]
 
         # Skills from gems
         for gem in relational_reader["SkillGems.dat64"]:
@@ -69,7 +79,8 @@ class skill_gems(Parser_Module):
                 ):
                     continue
 
-                skill_gems.append(convert_gem(gem, gem_effect))
+                skill_gems.append(convert_gem(gem, gem_effect, support_gem_icons))
+                export_image(gem["icon_dds_file"], self.data_path, self.file_system)
 
         write_any_json(skill_gems, self.data_path, "skill_gems")
 
