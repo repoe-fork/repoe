@@ -81,6 +81,8 @@ class skill_gems(Parser_Module):
 
                 skill_gem = convert_gem(gem, gem_effect, support_gem_icons)
                 skill_gems.append(skill_gem)
+                if skill_gem["ui_image"] not in (None, ''):
+                    export_image(skill_gem["ui_image"], self.data_path, self.file_system)
                 if skill_gem["icon_dds_file"] not in (None, ''):
                     export_image(skill_gem["icon_dds_file"], self.data_path, self.file_system)
 
