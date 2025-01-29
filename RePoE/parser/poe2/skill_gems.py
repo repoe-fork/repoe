@@ -20,6 +20,13 @@ def _convert_base_item_specific(
     }
 
 
+def get_4k_path(path: str):
+    if path is None:
+        return None
+    parts = path.split('/')
+    parts.insert(len(parts) - 1, '4k')
+    return '/'.join(parts)
+
 def convert_gem(
         skill_gem: DatRecord,
         gem_effect: DatRecord,
@@ -54,12 +61,11 @@ def convert_gem(
     obj["ui_image"] = skill_gem["UI_Image"] or None
 
     if obj["gem_type"] != "support":
-        obj["icon_dds_file"] = gem_effect["GrantedEffect"]["ActiveSkill"]["Icon_DDSFile"]
+        obj["icon_dds_file"] = get_4k_path(gem_effect["GrantedEffect"]["ActiveSkill"]["Icon_DDSFile"])
     else:
-        obj["icon_dds_file"] = support_gem_icons.get(skill_gem.rowid)
+        obj["icon_dds_file"] = get_4k_path(support_gem_icons.get(skill_gem.rowid))
 
     return obj
-
 
 class skill_gems(Parser_Module):
     def write(self) -> None:
