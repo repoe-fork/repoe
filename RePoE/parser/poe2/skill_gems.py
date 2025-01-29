@@ -56,7 +56,7 @@ def convert_gem(
     if obj["gem_type"] != "support":
         obj["icon_dds_file"] = gem_effect["GrantedEffect"]["ActiveSkill"]["Icon_DDSFile"]
     else:
-        obj["icon_dds_file"] = support_gem_icons[skill_gem.rowid]
+        obj["icon_dds_file"] = support_gem_icons.get(skill_gem.rowid)
 
     return obj
 
@@ -68,7 +68,7 @@ class skill_gems(Parser_Module):
 
         support_gem_icons = {}
         for support in relational_reader["SupportGems.dat64"]:
-            support_gem_icons[support["SkillGem"]] = support["Icon"]
+            support_gem_icons[support["SkillGem"].rowid] = support["Icon"]
 
         # Skills from gems
         for gem in relational_reader["SkillGems.dat64"]:
@@ -79,8 +79,10 @@ class skill_gems(Parser_Module):
                 ):
                     continue
 
-                skill_gems.append(convert_gem(gem, gem_effect, support_gem_icons))
-                export_image(gem["icon_dds_file"], self.data_path, self.file_system)
+                skill_gem = convert_gem(gem, gem_effect, support_gem_icons)
+                skill_gems.append(skill_gem)
+                if skill_gem["icon_dds_file"] not in (None, ''):
+                    export_image(skill_gem["icon_dds_file"], self.data_path, self.file_system)
 
         write_any_json(skill_gems, self.data_path, "skill_gems")
 
