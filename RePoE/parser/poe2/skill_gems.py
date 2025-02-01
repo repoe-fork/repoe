@@ -58,7 +58,7 @@ def convert_gem(
     obj["crafting_level"] = skill_gem["CraftingLevel"]
 
     obj["tutorial_video"] = skill_gem["TutorialVideo"] or None
-    obj["ui_image"] = skill_gem["UI_Image"] or None
+    obj["ui_image"] = skill_gem["UI_Image"] or "Art/Textures/Interface/2D/2DArt/UIImages/InGame/SmartHover/GemHoverImage/GemHoverImageEmpty.dds"
 
     if obj["gem_type"] != "support":
         obj["icon_dds_file"] = get_4k_path(gem_effect["GrantedEffect"]["ActiveSkill"]["Icon_DDSFile"])
