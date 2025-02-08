@@ -7,7 +7,7 @@ from PyPoE.poe.file.it import ITFileCache
 from RePoE.parser import Parser_Module
 from RePoE.parser.poe2.mods import MOD_DOMAIN
 from RePoE.parser.util import call_with_default_args, export_image, get_release_state, write_json, \
-    write_any_json
+    write_any_json, compose_flask
 
 
 def _create_default_dict(relation: DatReader, col="BaseItemTypesKey") -> Dict:
@@ -164,6 +164,8 @@ class base_items(Parser_Module):
             _convert_flask_charge_properties(flask_charges[item_id], properties)
             _convert_weapon_properties(weapon_types[item_id], properties)
             _convert_currency_properties(currency_type[item_id], properties)
+            visual_identity = item["ItemVisualIdentity"]
+            dds_file = visual_identity["DDSFile"]
             root[item_id] = {
                 "name": item["Name"],
                 "item_class": item["ItemClass"]["Id"],
@@ -174,8 +176,8 @@ class base_items(Parser_Module):
                 "implicits": [mod["Id"] for mod in item["Implicit_ModsKeys"]],
                 "tags": [tag["Id"] for tag in item["TagsKeys"]] + inherited_tags,
                 "visual_identity": {
-                    "id": item["ItemVisualIdentity"]["Id"],
-                    "dds_file": item["ItemVisualIdentity"]["DDSFile"],
+                    "id": visual_identity["Id"],
+                    "dds_file": dds_file,
                 },
                 "requirements": _convert_requirements(
                     attribute_requirements[item_id],
@@ -191,9 +193,9 @@ class base_items(Parser_Module):
             }
             _convert_flask_buff(flask_types[item_id], root[item_id])
 
-            if self.language == "English" and item["ItemVisualIdentity"]["DDSFile"]:
-                export_image(item["ItemVisualIdentity"]["DDSFile"], self.data_path,
-                             self.file_system)
+            if self.language == "English" and dds_file:
+                export_image(dds_file, self.data_path, self.file_system,
+                             compose=compose_flask if visual_identity["Composition"] == 1 else None)
 
         print(f"Skipped the following item classes for base_items {skipped_item_classes}")
         write_json(root, self.data_path, "base_items")
