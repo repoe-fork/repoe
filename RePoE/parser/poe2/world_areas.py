@@ -84,7 +84,7 @@ class world_areas(Parser_Module):
             "id": row["Id"],
             "file": dgr_file,
             "unknown": [
-                row[f] for f in row.parent.specification.fields.keys()
+                self.process_value(row[f]) for f in row.parent.specification.fields.keys()
                 if f not in ["Id", "DGRFile"]
             ],
         }

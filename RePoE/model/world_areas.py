@@ -25,11 +25,10 @@ class Monster(BaseModel):
 
 class Topology(BaseModel):
     model_config = ConfigDict(
-        extra="forbid",
+        extra="allow",
     )
     file: str
     id: str
-    unknown: List[int]
 
 
 class Pack(BaseModel):
