@@ -175,10 +175,12 @@ def crop(x1, y1, x2, y2):
 
 
 def compose_flask(img: Image):
-    layer1 = img.crop((78, 0, 156, 156))
-    layer2 = img.crop((156, 0, 234, 156))
-    layer3 = img.crop((0, 0, 78, 156))
-    return Image.alpha_composite(layer1, Image.alpha_composite(layer2, layer3))
+    width, height = img.size
+    w = width // 3
+    left = img.crop((0, 0, w, height))
+    middle = img.crop((w, 0, w * 2, height))
+    right = img.crop((w * 2, 0, w * 3, height))
+    return Image.alpha_composite(middle, Image.alpha_composite(right, left))
 
 
 def export_image(
