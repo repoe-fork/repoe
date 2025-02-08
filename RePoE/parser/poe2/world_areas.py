@@ -4,7 +4,7 @@ from PyPoE.poe.file.file_set import FileSet
 from PyPoE.poe.file.tsi import TSIFile
 
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import call_with_default_args, write_any_json
+from RePoE.parser.util import call_with_default_args, write_any_json, write_json
 
 AREA_KEYS = [
     "id", "name", "act", "is_town", "has_waypoint", "connections", "area_level", "loading_screens",
@@ -33,8 +33,11 @@ class world_areas(Parser_Module):
         self.packs.build_index("WorldAreas")
         self.pack_entries.build_index("MonsterPacksKey")
 
-        root = [self.process_row(area) for area in self.relational_reader["WorldAreas.dat64"]]
-        write_any_json(root, self.data_path, "world_areas")
+        root = {
+            area["Id"]: self.process_row(area)
+            for area in self.relational_reader["WorldAreas.dat64"]
+        }
+        write_json(root, self.data_path, "world_areas")
         if self.language == "English":
             for k, v in self.graphs.items():
                 write_any_json(v, self.data_path, k)
@@ -44,7 +47,7 @@ class world_areas(Parser_Module):
         if row in self.packs.index["WorldAreas"]:
             result["packs"] = [self.process_pack(p) for p in self.packs.index["WorldAreas"][row]]
         if row["Topologies"]:
-            result["layouts"] = [self.process_layout(l) for l in row["Topologies"]]
+            result["topologies"] = [self.process_layout(l) for l in row["Topologies"]]
 
         return result
 
@@ -58,6 +61,7 @@ class world_areas(Parser_Module):
 
     def process_pack(self, pack: DatRecord):
         result = {key: self.process_value(pack[pascal_case(key)]) for key in PACK_KEYS}
+        result["boss_chance"] = pack["BossMonsterSpawnChance"]
         if pack in self.pack_entries.index["MonsterPacksKey"]:
             result["monsters"] = {
                 p["MonsterVarietiesKey"]["Id"]: {
@@ -102,7 +106,16 @@ class world_areas(Parser_Module):
                         val["room_set"] = self.process_fileset(base + master["RoomSet"])
                     if "TileSet" in master:
                         val["tile_set"] = self.process_fileset(base + master["TileSet"])
-            self.graphs[filename] = val
+            if "edges" in val:
+                val["edge_types"] = {}
+                for edge in val["edges"]:
+                    [edge_type, color, etfile] = self.process_edge_type(next(
+                        u for u in edge["unknown"] if isinstance(u, str) and u.endswith(".et")))
+                    val["edge_types"][edge_type] = etfile
+                    edge["edge_type"] = edge_type
+                    if color:
+                        edge["color"] = color
+                self.graphs[filename] = val
         except FileNotFoundError:
             print("Graph not found", filename)
         except Exception:
@@ -138,6 +151,22 @@ class world_areas(Parser_Module):
         except Exception:
             print("Error parsing file", filename, file)
             raise
+
+    def process_edge_type(self, filename: str):
+        if filename not in self.cache:
+            self.cache[filename] = self.file_system.get_file(filename).decode("utf-16")
+        etfile: str = self.cache[filename]
+        first_line = etfile.splitlines()[0].split()
+        match len(first_line):
+            case 1:
+                return first_line[0], None, etfile
+            case 2:
+                if not first_line[1].startswith("#"):
+                    print("bad color", first_line[1], "in", filename)
+                    raise Exception(first_line[1])
+                return first_line[0], first_line[1], etfile
+            case _:
+                raise Exception(filename)
 
 
 if __name__ == "__main__":

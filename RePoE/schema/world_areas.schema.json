@@ -1,0 +1,220 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "additionalProperties": {
+        "$ref": "#/definitions/WorldAreasSchemaValue"
+    },
+    "definitions": {
+        "WorldAreasSchemaValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "act": {
+                    "type": "integer"
+                },
+                "area_level": {
+                    "type": "integer"
+                },
+                "area_mods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "bosses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "connections": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "environment": {
+                    "type": "string"
+                },
+                "has_waypoint": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "is_town": {
+                    "type": "boolean"
+                },
+                "loading_screens": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "topologies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Topology"
+                    }
+                },
+                "area_type_tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "parent_town": {
+                    "type": "string"
+                },
+                "packs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Pack"
+                    }
+                },
+                "terrain_plugins": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "act",
+                "area_level",
+                "area_mods",
+                "bosses",
+                "connections",
+                "has_waypoint",
+                "id",
+                "is_town",
+                "loading_screens",
+                "name",
+                "tags"
+            ],
+            "title": "WorldAreasSchemaValue"
+        },
+        "Pack": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "additional_monsters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/AdditionalMonster"
+                    }
+                },
+                "boss_chance": {
+                    "type": "integer"
+                },
+                "boss_count": {
+                    "type": "integer"
+                },
+                "boss_monster_spawn_chance": {
+                    "type": "integer"
+                },
+                "boss_monsters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "id": {
+                    "type": "string"
+                },
+                "max_count": {
+                    "type": "integer"
+                },
+                "min_count": {
+                    "type": "integer"
+                },
+                "monsters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/Monster"
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "formation": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "boss_chance",
+                "boss_count",
+                "boss_monsters",
+                "id",
+                "max_count",
+                "min_count",
+                "monsters",
+                "tags"
+            ],
+            "title": "Pack"
+        },
+        "AdditionalMonster": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "count": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "count"
+            ],
+            "title": "AdditionalMonster"
+        },
+        "Monster": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "flag": {
+                    "type": "boolean"
+                },
+                "weight": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "flag",
+                "weight"
+            ],
+            "title": "Monster"
+        },
+        "Topology": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "file": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "unknown": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "required": [
+                "file",
+                "id",
+                "unknown"
+            ],
+            "title": "Topology"
+        }
+    }
+}
