@@ -85,8 +85,8 @@ class world_areas(Parser_Module):
         if pack in self.pack_entries.index["MonsterPacksKey"]:
             result["monsters"] = {
                 p["MonsterVarietiesKey"]["Id"]: {
-                    "weight": p["Unknown0"],
-                    "flag": p["Flag0"],
+                    "weight": p["Weight"],
+                    "flag": p["Flag"],
                 } for p in self.pack_entries.index["MonsterPacksKey"][pack]
             }
         return result
