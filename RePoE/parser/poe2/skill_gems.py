@@ -58,7 +58,8 @@ def convert_gem(
     obj["crafting_level"] = skill_gem["CraftingLevel"]
 
     obj["tutorial_video"] = skill_gem["TutorialVideo"] or None
-    obj["ui_image"] = skill_gem["UI_Image"] or "Art/Textures/Interface/2D/2DArt/UIImages/InGame/SmartHover/GemHoverImage/GemHoverImageEmpty.dds"
+    if obj["gem_type"] != "support":
+        obj["ui_image"] = skill_gem["UI_Image"] or "Art/Textures/Interface/2D/2DArt/UIImages/InGame/SmartHover/GemHoverImage/GemHoverImageEmpty.dds"
 
     if obj["gem_type"] != "support":
         obj["icon_dds_file"] = get_4k_path(gem_effect["GrantedEffect"]["ActiveSkill"]["Icon_DDSFile"])
@@ -87,7 +88,7 @@ class skill_gems(Parser_Module):
 
                 skill_gem = convert_gem(gem, gem_effect, support_gem_icons)
                 skill_gems.append(skill_gem)
-                if skill_gem["ui_image"] not in (None, ''):
+                if skill_gem.get("ui_image", None) not in (None, ''):
                     export_image(skill_gem["ui_image"], self.data_path, self.file_system)
                 if skill_gem["icon_dds_file"] not in (None, ''):
                     export_image(skill_gem["icon_dds_file"], self.data_path, self.file_system)
