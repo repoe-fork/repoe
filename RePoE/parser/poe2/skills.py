@@ -13,8 +13,28 @@ from RePoE.parser.util import call_with_default_args, write_any_json
 def _extract_static(obj):
     gepls_dict: Dict = obj["per_level"]
     if len(gepls_dict) >= 1:
-        representative = next(iter(gepls_dict.values()), None)
+        representative = next(reversed(gepls_dict.values()), None)
         static, _ = _handle_dict(representative, gepls_dict.values())
+
+        stat_order = {}
+        for level in gepls_dict.values():
+            if "stat_order" in level:
+                stat_order.update(level["stat_order"])
+                del level["stat_order"]
+
+        static = static or {}
+        static["tooltip_order"] = [
+            stat for stat, _ in
+                sorted(
+                    list((stat_order | static.get("stat_order", {})).items()),
+                    key=lambda kv: kv[1]
+                )
+        ]
+        if len(static["tooltip_order"]) == 0:
+            del static["tooltip_order"]
+        if "stat_order" in static:
+            del static["stat_order"]
+
         if static is not None:
             obj["static"] = static
 
@@ -292,9 +312,15 @@ class GemConverter:
             trans = translation_file.get_translation(
                 list(value_map.keys()), value_map, full_result=True, lang=self.language
             )
+
+            stat_order = {}
             for i, stats in enumerate(trans.found_ids):
                 stats = [stat for stat in stats if value_map.get(stat, None)]
-                stat_text["\n".join(stats)] = trans.found_lines[i]
+                key = "\n".join(stats)
+                stat_text[key] = trans.found_lines[i]
+                stat_order[key] = trans.tf_indices[i]
+            
+            r["stat_order"] = stat_order
 
             r["stat_text"] = stat_text
         except Exception as e:
