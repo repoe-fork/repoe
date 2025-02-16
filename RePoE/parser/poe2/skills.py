@@ -30,6 +30,8 @@ def _extract_static(obj):
                     key=lambda kv: kv[1]
                 )
         ]
+        if len(static["tooltip_order"]) == 0:
+            del static["tooltip_order"]
         if "stat_order" in static:
             del static["stat_order"]
 
