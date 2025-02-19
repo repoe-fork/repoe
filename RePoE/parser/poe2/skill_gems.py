@@ -76,6 +76,9 @@ class skill_gems(Parser_Module):
         for support in relational_reader["SupportGems.dat64"]:
             support_gem_icons[support["SkillGem"].rowid] = support["Icon"]
 
+        support_gem_recs = relational_reader["SkillGemSupports.dat64"]
+        support_gem_recs.build_index("SkillGem")
+
         # Skills from gems
         for gem in relational_reader["SkillGems.dat64"]:
             for gem_effect in gem["GemEffects"]:
@@ -86,6 +89,12 @@ class skill_gems(Parser_Module):
                     continue
 
                 skill_gem = convert_gem(gem, gem_effect, support_gem_icons)
+                if skill_gem["gem_type"] != "support":
+                    skill_gem["recommended_supports"] = []
+                    rec_rows = support_gem_recs.index["SkillGem"][gem]
+                    if len(rec_rows) > 0:
+                        for support in rec_rows[0]["Supports"]:
+                            skill_gem["recommended_supports"].append(support["BaseItemType"]["Name"])
                 skill_gems.append(skill_gem)
                 # ensure fallback ui image is exported without having to add it to gem data
                 export_image("Art/Textures/Interface/2D/2DArt/UIImages/InGame/SmartHover/GemHoverImage/GemHoverImageEmpty.dds", self.data_path, self.file_system)
