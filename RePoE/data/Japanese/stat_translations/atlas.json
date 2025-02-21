@@ -1659,7 +1659,7 @@
         "index_handlers": [
           []
         ],
-        "string": "マップに出現する拷問された幽霊はプレイヤーに20秒間憑依することができる\nマップに出現する拷問された幽霊はモンスターに憑依することができない",
+        "string": "マップに出現する拷問された幽霊は20秒間プレイヤーに憑依できる\nマップに出現する拷問された幽霊はモンスターに憑依できない",
         "reminder_text": "(プレイヤーは憑依しているそれぞれの拷問された幽霊ごとに最大40回周囲のノーマルまたはマジックモンスターに触れることが出来ます。）",
         "is_markup": null
       }
@@ -7482,12 +7482,14 @@
           }
         ],
         "format": [
-          "ignore"
+          "#"
         ],
         "index_handlers": [
-          []
+          [
+            "multiply_by_one_hundred"
+          ]
         ],
-        "string": "マップに出現するイモータルシンジケートのメンバーはアイテムと引き換えに交渉した時にドロップするアイテム量が200%増える",
+        "string": "マップに出現するイモータルシンジケートのメンバーはアイテムと引き換えに交渉した時にドロップするアイテム量が{0}%増える",
         "reminder_text": null,
         "is_markup": null
       }
@@ -10172,7 +10174,7 @@
         ],
         "index_handlers": [
           [
-            "divide_by_one_hundred_0dp"
+            "divide_by_one_hundred_2dp_if_required"
           ]
         ],
         "string": "マップに出現する最終ボスは{0}%の確率でエルダーの守護者のマップを追加で1個ドロップする (ティア14以上)",
@@ -10400,7 +10402,7 @@
         ],
         "index_handlers": [
           [
-            "divide_by_one_hundred_0dp"
+            "divide_by_one_hundred_2dp_if_required"
           ]
         ],
         "string": "マップに出現する最終ボスは{0}%の確率でシェイパーの守護者のマップを追加で1個ドロップする (ティア14以上)",
@@ -11314,7 +11316,7 @@
         ],
         "index_handlers": [
           [
-            "divide_by_one_hundred_1dp"
+            "divide_by_one_hundred_2dp_if_required"
           ]
         ],
         "string": "マップ(ティア14以上)の最終ボスからシンセシスマップがドロップする確率 {0}%",
@@ -28296,7 +28298,7 @@
             "negate"
           ]
         ],
-        "string": "マップで出現するメタモルフモンスターのライフが{0}%低下する",
+        "string": "マップに出現するメタモルフのライフが{0}%低下する",
         "reminder_text": null,
         "is_markup": null
       }

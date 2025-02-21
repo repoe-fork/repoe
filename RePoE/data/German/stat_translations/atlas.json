@@ -5861,6 +5861,26 @@
         "string": "Getötete deliriöse Monster in Euren Karten gewähren {0}% erhöhten Belohnungsfortschritt",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "Getötete deliriöse Monster in Euren Karten gewähren {0}% verringerten Belohnungsfortschritt",
+        "reminder_text": null,
+        "is_markup": null
       }
     ],
     "Japanese": null,
@@ -7481,12 +7501,14 @@
           }
         ],
         "format": [
-          "ignore"
+          "#"
         ],
         "index_handlers": [
-          []
+          [
+            "multiply_by_one_hundred"
+          ]
         ],
-        "string": "Syndikatsmitglieder in Euren Karten lassen\nbeim Verhandeln über Gegenstände 200% mehr Gegenstände fallen",
+        "string": "Syndikatsmitglieder in Euren Karten lassen\nbeim Verhandeln über Gegenstände {0}% mehr Gegenstände fallen",
         "reminder_text": null,
         "is_markup": null
       }
@@ -10171,7 +10193,7 @@
         ],
         "index_handlers": [
           [
-            "divide_by_one_hundred_0dp"
+            "divide_by_one_hundred_2dp_if_required"
           ]
         ],
         "string": "Finaler Kartenboss in jeder Karte hat {0}% Chance, eine Wächterkarte des Ältesten fallen zu lassen (Level 14+)",
@@ -10399,7 +10421,7 @@
         ],
         "index_handlers": [
           [
-            "divide_by_one_hundred_0dp"
+            "divide_by_one_hundred_2dp_if_required"
           ]
         ],
         "string": "Finaler Kartenboss in jeder Karte hat {0}% Chance, eine Wächterkarte des Schöpfers fallen zu lassen (Level 14+)",
@@ -11313,7 +11335,7 @@
         ],
         "index_handlers": [
           [
-            "divide_by_one_hundred_1dp"
+            "divide_by_one_hundred_2dp_if_required"
           ]
         ],
         "string": "{0}% Chance, dass eine Synthesis-Karte vom finalen Kartenboss in jeder Karte fallen gelassen wird (Level 14+)",
@@ -25396,6 +25418,26 @@
           []
         ],
         "string": "Legion-Begegnungen in Euren Karten haben {0}% verlängerte Dauer",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "Legion-Begegnungen in Euren Karten haben {0}% verkürzte Dauer",
         "reminder_text": null,
         "is_markup": null
       }
