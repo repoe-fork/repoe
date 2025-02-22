@@ -69,7 +69,7 @@ def convert_gem(
 
 class skill_gems(Parser_Module):
     def write(self) -> None:
-        skill_gems = []
+        skill_gems = {}
         relational_reader = self.relational_reader
 
         support_gem_icons = {}
@@ -94,8 +94,10 @@ class skill_gems(Parser_Module):
                     rec_rows = support_gem_recs.index["SkillGem"][gem]
                     if len(rec_rows) > 0:
                         for support in rec_rows[0]["Supports"]:
-                            skill_gem["recommended_supports"].append(support["BaseItemType"]["Name"])
-                skill_gems.append(skill_gem)
+                            skill_gem["recommended_supports"].append(support["BaseItemType"]["Id"])
+
+                skill_gems[skill_gem["base_item"]["id"]] = skill_gem
+
                 # ensure fallback ui image is exported without having to add it to gem data
                 export_image("Art/Textures/Interface/2D/2DArt/UIImages/InGame/SmartHover/GemHoverImage/GemHoverImageEmpty.dds", self.data_path, self.file_system)
                 if skill_gem.get("ui_image", None) not in (None, ''):
