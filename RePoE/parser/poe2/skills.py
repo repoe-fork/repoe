@@ -321,7 +321,6 @@ class GemConverter:
                 stat_order[key] = trans.tf_indices[i]
             
             r["stat_order"] = stat_order
-
             r["stat_text"] = stat_text
         except Exception as e:
             print("Error processing stat text for", stats, e)
@@ -390,7 +389,7 @@ class GemConverter:
             obj["per_level"][str(gepl["Level"])] = gepl_converted
         gesses = [granted_effect["StatSet"]] + (granted_effect["AdditionalStatSets"] or [])
         if gesses:
-            obj["stat_sets"] = {}
+            obj["stat_sets"] = []
         prev_stats = {}
         for i, gess in enumerate(gesses):
             skill_id = obj.get("active_skill").get("id") if "active_skill" in obj else None
@@ -412,11 +411,12 @@ class GemConverter:
                     prev_stats
                 )
             prev_stats = prev_stats or next(iter(gepls_dict.values()), {}).get("stats", {})
-            obj["stat_sets"][gess["Id"]] = {
+            obj["stat_sets"].append({
+                "id": gess["Id"],
                 "per_level": gepls_dict,
                 "translation_file": game_file_name,
                 "label": gess["Label"],
-            }
+            })
 
         return obj
 
@@ -448,7 +448,7 @@ class skills(Parser_Module):
             ge_id = granted_effect["Id"]
             skill = converter.convert_skill(granted_effect)
             _extract_static(skill)
-            for stat_set in skill.get("stat_sets", {}).values():
+            for stat_set in skill.get("stat_sets", []):
                 _extract_static(stat_set)
             skills[ge_id] = skill
 
