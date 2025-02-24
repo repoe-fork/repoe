@@ -448,7 +448,7 @@ class skills(Parser_Module):
             ge_id = granted_effect["Id"]
             skill = converter.convert_skill(granted_effect)
             _extract_static(skill)
-            for stat_set in skill.get("stat_sets", {}):
+            for stat_set in skill.get("stat_sets", []):
                 _extract_static(stat_set)
             skills[ge_id] = skill
 
