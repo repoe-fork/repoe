@@ -276,7 +276,8 @@ class GemConverter:
             gess: DatRecord,
             gesspl: DatRecord,
             translation_file: TranslationFile,
-            prev_stats
+            primary_gess: DatRecord,
+            primary_gesspl: DatRecord
     ) -> Dict[str, Any]:
         r = {}
 
@@ -296,19 +297,33 @@ class GemConverter:
         for k in gess["ImplicitStats"]:
             stats.append({"id": k["Id"], "value": 1, "type": "implicit"})
         for k in gesspl["AdditionalFlags"]:
-            stats.append({"id": k["Id"], "value": 1, "type": "flag"})
+            stats.append({"id": k["Id"], "value": 1, "type": "flag", "rid": k.rowid})
+
+        # copy stats from primary stat set
+        # CopiedStats is list of exclusions, not inclusions
+        if gess != primary_gess:
+            for k, v in zip(primary_gesspl["FloatStats"], primary_gesspl["BaseResolvedValues"]):
+                if k not in gess["CopiedStats"]:
+                    stats.append({"id": k["Id"], "value": v, "type": "float"})
+            for k, v in zip(primary_gess["ConstantStats"], primary_gess["ConstantStatsValues"]):
+                if k not in gess["CopiedStats"]:
+                    stats.append({"id": k["Id"], "value": v, "type": "constant"})
+            for k, v in zip(primary_gesspl["AdditionalStats"], primary_gesspl["AdditionalStatsValues"]):
+                if k not in gess["CopiedStats"]:
+                    stats.append({"id": k["Id"], "value": v, "type": "constant"})
+            for k in primary_gess["ImplicitStats"]:
+                if k not in gess["CopiedStats"]:
+                    stats.append({"id": k["Id"], "value": 1, "type": "implicit"})
+
         r["stats"] = stats
 
         try:
             stat_text = {}
-            keep_prev = [stat["Id"] for stat in gess["CopiedStats"]]
-            value_map = {v["id"]: v["value"] for v in prev_stats if
-                         v["value"] and v["id"] in keep_prev}
-            if keep_prev and not value_map:
-                print(keep_prev, value_map)
+            value_map = {}
             for v in stats:
                 if v["value"]:
-                    value_map[v["id"]] = v["value"]
+                    value_map[v["id"]] = v["value"] + value_map.get(v["id"], 0)
+
             trans = translation_file.get_translation(
                 list(value_map.keys()), value_map, full_result=True, lang=self.language
             )
@@ -390,8 +405,8 @@ class GemConverter:
         gesses = [granted_effect["StatSet"]] + (granted_effect["AdditionalStatSets"] or [])
         if gesses:
             obj["stat_sets"] = []
-        prev_stats = {}
         for i, gess in enumerate(gesses):
+            primary_gess = gesses[0]
             skill_id = obj.get("active_skill").get("id") if "active_skill" in obj else None
             translation_file = None
             game_file_name = None
@@ -402,15 +417,15 @@ class GemConverter:
                 except (KeyError, FileNotFoundError):
                     pass
             gepls_dict = {}
-            for gesspl in self.gesspls[gess["Id"]]:
+            for gesspl, primary_gesspl in zip(self.gesspls[gess["Id"]], self.gesspls[primary_gess["Id"]]):
                 gepls_dict[gesspl["GemLevel"]] = self._convert_gess(
                     granted_effect,
                     gess,
                     gesspl,
                     translation_file,
-                    prev_stats
+                    primary_gess,
+                    primary_gesspl
                 )
-            prev_stats = prev_stats or next(iter(gepls_dict.values()), {}).get("stats", {})
             obj["stat_sets"].append({
                 "id": gess["Id"],
                 "per_level": gepls_dict,
