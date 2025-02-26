@@ -297,7 +297,7 @@ class GemConverter:
         for k in gess["ImplicitStats"]:
             stats.append({"id": k["Id"], "value": 1, "type": "implicit"})
         for k in gesspl["AdditionalFlags"]:
-            stats.append({"id": k["Id"], "value": 1, "type": "flag", "rid": k.rowid})
+            stats.append({"id": k["Id"], "value": 1, "type": "flag"})
 
         # copy stats from primary stat set
         # CopiedStats is list of exclusions, not inclusions
@@ -315,6 +315,16 @@ class GemConverter:
                 if k not in gess["CopiedStats"]:
                     stats.append({"id": k["Id"], "value": 1, "type": "implicit"})
 
+        # consolidate duplicate stats with summed values
+        stat_map = {}
+        for stat in stats:
+            k = stat["id"]
+            if k not in stat_map:
+                stat_map[k] = stat
+            elif stat["type"] != "implicit":
+                stat_map[k]["value"] += stat["value"]
+        stats = list(stat_map.values())
+
         r["stats"] = stats
 
         try:
@@ -322,7 +332,7 @@ class GemConverter:
             value_map = {}
             for v in stats:
                 if v["value"]:
-                    value_map[v["id"]] = v["value"] + value_map.get(v["id"], 0)
+                    value_map[v["id"]] = v["value"]
 
             trans = translation_file.get_translation(
                 list(value_map.keys()), value_map, full_result=True, lang=self.language
