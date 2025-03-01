@@ -15021,15 +15021,15 @@
         "index_handlers": [
           []
         ],
-        "string": "출혈 중인 적에 대한 근접 물리 피해 {0}% 증폭",
+        "string": "출혈 중인 적에 대한 근접 [Physical|물리] 피해 {0}% 증폭",
         "reminder_text": null,
         "is_markup": null
       },
       {
         "condition": [
           {
-            "min": null,
-            "max": -1,
+            "min": 1,
+            "max": null,
             "negated": null
           }
         ],
@@ -15037,11 +15037,9 @@
           "#"
         ],
         "index_handlers": [
-          [
-            "negate"
-          ]
+          []
         ],
-        "string": "출혈 중인 적에 대한 근접 물리 피해 {0}% 감폭",
+        "string": "출혈 중인 적에 대한 근접 [Physical|물리] 피해 {0}% 감폭",
         "reminder_text": null,
         "is_markup": null
       },
@@ -15391,7 +15389,7 @@
         "index_handlers": [
           []
         ],
-        "string": "물리 피해의 {0}%를 화염, 냉기 또는 번개 피해로 전환",
+        "string": "[Physical|물리] 피해의 {0}%를 화염, 냉기 또는 번개 피해로 전환",
         "reminder_text": null,
         "is_markup": null
       }
@@ -19212,7 +19210,46 @@
     "French": null,
     "German": null,
     "Japanese": null,
-    "Korean": [],
+    "Korean": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[ArmourBreak|완전히 파괴된 방어구]를 가진 적에게 주는 [HitDamage|명중] 피해 {0}% 증폭",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[ArmourBreak|완전히 파괴된 방어구]를 가진 적에게 주는 [HitDamage|명중] 피해 {0}% 감폭",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
     "Portuguese": null,
     "Russian": null,
     "Spanish": null,
@@ -19835,6 +19872,33 @@
           []
         ],
         "string": "{0}% 증폭된 피해를 준 것처럼 적을 [Pinned|고정]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ],
+          []
+        ],
+        "string": "{0}% 감폭된 피해를 준 것처럼 적을 [Pinned|고정]",
         "reminder_text": null,
         "is_markup": null
       },
@@ -22348,7 +22412,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Modifers to [Attack] speed also affect this skill's cost",
+        "string": "[Attack|공격] 속도 속성이 이 스킬의 비용에도 영향을 줌",
         "reminder_text": null,
         "is_markup": null
       }
@@ -23644,6 +23708,56 @@
           []
         ],
         "string": "탄창당 볼트 {0}개 장전",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": 1,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "탄창 1개당 볼트 {0}개 장전",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 2,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "탄창 1개당 볼트 {0}개 장전",
         "reminder_text": null,
         "is_markup": null
       }
@@ -27434,115 +27548,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Modifers to cast speed also affect this skill's cost",
-        "reminder_text": null,
-        "is_markup": null
-      }
-    ],
-    "Portuguese": null,
-    "Russian": null,
-    "Spanish": null,
-    "Thai": null,
-    "Traditional_Chinese": null
-  },
-  {
-    "English": null,
-    "ids": [
-      "cast_when_stunned_gain_X_centienergy_when_stunned"
-    ],
-    "trade_stats": null,
-    "hidden": null,
-    "French": null,
-    "German": null,
-    "Japanese": null,
-    "Korean": [
-      {
-        "condition": [
-          {
-            "min": null,
-            "max": null,
-            "negated": null
-          }
-        ],
-        "format": [
-          "#"
-        ],
-        "index_handlers": [
-          []
-        ],
-        "string": "기절 시 에너지 {0} 획득",
-        "reminder_text": null,
-        "is_markup": null
-      },
-      {
-        "condition": [
-          {
-            "min": null,
-            "max": null,
-            "negated": null
-          }
-        ],
-        "format": [
-          "#"
-        ],
-        "index_handlers": [
-          []
-        ],
-        "string": "[Stun|기절] 시 [Energy|에너지] {0} 획득",
-        "reminder_text": null,
-        "is_markup": null
-      }
-    ],
-    "Portuguese": null,
-    "Russian": null,
-    "Spanish": null,
-    "Thai": null,
-    "Traditional_Chinese": null
-  },
-  {
-    "English": null,
-    "ids": [
-      "cast_while_channelling_gain_X_energy_per_second_while_channelling"
-    ],
-    "trade_stats": null,
-    "hidden": null,
-    "French": null,
-    "German": null,
-    "Japanese": null,
-    "Korean": [
-      {
-        "condition": [
-          {
-            "min": null,
-            "max": null,
-            "negated": null
-          }
-        ],
-        "format": [
-          "#"
-        ],
-        "index_handlers": [
-          []
-        ],
-        "string": "집중 유지하는 동안 1초마다 에너지 {0} 획득",
-        "reminder_text": null,
-        "is_markup": null
-      },
-      {
-        "condition": [
-          {
-            "min": null,
-            "max": null,
-            "negated": null
-          }
-        ],
-        "format": [
-          "#"
-        ],
-        "index_handlers": [
-          []
-        ],
-        "string": "집중 유지하는 동안 1초마다 에너지 {0} 획득",
+        "string": "시전 속도 속성이 이 스킬의 비용에도 영향을 줌",
         "reminder_text": null,
         "is_markup": null
       }
@@ -47408,7 +47414,7 @@
         "index_handlers": [
           []
         ],
-        "string": "소환수가 받는 물리 피해 {0}% 추가 감소",
+        "string": "소환수가 받는 [Physical|물리] 피해 {0}% 추가 감소",
         "reminder_text": null,
         "is_markup": null
       }
@@ -49317,7 +49323,7 @@
         "index_handlers": [
           []
         ],
-        "string": "물리 피해의 {0}%를 무작위 원소 피해로 전환",
+        "string": "[Physical|물리] 피해의 {0}%를 무작위 원소 피해로 전환",
         "reminder_text": null,
         "is_markup": null
       }
@@ -52937,6 +52943,31 @@
         "string": "최대 열기 {0}",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "최대 열기 {0}",
+        "reminder_text": null,
+        "is_markup": null
       }
     ],
     "Portuguese": null,
@@ -55339,7 +55370,7 @@
             "negate"
           ]
         ],
-        "string": "[Oil|기름]으로 뒤덮인 상태의 [Fire|화염] [Exposure|노출] 총 [Resistances|저항] 속성@{0}%",
+        "string": "[Oil|기름]으로 뒤덮인 상태의 [Fire|화염] [Exposure|노출] 총 [Resistance|저항] 속성@{0}%",
         "reminder_text": null,
         "is_markup": null
       },
