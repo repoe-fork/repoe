@@ -108,7 +108,7 @@
           [],
           []
         ],
-        "string": "สละ [EnergyShield|โล่พลังงาน]และพลังชีวิต ของคุณ {0}% เพื่อ\nสร้างความเสียหาย ไฟ ต่อเนื่อง {1}% ของ [EnergyShield|โล่พลังงาน]และพลังชีวิตที่สละ ต่อวินาที",
+        "string": "สละ[EnergyShield|โล่พลังงาน]และพลังชีวิต ของคุณ {0}% เพื่อสร้างความเสียหาย ไฟ ต่อวินาที\nเท่ากับ {1}% ของ [EnergyShield|โล่พลังงาน]และพลังชีวิตที่สละ",
         "reminder_text": null,
         "is_markup": null
       }
@@ -16623,7 +16623,8 @@
   {
     "English": null,
     "ids": [
-      "banner_buff_effect_+%_final_per_resource"
+      "banner_buff_effect_+%_final_per_resource",
+      "quality_display_banner_buff_effect_+%_final_per_resource_is_gem"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -16641,12 +16642,44 @@
             "min": 1,
             "max": null,
             "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
           }
         ],
         "format": [
-          "#"
+          "+#",
+          "ignore"
         ],
         "index_handlers": [
+          [],
+          []
+        ],
+        "string": "เพิ่มผลของ[Aura|ออร่า] อีก {0}% ต่อจำนวนสถานะ [Valour|อาจหาญ]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
           []
         ],
         "string": "เพิ่มผลของ[Aura|ออร่า] อีก {0}% ต่อจำนวนสถานะ [Valour|อาจหาญ]",
@@ -16659,15 +16692,22 @@
             "min": null,
             "max": -1,
             "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
           }
         ],
         "format": [
-          "#"
+          "#",
+          "ignore"
         ],
         "index_handlers": [
           [
             "negate"
-          ]
+          ],
+          []
         ],
         "string": "ลดผลของ[Aura|ออร่า] อีก {0}% ต่อจำนวนสถานะ [Valour|อาจหาญ]",
         "reminder_text": null,
@@ -18911,7 +18951,7 @@
         "index_handlers": [
           []
         ],
-        "string": "เพิ่มความเสียหาย อีก {0}% ต่อศัตรูที่ติดสถานะ [HeavyStun|สตันหนักหน่วง]",
+        "string": "เพิ่มความเสียหาย อีก {0}% ต่อศัตรูที่ติดสถานะ [HeavyStun|สตันหนัก]",
         "reminder_text": null,
         "is_markup": null
       },
@@ -18931,7 +18971,7 @@
             "negate"
           ]
         ],
-        "string": "ลดความเสียหาย อีก {0}% ต่อศัตรูที่ติดสถานะ [HeavyStun|สตันหนักหน่วง]",
+        "string": "ลดความเสียหาย อีก {0}% ต่อศัตรูที่ติดสถานะ [HeavyStun|สตันหนัก]",
         "reminder_text": null,
         "is_markup": null
       }
@@ -27322,7 +27362,7 @@
         "index_handlers": [
           []
         ],
-        "string": "[Energy|พลังงาน]ที่ได้รับ ต่อจำนวน[Power|พลัง]ของศัตรู เมื่อสร้างสถานะ [HeavyStun|สตันหนักหน่วง] ประชิด@{0}",
+        "string": "[Energy|พลังงาน]ที่ได้รับ ต่อจำนวน[Power|พลัง]ของศัตรู เมื่อสร้างสถานะ [HeavyStun|สตันหนัก] ประชิด@{0}",
         "reminder_text": null,
         "is_markup": null
       },
@@ -27340,7 +27380,7 @@
         "index_handlers": [
           []
         ],
-        "string": "ได้รับพลังงาน {0} ต่อจำนวน[Power|พลัง]ของศัตรู เมื่อคุณสร้างสถานะ [HeavyStun|สตันหนักหน่วง] ต่อศัตรูด้วยการปะทะ [Melee|ประชิด]",
+        "string": "ได้รับพลังงาน {0} ต่อจำนวน[Power|พลัง]ของศัตรู เมื่อคุณสร้างสถานะ [HeavyStun|สตันหนัก] ต่อศัตรูด้วยการปะทะ [Melee|ประชิด]",
         "reminder_text": null,
         "is_markup": null
       }
@@ -27543,6 +27583,114 @@
           []
         ],
         "string": "ม็อดที่ส่งผลต่อ ความเร็วในการร่าย ส่งผลต่อ ค่าใช้งานของสกิลนี้ เช่นกัน",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "Traditional_Chinese": null
+  },
+  {
+    "English": null,
+    "ids": [
+      "cast_when_stunned_gain_X_centienergy_when_stunned"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": [
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[Energy|พลังงาน]ที่ได้รับ เมื่อคุณติดสถานะ [Stun|สตัน]@{0}",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "ได้รับ[Energy|พลังงาน] {0} เมื่อคุณติดสถานะ [Stun|สตัน]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "Traditional_Chinese": null
+  },
+  {
+    "English": null,
+    "ids": [
+      "cast_while_channelling_gain_X_energy_per_second_while_channelling"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": [
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[Energy|พลังงาน]ที่ได้รับ ต่อวินาที ขณะแชนเนล@{0}",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "ได้รับพลังงาน {0} ต่อวินาที ขณะที่คุณ แชนเนล",
         "reminder_text": null,
         "is_markup": null
       }
@@ -40482,7 +40630,7 @@
         "index_handlers": [
           []
         ],
-        "string": "ทำให้ศัตรู [Armour|เกราะ]หักโดยสมบูรณ์ เมื่อสร้างสถานะ [HeavyStun|สตันหนักหน่วง]",
+        "string": "ทำให้ศัตรู [Armour|เกราะ]หักโดยสมบูรณ์ เมื่อสร้างสถานะ [HeavyStun|สตันหนัก]",
         "reminder_text": null,
         "is_markup": null
       }
@@ -62201,7 +62349,7 @@
         "index_handlers": [
           []
         ],
-        "string": "สร้างความเสียหาย [Melee|ประชิด] เพิ่มขึ้น อีก สูงสุด {0}% โดยขึ้นอยู่กับระยะ",
+        "string": "สร้างความเสียหาย [Melee|ประชิด] เพิ่มขึ้น อีก สูงสุด {0}% โดยขึ้นอยู่กับความใกล้เคียง",
         "reminder_text": null,
         "is_markup": null
       }
@@ -68443,7 +68591,7 @@
         "index_handlers": [
           []
         ],
-        "string": "บัฟมอบม็อด: เสริมความเสียหาย [Attack|โจมตี] เท่ากับ ความเสียหายอาวุธมือหลักของคุณ {0}% ต่อค่าระดับพลัง 5 ระดับ สูงสุด 20%",
+        "string": "บัฟมอบม็อด: เสริมความเสียหาย [Attack|โจมตี] เท่ากับ ความเสียหายอาวุธมือหลักของคุณ {0}% ต่อพลัง 5 ระดับ สูงสุด 20%",
         "reminder_text": null,
         "is_markup": null
       }
@@ -68479,7 +68627,7 @@
         "index_handlers": [
           []
         ],
-        "string": "บัฟมอบม็อด: ลด[EnemyStunThreshold|ความยากในการติดสถานะ สตัน ของศัตรู] {0}% ต่อค่าระดับพลัง 5 ระดับ สูงสุด 30%",
+        "string": "บัฟมอบม็อด: ลด[EnemyStunThreshold|ความยากในการติดสถานะ สตัน ของศัตรู] {0}% ต่อพลัง 5 ระดับ สูงสุด 30%",
         "reminder_text": null,
         "is_markup": null
       }
@@ -68515,7 +68663,7 @@
         "index_handlers": [
           []
         ],
-        "string": "บัฟทำให้ การปะทะของคุณ ท่วมท้น ค่าป้องกันกายภาพ {0}% ต่อค่าระดับพลัง 5 ระดับ สูงสุด 30%",
+        "string": "บัฟทำให้ การปะทะของคุณ ท่วมท้น ค่าป้องกันกายภาพ {0}% ต่อพลัง 5 ระดับ สูงสุด 30%",
         "reminder_text": null,
         "is_markup": null
       }
@@ -68559,7 +68707,7 @@
           [],
           []
         ],
-        "string": "บัฟมอบม็อด: [Armour|ค่าเกราะ] {0} ต่อค่าระดับพลัง 5 ระดับ สูงสุด {1}",
+        "string": "บัฟมอบม็อด: [Armour|ค่าเกราะ] {0} ต่อพลัง 5 ระดับ สูงสุด {1}",
         "reminder_text": null,
         "is_markup": null
       }
@@ -68595,7 +68743,7 @@
         "index_handlers": [
           []
         ],
-        "string": "บัฟมอบม็อด: ระยะการฟาด[Melee|ประชิด] {0} ต่อค่าระดับพลัง 5 ระดับ สูงสุด +6",
+        "string": "บัฟมอบม็อด: ระยะการฟาด[Melee|ประชิด] {0} ต่อพลัง 5 ระดับ สูงสุด +6",
         "reminder_text": null,
         "is_markup": null
       }
@@ -68631,7 +68779,7 @@
         "index_handlers": [
           []
         ],
-        "string": "สร้างสถานะ อาบขี้เถ้า ต่อศัตรู ทำให้มันได้รับความเสียหาย ไฟ เพิ่มขึ้น {0}% ต่อค่าระดับพลัง 5 ระดับ สูงสุด 20%",
+        "string": "สร้างสถานะ อาบขี้เถ้า ต่อศัตรู ทำให้มันได้รับความเสียหาย ไฟ เพิ่มขึ้น {0}% ต่อพลัง 5 ระดับ สูงสุด 20%",
         "reminder_text": null,
         "is_markup": null
       }
@@ -68667,7 +68815,7 @@
         "index_handlers": [
           []
         ],
-        "string": "ได้รับ Endurance Charge 1 ลูกต่อค่าระดับพลัง {0} ระดับ",
+        "string": "ได้รับ Endurance Charge 1 ลูกต่อพลัง {0} ระดับ",
         "reminder_text": null,
         "is_markup": null
       }
@@ -68711,7 +68859,7 @@
           [],
           []
         ],
-        "string": "อัญเชิญ นักรบเงา ออกมาจากศพ {0} ศพ ต่อค่าระดับพลัง 5 ระดับ ขั้นต่ำ 1 ศพ\nอัญเชิญ นักรบเงา ได้สูงสุด {1} ตน",
+        "string": "อัญเชิญ นักรบเงา ออกมาจากศพ {0} ศพ ต่อพลัง 5 ระดับ ขั้นต่ำ 1 ศพ\nอัญเชิญ นักรบเงา ได้สูงสุด {1} ตน",
         "reminder_text": null,
         "is_markup": null
       }
@@ -68747,7 +68895,7 @@
         "index_handlers": [
           []
         ],
-        "string": "บัฟมอบม็อด: เพิ่มโอกาส[Critical|ปะทะคริติคอล] {0}% ต่อค่าระดับพลัง 5 ระดับ สูงสุด 30%",
+        "string": "บัฟมอบม็อด: เพิ่มโอกาส[Critical|ปะทะคริติคอล] {0}% ต่อพลัง 5 ระดับ สูงสุด 30%",
         "reminder_text": null,
         "is_markup": null
       },
@@ -68767,7 +68915,7 @@
             "negate"
           ]
         ],
-        "string": "บัฟมอบม็อด: เพิ่มโอกาส[Critical|ปะทะคริติคอล] {0}% ต่อค่าระดับพลัง 5 ระดับ",
+        "string": "บัฟมอบม็อด: เพิ่มโอกาส[Critical|ปะทะคริติคอล] {0}% ต่อพลัง 5 ระดับ",
         "reminder_text": null,
         "is_markup": null
       }
@@ -70139,7 +70287,7 @@
         "index_handlers": [
           []
         ],
-        "string": "[Empowered|การโจมตีเสริมฤทธิ์] ผลักศัตรูออกไป เมื่อปะทะ",
+        "string": "การ[Empowered|โจมตีเสริมฤทธิ์] ผลักศัตรูออกไป เมื่อปะทะ",
         "reminder_text": null,
         "is_markup": null
       },
@@ -70157,7 +70305,7 @@
         "index_handlers": [
           []
         ],
-        "string": "[Empowered|การโจมตีเสริมฤทธิ์] มีโอกาส ผลักศัตรูออกไป {0}% เมื่อปะทะ",
+        "string": "การ[Empowered|โจมตีเสริมฤทธิ์] มีโอกาส ผลักศัตรูออกไป {0}% เมื่อปะทะ",
         "reminder_text": null,
         "is_markup": null
       }
@@ -71361,7 +71509,7 @@
           [],
           []
         ],
-        "string": "ความเสียหาย [Fire|ไฟ] ของการ[Attack|โจมตี][Empowered|เสริมฤทธิ์] ต่อ[Power|พลัง] 5 ระดับ (สูงสุด)@{0} ({1})",
+        "string": "ความเสียหาย [Fire|ไฟ] ของการ[Attack|โจมตี]ที่ถูก[Empowered|เสริมฤทธิ์] ต่อ[Power|พลัง] 5 ระดับ (สูงสุด)@{0} ({1})",
         "reminder_text": null,
         "is_markup": null
       },
@@ -71386,7 +71534,7 @@
           [],
           []
         ],
-        "string": "การโจมตีที่[Empowered|เสริมฤทธิ์] นำความเสียหาย {0}% ไป[Gain|เสริม]เป็น [Fire|ไฟ]\nต่อ[Power|พลัง] 5 ระดับของศัตรูที่อยู่ในระยะ สูงสุด {1}%",
+        "string": "การโจมตีที่ถูก[Empowered|เสริมฤทธิ์] นำความเสียหาย {0}% ไป[Gain|เสริม]เป็น [Fire|ไฟ]\nต่อ[Power|พลัง] 5 ระดับของศัตรูที่อยู่ในระยะ สูงสุด {1}%",
         "reminder_text": null,
         "is_markup": null
       }
