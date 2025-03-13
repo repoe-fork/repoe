@@ -82,6 +82,7 @@ def write_any_json(
     )
     print(" Done!")
 
+
 def minimize(value):
     if isinstance(value, dict):
         return {k: minimize(v) for k, v in value.items() if v is not None}
@@ -89,6 +90,7 @@ def minimize(value):
         return [minimize(v) for v in value]
     else:
         return value
+
 
 def write_text(
         text: str,
@@ -102,11 +104,8 @@ def write_text(
 
 
 def get_cdn_url(n: int):
-    data = requests.get(
-        f"https://lvlvllvlvllvlvl.github.io/poecdn-bundle-index/poe{n}/urls.json"
-    ).json()
-    print("Got game version data", data)
-    return data["urls"][0]
+    url = requests.get(f"https://ggpk.exposed/version?poe={n}").text.strip()
+    print("Got cdn url", url)
 
 
 def load_file_system(ggpk_path: str) -> FileSystem:
