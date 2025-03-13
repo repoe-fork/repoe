@@ -106,6 +106,7 @@ def write_text(
 def get_cdn_url(n: int):
     url = requests.get(f"https://ggpk.exposed/version?poe={n}").text.strip()
     print("Got cdn url", url)
+    return url
 
 
 def load_file_system(ggpk_path: str) -> FileSystem:
