@@ -5,7 +5,7 @@ from RePoE.parser import Parser_Module
 class keywords(Parser_Module):
     def write(self) -> None:
         keywords = {
-            row["Id"]: row["Definition"] for row in self.relational_reader["KeywordPopups.dat64"]
+            row["Id"]: {"Term": row["Term"], "Definition": row["Definition"]} for row in self.relational_reader["KeywordPopups.dat64"]
         }
         write_any_json(keywords, self.data_path, "keywords")
 
