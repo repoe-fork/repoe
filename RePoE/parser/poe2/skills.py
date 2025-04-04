@@ -198,8 +198,7 @@ class GemConverter:
             "display_name": active_skill["DisplayedName"],
             "description": active_skill["Description"],
             "types": self._select_active_skill_types(active_skill["ActiveSkillTypes"]),
-            "weapon_restrictions": [ic["Id"] for ic in
-                                    active_skill["WeaponRestriction_ItemClassesKeys"]],
+            "weapon_restrictions": [], # TODO: ActiveSkillWeaponRequirement.dat
             "is_skill_totem": is_skill_totem,
             "is_manually_casted": active_skill["IsManuallyCasted"],
             "stat_conversions": stat_conversions,
