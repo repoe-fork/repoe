@@ -45,9 +45,10 @@ class MOD_DOMAIN(IntEnumOverride):
     SANCTUM_RELIC = 33
     TOWER = 34
     ULTIMATUM = 35
+    RELIQUARY_KEY = 36
 
     # Items that can't have mods (may need to increase the number when new values are added)
-    MODS_DISALLOWED = 36
+    MODS_DISALLOWED = 37
 
 
 def _convert_stats(
