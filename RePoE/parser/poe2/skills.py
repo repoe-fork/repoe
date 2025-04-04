@@ -300,19 +300,19 @@ class GemConverter:
             stats.append({"id": k["Id"], "value": 1, "type": "flag"})
 
         # copy stats from primary stat set
-        # CopiedStats is list of exclusions, not inclusions
         if gess != primary_gess:
+            ignored_stats = gess["IgnoredStats"]
             for k, v in zip(primary_gesspl["FloatStats"], primary_gesspl["BaseResolvedValues"]):
-                if k not in gess["CopiedStats"]:
+                if k not in ignored_stats:
                     stats.append({"id": k["Id"], "value": v, "type": "float"})
             for k, v in zip(primary_gess["ConstantStats"], primary_gess["ConstantStatsValues"]):
-                if k not in gess["CopiedStats"]:
+                if k not in ignored_stats:
                     stats.append({"id": k["Id"], "value": v, "type": "constant"})
             for k, v in zip(primary_gesspl["AdditionalStats"], primary_gesspl["AdditionalStatsValues"]):
-                if k not in gess["CopiedStats"]:
+                if k not in ignored_stats:
                     stats.append({"id": k["Id"], "value": v, "type": "constant"})
             for k in primary_gess["ImplicitStats"]:
-                if k not in gess["CopiedStats"]:
+                if k not in ignored_stats:
                     stats.append({"id": k["Id"], "value": 1, "type": "implicit"})
 
         # consolidate duplicate stats with summed values
