@@ -25,10 +25,10 @@ def _extract_static(obj):
         static = static or {}
         static["tooltip_order"] = [
             stat for stat, _ in
-                sorted(
-                    list((stat_order | static.get("stat_order", {})).items()),
-                    key=lambda kv: kv[1]
-                )
+            sorted(
+                list((stat_order | static.get("stat_order", {})).items()),
+                key=lambda kv: kv[1]
+            )
         ]
         if len(static["tooltip_order"]) == 0:
             del static["tooltip_order"]
@@ -198,7 +198,7 @@ class GemConverter:
             "display_name": active_skill["DisplayedName"],
             "description": active_skill["Description"],
             "types": self._select_active_skill_types(active_skill["ActiveSkillTypes"]),
-            "weapon_restrictions": [], # TODO: ActiveSkillWeaponRequirement.dat
+            "weapon_restrictions": [],  # TODO: ActiveSkillWeaponRequirement.dat
             "is_skill_totem": is_skill_totem,
             "is_manually_casted": active_skill["IsManuallyCasted"],
             "stat_conversions": stat_conversions,
@@ -343,7 +343,7 @@ class GemConverter:
                 key = "\n".join(stats)
                 stat_text[key] = trans.found_lines[i]
                 stat_order[key] = trans.tf_indices[i]
-            
+
             r["stat_order"] = stat_order
             r["stat_text"] = stat_text
         except Exception as e:
@@ -425,6 +425,9 @@ class GemConverter:
                     break
                 except (KeyError, FileNotFoundError):
                     pass
+                except:
+                    print("Unexpected error in translation file", game_file_name)
+                    raise
             gepls_dict = {}
             for gesspl, primary_gesspl in zip(self.gesspls[gess["Id"]], self.gesspls[primary_gess["Id"]]):
                 gepls_dict[gesspl["GemLevel"]] = self._convert_gess(
