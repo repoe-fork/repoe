@@ -40,7 +40,7 @@
   {
     "English": null,
     "ids": [
-      "virtual_ghost_dance_max_stacks"
+      "ghost_dance_max_stacks"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -50,24 +50,6 @@
     "Korean": null,
     "Portuguese": null,
     "Russian": [
-      {
-        "condition": [
-          {
-            "min": null,
-            "max": null,
-            "negated": null
-          }
-        ],
-        "format": [
-          "#"
-        ],
-        "index_handlers": [
-          []
-        ],
-        "string": "Максимум призрачных покровов@{0}",
-        "reminder_text": null,
-        "is_markup": null
-      },
       {
         "condition": [
           {
@@ -94,7 +76,8 @@
   {
     "English": null,
     "ids": [
-      "skill_base_ghost_dance_grants_%_evasion_as_energy_shield_when_hit"
+      "skill_base_ghost_dance_grants_%_evasion_as_energy_shield_when_hit",
+      "quality_display_ghost_dance_is_gem"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -110,12 +93,44 @@
             "min": null,
             "max": null,
             "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
           }
         ],
         "format": [
-          "#"
+          "+#",
+          "ignore"
         ],
         "index_handlers": [
+          [],
+          []
+        ],
+        "string": "Призрачные покровы восстанавливают [EnergyShield|энергетический щит], равный {0}% от вашего [Evasion|уклонения]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
           []
         ],
         "string": "При получении [HitDamage|удара] [Consume|поглощает] Призрачный покров,\nчтобы восстановить [EnergyShield|энергетический щит], равный {0}% от вашего [Evasion|уклонения]",

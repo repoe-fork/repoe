@@ -195,7 +195,8 @@
     "name": "毒",
     "removable": false,
     "stats": [
-      "base_poison_damage_taken_per_minute"
+      "base_poison_damage_taken_per_minute",
+      "armour_break_rate_per_minute_from_poison"
     ],
     "visuals": "poison",
     "category": "Debuff",
@@ -1107,7 +1108,8 @@
     "name": "幽体",
     "removable": false,
     "stats": [
-      "cannot_be_heavy_stunned"
+      "cannot_be_heavy_stunned",
+      "no_blood_on_death"
     ],
     "visuals": "spectre_buff",
     "category": null,
@@ -1207,46 +1209,8 @@
     ],
     "visuals": "curse_temporal_chains",
     "category": "Hex",
-    "sources": {
-      "Mods": [
-        {
-          "id": "DoedreCurseZoneAuraTemporalChains",
-          "item": null,
-          "name": null,
-          "template": "DoedreCurseZoneAuraTemporalChains",
-          "stat_text": null,
-          "stats": null
-        },
-        {
-          "id": "DoedreCurseZoneAuraTemporalChains2",
-          "item": null,
-          "name": null,
-          "template": "DoedreCurseZoneAuraTemporalChains2",
-          "stat_text": null,
-          "stats": null
-        }
-      ]
-    },
-    "templates": {
-      "DoedreCurseZoneAuraTemporalChains": {
-        "aura_radius_metres": 5.2,
-        "stats": {
-          "action_speed_+%_final_from_temporal_chains": 0,
-          "buff_time_passed_+%_other_than_temporal_chains": 0
-        },
-        "stat_text": null,
-        "visuals": "doedre_curse_zone_aura_temporal_chains"
-      },
-      "DoedreCurseZoneAuraTemporalChains2": {
-        "aura_radius_metres": 5.2,
-        "stats": {
-          "action_speed_+%_final_from_temporal_chains": 0,
-          "buff_time_passed_+%_other_than_temporal_chains": 0
-        },
-        "stat_text": null,
-        "visuals": "doedre_curse_zone_aura_temporal_chains"
-      }
-    },
+    "sources": null,
+    "templates": null,
     "stack_limit": null
   },
   "curse_elemental_weakness": {
@@ -1255,8 +1219,7 @@
     "name": "エレメンタルウィークネス",
     "removable": false,
     "stats": [
-      "elemental_resistance_%_from_curse",
-      "self_elemental_status_duration_-%"
+      "elemental_resistance_%_from_curse"
     ],
     "visuals": "curse_elemental_weakness",
     "category": "Hex",
@@ -1270,9 +1233,7 @@
     "name": "フラマビリティ",
     "removable": false,
     "stats": [
-      "fire_damage_resistance_%_from_curse",
-      "chance_to_be_ignited_%",
-      "base_self_ignite_duration_-%"
+      "fire_damage_resistance_%_from_curse"
     ],
     "visuals": "curse_fire_weakness",
     "category": "Hex",
@@ -1286,9 +1247,7 @@
     "name": "低体温化",
     "removable": false,
     "stats": [
-      "cold_damage_resistance_%_from_curse",
-      "chance_to_be_frozen_%",
-      "base_self_freeze_duration_-%"
+      "cold_damage_resistance_%_from_curse"
     ],
     "visuals": "curse_cold_weakness",
     "category": "Hex",
@@ -1302,9 +1261,7 @@
     "name": "コンダクティヴィティ",
     "removable": false,
     "stats": [
-      "lightning_damage_resistance_%_from_curse",
-      "chance_to_be_shocked_%",
-      "base_self_shock_duration_-%"
+      "lightning_damage_resistance_%_from_curse"
     ],
     "visuals": "curse_lightning_weakness",
     "category": "Hex",
@@ -1350,51 +1307,13 @@
     "name": "エンフィーブル",
     "removable": false,
     "stats": [
-      "enfeeble_damage_+%_final",
-      "enfeeble_damage_+%_vs_unique_final"
+      "damage_+%_final_if_not_unique_from_enfeeble",
+      "damage_+%_final_if_unique_from_enfeeble"
     ],
     "visuals": "curse_enfeeble",
     "category": "Hex",
-    "sources": {
-      "Mods": [
-        {
-          "id": "DoedreCurseZoneAuraEnfeeble",
-          "item": null,
-          "name": null,
-          "template": "DoedreCurseZoneAuraEnfeeble",
-          "stat_text": null,
-          "stats": null
-        },
-        {
-          "id": "DoedreCurseZoneAuraEnfeeble2",
-          "item": null,
-          "name": null,
-          "template": "DoedreCurseZoneAuraEnfeeble2",
-          "stat_text": null,
-          "stats": null
-        }
-      ]
-    },
-    "templates": {
-      "DoedreCurseZoneAuraEnfeeble": {
-        "aura_radius_metres": 5.2,
-        "stats": {
-          "enfeeble_damage_+%_final": 0,
-          "enfeeble_damage_+%_vs_unique_final": 0
-        },
-        "stat_text": null,
-        "visuals": "doedre_curse_zone_aura_enfeeble"
-      },
-      "DoedreCurseZoneAuraEnfeeble2": {
-        "aura_radius_metres": 5.2,
-        "stats": {
-          "enfeeble_damage_+%_final": 0,
-          "enfeeble_damage_+%_vs_unique_final": 0
-        },
-        "stat_text": null,
-        "visuals": "doedre_curse_zone_aura_enfeeble"
-      }
-    },
+    "sources": null,
+    "templates": null,
     "stack_limit": null
   },
   "curse_assassins_mark": {
@@ -1441,54 +1360,12 @@
     "name": "ヴァルネラビリティ",
     "removable": false,
     "stats": [
-      "vulnerability_total_armour_-",
-      "enemy_aggravate_bleeding_on_attack_hit_chance_%_against_self",
-      "chance_to_be_maimed_when_hit_%"
+      "base_total_armour_-"
     ],
     "visuals": "curse_vulnerability",
     "category": "Hex",
-    "sources": {
-      "Mods": [
-        {
-          "id": "DoedreCurseZoneAuraVulnerability_",
-          "item": null,
-          "name": null,
-          "template": "DoedreCurseZoneAuraVulnerability_",
-          "stat_text": null,
-          "stats": null
-        },
-        {
-          "id": "DoedreCurseZoneAuraVulnerability2",
-          "item": null,
-          "name": null,
-          "template": "DoedreCurseZoneAuraVulnerability2",
-          "stat_text": null,
-          "stats": null
-        }
-      ]
-    },
-    "templates": {
-      "DoedreCurseZoneAuraVulnerability_": {
-        "aura_radius_metres": 5.2,
-        "stats": {
-          "vulnerability_total_armour_-": 0,
-          "enemy_aggravate_bleeding_on_attack_hit_chance_%_against_self": 0,
-          "chance_to_be_maimed_when_hit_%": 0
-        },
-        "stat_text": null,
-        "visuals": "doedre_curse_zone_aura_vulnerability"
-      },
-      "DoedreCurseZoneAuraVulnerability2": {
-        "aura_radius_metres": 5.2,
-        "stats": {
-          "vulnerability_total_armour_-": 0,
-          "enemy_aggravate_bleeding_on_attack_hit_chance_%_against_self": 0,
-          "chance_to_be_maimed_when_hit_%": 0
-        },
-        "stat_text": null,
-        "visuals": "doedre_curse_zone_aura_vulnerability"
-      }
-    },
+    "sources": null,
+    "templates": null,
     "stack_limit": null
   },
   "curse_poachers_mark": {
@@ -1844,11 +1721,27 @@
           "template": "MonsterAuraDamage1",
           "stat_text": null,
           "stats": null
+        },
+        {
+          "id": "PlayerMonsterPhysicalDamageAura1",
+          "item": null,
+          "name": null,
+          "template": "PlayerMonsterAuraDamage1",
+          "stat_text": null,
+          "stats": null
         }
       ]
     },
     "templates": {
       "MonsterAuraDamage1": {
+        "aura_radius_metres": 5.0,
+        "stats": {
+          "physical_damage_+%": 0
+        },
+        "stat_text": null,
+        "visuals": null
+      },
+      "PlayerMonsterAuraDamage1": {
         "aura_radius_metres": 5.0,
         "stats": {
           "physical_damage_+%": 0
@@ -1991,10 +1884,26 @@
           "stats": null
         },
         {
+          "id": "PlayerMonsterIncreasedSpeedAura1",
+          "item": null,
+          "name": null,
+          "template": "MonsterAuraSpeed1",
+          "stat_text": null,
+          "stats": null
+        },
+        {
           "id": "MonsterAuraSpeed1",
           "item": null,
           "name": null,
           "template": "MonsterAuraSpeed1",
+          "stat_text": null,
+          "stats": null
+        },
+        {
+          "id": "PlayerMonsterIncreasedSpeedAuraMinion1",
+          "item": null,
+          "name": null,
+          "template": "PlayerMonsterAuraSpeed1",
           "stat_text": null,
           "stats": null
         }
@@ -2002,6 +1911,15 @@
     },
     "templates": {
       "MonsterAuraSpeed1": {
+        "aura_radius_metres": 5.0,
+        "stats": {
+          "attack_and_cast_speed_+%": 0,
+          "base_movement_velocity_+%": 0
+        },
+        "stat_text": null,
+        "visuals": null
+      },
+      "PlayerMonsterAuraSpeed1": {
         "aura_radius_metres": 5.0,
         "stats": {
           "attack_and_cast_speed_+%": 0,
@@ -2156,6 +2074,14 @@
           "stats": null
         },
         {
+          "id": "PlayerMonsterResistanceAura1",
+          "item": null,
+          "name": null,
+          "template": "PlayerMonsterAuraResists1",
+          "stat_text": null,
+          "stats": null
+        },
+        {
           "id": "MonsterImplicitAuraResists1",
           "item": null,
           "name": null,
@@ -2183,6 +2109,14 @@
     },
     "templates": {
       "MonsterAuraResists1": {
+        "aura_radius_metres": 5.0,
+        "stats": {
+          "base_resist_all_elements_%": 0
+        },
+        "stat_text": null,
+        "visuals": null
+      },
+      "PlayerMonsterAuraResists1": {
         "aura_radius_metres": 5.0,
         "stats": {
           "base_resist_all_elements_%": 0
@@ -2238,10 +2172,26 @@
           "stats": null
         },
         {
+          "id": "PlayerMonsterEnergyShieldAura1",
+          "item": null,
+          "name": null,
+          "template": "MonsterAuraEnergyShield1",
+          "stat_text": null,
+          "stats": null
+        },
+        {
           "id": "MonsterAuraEnergyShield1",
           "item": null,
           "name": null,
           "template": "MonsterAuraEnergyShield1",
+          "stat_text": null,
+          "stats": null
+        },
+        {
+          "id": "PlayerMonsterEnergyShieldAuraMinion1",
+          "item": null,
+          "name": null,
+          "template": "PlayerMonsterAuraEnergyShield1",
           "stat_text": null,
           "stats": null
         },
@@ -2281,6 +2231,14 @@
     },
     "templates": {
       "MonsterAuraEnergyShield1": {
+        "aura_radius_metres": 2.5,
+        "stats": {
+          "base_maximum_life_%_to_gain_as_total_energy_shield": 0
+        },
+        "stat_text": null,
+        "visuals": null
+      },
+      "PlayerMonsterAuraEnergyShield1": {
         "aura_radius_metres": 2.5,
         "stats": {
           "base_maximum_life_%_to_gain_as_total_energy_shield": 0
@@ -2329,7 +2287,7 @@
     "name": "エナジーシールドオーラ",
     "removable": false,
     "stats": [
-      "maximum_life_%_to_add_to_maximum_energy_shield"
+      "monsters_only_old_bad_add_%_of_total_maximum_life_to_base_maximum_energy_shield"
     ],
     "visuals": "monster_aura_energy_shield_bubble",
     "category": "Buff",
@@ -2349,7 +2307,7 @@
       "MonsterImplicitAuraEnergyShieldBubble1": {
         "aura_radius_metres": 5.0,
         "stats": {
-          "maximum_life_%_to_add_to_maximum_energy_shield": 0
+          "monsters_only_old_bad_add_%_of_total_maximum_life_to_base_maximum_energy_shield": 0
         },
         "stat_text": null,
         "visuals": null
@@ -2451,7 +2409,15 @@
     },
     "templates": {
       "MonsterPreventRecoveryAura1": {
-        "aura_radius_metres": 3.0,
+        "aura_radius_metres": 4.2,
+        "stats": {
+          "cannot_recover_life_or_energy_shield_above_%": 0
+        },
+        "stat_text": null,
+        "visuals": null
+      },
+      "PlayerMonsterPreventRecoveryAura1": {
+        "aura_radius_metres": 4.2,
         "stats": {
           "cannot_recover_life_or_energy_shield_above_%": 0
         },
@@ -3571,7 +3537,8 @@
     "name": "",
     "removable": false,
     "stats": [
-      "base_bleeding_damage_taken_per_minute"
+      "base_bleeding_damage_taken_per_minute",
+      "has_aggravated_bleeding"
     ],
     "visuals": "puncture_moving",
     "category": "Debuff",
@@ -3705,17 +3672,9 @@
     "name": "ピュリティオブエレメンツオーラ",
     "removable": true,
     "stats": [
-      "affected_by_purity_of_elements",
       "base_resist_all_elements_%",
-      "base_maximum_fire_damage_resistance_%",
-      "base_maximum_cold_damage_resistance_%",
-      "base_maximum_lightning_damage_resistance_%",
-      "reduce_enemy_elemental_resistance_%",
-      "base_additional_physical_damage_reduction_%",
-      "damage_+%",
-      "attack_and_cast_speed_+%",
-      "life_regeneration_rate_per_minute_%",
-      "immune_to_status_ailments"
+      "immune_to_status_ailments",
+      "affected_by_purity_of_elements"
     ],
     "visuals": "player_aura_resists",
     "category": "Buff",
@@ -3743,17 +3702,9 @@
       "SentinelPurityAura": {
         "aura_radius_metres": 6.0,
         "stats": {
-          "affected_by_purity_of_elements": 1,
           "base_resist_all_elements_%": 34,
-          "base_maximum_fire_damage_resistance_%": 0,
-          "base_maximum_cold_damage_resistance_%": 0,
-          "base_maximum_lightning_damage_resistance_%": 0,
-          "reduce_enemy_elemental_resistance_%": 0,
-          "base_additional_physical_damage_reduction_%": 0,
-          "damage_+%": 0,
-          "attack_and_cast_speed_+%": 0,
-          "life_regeneration_rate_per_minute_%": 0,
-          "immune_to_status_ailments": 1
+          "immune_to_status_ailments": 1,
+          "affected_by_purity_of_elements": 1
         },
         "stat_text": [
           "全ての[ElementalDamage|元素]耐性 +34%"
@@ -3769,14 +3720,8 @@
     "name": "ピュリティオブファイヤーオーラ",
     "removable": true,
     "stats": [
-      "affected_by_purity_of_fire",
       "base_fire_damage_resistance_%",
-      "base_reduce_enemy_fire_resistance_%",
-      "base_avoid_ignite_%",
-      "base_additional_physical_damage_reduction_%",
-      "damage_+%",
-      "attack_and_cast_speed_+%",
-      "life_regeneration_rate_per_minute_%"
+      "affected_by_purity_of_fire"
     ],
     "visuals": "player_aura_fire_resist",
     "category": "Buff",
@@ -3804,14 +3749,8 @@
       "SentinelFireResistAura": {
         "aura_radius_metres": 6.0,
         "stats": {
-          "affected_by_purity_of_fire": 1,
           "base_fire_damage_resistance_%": 41,
-          "base_reduce_enemy_fire_resistance_%": 0,
-          "base_avoid_ignite_%": 0,
-          "base_additional_physical_damage_reduction_%": 0,
-          "damage_+%": 0,
-          "attack_and_cast_speed_+%": 0,
-          "life_regeneration_rate_per_minute_%": 0
+          "affected_by_purity_of_fire": 1
         },
         "stat_text": [
           "[Resistances|火]耐性 +41%"
@@ -3827,14 +3766,8 @@
     "name": "ピュリティオブアイスオーラ",
     "removable": true,
     "stats": [
-      "affected_by_purity_of_ice",
       "base_cold_damage_resistance_%",
-      "base_reduce_enemy_cold_resistance_%",
-      "base_avoid_freeze_%",
-      "base_additional_physical_damage_reduction_%",
-      "damage_+%",
-      "attack_and_cast_speed_+%",
-      "life_regeneration_rate_per_minute_%"
+      "affected_by_purity_of_ice"
     ],
     "visuals": "player_aura_cold_resist",
     "category": "Buff",
@@ -3862,14 +3795,8 @@
       "SentinelColdResistAura": {
         "aura_radius_metres": 6.0,
         "stats": {
-          "affected_by_purity_of_ice": 1,
           "base_cold_damage_resistance_%": 41,
-          "base_reduce_enemy_cold_resistance_%": 0,
-          "base_avoid_freeze_%": 0,
-          "base_additional_physical_damage_reduction_%": 0,
-          "damage_+%": 0,
-          "attack_and_cast_speed_+%": 0,
-          "life_regeneration_rate_per_minute_%": 0
+          "affected_by_purity_of_ice": 1
         },
         "stat_text": [
           "[Resistances|冷気]耐性 +41%"
@@ -3885,14 +3812,8 @@
     "name": "ピュリティオブライトニングオーラ",
     "removable": true,
     "stats": [
-      "affected_by_purity_of_lightning",
       "base_lightning_damage_resistance_%",
-      "base_reduce_enemy_lightning_resistance_%",
-      "base_avoid_shock_%",
-      "base_additional_physical_damage_reduction_%",
-      "damage_+%",
-      "attack_and_cast_speed_+%",
-      "life_regeneration_rate_per_minute_%"
+      "affected_by_purity_of_lightning"
     ],
     "visuals": "player_aura_lightning_resist",
     "category": "Buff",
@@ -3920,14 +3841,8 @@
       "SentinelLightningResistAura": {
         "aura_radius_metres": 6.0,
         "stats": {
-          "affected_by_purity_of_lightning": 1,
           "base_lightning_damage_resistance_%": 41,
-          "base_reduce_enemy_lightning_resistance_%": 0,
-          "base_avoid_shock_%": 0,
-          "base_additional_physical_damage_reduction_%": 0,
-          "damage_+%": 0,
-          "attack_and_cast_speed_+%": 0,
-          "life_regeneration_rate_per_minute_%": 0
+          "affected_by_purity_of_lightning": 1
         },
         "stat_text": [
           "[Resistances|雷]耐性 +41%"
@@ -3938,19 +3853,13 @@
     "stack_limit": null
   },
   "player_aura_energy_shield": {
-    "description": "このオーラの発生源の最大マナに基づいて追加の合計エナジーシールドを獲得している",
+    "description": "追加の合計エナジーシールドを獲得している",
     "invisible": false,
     "name": "ディシプリン",
     "removable": true,
     "stats": [
       "base_total_maximum_energy_shield_+",
       "energy_shield_recharge_rate_+%",
-      "damage_+%_on_full_energy_shield",
-      "energy_shield_delay_-%",
-      "base_additional_physical_damage_reduction_%",
-      "damage_+%",
-      "attack_and_cast_speed_+%",
-      "life_regeneration_rate_per_minute_%",
       "affected_by_discipline"
     ],
     "visuals": "player_aura_energy_shield",
@@ -3981,12 +3890,6 @@
         "stats": {
           "base_total_maximum_energy_shield_+": 217,
           "energy_shield_recharge_rate_+%": 30,
-          "damage_+%_on_full_energy_shield": 0,
-          "energy_shield_delay_-%": 0,
-          "base_additional_physical_damage_reduction_%": 0,
-          "damage_+%": 0,
-          "attack_and_cast_speed_+%": 0,
-          "life_regeneration_rate_per_minute_%": 0,
           "affected_by_discipline": 1
         },
         "stat_text": [
@@ -4481,7 +4384,7 @@
   "ignited_ground": {
     "description": "",
     "invisible": true,
-    "name": "燃焼領域",
+    "name": "発火領域",
     "removable": false,
     "stats": [],
     "visuals": "invisible",
@@ -6506,7 +6409,6 @@
     "removable": true,
     "stats": [
       "random_curse_on_hit_%",
-      "random_curses_include_silence",
       "has_shrine_effect"
     ],
     "visuals": "shrine_curses",
@@ -6517,7 +6419,6 @@
         "aura_radius_metres": null,
         "stats": {
           "random_curse_on_hit_%": 100,
-          "random_curses_include_silence": 1,
           "has_shrine_effect": 1
         },
         "stat_text": [
@@ -6529,7 +6430,6 @@
         "aura_radius_metres": null,
         "stats": {
           "random_curse_on_hit_%": 0,
-          "random_curses_include_silence": 0,
           "has_shrine_effect": 1
         },
         "stat_text": null,
@@ -6539,7 +6439,6 @@
         "aura_radius_metres": null,
         "stats": {
           "random_curse_on_hit_%": 100,
-          "random_curses_include_silence": 1,
           "has_shrine_effect": 1
         },
         "stat_text": [
@@ -6653,7 +6552,7 @@
       "evasion_rating_+%",
       "maximum_energy_shield_+%",
       "base_damage_taken_+%",
-      "maximum_life_%_to_add_to_maximum_energy_shield",
+      "monsters_only_old_bad_add_%_of_total_maximum_life_to_base_maximum_energy_shield",
       "base_spell_suppression_chance_%",
       "has_shrine_effect"
     ],
@@ -6668,7 +6567,7 @@
           "evasion_rating_+%": 100,
           "maximum_energy_shield_+%": 100,
           "base_damage_taken_+%": 0,
-          "maximum_life_%_to_add_to_maximum_energy_shield": 0,
+          "monsters_only_old_bad_add_%_of_total_maximum_life_to_base_maximum_energy_shield": 0,
           "base_spell_suppression_chance_%": 0,
           "has_shrine_effect": 1
         },
@@ -6686,7 +6585,7 @@
           "evasion_rating_+%": 0,
           "maximum_energy_shield_+%": 0,
           "base_damage_taken_+%": -20,
-          "maximum_life_%_to_add_to_maximum_energy_shield": 20,
+          "monsters_only_old_bad_add_%_of_total_maximum_life_to_base_maximum_energy_shield": 20,
           "base_spell_suppression_chance_%": 20,
           "has_shrine_effect": 1
         },
@@ -6703,7 +6602,7 @@
           "evasion_rating_+%": 50,
           "maximum_energy_shield_+%": 50,
           "base_damage_taken_+%": 0,
-          "maximum_life_%_to_add_to_maximum_energy_shield": 0,
+          "monsters_only_old_bad_add_%_of_total_maximum_life_to_base_maximum_energy_shield": 0,
           "base_spell_suppression_chance_%": 0,
           "has_shrine_effect": 1
         },
@@ -6721,7 +6620,7 @@
           "evasion_rating_+%": 100,
           "maximum_energy_shield_+%": 100,
           "base_damage_taken_+%": 0,
-          "maximum_life_%_to_add_to_maximum_energy_shield": 0,
+          "monsters_only_old_bad_add_%_of_total_maximum_life_to_base_maximum_energy_shield": 0,
           "base_spell_suppression_chance_%": 0,
           "has_shrine_effect": 1
         },
@@ -6739,7 +6638,7 @@
           "evasion_rating_+%": 100,
           "maximum_energy_shield_+%": 100,
           "base_damage_taken_+%": 0,
-          "maximum_life_%_to_add_to_maximum_energy_shield": 0,
+          "monsters_only_old_bad_add_%_of_total_maximum_life_to_base_maximum_energy_shield": 0,
           "base_spell_suppression_chance_%": 0,
           "has_shrine_effect": 1
         },
@@ -7100,7 +6999,6 @@
     "stats": [
       "grant_actor_scale_+%_to_aura_owner_on_death",
       "grant_attack_speed_+%_to_aura_owner_on_death",
-      "grant_cast_speed_+%_to_aura_owner_on_death",
       "grant_damage_reduction_%_to_aura_owner_on_death",
       "soul_is_consumed_on_death"
     ],
@@ -7179,6 +7077,14 @@
           "template": "MonsterArchnemesisSoulEater",
           "stat_text": null,
           "stats": null
+        },
+        {
+          "id": "PlayerMonsterSoulEater1",
+          "item": null,
+          "name": null,
+          "template": "PlayerMonsterArchnemesisSoulEater",
+          "stat_text": null,
+          "stats": null
         }
       ]
     },
@@ -7188,7 +7094,6 @@
         "stats": {
           "grant_actor_scale_+%_to_aura_owner_on_death": 0,
           "grant_attack_speed_+%_to_aura_owner_on_death": 0,
-          "grant_cast_speed_+%_to_aura_owner_on_death": 0,
           "grant_damage_reduction_%_to_aura_owner_on_death": 0,
           "soul_is_consumed_on_death": 0
         },
@@ -7200,7 +7105,6 @@
         "stats": {
           "grant_actor_scale_+%_to_aura_owner_on_death": 0,
           "grant_attack_speed_+%_to_aura_owner_on_death": 0,
-          "grant_cast_speed_+%_to_aura_owner_on_death": 0,
           "grant_damage_reduction_%_to_aura_owner_on_death": 0,
           "soul_is_consumed_on_death": 0
         },
@@ -7212,7 +7116,6 @@
         "stats": {
           "grant_actor_scale_+%_to_aura_owner_on_death": 0,
           "grant_attack_speed_+%_to_aura_owner_on_death": 0,
-          "grant_cast_speed_+%_to_aura_owner_on_death": 0,
           "grant_damage_reduction_%_to_aura_owner_on_death": 0,
           "soul_is_consumed_on_death": 0
         },
@@ -7224,7 +7127,6 @@
         "stats": {
           "grant_actor_scale_+%_to_aura_owner_on_death": 0,
           "grant_attack_speed_+%_to_aura_owner_on_death": 0,
-          "grant_cast_speed_+%_to_aura_owner_on_death": 0,
           "grant_damage_reduction_%_to_aura_owner_on_death": 0,
           "soul_is_consumed_on_death": 0
         },
@@ -7236,7 +7138,6 @@
         "stats": {
           "grant_actor_scale_+%_to_aura_owner_on_death": 0,
           "grant_attack_speed_+%_to_aura_owner_on_death": 0,
-          "grant_cast_speed_+%_to_aura_owner_on_death": 0,
           "grant_damage_reduction_%_to_aura_owner_on_death": 0,
           "soul_is_consumed_on_death": 0
         },
@@ -7248,7 +7149,6 @@
         "stats": {
           "grant_actor_scale_+%_to_aura_owner_on_death": 0,
           "grant_attack_speed_+%_to_aura_owner_on_death": 0,
-          "grant_cast_speed_+%_to_aura_owner_on_death": 0,
           "grant_damage_reduction_%_to_aura_owner_on_death": 0,
           "soul_is_consumed_on_death": 0
         },
@@ -7260,7 +7160,6 @@
         "stats": {
           "grant_actor_scale_+%_to_aura_owner_on_death": 0,
           "grant_attack_speed_+%_to_aura_owner_on_death": 0,
-          "grant_cast_speed_+%_to_aura_owner_on_death": 0,
           "grant_damage_reduction_%_to_aura_owner_on_death": 0,
           "soul_is_consumed_on_death": 0
         },
@@ -7272,7 +7171,6 @@
         "stats": {
           "grant_actor_scale_+%_to_aura_owner_on_death": 0,
           "grant_attack_speed_+%_to_aura_owner_on_death": 0,
-          "grant_cast_speed_+%_to_aura_owner_on_death": 0,
           "grant_damage_reduction_%_to_aura_owner_on_death": 0,
           "soul_is_consumed_on_death": 0
         },
@@ -7284,7 +7182,17 @@
         "stats": {
           "grant_actor_scale_+%_to_aura_owner_on_death": 0,
           "grant_attack_speed_+%_to_aura_owner_on_death": 0,
-          "grant_cast_speed_+%_to_aura_owner_on_death": 0,
+          "grant_damage_reduction_%_to_aura_owner_on_death": 0,
+          "soul_is_consumed_on_death": 0
+        },
+        "stat_text": null,
+        "visuals": null
+      },
+      "PlayerMonsterArchnemesisSoulEater": {
+        "aura_radius_metres": 7.0,
+        "stats": {
+          "grant_actor_scale_+%_to_aura_owner_on_death": 0,
+          "grant_attack_speed_+%_to_aura_owner_on_death": 0,
           "grant_damage_reduction_%_to_aura_owner_on_death": 0,
           "soul_is_consumed_on_death": 0
         },
@@ -7295,14 +7203,13 @@
     "stack_limit": null
   },
   "soul_eater": {
-    "description": "アタックスピード、キャストスピードおよびキャラクターサイズが増加",
+    "description": "近くの死者の魂を貪ることで、[SkillSpeed|スキルスピード]増加を獲得している。",
     "invisible": false,
     "name": "ソウルイーター",
     "removable": false,
     "stats": [
-      "capped_actor_scale_+%",
-      "attack_speed_+%",
-      "base_cast_speed_+%",
+      "capped_actor_scale_+%_from_soul_eater_if_not_player",
+      "skill_speed_+%",
       "damage_taken_+%_final_from_soul_eater_if_not_player"
     ],
     "visuals": "soul_eater",
@@ -7616,43 +7523,12 @@
     "stack_limit": null
   },
   "unholy_might": {
-    "description": "物理ダメージに基づいた追加の混沌ダメージ与える",
+    "description": "追加の[Chaos|混沌]ダメージを[Gain|獲得]",
     "invisible": false,
     "name": "不浄な力",
     "removable": false,
     "stats": [
-      "has_unholy_might"
-    ],
-    "visuals": "unholy_might",
-    "category": "Buff",
-    "sources": null,
-    "templates": {
-      "GrantsUnholyMightUnique__1": {
-        "aura_radius_metres": null,
-        "stats": {
-          "has_unholy_might": 0
-        },
-        "stat_text": null,
-        "visuals": null
-      },
-      "SentinelPlayerUnholyMight": {
-        "aura_radius_metres": null,
-        "stats": {
-          "has_unholy_might": 1
-        },
-        "stat_text": null,
-        "visuals": null
-      }
-    },
-    "stack_limit": null
-  },
-  "unholy_might_permanent": {
-    "description": "物理ダメージに基づいた追加の混沌ダメージ与える",
-    "invisible": false,
-    "name": "不浄な力",
-    "removable": false,
-    "stats": [
-      "has_unholy_might"
+      "non_skill_base_all_damage_%_to_gain_as_chaos"
     ],
     "visuals": "unholy_might",
     "category": "Buff",
@@ -7660,16 +7536,16 @@
     "templates": null,
     "stack_limit": null
   },
-  "unholy_might_from_flask": {
-    "description": "物理ダメージに基づいた追加の混沌ダメージ与える",
-    "invisible": false,
-    "name": "不浄な力",
+  "presence_allies_unholy_might": {
+    "description": "",
+    "invisible": true,
+    "name": "",
     "removable": false,
     "stats": [
-      "has_unholy_might"
+      "have_unholy_might_from_aura_with_total_magnitude"
     ],
-    "visuals": "unholy_might",
-    "category": "Flask",
+    "visuals": "invisible",
+    "category": null,
     "sources": null,
     "templates": null,
     "stack_limit": null
@@ -9858,6 +9734,24 @@
         "stats": null,
         "stat_text": null,
         "visuals": "nemesis_allies_cannot_be_damaged_rare"
+      },
+      "AzmeriDustVisualWarden": {
+        "aura_radius_metres": null,
+        "stats": null,
+        "stat_text": null,
+        "visuals": "azmeri_dust_infused_warden"
+      },
+      "AzmeriDustVisualVoodoo": {
+        "aura_radius_metres": null,
+        "stats": null,
+        "stat_text": null,
+        "visuals": "azmeri_dust_infused_voodoo"
+      },
+      "AzmeriDustVisualPrimal": {
+        "aura_radius_metres": null,
+        "stats": null,
+        "stat_text": null,
+        "visuals": "azmeri_dust_infused_primal"
       }
     },
     "stack_limit": null
@@ -11158,38 +11052,6 @@
     ],
     "visuals": "invisible",
     "category": "Flask",
-    "sources": null,
-    "templates": null,
-    "stack_limit": null
-  },
-  "frost_bomb": {
-    "description": "ライフ自動回復、エナジーシールド自動回復およびエナジーシールドリチャージ速度が減少",
-    "invisible": false,
-    "name": "フロストボム",
-    "removable": false,
-    "stats": [
-      "life_regeneration_rate_+%",
-      "energy_shield_regeneration_rate_+%",
-      "energy_shield_recharge_rate_+%"
-    ],
-    "visuals": "frost_bomb",
-    "category": "Debuff",
-    "sources": null,
-    "templates": null,
-    "stack_limit": null
-  },
-  "lightning_bomb": {
-    "description": "雷ダメージに対する耐性およびライフ自動回復が減少。",
-    "invisible": false,
-    "name": "ライトニングボム",
-    "removable": false,
-    "stats": [
-      "life_regeneration_rate_+%",
-      "energy_shield_regeneration_rate_+%",
-      "energy_shield_recharge_rate_+%"
-    ],
-    "visuals": "lightning_bomb",
-    "category": "Debuff",
     "sources": null,
     "templates": null,
     "stack_limit": null
@@ -13891,7 +13753,7 @@
     "name": "シャヴロンのオーラ",
     "removable": false,
     "stats": [
-      "maximum_life_%_to_add_to_maximum_energy_shield",
+      "monsters_only_old_bad_add_%_of_total_maximum_life_to_base_maximum_energy_shield",
       "base_chaos_damage_does_not_damage_energy_shield_extra_hard"
     ],
     "visuals": "monster_aura_energy_shield",
@@ -13920,7 +13782,7 @@
       "TormentSpiritShavronne": {
         "aura_radius_metres": 4.5,
         "stats": {
-          "maximum_life_%_to_add_to_maximum_energy_shield": 0,
+          "monsters_only_old_bad_add_%_of_total_maximum_life_to_base_maximum_energy_shield": 0,
           "base_chaos_damage_does_not_damage_energy_shield_extra_hard": 0
         },
         "stat_text": null,
@@ -13929,7 +13791,7 @@
       "TormentHauntedMonsterShavronne": {
         "aura_radius_metres": 4.5,
         "stats": {
-          "maximum_life_%_to_add_to_maximum_energy_shield": 0,
+          "monsters_only_old_bad_add_%_of_total_maximum_life_to_base_maximum_energy_shield": 0,
           "base_chaos_damage_does_not_damage_energy_shield_extra_hard": 0
         },
         "stat_text": null,
@@ -15697,7 +15559,6 @@
     "stats": [
       "grant_actor_scale_+%_to_aura_owner_on_death",
       "grant_attack_speed_+%_to_aura_owner_on_death",
-      "grant_cast_speed_+%_to_aura_owner_on_death",
       "grant_damage_reduction_%_to_aura_owner_on_death",
       "soul_is_consumed_on_death"
     ],
@@ -15721,7 +15582,6 @@
         "stats": {
           "grant_actor_scale_+%_to_aura_owner_on_death": 0,
           "grant_attack_speed_+%_to_aura_owner_on_death": 0,
-          "grant_cast_speed_+%_to_aura_owner_on_death": 0,
           "grant_damage_reduction_%_to_aura_owner_on_death": 0,
           "soul_is_consumed_on_death": 0
         },
@@ -15737,9 +15597,8 @@
     "name": "",
     "removable": false,
     "stats": [
-      "capped_actor_scale_+%",
-      "attack_speed_+%",
-      "base_cast_speed_+%",
+      "capped_actor_scale_+%_from_soul_eater_if_not_player",
+      "skill_speed_+%",
       "base_additional_physical_damage_reduction_%",
       "base_resist_all_elements_%"
     ],
@@ -17187,6 +17046,16 @@
         },
         "stat_text": null,
         "visuals": null
+      },
+      "SpiritHauntDamageTakenLerp": {
+        "aura_radius_metres": null,
+        "stats": {
+          "monster_damage_taken_lerp_+%_final_min": -60,
+          "monster_damage_taken_lerp_+%_final_max": -99,
+          "monster_damage_taken_lerp_+%_final_time": 2000
+        },
+        "stat_text": null,
+        "visuals": null
       }
     },
     "stack_limit": null
@@ -17708,9 +17577,7 @@
     "invisible": true,
     "name": "",
     "removable": false,
-    "stats": [
-      "has_player_minion_been_killed_recently"
-    ],
+    "stats": [],
     "visuals": "invisible",
     "category": null,
     "sources": null,
@@ -18430,16 +18297,12 @@
     "stack_limit": null
   },
   "curse_chaos_weakness": {
-    "description": "呪術を受けている。混沌耐性が減少。",
+    "description": "呪いにより[Resistances|混沌耐性]低下が低くなっている。",
     "invisible": false,
     "name": "ディスペア",
     "removable": false,
     "stats": [
-      "base_chaos_damage_resistance_%",
-      "degen_effect_+%",
-      "minimum_added_chaos_damage_taken",
-      "maximum_added_chaos_damage_taken",
-      "chance_to_be_hindered_when_hit_by_spells_%"
+      "base_chaos_damage_resistance_%"
     ],
     "visuals": "curse_chaos_weakness",
     "category": "Hex",
@@ -19224,10 +19087,34 @@
           "stats": null
         },
         {
+          "id": "MonsterLightningMirage2",
+          "item": null,
+          "name": null,
+          "template": "MonsterLightningMirage",
+          "stat_text": null,
+          "stats": null
+        },
+        {
           "id": "MonsterNemesisLightningClone",
           "item": null,
           "name": null,
           "template": "MonsterLightningMirage",
+          "stat_text": null,
+          "stats": null
+        },
+        {
+          "id": "PlayerMonsterLightningMirage1",
+          "item": null,
+          "name": null,
+          "template": "PlayerMonsterLightningMirage",
+          "stat_text": null,
+          "stats": null
+        },
+        {
+          "id": "PlayerMonsterLightningMirage2",
+          "item": null,
+          "name": null,
+          "template": "PlayerMonsterLightningMirage",
           "stat_text": null,
           "stats": null
         }
@@ -19235,6 +19122,12 @@
     },
     "templates": {
       "MonsterLightningMirage": {
+        "aura_radius_metres": null,
+        "stats": null,
+        "stat_text": null,
+        "visuals": null
+      },
+      "PlayerMonsterLightningMirage": {
         "aura_radius_metres": null,
         "stats": null,
         "stat_text": null,
@@ -20377,7 +20270,7 @@
     "stack_limit": 4
   },
   "charged_dash_stage": {
-    "description": "[DNT] Your Charged Dash has more Damage when released.",
+    "description": "[DNT-UNUSED] Your Charged Dash has more Damage when released.",
     "invisible": false,
     "name": "チャージドダッシュステージ",
     "removable": false,
@@ -21898,10 +21791,7 @@
     "invisible": false,
     "name": "串刺し",
     "removable": false,
-    "stats": [
-      "impaled_debuff_unmodified_phys_damage_to_deal",
-      "current_impaled_stacks"
-    ],
+    "stats": [],
     "visuals": "impale",
     "category": "Debuff",
     "sources": null,
@@ -21960,10 +21850,7 @@
     "stats": [
       "attack_damage_+%_final_from_war_banner",
       "accuracy_rating_+%",
-      "base_additional_physical_damage_reduction_%",
-      "damage_+%",
-      "attack_and_cast_speed_+%",
-      "life_regeneration_rate_per_minute_%_per_endurance_charge"
+      "base_resist_all_elements_%"
     ],
     "visuals": "bloodstained_banner",
     "category": "Buff",
@@ -22031,10 +21918,7 @@
     "stats": [
       "stun_and_ailment_threshold_+%_final_from_dread_banner",
       "generate_x_charges_for_any_flask_per_minute",
-      "base_additional_physical_damage_reduction_%",
-      "damage_+%",
-      "attack_and_cast_speed_+%",
-      "life_regeneration_rate_per_minute_%_per_endurance_charge"
+      "base_resist_all_elements_%"
     ],
     "visuals": "puresteel_banner",
     "category": "Buff",
@@ -22821,7 +22705,7 @@
       "support_storm_barrier_cold_damage_+%_final",
       "support_storm_barrier_fire_damage_+%_final",
       "support_storm_barrier_chaos_damage_+%_final",
-      "has_infusion",
+      "has_storm_barrier_support",
       "life_regeneration_rate_per_minute_%"
     ],
     "visuals": "storm_barrier_support_damage",
@@ -25634,7 +25518,7 @@
   "living_blood_rush": {
     "description": "",
     "invisible": false,
-    "name": "[DNT] Living Blood Rush",
+    "name": "ブラッドラッシュ",
     "removable": false,
     "stats": [
       "action_speed_-%"
@@ -26044,7 +25928,7 @@
       "all_damage_can_shock",
       "shock_minimum_damage_taken_increase_%",
       "base_chance_to_shock_%",
-      "maximum_life_%_to_add_to_maximum_energy_shield",
+      "monsters_only_old_bad_add_%_of_total_maximum_life_to_base_maximum_energy_shield",
       "maximum_life_+%"
     ],
     "visuals": "crusader_empowered_boss_buff",
@@ -26704,6 +26588,12 @@
         "visuals": "archnemesis_maim"
       },
       "MonsterHinderAura1": {
+        "aura_radius_metres": 3.0,
+        "stats": null,
+        "stat_text": null,
+        "visuals": "monster_aura_hinder"
+      },
+      "PlayerMonsterHinderAura1": {
         "aura_radius_metres": 3.0,
         "stats": null,
         "stat_text": null,
@@ -27518,20 +27408,6 @@
     ],
     "visuals": "ground_profane",
     "category": "Debuff",
-    "sources": null,
-    "templates": null,
-    "stack_limit": null
-  },
-  "unholy_might_while_no_es": {
-    "description": "物理ダメージに基づいて、追加の混沌ダメージを与えます。",
-    "invisible": false,
-    "name": "不浄な力",
-    "removable": false,
-    "stats": [
-      "has_unholy_might"
-    ],
-    "visuals": "unholy_might",
-    "category": "Buff",
     "sources": null,
     "templates": null,
     "stack_limit": null
@@ -29018,7 +28894,7 @@
     "category": "Buff",
     "sources": null,
     "templates": null,
-    "stack_limit": 40
+    "stack_limit": 100
   },
   "cold_resonance": {
     "description": "",
@@ -29030,7 +28906,7 @@
     "category": "Buff",
     "sources": null,
     "templates": null,
-    "stack_limit": 40
+    "stack_limit": 100
   },
   "lightning_resonance": {
     "description": "",
@@ -29042,7 +28918,7 @@
     "category": "Buff",
     "sources": null,
     "templates": null,
-    "stack_limit": 40
+    "stack_limit": 100
   },
   "heist_lever_guard_immunity": {
     "description": "",
@@ -29708,7 +29584,7 @@
     "name": "リチュアルルーン",
     "removable": false,
     "stats": [
-      "maximum_life_%_to_add_to_maximum_energy_shield"
+      "monsters_only_old_bad_add_%_of_total_maximum_life_to_base_maximum_energy_shield"
     ],
     "visuals": "invisible",
     "category": "Buff",
@@ -30879,11 +30755,11 @@
         "aura_radius_metres": null,
         "stats": {
           "base_resist_all_elements_%": -30,
-          "additional_maximum_all_elemental_resistances_%": 20
+          "additional_maximum_all_elemental_resistances_%": -20
         },
         "stat_text": [
           "全ての[ElementalDamage|元素]耐性 -30%",
-          "全ての[MaximumResistances|元素耐性の最大値] +20%"
+          "全ての[MaximumResistances|元素耐性の最大値] -20%"
         ],
         "visuals": null
       }
@@ -31244,7 +31120,9 @@
           "base_skill_gain_life_cost_%_of_mana_cost_while_not_on_low_life": 0,
           "cannot_recover_above_low_life_except_flasks": 1
         },
-        "stat_text": null,
+        "stat_text": [
+          "フラスコ以外によるライフ回復はライフを低ライフ以上には回復できない"
+        ],
         "visuals": null
       }
     },
@@ -31520,47 +31398,8 @@
         },
         "stat_text": [
           "付与した[Curse|呪い]はプレイヤー自身に反射される",
-          "[DNT] Non-Damaging Ailments other than Freeze you inflict are reflected back to you"
+          "Non-Damaging Ailments other than [Freeze] you inflict are reflected back to you"
         ],
-        "visuals": null
-      }
-    },
-    "stack_limit": null
-  },
-  "ultimatum_self_lightning_damage_on_skill_use_mana_spent_on_cost": {
-    "description": "",
-    "invisible": true,
-    "name": "",
-    "removable": false,
-    "stats": [
-      "self_lightning_damage_on_skill_use_%_mana_spent_on_cost"
-    ],
-    "visuals": "invisible",
-    "category": "Debuff",
-    "sources": null,
-    "templates": {
-      "PlayerDebuffSelfLightningDamageOnSkillUseManaSpentOnCost": {
-        "aura_radius_metres": null,
-        "stats": {
-          "self_lightning_damage_on_skill_use_%_mana_spent_on_cost": 1000
-        },
-        "stat_text": null,
-        "visuals": null
-      },
-      "PlayerDebuffSelfLightningDamageOnSkillUseManaSpentOnCostLow": {
-        "aura_radius_metres": null,
-        "stats": {
-          "self_lightning_damage_on_skill_use_%_mana_spent_on_cost": 50
-        },
-        "stat_text": null,
-        "visuals": null
-      },
-      "PlayerDebuffSelfLightningDamageOnSkillUseManaSpentOnCostMid": {
-        "aura_radius_metres": null,
-        "stats": {
-          "self_lightning_damage_on_skill_use_%_mana_spent_on_cost": 200
-        },
-        "stat_text": null,
         "visuals": null
       }
     },
@@ -31656,7 +31495,7 @@
   "lightning_spear_stage": {
     "description": "",
     "invisible": false,
-    "name": "[DNT] Lightning Spear",
+    "name": "",
     "removable": false,
     "stats": [],
     "visuals": "lightning_spear_stage",
@@ -31665,38 +31504,10 @@
     "templates": null,
     "stack_limit": null
   },
-  "retreating_strike": {
-    "description": "槍のアタックで上昇した投射物アタックダメージを与える",
-    "invisible": false,
-    "name": "ディスエンゲージ",
-    "removable": false,
-    "stats": [
-      "retreating_strike_spear_projectile_attack_damage_+%_final"
-    ],
-    "visuals": "retreating_strike",
-    "category": "Buff",
-    "sources": null,
-    "templates": null,
-    "stack_limit": null
-  },
-  "advancing_strike": {
-    "description": "槍のアタックで上昇した近接ダメージを与える",
-    "invisible": false,
-    "name": "エンゲージ",
-    "removable": false,
-    "stats": [
-      "advancing_strike_spear_melee_damage_+%_final"
-    ],
-    "visuals": "advancing_strike",
-    "category": "Buff",
-    "sources": null,
-    "templates": null,
-    "stack_limit": null
-  },
   "baron_blood_beam_degen": {
     "description": "",
     "invisible": false,
-    "name": "[DNT] Baron Blood Beam Degen",
+    "name": "[DNT-UNUSED] Baron Blood Beam Degen",
     "removable": false,
     "stats": [
       "base_physical_damage_taken_per_minute"
@@ -31710,7 +31521,7 @@
   "fire_spear": {
     "description": "火継続ダメージを受けている。",
     "invisible": false,
-    "name": "[DNT] Fire Spear",
+    "name": "[DNT-UNUSED] Fire Spear",
     "removable": false,
     "stats": [
       "base_fire_damage_taken_per_minute"
@@ -31724,7 +31535,7 @@
   "heartseeker_regen": {
     "description": "",
     "invisible": true,
-    "name": "[DNT] Heartseeker Regen",
+    "name": "[DNT-UNUSED] Heartseeker Regen",
     "removable": false,
     "stats": [
       "life_regeneration_rate_per_minute_%"
@@ -31738,7 +31549,7 @@
   "heartseeker_life_loss": {
     "description": "",
     "invisible": true,
-    "name": "[DNT] Heartseeker Degen",
+    "name": "[DNT-UNUSED] Heartseeker Degen",
     "removable": false,
     "stats": [
       "life_loss_%_per_minute"
@@ -31766,10 +31577,10 @@
   "spear_sandstorm": {
     "description": "サンドストームの中にいるため、移動スピードが減少し、[Blind|盲目]となる。",
     "invisible": false,
-    "name": "[DNT] Sandstorm Swipe",
+    "name": "ワールウィンド",
     "removable": false,
     "stats": [
-      "base_movement_velocity_+%"
+      "movement_speed_+%_final_from_whirling_slash_storm"
     ],
     "visuals": "spear_sandstorm",
     "category": "Debuff",
@@ -31793,9 +31604,9 @@
     "stack_limit": 8
   },
   "tumour_spider_goo_tether": {
-    "description": "[DNT] You are slowed by Black Goo. Move away from the Goo to break the strands.",
+    "description": "[DNT-UNUSED] You are slowed by Black Goo. Move away from the Goo to break the strands.",
     "invisible": false,
-    "name": "[DNT] Gooped",
+    "name": "[DNT-UNUSED] Gooped",
     "removable": false,
     "stats": [
       "movement_speed_+%_final_from_tumour_spider_goo_tether",
@@ -32172,10 +31983,7 @@
     "stats": [
       "armour_evasion_+%_final_from_defiance_banner",
       "base_movement_velocity_+%",
-      "base_additional_physical_damage_reduction_%",
-      "damage_+%",
-      "attack_and_cast_speed_+%",
-      "life_regeneration_rate_per_minute_%_per_endurance_charge"
+      "base_resist_all_elements_%"
     ],
     "visuals": "armourevasion_banner",
     "category": "Buff",
@@ -32361,9 +32169,9 @@
     "stack_limit": null
   },
   "burninate_debuff": {
-    "description": "[DNT]",
+    "description": "[DNT-UNUSED]",
     "invisible": false,
-    "name": "[DNT] UNUSED",
+    "name": "[DNT-UNUSED] UNUSED",
     "removable": false,
     "stats": [
       "base_fire_damage_taken_per_minute"
@@ -32911,9 +32719,9 @@
     "stack_limit": null
   },
   "call_of_the_wild": {
-    "description": "[DNT]",
+    "description": "[DNT-UNUSED]",
     "invisible": false,
-    "name": "[DNT] Call of the Wild",
+    "name": "[DNT-UNUSED] Call of the Wild",
     "removable": true,
     "stats": [],
     "visuals": "call_of_the_wild",
@@ -33665,13 +33473,14 @@
     "name": "貫通する金切り声",
     "removable": false,
     "stats": [
-      "physical_damage_taken_+%"
+      "physical_damage_taken_+%",
+      "fire_damage_taken_+%"
     ],
     "visuals": "hellscape_demon_screech",
     "category": "Debuff",
     "sources": null,
     "templates": null,
-    "stack_limit": 20
+    "stack_limit": 10
   },
   "flame_surge_cannot_create_burning_ground": {
     "description": "",
@@ -34149,18 +33958,6 @@
     },
     "stack_limit": null
   },
-  "corrosion": {
-    "description": "腐食ごとに合計アーマーが-5000、合計回避力が-1000される。",
-    "invisible": false,
-    "name": "腐食",
-    "removable": false,
-    "stats": [],
-    "visuals": "expedition_death_geas",
-    "category": "Debuff",
-    "sources": null,
-    "templates": null,
-    "stack_limit": null
-  },
   "archnemesis_split": {
     "description": "",
     "invisible": true,
@@ -34204,18 +34001,6 @@
     ],
     "visuals": "ritual_chaos_vines",
     "category": "Debuff",
-    "sources": null,
-    "templates": null,
-    "stack_limit": null
-  },
-  "additional_arrows_from_frenzy_charges": {
-    "description": "",
-    "invisible": true,
-    "name": "",
-    "removable": false,
-    "stats": [],
-    "visuals": "invisible",
-    "category": null,
     "sources": null,
     "templates": null,
     "stack_limit": null
@@ -34276,11 +34061,25 @@
           "template": "MonsterLivingCrystals",
           "stat_text": null,
           "stats": null
+        },
+        {
+          "id": "PlayerMonsterLivingCrystals1",
+          "item": null,
+          "name": null,
+          "template": "PlayerMonsterLivingCrystals",
+          "stat_text": null,
+          "stats": null
         }
       ]
     },
     "templates": {
       "MonsterLivingCrystals": {
+        "aura_radius_metres": null,
+        "stats": null,
+        "stat_text": null,
+        "visuals": null
+      },
+      "PlayerMonsterLivingCrystals": {
         "aura_radius_metres": null,
         "stats": null,
         "stat_text": null,
@@ -34333,6 +34132,15 @@
         },
         "stat_text": null,
         "visuals": null
+      },
+      "PlayerMonsterFlaskDrainAura1": {
+        "aura_radius_metres": 3.6,
+        "stats": {
+          "flask_charges_recovered_per_3_seconds": 0,
+          "cannot_gain_flask_charges": 1
+        },
+        "stat_text": null,
+        "visuals": null
       }
     },
     "stack_limit": null
@@ -34340,7 +34148,7 @@
   "monster_mod_mana_siphoner": {
     "description": "雷継続ダメージを受け、マナが失われる。マナの回復ができない。",
     "invisible": false,
-    "name": "サイフォニングリング",
+    "name": "マナサイフォニング",
     "removable": false,
     "stats": [
       "mana_degeneration_per_minute_%",
@@ -34374,11 +34182,37 @@
           "template": "MonsterTemporalAura1",
           "stat_text": null,
           "stats": null
+        },
+        {
+          "id": "PlayerMonsterTemporalAura1",
+          "item": null,
+          "name": null,
+          "template": "MonsterTemporalAura1",
+          "stat_text": null,
+          "stats": null
+        },
+        {
+          "id": "PlayerMonsterTemporalAuraMinion1",
+          "item": null,
+          "name": null,
+          "template": "PlayerMonsterTemporalAura1",
+          "stat_text": null,
+          "stats": null
         }
       ]
     },
     "templates": {
       "MonsterTemporalAura1": {
+        "aura_radius_metres": 3.2,
+        "stats": {
+          "action_speed_-%": 0,
+          "debuff_time_passed_+%": 0,
+          "base_cooldown_speed_+%": 0
+        },
+        "stat_text": null,
+        "visuals": null
+      },
+      "PlayerMonsterTemporalAura1": {
         "aura_radius_metres": 3.2,
         "stats": {
           "action_speed_-%": 0,
@@ -34567,19 +34401,36 @@
     "stack_limit": null
   },
   "monster_mod_periodic_enrage": {
-    "description": "ダメージおよびアクションスピードが増加し、受けるダメージが減少。",
+    "description": "ダメージ、スキルスピードおよび移動スピードが増加し、受けるダメージが減少。",
     "invisible": false,
     "name": "狂暴",
     "removable": false,
     "stats": [
       "damage_+%",
-      "attack_speed_+%",
-      "base_cast_speed_+%",
+      "skill_speed_+%",
       "base_movement_velocity_+%",
       "base_actor_scale_+%",
       "monster_difficulty_tankiness_+%"
     ],
     "visuals": "monster_mod_periodic_enrage",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "monster_mod_enraged": {
+    "description": "ダメージ、スキルスピードおよび移動スピードが増加し、受けるダメージが減少。",
+    "invisible": false,
+    "name": "狂暴",
+    "removable": false,
+    "stats": [
+      "damage_+%",
+      "skill_speed_+%",
+      "base_movement_velocity_+%",
+      "base_actor_scale_+%",
+      "monster_difficulty_tankiness_+%"
+    ],
+    "visuals": "monster_mod_enraged",
     "category": "Buff",
     "sources": null,
     "templates": null,
@@ -36370,12 +36221,12 @@
     "stack_limit": null
   },
   "torment_possessed_player": {
-    "description": "拷問された幽霊に憑依されています。",
-    "invisible": true,
-    "name": "憑依",
+    "description": "アズメリの精霊に憑依されている。",
+    "invisible": false,
+    "name": "アズメリの精霊に憑依されている",
     "removable": false,
     "stats": [],
-    "visuals": "invisible",
+    "visuals": "torment_possessed_player",
     "category": "Buff",
     "sources": null,
     "templates": null,
@@ -36410,7 +36261,7 @@
   "guarded_assault": {
     "description": "前方からくるアタックをブロックしている。ブロックしたアタックから復讐を得ている。",
     "invisible": false,
-    "name": "[DNT] On Guard",
+    "name": "ガード中",
     "removable": false,
     "stats": [
       "additional_block_%_against_frontal_attacks"
@@ -36455,7 +36306,7 @@
     "name": "",
     "removable": false,
     "stats": [
-      "maximum_life_%_to_add_to_maximum_energy_shield",
+      "monsters_only_old_bad_add_%_of_total_maximum_life_to_base_maximum_energy_shield",
       "energy_shield_recharge_rate_per_minute_%",
       "energy_shield_recharge_not_delayed_by_damage"
     ],
@@ -36499,7 +36350,7 @@
     "name": "",
     "removable": false,
     "stats": [
-      "maximum_life_%_to_add_to_maximum_energy_shield",
+      "monsters_only_old_bad_add_%_of_total_maximum_life_to_base_maximum_energy_shield",
       "attack_and_cast_speed_+%"
     ],
     "visuals": "pitiful_fabrication_buff",
@@ -36802,7 +36653,7 @@
     "stack_limit": null
   },
   "give_onslaught": {
-    "description": "[DNT] This exists as a hack to be applied to minions as an affectsparents buff - probably should be changed/replaced in future",
+    "description": "[DNT-UNUSED] This exists as a hack to be applied to minions as an affectsparents buff - probably should be changed/replaced in future",
     "invisible": true,
     "name": "",
     "removable": false,
@@ -36865,18 +36716,6 @@
     ],
     "visuals": "executioner_stolen_mod",
     "category": "Buff",
-    "sources": null,
-    "templates": null,
-    "stack_limit": null
-  },
-  "cut_debuff": {
-    "description": "",
-    "invisible": true,
-    "name": "",
-    "removable": false,
-    "stats": [],
-    "visuals": "invisible",
-    "category": "Debuff",
     "sources": null,
     "templates": null,
     "stack_limit": null
@@ -38450,9 +38289,9 @@
     "stack_limit": null
   },
   "vaal_goliath_destabilise": {
-    "description": "[DNT] Being slowed as a result of destability",
+    "description": "[DNT-UNUSED] Being slowed as a result of destability",
     "invisible": false,
-    "name": "[DNT] Destabilised",
+    "name": "[DNT-UNUSED] Destabilised",
     "removable": false,
     "stats": [
       "action_speed_-%"
@@ -38556,9 +38395,9 @@
     "stack_limit": null
   },
   "ziggurat_burning_sun_stackable": {
-    "description": "[DNT] The power of a thousand suns (or just a few small ones)",
+    "description": "[DNT-UNUSED] The power of a thousand suns (or just a few small ones)",
     "invisible": false,
-    "name": "[DNT] A Little Sun",
+    "name": "[DNT-UNUSED] A Little Sun",
     "removable": false,
     "stats": [
       "base_fire_damage_taken_per_minute"
@@ -38572,7 +38411,7 @@
   "chimera_corrupted_ground": {
     "description": "火、雷および混沌継続ダメージを受けている",
     "invisible": false,
-    "name": "[DNT] Corrupted Ground",
+    "name": "[DNT-UNUSED] Corrupted Ground",
     "removable": false,
     "stats": [
       "base_fire_damage_taken_per_minute",
@@ -38646,7 +38485,7 @@
   "cenobite_leash_healing": {
     "description": "ライフが自動回復している",
     "invisible": false,
-    "name": "[DNT] Rejuvinating Spores",
+    "name": "[DNT-UNUSED] Rejuvinating Spores",
     "removable": false,
     "stats": [
       "life_regeneration_rate_per_minute_%",
@@ -38763,9 +38602,9 @@
     "stack_limit": null
   },
   "glacial_strike_stage": {
-    "description": "[DNT] You have stages from channelling Glacial Strike.",
+    "description": "[DNT-UNUSED] You have stages from channelling Glacial Strike.",
     "invisible": false,
-    "name": "[DNT] Glacial Strike",
+    "name": "[DNT-UNUSED] Glacial Strike",
     "removable": false,
     "stats": [],
     "visuals": "glacial_strike_stage",
@@ -38851,7 +38690,7 @@
   "bloodfever_aura_of_flies": {
     "description": "",
     "invisible": false,
-    "name": "[DNT] Righteous Flier",
+    "name": "[DNT-UNUSED] Righteous Flier",
     "removable": false,
     "stats": [
       "base_physical_damage_taken_per_minute"
@@ -38877,9 +38716,9 @@
     "stack_limit": null
   },
   "hag_soul_drain_debuff": {
-    "description": "[DNT] Your soul is being drained",
+    "description": "[DNT-UNUSED] Your soul is being drained",
     "invisible": false,
-    "name": "[DNT] Unused",
+    "name": "[DNT-UNUSED] Unused",
     "removable": false,
     "stats": [
       "base_cold_damage_taken_per_minute"
@@ -38903,9 +38742,9 @@
     "stack_limit": null
   },
   "baron_boss_sword_lockdown": {
-    "description": "[DNT] You are ensnared and cannot escape.",
+    "description": "[DNT-UNUSED] You are ensnared and cannot escape.",
     "invisible": false,
-    "name": "[DNT] Sword Lockdown",
+    "name": "[DNT-UNUSED] Sword Lockdown",
     "removable": false,
     "stats": [
       "no_movement_speed",
@@ -38932,9 +38771,9 @@
     "stack_limit": null
   },
   "monster_smite_lightning_and_undead_damage": {
-    "description": "[DNT] Allies deal additional lightning damage and additional damage against the undead.",
+    "description": "[DNT-UNUSED] Allies deal additional lightning damage and additional damage against the undead.",
     "invisible": false,
-    "name": "[DNT] Lightbringer Damage Aura",
+    "name": "[DNT-UNUSED] Lightbringer Damage Aura",
     "removable": false,
     "stats": [
       "non_skill_base_physical_damage_%_to_gain_as_lightning",
@@ -38947,13 +38786,13 @@
     "stack_limit": null
   },
   "monster_energy_shield_warcry": {
-    "description": "[DNT] Allies gain Energy Shield that cannon be recharged.",
+    "description": "[DNT-UNUSED] Allies gain Energy Shield that cannon be recharged.",
     "invisible": false,
-    "name": "[DNT] Energy Overshield",
+    "name": "[DNT-UNUSED] Energy Overshield",
     "removable": false,
     "stats": [
       "cannot_recharge_energy_shield",
-      "maximum_life_%_to_add_to_maximum_energy_shield"
+      "monsters_only_old_bad_add_%_of_total_maximum_life_to_base_maximum_energy_shield"
     ],
     "visuals": "twilight_officer_warcry_buff",
     "category": "Buff",
@@ -38978,7 +38817,7 @@
   "twilight_order_holy_heal": {
     "description": "ライフが自動回復している",
     "invisible": false,
-    "name": "[DNT] Holy Healing",
+    "name": "[DNT-UNUSED] Holy Healing",
     "removable": false,
     "stats": [
       "life_regeneration_rate_per_minute_%",
@@ -39005,7 +38844,7 @@
   "twilight_convert_righteous_fire": {
     "description": "",
     "invisible": false,
-    "name": "[DNT] Righteous Fire",
+    "name": "[DNT-UNUSED] Righteous Fire",
     "removable": false,
     "stats": [
       "base_fire_damage_taken_per_minute"
@@ -39019,7 +38858,7 @@
   "twilight_convert_righteous_fire_self_degen": {
     "description": "",
     "invisible": true,
-    "name": "[DNT] Righteous Fire",
+    "name": "[DNT-UNUSED] Righteous Fire",
     "removable": false,
     "stats": [
       "life_degeneration_%_per_minute_not_in_grace"
@@ -39033,7 +38872,7 @@
   "twilight_soldier_frozen_shield": {
     "description": "",
     "invisible": true,
-    "name": "[DNT] Frozen Shield",
+    "name": "[DNT-UNUSED] Frozen Shield",
     "removable": false,
     "stats": [
       "projectile_damage_taken_+%"
@@ -39062,7 +38901,7 @@
   "twilightsorceror_fire_beam_damage": {
     "description": "火継続ダメージを受けている",
     "invisible": false,
-    "name": "[DNT] Holy Fire",
+    "name": "[DNT-UNUSED] Holy Fire",
     "removable": false,
     "stats": [
       "base_fire_damage_taken_per_minute"
@@ -39076,7 +38915,7 @@
   "twilightsorceror_fire_beam_debuff": {
     "description": "ビーム内にいる時間が長いほど、受ける火ダメージが増加",
     "invisible": false,
-    "name": "[DNT] Holy Fire",
+    "name": "[DNT-UNUSED] Holy Fire",
     "removable": false,
     "stats": [],
     "visuals": "avarius_beam_debuff",
@@ -39088,7 +38927,7 @@
   "karui_bloodfever": {
     "description": "",
     "invisible": false,
-    "name": "[DNT] Karui Bloodfever",
+    "name": "[DNT-UNUSED] Karui Bloodfever",
     "removable": false,
     "stats": [],
     "visuals": "corrupted_blood",
@@ -39134,9 +38973,9 @@
     "stack_limit": null
   },
   "imperial_graveyard_knight_rf_sword": {
-    "description": "[DNT] You are taking fire damage over time.",
+    "description": "[DNT-UNUSED] You are taking fire damage over time.",
     "invisible": false,
-    "name": "[DNT] RF Sword",
+    "name": "[DNT-UNUSED] RF Sword",
     "removable": false,
     "stats": [
       "base_fire_damage_taken_per_minute"
@@ -39148,9 +38987,9 @@
     "stack_limit": null
   },
   "primordial_rooted_beam": {
-    "description": "[DNT] You are Rooted",
+    "description": "[DNT-UNUSED] You are Rooted",
     "invisible": false,
-    "name": "[DNT] Rooted",
+    "name": "[DNT-UNUSED] Rooted",
     "removable": false,
     "stats": [
       "action_speed_-%"
@@ -39164,7 +39003,7 @@
   "rooted_spore_ground": {
     "description": "雷および混沌継続ダメージを受けている",
     "invisible": false,
-    "name": "[DNT] Spore Ground",
+    "name": "[DNT-UNUSED] Spore Ground",
     "removable": false,
     "stats": [
       "base_lightning_damage_taken_per_minute",
@@ -39262,7 +39101,7 @@
   "new_blood_rage": {
     "description": "",
     "invisible": false,
-    "name": "[DNT] Blood Rage",
+    "name": "[DNT-UNUSED] Blood Rage",
     "removable": false,
     "stats": [
       "dummy_stat_display_nothing",
@@ -39314,9 +39153,9 @@
     "stack_limit": null
   },
   "howl_buff": {
-    "description": "[DNT] You are empowered by the Wolf's Howl",
+    "description": "[DNT-UNUSED] You are empowered by the Wolf's Howl",
     "invisible": true,
-    "name": "[DNT] Howl",
+    "name": "[DNT-UNUSED] Howl",
     "removable": false,
     "stats": [
       "attack_minimum_added_physical_damage",
@@ -39333,7 +39172,7 @@
   "heat_seeking_arrow_stage": {
     "description": "",
     "invisible": false,
-    "name": "[DNT] Heat Seeking Arrow Stages",
+    "name": "[DNT-UNUSED] Heat Seeking Arrow Stages",
     "removable": false,
     "stats": [],
     "visuals": "arctic_armour_stack",
@@ -39494,7 +39333,8 @@
     "name": "足止め",
     "removable": false,
     "stats": [
-      "no_movement_speed"
+      "no_movement_speed",
+      "stopped_by_pin"
     ],
     "visuals": "pinned",
     "category": "Debuff",
@@ -39503,7 +39343,8 @@
       "AncestralJadeEncaseEnemy": {
         "aura_radius_metres": null,
         "stats": {
-          "no_movement_speed": 1
+          "no_movement_speed": 1,
+          "stopped_by_pin": 0
         },
         "stat_text": null,
         "visuals": "ascendancy_spirit_caster_pin"
@@ -39528,7 +39369,7 @@
   "fire_wake_burning_damage": {
     "description": "",
     "invisible": true,
-    "name": "[DNT] Blazing Lance Burning Ground",
+    "name": "[DNT-UNUSED] Blazing Lance Burning Ground",
     "removable": false,
     "stats": [
       "base_fire_damage_taken_per_minute"
@@ -39757,20 +39598,6 @@
     "templates": null,
     "stack_limit": null
   },
-  "invocation": {
-    "description": "",
-    "invisible": false,
-    "name": "[DNT] Invocation",
-    "removable": false,
-    "stats": [
-      "current_invocation"
-    ],
-    "visuals": "invocation",
-    "category": "Buff",
-    "sources": null,
-    "templates": null,
-    "stack_limit": null
-  },
   "channelled_slam_stage_display": {
     "description": "スパーチャージドスラムをチャネリングしている。",
     "invisible": false,
@@ -39798,11 +39625,12 @@
     "stack_limit": null
   },
   "broken_armour_debuff": {
-    "description": "デバフはすべての[Armour|アーマー]を無効化する",
+    "description": "デバフはすべての[Armour|アーマー]を無効化し、[HitDamage|ヒット]から受ける[Physical物理]ダメージを増加させる。",
     "invisible": false,
     "name": "アーマー完全破壊",
     "removable": false,
     "stats": [
+      "physical_damage_taken_+%_from_hits",
       "armour_is_fully_broken"
     ],
     "visuals": "armour_broken",
@@ -39948,7 +39776,7 @@
   "wolf_minion_howl_debuff": {
     "description": "",
     "invisible": true,
-    "name": "[DNT] Wolf Howl Debuff",
+    "name": "[DNT-UNUSED] Wolf Howl Debuff",
     "removable": false,
     "stats": [
       "base_enemy_critical_strike_chance_+%_against_self"
@@ -40157,7 +39985,7 @@
   "fallen_god_chaos_aura": {
     "description": "混沌継続ダメージを受けている。",
     "invisible": false,
-    "name": "[DNT] Pestilent  Degen",
+    "name": "[DNT-UNUSED] Pestilent  Degen",
     "removable": false,
     "stats": [
       "base_chaos_damage_taken_per_minute"
@@ -40169,9 +39997,9 @@
     "stack_limit": null
   },
   "spectre_reserve_buff": {
-    "description": "[DNT] You have spectres, reserving your spirit",
+    "description": "[DNT-UNUSED] You have spectres, reserving your spirit",
     "invisible": true,
-    "name": "[DNT] Spectre Minions",
+    "name": "[DNT-UNUSED] Spectre Minions",
     "removable": false,
     "stats": [],
     "visuals": "invisible",
@@ -40181,9 +40009,9 @@
     "stack_limit": null
   },
   "fountain_statue_goop": {
-    "description": "[DNT] You are taking lightning and chaos damage over time.",
+    "description": "[DNT-UNUSED] You are taking lightning and chaos damage over time.",
     "invisible": false,
-    "name": "[DNT] Goop",
+    "name": "[DNT-UNUSED] Goop",
     "removable": false,
     "stats": [
       "base_lightning_damage_taken_per_minute",
@@ -40198,7 +40026,7 @@
   "player_dominating_aura": {
     "description": "",
     "invisible": true,
-    "name": "[DNT] Dominating Aura",
+    "name": "[DNT-UNUSED] Dominating Aura",
     "removable": false,
     "stats": [],
     "visuals": "invisible",
@@ -40210,7 +40038,7 @@
   "player_dominating_aura_self": {
     "description": "",
     "invisible": true,
-    "name": "[DNT] Dominating Aura",
+    "name": "[DNT-UNUSED] Dominating Aura",
     "removable": false,
     "stats": [],
     "visuals": "invisible",
@@ -40260,9 +40088,7 @@
         "stats": {
           "display_nearby_enemies_no_fire_dot_resistance_while_stationary": 1
         },
-        "stat_text": [
-          "[DNT] Nearby Enemies have no Fire Resistance to Damage over Time while you are Stationary"
-        ],
+        "stat_text": null,
         "visuals": null
       }
     },
@@ -40375,9 +40201,9 @@
     "stack_limit": null
   },
   "wendigo_donut_of_darkness": {
-    "description": "[DNT] Its dark",
+    "description": "[DNT-UNUSED] Its dark",
     "invisible": false,
-    "name": "[DNT] Donut of Darkness",
+    "name": "[DNT-UNUSED] Donut of Darkness",
     "removable": false,
     "stats": [
       "base_physical_damage_taken_per_minute"
@@ -40452,7 +40278,7 @@
     "stats": [
       "attack_speed_+%",
       "base_cast_speed_+%",
-      "pain_offering_damage_+%_final"
+      "damage_+%"
     ],
     "visuals": "pain_offering_buff",
     "category": null,
@@ -40554,7 +40380,7 @@
     "stats": [
       "life_degeneration_per_minute",
       "reaver_enrage_decay_rate_increase_+%_final",
-      "gain_rage_on_hit"
+      "gain_x_rage_on_attack_hit"
     ],
     "visuals": "invisible",
     "category": null,
@@ -40660,7 +40486,7 @@
   "ground_fire_ghostflame_monster": {
     "description": "",
     "invisible": true,
-    "name": "[DNT] Ignited Ground",
+    "name": "[DNT-UNUSED] Ignited Ground",
     "removable": false,
     "stats": [],
     "visuals": "ground_fire_ghostflame_monster",
@@ -40925,9 +40751,11 @@
     "invisible": true,
     "name": "",
     "removable": false,
-    "stats": [],
+    "stats": [
+      "buff_impl_stat"
+    ],
     "visuals": "invisible",
-    "category": "Debuff",
+    "category": null,
     "sources": null,
     "templates": null,
     "stack_limit": null
@@ -41261,7 +41089,7 @@
   },
   "ritual_of_power_damage": {
     "description": "",
-    "invisible": true,
+    "invisible": false,
     "name": "",
     "removable": false,
     "stats": [
@@ -41508,18 +41336,6 @@
     "templates": null,
     "stack_limit": null
   },
-  "bone_spear_impaled": {
-    "description": "受けるアタックは追加の物理ダメージを与え、スタックを取り除く。",
-    "invisible": false,
-    "name": "ボーンスピアスパイク",
-    "removable": false,
-    "stats": [],
-    "visuals": "bone_spear_impaled",
-    "category": null,
-    "sources": null,
-    "templates": null,
-    "stack_limit": null
-  },
   "player_low_aggro": {
     "description": "",
     "invisible": true,
@@ -41704,9 +41520,9 @@
     "stack_limit": null
   },
   "pausing_disabled_display_buff": {
-    "description": "[DNT] Pausing is disabled during this Boss' Skill.",
+    "description": "一時停止が無効",
     "invisible": false,
-    "name": "[DNT] Temporal Interference",
+    "name": "時の干渉",
     "removable": false,
     "stats": [],
     "visuals": "pausing_disabled_display_buff",
@@ -41784,9 +41600,9 @@
     "stack_limit": null
   },
   "player_critical_chance_against_aura": {
-    "description": "全てのソースからの受ける物理ダメージが上昇。この効果はオーラ内にとどまるとより強力になる。",
-    "invisible": false,
-    "name": "プライド？",
+    "description": "",
+    "invisible": true,
+    "name": "",
     "removable": false,
     "stats": [],
     "visuals": "player_physical_damage_aura",
@@ -41798,7 +41614,7 @@
   "player_critical_chance_against_aura_self": {
     "description": "",
     "invisible": true,
-    "name": "プライド？",
+    "name": "",
     "removable": false,
     "stats": [],
     "visuals": "invisible",
@@ -41808,9 +41624,9 @@
     "stack_limit": null
   },
   "unique_player_critical_chance_against_aura": {
-    "description": "全てのソースからの受ける物理ダメージが上昇。この効果はオーラ内にとどまるとより強力になる。",
-    "invisible": false,
-    "name": "プライド？",
+    "description": "",
+    "invisible": true,
+    "name": "",
     "removable": false,
     "stats": [],
     "visuals": "player_physical_damage_aura",
@@ -41944,7 +41760,7 @@
     "stack_limit": null
   },
   "additional_shock": {
-    "description": "",
+    "description": "デバフは受けるダメージ増加を付与する。",
     "invisible": false,
     "name": "感電",
     "removable": false,
@@ -42412,7 +42228,7 @@
     "name": "精密",
     "removable": false,
     "stats": [
-      "support_precision_accuracy_rating_+%"
+      "accuracy_rating_+%"
     ],
     "visuals": "invisible",
     "category": "Buff",
@@ -42426,7 +42242,7 @@
     "name": "明瞭",
     "removable": false,
     "stats": [
-      "support_clarity_mana_regeneration_rate_+%"
+      "mana_regeneration_rate_+%"
     ],
     "visuals": "invisible",
     "category": "Buff",
@@ -42440,7 +42256,7 @@
     "name": "活力",
     "removable": false,
     "stats": [
-      "support_vitality_life_regeneration_rate_per_minute_%"
+      "life_regeneration_rate_per_minute_%"
     ],
     "visuals": "invisible",
     "category": "Buff",
@@ -42454,7 +42270,7 @@
     "name": "本草学",
     "removable": false,
     "stats": [
-      "support_herbalism_life_recovery_+%_from_life_flasks"
+      "flask_life_to_recover_+%"
     ],
     "visuals": "invisible",
     "category": "Buff",
@@ -42468,7 +42284,7 @@
     "name": "食人",
     "removable": false,
     "stats": [
-      "support_cannibalism_recover_%_maximum_life_on_kill"
+      "recover_%_maximum_life_on_kill"
     ],
     "visuals": "invisible",
     "category": "Buff",
@@ -42655,11 +42471,11 @@
   },
   "valour_war": {
     "description": "",
-    "invisible": false,
+    "invisible": true,
     "name": "勇猛",
     "removable": false,
     "stats": [],
-    "visuals": "generic_movement_speed_buff",
+    "visuals": "invisible",
     "category": null,
     "sources": null,
     "templates": null,
@@ -42667,11 +42483,11 @@
   },
   "valour_defiance": {
     "description": "",
-    "invisible": false,
+    "invisible": true,
     "name": "勇猛",
     "removable": false,
     "stats": [],
-    "visuals": "generic_movement_speed_buff",
+    "visuals": "invisible",
     "category": null,
     "sources": null,
     "templates": null,
@@ -42679,11 +42495,11 @@
   },
   "valour_dread": {
     "description": "",
-    "invisible": false,
+    "invisible": true,
     "name": "勇猛",
     "removable": false,
     "stats": [],
-    "visuals": "generic_movement_speed_buff",
+    "visuals": "invisible",
     "category": null,
     "sources": null,
     "templates": null,
@@ -42779,7 +42595,7 @@
     "stack_limit": null
   },
   "ailment_bearer_activation_buff": {
-    "description": "アンバウンドフューリーを蓄積している。アンバウンドフューリーが100スタックすると、それを消費しアンバウンドとなることができる。",
+    "description": "アンバウンドフューリーを蓄積している。アンバウンドフューリーが最大に達すると、それを消費しアンバウンドとなることができる。",
     "invisible": false,
     "name": "アンバウンドフューリー",
     "removable": false,
@@ -42788,7 +42604,7 @@
     "category": null,
     "sources": null,
     "templates": null,
-    "stack_limit": 100
+    "stack_limit": null
   },
   "ailment_bearer_buff": {
     "description": "アンバウンド中、元素ダメ―ジ、元素系状態異常の蓄積、元素系状態異常の付与確率が上昇する。",
@@ -42983,7 +42799,7 @@
     "name": "デーモンフレイム",
     "removable": false,
     "stats": [
-      "life_lost_per_minute_nonlethal",
+      "base_life_lost_per_minute_nonlethal",
       "spell_damage_+%"
     ],
     "visuals": "demon_form_buff",
@@ -43064,9 +42880,9 @@
     "stack_limit": null
   },
   "mantra_of_destruction": {
-    "description": "",
+    "description": "Your next [Quarterstaff] [Attack] deals extra [Chaos] damage and grants [PurpleFlamesOfChayula|Purple Flames of Chayula] on kill.",
     "invisible": false,
-    "name": "[DNT] Mantra of Destruction",
+    "name": "Mantra of Destruction",
     "removable": false,
     "stats": [],
     "visuals": "mantra_of_destruction",
@@ -43113,20 +42929,6 @@
     "templates": null,
     "stack_limit": null
   },
-  "encased_in_jade_guard": {
-    "description": "[HitDamage|ヒット]から受けるすべてのダメージはライフまたは[EnergyShield|エナジーシールド]よりも先にこの[Buff|バフ]が受ける。",
-    "invisible": false,
-    "name": "翡翠の守り",
-    "removable": false,
-    "stats": [
-      "encased_in_jade"
-    ],
-    "visuals": "encased_in_jade",
-    "category": "Buff",
-    "sources": null,
-    "templates": null,
-    "stack_limit": null
-  },
   "sceptre_allies_damage_%_to_gain_as_fire": {
     "description": "",
     "invisible": true,
@@ -43141,13 +42943,13 @@
     "templates": null,
     "stack_limit": null
   },
-  "sceptre_enemies_elemental_damage_resisted_by_lowest_elemental_resistance": {
+  "sceptre_enemies_elemental_damage_taken_resisted_by_lowest_elemental_resistance": {
     "description": "",
     "invisible": true,
     "name": "",
     "removable": false,
     "stats": [
-      "elemental_damage_resisted_by_lowest_elemental_resistance"
+      "elemental_damage_taken_resisted_by_lowest_elemental_resistance"
     ],
     "visuals": "invisible",
     "category": null,
@@ -43262,9 +43064,9 @@
     "stack_limit": 10
   },
   "sanctum_temporary_immunity": {
-    "description": "[DNT] You are Immune to enemy damage for 1 second after taking damage from an enemy hit",
+    "description": "[DNT-UNUSED] You are Immune to enemy damage for 1 second after taking damage from an enemy hit",
     "invisible": false,
-    "name": "[DNT] Sanctum Damage Immunity",
+    "name": "[DNT-UNUSED] Sanctum Damage Immunity",
     "removable": false,
     "stats": [
       "cannot_be_damaged_by_enemies"
@@ -43964,7 +43766,7 @@
     "stack_limit": null
   },
   "shrine_goldfind_2": {
-    "description": "ドロップするすべてのアイテムは金貨に変換される。",
+    "description": "ドロップするすべてのアイテムは金貨に変換され、敵がドロップする金貨が増加する。",
     "invisible": false,
     "name": "貪欲のシュライン",
     "removable": true,
@@ -44147,16 +43949,16 @@
     "stack_limit": null
   },
   "overwhelming_pressure_aura": {
-    "description": "",
+    "description": "[EnemyStunThreshold|スタン]および[AilmentThreshold|元素状態閾値]が減少している。",
     "invisible": false,
-    "name": "",
+    "name": "圧倒的な存在感",
     "removable": false,
     "stats": [
       "stun_threshold_+%",
       "ailment_threshold_+%"
     ],
     "visuals": "overwhelming_pressure",
-    "category": null,
+    "category": "Debuff",
     "sources": null,
     "templates": null,
     "stack_limit": null
@@ -44346,23 +44148,34 @@
       "cannot_be_knocked_back",
       "dodge_all_the_things"
     ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "proximal_intangibility_visuals": {
+    "description": "敵が近距離にいない間はダメージを受けない",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
     "visuals": "proximal_intangibility",
     "category": "Buff",
     "sources": null,
     "templates": null,
     "stack_limit": null
   },
-  "herald_of_blood_reservation": {
-    "description": "",
-    "invisible": true,
-    "name": "",
-    "removable": false,
+  "herald_of_blood": {
+    "description": "[DNT-UNUSED] Slain Bleeding Enemies Explode dealing Physical Damage.",
+    "invisible": false,
+    "name": "ヘラルドオブブラッド",
+    "removable": true,
     "stats": [
-      "skill_herald_of_blood_bleeding_enemies_explode_for_%_life_as_physical_damage",
-      "skill_herald_of_blood_explosion_aggravate_bleeding_chance_%"
+      "affected_by_herald_of_blood"
     ],
-    "visuals": "invisible",
-    "category": null,
+    "visuals": "herald_of_blood",
+    "category": "Herald",
     "sources": null,
     "templates": null,
     "stack_limit": null
@@ -44383,14 +44196,14 @@
     "stack_limit": null
   },
   "decay_rarity": {
-    "description": "",
-    "invisible": true,
-    "name": "",
+    "description": "キル時の[ItemRarity|アイテムのレアリティ]が増加",
+    "invisible": false,
+    "name": "[MountingGreed|高まる欲望]",
     "removable": false,
     "stats": [
       "base_item_found_rarity_+%"
     ],
-    "visuals": "invisible",
+    "visuals": "decay_rarity",
     "category": null,
     "sources": null,
     "templates": null,
@@ -44464,12 +44277,12 @@
     "stack_limit": null
   },
   "infusion": {
-    "description": "[Spell|スペル]ダメージが上昇している",
+    "description": "[Spell|スペル]ダメージ増加している",
     "invisible": false,
     "name": "神秘の効能",
     "removable": false,
     "stats": [
-      "spell_damage_+%_final_from_infusion"
+      "spell_damage_+%"
     ],
     "visuals": "power_offering_infusion",
     "category": null,
@@ -44545,6 +44358,20 @@
     "templates": null,
     "stack_limit": null
   },
+  "pinned_immunity": {
+    "description": "[DNT-UNUSED] You have been freed from all [Pinned], and you cannot be [Pinned].",
+    "invisible": false,
+    "name": "足止め完全耐性",
+    "removable": false,
+    "stats": [
+      "base_cannot_be_pinned"
+    ],
+    "visuals": "flask_maim_immunity",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
   "main_hand_total_hundred_times_monster_power_of_enemies_hit_in_past_6_seconds": {
     "description": "",
     "invisible": true,
@@ -44610,7 +44437,7 @@
   "poison_cloud": {
     "description": "",
     "invisible": true,
-    "name": "[DNT] Poisonous Cloud",
+    "name": "毒雲",
     "removable": false,
     "stats": [],
     "visuals": "invisible",
@@ -44665,7 +44492,7 @@
     "stack_limit": null
   },
   "ascendancy_tortoise_paua": {
-    "description": "[Defences|防御力]が50%増加し、[Block|ブロック]率が25%増加している。",
+    "description": "[Defences|防御力]が80%増加し、[Block|ブロック]率が40%増加している。",
     "invisible": false,
     "name": "パウアの殻",
     "removable": false,
@@ -44680,12 +44507,12 @@
       "AscendancyTortoisePauaAura": {
         "aura_radius_metres": 4.0,
         "stats": {
-          "global_defences_+%": 50,
-          "block_chance_+%": 25
+          "global_defences_+%": 80,
+          "block_chance_+%": 40
         },
         "stat_text": [
-          "グローバル防御力が50%増加する",
-          "[Block|ブロック]率が25%増加する"
+          "グローバル防御力が80%増加する",
+          "[Block|ブロック]率が40%増加する"
         ],
         "visuals": null
       }
@@ -44693,7 +44520,7 @@
     "stack_limit": null
   },
   "ascendancy_warcaller_rage": {
-    "description": "[Attack|アタック]でのヒット時に[Rage|憤怒]を5獲得し、[SkillSpeed|スキルスピード]が10%増加している。",
+    "description": "[Attack|アタック]でのヒット時に[Rage|憤怒]を10獲得し、[SkillSpeed|スキルスピード]が20%増加している。",
     "invisible": false,
     "name": "ウォーコーラーの怒号",
     "removable": false,
@@ -44708,11 +44535,11 @@
       "AscendancyBuffHornOnslaught": {
         "aura_radius_metres": null,
         "stats": {
-          "gain_x_rage_on_attack_hit": 5,
-          "skill_speed_+%": 10
+          "gain_x_rage_on_attack_hit": 10,
+          "skill_speed_+%": 20
         },
         "stat_text": [
-          "[SkillSpeed|スキルスピード]が10%増加する"
+          "[SkillSpeed|スキルスピード]が20%増加する"
         ],
         "visuals": null
       }
@@ -44857,7 +44684,7 @@
     "name": "",
     "removable": false,
     "stats": [
-      "take_%_of_hit_damage_from_soul_link_source_energy_shield_before_you"
+      "take_%_of_hit_damage_from_aura_source_energy_shield_before_you"
     ],
     "visuals": "invisible",
     "category": null,
@@ -45090,6 +44917,2074 @@
     "removable": false,
     "stats": [],
     "visuals": "demon_claw_blackflame_ignite",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "unique_gain_damage_percent_as_chaos_presence_allies": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "non_skill_base_all_damage_%_to_gain_as_chaos"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "unique_gain_damage_percent_as_chaos_presence_enemies": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "non_skill_base_all_damage_%_to_gain_as_chaos"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "unique_enemies_in_presence_have_life_reserved": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "life_reserved_by_stat_%"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "energy_shield_recharge_visual": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "unique_window_to_paradise": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "primalist_stolen_mods": {
+    "description": "レアモンスターのモッドを自身のものとしている",
+    "invisible": false,
+    "name": "リチュアルサクリファイス",
+    "removable": false,
+    "stats": [],
+    "visuals": "primalist_stolen_mods",
+    "category": "Stolen",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "unique_redblade_banner_enemies_in_presence_have_double_monster_power": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "unique_redblade_banner_monster_power_+%_final"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "enemies_in_presence_count_as_low_life": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "you_count_as_low_life"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "ailments_types_grant_damage_taken_child_buff_ignite": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "base_damage_taken_+%"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "ailments_types_grant_damage_taken_child_buff_chill": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "base_damage_taken_+%"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "ailments_types_grant_damage_taken_child_buff_freeze": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "base_damage_taken_+%"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "ailments_types_grant_damage_taken_child_buff_shock": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "base_damage_taken_+%"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "ailments_types_grant_damage_taken_child_buff_electrocute": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "base_damage_taken_+%"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "blood_boil_reservation": {
+    "description": "[Presence|存在下]の敵は定期的にブラッドボイルを蓄積する。死亡時に、腫物は弾け、近くの対象[CorruptedBlood|穢れた血]を適用します。",
+    "invisible": false,
+    "name": "ブラッドボイル",
+    "removable": false,
+    "stats": [],
+    "visuals": "blood_boil",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "blood_boil_stack": {
+    "description": "",
+    "invisible": false,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "blood_boil_buff",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "enemies_in_presence_hanve_no_elemental_resistances": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "your_elemental_resistances_do_not_exist"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "ice_walker_reservation": {
+    "description": "[DNT-UNUSED] You can pass through Ice Crystals freely",
+    "invisible": false,
+    "name": "[DNT-UNUSED] Icewalker",
+    "removable": false,
+    "stats": [
+      "can_pass_through_ice_crystals"
+    ],
+    "visuals": "ice_walker_crystal_walk",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "minion_have_revived_recently": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "have_revived_recently"
+    ],
+    "visuals": "minion_have_revived_recently",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "salvo_seals": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "instability_fuse": {
+    "description": "ヴォラタリティはまもなく起爆する",
+    "invisible": false,
+    "name": "起爆寸前",
+    "removable": false,
+    "stats": [],
+    "visuals": "instability_stack_orb",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "cold_infusion": {
+    "description": "次の[Projectile|投射物][Attack|アタック]は[Cold|冷気]の爆発を引き起こす。",
+    "invisible": false,
+    "name": "コールドインフュージョン",
+    "removable": false,
+    "stats": [],
+    "visuals": "cold_infusion",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "fire_infusion": {
+    "description": "次の[Projectile|投射物][Attack|アタック]は[Fire|火]の爆発を引き起こす。",
+    "invisible": false,
+    "name": "ファイヤーインフュージョン",
+    "removable": false,
+    "stats": [],
+    "visuals": "fire_infusion",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "lightning_infusion": {
+    "description": "次の[Projectile|投射物][Attack|アタック]は[Lightning|雷]の爆発を引き起こす。",
+    "invisible": false,
+    "name": "ライトニングインフュージョン",
+    "removable": false,
+    "stats": [],
+    "visuals": "lightning_infusion",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "chaos_infusion": {
+    "description": "次の[Projectile|投射物][Attack|アタック]は[Chaos|混沌]の爆発を引き起こす。",
+    "invisible": false,
+    "name": "カオスインフュージョン",
+    "removable": false,
+    "stats": [],
+    "visuals": "chaos_infusion",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "support_static_charge": {
+    "description": "ヴォルタイックチャージを蓄積している",
+    "invisible": false,
+    "name": "ヴォルタイックチャージ",
+    "removable": false,
+    "stats": [],
+    "visuals": "static_charge_buildup",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "support_charged_shots": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "infusing_strike_cold_debuff": {
+    "description": "[Cold|冷気][Resistances|耐性]が最小値の0まで下がっている",
+    "invisible": false,
+    "name": "無防備（冷気）",
+    "removable": false,
+    "stats": [
+      "total_cold_resistance_is_zero"
+    ],
+    "visuals": "infusing_strike_cold_debuff",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "infusing_strike_fire_debuff": {
+    "description": "[Fire|火][Resistances|耐性]が最小値の0まで下がっている",
+    "invisible": false,
+    "name": "無防備（火）",
+    "removable": false,
+    "stats": [
+      "total_fire_resistance_is_zero"
+    ],
+    "visuals": "infusing_strike_fire_debuff",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "infusing_strike_lightning_debuff": {
+    "description": "[Lightning|雷][Resistances|耐性]が最小値の0まで下がっている",
+    "invisible": false,
+    "name": "無防備（雷）",
+    "removable": false,
+    "stats": [
+      "total_lightning_resistance_is_zero"
+    ],
+    "visuals": "infusing_strike_lightning_debuff",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "support_crystalshatter": {
+    "description": "ベルグラによってサポートされたスキルは冷気ダメージを獲得している",
+    "invisible": false,
+    "name": "ベルグラ",
+    "removable": false,
+    "stats": [
+      "support_crystalshatter_buff_crystal_life_destroyed_in_past_duration"
+    ],
+    "visuals": "crystalshatter_visual",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "track_support_crystalshatter_buff_crystal_life_destroyed_in_past_duration": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "track_support_crystalshatter_buff_crystal_life_destroyed_in_past_duration"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "number_of_times_attacked_with_skill_recently": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "skill_disabled_by_support_measured_speed": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "minion_mounted": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "base_cannot_be_damaged",
+      "hide_mini_life_bar",
+      "is_a_mount"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "minion_pre_mounted": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "you_count_as_immobilised"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "track_support_frosthunger_count": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "track_number_of_enemies_surroundering": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "base_track_number_of_enemies_surroundering"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "tempering": {
+    "description": "[Armour|アーマー]の一部が、受ける[ElementalDamage|ヒット元素ダメージ]に適用される",
+    "invisible": false,
+    "name": "屈折の装甲",
+    "removable": false,
+    "stats": [
+      "armour_%_applies_to_fire_cold_lightning_damage"
+    ],
+    "visuals": "tempering_visual",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "have_hit_with_projectile_attack_damage_in_past_8_seconds": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "have_hit_with_projectile_attack_damage_in_past_8_seconds"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "timerot": {
+    "description": "[DNT-UNUSED] Fill me in",
+    "invisible": false,
+    "name": "[DNT-UNUSED] Timerot",
+    "removable": false,
+    "stats": [
+      "physical_damage_reduction_rating_+%",
+      "evasion_rating_+%"
+    ],
+    "visuals": "timerot_visual",
+    "category": "Debuff",
+    "sources": null,
+    "templates": {
+      "TimerotStack": {
+        "aura_radius_metres": null,
+        "stats": {
+          "physical_damage_reduction_rating_+%": -5,
+          "evasion_rating_+%": -5
+        },
+        "stat_text": [
+          "[Armour|アーマー]が5%減少する",
+          "[Evasion|回避力]が5%減少する"
+        ],
+        "visuals": null
+      }
+    },
+    "stack_limit": null
+  },
+  "reparation": {
+    "description": "[DNT-UNUSED] Fill me in",
+    "invisible": false,
+    "name": "[DNT-UNUSED] Reparation",
+    "removable": false,
+    "stats": [
+      "support_timerot_reparation_buff_armour_+%_final",
+      "support_timerot_reparation_buff_evasion_+%_final"
+    ],
+    "visuals": "reparation_visual",
+    "category": "Buff",
+    "sources": null,
+    "templates": {
+      "ReparationStack": {
+        "aura_radius_metres": null,
+        "stats": {
+          "support_timerot_reparation_buff_armour_+%_final": 5,
+          "support_timerot_reparation_buff_evasion_+%_final": 5
+        },
+        "stat_text": null,
+        "visuals": null
+      }
+    },
+    "stack_limit": null
+  },
+  "generic_minion_fade": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "generic_minion_fade",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "skill_enemies_affected_by_non_ailment_damage_over_time_life_regeneration": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "life_regeneration_rate_per_minute_%"
+    ],
+    "visuals": "invisible",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "have_hit_with_melee_attack_in_past_8_seconds": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "have_hit_with_melee_attack_in_past_8_seconds"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "attack_projectile_weakness": {
+    "description": "",
+    "invisible": true,
+    "name": "格好の餌食",
+    "removable": false,
+    "stats": [
+      "attack_projectile_damage_taken_+%"
+    ],
+    "visuals": "easy_target_visual",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "parried": {
+    "description": "受ける[Attack|アタック]ダメージが大幅に上昇している。",
+    "invisible": false,
+    "name": "パリィ",
+    "removable": false,
+    "stats": [
+      "attack_damage_taken_+%_final_from_parried",
+      "spell_damage_taken_+%_final_from_parried",
+      "is_parried"
+    ],
+    "visuals": "parried",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "winterblast_freeze_buildup": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "freeze_buildup_+%_if_chilled"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "instability_buff": {
+    "description": "ヴォラタリティの爆発を生き延び、混沌ダメージを獲得している",
+    "invisible": false,
+    "name": "ヴォラタイルパワー",
+    "removable": false,
+    "stats": [
+      "non_skill_base_all_damage_%_to_gain_as_chaos"
+    ],
+    "visuals": "instability_stack_buff",
+    "category": "Buff",
+    "sources": null,
+    "templates": {
+      "InstabilityBuff": {
+        "aura_radius_metres": null,
+        "stats": {
+          "non_skill_base_all_damage_%_to_gain_as_chaos": 1
+        },
+        "stat_text": [
+          "ダメージの1%を追加[Chaos|混沌]ダメージとして[Gain|獲得]する"
+        ],
+        "visuals": null
+      }
+    },
+    "stack_limit": null
+  },
+  "bloodstained_buildup": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "base_bloodstained_buildup_permyriad_on_self_per_second"
+    ],
+    "visuals": "invisible",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "bloodstained": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "base_is_bloodstained"
+    ],
+    "visuals": "invisible",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "bloodstained_immunity": {
+    "description": "",
+    "invisible": false,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "base_cannot_be_bloodstained"
+    ],
+    "visuals": "flask_maim_immunity",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "deal_thorns_damage_on_hit_for_X_hits_after_thorns_trigger": {
+    "description": "逆刺がサポートされているスキルはヒット時に棘ダメージを与える。",
+    "invisible": false,
+    "name": "逆刺",
+    "removable": false,
+    "stats": [],
+    "visuals": "barbs_visual",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "track_deal_thorns_damage_on_hit_for_X_hits_after_thorns_trigger": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "track_deal_thorns_damage_on_hit_for_X_hits_after_thorns_trigger"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "support_ancestral_aid_number_of_times_blocked": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "trigger_spiked_gauntlets_for_X_hits_after_thorns_trigger": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "track_trigger_spiked_gauntlets_for_X_hits_after_thorns_trigger": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "track_trigger_spiked_gauntlets_for_X_hits_after_thorns_trigger"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "cast_on_using_charm_reserve": {
+    "description": "",
+    "invisible": false,
+    "name": "チャーム使用時キャスト",
+    "removable": false,
+    "stats": [],
+    "visuals": "cast_on_using_charm_reserve",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "cast_on_using_charm_count": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "trinity_reserve_buff": {
+    "description": "",
+    "invisible": false,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "gain_X_resonance_of_majority_damage_on_hit",
+      "elemental_attack_damage_+%_final_per_50_resonance",
+      "lose_X_resonance_per_second_while_not_gaining_resonance",
+      "resonance_decay_delay_ms",
+      "lose_X_resonance_per_hit"
+    ],
+    "visuals": "lingering_illusion",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "support_thornskin": {
+    "description": "",
+    "invisible": true,
+    "name": "棘皮",
+    "removable": false,
+    "stats": [
+      "thorns_damage_+%"
+    ],
+    "visuals": "invisible",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "support_mysticism": {
+    "description": "",
+    "invisible": true,
+    "name": "神秘主義",
+    "removable": false,
+    "stats": [
+      "spell_damage_+%_while_es_full"
+    ],
+    "visuals": "invisible",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "support_dire_strike": {
+    "description": "",
+    "invisible": true,
+    "name": "ダイアストライク",
+    "removable": false,
+    "stats": [
+      "attack_damage_+%_on_low_life"
+    ],
+    "visuals": "invisible",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "support_upwelling": {
+    "description": "",
+    "invisible": true,
+    "name": "湧出",
+    "removable": false,
+    "stats": [
+      "minion_damage_+%_while_missing_mana"
+    ],
+    "visuals": "invisible",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "support_warm_blooded": {
+    "description": "",
+    "invisible": true,
+    "name": "温血",
+    "removable": false,
+    "stats": [
+      "freeze_duration_on_self_+%_final_from_warm_blooded"
+    ],
+    "visuals": "invisible",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "support_cool_headed": {
+    "description": "",
+    "invisible": true,
+    "name": "冷血",
+    "removable": false,
+    "stats": [
+      "ignite_duration_on_self_+%_final_from_cool_headed"
+    ],
+    "visuals": "invisible",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "support_strong_hearted": {
+    "description": "",
+    "invisible": true,
+    "name": "強心",
+    "removable": false,
+    "stats": [
+      "shock_duration_on_self_+%_final_from_strong_hearted"
+    ],
+    "visuals": "invisible",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "support_fresh_clip": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "evasion_break_tracker": {
+    "description": "回避力の一部を失っている。",
+    "invisible": false,
+    "name": "鈍足",
+    "removable": false,
+    "stats": [
+      "evasion_break_count"
+    ],
+    "visuals": "evasion_break_tracker_visual",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "broken_evasion_debuff": {
+    "description": "デバフはすべての回避力を無効化",
+    "invisible": false,
+    "name": "完全に鈍足",
+    "removable": false,
+    "stats": [
+      "evasion_is_fully_broken"
+    ],
+    "visuals": "evasion_broken_visual",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "parried_immunity": {
+    "description": "",
+    "invisible": false,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "base_cannot_be_parried"
+    ],
+    "visuals": "flask_maim_immunity",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "channelling_seconds": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "incision_debuff": {
+    "description": "切開により[Bleeding|出血]を受ける可能性を得ている。",
+    "invisible": false,
+    "name": "切開",
+    "removable": false,
+    "stats": [
+      "receive_bleeding_chance_%_when_hit",
+      "is_incisioned"
+    ],
+    "visuals": "incision_debuff_visual",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": 10
+  },
+  "incision_debuff_increased_physical_damage_taken": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "physical_damage_taken_+%"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "support_mobile_assault": {
+    "description": "",
+    "invisible": true,
+    "name": "起動攻撃",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "track_have_hit_with_projectile_attack_damage_in_past_8_seconds": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "base_track_have_hit_with_projectile_attack_damage_in_past_8_seconds"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "track_have_hit_with_melee_attack_in_past_8_seconds": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "base_track_have_hit_with_melee_attack_in_past_8_seconds"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "shrine_buff_every_x_ms": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "support_unmoving": {
+    "description": "",
+    "invisible": true,
+    "name": "堅忍",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "track_enemy_blood_loss": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "track_enemy_blood_loss"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "hunters_mark": {
+    "description": "[BloodLoss|失血]により[HeavyStun|ヘビースタン]の蓄積を受け、殺されるか[HeavyStun|ヘビースタン]を受けると血の爆発を放つ。",
+    "invisible": false,
+    "name": "ブラッドハウンドの呪印",
+    "removable": false,
+    "stats": [],
+    "visuals": "hunters_mark",
+    "category": "Mark",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "hunters_mark_buildup": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "incision_consumed_recently": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "skill_additional_usage_condition_usages": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "tactician_weapon_damage_added_aura": {
+    "description": "味方の武器ダメージの一部が自身に追加される。",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "rallying_cry",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "lich_ascendancy_explosion_aura": {
+    "description": "",
+    "invisible": true,
+    "name": "リッチの存在感",
+    "removable": false,
+    "stats": [
+      "explode_cursed_enemies_for_25%_life_as_chaos_on_kill_chance_%"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "capture_beast": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "cannot_die"
+    ],
+    "visuals": "capture_beast",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "captured_beast_success": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "cannot_die",
+      "is_hidden_monster",
+      "minions_take_no_actions"
+    ],
+    "visuals": "captured_beast",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "unsteady_tempo_counter": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "support_spectral_arrows": {
+    "description": "[DNT-UNUSED] Spectral Arrows",
+    "invisible": true,
+    "name": "[DNT-UNUSED] Spectral Arrows",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "skill_instance_support_spectral_arrows": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "beast_companion": {
+    "description": "",
+    "invisible": true,
+    "name": "獣のコンパニオン",
+    "removable": false,
+    "stats": [
+      "cannot_be_heavy_stunned",
+      "no_blood_on_death"
+    ],
+    "visuals": "beast_companion",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "attached_spear_mine": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "cast_lightning_spell_on_hit_reserve": {
+    "description": "",
+    "invisible": false,
+    "name": "ヒット時雷スペル",
+    "removable": false,
+    "stats": [],
+    "visuals": "cast_lightning_spell_on_hit_reserve",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "cast_lightning_spell_on_hit_count": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "caltrops_on_dodge_reserve": {
+    "description": "ドッジロール時に撒菱をまき散らす。",
+    "invisible": false,
+    "name": "トレイルオブカルトロップ",
+    "removable": false,
+    "stats": [],
+    "visuals": "caltrops_on_dodge_reserve",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "cast_fire_spell_on_hit_reserve": {
+    "description": "",
+    "invisible": false,
+    "name": "ヒット時火スペル",
+    "removable": false,
+    "stats": [],
+    "visuals": "cast_fire_spell_on_hit_reserve",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "cast_fire_spell_on_hit_count": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "number_of_hazard_triggered_recently": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "enemies_affected_by_your_hazards_recently_have_+%_armour": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "physical_damage_reduction_rating_+%"
+    ],
+    "visuals": "invisible",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "enemies_affected_by_your_hazards_recently_have_+%_evasion_rating": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "evasion_rating_+%"
+    ],
+    "visuals": "invisible",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "tempest_corrupted_player": {
+    "description": "キルした敵は爆発する",
+    "invisible": false,
+    "name": "野獣の触れ",
+    "removable": false,
+    "stats": [
+      "corrupted_obelisk_explode_enemies_for_10%_life_as_physical_on_kill_chance_%"
+    ],
+    "visuals": "tempest_corrupted",
+    "category": null,
+    "sources": null,
+    "templates": {
+      "TempestCorruptedPlayer": {
+        "aura_radius_metres": null,
+        "stats": {
+          "corrupted_obelisk_explode_enemies_for_10%_life_as_physical_on_kill_chance_%": 25
+        },
+        "stat_text": null,
+        "visuals": null
+      }
+    },
+    "stack_limit": null
+  },
+  "tempest_corrupted_monster": {
+    "description": "",
+    "invisible": false,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "monster_beyond_portal_chance_+%"
+    ],
+    "visuals": "tempest_corrupted",
+    "category": null,
+    "sources": null,
+    "templates": {
+      "TempestCorruptedMonster": {
+        "aura_radius_metres": null,
+        "stats": {
+          "monster_beyond_portal_chance_+%": 400
+        },
+        "stat_text": null,
+        "visuals": null
+      }
+    },
+    "stack_limit": null
+  },
+  "tempest_radiant_player": {
+    "description": "[ItemRarity|アイテムレアリティ]、グローバル[Defences|防御力]が増加し、ダメージの30%を追加の[Lightning|雷]ダメージとして獲得している。",
+    "invisible": false,
+    "name": "幽閉されし憤激の祝福",
+    "removable": false,
+    "stats": [
+      "base_item_found_rarity_+%",
+      "global_defences_+%",
+      "non_skill_base_all_damage_%_to_gain_as_lightning"
+    ],
+    "visuals": "tempest_radiant",
+    "category": null,
+    "sources": null,
+    "templates": {
+      "TempestRadiantPlayer": {
+        "aura_radius_metres": null,
+        "stats": {
+          "base_item_found_rarity_+%": 100,
+          "global_defences_+%": 50,
+          "non_skill_base_all_damage_%_to_gain_as_lightning": 30
+        },
+        "stat_text": [
+          "見つかる[ItemRarity|アイテムのレアリティ]が100%増加する",
+          "グローバル防御力が50%増加する",
+          "ダメージの30%を追加雷ダメージとして[Gain|獲得]する"
+        ],
+        "visuals": null
+      }
+    },
+    "stack_limit": null
+  },
+  "tempest_radiant_monster": {
+    "description": "",
+    "invisible": false,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "from_league_item_rarity_+%_permyriad",
+      "non_skill_base_all_damage_%_to_gain_as_lightning",
+      "monster_difficulty_tankiness_+%"
+    ],
+    "visuals": "tempest_radiant",
+    "category": null,
+    "sources": null,
+    "templates": {
+      "TempestRadiantMonster": {
+        "aura_radius_metres": null,
+        "stats": {
+          "from_league_item_rarity_+%_permyriad": 10000,
+          "non_skill_base_all_damage_%_to_gain_as_lightning": 30,
+          "monster_difficulty_tankiness_+%": 50
+        },
+        "stat_text": [
+          "ダメージの30%を追加雷ダメージとして[Gain|獲得]する"
+        ],
+        "visuals": null
+      }
+    },
+    "stack_limit": null
+  },
+  "charm_double_armour_effect": {
+    "description": "",
+    "invisible": true,
+    "name": "200%のアーマーで防御する",
+    "removable": false,
+    "stats": [
+      "double_armour_effect"
+    ],
+    "visuals": "invisible",
+    "category": "Charm",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "hoarfrost_damaging_debuff": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "base_cold_damage_taken_per_minute"
+    ],
+    "visuals": "invisible",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "perfection_buff": {
+    "description": "[PerfectionBuff|完璧]バフごとに、与えるダメージが上昇",
+    "invisible": false,
+    "name": "完璧",
+    "removable": false,
+    "stats": [
+      "perfection_damage_+%_final"
+    ],
+    "visuals": "perfection_visual",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": 4
+  },
+  "KaruiAdrenaline": {
+    "description": "ダメージ、アタックスピード、キャストスピードおよび移動スピードが増加し、追加の物理ダメージ軽減を得ている",
+    "invisible": false,
+    "name": "アドレナリン",
+    "removable": false,
+    "stats": [
+      "has_adrenaline",
+      "damage_+%",
+      "attack_speed_+%",
+      "base_cast_speed_+%",
+      "base_movement_velocity_+%",
+      "base_additional_physical_damage_reduction_%"
+    ],
+    "visuals": "adrenaline",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "charm_enemies_extra_damage_rolls_with_lightning_damage": {
+    "description": "",
+    "invisible": true,
+    "name": "敵の追加ダメージは雷ダメージでロール",
+    "removable": false,
+    "stats": [
+      "enemies_extra_damage_rolls_with_lightning_damage"
+    ],
+    "visuals": "invisible",
+    "category": "Charm",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "charm_x%_of_chaos_damage_from_hits_prevented_recouped_as_life_and_mana": {
+    "description": "",
+    "invisible": true,
+    "name": "防いだヒットによる混沌ダメージをライフおよびマナとして回収",
+    "removable": false,
+    "stats": [
+      "x%_of_chaos_damage_from_hits_prevented_recouped_as_life_and_mana"
+    ],
+    "visuals": "invisible",
+    "category": "Charm",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "support_ancestral_call": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "vaal_strongbox_monster_emerge": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "vaal_strongbox_monster_emerge",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "have_hit_with_projectile_attack_recently": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "have_hit_with_projectile_attack_recently"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "mtx_apply_crystal_effects": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": {
+      "MtxApplyCrystalHitEffect": {
+        "aura_radius_metres": null,
+        "stats": null,
+        "stat_text": null,
+        "visuals": null
+      }
+    },
+    "stack_limit": null
+  },
+  "critical_hit_damage_+%_against_this_target": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "critical_hit_chance_+%_against_this_target": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "parry_movement_speed_+%": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "base_movement_velocity_+%"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "parry_attack_speed_+%": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "attack_speed_+%"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "monster_mod_added_chaos_damage": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "non_skill_base_all_damage_%_to_gain_as_chaos"
+    ],
+    "visuals": "ritual_rune_buff_chaos_purple1",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "convalescence_reservation": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "convalescence_reservation",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "parry_heavy_stun_poise_decay_rate_+%": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "heavy_stun_poise_decay_rate_+%"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "convalescence_energy_shield": {
+    "description": "[ESRecharge|エナジーシールドリチャージ]は妨害されない。この[Buff|バフ]は[EnergyShield|エナジーシールド]が最大になると解除される。",
+    "invisible": false,
+    "name": "コンヴァレッセンス",
+    "removable": false,
+    "stats": [
+      "energy_shield_recharge_not_delayed_by_damage"
+    ],
+    "visuals": "convalescence_energy_shield",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "monster_mod_added_fire_damage": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "non_skill_base_all_damage_%_to_gain_as_fire"
+    ],
+    "visuals": "ritual_rune_buff_fire1",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "visual_display_buff_not_hidden_no_remove_on_death": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "voodoo_king_ratnado_degen": {
+    "description": "物理継続ダメージを受けている",
+    "invisible": false,
+    "name": "ラットネード",
+    "removable": false,
+    "stats": [
+      "base_physical_damage_taken_per_minute"
+    ],
+    "visuals": "voodoo_king_ratnado_degen",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "rip_support": {
+    "description": "倒した敵がこぼした血を集めることでライフ自動回復レートが増加している",
+    "invisible": false,
+    "name": "ブラッドレムナント",
+    "removable": false,
+    "stats": [
+      "life_regeneration_rate_+%"
+    ],
+    "visuals": "rip_support",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": 10
+  },
+  "convalescence_cooldown_stop": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "minion_presence_tracker": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "mtx_apply_jade_effects": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": {
+      "MtxApplyJadeHitEffect": {
+        "aura_radius_metres": null,
+        "stats": null,
+        "stat_text": null,
+        "visuals": null
+      }
+    },
+    "stack_limit": null
+  },
+  "mtx_apply_obsidian_effects": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": {
+      "MtxApplyObsidianlHitEffect": {
+        "aura_radius_metres": null,
+        "stats": null,
+        "stat_text": null,
+        "visuals": null
+      }
+    },
+    "stack_limit": null
+  },
+  "demon_form_tick_prevention_buff": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "tormented_spirit_power": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "from_league_item_rarity_+%_permyriad"
+    ],
+    "visuals": "tormented_spirit_power_primal",
+    "category": null,
+    "sources": {
+      "Mods": [
+        {
+          "id": "SpiritPossessedInt",
+          "item": null,
+          "name": null,
+          "template": "TormentedSpiritPowerPrimal",
+          "stat_text": null,
+          "stats": null
+        },
+        {
+          "id": "SpiritPossessedStr",
+          "item": null,
+          "name": null,
+          "template": "TormentedSpiritPowerWild",
+          "stat_text": null,
+          "stats": null
+        },
+        {
+          "id": "SpiritPossessedDex",
+          "item": null,
+          "name": null,
+          "template": "TormentedSpiritPowerVivid",
+          "stat_text": null,
+          "stats": null
+        },
+        {
+          "id": "SpiritPossessedSacred",
+          "item": null,
+          "name": null,
+          "template": "TormentedSpiritPowerSacred",
+          "stat_text": null,
+          "stats": null
+        }
+      ]
+    },
+    "templates": {
+      "TormentedSpiritPowerPrimal": {
+        "aura_radius_metres": null,
+        "stats": {
+          "from_league_item_rarity_+%_permyriad": 0
+        },
+        "stat_text": null,
+        "visuals": "tormented_spirit_power_primal"
+      },
+      "TormentedSpiritPowerWild": {
+        "aura_radius_metres": null,
+        "stats": {
+          "from_league_item_rarity_+%_permyriad": 0
+        },
+        "stat_text": null,
+        "visuals": "tormented_spirit_power_wild"
+      },
+      "TormentedSpiritPowerVivid": {
+        "aura_radius_metres": null,
+        "stats": {
+          "from_league_item_rarity_+%_permyriad": 0
+        },
+        "stat_text": null,
+        "visuals": "tormented_spirit_power_vivid"
+      },
+      "TormentedSpiritPowerSacred": {
+        "aura_radius_metres": null,
+        "stats": {
+          "from_league_item_rarity_+%_permyriad": 0
+        },
+        "stat_text": null,
+        "visuals": "tormented_spirit_power_sacred"
+      }
+    },
+    "stack_limit": null
+  },
+  "bleeding_attackspeed_penalty": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "attack_speed_+%"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "fox_transform_hidden_monster": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "base_cannot_be_damaged",
+      "base_cannot_be_stunned",
+      "is_hidden_monster",
+      "monster_no_drops_or_experience",
+      "zero_action_speed"
+    ],
+    "visuals": "fox_transform",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "azmeri_darkness_debuff": {
+    "description": "影のスカラベが体に群がっている。10スタックになると、青緑の原生林から追放される。",
+    "invisible": false,
+    "name": "エボンの病苦",
+    "removable": false,
+    "stats": [
+      "azmeri_darkness_slow_+%"
+    ],
+    "visuals": "azmeri_darkness_debuff",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "skills_deal_you_x%_of_mana_cost_as_physical_damage": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "base_self_physical_damage_taken_per_minute"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "tactician_weapon_damage_added_aura_child_buff": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "attack_minimum_added_physical_damage",
+      "attack_minimum_added_fire_damage",
+      "attack_minimum_added_cold_damage",
+      "attack_minimum_added_lightning_damage",
+      "attack_minimum_added_chaos_damage",
+      "attack_maximum_added_physical_damage",
+      "attack_maximum_added_fire_damage",
+      "attack_maximum_added_cold_damage",
+      "attack_maximum_added_lightning_damage",
+      "attack_maximum_added_chaos_damage"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "mtx_mantra_of_destruction_breach_on_kill_debuff": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "marked_target_phys_taken_as_armour_break": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "marked_target_%_physical_damage_taken_as_armour_break"
+    ],
+    "visuals": "invisible",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "track_ultimate_charge": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "max_required_ultimate_charge",
+      "track_ultimate_charge"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "ultimate_charge": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
     "category": null,
     "sources": null,
     "templates": null,

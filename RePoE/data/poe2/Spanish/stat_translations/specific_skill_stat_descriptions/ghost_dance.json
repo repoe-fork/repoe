@@ -40,7 +40,7 @@
   {
     "English": null,
     "ids": [
-      "virtual_ghost_dance_max_stacks"
+      "ghost_dance_max_stacks"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -51,24 +51,6 @@
     "Portuguese": null,
     "Russian": null,
     "Spanish": [
-      {
-        "condition": [
-          {
-            "min": null,
-            "max": null,
-            "negated": null
-          }
-        ],
-        "format": [
-          "#"
-        ],
-        "index_handlers": [
-          []
-        ],
-        "string": "Máximo de velos fantasmales@{0}",
-        "reminder_text": null,
-        "is_markup": null
-      },
       {
         "condition": [
           {
@@ -94,7 +76,8 @@
   {
     "English": null,
     "ids": [
-      "skill_base_ghost_dance_grants_%_evasion_as_energy_shield_when_hit"
+      "skill_base_ghost_dance_grants_%_evasion_as_energy_shield_when_hit",
+      "quality_display_ghost_dance_is_gem"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -111,12 +94,44 @@
             "min": null,
             "max": null,
             "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
           }
         ],
         "format": [
-          "#"
+          "+#",
+          "ignore"
         ],
         "index_handlers": [
+          [],
+          []
+        ],
+        "string": "Los velos fantasmales recuperan una cantidad de [EnergyShield|escudo de energía] equivalente a {0}% de tu [Evasion|evasión]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
           []
         ],
         "string": "Cuando recibes un [HitDamage|impacto], [Consume|consumes] un velo fantasmal para\nrecuperar [EnergyShield|escudo de energía] equivalente al {0}% de tu [Evasion|evasión]",

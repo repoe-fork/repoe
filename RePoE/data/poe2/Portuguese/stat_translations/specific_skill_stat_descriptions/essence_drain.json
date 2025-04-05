@@ -2,7 +2,8 @@
   {
     "English": null,
     "ids": [
-      "base_skill_effect_duration"
+      "base_skill_effect_duration",
+      "quality_display_base_skill_effect_duration_is_gem"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -17,17 +18,24 @@
             "min": 1000,
             "max": 1000,
             "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
           }
         ],
         "format": [
-          "#"
+          "+#",
+          "ignore"
         ],
         "index_handlers": [
           [
             "milliseconds_to_seconds_2dp_if_required"
-          ]
+          ],
+          []
         ],
-        "string": "[Debuff|Debuff] dura {0} segundo",
+        "string": "{0} segundo de duração do [Debuff|Debuff]",
         "reminder_text": null,
         "is_markup": null
       },
@@ -37,15 +45,76 @@
             "min": null,
             "max": null,
             "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
           }
         ],
         "format": [
-          "#"
+          "+#",
+          "ignore"
         ],
         "index_handlers": [
           [
             "milliseconds_to_seconds_2dp_if_required"
-          ]
+          ],
+          []
+        ],
+        "string": "{0} segundos de duração do [Debuff|Debuff]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 1000,
+            "max": 1000,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ],
+          []
+        ],
+        "string": "[Debuff|Debuff] dura {0} segundo",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 0,
+            "max": 0,
+            "negated": true
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ],
+          []
         ],
         "string": "[Debuff|Debuff] dura {0} segundos",
         "reminder_text": null,

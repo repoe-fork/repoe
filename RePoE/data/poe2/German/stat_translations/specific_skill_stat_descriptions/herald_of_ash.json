@@ -118,7 +118,8 @@
   {
     "English": null,
     "ids": [
-      "herald_of_ash_burning_%_overkill_damage_per_minute"
+      "herald_of_ash_burning_%_overkill_damage_per_minute",
+      "quality_display_herald_of_ash_burning_%_overkill_damage_per_minute_is_gem"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -130,22 +131,34 @@
             "min": null,
             "max": null,
             "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
           }
         ],
         "format": [
-          "#"
+          "+#",
+          "ignore"
         ],
         "index_handlers": [
           [
             "per_minute_to_per_second_2dp_if_required"
-          ]
+          ],
+          []
         ],
-        "string": "[Ignite|Brand]schaden von überzähligem Schaden@{0}%",
+        "string": "Zusätzlich {0}% des [Overkill|überzähligen] Schadens trägt zum Basis-[Ignite|Brand]schaden bei",
         "reminder_text": null,
         "is_markup": null
       },
       {
         "condition": [
+          {
+            "min": 0,
+            "max": 0,
+            "negated": true
+          },
           {
             "min": null,
             "max": null,
@@ -153,14 +166,43 @@
           }
         ],
         "format": [
-          "#"
+          "#",
+          "ignore"
         ],
         "index_handlers": [
           [
             "per_minute_to_per_second_2dp_if_required"
-          ]
+          ],
+          []
         ],
-        "string": "Basis-[Ignite|Brand]schaden beträgt {0}% des überzähligen Schadens",
+        "string": "[Ignite|Brand]schaden von [Overkill|überzähligem] Schaden@{0}%",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 0,
+            "max": 0,
+            "negated": true
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [
+            "per_minute_to_per_second_2dp_if_required"
+          ],
+          []
+        ],
+        "string": "Basis-[Ignite|Brand]schaden beträgt {0}% des [Overkill|überzähligem] Schadens",
         "reminder_text": null,
         "is_markup": null
       }

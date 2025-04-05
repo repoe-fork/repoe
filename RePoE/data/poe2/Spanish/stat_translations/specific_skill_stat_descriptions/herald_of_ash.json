@@ -118,7 +118,8 @@
   {
     "English": null,
     "ids": [
-      "herald_of_ash_burning_%_overkill_damage_per_minute"
+      "herald_of_ash_burning_%_overkill_damage_per_minute",
+      "quality_display_herald_of_ash_burning_%_overkill_damage_per_minute_is_gem"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -135,22 +136,34 @@
             "min": null,
             "max": null,
             "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
           }
         ],
         "format": [
-          "#"
+          "+#",
+          "ignore"
         ],
         "index_handlers": [
           [
             "per_minute_to_per_second_2dp_if_required"
-          ]
+          ],
+          []
         ],
-        "string": "Daño de [Ignite|quemadura] del daño excesivo@{0}%",
+        "string": "Un {0}% adicional del daño [Overkill|excesivo] contribuye al daño base de la [Ignite|quemadura]",
         "reminder_text": null,
         "is_markup": null
       },
       {
         "condition": [
+          {
+            "min": 0,
+            "max": 0,
+            "negated": true
+          },
           {
             "min": null,
             "max": null,
@@ -158,14 +171,43 @@
           }
         ],
         "format": [
-          "#"
+          "#",
+          "ignore"
         ],
         "index_handlers": [
           [
             "per_minute_to_per_second_2dp_if_required"
-          ]
+          ],
+          []
         ],
-        "string": "El daño base de la [Ignite|quemadura] es el {0}% del daño excesivo",
+        "string": "Daño de la [Ignite|quemadura] del daño [Overkill|excesivo]@{0}%",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 0,
+            "max": 0,
+            "negated": true
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [
+            "per_minute_to_per_second_2dp_if_required"
+          ],
+          []
+        ],
+        "string": "El daño base de la [Ignite|quemadura] es el {0}% del daño [Overkill|excesivo]",
         "reminder_text": null,
         "is_markup": null
       }

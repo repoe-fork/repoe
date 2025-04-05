@@ -148,7 +148,7 @@
       {
         "condition": [
           {
-            "min": null,
+            "min": 1,
             "max": null,
             "negated": null
           }
@@ -160,6 +160,26 @@
           []
         ],
         "string": "[ContainsBreach|Breaches] in your Maps have {0}% increased Monster density",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[ContainsBreach|Breaches] in your Maps have {0}% reduced Monster density",
         "reminder_text": null,
         "is_markup": null
       }
@@ -1060,6 +1080,62 @@
       {
         "condition": [
           {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "Your Maps have {0}% more chance to contain [ExtraContent|Random Extra Content]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "Your Maps have {0}% less chance to contain [ExtraContent|Random Extra Content]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "atlas_keystone_extra_content_chance_+%_final"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
             "min": null,
             "max": null,
             "negated": null
@@ -1071,13 +1147,69 @@
         "index_handlers": [
           []
         ],
-        "string": "Number of Explosives is one\n150% increased Explosive Radius in your Maps\nExpedition Monsters in your Maps spawn with an additional 20% of Life missing\n100% increased Explosive Placement Range in your Maps",
+        "string": "Number of Explosives is one\n150% increased Explosive Radius in your Maps\n100% increased Explosive Placement Range in your Maps",
         "reminder_text": null,
         "is_markup": null
       }
     ],
     "ids": [
       "atlas_keystone_extreme_archaeology"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% more number of Monster Packs in your Maps",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% less number of Monster Packs in your Maps",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "atlas_keystone_map_monster_tre_+%_final"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -2589,7 +2721,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Influenced Monsters in your Maps have {0}% chance to drop an additional Rare Jewellery Item",
+        "string": "Influenced Monsters in your Maps have {0}% chance to drop an additional Rare [Jewellery] Item",
         "reminder_text": null,
         "is_markup": null
       }
@@ -2869,7 +3001,7 @@
             "divide_by_ten_1dp"
           ]
         ],
-        "string": "Magic Monsters in your Maps have {0}% chance to drop an additional Rare Jewellery Item",
+        "string": "Magic Monsters in your Maps have {0}% chance to drop an additional Rare [Jewellery] Item",
         "reminder_text": null,
         "is_markup": null
       }
@@ -4981,7 +5113,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Delirium in your Maps increases {0}% faster with distance from the mirror",
+        "string": "[Delirious|Delirium] in your Maps increases {0}% faster with distance from the mirror",
         "reminder_text": null,
         "is_markup": null
       },
@@ -4997,9 +5129,11 @@
           "#"
         ],
         "index_handlers": [
-          []
+          [
+            "negate"
+          ]
         ],
-        "string": "Delirium in your Maps increases {0}% slower with distance from the mirror",
+        "string": "[Delirious|Delirium] in your Maps increases {0}% slower with distance from the mirror",
         "reminder_text": null,
         "is_markup": null
       }
@@ -5153,7 +5287,14 @@
     "ids": [
       "map_affliction_pack_size_+%"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "explicit.stat_3465791711",
+        "text": "Delirium Monsters in your Maps have #% increased Pack Size",
+        "type": "explicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -5375,7 +5516,14 @@
     "ids": [
       "map_affliction_secondary_wave_delay_ms_+"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "explicit.stat_1174954559",
+        "text": "Delirium Fog in your Maps lasts # additional seconds before dissipating",
+        "type": "explicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -7581,7 +7729,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Blight Bosses in your Maps drop an additional Anointed Jewellery Item",
+        "string": "Blight Bosses in your Maps drop an additional Anointed [Jewellery] Item",
         "reminder_text": null,
         "is_markup": null
       },
@@ -7599,7 +7747,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Blight Bosses in your Maps drop {0} additional Anointed Jewellery Items",
+        "string": "Blight Bosses in your Maps drop {0} additional Anointed [Jewellery] Items",
         "reminder_text": null,
         "is_markup": null
       }
@@ -10319,7 +10467,14 @@
     "ids": [
       "map_breach_X_additional_rare_monsters"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "explicit.stat_1653625239",
+        "text": "Breaches in your Maps spawn an additional Rare Monster",
+        "type": "explicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -10716,6 +10871,64 @@
       {
         "condition": [
           {
+            "min": 10,
+            "max": 10,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "divide_by_ten_1dp_if_required"
+          ]
+        ],
+        "string": "[ContainsBreach|Breaches] in your Maps expand to at least {0} metre in radius\n[ContainsBreach|Breaches] in your Maps remain open while there are alive Breach Monsters",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "divide_by_ten_1dp_if_required"
+          ]
+        ],
+        "string": "[ContainsBreach|Breaches] in your Maps expand to at least {0} metres in radius\n[ContainsBreach|Breaches] in your Maps remain open while there are alive Breach Monsters",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_breach_minimum_radius"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
             "min": null,
             "max": null,
             "negated": null
@@ -10959,7 +11172,14 @@
     "ids": [
       "map_breach_number_of_magic_packs_+%"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "explicit.stat_1090596078",
+        "text": "Breaches in your Maps spawn #% increased Magic Monsters",
+        "type": "explicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -11579,7 +11799,14 @@
     "ids": [
       "map_breaches_num_additional_chests_to_spawn"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "explicit.stat_2224050171",
+        "text": "Breaches in your Maps contain # additional Clasped Hand",
+        "type": "explicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -13919,6 +14146,118 @@
         "index_handlers": [
           []
         ],
+        "string": "{0}% increased chance for [Shrine|Shrines] in your Maps to be [CovetousShrine|Seeking Shrines]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [Shrine|Shrines] in your Maps to be [CovetousShrine|Seeking Shrines]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_covetous_shrine_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased effect of [CovetousShrine|Seeking Shrines] in your Maps",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced effect of [CovetousShrine|Seeking Shrines] in your Maps",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_covetous_shrine_effect_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
         "string": "Crimson, Viridian and Cobalt Jewels have {0}% chance to drop as Basic Currency Items instead in your Maps",
         "reminder_text": null,
         "is_markup": null
@@ -15291,9 +15630,22 @@
       }
     ],
     "ids": [
-      "map_delirium_splinter_amount_+%"
+      "map_delirium_splinter_stack_size_+%"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "enchant.stat_3836551197",
+        "text": "#% increased Stack size of Simulacrum Splinters found in your Maps",
+        "type": "enchant",
+        "option": null
+      },
+      {
+        "id": "explicit.stat_3836551197",
+        "text": "#% increased Stack size of Simulacrum Splinters found in your Maps",
+        "type": "explicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -17307,6 +17659,118 @@
       {
         "condition": [
           {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [Shrine|Shrines] in your Maps to be [EnlighteningShrine|Enlightening Shrines]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [Shrine|Shrines] in your Maps to be [EnlighteningShrine|Enlightening Shrines]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_enlightening_shrine_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased effect of [EnlighteningShrine|Enlightening Shrines] in your Maps",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced effect of [EnlighteningShrine|Enlightening Shrines] in your Maps",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_enlightening_shrine_effect_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
             "min": null,
             "max": null,
             "negated": null
@@ -17499,6 +17963,358 @@
           }
         ],
         "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% chance when Corrupting [Essence] Monsters in your Maps\nto Corrupt them an additional time",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_essence_%_chance_double_corrupted"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% chance for [MonsterModifiers|Modifiers] on [Essence] Monsters in your Maps to be replaced with [Essence|Essences]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_essence_%_chance_rare_monster_modifiers_replaced_with_essences"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [Essence|Essences] found in your Maps to add [Attack] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [Essence|Essences] found in your Maps to add [Attack] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_essence_attack_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [Essence|Essences] found in your Maps to add [Attributes|Attribute] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [Essence|Essences] found in your Maps to add [Attributes|Attribute] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_essence_attribute_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [Essence|Essences] found in your Maps to add [Spell|Caster] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [Essence|Essences] found in your Maps to add [Spell|Caster] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_essence_caster_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [Essence|Essences] found in your Maps to add [Chaos] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [Essence|Essences] found in your Maps to add [Chaos] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_essence_chaos_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [Essence|Essences] found in your Maps to add [Cold] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [Essence|Essences] found in your Maps to add [Cold] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_essence_cold_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
           "ignore"
         ],
         "index_handlers": [
@@ -17511,6 +18327,342 @@
     ],
     "ids": [
       "map_essence_corruption_cannot_release_monsters"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [Essence|Essences] found in your Maps to add [Defences|Defence] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [Essence|Essences] found in your Maps to add [Defences|Defence] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_essence_defences_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [Essence|Essences] found in your Maps to add [Fire] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [Essence|Essences] found in your Maps to add [Fire] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_essence_fire_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[Essence|Essences] found in your Maps have {0}% increased chance to be Greater [Essence|Essences]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[Essence|Essences] found in your Maps have {0}% reduced chance to be Greater [Essence|Essences]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_essence_greater_essence_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [Essence|Essences] found in your Maps to add Life modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [Essence|Essences] found in your Maps to add Life modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_essence_life_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [Essence|Essences] found in your Maps to add [Lightning] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [Essence|Essences] found in your Maps to add [Lightning] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_essence_lightning_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [Essence|Essences] found in your Maps to add Mana modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [Essence|Essences] found in your Maps to add Mana modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_essence_mana_chance_+%"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -17637,6 +18789,118 @@
       {
         "condition": [
           {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [Essence|Essences] found in your Maps to add [Physical] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [Essence|Essences] found in your Maps to add [Physical] modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_essence_physical_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [Essence|Essences] found in your Maps to add Speed modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [Essence|Essences] found in your Maps to add Speed modifiers",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_essence_speed_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
             "min": 100,
             "max": 100,
             "negated": null
@@ -17728,7 +18992,20 @@
     "ids": [
       "map_expedition_artifact_quantity_+%"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "explicit.stat_4219583418",
+        "text": "#% increased quantity of Artifacts dropped by Monsters in your Maps",
+        "type": "explicit",
+        "option": null
+      },
+      {
+        "id": "implicit.stat_4219583418",
+        "text": "#% increased quantity of Artifacts dropped by Monsters in your Maps",
+        "type": "implicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -18090,7 +19367,20 @@
     "ids": [
       "map_expedition_explosion_radius_+%"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "explicit.stat_3289828378",
+        "text": "#% increased Explosive Radius in your Maps",
+        "type": "explicit",
+        "option": null
+      },
+      {
+        "id": "implicit.stat_3289828378",
+        "text": "#% increased Explosive Radius in your Maps",
+        "type": "implicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -18126,7 +19416,14 @@
     "ids": [
       "map_expedition_explosives_+%"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "implicit.stat_3051490307",
+        "text": "#% increased number of Explosives in your Maps",
+        "type": "implicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -18162,7 +19459,14 @@
     "ids": [
       "map_expedition_extra_relic_suffix_chance_%"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "implicit.stat_1871805225",
+        "text": "Remnants in your Maps have #% chance to have an additional Suffix Modifier",
+        "type": "implicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -18328,7 +19632,20 @@
     "ids": [
       "map_expedition_maximum_placement_distance_+%"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "explicit.stat_1539368271",
+        "text": "#% increased Explosive Placement Range in your Maps",
+        "type": "explicit",
+        "option": null
+      },
+      {
+        "id": "implicit.stat_1539368271",
+        "text": "#% increased Explosive Placement Range in your Maps",
+        "type": "implicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -18472,7 +19789,14 @@
     "ids": [
       "map_expedition_relic_mod_effect_+%"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "explicit.stat_3078574625",
+        "text": "#% increased Effect of Remnants in your Maps",
+        "type": "explicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -18856,7 +20180,14 @@
     "ids": [
       "map_experience_gain_+%"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "explicit.stat_57434274",
+        "text": "#% increased Experience gain in your Maps",
+        "type": "explicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -18992,7 +20323,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Your Maps contain an additional Essence",
+        "string": "Your Maps contain an additional [Essence]",
         "reminder_text": null,
         "is_markup": null
       },
@@ -19010,7 +20341,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Your Maps contain {0} additional Essences",
+        "string": "Your Maps contain {0} additional [Essence|Essences]",
         "reminder_text": null,
         "is_markup": null
       }
@@ -20093,6 +21424,125 @@
     ],
     "ids": [
       "map_gold_+%"
+    ],
+    "trade_stats": [
+      {
+        "id": "explicit.stat_1133965702",
+        "text": "#% increased Gold found in your Maps",
+        "type": "explicit",
+        "option": null
+      }
+    ],
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [Shrine|Shrines] in your Maps to be [GreedShrine|Greed Shrines]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [Shrine|Shrines] in your Maps to be [GreedShrine|Greed Shrines]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_greed_shrine_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased effect of [GreedShrine|Greed Shrines] in your Maps",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced effect of [GreedShrine|Greed Shrines] in your Maps",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_greed_shrine_effect_+%"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -22248,62 +23698,6 @@
         "index_handlers": [
           []
         ],
-        "string": "Smuggler's Caches in your Maps have {0}% increased chance to contain Blueprints for each Smuggler's Cache opened in the Map",
-        "reminder_text": null,
-        "is_markup": null
-      },
-      {
-        "condition": [
-          {
-            "min": null,
-            "max": -1,
-            "negated": null
-          }
-        ],
-        "format": [
-          "#"
-        ],
-        "index_handlers": [
-          [
-            "negate"
-          ]
-        ],
-        "string": "Smuggler's Caches in your Maps  have {0}% reduced chance to contain Blueprints for each Smuggler's Cache opened in the Map",
-        "reminder_text": null,
-        "is_markup": null
-      }
-    ],
-    "ids": [
-      "map_heist_smugglers_cache_blueprint_chance_for_each_opened_smugglers_cache_+%"
-    ],
-    "trade_stats": null,
-    "hidden": null,
-    "French": null,
-    "German": null,
-    "Japanese": null,
-    "Korean": null,
-    "Portuguese": null,
-    "Russian": null,
-    "Spanish": null,
-    "Thai": null,
-    "Traditional_Chinese": null
-  },
-  {
-    "English": [
-      {
-        "condition": [
-          {
-            "min": 1,
-            "max": null,
-            "negated": null
-          }
-        ],
-        "format": [
-          "#"
-        ],
-        "index_handlers": [
-          []
-        ],
         "string": "Your Maps have {0}% increased chance to contain a Smuggler's Cache",
         "reminder_text": null,
         "is_markup": null
@@ -23278,7 +24672,14 @@
     "ids": [
       "map_item_drop_quantity_+%"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "explicit.stat_2390685262",
+        "text": "#% increased Quantity of Items found in your Maps",
+        "type": "explicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -25209,6 +26610,62 @@
       {
         "condition": [
           {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased Quantity of [Waystone|Waystones] dropped by [MapBoss|Map Bosses]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced Quantity of [Waystone|Waystones] dropped by [MapBoss|Map Bosses]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_map_boss_bonus_map_drop_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
             "min": null,
             "max": null,
             "negated": null
@@ -26967,6 +28424,42 @@
       {
         "condition": [
           {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% chance for minions of [Essence] Monsters in your Maps to be [Rarity|Magic]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_mini_monolith_%_chance_monsters_are_magic"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
             "min": 1,
             "max": null,
             "negated": null
@@ -27197,6 +28690,62 @@
           }
         ],
         "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "Your Maps have {0}% increased chance to contain [Essence|Essences]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "Your Maps have {0}% reduced chance to contain [Essence|Essences]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_monolith_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
           "+#"
         ],
         "index_handlers": [
@@ -27321,6 +28870,124 @@
     ],
     "ids": [
       "map_monster_damage_+%_final_from_vital_atlas"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "divide_by_one_hundred"
+          ]
+        ],
+        "string": "{0}% increased Rarity of Items dropped by [SpiritPossessed|Possessed] Monsters in your Maps",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate",
+            "divide_by_one_hundred"
+          ]
+        ],
+        "string": "{0}% reduced Rarity of Items dropped by [SpiritPossessed|Possessed] Monsters in your Maps",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_monster_dropped_item_rarity_permyriad_if_possessed"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "divide_by_one_hundred"
+          ]
+        ],
+        "string": "{0}% increased Rarity of Items dropped by [SpiritTouched|Spirit-Influenced] Monsters in your Maps",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate",
+            "divide_by_one_hundred"
+          ]
+        ],
+        "string": "{0}% reduced Rarity of Items dropped by [SpiritTouched|Spirit-Influenced] Monsters in your Maps",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_monster_dropped_item_rarity_permyriad_if_touched"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -27490,7 +29157,14 @@
     "ids": [
       "map_monster_tre_+%"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "explicit.stat_2624927319",
+        "text": "#% increased number of Monster Packs in your Maps",
+        "type": "explicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -27578,7 +29252,7 @@
       }
     ],
     "ids": [
-      "map_non_unique_delirium_monsters_splinter_amount_+%"
+      "map_non_unique_delirium_monsters_splinter_stack_size_+%"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -27914,7 +29588,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Your Maps contain an additional Shrine",
+        "string": "Your Maps contain an additional [Shrine]",
         "reminder_text": null,
         "is_markup": null
       },
@@ -27932,7 +29606,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Your Maps contain {0} additional Shrines",
+        "string": "Your Maps contain {0} additional [Shrine|Shrines]",
         "reminder_text": null,
         "is_markup": null
       }
@@ -27968,7 +29642,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Your Maps contain an additional Strongbox",
+        "string": "Your Maps contain an additional [Strongbox]",
         "reminder_text": null,
         "is_markup": null
       },
@@ -27986,7 +29660,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Your Maps contain {0} additional Strongboxes",
+        "string": "Your Maps contain {0} additional [Strongbox|Strongboxes]",
         "reminder_text": null,
         "is_markup": null
       }
@@ -28048,7 +29722,14 @@
     "ids": [
       "map_number_of_additional_mods"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "explicit.stat_588512487",
+        "text": "Your Maps have # additional random Modifier",
+        "type": "explicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -28264,7 +29945,20 @@
     "ids": [
       "map_pack_size_+%"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "enchant.stat_2017682521",
+        "text": "#% increased Pack Size in your Maps",
+        "type": "enchant",
+        "option": null
+      },
+      {
+        "id": "explicit.stat_2017682521",
+        "text": "#% increased Pack Size in your Maps",
+        "type": "explicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -29182,6 +30876,100 @@
         "condition": [
           {
             "min": 1,
+            "max": 1,
+            "negated": null
+          },
+          {
+            "min": 1,
+            "max": 1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "Players cannot gain or lose experience",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": 1,
+            "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "Players cannot lose experience",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
+          },
+          {
+            "min": 1,
+            "max": 1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "Players cannot gain experience",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_player_lose_no_experience_on_death",
+      "map_no_experience"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
             "max": null,
             "negated": null
           }
@@ -29455,6 +31243,62 @@
     ],
     "ids": [
       "map_possessed_monster_item_quantity_+%_final"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [AzmeriSpirit|Azmeri Spirits] in your Maps to be Primal Spirits",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [AzmeriSpirit|Azmeri Spirits] in your Maps to be Primal Spirits",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_primal_spirit_chance_+%"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -30018,7 +31862,14 @@
     "ids": [
       "map_rare_monster_num_additional_modifiers"
     ],
-    "trade_stats": null,
+    "trade_stats": [
+      {
+        "id": "explicit.stat_2550456553",
+        "text": "Rare Monsters in your Maps have # additional Modifier",
+        "type": "explicit",
+        "option": null
+      }
+    ],
     "hidden": null,
     "French": null,
     "German": null,
@@ -31339,7 +33190,7 @@
         "index_handlers": [
           []
         ],
-        "string": "[ContainsRitual|Ritual] Favours in your Maps have {0}% increased chance to contain [Omen|Omens]",
+        "string": "[ContainsRitual|Ritual] Favours in your Maps have {0}% increased chance to be [Omen|Omens]",
         "reminder_text": null,
         "is_markup": null
       },
@@ -31359,7 +33210,7 @@
             "negate"
           ]
         ],
-        "string": "[ContainsRitual|Ritual] Favours in your Maps have {0}% reduced chance to contain [Omen|Omens]",
+        "string": "[ContainsRitual|Ritual] Favours in your Maps have {0}% reduced chance to be [Omen|Omens]",
         "reminder_text": null,
         "is_markup": null
       }
@@ -31706,6 +33557,62 @@
           }
         ],
         "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "Your Maps have {0}% increased chance to contain [RogueExile|Rogue Exiles]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "Your Maps have {0}% reduced chance to contain [RogueExile|Rogue Exiles]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_rogue_exile_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
           "+#"
         ],
         "index_handlers": [
@@ -31718,6 +33625,560 @@
     ],
     "ids": [
       "map_rogue_exile_chance_%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "Items on [RogueExile|Rogue Exiles] in your Maps have {0}% increased chance to be [Corrupted]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "Items on [RogueExile|Rogue Exiles] in your Maps have {0}% reduced chance to be [Corrupted]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_rogue_exile_corrupt_item_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[RogueExile|Rogue Exiles] in your Maps have {0}% increased chance to wear Items requiring [Dexterity]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[RogueExile|Rogue Exiles] in your Maps have {0}% reduced chance to wear Items requiring [Dexterity]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_rogue_exile_dexterity_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[RogueExile|Rogue Exiles] in your Maps have {0}% increased chance to wear Items requiring [Intelligence]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[RogueExile|Rogue Exiles] in your Maps have {0}% reduced chance to wear Items requiring [Intelligence]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_rogue_exile_intelligence_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": 99,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% chance for items on [RogueExile|Rogue Exiles] in your Maps to have maximum Sockets",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 100,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "Items on [RogueExile|Rogue Exiles] in your Maps have maximum Sockets",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_rogue_exile_maximum_natural_sockets_on_items_chance_%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[RogueExile|Rogue Exiles] in your Maps cannot have equipped [ItemRarity|Unique] Armour",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_rogue_exile_no_unique_armours"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[RogueExile|Rogue Exiles] in your Maps cannot have equipped [ItemRarity|Unique] Jewellery",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_rogue_exile_no_unique_jewellery"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[RogueExile|Rogue Exiles] in your Maps cannot have equipped [ItemRarity|Unique] Weapons",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_rogue_exile_no_unique_weapons"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[RogueExile|Rogue Exiles] in your Maps have {0}% increased chance to wear Items requiring [Strength]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[RogueExile|Rogue Exiles] in your Maps have {0}% reduced chance to wear Items requiring [Strength]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_rogue_exile_strength_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[RogueExile|Rogue Exiles] in your Maps have {0}% increased chance to have equipped [ItemRarity|Unique] Armour",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[RogueExile|Rogue Exiles] in your Maps have {0}% reduced chance to have equipped [ItemRarity|Unique] Armour",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_rogue_exile_unique_armour_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[RogueExile|Rogue Exiles] in your Maps have {0}% increased chance to have equipped [ItemRarity|Unique] Jewellery",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[RogueExile|Rogue Exiles] in your Maps have {0}% reduced chance to have equipped [ItemRarity|Unique] Jewellery",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_rogue_exile_unique_jewellery_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[RogueExile|Rogue Exiles] in your Maps have {0}% increased chance to have equipped [ItemRarity|Unique] Weapons",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[RogueExile|Rogue Exiles] in your Maps have {0}% reduced chance to have equipped [ItemRarity|Unique] Weapons",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_rogue_exile_unique_weapon_chance_+%"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -32121,6 +34582,62 @@
     ],
     "ids": [
       "map_rogue_markers_stack_size_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [AzmeriSpirit|Azmeri Spirits] in your Maps to be Sacred Spirits",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [AzmeriSpirit|Azmeri Spirits] in your Maps to be Sacred Spirits",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_sacred_spirit_chance_+%"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -32741,6 +35258,62 @@
           }
         ],
         "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "Your Maps have {0}% increased chance to contain [Shrine|Shrines]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "Your Maps have {0}% reduced chance to contain [Shrine|Shrines]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_shrine_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
           "+#"
         ],
         "index_handlers": [
@@ -32854,7 +35427,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Shrines in your Maps grant a random additional Shrine Effect",
+        "string": "[Shrine|Shrines] in your Maps grant a random additional [Shrine] Effect",
         "reminder_text": null,
         "is_markup": null
       }
@@ -32897,6 +35470,114 @@
     ],
     "ids": [
       "map_shrines_have_guaranteed_magic_pack"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": 99,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% chance for [Shrine|Shrines] in your Maps to have an additional Effect",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 100,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[Shrine|Shrines] in your Maps to have an additional Effect",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_shrines_have_x%_chance_for_an_additional_effect"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": 99,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% chance for all packs around [Shrine|Shrines] in your Maps to be [Rarity|Magic]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 100,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "Packs around [Shrine|Shrines] in your Maps are [Rarity|Magic]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_shrines_x%_chance_all_packs_are_magic"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -33187,42 +35868,6 @@
       {
         "condition": [
           {
-            "min": null,
-            "max": null,
-            "negated": null
-          }
-        ],
-        "format": [
-          "ignore"
-        ],
-        "index_handlers": [
-          []
-        ],
-        "string": "[DNT] Unused",
-        "reminder_text": null,
-        "is_markup": null
-      }
-    ],
-    "ids": [
-      "map_spawn_atlas_allies"
-    ],
-    "trade_stats": null,
-    "hidden": null,
-    "French": null,
-    "German": null,
-    "Japanese": null,
-    "Korean": null,
-    "Portuguese": null,
-    "Russian": null,
-    "Spanish": null,
-    "Thai": null,
-    "Traditional_Chinese": null
-  },
-  {
-    "English": [
-      {
-        "condition": [
-          {
             "min": 1,
             "max": 99,
             "negated": null
@@ -33465,6 +36110,62 @@
       {
         "condition": [
           {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "Your Maps have {0}% increased chance to contain [Strongbox|Strongboxes]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "Your Maps have {0}% reduced chance to contain [Strongbox|Strongboxes]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_strongbox_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
             "min": null,
             "max": null,
             "negated": null
@@ -33476,7 +36177,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Strongboxes opened in your Maps have {0}% chance to be openable again",
+        "string": "[Strongbox|Strongboxes] in your Maps have {0}% chance to be openable twice",
         "reminder_text": null,
         "is_markup": null
       }
@@ -33593,6 +36294,174 @@
       {
         "condition": [
           {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[Strongbox|Strongboxes] in your Maps spawn {0}% increased number of packs",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[Strongbox|Strongboxes] in your Maps spawn {0}% reduced number of packs",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_strongbox_monster_packs_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[Strongbox|Strongboxes] in your Maps have {0}% increased chance to spawn [Rarity|Magic] Monster Packs",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[Strongbox|Strongboxes] in your Maps have {0}% reduced chance to spawn [Rarity|Magic] Monster Packs",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_strongbox_monsters_chance_to_be_magic_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[Strongbox|Strongboxes] in your Maps have {0}% increased chance to spawn [Rarity|Rare] Monster Packs",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[Strongbox|Strongboxes] in your Maps have {0}% reduced chance to spawn [Rarity|Rare] Monster Packs",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_strongbox_monsters_chance_to_be_rare_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
             "min": null,
             "max": null,
             "negated": null
@@ -33640,7 +36509,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Strongboxes in your Maps are Corrupted",
+        "string": "[Strongbox|Strongboxes] in your Maps are [Corrupted]",
         "reminder_text": null,
         "is_markup": null
       }
@@ -33712,13 +36581,69 @@
         "index_handlers": [
           []
         ],
-        "string": "Strongboxes in your Maps are at least Rare",
+        "string": "[Strongbox|Strongboxes] in Area are at least [Rarity|Rare]",
         "reminder_text": null,
         "is_markup": null
       }
     ],
     "ids": [
       "map_strongboxes_at_least_rare"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[Strongbox|Strongboxes] in your Maps have {0}% increased chance to be [Rarity|Magic]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[Strongbox|Strongboxes] in your Maps have {0}% reduced chance to be [Rarity|Magic]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_strongboxes_chance_to_be_magic_+%"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -33784,7 +36709,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Strongboxes in your Maps have {0}% increased chance to be Rare",
+        "string": "[Strongbox|Strongboxes] in your Maps have {0}% increased chance to be [Rarity|Rare]",
         "reminder_text": null,
         "is_markup": null
       },
@@ -33804,7 +36729,7 @@
             "negate"
           ]
         ],
-        "string": "Strongboxes in your Maps have {0}% reduced chance to be Rare",
+        "string": "[Strongbox|Strongboxes] in your Maps have {0}% reduced chance to be [Rarity|Rare]",
         "reminder_text": null,
         "is_markup": null
       }
@@ -33840,7 +36765,7 @@
         "index_handlers": [
           []
         ],
-        "string": "{0}% increased chance for Strongboxes in your Maps to be Unique",
+        "string": "[Strongbox|Strongboxes] in your Maps have {0}% increased chance to be [Rarity|Unique]",
         "reminder_text": null,
         "is_markup": null
       },
@@ -33860,7 +36785,7 @@
             "negate"
           ]
         ],
-        "string": "{0}% reduced chance for Strongboxes in your Maps to be Unique",
+        "string": "[Strongbox|Strongboxes] in your Maps have {0}% reduced chance to be [Rarity|Unique]",
         "reminder_text": null,
         "is_markup": null
       }
@@ -34166,7 +37091,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Strongboxes in your Maps have {0}% increased chance to be an Arcanist's Strongbox",
+        "string": "[Strongbox|Strongboxes] in your Maps have {0}% increased chance to be [CartographersStrongbox|Cartographer's Strongboxes]",
         "reminder_text": null,
         "is_markup": null
       },
@@ -34186,125 +37111,13 @@
             "negate"
           ]
         ],
-        "string": "Strongboxes in your Maps have {0}% reduced chance to be an Arcanist's Strongbox",
-        "reminder_text": null,
-        "is_markup": null
-      }
-    ],
-    "ids": [
-      "map_strongboxes_+%_chance_to_be_arcanist"
-    ],
-    "trade_stats": null,
-    "hidden": null,
-    "French": null,
-    "German": null,
-    "Japanese": null,
-    "Korean": null,
-    "Portuguese": null,
-    "Russian": null,
-    "Spanish": null,
-    "Thai": null,
-    "Traditional_Chinese": null
-  },
-  {
-    "English": [
-      {
-        "condition": [
-          {
-            "min": 1,
-            "max": null,
-            "negated": null
-          }
-        ],
-        "format": [
-          "#"
-        ],
-        "index_handlers": [
-          []
-        ],
-        "string": "Strongboxes in your Maps have {0}% increased chance to be a Cartographer's Strongbox",
-        "reminder_text": null,
-        "is_markup": null
-      },
-      {
-        "condition": [
-          {
-            "min": null,
-            "max": -1,
-            "negated": null
-          }
-        ],
-        "format": [
-          "#"
-        ],
-        "index_handlers": [
-          [
-            "negate"
-          ]
-        ],
-        "string": "Strongboxes in your Maps have {0}% reduced chance to be a Cartographer's Strongbox",
+        "string": "[Strongbox|Strongboxes] in your Maps have {0}% reduced chance to be a [CartographersStrongbox|Cartographer's Strongboxes]",
         "reminder_text": null,
         "is_markup": null
       }
     ],
     "ids": [
       "map_strongboxes_+%_chance_to_be_cartographers"
-    ],
-    "trade_stats": null,
-    "hidden": null,
-    "French": null,
-    "German": null,
-    "Japanese": null,
-    "Korean": null,
-    "Portuguese": null,
-    "Russian": null,
-    "Spanish": null,
-    "Thai": null,
-    "Traditional_Chinese": null
-  },
-  {
-    "English": [
-      {
-        "condition": [
-          {
-            "min": 1,
-            "max": null,
-            "negated": null
-          }
-        ],
-        "format": [
-          "#"
-        ],
-        "index_handlers": [
-          []
-        ],
-        "string": "Strongboxes in your Maps have {0}% increased chance to be a Diviner's Strongbox",
-        "reminder_text": null,
-        "is_markup": null
-      },
-      {
-        "condition": [
-          {
-            "min": null,
-            "max": -1,
-            "negated": null
-          }
-        ],
-        "format": [
-          "#"
-        ],
-        "index_handlers": [
-          [
-            "negate"
-          ]
-        ],
-        "string": "Strongboxes in your Maps have {0}% reduced chance to be a Diviner's Strongbox",
-        "reminder_text": null,
-        "is_markup": null
-      }
-    ],
-    "ids": [
-      "map_strongboxes_+%_chance_to_be_diviners"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -34361,6 +37174,118 @@
     ],
     "ids": [
       "map_strongboxes_+%_chance_to_be_gemcutters"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[Strongbox|Strongboxes] in your Maps have {0}% increased chance to be [OrnateStrongbox|Ornate Strongboxes]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[Strongbox|Strongboxes] in your Maps have {0}% reduced chance to be a [OrnateStrongbox|Ornate Strongboxes]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_strongboxes_+%_chance_to_be_ornate"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[Strongbox|Strongboxes] in your Maps have {0}% increased chance to be [ResearchersStrongbox|Researcher's Strongboxes]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[Strongbox|Strongboxes] in your Maps have {0}% reduced chance to be a [ResearchersStrongbox|Researcher's Strongboxes]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_strongboxes_+%_chance_to_be_researchers"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -35118,7 +38043,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Your Maps have {0}% chance to contain a Tormented Spirit",
+        "string": "Your Maps have {0}% chance to contain an [AzmeriSpirit|Azmeri Spirit]",
         "reminder_text": null,
         "is_markup": null
       }
@@ -35154,7 +38079,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Tormented Spirits in your Maps have {0}% increased Duration",
+        "string": "Your Maps have {0}% increased chance to contain [AzmeriSpirit|Azmeri Spirits]",
         "reminder_text": null,
         "is_markup": null
       },
@@ -35174,13 +38099,327 @@
             "negate"
           ]
         ],
-        "string": "Tormented Spirits in your Maps have {0}% reduced Duration",
+        "string": "Your Maps have {0}% reduced chance to contain [AzmeriSpirit|Azmeri Spirits]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_tormented_spirit_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": 99,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[SpiritPossessed|Possessed] Monsters in your Maps have {0}% chance to release [AzmeriSpirit|Spirits] on death",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 100,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[SpiritPossessed|Possessed] Monsters in your Maps release [AzmeriSpirit|Spirits] on death",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_tormented_spirit_release_chance"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[AzmeriSpirit|Azmeri Spirits] can [SpiritTouched|Influence] {0}% increased number of Monsters in your Maps",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[AzmeriSpirit|Azmeri Spirits] can [SpiritTouched|Influence] {0}% reduced number of Monsters in your Maps",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_tormented_spirits_can_touch_+%_monsters"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[AzmeriSpirit|Azmeri Spirits] in your Maps have {0}% increased Duration",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[AzmeriSpirit|Azmeri Spirits] in your Maps have {0}% reduced Duration",
         "reminder_text": null,
         "is_markup": null
       }
     ],
     "ids": [
       "map_tormented_spirits_duration_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "When a Monster in your Maps is [SpiritPossessed|Possessed] by a Sacred [AzmeriSpirit|Spirit],\nit is also [SpiritPossessed|Possessed] by another random [AzmeriSpirit|Spirit]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_tormented_spirits_sacred_spirit_possess_with_other_spirit"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[AzmeriSpirit|Azmeri Spirits] in your Maps have {0}% increased Area of Effect",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[AzmeriSpirit|Azmeri Spirits] in your Maps have {0}% reduced Area of Effect",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_tormented_spirits_touch_area_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "Slain Wisp-Infused monsters in your Maps empower [AzmeriSpirit|Azmeri Spirits] {0}% faster",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "Slain Wisp-Infused monsters in your Maps empower [AzmeriSpirit|Azmeri Spirits] {0}% slower",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_tormented_spirits_touched_+%_power_when_slain"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -35777,6 +39016,62 @@
       {
         "condition": [
           {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [AzmeriSpirit|Azmeri Spirits] in your Maps to be Vivid Spirits",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [AzmeriSpirit|Azmeri Spirits] in your Maps to be Vivid Spirits",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_vivid_spirit_chance_+%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
             "min": null,
             "max": null,
             "negated": null
@@ -36049,6 +39344,62 @@
     ],
     "ids": [
       "map_wild_rogue_exiles_have_special_reward_chance_%"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "{0}% increased chance for [AzmeriSpirit|Azmeri Spirits] in your Maps to be Wild Spirits",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% reduced chance for [AzmeriSpirit|Azmeri Spirits] in your Maps to be Wild Spirits",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "map_wild_spirit_chance_+%"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -36474,6 +39825,60 @@
         "index_handlers": [
           []
         ],
+        "string": "Areas with [MapBoss|Map Bosses] contain an additional [AzmeriSpirit|Azmeri Spirit]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "Areas with [MapBoss|Map Bosses] contain {0} additional [AzmeriSpirit|Azmeri Spirits]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "maps_with_bosses_additional_spirit_+"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": 1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore"
+        ],
+        "index_handlers": [
+          []
+        ],
         "string": "Areas with [MapBoss|Map Bosses] contain an additional [Strongbox]",
         "reminder_text": null,
         "is_markup": null
@@ -36528,7 +39933,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Areas with [MapBoss|Map Bosses] are [ContainsIrradiated|Irradiated]",
+        "string": "[ContainsIrradiated|Non-Irradiated] Areas with [MapBoss|Map Bosses] have +1 Level",
         "reminder_text": null,
         "is_markup": null
       }
@@ -36908,7 +40313,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Rare Monsters in your Maps have {0}% chance to drop an additional Rare Jewellery Item",
+        "string": "Rare Monsters in your Maps have {0}% chance to drop an additional Rare [Jewellery] Item",
         "reminder_text": null,
         "is_markup": null
       }

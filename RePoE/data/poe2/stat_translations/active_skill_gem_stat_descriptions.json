@@ -409,11 +409,9 @@
           "#"
         ],
         "index_handlers": [
-          [
-            "multiplicative_damage_modifier"
-          ]
+          []
         ],
-        "string": "Minions deal {0}% of Damage",
+        "string": "[Minion|Minions] deal {0}% more Damage",
         "reminder_text": null,
         "is_markup": null
       }
@@ -815,7 +813,7 @@
         "index_handlers": [
           []
         ],
-        "string": "{0}% increased [Aura] [BuffEffect|Effect]",
+        "string": "{0}% increased [Aura] [BuffMagnitude|Magnitudes]",
         "reminder_text": null,
         "is_markup": null
       },
@@ -835,7 +833,7 @@
             "negate"
           ]
         ],
-        "string": "{0}% reduced [Aura] [BuffEffect|Effect]",
+        "string": "{0}% reduced [Aura] [BuffMagnitude|Magnitudes]",
         "reminder_text": null,
         "is_markup": null
       }
@@ -1960,7 +1958,7 @@
         "index_handlers": [
           []
         ],
-        "string": "[DNT] Converts {0}% of Fire Damage to Chaos Damage",
+        "string": "[Conversion|Converts] {0}% of [Fire] damage to [Chaos] damage",
         "reminder_text": null,
         "is_markup": null
       }
@@ -1996,13 +1994,49 @@
         "index_handlers": [
           []
         ],
-        "string": "[DNT] Converts {0}% of Lightning Damage to Chaos Damage",
+        "string": "[Conversion|Converts] {0}% of [Lightning] damage to [Chaos] damage",
         "reminder_text": null,
         "is_markup": null
       }
     ],
     "ids": [
       "active_skill_base_lightning_damage_%_to_convert_to_chaos"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[Gain|Gains] {0}% of [Physical] damage as [Cold] damage",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "active_skill_base_physical_damage_%_to_gain_as_cold"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -2651,195 +2685,6 @@
       {
         "condition": [
           {
-            "min": 1000,
-            "max": 1000,
-            "negated": null
-          },
-          {
-            "min": 0,
-            "max": 0,
-            "negated": null
-          }
-        ],
-        "format": [
-          "+#",
-          "ignore"
-        ],
-        "index_handlers": [
-          [
-            "milliseconds_to_seconds_2dp_if_required"
-          ],
-          []
-        ],
-        "string": "[AddedAttackCastTime|{0} second] to [Total] [Attack] Time",
-        "reminder_text": null,
-        "is_markup": null
-      },
-      {
-        "condition": [
-          {
-            "min": null,
-            "max": null,
-            "negated": null
-          },
-          {
-            "min": 0,
-            "max": 0,
-            "negated": null
-          }
-        ],
-        "format": [
-          "+#",
-          "ignore"
-        ],
-        "index_handlers": [
-          [
-            "milliseconds_to_seconds_2dp_if_required"
-          ],
-          []
-        ],
-        "string": "[AddedAttackCastTime|{0} seconds] to [Total] [Attack] Time",
-        "reminder_text": null,
-        "is_markup": null
-      },
-      {
-        "condition": [
-          {
-            "min": 1000,
-            "max": 1000,
-            "negated": null
-          },
-          {
-            "min": null,
-            "max": null,
-            "negated": null
-          }
-        ],
-        "format": [
-          "+#",
-          "+#"
-        ],
-        "index_handlers": [
-          [
-            "milliseconds_to_seconds_2dp_if_required"
-          ],
-          [
-            "milliseconds_to_seconds_2dp_if_required"
-          ]
-        ],
-        "string": "[AddedAttackCastTime|{0} second] to [Total] [Attack] Time, plus up to\n{1} seconds based on distance travelled",
-        "reminder_text": null,
-        "is_markup": null
-      },
-      {
-        "condition": [
-          {
-            "min": null,
-            "max": null,
-            "negated": null
-          },
-          {
-            "min": null,
-            "max": null,
-            "negated": null
-          }
-        ],
-        "format": [
-          "+#",
-          "+#"
-        ],
-        "index_handlers": [
-          [
-            "milliseconds_to_seconds_2dp_if_required"
-          ],
-          [
-            "milliseconds_to_seconds_2dp_if_required"
-          ]
-        ],
-        "string": "[AddedAttackCastTime|{0} seconds] to [Total] [Attack] Time, plus up to\n{1} seconds based on distance travelled",
-        "reminder_text": null,
-        "is_markup": null
-      }
-    ],
-    "ids": [
-      "added_attack_time_ms",
-      "leap_slam_added_attack_time_by_distance_ms"
-    ],
-    "trade_stats": null,
-    "hidden": null,
-    "French": null,
-    "German": null,
-    "Japanese": null,
-    "Korean": null,
-    "Portuguese": null,
-    "Russian": null,
-    "Spanish": null,
-    "Thai": null,
-    "Traditional_Chinese": null
-  },
-  {
-    "English": [
-      {
-        "condition": [
-          {
-            "min": 1000,
-            "max": 1000,
-            "negated": null
-          }
-        ],
-        "format": [
-          "+#"
-        ],
-        "index_handlers": [
-          [
-            "milliseconds_to_seconds_2dp_if_required"
-          ]
-        ],
-        "string": "[AddedAttackCastTime|{0} second] to [Total] Cast Time",
-        "reminder_text": null,
-        "is_markup": null
-      },
-      {
-        "condition": [
-          {
-            "min": null,
-            "max": null,
-            "negated": null
-          }
-        ],
-        "format": [
-          "+#"
-        ],
-        "index_handlers": [
-          [
-            "milliseconds_to_seconds_2dp_if_required"
-          ]
-        ],
-        "string": "[AddedAttackCastTime|{0} seconds] to [Total] Cast Time",
-        "reminder_text": null,
-        "is_markup": null
-      }
-    ],
-    "ids": [
-      "added_cast_time_ms"
-    ],
-    "trade_stats": null,
-    "hidden": null,
-    "French": null,
-    "German": null,
-    "Japanese": null,
-    "Korean": null,
-    "Portuguese": null,
-    "Russian": null,
-    "Spanish": null,
-    "Thai": null,
-    "Traditional_Chinese": null
-  },
-  {
-    "English": [
-      {
-        "condition": [
-          {
             "min": null,
             "max": null,
             "negated": null
@@ -2954,6 +2799,44 @@
     ],
     "ids": [
       "alt_attack_container_main_hand_base_weapon_attack_duration_ms"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "divide_by_one_hundred_2dp_if_required"
+          ]
+        ],
+        "string": "[Totem] base [Critical|Critical Hit] chance is {0}%",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "alt_attack_container_main_hand_weapon_critical_strike_chance"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -3227,7 +3110,7 @@
         "index_handlers": [
           []
         ],
-        "string": "[DNT] {0}% more Damage when Chaining",
+        "string": "{0}% more [HitDamage|Hit] damage when [Chain|Chaining]",
         "reminder_text": null,
         "is_markup": null
       },
@@ -3247,7 +3130,7 @@
             "negate"
           ]
         ],
-        "string": "[DNT] {0}% less Damage when Chaining",
+        "string": "{0}% less [HitDamage|Hit] damage when [Chain|Chaining]",
         "reminder_text": null,
         "is_markup": null
       }
@@ -3387,12 +3270,44 @@
             "min": null,
             "max": null,
             "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
           }
         ],
         "format": [
-          "#"
+          "+#",
+          "ignore"
         ],
         "index_handlers": [
+          [],
+          []
+        ],
+        "string": "Deals additional [Fire] Damage equal to {0}% of [Minion]'s maximum Life",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
           []
         ],
         "string": "Deals additional [Fire] Damage equal to {0}% of [Minion]'s maximum Life",
@@ -3401,7 +3316,8 @@
       }
     ],
     "ids": [
-      "arsonist_destructive_link_%_of_life_as_fire_damage"
+      "arsonist_destructive_link_%_of_life_as_fire_damage",
+      "quality_display_arsonist_is_gem"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -9065,7 +8981,7 @@
           [],
           []
         ],
-        "string": "Buff [Empowered|Empowers] your next [Bow|Bow] [Attack|Attack] to repeat an additional time",
+        "string": "[Empowered] [Attack|Attacks] repeat an additional time",
         "reminder_text": null,
         "is_markup": null
       },
@@ -9090,7 +9006,7 @@
           [],
           []
         ],
-        "string": "Buff [Empowered|Empowers] your next [Bow|Bow] [Attack|Attack] to repeat {0} times",
+        "string": "[Empowered] [Attack|Attacks] repeat {0} times",
         "reminder_text": null,
         "is_markup": null
       },
@@ -9115,7 +9031,7 @@
           [],
           []
         ],
-        "string": "Buff [Empowered|Empowers] your next [Bow|Bow] [Attack|Attack] to repeat an additional time, plus an additional time per Frenzy Charge consumed",
+        "string": "[Empowered] [Attack|Attacks] repeat an additional time, plus an additional time per Frenzy Charge consumed",
         "reminder_text": null,
         "is_markup": null
       },
@@ -9140,7 +9056,7 @@
           [],
           []
         ],
-        "string": "Buff [Empowered|Empowers] your next [Bow|Bow] [Attack|Attack] to repeat {0} times, plus an additional time per Frenzy Charge consumed",
+        "string": "[Empowered] [Attack|Attacks] repeat {0} times, plus an additional time per Frenzy Charge consumed",
         "reminder_text": null,
         "is_markup": null
       },
@@ -9165,7 +9081,7 @@
           [],
           []
         ],
-        "string": "Buff [Empowered|Empowers] your next [Bow|Bow] [Attack|Attack] to repeat an additional time, plus an additional {0} times per Frenzy Charge consumed",
+        "string": "[Empowered] [Attack|Attacks] repeat an additional time, plus an additional {0} times per Frenzy Charge consumed",
         "reminder_text": null,
         "is_markup": null
       },
@@ -9190,7 +9106,7 @@
           [],
           []
         ],
-        "string": "Buff [Empowered|Empowers] your next [Bow|Bow] [Attack|Attack] to repeat {0} times, plus an additional {0} times per Frenzy Charge consumed",
+        "string": "[Empowered] [Attack|Attacks] repeat {0} times, plus an additional {0} times per Frenzy Charge consumed",
         "reminder_text": null,
         "is_markup": null
       }
@@ -9216,18 +9132,52 @@
       {
         "condition": [
           {
+            "min": null,
+            "max": -1,
+            "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
+          }
+        ],
+        "format": [
+          "+#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ],
+          []
+        ],
+        "string": "Repeats deal {0}% more Damage",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
             "min": 1,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
             "max": null,
             "negated": null
           }
         ],
         "format": [
-          "#"
+          "#",
+          "ignore"
         ],
         "index_handlers": [
+          [],
           []
         ],
-        "string": "Repeats deal {0}% less damage",
+        "string": "Repeats deal {0}% less Damage",
         "reminder_text": null,
         "is_markup": null
       },
@@ -9237,23 +9187,31 @@
             "min": null,
             "max": -1,
             "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
           }
         ],
         "format": [
-          "#"
+          "#",
+          "ignore"
         ],
         "index_handlers": [
           [
             "negate"
-          ]
+          ],
+          []
         ],
-        "string": "Repeats deal {0}% more damage",
+        "string": "Repeats deal {0}% more Damage",
         "reminder_text": null,
         "is_markup": null
       }
     ],
     "ids": [
-      "empower_barrage_damage_-%_final_with_repeated_projectiles"
+      "empower_barrage_damage_-%_final_with_repeated_projectiles",
+      "quality_display_barrage_is_gem"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -10008,14 +9966,7 @@
       "global_minimum_added_chaos_damage",
       "global_maximum_added_chaos_damage"
     ],
-    "trade_stats": [
-      {
-        "id": "enchant.stat_2223678961",
-        "text": "Adds # to # Chaos Damage",
-        "type": "enchant",
-        "option": null
-      }
-    ],
+    "trade_stats": null,
     "hidden": null,
     "French": null,
     "German": null,
@@ -12127,6 +12078,42 @@
         "condition": [
           {
             "min": 1,
+            "max": 1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "Projectile count cannot be modified",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "modifiers_to_projectile_count_do_not_apply"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
             "max": null,
             "negated": null
           }
@@ -12137,7 +12124,7 @@
         "index_handlers": [
           []
         ],
-        "string": "{0}% increased Aura effect",
+        "string": "{0}% increased [Aura] [BuffMagnitude|Magnitudes]",
         "reminder_text": null,
         "is_markup": null
       },
@@ -12157,7 +12144,7 @@
             "negate"
           ]
         ],
-        "string": "{0}% reduced Aura effect",
+        "string": "{0}% reduced [Aura] [BuffMagnitude|Magnitudes]",
         "reminder_text": null,
         "is_markup": null
       }
@@ -12729,6 +12716,50 @@
           [],
           []
         ],
+        "string": "{0} to {1} Added [Physical|Physical] Damage per 5 [Armour|Armour] on [Shield|Shield]",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "off_hand_minimum_added_physical_damage_per_5_shield_armour",
+      "off_hand_maximum_added_physical_damage_per_5_shield_armour"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "#"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
         "string": "{0} to {1} Base Off Hand [Fire|Fire] Damage",
         "reminder_text": null,
         "is_markup": null
@@ -12974,7 +13005,7 @@
         "index_handlers": [
           []
         ],
-        "string": "{0}% increased Physical Damage",
+        "string": "{0}% increased [Physical] Damage",
         "reminder_text": null,
         "is_markup": null
       },
@@ -12994,7 +13025,7 @@
             "negate"
           ]
         ],
-        "string": "{0}% reduced Physical Damage",
+        "string": "{0}% reduced [Physical] Damage",
         "reminder_text": null,
         "is_markup": null
       }
@@ -13002,26 +13033,7 @@
     "ids": [
       "physical_damage_+%"
     ],
-    "trade_stats": [
-      {
-        "id": "enchant.stat_1509134228",
-        "text": "#% increased Physical Damage",
-        "type": "enchant",
-        "option": null
-      },
-      {
-        "id": "explicit.stat_1509134228",
-        "text": "#% increased Physical Damage",
-        "type": "explicit",
-        "option": null
-      },
-      {
-        "id": "rune.stat_1509134228",
-        "text": "#% increased Physical Damage",
-        "type": "rune",
-        "option": null
-      }
-    ],
+    "trade_stats": null,
     "hidden": null,
     "French": null,
     "German": null,
@@ -13309,7 +13321,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Projectiles Pierce an additional Target",
+        "string": "[Pierce|Pierces] the first target [HitDamage|Hit]",
         "reminder_text": null,
         "is_markup": null
       },
@@ -13327,7 +13339,7 @@
         "index_handlers": [
           []
         ],
-        "string": "Projectiles Pierce {0} additional Targets",
+        "string": "[Pierce|Pierces] the first {0} targets [HitDamage|Hit]",
         "reminder_text": null,
         "is_markup": null
       }
@@ -13742,7 +13754,7 @@
           ],
           []
         ],
-        "string": "Lose {0}% of Life per second\n{1}% more Life loss each second",
+        "string": "Lose {0}% of maximum Life per second\n{1}% more Life loss each second",
         "reminder_text": null,
         "is_markup": null
       }
@@ -14883,40 +14895,24 @@
       {
         "condition": [
           {
-            "min": 0,
-            "max": 0,
-            "negated": null
-          },
-          {
-            "min": null,
-            "max": null,
-            "negated": null
-          },
-          {
             "min": null,
             "max": null,
             "negated": null
           }
         ],
         "format": [
-          "ignore",
-          "#",
           "#"
         ],
         "index_handlers": [
-          [],
-          [],
           []
         ],
-        "string": "Deals {1}% more Damage per [ElementalAilments|Elemental Ailment] afflicting\nthe Bell\n{2}% of [Physical] Damage converted to the corresponding damage type of each [ElementalAilments|Elemental Ailment] afflicting the Bell",
+        "string": "Gains {0}% of [Physical] Damage as [Gain|Extra] Damage of each Type matching an [ElementalAilments|Elemental Ailment] on the Bell",
         "reminder_text": null,
         "is_markup": null
       }
     ],
     "ids": [
-      "tempest_bell_stat_suppression",
-      "tempest_bell_damage_+%_final_per_elemental_ailment",
-      "tempest_bell_physical_damage_%_to_elemental_ailment"
+      "tempest_bell_physical_damage_%_as_elemental_per_ailment"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -15045,6 +15041,195 @@
       {
         "condition": [
           {
+            "min": 1000,
+            "max": 1000,
+            "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
+          }
+        ],
+        "format": [
+          "+#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ],
+          []
+        ],
+        "string": "{0} second to [TotalPlus|Total] [Attack] Time",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
+          }
+        ],
+        "format": [
+          "+#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ],
+          []
+        ],
+        "string": "{0} seconds to [TotalPlus|Total] [Attack] Time",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 1000,
+            "max": 1000,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "+#",
+          "+#"
+        ],
+        "index_handlers": [
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ],
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ]
+        ],
+        "string": "{0} second to [TotalPlus|Total] [Attack] Time, plus up to\n{1} seconds based on distance travelled",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "+#",
+          "+#"
+        ],
+        "index_handlers": [
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ],
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ]
+        ],
+        "string": "{0} seconds to [TotalPlus|Total] [Attack] Time, plus up to\n{1} seconds based on distance travelled",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "total_attack_time_+_ms",
+      "leap_slam_added_attack_time_by_distance_ms"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1000,
+            "max": 1000,
+            "negated": null
+          }
+        ],
+        "format": [
+          "+#"
+        ],
+        "index_handlers": [
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ]
+        ],
+        "string": "{0} second to [TotalPlus|Total] Cast Time",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "+#"
+        ],
+        "index_handlers": [
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ]
+        ],
+        "string": "{0} seconds to [TotalPlus|Total] Cast Time",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "total_cast_time_+_ms"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
             "min": 1,
             "max": null,
             "negated": null
@@ -15094,7 +15279,7 @@
             "per_minute_to_per_second"
           ]
         ],
-        "string": "[Totem|Totems] Regenerate {0}% of Life per second",
+        "string": "[Totem|Totems] Regenerate {0}% of maximum Life per second",
         "reminder_text": null,
         "is_markup": null
       }
@@ -15581,6 +15766,60 @@
     ],
     "ids": [
       "volatile_dead_max_cores_allowed"
+    ],
+    "trade_stats": null,
+    "hidden": null,
+    "French": null,
+    "German": null,
+    "Japanese": null,
+    "Korean": null,
+    "Portuguese": null,
+    "Russian": null,
+    "Spanish": null,
+    "Thai": null,
+    "Traditional_Chinese": null
+  },
+  {
+    "English": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": 1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[Limit] {0} Fissure",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 2,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[Limit] {0} Fissures",
+        "reminder_text": null,
+        "is_markup": null
+      }
+    ],
+    "ids": [
+      "volcanic_fissure_base_maximum_number_of_fissures"
     ],
     "trade_stats": null,
     "hidden": null,

@@ -114,7 +114,8 @@
   {
     "English": null,
     "ids": [
-      "freezing_salvo_seals_gain_base_interval_ms"
+      "freezing_salvo_seals_gain_base_interval_ms",
+      "quality_display_freezing_salvo_is_gem"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -127,17 +128,51 @@
         "condition": [
           {
             "min": null,
+            "max": -1,
+            "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ],
+          []
+        ],
+        "string": "Atraso entre o acúmulo de mísseis é {0} segundos mais curto",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
             "max": null,
             "negated": null
           }
         ],
         "format": [
-          "#"
+          "#",
+          "ignore"
         ],
         "index_handlers": [
           [
             "milliseconds_to_seconds_2dp_if_required"
-          ]
+          ],
+          []
         ],
         "string": "Acumula um míssil a cada {0} segundos",
         "reminder_text": null,

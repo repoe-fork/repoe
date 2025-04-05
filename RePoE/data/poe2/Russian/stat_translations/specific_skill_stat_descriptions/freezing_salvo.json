@@ -114,7 +114,8 @@
   {
     "English": null,
     "ids": [
-      "freezing_salvo_seals_gain_base_interval_ms"
+      "freezing_salvo_seals_gain_base_interval_ms",
+      "quality_display_freezing_salvo_is_gem"
     ],
     "trade_stats": null,
     "hidden": null,
@@ -128,17 +129,51 @@
         "condition": [
           {
             "min": null,
+            "max": -1,
+            "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ],
+          []
+        ],
+        "string": "Интервал накопления снарядов на {0} секунд(-ы) короче",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
             "max": null,
             "negated": null
           }
         ],
         "format": [
-          "#"
+          "#",
+          "ignore"
         ],
         "index_handlers": [
           [
             "milliseconds_to_seconds_2dp_if_required"
-          ]
+          ],
+          []
         ],
         "string": "Накапливает снаряд каждые {0} секунд(-ы)",
         "reminder_text": null,
