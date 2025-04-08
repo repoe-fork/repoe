@@ -1,647 +1,648 @@
 {
-  "EnchantmentOfWinterWhenHit4":{
-    "hidden":true,
+  "EnchantmentOfForceOnHit4":{
     "color":4,
+    "stats":["is_area_damage","damage_cannot_be_reflected"],
+    "description":"Release an arc of force from your weapon or fists, damaging enemies in front of you.",
+    "skillTypes":{
+      "35":true
+    },
+    "statDescriptionScope":"skill_stat_descriptions",
+    "castTime":1,
+    "baseFlags":[],
+    "levels":[{
+        "cooldown":5,
+        "levelRequirement":75,
+        "baseMultiplier":2.97,
+        "PvPDamageMultiplier":-80
+      }],
+    "constantStats":[["attack_trigger_on_hit_%",100]],
+    "name":"Commandment of Force"
+  },
+  "EnchantmentOfIreWhenHit2":{
+    "color":2,
+    "baseEffectiveness":1.2000000476837,
+    "incrementalEffectiveness":0.019999999552965,
+    "description":"Release a lightning charged spinning copy of your weapon or its projectiles that rotates around a point, damaging enemies in an area.",
+    "constantStats":[["base_skill_effect_duration",5000],["extra_gore_chance_override_%",30],["melee_counterattack_trigger_on_hit_%"],["skill_physical_damage_%_to_convert_to_lightning",50]],
+    "skillTypes":[],
+    "weaponTypes":[],
+    "stats":[null,"attack_unusable_if_triggerable","attack_is_not_melee_override"],
+    "castTime":0.5,
+    "baseFlags":[],
+    "levels":[{
+        "cooldown":10,
+        "levelRequirement":53,
+        "baseMultiplier":0.9
+      }],
+    "name":"Edict of Ire"
+  },
+  "EnchantmentOfIreWhenHit3":{
+    "constantStats":[[],[],[],[]],
+    "skillTypes":[],
+    "weaponTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[{
+        "levelRequirement":66,
+        "baseMultiplier":1.2
+      }],
+    "name":"Decree of Ire"
+  },
+  "EnchantmentOfIreWhenHit4":{
+    "constantStats":[[],[],[],[]],
+    "skillTypes":[],
+    "weaponTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[{
+        "baseMultiplier":1.5
+      }],
+    "name":"Commandment of Ire"
+  },
+  "EnchantmentOfWinterWhenHit4":{
     "baseEffectiveness":1.0908999443054,
     "incrementalEffectiveness":0.035000000149012,
     "description":"Unleashes an icy projectile that pulses with cold as it travels.",
     "skillTypes":[],
-    "statDescriptionScope":"skill_stat_descriptions",
+    "stats":["spell_minimum_base_cold_damage","spell_maximum_base_cold_damage",null,"base_is_projectile"],
+    "castTime":1.4,
+    "baseFlags":[],
     "levels":[{
         "1":2.4000000953674,
         "2":3.7999999523163,
-        "critChance":5,
-        "PvPDamageMultiplier":-80,
-        "storedUses":1,
-        "cooldown":10,
-        "levelRequirement":75,
         "statInterpolation":[3]
       }],
-    "castTime":1.4,
-    "name":"Commandment of Winter",
-    "baseFlags":[],
-    "stats":["spell_minimum_base_cold_damage","spell_maximum_base_cold_damage","is_area_damage","base_is_projectile","damage_cannot_be_reflected"],
-    "constantStats":[["cast_when_hit_%",100]]
+    "constantStats":[["cast_when_hit_%"]],
+    "name":"Commandment of Winter"
   },
-  "EnchantmentOfFlamesOnHit4":{
-    "baseEffectiveness":1.7777999639511,
-    "description":"Releases a nova of fire around you, damaging nearby enemies.",
+  "EnchantmentOfLightWhenCrit":{
+    "stats":[],
+    "description":"Deals a portion of your main hand damage in an area around you and creates Consecrated Ground, causing you and your allies to regenerate life.",
     "skillTypes":[],
+    "baseFlags":[],
     "levels":[{
-        "1":2.5999999046326,
+        "levelRequirement":32,
+        "baseMultiplier":1.35
+      }],
+    "constantStats":[[],["life_regeneration_rate_per_minute_%",360],["attack_trigger_when_critically_hit_%"]],
+    "name":"Word of Light"
+  },
+  "EnchantmentOfFrostOnKill2":{
+    "baseEffectiveness":1.6363999843597,
+    "description":"Fire icy projectiles around you in all directions.",
+    "skillTypes":[],
+    "stats":[null,null,null,"projectiles_nova","spell_uncastable_if_triggerable"],
+    "baseFlags":[],
+    "levels":[{
+        "2":2.2999999523163,
         "statInterpolation":[]
       }],
-    "name":"Commandment of Flames",
-    "baseFlags":[],
-    "stats":["spell_minimum_base_fire_damage","spell_maximum_base_fire_damage",null,"spell_uncastable_if_triggerable"],
-    "constantStats":[["cast_on_hit_%"]]
+    "constantStats":[["chance_to_cast_on_kill_%_target_self"],["number_of_additional_projectiles",8]],
+    "name":"Edict of Frost"
   },
-  "EnchantmentOfForceOnHit":{
-    "stats":[],
-    "description":"Release an arc of force from your weapon or fists, damaging enemies in front of you.",
-    "skillTypes":[],
-    "name":"Word of Force",
-    "baseFlags":[],
-    "levels":[{
-        "baseMultiplier":1.35,
-        "levelRequirement":32
-      }],
-    "constantStats":[["attack_trigger_on_hit_%"]]
-  },
-  "EnchantmentOfFuryOnHit2":{
-    "description":"Repeatedly fires a piercing projectile based on your weapon, converting some physical damage to fire. The projectiles form an arc in front of you.",
-    "levels":[{
-        "baseMultiplier":2.1,
-        "levelRequirement":53
-      }],
-    "skillTypes":[],
-    "stats":[null,"skill_can_fire_arrows","skill_can_fire_wand_projectiles"],
-    "name":"Edict of Fury",
-    "baseFlags":[],
-    "weaponTypes":[],
-    "constantStats":[[],["projectile_spiral_nova_time_ms",800],["projectile_spiral_nova_angle",180],["base_number_of_projectiles_in_spiral_nova"],["skill_physical_damage_%_to_convert_to_fire",50],["projectile_spiral_nova_starting_angle_offset",-90],["projectile_base_number_of_targets_to_pierce"]]
-  },
-  "EnchantmentOfReflectionWhenHit3":{
-    "levels":[{
-        "levelRequirement":66
-      }],
-    "stats":[],
-    "description":"Creates a clone of you that attacks with your weapon.",
-    "minionSkillTypes":[],
-    "skillTypes":[],
-    "statDescriptionScope":"minion_skill_stat_descriptions",
-    "name":"Decree of Reflection",
-    "baseFlags":[],
-    "minionUses":[],
-    "minionList":["Clone"],
-    "constantStats":[["base_skill_effect_duration",5000],["number_of_monsters_to_summon"],["minion_damage_+%",120],["minion_maximum_life_+%",150],["display_minion_monster_type"],["base_display_minion_actor_level"],[],["active_skill_minion_damage_+%_final",300]]
-  },
-  "EnchantmentOfFuryOnHit3":{
-    "levels":[{
-        "baseMultiplier":2.7
-      }],
+  "EnchantmentOfWinterWhenHit3":{
     "skillTypes":[],
     "stats":[],
-    "name":"Decree of Fury",
     "baseFlags":[],
-    "weaponTypes":[],
-    "constantStats":[[],[],[],[],[],[],[]]
-  },
-  "EnchantmentOfReflectionWhenHit4":{
-    "levels":[[]],
-    "stats":[],
-    "minionSkillTypes":[],
-    "skillTypes":[],
-    "name":"Commandment of Reflection",
-    "baseFlags":[],
-    "minionUses":[],
-    "minionList":[],
-    "constantStats":[[],[],[null,140],[],[],[],[],[null,400]]
-  },
-  "EnchantmentOfFuryOnHit4":{
     "levels":[{
-        "baseMultiplier":3.3
-      }],
-    "skillTypes":[],
-    "stats":[],
-    "name":"Commandment of Fury",
-    "baseFlags":[],
-    "weaponTypes":[],
-    "constantStats":[[],[],[],[],[],[],[]]
-  },
-  "EnchantmentOfSpiteWhenHit":{
-    "description":"Releases a circle of projectiles based on your weapon, leaving chilled ground in their wake.",
-    "levels":[{
-        "baseMultiplier":1.5
-      }],
-    "skillTypes":[],
-    "stats":["projectiles_drop_ground_ice","projectiles_drop_ground_effects_on_client",null,"projectiles_nova"],
-    "name":"Word of Spite",
-    "baseFlags":[],
-    "weaponTypes":[],
-    "constantStats":[["base_projectile_ground_effect_duration",2000],["number_of_additional_projectiles",9],["melee_counterattack_trigger_on_hit_%"],["skill_physical_damage_%_to_convert_to_cold"]]
-  },
-  "EnchantmentOfInfernoOnKill":{
-    "baseEffectiveness":3.5555999279022,
-    "description":"Drops a meteor from above on a nearby foe, dealing fire damage in an area around them.",
-    "skillTypes":[],
-    "levels":[{
-        "2":1.6000000238419,
         "statInterpolation":[]
       }],
-    "name":"Word of Inferno",
-    "baseFlags":[],
-    "stats":[null,null,"base_skill_show_average_damage_instead_of_dps"],
-    "constantStats":[[],["fire_storm_fireball_delay_ms"],["skill_override_pvp_scaling_time_ms",450],["chance_to_cast_on_kill_%_target_self"]]
+    "constantStats":[[]],
+    "name":"Decree of Winter"
   },
-  "EnchantmentOfForceOnHit3":{
-    "stats":[],
+  "EnchantmentOfFrostOnKill3":{
     "skillTypes":[],
-    "name":"Decree of Force",
+    "stats":[],
     "baseFlags":[],
     "levels":[{
-        "baseMultiplier":2.43
+        "statInterpolation":[]
       }],
-    "constantStats":[[]]
+    "constantStats":[[],[]],
+    "name":"Decree of Frost"
   },
   "EnchantmentOfBladesOnHit":{
     "baseEffectiveness":1.7000000476837,
     "incrementalEffectiveness":0.037000000476837,
     "description":"Fires a chaining burst of ethereal blades.",
     "skillTypes":[],
-    "levels":[{
-        "critChance":7,
-        "statInterpolation":[]
-      }],
-    "name":"Word of Blades",
-    "baseFlags":[],
     "stats":["spell_minimum_base_physical_damage","spell_maximum_base_physical_damage"],
-    "constantStats":[["number_of_chains"],[],[null,2]]
-  },
-  "EnchantmentOfSpiteWhenHit2":{
-    "levels":[[]],
-    "skillTypes":[],
-    "stats":[],
-    "name":"Edict of Spite",
-    "baseFlags":[],
-    "weaponTypes":[],
-    "constantStats":[[],[],[],[]]
-  },
-  "EnchantmentOfFrostOnKill4":{
-    "baseEffectiveness":1.6363999843597,
-    "description":"Fire icy projectiles around you in all directions.",
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "name":"Commandment of Frost",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[],[null,8]]
-  },
-  "EnchantmentOfInfernoOnKill2":{
-    "skillTypes":[],
-    "levels":[{
-        "2":2.2999999523163,
-        "statInterpolation":[]
-      }],
-    "name":"Edict of Inferno",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[],[],[],[]]
-  },
-  "EnchantmentOfBladesOnHit2":{
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "name":"Edict of Blades",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[],[],[]]
-  },
-  "EnchantmentOfInfernoOnKill3":{
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "name":"Decree of Inferno",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[],[],[],[]]
-  },
-  "EnchantmentOfFuryOnHit":{
-    "levels":[[]],
-    "skillTypes":[],
-    "stats":[],
-    "name":"Word of Fury",
-    "baseFlags":[],
-    "weaponTypes":[],
-    "constantStats":[[],[],[],[],[],[],[]]
-  },
-  "EnchantmentOfInfernoOnKill4":{
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "name":"Commandment of Inferno",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[],[],[],[]]
-  },
-  "EnchantmentOfFrostOnKill3":{
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "name":"Decree of Frost",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[],[]]
-  },
-  "EnchantmentOfIreWhenHit":{
-    "baseEffectiveness":1.2000000476837,
-    "incrementalEffectiveness":0.019999999552965,
-    "description":"Release a lightning charged spinning copy of your weapon or its projectiles that rotates around a point, damaging enemies in an area.",
-    "levels":[{
-        "baseMultiplier":0.6
-      }],
-    "skillTypes":[],
-    "stats":[null,"attack_unusable_if_triggerable","attack_is_not_melee_override"],
-    "castTime":0.5,
-    "name":"Word of Ire",
-    "baseFlags":[],
-    "weaponTypes":[],
-    "constantStats":[[],["extra_gore_chance_override_%",30],[],["skill_physical_damage_%_to_convert_to_lightning"]]
-  },
-  "EnchantmentOfReflectionWhenHit":{
-    "levels":[[]],
-    "stats":[],
-    "minionSkillTypes":[],
-    "skillTypes":[],
-    "name":"Word of Reflection",
-    "baseFlags":[],
-    "minionUses":[],
-    "minionList":[],
-    "constantStats":[[],[],[null,80],[],[],[],[],[]]
-  },
-  "EnchantmentOfReflectionWhenHit2":{
-    "levels":[[]],
-    "stats":[],
-    "minionSkillTypes":[],
-    "skillTypes":[],
-    "name":"Edict of Reflection",
-    "baseFlags":[],
-    "minionUses":[],
-    "minionList":[],
-    "constantStats":[[],[],[],[],[],[],[],[null,200]]
-  },
-  "EnchantmentOfTempestOnHit2":{
-    "description":"Charges you with lightning which lasts a duration before unleashing, damaging surrounding enemies.",
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "name":"Edict of the Tempest",
-    "baseFlags":[],
-    "stats":["spell_minimum_base_lightning_damage","spell_maximum_base_lightning_damage"],
-    "constantStats":[[],[]]
-  },
-  "EnchantmentOfForceOnHit2":{
-    "stats":[],
-    "skillTypes":[],
-    "name":"Edict of Force",
     "baseFlags":[],
     "levels":[{
-        "baseMultiplier":1.89
+        "2":1.6000000238419,
+        "statInterpolation":[],
+        "critChance":7
       }],
-    "constantStats":[[]]
-  },
-  "EnchantmentOfTempestOnHit3":{
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "name":"Decree of the Tempest",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[],[]]
-  },
-  "EnchantmentOfThunderOnKill4":{
-    "baseEffectiveness":1.625,
-    "description":"Damaging cones of lightning surround you.",
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "name":"Commandment of Thunder",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[]]
-  },
-  "EnchantmentOfTempestOnHit4":{
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "name":"Commandment of the Tempest",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[],[]]
-  },
-  "EnchantmentOfThunderOnKill3":{
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "name":"Decree of Thunder",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[]]
-  },
-  "EnchantmentOfIreWhenHit2":{
-    "levels":[{
-        "baseMultiplier":0.9
-      }],
-    "skillTypes":[],
-    "stats":[],
-    "name":"Edict of Ire",
-    "baseFlags":[],
-    "weaponTypes":[],
-    "constantStats":[[],[],[],[]]
-  },
-  "EnchantmentOfThunderOnKill2":{
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "name":"Edict of Thunder",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[]]
-  },
-  "EnchantmentOfIreWhenHit3":{
-    "levels":[{
-        "baseMultiplier":1.2
-      }],
-    "skillTypes":[],
-    "stats":[],
-    "name":"Decree of Ire",
-    "baseFlags":[],
-    "weaponTypes":[],
-    "constantStats":[[],[],[],[]]
-  },
-  "EnchantmentOfSpiteWhenHit4":{
-    "levels":[[]],
-    "skillTypes":[],
-    "stats":[],
-    "name":"Commandment of Spite",
-    "baseFlags":[],
-    "weaponTypes":[],
-    "constantStats":[[],[],[],[]]
-  },
-  "EnchantmentOfIreWhenHit4":{
-    "levels":[[]],
-    "skillTypes":[],
-    "stats":[],
-    "name":"Commandment of Ire",
-    "baseFlags":[],
-    "weaponTypes":[],
-    "constantStats":[[],[],[],[]]
-  },
-  "EnchantmentOfTempestOnHit":{
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "name":"Word of the Tempest",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[],[]]
-  },
-  "EnchantmentOfLightWhenCrit":{
-    "stats":[],
-    "description":"Deals a portion of your main hand damage in an area around you and creates Consecrated Ground, causing you and your allies to regenerate life.",
-    "skillTypes":[],
-    "name":"Word of Light",
-    "baseFlags":[],
-    "levels":[[]],
-    "constantStats":[[],["life_regeneration_rate_per_minute_%",360],["attack_trigger_when_critically_hit_%"]]
-  },
-  "EnchantmentOfTheGraveOnKill":{
-    "stats":["minions_cannot_taunt_enemies"],
-    "description":"Summons three icy skull minions that explode at the end of their duration.",
-    "minionSkillTypes":[],
-    "skillTypes":[],
-    "statDescriptionScope":"minion_spell_skill_stat_descriptions",
-    "levels":[[]],
-    "name":"Word of the Grave",
-    "baseFlags":[],
-    "minionList":["IcyRagingSpirit"],
-    "constantStats":[["chance_to_cast_on_owned_kill_%"],[],[],[],[],["minions_explode_on_death_for_%_max_life_at_end_of_duration",20]]
-  },
-  "EnchantmentOfTheGraveOnKill2":{
-    "stats":[],
-    "minionSkillTypes":[],
-    "skillTypes":[],
-    "levels":[[]],
-    "name":"Edict of the Grave",
-    "baseFlags":[],
-    "minionList":[],
-    "constantStats":[[],[],[],[],[],[]]
-  },
-  "EnchantmentOfFrostOnKill2":{
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "name":"Edict of Frost",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[],[]]
-  },
-  "EnchantmentOfTheGraveOnKill3":{
-    "stats":[],
-    "minionSkillTypes":[],
-    "skillTypes":[],
-    "levels":[[]],
-    "name":"Decree of the Grave",
-    "baseFlags":[],
-    "minionList":[],
-    "constantStats":[[],[],[],[],[],[]]
+    "constantStats":[["number_of_chains"],["cast_on_hit_%"],[]],
+    "name":"Word of Blades"
   },
   "EnchantmentOfLightWhenCrit2":{
     "stats":[],
     "skillTypes":[],
-    "name":"Edict of Light",
     "baseFlags":[],
-    "levels":[[]],
-    "constantStats":[[],[],[]]
+    "levels":[{
+        "baseMultiplier":1.89
+      }],
+    "constantStats":[[],[],[]],
+    "name":"Edict of Light"
   },
-  "EnchantmentOfTheGraveOnKill4":{
-    "stats":[],
-    "minionSkillTypes":[],
+  "EnchantmentOfWinterWhenHit2":{
     "skillTypes":[],
-    "levels":[[]],
-    "name":"Commandment of the Grave",
+    "stats":[],
     "baseFlags":[],
-    "minionList":[],
-    "constantStats":[[],[],[],[],[],[]]
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "constantStats":[[]],
+    "name":"Edict of Winter"
   },
   "EnchantmentOfLightWhenCrit3":{
     "stats":[],
     "skillTypes":[],
-    "name":"Decree of Light",
     "baseFlags":[],
-    "levels":[[]],
-    "constantStats":[[],[],[]]
+    "levels":[{
+        "baseMultiplier":2.43
+      }],
+    "constantStats":[[],[],[]],
+    "name":"Decree of Light"
   },
-  "EnchantmentOfThunderOnKill":{
+  "EnchantmentOfWinterWhenHit":{
     "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
     "levels":[{
         "statInterpolation":[]
       }],
-    "name":"Word of Thunder",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[]]
+    "constantStats":[[]],
+    "name":"Word of Winter"
   },
   "EnchantmentOfLightWhenCrit4":{
     "stats":[],
     "skillTypes":[],
-    "name":"Commandment of Light",
+    "baseFlags":[],
+    "levels":[[]],
+    "constantStats":[[],[],[]],
+    "name":"Commandment of Light"
+  },
+  "EnchantmentOfTempestOnHit2":{
+    "description":"Charges you with lightning which lasts a duration before unleashing, damaging surrounding enemies.",
+    "skillTypes":[],
+    "stats":["spell_minimum_base_lightning_damage","spell_maximum_base_lightning_damage"],
     "baseFlags":[],
     "levels":[{
-        "baseMultiplier":2.97
+        "statInterpolation":[]
       }],
-    "constantStats":[[],[],[]]
+    "constantStats":[[],[null,2000]],
+    "name":"Edict of the Tempest"
   },
-  "EnchantmentOfSpiteWhenHit3":{
+  "EnchantmentOfReflectionWhenHit":{
+    "baseFlags":[],
+    "stats":[],
+    "description":"Creates a clone of you that attacks with your weapon.",
+    "constantStats":[[],["number_of_monsters_to_summon"],["minion_damage_+%",80],["minion_maximum_life_+%",150],["display_minion_monster_type"],["base_display_minion_actor_level"],[],["active_skill_minion_damage_+%_final"]],
+    "skillTypes":[],
+    "statDescriptionScope":"minion_skill_stat_descriptions",
+    "minionSkillTypes":[],
+    "minionUses":[],
     "levels":[[]],
+    "minionList":["Clone"],
+    "name":"Word of Reflection"
+  },
+  "EnchantmentOfTempestOnHit3":{
     "skillTypes":[],
     "stats":[],
-    "name":"Decree of Spite",
     "baseFlags":[],
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "constantStats":[[],[]],
+    "name":"Decree of the Tempest"
+  },
+  "EnchantmentOfWarOnKill4":{
+    "stats":[],
+    "description":"This attack is performed repeatedly by a ghostly imitation of your weapon.",
+    "skillTypes":[],
+    "constantStats":[[null,10000],[],["enchantment_of_war_trigger_on_kill_%"],[null,200]],
+    "baseFlags":[],
+    "levels":[[]],
     "weaponTypes":[],
-    "constantStats":[[],[],[],[]]
+    "name":"Commandment of War"
+  },
+  "EnchantmentOfTempestOnHit4":{
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "constantStats":[[],[]],
+    "name":"Commandment of the Tempest"
+  },
+  "EnchantmentOfWarOnKill3":{
+    "stats":[],
+    "skillTypes":[],
+    "constantStats":[[],[],[],[]],
+    "baseFlags":[],
+    "levels":[[]],
+    "weaponTypes":[],
+    "name":"Decree of War"
+  },
+  "EnchantmentOfTheGraveOnKill":{
+    "stats":["minions_cannot_taunt_enemies"],
+    "description":"Summons three icy skull minions that explode at the end of their duration.",
+    "constantStats":[["chance_to_cast_on_owned_kill_%"],[],[],[],[],["minions_explode_on_death_for_%_max_life_at_end_of_duration",20]],
+    "skillTypes":[],
+    "statDescriptionScope":"minion_spell_skill_stat_descriptions",
+    "minionSkillTypes":[],
+    "baseFlags":[],
+    "levels":[[]],
+    "minionList":["IcyRagingSpirit"],
+    "name":"Word of the Grave"
+  },
+  "EnchantmentOfWarOnKill2":{
+    "stats":[],
+    "skillTypes":[],
+    "constantStats":[[],[],[],[]],
+    "baseFlags":[],
+    "levels":[[]],
+    "weaponTypes":[],
+    "name":"Edict of War"
+  },
+  "EnchantmentOfWarOnKill":{
+    "stats":[],
+    "skillTypes":[],
+    "constantStats":[[],[],[],[]],
+    "baseFlags":[],
+    "levels":[[]],
+    "weaponTypes":[],
+    "name":"Word of War"
+  },
+  "EnchantmentOfReflectionWhenHit4":{
+    "baseFlags":[],
+    "stats":[],
+    "constantStats":[[],[],[null,140],[],[],[],[],[null,400]],
+    "skillTypes":[],
+    "minionSkillTypes":[],
+    "minionUses":[],
+    "levels":[[]],
+    "minionList":[],
+    "name":"Commandment of Reflection"
+  },
+  "EnchantmentOfThunderOnKill3":{
+    "baseEffectiveness":1.625,
+    "description":"Damaging cones of lightning surround you.",
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "constantStats":[[]],
+    "name":"Decree of Thunder"
+  },
+  "EnchantmentOfThunderOnKill2":{
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "constantStats":[[]],
+    "name":"Edict of Thunder"
+  },
+  "EnchantmentOfThunderOnKill":{
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "constantStats":[[]],
+    "name":"Word of Thunder"
+  },
+  "EnchantmentOfTheGraveOnKill4":{
+    "stats":[],
+    "constantStats":[[],[],[],[],[],[]],
+    "skillTypes":[],
+    "minionSkillTypes":[],
+    "baseFlags":[],
+    "levels":[[]],
+    "minionList":[],
+    "name":"Commandment of the Grave"
+  },
+  "EnchantmentOfTheGraveOnKill2":{
+    "stats":[],
+    "constantStats":[[],[],[],[],[],[]],
+    "skillTypes":[],
+    "minionSkillTypes":[],
+    "baseFlags":[],
+    "levels":[[]],
+    "minionList":[],
+    "name":"Edict of the Grave"
+  },
+  "EnchantmentOfTheGraveOnKill3":{
+    "stats":[],
+    "constantStats":[[],[],[],[],[],[]],
+    "skillTypes":[],
+    "minionSkillTypes":[],
+    "baseFlags":[],
+    "levels":[[]],
+    "minionList":[],
+    "name":"Decree of the Grave"
+  },
+  "EnchantmentOfBladesOnHit2":{
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "constantStats":[[],[],[]],
+    "name":"Edict of Blades"
+  },
+  "EnchantmentOfTempestOnHit":{
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "constantStats":[[],[]],
+    "name":"Word of the Tempest"
   },
   "EnchantmentOfBladesOnHit3":{
     "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
     "levels":[{
         "statInterpolation":[]
       }],
-    "name":"Decree of Blades",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[],[],[]]
+    "constantStats":[[],[],[]],
+    "name":"Decree of Blades"
   },
-  "EnchantmentOfWarOnKill2":{
-    "weaponTypes":[],
-    "description":"This attack is performed repeatedly by a ghostly imitation of your weapon.",
+  "EnchantmentOfSpiteWhenHit4":{
+    "description":"Releases a circle of projectiles based on your weapon, leaving chilled ground in their wake.",
+    "constantStats":[["base_projectile_ground_effect_duration"],[null,9],[],["skill_physical_damage_%_to_convert_to_cold"]],
     "skillTypes":[],
-    "levels":[[]],
-    "name":"Edict of War",
+    "stats":["projectiles_drop_ground_ice","projectiles_drop_ground_effects_on_client",null,null,"skill_can_fire_arrows","skill_can_fire_wand_projectiles"],
     "baseFlags":[],
-    "stats":[],
-    "constantStats":[[null,10000],[],["enchantment_of_war_trigger_on_kill_%"],[]]
+    "levels":[{
+        "baseMultiplier":3.3
+      }],
+    "weaponTypes":[],
+    "name":"Commandment of Spite"
   },
   "EnchantmentOfBladesOnHit4":{
     "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
     "levels":[{
         "statInterpolation":[]
       }],
-    "name":"Commandment of Blades",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[],[],[]]
+    "constantStats":[[],[],[]],
+    "name":"Commandment of Blades"
   },
-  "EnchantmentOfWarOnKill3":{
-    "weaponTypes":[],
+  "EnchantmentOfSpiteWhenHit3":{
+    "constantStats":[[],[],[],[]],
     "skillTypes":[],
-    "levels":[[]],
-    "name":"Decree of War",
-    "baseFlags":[],
     "stats":[],
-    "constantStats":[[],[],[],[]]
+    "baseFlags":[],
+    "levels":[{
+        "baseMultiplier":2.7
+      }],
+    "weaponTypes":[],
+    "name":"Decree of Spite"
   },
   "EnchantmentOfFlamesOnHit":{
+    "baseEffectiveness":1.7777999639511,
+    "description":"Releases a nova of fire around you, damaging nearby enemies.",
     "skillTypes":[],
+    "stats":["spell_minimum_base_fire_damage","spell_maximum_base_fire_damage"],
+    "baseFlags":[],
     "levels":[{
         "2":1.7999999523163,
         "statInterpolation":[]
       }],
-    "name":"Word of Flames",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[]]
+    "constantStats":[[]],
+    "name":"Word of Flames"
   },
-  "EnchantmentOfWarOnKill4":{
+  "EnchantmentOfFuryOnHit4":{
+    "description":"Repeatedly fires a piercing projectile based on your weapon, converting some physical damage to fire. The projectiles form an arc in front of you.",
+    "constantStats":[[],["projectile_spiral_nova_time_ms",800],["projectile_spiral_nova_angle",180],["base_number_of_projectiles_in_spiral_nova"],["skill_physical_damage_%_to_convert_to_fire"],["projectile_spiral_nova_starting_angle_offset",-90],["projectile_base_number_of_targets_to_pierce"]],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[[]],
     "weaponTypes":[],
-    "skillTypes":[],
-    "levels":[[]],
-    "name":"Commandment of War",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[],[],[],[]]
+    "name":"Commandment of Fury"
   },
-  "EnchantmentOfWarOnKill":{
+  "EnchantmentOfSpiteWhenHit":{
+    "constantStats":[[],[],[],[]],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[[]],
     "weaponTypes":[],
+    "name":"Word of Spite"
+  },
+  "EnchantmentOfInfernoOnKill":{
+    "baseEffectiveness":3.5555999279022,
+    "description":"Drops a meteor from above on a nearby foe, dealing fire damage in an area around them.",
     "skillTypes":[],
+    "stats":[null,null,"base_skill_show_average_damage_instead_of_dps"],
+    "baseFlags":[],
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "constantStats":[[],["fire_storm_fireball_delay_ms"],["skill_override_pvp_scaling_time_ms",450],[]],
+    "name":"Word of Inferno"
+  },
+  "EnchantmentOfSpiteWhenHit2":{
+    "constantStats":[[],[],[],[]],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[{
+        "baseMultiplier":2.1
+      }],
+    "weaponTypes":[],
+    "name":"Edict of Spite"
+  },
+  "EnchantmentOfThunderOnKill4":{
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "constantStats":[[]],
+    "name":"Commandment of Thunder"
+  },
+  "EnchantmentOfReflectionWhenHit3":{
+    "baseFlags":[],
+    "stats":[],
+    "constantStats":[[],[],[null,120],[],[],[],[],[null,300]],
+    "skillTypes":[],
+    "minionSkillTypes":[],
+    "minionUses":[],
     "levels":[[]],
-    "name":"Word of War",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[],[],[],[]]
-  },
-  "EnchantmentOfWinterWhenHit":{
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "name":"Word of Winter",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[]]
-  },
-  "EnchantmentOfForceOnHit4":{
-    "stats":[],
-    "skillTypes":[],
-    "name":"Commandment of Force",
-    "baseFlags":[],
-    "levels":[[]],
-    "constantStats":[[]]
-  },
-  "EnchantmentOfFrostOnKill":{
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "name":"Word of Frost",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[],[]]
-  },
-  "EnchantmentOfWinterWhenHit2":{
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "name":"Edict of Winter",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[]]
+    "minionList":[],
+    "name":"Decree of Reflection"
   },
   "EnchantmentOfFlamesOnHit2":{
     "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
     "levels":[{
         "2":2.5,
         "statInterpolation":[]
       }],
-    "name":"Edict of Flames",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[]]
+    "constantStats":[[]],
+    "name":"Edict of Flames"
   },
-  "EnchantmentOfWinterWhenHit3":{
+  "EnchantmentOfFrostOnKill4":{
     "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
     "levels":[{
         "statInterpolation":[]
       }],
-    "name":"Decree of Winter",
-    "baseFlags":[],
-    "stats":[],
-    "constantStats":[[]]
+    "constantStats":[[],[]],
+    "name":"Commandment of Frost"
   },
   "EnchantmentOfFlamesOnHit3":{
     "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
     "levels":[{
         "1":2.2000000476837,
         "2":3.2000000476837,
         "statInterpolation":[]
       }],
-    "name":"Decree of Flames",
+    "constantStats":[[]],
+    "name":"Decree of Flames"
+  },
+  "EnchantmentOfFuryOnHit":{
+    "constantStats":[[],[],[],[],[],[],[]],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[[]],
+    "weaponTypes":[],
+    "name":"Word of Fury"
+  },
+  "EnchantmentOfFlamesOnHit4":{
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[{
+        "1":2.5999999046326,
+        "statInterpolation":[]
+      }],
+    "constantStats":[[]],
+    "name":"Commandment of Flames"
+  },
+  "EnchantmentOfReflectionWhenHit2":{
     "baseFlags":[],
     "stats":[],
-    "constantStats":[[]]
+    "constantStats":[[],[],[],[],[],[],[],[]],
+    "skillTypes":[],
+    "minionSkillTypes":[],
+    "minionUses":[],
+    "levels":[[]],
+    "minionList":[],
+    "name":"Edict of Reflection"
+  },
+  "EnchantmentOfForceOnHit":{
+    "stats":[],
+    "skillTypes":[],
+    "baseFlags":[],
+    "levels":[[]],
+    "constantStats":[[]],
+    "name":"Word of Force"
+  },
+  "EnchantmentOfInfernoOnKill2":{
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "constantStats":[[],[],[],[]],
+    "name":"Edict of Inferno"
+  },
+  "EnchantmentOfInfernoOnKill4":{
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "constantStats":[[],[],[],[]],
+    "name":"Commandment of Inferno"
+  },
+  "EnchantmentOfFrostOnKill":{
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "constantStats":[[],[]],
+    "name":"Word of Frost"
+  },
+  "EnchantmentOfIreWhenHit":{
+    "constantStats":[[],[],[],[]],
+    "skillTypes":[],
+    "weaponTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[{
+        "baseMultiplier":0.6
+      }],
+    "name":"Word of Ire"
+  },
+  "EnchantmentOfFuryOnHit3":{
+    "constantStats":[[],[],[],[],[],[],[]],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[[]],
+    "weaponTypes":[],
+    "name":"Decree of Fury"
+  },
+  "EnchantmentOfFuryOnHit2":{
+    "constantStats":[[],[],[],[],[],[],[]],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[[]],
+    "weaponTypes":[],
+    "name":"Edict of Fury"
+  },
+  "EnchantmentOfForceOnHit2":{
+    "stats":[],
+    "skillTypes":[],
+    "baseFlags":[],
+    "levels":[[]],
+    "constantStats":[[]],
+    "name":"Edict of Force"
+  },
+  "EnchantmentOfInfernoOnKill3":{
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "constantStats":[[],[],[],[]],
+    "name":"Decree of Inferno"
+  },
+  "EnchantmentOfForceOnHit3":{
+    "stats":[],
+    "skillTypes":[],
+    "baseFlags":[],
+    "levels":[[]],
+    "constantStats":[[]],
+    "name":"Decree of Force"
   }
 }
