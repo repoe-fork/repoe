@@ -2,8 +2,8 @@
   "1":{
     "1":[{
         "1":{
-          "v":1,
-          "k":"milliseconds_to_seconds_2dp"
+          "k":"milliseconds_to_seconds_2dp",
+          "v":1
         },
         "limit":[[null,"#"]],
         "text":"Debuff Lasts {0} seconds"
@@ -50,8 +50,8 @@
         "limit":[[]],
         "text":"This Spell and Minions Leech {0}% of Damage as Life",
         "2":{
-          "v":"ReminderTextLifeLeech",
-          "k":"reminderstring"
+          "k":"reminderstring",
+          "v":"ReminderTextLifeLeech"
         },
         "1":{
           "k":"divide_by_one_hundred"
@@ -745,11 +745,13 @@
       }],
     "stats":["inflict_all_exposure_on_hit"]
   },
-  "global_poison_on_hit":40,
-  "base_global_chance_to_knockback_%":7,
-  "base_poison_duration_+%":41,
-  "knockback_distance_+%":8,
+  "base_chance_to_poison_on_hit_%":43,
+  "killed_monster_dropped_item_rarity_+%":10,
+  "support_withered_base_duration_ms":82,
+  "killed_monster_dropped_item_quantity_+%":11,
   "lightning_ailment_effect_+%":67,
+  "withered_on_hit_chance_%":83,
+  "parent":"minion_spell_skill_stat_descriptions",
   "82":{
     "1":[{
         "1":[],
@@ -765,28 +767,15 @@
     "stats":["support_withered_base_duration_ms"],
     "name":"withered_support_base_duration"
   },
-  "base_all_ailment_duration_+%":42,
-  "base_stun_threshold_reduction_+%":9,
-  "non_damaging_ailment_effect_+%":68,
-  "killed_monster_dropped_item_rarity_+%":10,
-  "killed_monster_dropped_item_quantity_+%":11,
-  "skill_effect_and_damaging_ailment_duration_+%":71,
   "base_chance_to_freeze_%":12,
-  "support_chills_also_grant_cold_damage_taken_per_minute_+%":72,
+  "reduce_enemy_chaos_resistance_%":69,
   "base_chance_to_shock_%":13,
-  "support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount":73,
+  "shock_effect_+%_with_critical_strikes":70,
   "base_chance_to_ignite_%":14,
-  "support_energy_shield_leech_damage_+%_on_full_energy_shield_final":74,
-  "global_hit_causes_monster_flee_%":15,
-  "support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final":75,
-  "base_chance_to_poison_on_hit_%":43,
+  "skill_effect_and_damaging_ailment_duration_+%":71,
   "base_skill_area_of_effect_+%":16,
-  "support_faster_ailments_ailment_duration_+%_final":76,
-  "base_inflict_cold_exposure_on_hit_%_chance":44,
-  "global_minimum_added_fire_damage_vs_burning_enemies":77,
+  "support_concentrated_effect_skill_area_of_effect_+%_final":17,
   "base_stun_duration_+%":18,
-  "base_inflict_fire_exposure_on_hit_%_chance":45,
-  "support_pure_shock_damage_+%_final":78,
   "chill_effect_+%":19,
   "83":{
     "1":[{
@@ -803,7 +792,20 @@
     "stats":["withered_on_hit_chance_%"],
     "name":"withered_on_hit_chance"
   },
-  "base_inflict_lightning_exposure_on_hit_%_chance":46,
+  "shock_effect_+%":20,
+  "base_inflict_cold_exposure_on_hit_%_chance":44,
+  "70":{
+    "1":[{
+        "limit":[[]],
+        "text":"{0}% increased Effect of Shocks this Spell or Minions inflict with Critical Strikes"
+      },{
+        "1":[],
+        "limit":[[]],
+        "text":"{0}% reduced Effect of Shocks this Spell or Minions inflict with Critical Strikes"
+      }],
+    "stats":["shock_effect_+%_with_critical_strikes"],
+    "name":"critical_shock_effect"
+  },
   "81":{
     "1":[{
         "1":[],
@@ -818,9 +820,7 @@
     "stats":["support_unbound_ailments_ailment_damage_+%_final"],
     "name":"ailment_damage_incr"
   },
-  "shock_effect_+%":20,
-  "base_life_leech_from_chaos_damage_permyriad":47,
-  "support_spell_echo_final_repeat_damage_+%_final":80,
+  "ignite_duration_+%":21,
   "80":{
     "1":[{
         "limit":[[]],
@@ -833,118 +833,10 @@
     "stats":["support_spell_echo_final_repeat_damage_+%_final"],
     "name":"spell_echo_final_repeat_damage"
   },
-  "ignite_duration_+%":21,
-  "79":{
-    "1":[{
-        "limit":[[]],
-        "text":"This Spell and Minions Shock Enemies as though dealing {0}% more Damage"
-      },{
-        "1":[],
-        "limit":[[]],
-        "text":"This Spell and Minions Shock Enemies as though dealing {0}% less Damage"
-      }],
-    "stats":["support_pure_shock_shock_as_though_damage_+%_final"],
-    "name":"support_shock_with_more_damage"
-  },
-  "cold_ailment_effect_+%":48,
-  "78":{
-    "1":[{
-        "limit":[[]],
-        "text":"This Spell and Minions deal {0}% more Damage"
-      },{
-        "1":[],
-        "limit":[[]],
-        "text":"This Spell and Minions deal {0}% less Damage"
-      }],
-    "stats":["support_pure_shock_damage_+%_final"],
-    "name":"pure_shock_less_damage"
-  },
+  "base_inflict_fire_exposure_on_hit_%_chance":45,
+  "base_reduce_enemy_cold_resistance_%":31,
   "chill_duration_+%":22,
-  "77":{
-    "1":[{
-        "limit":[[],[]],
-        "text":"This Spell and Minions deal {0} to {1} added Fire Damage against Burning Enemies"
-      }],
-    "stats":["global_minimum_added_fire_damage_vs_burning_enemies","global_maximum_added_fire_damage_vs_burning_enemies"],
-    "name":"added_fire_against_burning"
-  },
-  "critical_strike_chance_+%_vs_blinded_enemies":49,
-  "76":{
-    "1":[{
-        "1":[],
-        "limit":[[]],
-        "text":"{0}% more Duration of Ailments inflicted with This Spell or by Minions"
-      },{
-        "limit":[[]],
-        "text":"{0}% less Duration of Ailments inflicted with This Spell or by Minions",
-        "2":[],
-        "1":[]
-      }],
-    "stats":["support_faster_ailments_ailment_duration_+%_final"],
-    "name":"support_faster_ailments_duration"
-  },
-  "freeze_duration_+%":23,
-  "support_concentrated_effect_skill_area_of_effect_+%_final":17,
-  "cruelty_effect_+%":50,
-  "shock_effect_+%_with_critical_strikes":70,
-  "shock_duration_+%":24,
-  "73":{
-    "1":[{
-        "limit":[[]],
-        "text":"Enemies Chilled by this Spell or Minions have Cold Damage taken increased by Chill Effect"
-      }],
-    "stats":["support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount"],
-    "name":"support_chills_incr_cold_damage_taken"
-  },
-  "72":{
-    "1":[{
-        "limit":[[]],
-        "text":"Enemies Chilled by this Spell or Minions take {0}% increased Cold Damage over Time"
-      },{
-        "1":[],
-        "limit":[[]],
-        "text":"Enemies Chilled by this Spell or Minions take {0}% reduced Cold Damage over Time"
-      }],
-    "stats":["support_chills_also_grant_cold_damage_taken_per_minute_+%"],
-    "name":"support_chills_incr_cold_dot_taken"
-  },
-  "damage_+%_if_you_have_consumed_a_corpse_recently":51,
-  "elemental_status_effect_aura_radius":25,
-  "71":{
-    "1":[{
-        "1":[],
-        "limit":[[]],
-        "text":"{0}% increased Duration of Damaging Ailments\nMinions have {0}% increased Duration of Skills and Damaging Ailments"
-      },{
-        "limit":[[]],
-        "text":"{0}% reduced Duration of Damaging Ailments\nMinions have {0}% reduced Duration of Skills and Damaging Ailments",
-        "2":[],
-        "1":[]
-      }],
-    "stats":["skill_effect_and_damaging_ailment_duration_+%"],
-    "name":"skill_and_damaging_ailment_duration_incr"
-  },
-  "70":{
-    "1":[{
-        "limit":[[]],
-        "text":"{0}% increased Effect of Shocks this Spell or Minions inflict with Critical Strikes"
-      },{
-        "1":[],
-        "limit":[[]],
-        "text":"{0}% reduced Effect of Shocks this Spell or Minions inflict with Critical Strikes"
-      }],
-    "stats":["shock_effect_+%_with_critical_strikes"],
-    "name":"critical_shock_effect"
-  },
-  "damage_+%_vs_enemies_per_freeze_shock_ignite":52,
-  "69":{
-    "1":[{
-        "limit":[[]],
-        "text":"This Spell and Minions Penetrate {0}% Chaos Resistance"
-      }],
-    "stats":["reduce_enemy_chaos_resistance_%"],
-    "name":"chaos_penetration"
-  },
+  "base_poison_duration_+%":41,
   "68":{
     "1":[{
         "1":[],
@@ -961,8 +853,44 @@
     "stats":["non_damaging_ailment_effect_+%"],
     "name":"ailment_non_damaging_incr_effect"
   },
-  "skill_physical_damage_%_to_convert_to_lightning":27,
-  "damage_+%_while_es_leeching":53,
+  "base_inflict_lightning_exposure_on_hit_%_chance":46,
+  "freeze_duration_+%":23,
+  "77":{
+    "1":[{
+        "limit":[[],[]],
+        "text":"This Spell and Minions deal {0} to {1} added Fire Damage against Burning Enemies"
+      }],
+    "stats":["global_minimum_added_fire_damage_vs_burning_enemies","global_maximum_added_fire_damage_vs_burning_enemies"],
+    "name":"added_fire_against_burning"
+  },
+  "base_life_leech_from_chaos_damage_permyriad":47,
+  "shock_duration_+%":24,
+  "base_all_ailment_duration_+%":42,
+  "66":{
+    "1":[{
+        "1":{
+          "v":"ReminderTextCloseRange"
+        },
+        "limit":[[]],
+        "text":"This Spell and Minions have {0}% chance to Knock Enemies Back with Hits at Close Range"
+      }],
+    "stats":["knockback_chance_%_at_close_range"],
+    "name":"close_range_knockback"
+  },
+  "cold_ailment_effect_+%":48,
+  "elemental_status_effect_aura_radius":25,
+  "75":{
+    "1":[{
+        "limit":[[]],
+        "text":"This Spell and Minions deal {0}% more Damage while Leeching Energy Shield"
+      },{
+        "1":[],
+        "limit":[[]],
+        "text":"This Spell and Minions deal {0}% less Damage while Leeching Energy Shield"
+      }],
+    "stats":["support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final"],
+    "name":"damage_while_es_leeching_more"
+  },
   "67":{
     "1":[{
         "1":[],
@@ -979,19 +907,49 @@
     "stats":["lightning_ailment_effect_+%"],
     "name":"lightning_ailment_effect_incr"
   },
-  "66":{
+  "support_ignite_proliferation_radius":26,
+  "support_controlled_destruction_critical_strike_chance_+%_final":3,
+  "74":{
     "1":[{
-        "1":{
-          "v":"ReminderTextCloseRange"
-        },
         "limit":[[]],
-        "text":"This Spell and Minions have {0}% chance to Knock Enemies Back with Hits at Close Range"
+        "text":"This Spell and Minions deal {0}% more Damage while on Full Energy Shield"
+      },{
+        "1":[],
+        "limit":[[]],
+        "text":"This Spell and Minions deal {0}% less Damage while on Full Energy Shield"
       }],
-    "stats":["knockback_chance_%_at_close_range"],
-    "name":"close_range_knockback"
+    "stats":["support_energy_shield_leech_damage_+%_on_full_energy_shield_final"],
+    "name":"support_damage_full_es_incr"
   },
+  "skill_physical_damage_%_to_convert_to_lightning":27,
+  "base_critical_strike_multiplier_+":4,
+  "ignites_apply_fire_resistance_+":63,
+  "knockback_chance_%_at_close_range":66,
   "virtual_chance_to_blind_on_hit_%":28,
-  "damage_+%_while_life_leeching":54,
+  "71":{
+    "1":[{
+        "1":[],
+        "limit":[[]],
+        "text":"{0}% increased Duration of Damaging Ailments\nMinions have {0}% increased Duration of Skills and Damaging Ailments"
+      },{
+        "limit":[[]],
+        "text":"{0}% reduced Duration of Damaging Ailments\nMinions have {0}% reduced Duration of Skills and Damaging Ailments",
+        "2":[],
+        "1":[]
+      }],
+    "stats":["skill_effect_and_damaging_ailment_duration_+%"],
+    "name":"skill_and_damaging_ailment_duration_incr"
+  },
+  "damage_+%_if_you_have_consumed_a_corpse_recently":51,
+  "69":{
+    "1":[{
+        "limit":[[]],
+        "text":"This Spell and Minions Penetrate {0}% Chaos Resistance"
+      }],
+    "stats":["reduce_enemy_chaos_resistance_%"],
+    "name":"chaos_penetration"
+  },
+  "blind_duration_+%":29,
   "65":{
     "1":[{
         "limit":[[],[]],
@@ -1006,62 +964,104 @@
     "stats":["killing_blow_consumes_corpse_restore_x_life","killing_blow_consumes_corpse_restore_x_mana"],
     "name":"killing_blow_consume_corpse_add_flat_life"
   },
-  "base_critical_strike_multiplier_+":4,
-  "blind_duration_+%":29,
-  "damage_+%_while_mana_leeching":55,
-  "withered_on_hit_chance_%":83,
+  "damage_+%_vs_enemies_per_freeze_shock_ignite":52,
   "base_reduce_enemy_fire_resistance_%":30,
-  "support_unbound_ailments_ailment_damage_+%_final":81,
-  "damage_vs_cursed_enemies_per_enemy_curse_+%":56,
-  "base_reduce_enemy_cold_resistance_%":31,
-  "cannot_inflict_status_ailments":39,
-  "damage_vs_enemies_on_low_life_+%":57,
-  "reduce_enemy_elemental_resistance_%":32,
-  "energy_shield_leech_from_any_damage_permyriad":6,
-  "damaging_ailments_deal_damage_+%_faster":58,
-  "base_reduce_enemy_lightning_resistance_%":33,
-  "75":{
+  "cruelty_effect_+%":50,
+  "base_stun_threshold_reduction_+%":9,
+  "damage_+%_while_es_leeching":53,
+  "76":{
     "1":[{
-        "limit":[[]],
-        "text":"This Spell and Minions deal {0}% more Damage while Leeching Energy Shield"
-      },{
         "1":[],
         "limit":[[]],
-        "text":"This Spell and Minions deal {0}% less Damage while Leeching Energy Shield"
+        "text":"{0}% more Duration of Ailments inflicted with This Spell or by Minions"
+      },{
+        "limit":[[]],
+        "text":"{0}% less Duration of Ailments inflicted with This Spell or by Minions",
+        "2":[],
+        "1":[]
       }],
-    "stats":["support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final"],
-    "name":"damage_while_es_leeching_more"
+    "stats":["support_faster_ailments_ailment_duration_+%_final"],
+    "name":"support_faster_ailments_duration"
   },
   "deal_chaos_damage_per_second_for_10_seconds_on_hit":59,
-  "base_spell_repeat_count":34,
-  "74":{
+  "reduce_enemy_elemental_resistance_%":32,
+  "damage_+%_while_life_leeching":54,
+  "79":{
     "1":[{
         "limit":[[]],
-        "text":"This Spell and Minions deal {0}% more Damage while on Full Energy Shield"
+        "text":"This Spell and Minions Shock Enemies as though dealing {0}% more Damage"
       },{
         "1":[],
         "limit":[[]],
-        "text":"This Spell and Minions deal {0}% less Damage while on Full Energy Shield"
+        "text":"This Spell and Minions Shock Enemies as though dealing {0}% less Damage"
       }],
-    "stats":["support_energy_shield_leech_damage_+%_on_full_energy_shield_final"],
-    "name":"support_damage_full_es_incr"
+    "stats":["support_pure_shock_shock_as_though_damage_+%_final"],
+    "name":"support_shock_with_more_damage"
   },
-  "enemies_you_shock_movement_speed_+%":60,
-  "reduce_enemy_chaos_resistance_%":69,
-  "gain_power_charge_on_kill_with_hit_%":61,
+  "base_reduce_enemy_lightning_resistance_%":33,
+  "damage_+%_while_mana_leeching":55,
+  "support_chills_also_grant_cold_damage_taken_per_minute_+%":72,
+  "78":{
+    "1":[{
+        "limit":[[]],
+        "text":"This Spell and Minions deal {0}% more Damage"
+      },{
+        "1":[],
+        "limit":[[]],
+        "text":"This Spell and Minions deal {0}% less Damage"
+      }],
+    "stats":["support_pure_shock_damage_+%_final"],
+    "name":"pure_shock_less_damage"
+  },
+  "base_spell_repeat_count":34,
+  "support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount":73,
+  "damage_vs_cursed_enemies_per_enemy_curse_+%":56,
+  "73":{
+    "1":[{
+        "limit":[[]],
+        "text":"Enemies Chilled by this Spell or Minions have Cold Damage taken increased by Chill Effect"
+      }],
+    "stats":["support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount"],
+    "name":"support_chills_incr_cold_damage_taken"
+  },
   "cruelty_duration_+%":35,
-  "knockback_chance_%_at_close_range":66,
-  "hits_grant_cruelty":62,
-  "additional_chance_to_freeze_chilled_enemies_%":37,
-  "support_pure_shock_shock_as_though_damage_+%_final":79,
-  "ignites_apply_fire_resistance_+":63,
-  "parent":"minion_spell_skill_stat_descriptions",
+  "damage_vs_enemies_on_low_life_+%":57,
   "add_power_charge_on_critical_strike_%":36,
-  "inflict_all_exposure_on_hit":64,
+  "72":{
+    "1":[{
+        "limit":[[]],
+        "text":"Enemies Chilled by this Spell or Minions take {0}% increased Cold Damage over Time"
+      },{
+        "1":[],
+        "limit":[[]],
+        "text":"Enemies Chilled by this Spell or Minions take {0}% reduced Cold Damage over Time"
+      }],
+    "stats":["support_chills_also_grant_cold_damage_taken_per_minute_+%"],
+    "name":"support_chills_incr_cold_dot_taken"
+  },
+  "damaging_ailments_deal_damage_+%_faster":58,
+  "support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final":75,
+  "enemies_you_shock_movement_speed_+%":60,
+  "additional_chance_to_freeze_chilled_enemies_%":37,
+  "hits_grant_cruelty":62,
+  "support_faster_ailments_ailment_duration_+%_final":76,
+  "killing_blow_consumes_corpse_restore_x_mana":65,
   "life_leech_from_any_damage_permyriad":5,
   "support_hypothermia_damage_+%_vs_chilled_enemies_final":38,
-  "support_controlled_destruction_critical_strike_chance_+%_final":3,
-  "support_ignite_proliferation_radius":26,
-  "killing_blow_consumes_corpse_restore_x_life":65,
-  "support_withered_base_duration_ms":82
+  "global_maximum_added_fire_damage_vs_burning_enemies":77,
+  "gain_power_charge_on_kill_with_hit_%":61,
+  "energy_shield_leech_from_any_damage_permyriad":6,
+  "cannot_inflict_status_ailments":39,
+  "support_pure_shock_damage_+%_final":78,
+  "global_poison_on_hit":40,
+  "base_global_chance_to_knockback_%":7,
+  "support_pure_shock_shock_as_though_damage_+%_final":79,
+  "support_energy_shield_leech_damage_+%_on_full_energy_shield_final":74,
+  "inflict_all_exposure_on_hit":64,
+  "knockback_distance_+%":8,
+  "support_spell_echo_final_repeat_damage_+%_final":80,
+  "critical_strike_chance_+%_vs_blinded_enemies":49,
+  "support_unbound_ailments_ailment_damage_+%_final":81,
+  "non_damaging_ailment_effect_+%":68,
+  "global_hit_causes_monster_flee_%":15
 }
