@@ -1,58 +1,70 @@
 {
-  "Short Bow":{
-    "tags":{
-      "two_hand_weapon":true
-    },
-    "type":"Bow",
-    "weapon":{
-      "PhysicalMin":6,
-      "PhysicalMax":16,
-      "CritChanceBase":5,
-      "AttackRateBase":1.5,
-      "Range":120
-    },
-    "implicitModTypes":[],
-    "req":{
-      "dex":26
-    },
+  "Crude Bow":{
     "influenceTags":{
+      "basilisk":"bow_basilisk",
+      "crusader":"bow_crusader",
       "shaper":"bow_shaper",
-      "tangle":"bow_tangle",
+      "eyrie":"bow_eyrie",
       "elder":"bow_elder",
       "cleansing":"bow_cleansing",
       "adjudicator":"bow_adjudicator",
-      "eyrie":"bow_eyrie",
-      "basilisk":"bow_basilisk",
-      "crusader":"bow_crusader"
+      "tangle":"bow_tangle"
+    },
+    "tags":{
+      "bow":true
+    },
+    "socketLimit":6,
+    "implicitModTypes":[],
+    "weapon":{
+      "PhysicalMin":5,
+      "PhysicalMax":13,
+      "AttackRateBase":1.4,
+      "Range":120
+    },
+    "type":"Bow",
+    "req":{
+      "dex":14
+    }
+  },
+  "Short Bow":{
+    "influenceTags":[],
+    "tags":[],
+    "implicitModTypes":[],
+    "weapon":{
+      "PhysicalMax":16,
+      "AttackRateBase":1.5
+    },
+    "req":{
+      "dex":26
     }
   },
   "Long Bow":{
+    "influenceTags":[],
     "tags":[],
+    "implicitModTypes":[],
     "weapon":{
       "PhysicalMin":8,
       "PhysicalMax":33,
       "AttackRateBase":1.3
     },
-    "implicitModTypes":[],
     "req":{
-      "level":9,
-      "dex":38
-    },
-    "influenceTags":[]
+      "dex":38,
+      "level":9
+    }
   },
   "Composite Bow":{
+    "influenceTags":[],
     "tags":[],
+    "implicitModTypes":[],
     "weapon":{
       "PhysicalMax":34
     },
-    "implicitModTypes":[],
     "req":{
-      "level":14,
       "dex":53
-    },
-    "influenceTags":[]
+    }
   },
   "Recurve Bow":{
+    "influenceTags":[],
     "tags":[],
     "weapon":{
       "PhysicalMin":15,
@@ -60,150 +72,138 @@
       "CritChanceBase":6.7,
       "AttackRateBase":1.25
     },
-    "implicit":"+(15-25)% to Global Critical Strike Multiplier",
     "implicitModTypes":[["damage","critical"]],
+    "implicit":"+(15-25)% to Global Critical Strike Multiplier",
     "req":{
-      "level":18,
-      "dex":65
-    },
-    "influenceTags":[]
+      "dex":65,
+      "level":18
+    }
   },
-  "Ethereal Bow":{
-    "tags":[],
-    "weapon":[],
-    "implicitModTypes":[],
+  "Harbinger Bow":{
     "influenceTags":[],
-    "req":[]
-  },
-  "Bone Bow":{
     "tags":[],
     "weapon":{
-      "CritChanceBase":6.5,
-      "AttackRateBase":1.4
+      "PhysicalMin":50,
+      "PhysicalMax":133,
+      "AttackRateBase":1.2
     },
-    "implicitModTypes":[],
+    "implicitModTypes":[["attack"]],
+    "implicit":"(30-50)% increased Critical Strike Chance",
     "req":{
-      "level":23,
-      "dex":80
+      "dex":212,
+      "level":68
+    }
+  },
+  "Maraketh Bow":{
+    "influenceTags":[],
+    "tags":[],
+    "weapon":{
+      "PhysicalMin":61,
+      "PhysicalMax":92,
+      "CritChanceBase":5.5
     },
-    "influenceTags":[]
+    "implicitModTypes":[["speed"]],
+    "implicit":"10% increased Movement Speed",
+    "req":{
+      "dex":222,
+      "level":71
+    }
+  },
+  "Hedron Bow":{
+    "influenceTags":[],
+    "tags":[],
+    "weapon":[],
+    "implicitModTypes":[["elemental_damage",null,"elemental","fire"]],
+    "implicit":"Adds (46-55) to (69-83) Fire Damage",
+    "req":{
+      "dex":101,
+      "level":30
+    }
+  },
+  "Bone Bow":{
+    "influenceTags":[],
+    "tags":[],
+    "implicitModTypes":[],
+    "weapon":{
+      "CritChanceBase":6.5
+    },
+    "req":{
+      "dex":80,
+      "level":23
+    }
   },
   "Royal Bow":{
+    "influenceTags":[],
     "tags":[],
     "weapon":{
       "PhysicalMax":56,
       "AttackRateBase":1.45
     },
+    "implicitModTypes":[[]],
     "implicit":"(20-24)% increased Elemental Damage with Attack Skills",
-    "implicitModTypes":[["elemental_damage",null,"elemental","attack"]],
     "req":{
-      "level":28,
-      "dex":95
-    },
-    "influenceTags":[]
-  },
-  "Solarine Bow":{
-    "tags":[],
-    "weapon":{
-      "PhysicalMax":24,
-      "CritChanceBase":5.5
-    },
-    "implicit":"Adds (121-133) to (184-197) Fire Damage",
-    "implicitModTypes":[[null,null,null,"fire"]],
-    "req":{
-      "level":70,
-      "dex":212
-    },
-    "influenceTags":[]
+      "dex":95,
+      "level":28
+    }
   },
   "Foundry Bow":{
+    "influenceTags":[],
     "tags":[],
     "weapon":{
-      "PhysicalMin":13,
       "PhysicalMax":20
     },
+    "implicitModTypes":[[]],
     "implicit":"Adds (80-97) to (126-144) Fire Damage",
-    "implicitModTypes":[[]],
     "req":{
-      "level":50,
       "dex":161
-    },
-    "influenceTags":[]
+    }
   },
-  "Hedron Bow":{
-    "tags":[],
-    "weapon":[],
-    "implicit":"Adds (46-55) to (69-83) Fire Damage",
-    "implicitModTypes":[[]],
-    "req":{
-      "level":30,
-      "dex":101
-    },
-    "influenceTags":[]
-  },
-  "Citadel Bow":{
+  "Solarine Bow":{
+    "influenceTags":[],
     "tags":[],
     "weapon":{
-      "PhysicalMin":36,
-      "PhysicalMax":144
+      "PhysicalMax":24
     },
-    "implicitModTypes":[],
+    "implicitModTypes":[[]],
+    "implicit":"Adds (121-133) to (184-197) Fire Damage",
     "req":{
-      "level":58,
-      "dex":185
-    },
-    "influenceTags":[]
+      "level":70
+    }
   },
   "Death Bow":{
+    "influenceTags":[],
     "tags":[],
     "weapon":{
-      "PhysicalMax":73,
-      "AttackRateBase":1.2
+      "PhysicalMax":73
     },
-    "implicit":"(30-50)% increased Critical Strike Chance",
     "implicitModTypes":[[]],
     "req":{
-      "level":32,
-      "dex":107
-    },
-    "influenceTags":[]
+      "dex":107,
+      "level":32
+    }
   },
-  "Assassin Bow":{
+  "Ethereal Bow":{
     "tags":[],
-    "weapon":{
-      "PhysicalMin":43,
-      "PhysicalMax":130
-    },
-    "implicitModTypes":[[]],
-    "req":{
-      "level":62
-    },
-    "influenceTags":[]
+    "influenceTags":[],
+    "implicitModTypes":[],
+    "weapon":[],
+    "req":[]
   },
   "Reflex Bow":{
+    "influenceTags":[],
     "tags":[],
     "weapon":{
       "PhysicalMin":37
     },
+    "implicitModTypes":[[]],
     "implicit":"6% increased Movement Speed",
-    "implicitModTypes":[["speed"]],
     "req":{
-      "dex":124
-    },
-    "influenceTags":[]
-  },
-  "Spine Bow":{
-    "tags":[],
-    "weapon":{
-      "PhysicalMax":115
-    },
-    "implicitModTypes":[],
-    "req":{
-      "level":64
-    },
-    "influenceTags":[]
+      "dex":124,
+      "level":36
+    }
   },
   "Imperial Bow":{
+    "influenceTags":[],
     "tags":[],
     "weapon":{
       "PhysicalMin":29,
@@ -212,140 +212,143 @@
     "implicitModTypes":[[]],
     "req":{
       "level":66
-    },
-    "influenceTags":[]
+    }
   },
-  "Harbinger Bow":{
+  "Spine Bow":{
+    "influenceTags":[],
+    "tags":[],
+    "implicitModTypes":[],
+    "weapon":{
+      "PhysicalMax":115
+    },
+    "req":{
+      "level":64
+    }
+  },
+  "Assassin Bow":{
+    "influenceTags":[],
     "tags":[],
     "weapon":{
-      "PhysicalMax":133
+      "PhysicalMin":43,
+      "PhysicalMax":130
     },
     "implicitModTypes":[[]],
     "req":{
-      "level":68
-    },
-    "influenceTags":[]
+      "level":62
+    }
   },
-  "Maraketh Bow":{
+  "Ranger Bow":{
+    "influenceTags":[],
     "tags":[],
-    "weapon":{
-      "PhysicalMin":61,
-      "PhysicalMax":92
-    },
-    "implicit":"10% increased Movement Speed",
-    "implicitModTypes":[[]],
+    "implicitModTypes":[],
+    "weapon":[],
     "req":{
-      "level":71,
-      "dex":222
-    },
-    "influenceTags":[]
+      "level":60
+    }
   },
   "Grove Bow":{
+    "influenceTags":[],
     "tags":[],
-    "weapon":[],
     "implicitModTypes":[],
+    "weapon":[],
     "req":{
-      "level":35,
-      "dex":116
-    },
-    "influenceTags":[]
+      "dex":116,
+      "level":35
+    }
   },
   "Decurve Bow":{
+    "influenceTags":[],
     "tags":[],
+    "implicitModTypes":[],
     "weapon":{
       "PhysicalMax":96
     },
-    "implicitModTypes":[],
     "req":{
       "dex":125
-    },
-    "influenceTags":[]
+    }
   },
   "Compound Bow":{
+    "influenceTags":[],
     "tags":[],
+    "implicitModTypes":[],
     "weapon":{
       "PhysicalMax":76
     },
-    "implicitModTypes":[],
     "req":{
-      "level":41,
-      "dex":134
-    },
-    "influenceTags":[]
+      "dex":134,
+      "level":41
+    }
   },
   "Sniper Bow":{
+    "influenceTags":[],
     "tags":[],
     "weapon":[],
     "implicitModTypes":[[]],
     "req":{
-      "level":44,
-      "dex":143
-    },
-    "influenceTags":[]
+      "dex":143,
+      "level":44
+    }
   },
   "Ivory Bow":{
+    "influenceTags":[],
     "tags":[],
+    "implicitModTypes":[],
     "weapon":{
       "PhysicalMax":86
     },
-    "implicitModTypes":[],
     "req":{
-      "level":47,
-      "dex":152
-    },
-    "influenceTags":[]
+      "dex":152,
+      "level":47
+    }
   },
   "Highborn Bow":{
+    "influenceTags":[],
     "tags":[],
     "weapon":{
       "PhysicalMax":94
     },
     "implicitModTypes":[[]],
-    "req":[],
-    "influenceTags":[]
+    "req":[]
   },
   "Decimation Bow":{
+    "influenceTags":[],
     "tags":[],
     "weapon":[],
     "implicitModTypes":[[]],
     "req":{
       "dex":170
-    },
-    "influenceTags":[]
+    }
   },
   "Steelwood Bow":{
+    "influenceTags":[],
     "tags":[],
-    "weapon":[],
+    "weapon":{
+      "PhysicalMin":58
+    },
     "implicitModTypes":[[]],
     "req":{
-      "level":57,
-      "dex":190
-    },
-    "influenceTags":[]
+      "dex":190,
+      "level":57
+    }
   },
   "Thicket Bow":{
+    "influenceTags":[],
     "tags":[],
-    "weapon":[],
     "implicitModTypes":[],
+    "weapon":[],
     "req":{
       "dex":179
+    }
+  },
+  "Citadel Bow":{
+    "influenceTags":[],
+    "tags":[],
+    "implicitModTypes":[],
+    "weapon":{
+      "PhysicalMax":144
     },
-    "influenceTags":[]
-  },
-  "Crude Bow":{
-    "tags":[],
-    "weapon":[],
-    "implicitModTypes":[],
-    "req":[],
-    "influenceTags":[]
-  },
-  "Ranger Bow":{
-    "tags":[],
-    "weapon":[],
-    "implicitModTypes":[],
     "req":{
-      "level":60
-    },
-    "influenceTags":[]
+      "dex":185
+    }
   }
 }

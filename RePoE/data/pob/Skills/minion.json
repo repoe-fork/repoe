@@ -1,141 +1,484 @@
 {
-  "SummonPhantasmFadingProjectile":{
-    "name":"Physical Projectile",
-    "color":4,
-    "baseEffectiveness":1.0221999883652,
-    "incrementalEffectiveness":0.048500001430511,
-    "levels":[{
-        "1":0.80000001192093,
-        "2":1.2000000476837,
-        "critChance":5,
-        "damageEffectiveness":1.5,
-        "levelRequirement":1,
-        "statInterpolation":[3]
-      }],
-    "skillTypes":[null,true],
-    "statDescriptionScope":"skill_stat_descriptions",
-    "castTime":1.17,
-    "baseFlags":[],
-    "stats":["spell_minimum_base_physical_damage","spell_maximum_base_physical_damage","base_is_projectile","always_pierce"]
-  },
-  "RainOfArrowsCloneShot":{
+  "ZombieSlam":{
+    "constantStats":[["active_skill_area_of_effect_radius_+%_final",25],["active_skill_attack_speed_+%_final",-25]],
     "baseMods":[{
         "type":"LIST",
-        "keywordFlags":0,
+        "flags":0,
         "name":"SkillData",
         "value":{
           "key":"radius",
-          "value":10
+          "value":18
+        }
+      }],
+    "hidden":true,
+    "name":"Slam",
+    "levels":[[],{
+        "storedUses":1,
+        "baseMultiplier":1.5,
+        "cooldown":6,
+        "levelRequirement":12
+      },{
+        "levelRequirement":20
+      },{
+        "levelRequirement":33
+      },{
+        "levelRequirement":45
+      }],
+    "skillTypes":[],
+    "statDescriptionScope":"skill_stat_descriptions",
+    "stats":["is_area_damage","global_always_hit"],
+    "baseFlags":[],
+    "color":4
+  },
+  "GAZombieCorpseGroundImpact":{
+    "name":"Falling Slam",
+    "levels":[{
+        "baseMultiplier":2.5
+      }],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[]
+  },
+  "BoneGolemLeapSlam":{
+    "constantStats":[[null,30],["active_skill_base_area_of_effect_radius",15]],
+    "baseMods":[{
+        "value":{
+          "key":"showAverage"
+        }
+      }],
+    "name":"Leap Slam",
+    "stats":[null,"disable_attack_repeats"],
+    "description":"Jump through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff.",
+    "levels":[{
+        "attackSpeedMultiplier":-44,
+        "baseMultiplier":1.8
+      }],
+    "skillTypes":[],
+    "baseFlags":[],
+    "weaponTypes":[]
+  },
+  "EGBoneGolemConsumeCorpse":{
+    "constantStats":[["spell_maximum_action_distance_+%",-90]],
+    "name":"Consume Corpse",
+    "levels":[{
+        "cooldown":5
+      }],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[]
+  },
+  "SummonedSpiderViperStrike":{
+    "constantStats":[["base_chance_to_poison_on_hit_%",100],["base_skill_effect_duration",4000]],
+    "stats":["poison_duration_is_skill_duration","visual_hit_effect_chaos_is_green"],
+    "baseEffectiveness":0.64999997615814,
+    "incrementalEffectiveness":0.025499999523163,
+    "description":"Hits enemies, converting some of your physical damage to chaos damage and inflicting poison which will be affected by modifiers to skill duration. If dual wielding, will strike with both weapons. Requires a claw, dagger or sword.",
+    "levels":[[]],
+    "skillTypes":[],
+    "statDescriptionScope":"debuff_skill_stat_descriptions",
+    "name":"Viper Strike",
+    "baseFlags":[],
+    "weaponTypes":[]
+  },
+  "BoneGolemCascadeEmpowered":{
+    "constantStats":[["upheaval_number_of_spikes"],["active_skill_area_of_effect_+%_final"]],
+    "baseMods":[{
+        "value":[]
+      }],
+    "name":"Empowered Cascade",
+    "levels":[{
+        "baseMultiplier":1.85,
+        "attackSpeedMultiplier":-10
+      }],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[]
+  },
+  "SandstormChaosElementalSummoned":{
+    "constantStats":[[null,5000],[]],
+    "baseMods":[{
+        "value":{
+          "key":"dotIsArea"
+        }
+      }],
+    "baseEffectiveness":6.1421999931335,
+    "incrementalEffectiveness":0.052099999040365,
+    "levels":[{
+        "1":16.666667039196,
+        "levelRequirement":3,
+        "cooldown":8,
+        "statInterpolation":[]
+      }],
+    "skillTypes":[],
+    "stats":["base_chaos_damage_to_deal_per_minute",null,"spell_damage_modifiers_apply_to_skill_dot"],
+    "baseFlags":[],
+    "name":"Chaos Aura"
+  },
+  "MinionInstability":{
+    "baseMods":[{
+        "1":{
+          "type":"PerStat",
+          "div":3.030303030303,
+          "stat":"Life"
+        },
+        "value":{
+          "key":"FireMin"
         }
       },{
+        "1":[],
+        "value":{
+          "key":"FireMax"
+        }
+      },{
+        "value":[]
+      },{
+        "value":{
+          "value":22
+        }
+      }],
+    "stats":[],
+    "levels":[{
+        "cost":[]
+      }],
+    "skillTypes":[],
+    "levelMods":[],
+    "baseFlags":[],
+    "name":"Minion Instability"
+  },
+  "SandstormChaosElementalSummonedEmpowered":{
+    "constantStats":[[null,8000],[null,50],["chaos_damage_taken_+%"]],
+    "baseMods":[{
+        "value":[]
+      }],
+    "baseEffectiveness":19.89999961853,
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "skillTypes":[],
+    "stats":[null,null,null,"sandstorm_applies_withered_to_enemies_within"],
+    "castTime":0.7,
+    "baseFlags":[],
+    "name":"Empowered Chaos Aura"
+  },
+  "FireElementalFlameRedSummoned":{
+    "constantStats":[["active_skill_cast_speed_+%_final",-89],[null,-77],["monster_penalty_against_minions_damage_+%_final_vs_player_minions"]],
+    "stats":["spell_minimum_base_fire_damage","spell_maximum_base_fire_damage","base_is_projectile","always_pierce"],
+    "baseEffectiveness":1.2546999454498,
+    "incrementalEffectiveness":0.044599998742342,
+    "description":"Summons a totem that fires a stream of flame at nearby enemies.",
+    "levels":[{
+        "1":0.80000001192093,
+        "2":1.2000000476837,
+        "statInterpolation":[],
+        "damageEffectiveness":0.8
+      }],
+    "skillTypes":[],
+    "name":"Immolate",
+    "castTime":0.25,
+    "baseFlags":[]
+  },
+  "ReplicaSiegebreakerBurningGround":{
+    "qualityStats":[],
+    "stats":[],
+    "levels":[{
+        "cost":[]
+      }],
+    "skillTypes":[],
+    "name":"Burning Ground",
+    "baseFlags":[],
+    "baseMods":[{
+        "1":{
+          "type":"PercentStat",
+          "percentVar":"SiegebreakerBurningGroundPercent"
+        },
+        "value":{
+          "key":"FireDot"
+        }
+      },{
+        "value":[]
+      },{
         "type":"FLAG",
-        "name":"OneShotProj"
-      }],
-    "name":"Rain of Arrow",
-    "color":2,
-    "weaponTypes":[],
-    "description":"Fires multiple arrows into the air, to land in sequence after a delay, starting at the targeted location and spreading outwards in all directions. Each arrow deals damage in an area around it. Half of the arrows will land directly on targets if there are targets in their range.",
-    "levels":[[]],
-    "skillTypes":[],
-    "stats":[null,"is_area_damage","skill_can_fire_arrows","cannot_pierce"],
-    "baseFlags":[],
-    "constantStats":[["number_of_additional_arrows"]]
+        "name":"dotIsBurningGround"
+      }]
   },
-  "HeraldOfAgonyMinionMortar":{
-    "constantStats":[["projectile_spread_radius",20],["projectile_minimum_range"],["base_number_of_projectiles",6],["active_skill_attack_speed_+%_final",-35],["main_hand_base_maximum_attack_distance",50],["active_skill_area_of_effect_radius_+%_final"]],
-    "name":"Mortar",
+  "InfernalLegion":{
+    "qualityStats":[],
+    "stats":[],
+    "levels":[{
+        "cost":[]
+      }],
+    "skillTypes":[],
+    "name":"Infernal Legion",
+    "baseFlags":[],
+    "baseMods":[{
+        "1":{
+          "type":"Multiplier",
+          "var":"InfernalLegionBaseDamage"
+        },
+        "value":[]
+      },{
+        "value":[]
+      }]
+  },
+  "FireElementalMortarSummoned":{
+    "constantStats":[["projectile_spread_radius"],[null,-33]],
+    "baseEffectiveness":3.8238000869751,
+    "incrementalEffectiveness":0.034600000828505,
     "description":"Generic monster mortar skill. Like Monster Projectile but has an impact effect.",
-    "skillTypes":[],
     "levels":[{
-        "baseMultiplier":0.4,
-        "cooldown":7.5
+        "levelRequirement":34,
+        "statInterpolation":[],
+        "damageEffectiveness":2
       }],
-    "baseFlags":[],
-    "stats":[null,null,"distribute_projectiles_over_contact_points","visual_hit_effect_chaos_is_green"]
-  },
-  "SpectralSkullShieldCharge":{
-    "constantStats":[["shield_charge_stun_duration_+%_maximum",200],["base_movement_velocity_+%",500],["shield_charge_damage_+%_maximum",300],["active_skill_damage_+%_final",-50]],
-    "weaponTypes":[],
-    "description":"Charges at an enemy, bashing it with the character's shield and striking it. This knocks it back and stuns it. Enemies in the way are pushed to the side. Damage and stun are proportional to distance travelled.",
     "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "name":"Magma Ball"
+  },
+  "GuardianSentinelFireAura":{
+    "qualityStats":[],
+    "stats":[],
+    "levels":[{
+        "cost":[]
+      }],
+    "skillTypes":[],
+    "name":"Burning Aura",
+    "baseFlags":[],
+    "baseMods":[{
+        "1":{
+          "var":"GuardianSentinelFireAuraBaseDamage"
+        },
+        "2":[],
+        "value":[]
+      },{
+        "value":[]
+      },{
+        "1":{
+          "var":"GuardianSentinelFireAuraRadius"
+        },
+        "value":[]
+      }]
+  },
+  "FireElementalMeteorSummoned":{
+    "constantStats":[[],["skill_physical_damage_%_to_convert_to_fire"],[null,80]],
+    "baseMods":[{
+        "value":[]
+      }],
+    "baseEffectiveness":13.5,
+    "incrementalEffectiveness":0.054999999701977,
+    "levels":[{
+        "1":21.666666356226,
+        "baseMultiplier":5.25,
+        "statInterpolation":[]
+      }],
+    "skillTypes":[],
+    "stats":["base_fire_damage_to_deal_per_minute"],
+    "baseFlags":[],
+    "name":"Meteor"
+  },
+  "MeleeAtAnimationSpeedUnique":{
+    "name":"Default Attack",
+    "description":"Strike your foes down with a powerful blow.",
     "levels":[[]],
-    "baseFlags":[],
-    "stats":["ignores_proximity_shield"],
-    "name":"Charge"
-  },
-  "ElementalHitCloneShot":{
-    "constantStats":[["chance_to_freeze_shock_ignite_%"],["active_skill_base_area_of_effect_radius"]],
-    "name":"Elemental Hit",
-    "description":"Each attack with this skill will choose an element at random, and will only be able to deal damage of that element. If the attack hits an enemy, it will deal damage in an area around them, with the radius being larger if that enemy is suffering from an ailment of the chosen element. It will avoid choosing the same element twice in a row.",
     "skillTypes":[],
-    "levels":[{
-        "damageEffectiveness":6.8
+    "stats":["skill_can_fire_arrows","skill_can_fire_wand_projectiles","action_attack_or_cast_time_uses_animation_length","projectile_uses_contact_position","use_scaled_contact_offset"],
+    "baseFlags":[]
+  },
+  "DancingDervishCycloneChannelled":{
+    "constantStats":[["cyclone_gain_stage_every_x_ms_while_channelling",170],["cyclone_melee_weapon_range_+_per_stage"],["cyclone_stage_decay_time_ms",330],["cyclone_max_number_of_stages"],["cyclone_area_of_effect_+%_per_additional_melee_range"]],
+    "baseMods":[{
+        "value":{
+          "key":"radiusIsWeaponRange"
+        }
       }],
+    "name":"Cyclone",
+    "stats":[null,"skill_can_add_multiple_charges_per_action"],
+    "description":"Channel this skill to move towards a targeted location while spinning constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back.",
+    "levels":[{
+        "baseMultiplier":0.65,
+        "attackSpeedMultiplier":200
+      }],
+    "skillTypes":[],
     "baseFlags":[],
-    "stats":[null,"skill_can_fire_wand_projectiles"]
+    "weaponTypes":[]
+  },
+  "IceElementalIceCyclone":{
+    "constantStats":[["cyclone_movement_speed_+%_final",75],["cyclone_extra_distance",40],[]],
+    "baseMods":[{
+        "value":{
+          "key":"dpsMultiplier"
+        }
+      }],
+    "baseEffectiveness":0.85000002384186,
+    "stats":[null,"cyclone_places_ground_ice"],
+    "description":"Damage enemies around you, then perform a spinning series of attacks as you travel to a target location. Cannot be supported by Ruthless or Multistrike.",
+    "levels":[[]],
+    "skillTypes":[],
+    "baseFlags":[],
+    "weaponTypes":[]
+  },
+  "SummonedReaperMelee":{
+    "levels":[{
+        "levelRequirement":28,
+        "statInterpolation":[]
+      },{
+        "1":60,
+        "baseMultiplier":0.5,
+        "statInterpolation":[]
+      }],
+    "skillTypes":[],
+    "stats":["active_skill_damage_+%_final"],
+    "baseFlags":[]
+  },
+  "SummonedReaperUltimate":{
+    "stats":[],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "baseMultiplier":1.65,
+        "statInterpolation":[]
+      }],
+    "skillTypes":[],
+    "baseFlags":[],
+    "name":"Ultimate"
+  },
+  "GASummonReaperUltimateLeftSlash":{
+    "stats":[],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "skillTypes":[],
+    "baseFlags":[],
+    "name":"Ultimate Slash"
+  },
+  "GASummonReaperComboWhirl":{
+    "stats":[],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "skillTypes":[],
+    "baseFlags":[],
+    "name":"Whirl"
+  },
+  "GASummonReaperComboLeftSlash":{
+    "stats":[],
+    "levels":[{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      }],
+    "skillTypes":[],
+    "baseFlags":[],
+    "name":"Combo Slash"
+  },
+  "ReaperConsumeMinionForBuff":{
+    "constantStats":[[null,6000]],
+    "baseMods":[{
+        "1":{
+          "type":"SkillName",
+          "skillName":"Summon Reaper"
+        },
+        "2":{
+          "type":"GlobalEffect",
+          "effectType":"Buff"
+        },
+        "name":"MinionModifier",
+        "value":{
+          "mod":{
+            "type":"INC",
+            "name":"Speed"
+          }
+        }
+      },{
+        "1":[],
+        "2":[],
+        "value":{
+          "mod":{
+            "name":"MovementSpeed"
+          }
+        }
+      },{
+        "1":[],
+        "2":[],
+        "value":{
+          "mod":{
+            "name":"AreaOfEffect"
+          }
+        }
+      },{
+        "value":{
+          "key":"buffAllies"
+        }
+      }],
+    "name":"Consume",
+    "levels":[[]],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[]
   },
   "HeraldOfAgonyMinionTailSpike":{
     "constantStats":[["monster_projectile_variation",39],["number_of_additional_projectiles"]],
     "name":"Tail Spike",
     "levels":[[]],
     "skillTypes":[],
+    "stats":[],
     "castTime":1.3,
-    "baseFlags":[],
-    "stats":[]
+    "baseFlags":[]
   },
   "HeraldOfAgonyMinionCleave":{
-    "constantStats":[[null,30]],
+    "constantStats":[[]],
     "name":"Cleave",
-    "weaponTypes":[],
+    "stats":[],
     "description":"The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Only works with Axes and Swords.",
-    "skillTypes":[],
     "levels":[[]],
-    "baseFlags":[],
-    "stats":[]
-  },
-  "SumonRagingSpiritMelee":{
-    "name":"Melee",
-    "description":"Strike your foes down with a powerful blow.",
     "skillTypes":[],
-    "levels":[[]],
     "baseFlags":[],
-    "stats":[]
+    "weaponTypes":[]
   },
-  "AnimateGuardianSmite":{
-    "constantStats":[["skill_physical_damage_%_to_convert_to_lightning"],["smite_lightning_target_range"],["base_smite_number_of_targets"],[],[null,15],["active_skill_base_secondary_area_of_effect_radius",36],["active_skill_secondary_area_of_effect_description_mode"]],
-    "name":"Smite",
-    "weaponTypes":[],
-    "description":"Performs a melee attack, and causes lightning to strike a nearby enemy, dealing damage in an area. Each target can only be hit once by this skill. Hitting an enemy grants an aura for a duration. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
-    "skillTypes":[],
+  "IceElementalSpearSummoned":{
+    "constantStats":[["monster_reverse_point_blank_damage_-%_at_minimum_range"]],
+    "baseEffectiveness":2.2813000679016,
     "levels":[{
-        "damageEffectiveness":3.25
+        "statInterpolation":[]
       }],
+    "skillTypes":[],
+    "stats":["spell_minimum_base_cold_damage","spell_maximum_base_cold_damage"],
     "baseFlags":[],
-    "stats":["visual_hit_effect_elemental_is_holy"]
+    "name":"Ice Spear"
   },
-  "HeraldOfLightMinionSlam":{
-    "constantStats":[[null,-33],[null,100]],
-    "name":"Slam",
+  "MPWExpeditionSummonedArbalestProjectile":{
+    "constantStats":[[null,145]],
+    "name":"Projectile Attack",
     "levels":[[]],
     "skillTypes":[],
-    "baseFlags":[],
-    "stats":[]
+    "stats":[],
+    "baseFlags":[]
   },
   "SentinelHolySlam":{
     "constantStats":[[],[]],
     "name":"Crusade Slam",
     "levels":[[]],
     "skillTypes":[],
-    "baseFlags":[],
-    "stats":[]
+    "stats":[],
+    "baseFlags":[]
+  },
+  "BlinkMirrorArrowMelee":{
+    "levels":[{
+        "baseMultiplier":1.75
+      }],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[]
   },
   "RelicTriggeredNova":{
+    "constantStats":[["holy_relic_trigger_on_parent_attack_%"],[]],
     "baseMods":[{
-        "value":{
-          "key":"showAverage"
-        }
+        "value":[]
       }],
-    "name":"Nova",
     "baseEffectiveness":1.1052000522614,
     "incrementalEffectiveness":0.057900000363588,
     "levels":[{
@@ -144,8 +487,7 @@
       },{
         "3":-23,
         "cooldown":0.3,
-        "statInterpolation":[],
-        "damageEffectiveness":2.5
+        "statInterpolation":[]
       },{
         "3":-22,
         "statInterpolation":[]
@@ -164,7 +506,6 @@
         "statInterpolation":[]
       },{
         "3":-15,
-        "levelRequirement":28,
         "statInterpolation":[]
       },{
         "3":-14,
@@ -172,13 +513,12 @@
         "statInterpolation":[]
       },{
         "3":-13,
+        "levelRequirement":36,
         "statInterpolation":[]
       },{
         "3":-12,
-        "levelRequirement":40,
         "statInterpolation":[]
       },{
-        "3":-10,
         "levelRequirement":44,
         "statInterpolation":[]
       },{
@@ -226,17 +566,16 @@
         "statInterpolation":[]
       },{
         "3":7,
-        "levelRequirement":80,
         "statInterpolation":[]
       },{
         "3":9,
         "levelRequirement":82,
         "statInterpolation":[]
       },{
+        "3":10,
         "levelRequirement":84,
         "statInterpolation":[]
       },{
-        "3":12,
         "levelRequirement":86,
         "statInterpolation":[]
       },{
@@ -251,7 +590,6 @@
         "levelRequirement":91,
         "statInterpolation":[]
       },{
-        "3":18,
         "levelRequirement":92,
         "statInterpolation":[]
       },{
@@ -263,14 +601,12 @@
         "levelRequirement":94,
         "statInterpolation":[]
       },{
-        "3":22,
         "levelRequirement":95,
         "statInterpolation":[]
       },{
         "levelRequirement":96,
         "statInterpolation":[]
       },{
-        "3":25,
         "levelRequirement":97,
         "statInterpolation":[]
       },{
@@ -284,190 +620,245 @@
         "statInterpolation":[]
       }],
     "skillTypes":[],
-    "stats":[],
+    "stats":["spell_minimum_base_physical_damage","spell_maximum_base_physical_damage"],
     "baseFlags":[],
-    "constantStats":[["holy_relic_trigger_on_parent_attack_%"],["base_skill_effect_duration",4000]]
+    "name":"Nova"
   },
-  "DominatingBlowMinionCharge":{
-    "constantStats":[["shield_charge_scaling_stun_threshold_reduction_+%_at_maximum_range"],[null,400],[],[null,-40]],
-    "weaponTypes":[],
-    "description":"Charges at a targeted location or enemy, pushing away enemies in your path and repeatedly dealing damage in a small area in front of you. You deal damage in a larger area when you reach the target. The further you travel, the more damage you deal, and the greater your chance of stunning enemies.",
-    "skillTypes":[],
-    "levels":[[]],
-    "baseFlags":[],
-    "stats":[null,"global_cannot_crit"],
-    "name":"Shield Charge"
-  },
-  "SkeletonMinionProjectileLightning":{
-    "name":"Lightning Projectile",
-    "baseEffectiveness":2.1579999923706,
-    "incrementalEffectiveness":0.040899999439716,
+  "IceElementalSpearSummonedDeathNova":{
+    "constantStats":[[],[]],
+    "baseEffectiveness":4.5626001358032,
     "levels":[{
-        "1":0.5,
         "statInterpolation":[]
       }],
     "skillTypes":[],
-    "castTime":1.2,
+    "stats":[null,null,null,"projectiles_nova"],
     "baseFlags":[],
-    "stats":["spell_minimum_base_lightning_damage","spell_maximum_base_lightning_damage"]
+    "name":"Death Nova"
   },
-  "RockGolemSlam":{
-    "constantStats":[[],["chance_to_taunt_on_hit_%",33],[]],
+  "DominatingBlowMinionCharge":{
+    "constantStats":[["shield_charge_scaling_stun_threshold_reduction_+%_at_maximum_range"],["base_movement_velocity_+%",400],["shield_charge_damage_+%_maximum"],[null,-40]],
+    "name":"Shield Charge",
+    "stats":["ignores_proximity_shield","global_cannot_crit"],
+    "description":"Charges at a targeted location or enemy, pushing away enemies in your path and repeatedly dealing damage in a small area in front of you. You deal damage in a larger area when you reach the target. The further you travel, the more damage you deal, and the greater your chance of stunning enemies.",
     "levels":[[]],
     "skillTypes":[],
     "baseFlags":[],
-    "stats":[]
+    "weaponTypes":[]
   },
-  "VaalDominationMelee":{
-    "name":"Default Attack",
-    "skillTypes":[],
+  "DeathExplodeIceElementalSummoned":{
+    "baseEffectiveness":5.4699997901917,
+    "incrementalEffectiveness":0.034699998795986,
     "levels":[{
-        "attackSpeedMultiplier":-72
+        "statInterpolation":[]
       }],
+    "skillTypes":[],
+    "stats":[],
+    "castTime":1.33,
     "baseFlags":[],
-    "stats":[]
+    "name":"Explode"
+  },
+  "ElementalHitCloneShot":{
+    "constantStats":[["chance_to_freeze_shock_ignite_%"],[]],
+    "name":"Elemental Hit",
+    "description":"Each attack with this skill will choose an element at random, and will only be able to deal damage of that element. If the attack hits an enemy, it will deal damage in an area around them, with the radius being larger if that enemy is suffering from an ailment of the chosen element. It will avoid choosing the same element twice in a row.",
+    "levels":[{
+        "baseMultiplier":6.8
+      }],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[]
+  },
+  "LightningGolemArcSummoned":{
+    "constantStats":[[]],
+    "baseEffectiveness":0.78420001268387,
+    "incrementalEffectiveness":0.028500000014901,
+    "levels":[{
+        "1":0.20000000298023,
+        "2":1.7999999523163,
+        "statInterpolation":[],
+        "damageEffectiveness":0.6
+      }],
+    "skillTypes":[],
+    "stats":["spell_minimum_base_lightning_damage","spell_maximum_base_lightning_damage"],
+    "baseFlags":[],
+    "name":"Storm Orb"
   },
   "VaalDominationSunder":{
     "constantStats":[["shockwave_slam_explosion_damage_+%_final",-60],["old_sunder_additional_width_per_stage"]],
     "name":"Sunder",
     "levels":[{
-        "damageEffectiveness":2.7
+        "baseMultiplier":2.7
       }],
     "skillTypes":[],
-    "baseFlags":[],
-    "stats":[]
-  },
-  "GAVaalDominationLargeSlam":{
-    "constantStats":[["melee_range_+"]],
-    "name":"AoE Slam",
-    "levels":[{
-        "attackSpeedMultiplier":-77,
-        "baseMultiplier":3.5
-      }],
-    "skillTypes":[],
-    "baseFlags":[],
-    "stats":[]
-  },
-  "ZombieSlam":{
-    "baseMods":[{
-        "value":[]
-      }],
-    "levels":[[],[],[],[],{
-        "levelRequirement":45
-      }],
-    "skillTypes":[],
-    "stats":[null,"global_always_hit"],
-    "baseFlags":[],
-    "constantStats":[[],[null,-25]]
-  },
-  "AbsolutionMinion":{
-    "constantStats":[["spell_maximum_action_distance_+%"],[]],
-    "baseEffectiveness":1.9819999933243,
-    "incrementalEffectiveness":0.045299999415874,
-    "description":"Damages enemies in an area, applying a debuff for a short duration. If a non-unique enemy dies while affected by the debuff, the corpse will be consumed to summon a Sentinel of Absolution for a secondary duration, or to refresh the duration and life of an existing one instead if you have the maximum number of them.",
-    "skillTypes":[],
-    "statDescriptionScope":"minion_spell_damage_skill_stat_descriptions",
-    "levels":[{
-        "damageEffectiveness":1.8,
-        "statInterpolation":[]
-      }],
-    "castTime":0.75,
-    "baseFlags":[],
     "stats":[],
-    "name":"Absolution"
+    "baseFlags":[]
   },
-  "GAZombieCorpseGroundImpact":{
-    "name":"Falling Slam",
+  "SumonRagingSpiritMelee":{
+    "name":"Melee",
     "levels":[[]],
     "skillTypes":[],
     "stats":[],
     "baseFlags":[]
   },
+  "MonsterProjectileSpellLightningGolemSummoned":{
+    "constantStats":[[null,11],[],[]],
+    "baseEffectiveness":3.2934999465942,
+    "incrementalEffectiveness":0.036100000143051,
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "name":"Lightning Projectile"
+  },
+  "GAVaalDominationLargeSlam":{
+    "constantStats":[["melee_range_+"]],
+    "name":"AoE Slam",
+    "levels":[{
+        "baseMultiplier":3.5
+      }],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[]
+  },
+  "LightningGolemWrath":{
+    "constantStats":[[]],
+    "baseEffectiveness":0.16249999403954,
+    "incrementalEffectiveness":0.019999999552965,
+    "stats":["attack_minimum_added_lightning_damage","attack_maximum_added_lightning_damage","spell_minimum_added_lightning_damage","spell_maximum_added_lightning_damage","base_deal_no_damage"],
+    "levels":[{
+        "3":0.11999999731779,
+        "4":1.0800000429153,
+        "statInterpolation":[]
+      }],
+    "skillTypes":[],
+    "statMap":{
+      "spell_minimum_added_lightning_damage":[{
+          "1":{
+            "effectType":"Aura"
+          },
+          "type":"BASE",
+          "keywordFlags":131072,
+          "name":"LightningMin"
+        }],
+      "attack_minimum_added_lightning_damage":[{
+          "1":[],
+          "keywordFlags":65536
+        }],
+      "attack_maximum_added_lightning_damage":[{
+          "1":[],
+          "name":"LightningMax"
+        }],
+      "spell_maximum_added_lightning_damage":[[[]]]
+    },
+    "baseFlags":[],
+    "name":"Lightning Golem Wrath"
+  },
+  "AbsolutionMinion":{
+    "constantStats":[[null,-50],[]],
+    "baseEffectiveness":1.9819999933243,
+    "incrementalEffectiveness":0.045299999415874,
+    "description":"Damages enemies in an area, applying a debuff for a short duration. If a non-unique enemy dies while affected by the debuff, the corpse will be consumed to summon a Sentinel of Absolution for a secondary duration, or to refresh the duration and life of an existing one instead if you have the maximum number of them.",
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "skillTypes":[],
+    "statDescriptionScope":"minion_spell_damage_skill_stat_descriptions",
+    "stats":[],
+    "castTime":0.75,
+    "baseFlags":[],
+    "name":"Absolution"
+  },
   "AbsolutionMinionEmpowered":{
     "constantStats":[[],["absolution_blast_shockwave_every_x_beams"],[]],
     "baseEffectiveness":1.4865000247955,
-    "skillTypes":[],
     "levels":[{
         "statInterpolation":[]
       }],
-    "baseFlags":[],
+    "skillTypes":[],
     "stats":[],
+    "baseFlags":[],
     "name":"Empowered Absolution"
   },
   "AbsolutionMinionVaal":{
-    "constantStats":[[]],
+    "constantStats":[[null,-35]],
     "baseEffectiveness":0.92720001935959,
-    "skillTypes":[],
     "levels":[{
         "statInterpolation":[]
       }],
-    "baseFlags":[],
-    "stats":[]
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[]
   },
   "AbsolutionMinionVaalCascade":{
     "constantStats":[["support_spell_cascade_number_of_cascades_per_side"],[]],
     "baseEffectiveness":1.4026999473572,
-    "skillTypes":[],
     "levels":[{
-        "damageEffectiveness":2.4,
-        "statInterpolation":[]
+        "statInterpolation":[],
+        "damageEffectiveness":2.4
       }],
-    "baseFlags":[],
+    "skillTypes":[],
     "stats":[null,null,"support_spell_cascade_sideways"],
+    "baseFlags":[],
     "name":"Absolution Cascade"
   },
-  "SummonedSpiderViperStrike":{
-    "constantStats":[["base_chance_to_poison_on_hit_%"],[]],
-    "baseEffectiveness":0.64999997615814,
-    "weaponTypes":[],
-    "description":"Hits enemies, converting some of your physical damage to chaos damage and inflicting poison which will be affected by modifiers to skill duration. If dual wielding, will strike with both weapons. Requires a claw, dagger or sword.",
-    "levels":[[]],
-    "skillTypes":[],
-    "statDescriptionScope":"debuff_skill_stat_descriptions",
-    "stats":["poison_duration_is_skill_duration"],
-    "baseFlags":[],
-    "incrementalEffectiveness":0.025499999523163,
-    "name":"Viper Strike"
-  },
   "VaalAbsolutionDelayedBlast":{
-    "constantStats":[["active_skill_area_of_effect_+%_final"]],
-    "name":"AoE Blast",
+    "constantStats":[[null,300]],
     "baseEffectiveness":3.1199998855591,
     "levels":[{
         "statInterpolation":[],
         "damageEffectiveness":3.2
       }],
     "skillTypes":[],
-    "castTime":1.33,
+    "stats":[],
     "baseFlags":[],
-    "stats":[]
+    "name":"AoE Blast"
   },
-  "SandstormChaosElementalSummoned":{
-    "baseMods":[{
-        "value":{
-          "key":"dotIsArea"
-        }
-      }],
-    "name":"Chaos Aura",
-    "baseEffectiveness":6.1421999931335,
-    "incrementalEffectiveness":0.052099999040365,
-    "levels":[{
-        "1":16.666667039196,
-        "statInterpolation":[],
-        "cooldown":8
-      }],
+  "SpectralSkullShieldCharge":{
+    "constantStats":[["shield_charge_stun_duration_+%_maximum"],[null,500],[],[]],
+    "name":"Charge",
+    "stats":[],
+    "description":"Charges at an enemy, bashing it with the character's shield and striking it. This knocks it back and stuns it. Enemies in the way are pushed to the side. Damage and stun are proportional to distance travelled.",
+    "levels":[[]],
     "skillTypes":[],
-    "stats":["base_chaos_damage_to_deal_per_minute",null,"spell_damage_modifiers_apply_to_skill_dot"],
     "baseFlags":[],
-    "constantStats":[[null,5000],[]]
+    "weaponTypes":[]
   },
   "SummonedRhoaShieldCharge":{
     "constantStats":[[],[],[],["attack_speed_+%"],["physical_damage_%_to_add_as_lightning"]],
-    "weaponTypes":[],
-    "skillTypes":[],
+    "stats":[],
     "levels":[[]],
+    "skillTypes":[],
     "baseFlags":[],
-    "stats":[]
+    "weaponTypes":[]
+  },
+  "AnimateGuardianSmite":{
+    "constantStats":[["skill_physical_damage_%_to_convert_to_lightning"],["smite_lightning_target_range"],["base_smite_number_of_targets"],[],[],["active_skill_base_secondary_area_of_effect_radius"],["active_skill_secondary_area_of_effect_description_mode"]],
+    "name":"Smite",
+    "stats":["visual_hit_effect_elemental_is_holy"],
+    "description":"Performs a melee attack, and causes lightning to strike a nearby enemy, dealing damage in an area. Each target can only be hit once by this skill. Hitting an enemy grants an aura for a duration. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
+    "levels":[{
+        "baseMultiplier":3.25
+      }],
+    "skillTypes":[],
+    "baseFlags":[],
+    "weaponTypes":[]
+  },
+  "RainOfArrowsCloneShot":{
+    "constantStats":[["number_of_additional_arrows"]],
+    "baseMods":[{
+        "value":[]
+      },{
+        "name":"OneShotProj"
+      }],
+    "name":"Rain of Arrow",
+    "stats":[null,null,null,"cannot_pierce"],
+    "description":"Fires multiple arrows into the air, to land in sequence after a delay, starting at the targeted location and spreading outwards in all directions. Each arrow deals damage in an area around it. Half of the arrows will land directly on targets if there are targets in their range.",
+    "levels":[[]],
+    "skillTypes":[],
+    "baseFlags":[],
+    "weaponTypes":[]
   },
   "SummonedSnakeProjectile":{
     "constantStats":[[]],
@@ -475,176 +866,152 @@
     "baseEffectiveness":1.8700000047684,
     "levels":[[]],
     "skillTypes":[],
-    "castTime":0.8,
-    "baseFlags":[],
-    "stats":[]
+    "stats":[],
+    "baseFlags":[]
+  },
+  "HeraldOfAgonyMinionMortar":{
+    "constantStats":[[],["projectile_minimum_range"],["base_number_of_projectiles"],[],["main_hand_base_maximum_attack_distance"],[]],
+    "name":"Mortar",
+    "levels":[{
+        "baseMultiplier":0.4,
+        "cooldown":7.5
+      }],
+    "skillTypes":[],
+    "stats":[null,null,"distribute_projectiles_over_contact_points"],
+    "baseFlags":[]
   },
   "DropBearSummonedGroundSlam":{
-    "weaponTypes":[],
+    "name":"Ground Slam",
+    "stats":[],
     "description":"The character slams the ground in front of them with a Staff, Mace or Sceptre, creating a wave that travels forward and damages enemies with an increased chance to stun.",
-    "skillTypes":[],
     "levels":[[]],
+    "skillTypes":[],
     "baseFlags":[],
-    "stats":[],
-    "name":"Ground Slam"
+    "weaponTypes":[]
   },
-  "SandstormChaosElementalSummonedEmpowered":{
-    "baseMods":[{
-        "value":[]
-      }],
-    "name":"Empowered Chaos Aura",
-    "baseEffectiveness":19.89999961853,
+  "RagingSpiritMeleeAttack":{
     "levels":[{
+        "statInterpolation":[]
+      },{
+        "1":71,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":56,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "1":47,
+        "statInterpolation":[]
+      },{
+        "1":42,
+        "statInterpolation":[]
+      },{
+        "1":37,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "levelRequirement":43,
+        "statInterpolation":[]
+      },{
+        "1":23,
+        "levelRequirement":46,
+        "statInterpolation":[]
+      },{
+        "levelRequirement":49,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "levelRequirement":66,
+        "statInterpolation":[]
+      },{
+        "levelRequirement":68,
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
+        "statInterpolation":[]
+      },{
         "statInterpolation":[]
       }],
     "skillTypes":[],
-    "stats":[null,null,null,"sandstorm_applies_withered_to_enemies_within"],
-    "castTime":0.7,
-    "baseFlags":[],
-    "constantStats":[[null,8000],[],["chaos_damage_taken_+%"]]
-  },
-  "DropBearSummonedRallyingCry":{
-    "baseMods":[{
-        "value":{
-          "key":"buffAllies"
-        }
-      }],
-    "name":"[DNT] Old Rallying Cry",
-    "levels":[[]],
-    "description":"[DNT] Unused (replaced)",
-    "stats":["base_deal_no_attack_damage","base_deal_no_spell_damage","base_deal_no_secondary_damage"],
-    "skillTypes":[],
-    "statMap":{
-      "damage_+%":[{
-          "1":{
-            "effectType":"Buff",
-            "type":"GlobalEffect"
-          },
-          "type":"INC",
-          "name":"Damage"
-        }]
-    },
-    "constantStats":[["damage_+%"],[],["base_mana_regeneration_rate_per_minute",888],[]],
-    "castTime":0.25,
-    "baseFlags":[]
-  },
-  "FireElementalFlameRedSummoned":{
-    "constantStats":[["active_skill_cast_speed_+%_final",-89],[],["monster_penalty_against_minions_damage_+%_final_vs_player_minions"]],
-    "baseEffectiveness":1.2546999454498,
-    "incrementalEffectiveness":0.044599998742342,
-    "description":"Summons a totem that fires a stream of flame at nearby enemies.",
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "skillTypes":[],
-    "stats":["spell_minimum_base_fire_damage","spell_maximum_base_fire_damage"],
-    "baseFlags":[],
-    "name":"Immolate"
-  },
-  "EGBoneGolemConsumeCorpse":{
-    "constantStats":[[null,-90]],
-    "name":"Consume Corpse",
-    "levels":[[]],
-    "skillTypes":[],
-    "baseFlags":[],
-    "stats":[]
-  },
-  "BoneGolemMultiAttack":{
-    "constantStats":[["bone_golem_attack_speed_+%_final_after_third_combo_index"],["bone_golem_damage_+%_final_after_third_combo_index"]],
-    "name":"Combo Attack",
-    "levels":[{
-        "damageEffectiveness":1.35
-      }],
-    "skillTypes":[],
-    "statMap":{
-      "bone_golem_attack_speed_+%_final_after_third_combo_index":[{
-          "type":"MORE",
-          "keywordFlags":65536,
-          "name":"Speed"
-        }],
-      "bone_golem_damage_+%_final_after_third_combo_index":[[]]
-    },
     "stats":[],
     "baseFlags":[]
-  },
-  "BoneGolemCascadeEmpowered":{
-    "baseMods":[{
-        "value":[]
-      }],
-    "name":"Empowered Cascade",
-    "levels":[{
-        "damageEffectiveness":1.85
-      }],
-    "skillTypes":[],
-    "stats":[],
-    "baseFlags":[],
-    "constantStats":[["upheaval_number_of_spikes"],[]]
   },
   "SkitterbotWait":{
     "constantStats":[[]],
     "name":"Skitterbot Wait",
     "levels":[[]],
     "skillTypes":[],
-    "baseFlags":[],
-    "stats":[]
+    "stats":[],
+    "baseFlags":[]
   },
-  "FireElementalMortarSummoned":{
-    "constantStats":[[],[]],
-    "baseEffectiveness":3.8238000869751,
-    "incrementalEffectiveness":0.034600000828505,
+  "DropBearSummonedRallyingCry":{
+    "constantStats":[["damage_+%"],[],["base_mana_regeneration_rate_per_minute",888],[]],
+    "baseMods":[{
+        "value":[]
+      }],
+    "name":"[DNT] Old Rallying Cry",
+    "stats":["base_deal_no_attack_damage","base_deal_no_spell_damage","base_deal_no_secondary_damage"],
+    "description":"[DNT] Unused (replaced)",
+    "levels":[[]],
     "skillTypes":[],
+    "statMap":{
+      "damage_+%":[{
+          "1":[],
+          "name":"Damage"
+        }]
+    },
+    "baseFlags":[]
+  },
+  "SkeletonMinionProjectileCold":{
+    "baseEffectiveness":2.1579999923706,
+    "incrementalEffectiveness":0.040899999439716,
     "levels":[{
-        "levelRequirement":34,
         "statInterpolation":[]
       }],
+    "skillTypes":[],
+    "stats":[],
+    "castTime":1.2,
     "baseFlags":[],
-    "stats":[],
-    "name":"Magma Ball"
+    "name":"Cold Projectile"
   },
-  "MinionInstability":{
-    "baseMods":[{
-        "1":{
-          "stat":"Life",
-          "type":"PerStat",
-          "div":3.030303030303
-        },
-        "value":{
-          "key":"FireMin"
-        }
-      },{
-        "1":[],
-        "value":{
-          "key":"FireMax"
-        }
-      },{
-        "value":[]
-      },{
-        "value":[]
-      }],
-    "stats":[],
+  "SummonPhantasmFadingProjectile":{
+    "baseEffectiveness":1.0221999883652,
+    "incrementalEffectiveness":0.048500001430511,
     "levels":[{
-        "cost":[]
+        "statInterpolation":[]
       }],
     "skillTypes":[],
-    "levelMods":[],
+    "stats":[],
+    "castTime":1.17,
     "baseFlags":[],
-    "name":"Minion Instability"
+    "name":"Physical Projectile"
   },
-  "BoneGolemCascade":{
-    "baseMods":[{
-        "value":[]
-      }],
-    "name":"Cascade",
+  "SkeletonMinionProjectileFire":{
     "levels":[{
-        "baseMultiplier":0.65
+        "statInterpolation":[]
       }],
     "skillTypes":[],
     "stats":[],
     "baseFlags":[],
-    "constantStats":[[],["active_skill_base_radius_+"]]
+    "name":"Fire Projectile"
   },
   "FireElementalConeSummoned":{
-    "name":"Flame Wave",
     "baseEffectiveness":2.8845000267029,
     "incrementalEffectiveness":0.03999999910593,
     "levels":[{
@@ -657,12 +1024,10 @@
       },{
         "statInterpolation":[]
       },{
-        "levelRequirement":42,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
       },{
-        "levelRequirement":46,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
@@ -674,13 +1039,11 @@
         "levelRequirement":54,
         "statInterpolation":[]
       },{
-        "levelRequirement":56,
         "statInterpolation":[]
       },{
         "statInterpolation":[]
       },{
         "2":1.25,
-        "levelRequirement":60,
         "statInterpolation":[]
       },{
         "levelRequirement":62,
@@ -688,10 +1051,8 @@
       },{
         "statInterpolation":[]
       },{
-        "levelRequirement":66,
         "statInterpolation":[]
       },{
-        "levelRequirement":68,
         "statInterpolation":[]
       },{
         "levelRequirement":69,
@@ -720,47 +1081,96 @@
         "statInterpolation":[]
       }],
     "skillTypes":[],
+    "stats":[],
     "castTime":0.935,
     "baseFlags":[],
-    "stats":[]
+    "name":"Flame Wave"
   },
-  "BoneGolemLeapSlam":{
+  "SkeletonMinionProjectileLightning":{
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[]
+  },
+  "RockGolemSlam":{
+    "constantStats":[[],["chance_to_taunt_on_hit_%"],[]],
+    "levels":[[]],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[]
+  },
+  "ChaosElementalCascadeSummoned":{
+    "constantStats":[[],["skill_physical_damage_%_to_convert_to_chaos"],[]],
+    "baseEffectiveness":1.3650000095367,
+    "incrementalEffectiveness":0.040600001811981,
+    "description":"Icicles emerge from the ground in a series of small bursts, each damaging enemies caught in the area.",
+    "levels":[{
+        "statInterpolation":[]
+      }],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[],
+    "name":"Cascade"
+  },
+  "VaalDominationMelee":{
+    "levels":[{
+        "attackSpeedMultiplier":-72
+      }],
+    "skillTypes":[],
+    "stats":[],
+    "baseFlags":[]
+  },
+  "RockGolemMinionWhirlingBlades":{
+    "constantStats":[["skill_sound_variation"],[],["monster_flurry"]],
+    "name":"Roll",
+    "stats":["cast_time_overrides_attack_duration"],
+    "description":"Dive through enemies, dealing weapon damage. If dual wielding attacks with both weapons, dealing the damage of both in one hit. Only works with Daggers, Claws, and One-Handed Swords.",
+    "levels":[[]],
+    "skillTypes":[],
+    "castTime":1.43,
+    "baseFlags":[],
+    "weaponTypes":[]
+  },
+  "BoneGolemCascade":{
+    "constantStats":[[],["active_skill_base_radius_+"]],
     "baseMods":[{
         "value":[]
       }],
-    "name":"Leap Slam",
-    "weaponTypes":[],
-    "description":"Jump through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff.",
-    "levels":[{
-        "attackSpeedMultiplier":-44
-      }],
+    "levels":[[]],
     "skillTypes":[],
-    "stats":[null,"disable_attack_repeats"],
-    "baseFlags":[],
-    "constantStats":[[],[]]
+    "stats":[],
+    "baseFlags":[]
   },
-  "FireElementalMeteorSummoned":{
-    "baseMods":[{
-        "value":[]
-      }],
-    "name":"Meteor",
-    "baseEffectiveness":13.5,
-    "incrementalEffectiveness":0.054999999701977,
+  "BoneGolemMultiAttack":{
+    "constantStats":[["bone_golem_attack_speed_+%_final_after_third_combo_index"],["bone_golem_damage_+%_final_after_third_combo_index"]],
+    "name":"Combo Attack",
+    "stats":[],
     "levels":[{
-        "1":21.666666356226,
-        "statInterpolation":[],
-        "damageEffectiveness":5.25
+        "baseMultiplier":1.35
       }],
     "skillTypes":[],
-    "stats":["base_fire_damage_to_deal_per_minute"],
-    "baseFlags":[],
-    "constantStats":[[],["skill_physical_damage_%_to_convert_to_fire"],[]]
+    "statMap":{
+      "bone_golem_damage_+%_final_after_third_combo_index":[{
+          "type":"MORE"
+        }],
+      "bone_golem_attack_speed_+%_final_after_third_combo_index":[[]]
+    },
+    "baseFlags":[]
   },
   "SiegebreakerCausticGround":{
+    "qualityStats":[],
+    "stats":[],
+    "levels":[{
+        "cost":[]
+      }],
+    "skillTypes":[],
+    "name":"Caustic Ground",
+    "baseFlags":[],
     "baseMods":[{
         "1":{
-          "percentVar":"SiegebreakerCausticGroundPercent",
-          "type":"PercentStat"
+          "percentVar":"SiegebreakerCausticGroundPercent"
         },
         "value":{
           "key":"ChaosDot"
@@ -769,413 +1179,13 @@
         "value":[]
       },{
         "name":"dotIsCausticGround"
-      }],
-    "stats":[],
-    "levels":[{
-        "cost":[]
-      }],
-    "qualityStats":[],
-    "skillTypes":[],
-    "baseFlags":[],
-    "name":"Caustic Ground"
+      }]
   },
-  "IceElementalIceCyclone":{
-    "baseMods":[{
-        "value":{
-          "key":"dpsMultiplier"
-        }
-      }],
-    "baseEffectiveness":0.85000002384186,
-    "weaponTypes":[],
-    "description":"Damage enemies around you, then perform a spinning series of attacks as you travel to a target location. Cannot be supported by Ruthless or Multistrike.",
-    "levels":[[]],
-    "skillTypes":[],
-    "stats":[null,"cyclone_places_ground_ice"],
-    "baseFlags":[],
-    "constantStats":[["cyclone_movement_speed_+%_final",75],["cyclone_extra_distance"],[]],
-    "name":"Cyclone"
-  },
-  "ReplicaSiegebreakerBurningGround":{
-    "baseMods":[{
-        "1":{
-          "percentVar":"SiegebreakerBurningGroundPercent"
-        },
-        "value":{
-          "key":"FireDot"
-        }
-      },{
-        "value":[]
-      },{
-        "name":"dotIsBurningGround"
-      }],
-    "stats":[],
-    "levels":[{
-        "cost":[]
-      }],
-    "qualityStats":[],
-    "skillTypes":[],
-    "baseFlags":[],
-    "name":"Burning Ground"
-  },
-  "InfernalLegion":{
-    "baseMods":[{
-        "1":{
-          "var":"InfernalLegionBaseDamage",
-          "type":"Multiplier"
-        },
-        "value":[]
-      },{
-        "value":[]
-      }],
-    "stats":[],
-    "levels":[{
-        "cost":[]
-      }],
-    "qualityStats":[],
-    "skillTypes":[],
-    "baseFlags":[],
-    "name":"Infernal Legion"
-  },
-  "GuardianSentinelFireAura":{
-    "baseMods":[{
-        "1":{
-          "var":"GuardianSentinelFireAuraBaseDamage"
-        },
-        "2":[],
-        "value":[]
-      },{
-        "value":[]
-      },{
-        "1":{
-          "var":"GuardianSentinelFireAuraRadius"
-        },
-        "value":[]
-      }],
-    "stats":[],
-    "levels":[{
-        "cost":[]
-      }],
-    "qualityStats":[],
-    "skillTypes":[],
-    "baseFlags":[],
-    "name":"Burning Aura"
-  },
-  "IceElementalSpearSummoned":{
-    "constantStats":[["monster_reverse_point_blank_damage_-%_at_minimum_range"]],
-    "name":"Ice Spear",
-    "baseEffectiveness":2.2813000679016,
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "skillTypes":[],
-    "baseFlags":[],
-    "stats":["spell_minimum_base_cold_damage","spell_maximum_base_cold_damage"]
-  },
-  "MeleeAtAnimationSpeedUnique":{
-    "skillTypes":[],
-    "levels":[[]],
-    "baseFlags":[],
-    "stats":[null,null,"action_attack_or_cast_time_uses_animation_length","projectile_uses_contact_position","use_scaled_contact_offset"]
-  },
-  "IceElementalSpearSummonedDeathNova":{
+  "HeraldOfLightMinionSlam":{
     "constantStats":[[],[]],
-    "name":"Death Nova",
-    "baseEffectiveness":4.5626001358032,
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "skillTypes":[],
-    "baseFlags":[],
-    "stats":[null,null,null,"projectiles_nova"]
-  },
-  "SummonedReaperMelee":{
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "baseFlags":[],
-    "stats":[]
-  },
-  "SummonedReaperUltimate":{
-    "stats":[],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[],
-        "damageEffectiveness":1.65
-      }],
-    "skillTypes":[],
-    "baseFlags":[],
-    "name":"Ultimate"
-  },
-  "DeathExplodeIceElementalSummoned":{
-    "name":"Explode",
-    "baseEffectiveness":5.4699997901917,
-    "incrementalEffectiveness":0.034699998795986,
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "skillTypes":[],
-    "baseFlags":[],
-    "stats":[]
-  },
-  "GASummonReaperUltimateLeftSlash":{
-    "stats":[],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "skillTypes":[],
-    "baseFlags":[],
-    "name":"Ultimate Slash"
-  },
-  "LightningGolemArcSummoned":{
-    "constantStats":[[]],
-    "name":"Storm Orb",
-    "baseEffectiveness":0.78420001268387,
-    "incrementalEffectiveness":0.028500000014901,
-    "levels":[{
-        "1":0.20000000298023,
-        "2":1.7999999523163,
-        "statInterpolation":[],
-        "damageEffectiveness":0.6
-      }],
-    "skillTypes":[],
-    "baseFlags":[],
-    "stats":[]
-  },
-  "GASummonReaperComboWhirl":{
-    "stats":[],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "skillTypes":[],
-    "baseFlags":[],
-    "name":"Whirl"
-  },
-  "GASummonReaperComboLeftSlash":{
-    "stats":[],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "skillTypes":[],
-    "baseFlags":[],
-    "name":"Combo Slash"
-  },
-  "MonsterProjectileSpellLightningGolemSummoned":{
-    "constantStats":[[null,11],[],[]],
-    "baseEffectiveness":3.2934999465942,
-    "incrementalEffectiveness":0.036100000143051,
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "skillTypes":[],
-    "baseFlags":[],
-    "stats":[]
-  },
-  "ReaperConsumeMinionForBuff":{
-    "baseMods":[{
-        "1":{
-          "type":"SkillName",
-          "skillName":"Summon Reaper"
-        },
-        "2":[],
-        "name":"MinionModifier",
-        "value":{
-          "mod":[]
-        }
-      },{
-        "1":[],
-        "2":[],
-        "value":{
-          "mod":{
-            "name":"MovementSpeed"
-          }
-        }
-      },{
-        "1":[],
-        "2":[],
-        "value":{
-          "mod":{
-            "name":"AreaOfEffect"
-          }
-        }
-      },{
-        "value":[]
-      }],
-    "name":"Consume",
     "levels":[[]],
     "skillTypes":[],
     "stats":[],
-    "baseFlags":[],
-    "constantStats":[[null,6000]]
-  },
-  "DancingDervishCycloneChannelled":{
-    "baseMods":[{
-        "value":{
-          "key":"radiusIsWeaponRange"
-        }
-      }],
-    "weaponTypes":[],
-    "description":"Channel this skill to move towards a targeted location while spinning constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back.",
-    "levels":[[]],
-    "skillTypes":[],
-    "stats":[null,"skill_can_add_multiple_charges_per_action"],
-    "baseFlags":[],
-    "constantStats":[["cyclone_gain_stage_every_x_ms_while_channelling",170],["cyclone_melee_weapon_range_+_per_stage"],["cyclone_stage_decay_time_ms",330],["cyclone_max_number_of_stages"],["cyclone_area_of_effect_+%_per_additional_melee_range"]]
-  },
-  "LightningGolemWrath":{
-    "constantStats":[[]],
-    "name":"Lightning Golem Wrath",
-    "baseEffectiveness":0.16249999403954,
-    "incrementalEffectiveness":0.019999999552965,
-    "levels":[{
-        "3":0.11999999731779,
-        "4":1.0800000429153,
-        "statInterpolation":[]
-      }],
-    "skillTypes":[],
-    "stats":["attack_minimum_added_lightning_damage","attack_maximum_added_lightning_damage","spell_minimum_added_lightning_damage","spell_maximum_added_lightning_damage","base_deal_no_damage"],
-    "baseFlags":[],
-    "statMap":{
-      "attack_maximum_added_lightning_damage":[{
-          "1":{
-            "effectType":"Aura"
-          },
-          "type":"BASE",
-          "name":"LightningMax"
-        }],
-      "spell_maximum_added_lightning_damage":[{
-          "1":[],
-          "keywordFlags":131072
-        }],
-      "spell_minimum_added_lightning_damage":[{
-          "1":[],
-          "name":"LightningMin"
-        }],
-      "attack_minimum_added_lightning_damage":[[[]]]
-    }
-  },
-  "BlinkMirrorArrowMelee":{
-    "name":"Projectile Attack",
-    "skillTypes":[],
-    "levels":[{
-        "damageEffectiveness":1.75
-      }],
-    "baseFlags":[],
-    "stats":[]
-  },
-  "ChaosElementalCascadeSummoned":{
-    "constantStats":[[],["skill_physical_damage_%_to_convert_to_chaos"],[]],
-    "baseEffectiveness":1.3650000095367,
-    "incrementalEffectiveness":0.040600001811981,
-    "description":"Icicles emerge from the ground in a series of small bursts, each damaging enemies caught in the area.",
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "baseFlags":[],
-    "stats":[]
-  },
-  "RagingSpiritMeleeAttack":{
-    "skillTypes":[],
-    "levels":[{
-        "statInterpolation":[]
-      },{
-        "1":71,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":47,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "1":37,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "levelRequirement":43,
-        "statInterpolation":[]
-      },{
-        "1":23,
-        "statInterpolation":[]
-      },{
-        "levelRequirement":49,
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      },{
-        "statInterpolation":[]
-      }],
-    "baseFlags":[],
-    "stats":[]
-  },
-  "SkeletonMinionProjectileFire":{
-    "name":"Fire Projectile",
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "skillTypes":[],
-    "baseFlags":[],
-    "stats":[]
-  },
-  "SkeletonMinionProjectileCold":{
-    "name":"Cold Projectile",
-    "levels":[{
-        "statInterpolation":[]
-      }],
-    "skillTypes":[],
-    "baseFlags":[],
-    "stats":[]
-  },
-  "RockGolemMinionWhirlingBlades":{
-    "constantStats":[["skill_sound_variation"],[],["monster_flurry"]],
-    "weaponTypes":[],
-    "description":"Dive through enemies, dealing weapon damage. If dual wielding attacks with both weapons, dealing the damage of both in one hit. Only works with Daggers, Claws, and One-Handed Swords.",
-    "skillTypes":[],
-    "levels":[[]],
-    "castTime":1.43,
-    "baseFlags":[],
-    "stats":["cast_time_overrides_attack_duration"],
-    "name":"Roll"
-  },
-  "MPWExpeditionSummonedArbalestProjectile":{
-    "constantStats":[[null,145]],
-    "levels":[[]],
-    "skillTypes":[],
-    "baseFlags":[],
-    "stats":[]
+    "baseFlags":[]
   }
 }

@@ -1,27 +1,425 @@
 {
-  "unique_mjolner_lightning_spells_triggered":[{
+  "always_ignite":{
+    "1":{
+      "type":"BASE",
+      "keywordFlags":0,
+      "name":"EnemyIgniteChance"
+    },
+    "value":100
+  },
+  "base_chance_to_shock_%":[{
+      "name":"EnemyShockChance"
+    }],
+  "always_shock":[[]],
+  "always_freeze":[{
+      "name":"EnemyFreezeChance"
+    }],
+  "base_chance_to_freeze_%":[[]],
+  "chance_to_freeze_shock_ignite_%":[[],[],[]],
+  "additional_chance_to_freeze_chilled_enemies_%":[{
       "1":{
-        "skillType":35,
-        "type":"SkillType"
+        "type":"ActorCondition",
+        "var":"Chilled",
+        "actor":"enemy"
       },
+      "flags":4
+    }],
+  "chance_to_scorch_%":[{
+      "name":"EnemyScorchChance"
+    }],
+  "cannot_inflict_status_ailments":[{
+      "type":"FLAG",
+      "name":"CannotShock",
+      "value":true
+    },{
+      "name":"CannotChill"
+    },{
+      "name":"CannotFreeze"
+    },{
+      "name":"CannotIgnite"
+    },{
+      "name":"CannotScorch"
+    },{
+      "name":"CannotBrittle"
+    },{
+      "name":"CannotSap"
+    }],
+  "lightning_damage_cannot_shock":[{
+      "name":"LightningCannotShock"
+    }],
+  "chill_effect_+%":[{
+      "type":"INC",
+      "name":"EnemyChillEffect"
+    }],
+  "active_skill_chill_effect_+%_final":[{
+      "type":"MORE"
+    }],
+  "shock_effect_+%":[{
+      "name":"EnemyShockEffect"
+    }],
+  "active_skill_shock_effect_+%_final":[[]],
+  "non_damaging_ailment_effect_+%":[[],[],{
+      "name":"EnemyFreezeEffect"
+    },{
+      "name":"EnemyScorchEffect"
+    },{
+      "name":"EnemyBrittleEffect"
+    },{
+      "name":"EnemySapEffect"
+    }],
+  "lightning_ailment_effect_+%":[[],[]],
+  "cold_ailment_duration_+%":[{
+      "name":"EnemyChillDuration"
+    },{
+      "name":"EnemyFreezeDuration"
+    },{
+      "name":"EnemyBrittleDuration"
+    }],
+  "chill_and_freeze_duration_+%":[[],[]],
+  "cold_ailment_effect_+%":[[],[],[]],
+  "base_poison_duration_+%":[{
+      "name":"EnemyPoisonDuration"
+    }],
+  "active_skill_poison_duration_+%_final":[[]],
+  "ignite_duration_+%":[{
+      "name":"EnemyIgniteDuration"
+    }],
+  "lightning_ailment_duration_+%":[{
+      "name":"EnemyShockDuration"
+    },{
+      "name":"EnemySapDuration"
+    }],
+  "shock_duration_+%":[[]],
+  "chill_duration_+%":[[]],
+  "freeze_duration_+%":[[]],
+  "active_skill_freeze_duration_+%_final":[[]],
+  "base_elemental_status_ailment_duration_+%":[{
+      "name":"EnemyElementalAilmentDuration"
+    }],
+  "base_all_ailment_duration_+%":[{
+      "name":"EnemyAilmentDuration"
+    }],
+  "bleeding_damage_+%":[{
+      "keywordFlags":4194304,
+      "name":"Damage"
+    }],
+  "active_skill_bleeding_damage_+%_final":[[]],
+  "active_skill_bleeding_damage_+%_final_in_blood_stance":[[{
+        "type":"Condition",
+        "var":"BloodStance"
+      }]],
+  "base_poison_damage_+%":[{
+      "keywordFlags":2097152
+    }],
+  "critical_poison_dot_multiplier_+":[{
+      "1":{
+        "var":"CriticalStrike"
+      },
+      "name":"DotMultiplier"
+    }],
+  "poison_dot_multiplier_+":[[]],
+  "dot_multiplier_+":[[]],
+  "fire_dot_multiplier_+":[{
+      "name":"FireDotMultiplier"
+    }],
+  "chaos_dot_multiplier_+":[{
+      "name":"ChaosDotMultiplier"
+    }],
+  "cold_dot_multiplier_+":[{
+      "name":"ColdDotMultiplier"
+    }],
+  "active_skill_ignite_damage_+%_final":[{
+      "keywordFlags":8388608
+    }],
+  "damaging_ailments_deal_damage_+%_faster":[{
+      "name":"BleedFaster"
+    },{
+      "name":"PoisonFaster"
+    },{
+      "name":"IgniteBurnFaster"
+    }],
+  "active_skill_shock_as_though_damage_+%_final":[{
+      "name":"ShockAsThoughDealing"
+    }],
+  "active_skill_chill_as_though_damage_+%_final":[{
+      "name":"ChillAsThoughDealing"
+    }],
+  "ailment_damage_+%_per_frenzy_charge":[{
+      "1":{
+        "type":"Multiplier",
+        "var":"FrenzyCharge"
+      },
+      "keywordFlags":524288
+    }],
+  "freeze_as_though_dealt_damage_+%":[{
+      "name":"FreezeAsThoughDealing"
+    }],
+  "shock_maximum_magnitude_+":[{
+      "name":"ShockMax"
+    }],
+  "shock_minimum_damage_taken_increase_%+":[{
+      "name":"ShockMinimum"
+    }],
+  "never_ignite":[[]],
+  "never_shock":[[]],
+  "never_freeze":[[]],
+  "never_chill":[[]],
+  "cannot_cause_bleeding":[{
+      "name":"CannotBleed"
+    }],
+  "keystone_strong_bowman":[{
+      "name":"IronGrip"
+    }],
+  "strong_casting":[{
+      "name":"IronWill"
+    }],
+  "deal_no_elemental_damage":[{
+      "name":"DealNoFire"
+    },{
+      "name":"DealNoCold"
+    },{
+      "name":"DealNoLightning"
+    }],
+  "base_deal_no_chaos_damage":[{
+      "name":"DealNoChaos"
+    }],
+  "all_damage_can_ignite":[{
+      "name":"PhysicalCanIgnite"
+    },{
+      "name":"LightningCanIgnite"
+    },{
+      "name":"ColdCanIgnite"
+    },{
+      "name":"ChaosCanIgnite"
+    }],
+  "all_damage_can_freeze":[{
+      "name":"PhysicalCanFreeze"
+    },{
+      "name":"LightningCanFreeze"
+    },{
+      "name":"FireCanFreeze"
+    },{
+      "name":"ChaosCanFreeze"
+    }],
+  "all_damage_can_shock":[{
+      "name":"PhysicalCanShock"
+    },{
+      "name":"ColdCanShock"
+    },{
+      "name":"FireCanShock"
+    },{
+      "name":"ChaosCanShock"
+    }],
+  "all_damage_can_ignite_freeze_shock":[[],[],[],[],[],[],[],[],[],[],[],[]],
+  "spell_minimum_base_cold_damage":[{
+      "type":"LIST",
+      "name":"SkillData",
+      "value":{
+        "key":"ColdMin"
+      }
+    }],
+  "secondary_minimum_base_cold_damage":[{
+      "value":[]
+    }],
+  "spell_maximum_base_cold_damage":[{
+      "value":{
+        "key":"ColdMax"
+      }
+    }],
+  "secondary_maximum_base_cold_damage":[{
+      "value":[]
+    }],
+  "spell_minimum_base_fire_damage":[{
+      "value":{
+        "key":"FireMin"
+      }
+    }],
+  "secondary_minimum_base_fire_damage":[{
+      "value":[]
+    }],
+  "spell_maximum_base_fire_damage":[{
+      "value":{
+        "key":"FireMax"
+      }
+    }],
+  "secondary_maximum_base_fire_damage":[{
+      "value":[]
+    }],
+  "spell_minimum_base_chaos_damage":[{
+      "value":{
+        "key":"ChaosMin"
+      }
+    }],
+  "secondary_minimum_base_chaos_damage":[{
+      "value":[]
+    }],
+  "spell_maximum_base_chaos_damage":[{
+      "value":{
+        "key":"ChaosMax"
+      }
+    }],
+  "secondary_maximum_base_chaos_damage":[{
+      "value":[]
+    }],
+  "spell_minimum_base_lightning_damage_per_removable_power_charge":[{
+      "1":{
+        "var":"RemovablePowerCharge"
+      },
+      "value":{
+        "key":"LightningMin"
+      }
+    }],
+  "spell_maximum_base_lightning_damage_per_removable_power_charge":[{
+      "1":[],
+      "value":{
+        "key":"LightningMax"
+      }
+    }],
+  "spell_minimum_base_fire_damage_per_removable_endurance_charge":[{
+      "1":{
+        "var":"RemovableEnduranceCharge"
+      },
+      "value":[]
+    }],
+  "spell_maximum_base_fire_damage_per_removable_endurance_charge":[{
+      "1":[],
+      "value":[]
+    }],
+  "spell_minimum_base_cold_damage_per_removable_frenzy_charge":[{
+      "1":{
+        "var":"RemovableFrenzyCharge"
+      },
+      "value":[]
+    }],
+  "spell_maximum_base_cold_damage_per_removable_frenzy_charge":[{
+      "1":[],
+      "value":[]
+    }],
+  "spell_minimum_base_cold_damage_+_per_10_intelligence":[{
+      "1":{
+        "type":"PerStat",
+        "div":10,
+        "stat":"Int"
+      },
+      "value":[]
+    }],
+  "spell_maximum_base_cold_damage_+_per_10_intelligence":[{
+      "1":[],
+      "value":[]
+    }],
+  "base_cold_damage_to_deal_per_minute":{
+    "1":{
+      "value":{
+        "key":"ColdDot"
+      }
+    },
+    "div":60
+  },
+  "base_fire_damage_to_deal_per_minute":[{
+      "value":{
+        "key":"FireDot"
+      }
+    }],
+  "base_chaos_damage_to_deal_per_minute":[{
+      "value":{
+        "key":"ChaosDot"
+      }
+    }],
+  "base_physical_damage_to_deal_per_minute":[{
+      "value":{
+        "key":"PhysicalDot"
+      }
+    }],
+  "critical_ailment_dot_multiplier_+":[[[]]],
+  "base_skill_show_average_damage_instead_of_dps":[{
+      "value":{
+        "key":"showAverage"
+      }
+    }],
+  "cast_time_overrides_attack_duration":[{
+      "value":{
+        "key":"castTimeOverridesAttackTime"
+      }
+    }],
+  "spell_cast_time_cannot_be_modified":[{
+      "value":{
+        "key":"fixedCastTime"
+      }
+    }],
+  "global_always_hit":[{
+      "value":{
+        "key":"cannotBeEvaded"
+      }
+    }],
+  "bleed_duration_is_skill_duration":[{
+      "value":{
+        "key":"bleedDurationIsSkillDuration"
+      }
+    }],
+  "poison_duration_is_skill_duration":[{
+      "value":{
+        "key":"poisonDurationIsSkillDuration"
+      }
+    }],
+  "cannot_poison_poisoned_enemies":[{
+      "name":"Condition:SinglePoison"
+    }],
+  "spell_damage_modifiers_apply_to_skill_dot":[{
+      "value":{
+        "key":"dotIsSpell"
+      }
+    }],
+  "projectile_damage_modifiers_apply_to_skill_dot":[{
+      "value":{
+        "key":"dotIsProjectile"
+      }
+    }],
+  "additive_mine_duration_modifiers_apply_to_buff_effect_duration":[{
+      "value":{
+        "key":"mineDurationAppliesToSkill"
+      }
+    }],
+  "additive_arrow_speed_modifiers_apply_to_area_of_effect":[{
+      "value":{
+        "key":"arrowSpeedAppliesToAreaOfEffect"
+      }
+    }],
+  "skill_buff_effect_+%":[{
+      "name":"BuffEffect"
+    }],
+  "base_skill_reserve_life_instead_of_mana":[{
+      "name":"BloodMagicReserved"
+    }],
+  "base_skill_cost_life_instead_of_mana":[{
+      "name":"CostLifeInsteadOfMana"
+    }],
+  "base_skill_cost_life_instead_of_mana_%":[{
+      "name":"HybridManaAndLifeCost_Life"
+    }],
+  "base_active_skill_totem_level":[{
+      "value":{
+        "key":"totemLevel"
+      }
+    }],
+  "totem_support_gem_level":[{
+      "value":[]
+    }],
+  "spell_uncastable_if_triggerable":[{
+      "1":{
+        "type":"SkillType",
+        "skillType":35
+      },
+      "value":{
+        "key":"triggered"
+      }
+    }],
+  "unique_mjolner_lightning_spells_triggered":[{
+      "1":[],
       "2":{
         "skillType":34
       },
-      "flags":0,
-      "name":"SkillData",
       "value":{
-        "value":true,
         "key":"triggeredByMjolner"
-      },
-      "type":"LIST"
-    }],
-  "minions_have_%_chance_to_inflict_wither_on_hit":[{
-      "name":"MinionModifier",
-      "value":{
-        "mod":{
-          "name":"Condition:CanWither",
-          "type":"FLAG"
-        }
       }
     }],
   "unique_cospris_malice_cold_spells_triggered":[{
@@ -43,36 +441,19 @@
         "key":"triggerOnCrit"
       }
     }],
-  "modifiers_to_projectile_count_do_not_apply":[{
-      "name":"NoAdditionalProjectiles"
-    }],
-  "base_number_of_arrows":{
-    "1":{
-      "name":"ProjectileCount",
-      "type":"BASE"
-    },
-    "base":-1
-  },
   "skill_has_trigger_from_unique_item":[{
       "1":[],
       "value":{
         "key":"triggeredByUnique"
       }
     }],
-  "base_added_cooldown_count":[{
-      "name":"AdditionalCooldownUses"
-    }],
-  "skill_triggered_when_you_focus_chance_%":{
-    "1":{
+  "skill_triggered_when_you_focus_chance_%":[{
       "1":[],
       "2":[],
       "value":{
         "key":"chanceToTriggerOnFocus"
       }
-    },
-    "div":100
-  },
-  "base_number_of_projectiles":[[]],
+    }],
   "spell_has_trigger_from_crafted_item_mod":[{
       "1":[],
       "2":[],
@@ -80,27 +461,12 @@
         "key":"triggeredByCraft"
       }
     }],
-  "projectile_damage_+%_per_remaining_chain":[{
-      "1":{
-        "stat":"ChainRemaining",
-        "type":"PerStat"
-      },
-      "flags":1024,
-      "name":"Damage",
-      "type":"INC"
-    },{
-      "1":[],
-      "flags":2048
-    }],
   "support_cast_on_mana_spent":[{
       "1":[],
       "2":[],
       "value":{
         "key":"triggeredByKitavaThirst"
       }
-    }],
-  "number_of_chains":[{
-      "name":"ChainCountMax"
     }],
   "cast_when_cast_curse_%":[{
       "1":[],
@@ -111,9 +477,6 @@
         "key":"chanceToTriggerCurseOnCurse"
       }
     }],
-  "additional_beam_only_chains":[{
-      "name":"BeamChainCountMax"
-    }],
   "display_mirage_warriors_no_spirit_strikes":[{
       "1":{
         "skillType":1
@@ -122,9 +485,6 @@
         "key":"triggeredBySaviour"
       }
     }],
-  "damage_+%_per_chain":[[{
-        "stat":"Chain"
-      }]],
   "cast_spell_on_linked_attack_crit":[{
       "1":[],
       "2":[],
@@ -136,8 +496,13 @@
       "2":[],
       "value":[]
     }],
-  "projectiles_always_pierce_you":[{
-      "name":"AlwaysPierceSelf"
+  "support_autocast_instant_spells":[{
+      "1":{
+        "skillTypeList":[null,null,74]
+      },
+      "value":{
+        "key":"triggeredByAutomation"
+      }
     }],
   "cast_linked_spells_on_attack_crit_%":[{
       "1":[],
@@ -145,33 +510,23 @@
         "key":"chanceToTriggerOnCrit"
       }
     }],
-  "projectiles_fork":[{
-      "name":"ForkOnce"
-    },{
-      "name":"ForkCountMax"
-    }],
   "cast_spell_on_linked_melee_kill":[{
       "1":[],
       "2":[],
       "3":{
-        "var":"KilledRecently",
-        "type":"Condition"
+        "var":"KilledRecently"
       },
       "value":{
         "key":"triggeredByMeleeKill"
       }
     }],
-  "supported_cold_skill_gem_level_+":[{
+  "cast_on_stunned_%":[{
       "1":[],
-      "name":"SupportedGemProperty",
+      "2":[],
       "value":{
-        "keyword":"grants_active_skill",
-        "key":"level"
+        "key":"chanceToTriggerOnStun"
       }
     }],
-  "number_of_additional_forks_base":[{
-      "name":"ForkTwice"
-    },[]],
   "cast_linked_spells_on_melee_kill_%":[{
       "1":[],
       "2":{
@@ -181,11 +536,14 @@
         "key":"chanceToTriggerOnMeleeKill"
       }
     }],
-  "active_skill_returning_projectile_damage_+%_final":[{
-      "1":{
-        "var":"ReturningProjectile"
+  "trigger_on_attack_hit_against_rare_or_unique":[{
+      "1":[],
+      "2":{
+        "skillType":109
       },
-      "type":"MORE"
+      "value":{
+        "key":"triggerMarkOnRareOrUnique"
+      }
     }],
   "cast_spell_while_linked_skill_channelling":[{
       "1":[],
@@ -194,80 +552,6 @@
         "key":"triggeredWhileChannelling"
       }
     }],
-  "returning_projectiles_always_pierce":[{
-      "1":[],
-      "name":"PierceAllTargets"
-    }],
-  "skill_triggered_by_snipe":[{
-      "1":[],
-      "value":{
-        "key":"triggeredBySnipe"
-      }
-    }],
-  "supported_strike_skill_gem_level_+":[{
-      "1":{
-        "skillType":25
-      },
-      "value":[]
-    }],
-  "triggered_by_spiritual_cry":[{
-      "1":[],
-      "2":[],
-      "value":{
-        "key":"triggeredByGeneralsCry"
-      }
-    }],
-  "supported_minion_skill_gem_level_+":[{
-      "1":{
-        "skillType":9
-      },
-      "value":[]
-    }],
-  "cast_on_damage_taken_threshold":[{
-      "1":[],
-      "2":[],
-      "value":{
-        "key":"triggeredByDamageTaken"
-      }
-    }],
-  "quality_display_base_duration_is_quality":[],
-  "support_autocast_instant_spells":[{
-      "1":{
-        "skillTypeList":[null,null,74]
-      },
-      "value":{
-        "key":"triggeredByAutomation"
-      }
-    }],
-  "chance_to_be_pierced_%":[{
-      "name":"SelfPierceChance"
-    }],
-  "quality_display_sigil_attached_target_damage_is_gem":[],
-  "projectile_damage_taken_+%":[{
-      "name":"ProjectileDamageTaken"
-    }],
-  "quality_display_trap_duration_is_gem":[],
-  "cast_on_stunned_%":[{
-      "1":[],
-      "2":[],
-      "value":{
-        "key":"chanceToTriggerOnStun"
-      }
-    }],
-  "quality_display_active_skill_bleed_damage_final_is_gem":[],
-  "enemies_you_shock_take_%_increased_physical_damage":[{
-      "1":{
-        "effectType":"Debuff",
-        "type":"GlobalEffect"
-      },
-      "2":{
-        "var":"Shocked"
-      },
-      "name":"PhysicalDamageTaken"
-    }],
-  "fire_damage_taken_+%":[{
-      "name":"FireDamageTaken"
-    }],
   "melee_counterattack_trigger_on_block_%":[{
       "1":[],
       "2":[],
@@ -275,8 +559,11 @@
         "key":"chanceToTriggerCounterattackOnBlock"
       }
     }],
-  "cold_damage_taken_+%":[{
-      "name":"ColdDamageTaken"
+  "skill_triggered_by_snipe":[{
+      "1":[],
+      "value":{
+        "key":"triggeredBySnipe"
+      }
     }],
   "melee_counterattack_trigger_on_hit_%":[{
       "1":[],
@@ -285,8 +572,12 @@
         "key":"chanceToTriggerCounterAttackOnHit"
       }
     }],
-  "lightning_damage_taken_+%":[{
-      "name":"LightningDamageTaken"
+  "triggered_by_spiritual_cry":[{
+      "1":[],
+      "2":[],
+      "value":{
+        "key":"triggeredByGeneralsCry"
+      }
     }],
   "holy_relic_trigger_on_parent_attack_%":[{
       "1":[],
@@ -294,19 +585,20 @@
         "key":"chanceToTriggerOnParentAttack"
       }
     }],
-  "chaos_damage_taken_+%":[{
-      "name":"ChaosDamageTaken"
-    }],
-  "base_tertiary_skill_effect_duration":{
-    "1":{
+  "cast_on_damage_taken_threshold":[{
+      "1":[],
+      "2":[],
       "value":{
-        "key":"durationTertiary"
+        "key":"triggeredByDamageTaken"
       }
-    },
-    "div":1000
-  },
-  "base_physical_damage_over_time_taken_+%":[{
-      "name":"PhysicalDamageTakenOverTime"
+    }],
+  "skill_can_own_mirage_archers":[{
+      "1":{
+        "skillType":68
+      },
+      "value":{
+        "key":"triggeredByMirageArcher"
+      }
     }],
   "summon_sacred_wisps_on_hit":[{
       "1":{
@@ -316,14 +608,9 @@
         "key":"triggeredBySacredWisps"
       }
     }],
-  "secondary_minimum_base_physical_damage":[{
+  "skill_double_hits_when_dual_wielding":[{
       "value":{
-        "key":"PhysicalMin"
-      }
-    }],
-  "spell_maximum_base_physical_damage":[{
-      "value":{
-        "key":"PhysicalMax"
+        "key":"doubleHitsWhenDualWielding"
       }
     }],
   "base_spell_repeat_count":[{
@@ -331,9 +618,6 @@
         "skillType":26
       },
       "name":"RepeatCount"
-    }],
-  "secondary_maximum_base_physical_damage":[{
-      "value":[]
     }],
   "base_melee_attack_repeat_count":[[{
         "skillType":28
@@ -348,22 +632,22 @@
         "key":"minionDamageEffectiveness"
       }
     }],
-  "base_bleed_on_hit_still_%_of_physical_damage_to_deal_per_minute":{
-    "1":{
+  "base_bleed_on_hit_still_%_of_physical_damage_to_deal_per_minute":[{
       "value":{
         "key":"bleedBasePercent"
       }
-    },
-    "div":60
-  },
+    }],
   "corpse_explosion_monster_life_%":[{
       "value":{
         "key":"corpseExplosionLifeMultiplier"
       }
     }],
-  "corpse_explosion_monster_life_permillage_fire":[{
+  "corpse_explosion_monster_life_permillage_fire":{
+    "1":{
       "value":[]
-    }],
+    },
+    "div":1000
+  },
   "spell_base_fire_damage_%_maximum_life":[{
       "value":{
         "key":"selfFireExplosionLifeMultiplier"
@@ -404,20 +688,405 @@
   "base_lightning_damage_resistance_%":[{
       "name":"LightningResist"
     }],
-  "additional_chance_to_take_critical_strike_%":[{
-      "name":"SelfExtraCritChance"
+  "base_chaos_damage_resistance_%":[{
+      "name":"ChaosResist"
     }],
-  "base_self_critical_strike_multiplier_-%":[{
-      "name":"SelfCritMultiplier"
+  "base_resist_all_elements_%":[{
+      "name":"ElementalResist"
     }],
-  "chance_to_be_shocked_%":[{
-      "name":"SelfShockChance"
+  "base_maximum_fire_damage_resistance_%":[{
+      "name":"FireResistMax"
     }],
-  "chance_to_be_ignited_%":[{
-      "name":"SelfIgniteChance"
+  "base_maximum_cold_damage_resistance_%":[{
+      "name":"ColdResistMax"
     }],
-  "chance_to_be_frozen_%":[{
-      "name":"SelfFreezeChance"
+  "base_maximum_lightning_damage_resistance_%":[{
+      "name":"LightningResistMax"
+    }],
+  "base_stun_recovery_+%":[{
+      "name":"StunRecovery"
+    }],
+  "base_life_gain_per_target":[{
+      "name":"LifeOnHit"
+    }],
+  "base_life_regeneration_rate_per_minute":[{
+      "name":"LifeRegen"
+    }],
+  "life_regeneration_rate_per_minute_%":[{
+      "name":"LifeRegenPercent"
+    }],
+  "base_mana_regeneration_rate_per_minute":[{
+      "name":"ManaRegen"
+    }],
+  "energy_shield_recharge_rate_+%":[{
+      "name":"EnergyShieldRecharge"
+    }],
+  "base_mana_cost_-%":{
+    "1":{
+      "name":"ManaCost"
+    },
+    "mult":-1
+  },
+  "base_mana_cost_+":[{
+      "name":"ManaCostNoMult"
+    }],
+  "no_mana_cost":{
+    "1":[],
+    "value":-100
+  },
+  "base_life_cost_+%":[{
+      "name":"LifeCost"
+    }],
+  "flask_mana_to_recover_+%":[{
+      "name":"FlaskManaRecovery"
+    }],
+  "flask_effect_+%":[{
+      "name":"FlaskEffect"
+    }],
+  "base_chance_to_dodge_%":[{
+      "name":"AttackDodgeChance"
+    }],
+  "base_chance_to_dodge_spells_%":[{
+      "name":"SpellDodgeChance"
+    }],
+  "base_movement_velocity_+%":[{
+      "name":"MovementSpeed"
+    }],
+  "monster_base_block_%":[{
+      "name":"BlockChance"
+    }],
+  "base_spell_block_%":[{
+      "name":"SpellBlockChance"
+    }],
+  "base_block_%_damage_taken":[{
+      "name":"BlockEffect"
+    }],
+  "life_leech_from_any_damage_permyriad":[{
+      "name":"DamageLifeLeech"
+    }],
+  "mana_leech_from_any_damage_permyriad":[{
+      "name":"DamageManaLeech"
+    }],
+  "attack_skill_mana_leech_from_any_damage_permyriad":[[]],
+  "base_mana_leech_from_elemental_damage_permyriad":[{
+      "name":"ElementalDamageManaLeech"
+    }],
+  "base_life_leech_from_attack_damage_permyriad":[[]],
+  "base_life_leech_from_chaos_damage_permyriad":[{
+      "name":"ChaosDamageLifeLeech"
+    }],
+  "energy_shield_leech_from_any_damage_permyriad":[{
+      "name":"DamageEnergyShieldLeech"
+    }],
+  "life_leech_from_physical_attack_damage_permyriad":[{
+      "name":"PhysicalDamageLifeLeech"
+    }],
+  "base_energy_shield_leech_from_spell_damage_permyriad":[[]],
+  "maximum_life_leech_amount_per_leech_+%":[{
+      "name":"MaxLifeLeechRate"
+    }],
+  "maximum_energy_shield_leech_amount_per_leech_+%":[{
+      "name":"MaxEnergyShieldLeechRate"
+    }],
+  "mana_gain_per_target":[{
+      "name":"ManaOnHit"
+    }],
+  "damage_+%_while_life_leeching":[[{
+        "var":"LeechingLife"
+      }]],
+  "damage_+%_while_mana_leeching":[[{
+        "var":"LeechingMana"
+      }]],
+  "damage_+%_while_es_leeching":[[{
+        "var":"LeechingEnergyShield"
+      }]],
+  "aura_effect_+%":[{
+      "name":"AuraEffect"
+    }],
+  "elusive_effect_+%":[{
+      "1":{
+        "type":"GlobalEffect",
+        "effectType":"Buff"
+      },
+      "name":"ElusiveEffect"
+    }],
+  "blind_effect_+%":[{
+      "1":{
+        "effectType":"Debuff",
+        "effectName":"Vaal Blade Flurry"
+      },
+      "name":"BlindEffect"
+    }],
+  "cannot_be_stunned_while_leeching":[{
+      "name":"AvoidStun",
+      "flags":{
+        "var":"Leeching"
+      }
+    }],
+  "base_avoid_stun_%":[[]],
+  "avoid_interruption_while_using_this_skill_%":[{
+      "name":"AvoidInterruptStun"
+    }],
+  "life_leech_does_not_stop_at_full_life":[{
+      "name":"CanLeechLifeOnFullLife"
+    }],
+  "attack_and_cast_speed_+%":[{
+      "name":"Speed"
+    }],
+  "cast_speed_+%_granted_from_skill":[{
+      "flags":16
+    }],
+  "attack_speed_+%_with_atleast_20_rage":[[{
+        "type":"MultiplierThreshold",
+        "var":"Rage",
+        "threshold":20
+      }]],
+  "base_cooldown_speed_+%":[{
+      "name":"CooldownRecovery"
+    }],
+  "base_spell_cooldown_speed_+%":[[]],
+  "base_cooldown_modifier_ms":[[]],
+  "additional_weapon_base_attack_time_ms":[[]],
+  "warcry_speed_+%":[{
+      "name":"WarcrySpeed"
+    }],
+  "display_this_skill_cooldown_does_not_recover_during_buff":[{
+      "name":"NoCooldownRecoveryInDuration"
+    }],
+  "active_skill_base_area_of_effect_radius":[{
+      "value":{
+        "key":"radius"
+      }
+    }],
+  "active_skill_base_secondary_area_of_effect_radius":[{
+      "value":{
+        "key":"radiusSecondary"
+      }
+    }],
+  "active_skill_base_tertiary_area_of_effect_radius":[{
+      "value":{
+        "key":"radiusTertiary"
+      }
+    }],
+  "active_skill_base_radius_+":[{
+      "value":{
+        "key":"radiusExtra"
+      }
+    }],
+  "base_skill_area_of_effect_+%":[{
+      "name":"AreaOfEffect"
+    }],
+  "base_aura_area_of_effect_+%":[[]],
+  "area_of_effect_+%_while_not_dual_wielding":[[{
+        "var":"DualWielding"
+      }]],
+  "active_skill_area_of_effect_+%_final_when_cast_on_frostbolt":[[{
+        "var":"CastOnFrostbolt"
+      }]],
+  "active_skill_area_of_effect_radius_+%_final":[[]],
+  "active_skill_area_of_effect_+%_final":[[]],
+  "area_of_effect_+%_per_50_strength":[{
+      "1":{
+        "div":50,
+        "stat":"Str"
+      },
+      "value":[]
+    }],
+  "active_skill_area_of_effect_+%_final_per_endurance_charge":[[{
+        "var":"EnduranceCharge"
+      }]],
+  "skill_area_of_effect_+%_final_in_sand_stance":[[{
+        "var":"SandStance"
+      }]],
+  "area_of_effect_+%_final_per_removable_power_frenzy_or_endurance_charge":[[{
+        "var":"RemovableTotalCharges"
+      }]],
+  "additional_base_critical_strike_chance":[{
+      "name":"CritChance"
+    }],
+  "critical_strike_chance_+%":[[]],
+  "spell_critical_strike_chance_+%":[[]],
+  "attack_critical_strike_chance_+%":[[]],
+  "base_critical_strike_multiplier_+":[{
+      "name":"CritMultiplier"
+    }],
+  "critical_strike_chance_+%_vs_shocked_enemies":[[{
+        "var":"Shocked"
+      }]],
+  "critical_strike_chance_+%_vs_bleeding_enemies":[[{
+        "var":"Bleeding"
+      }]],
+  "critical_strike_chance_+%_per_power_charge":[[{
+        "var":"PowerCharge"
+      }]],
+  "critical_strike_multiplier_+_per_power_charge":[[[]]],
+  "critical_multiplier_+%_per_100_max_es_on_shield":[[{
+        "stat":"EnergyShieldOnWeapon 2"
+      }]],
+  "support_trap_damage_+%_final":[{
+      "keywordFlags":4096
+    }],
+  "trap_damage_+%":[[]],
+  "number_of_additional_traps_allowed":[{
+      "name":"ActiveTrapLimit"
+    }],
+  "trap_throwing_speed_+%":[{
+      "name":"TrapThrowingSpeed"
+    }],
+  "trap_throwing_speed_+%_per_frenzy_charge":[[[]]],
+  "active_skill_trap_throwing_speed_+%_final":[[]],
+  "trap_critical_strike_multiplier_+_per_power_charge":[[[]]],
+  "placing_traps_cooldown_recovery_+%":[[]],
+  "trap_trigger_radius_+%":[{
+      "name":"TrapTriggerAreaOfEffect"
+    }],
+  "number_of_additional_traps_to_throw":[{
+      "name":"TrapThrowCount"
+    }],
+  "number_of_additional_remote_mines_allowed":[{
+      "name":"ActiveMineLimit"
+    }],
+  "mine_laying_speed_+%":[{
+      "name":"MineLayingSpeed"
+    }],
+  "mine_throwing_speed_+%_per_frenzy_charge":[[[]]],
+  "mine_damage_+%":[{
+      "keywordFlags":8192
+    }],
+  "mine_detonation_radius_+%":[{
+      "name":"MineDetonationAreaOfEffect"
+    }],
+  "remote_mined_by_support":[{
+      "name":"ManaCostGainAsReservation"
+    },{
+      "name":"LifeCostGainAsReservation"
+    }],
+  "mine_critical_strike_chance_+%_per_power_charge":[[[]]],
+  "mine_projectile_speed_+%_per_frenzy_charge":[{
+      "1":[],
+      "name":"ProjectileSpeed"
+    }],
+  "number_of_additional_mines_to_place":[{
+      "name":"MineThrowCount"
+    }],
+  "support_additional_trap_mine_%_chance_for_1_additional_trap_mine":[[],[]],
+  "support_additional_trap_mine_%_chance_for_2_additional_trap_mine":[[],[]],
+  "support_additional_trap_mine_%_chance_for_3_additional_trap_mine":{
+    "1":[],
+    "2":[],
+    "div":33.333333333333
+  },
+  "totem_damage_+%":[{
+      "keywordFlags":16384
+    }],
+  "totem_life_+%":[{
+      "name":"TotemLife"
+    }],
+  "totem_life_+%_final":[[]],
+  "number_of_additional_totems_allowed":[{
+      "name":"ActiveTotemLimit"
+    }],
+  "attack_skills_additional_ballista_totems_allowed":[[{
+        "skillType":125
+      }]],
+  "base_number_of_totems_allowed":[[]],
+  "summon_totem_cast_speed_+%":[{
+      "name":"TotemPlacementSpeed"
+    }],
+  "totems_regenerate_%_life_per_minute":[[]],
+  "totem_duration_+%":[{
+      "name":"TotemDuration"
+    }],
+  "base_totem_duration":[[]],
+  "minion_damage_+%":[{
+      "name":"MinionModifier",
+      "value":{
+        "mod":[]
+      }
+    }],
+  "minion_melee_damage_+%":[{
+      "value":{
+        "mod":{
+          "flags":256
+        }
+      }
+    }],
+  "minion_damage_+%_on_full_life":[{
+      "value":{
+        "mod":[{
+            "var":"FullLife"
+          }]
+      }
+    }],
+  "active_skill_minion_bleeding_damage_+%_final":[{
+      "value":{
+        "mod":[]
+      }
+    }],
+  "minion_critical_strike_chance_+%":[{
+      "value":{
+        "mod":[]
+      }
+    }],
+  "minion_critical_strike_multiplier_+":[{
+      "value":{
+        "mod":[]
+      }
+    }],
+  "minion_maximum_life_+%":[{
+      "value":{
+        "mod":{
+          "name":"Life"
+        }
+      }
+    }],
+  "minion_movement_speed_+%":[{
+      "value":{
+        "mod":[]
+      }
+    }],
+  "minion_attack_speed_+%":[{
+      "value":{
+        "mod":[]
+      }
+    }],
+  "minion_cast_speed_+%":[{
+      "value":{
+        "mod":[]
+      }
+    }],
+  "minion_elemental_resistance_%":[{
+      "value":{
+        "mod":[]
+      }
+    }],
+  "base_minion_duration_+%":[{
+      "1":{
+        "skillType":88
+      },
+      "name":"Duration"
+    }],
+  "minion_skill_area_of_effect_+%":[{
+      "value":{
+        "mod":[]
+      }
+    }],
+  "minion_additional_physical_damage_reduction_%":[{
+      "value":{
+        "mod":{
+          "name":"PhysicalDamageReduction"
+        }
+      }
+    }],
+  "summon_fire_resistance_+":[{
+      "value":{
+        "mod":[]
+      }
+    }],
+  "summon_cold_resistance_+":[{
+      "value":{
+        "mod":[]
+      }
     }],
   "summon_lightning_resistance_+":[{
       "value":{
@@ -433,16 +1102,12 @@
     }],
   "minion_cooldown_recovery_+%":[{
       "value":{
-        "mod":{
-          "name":"CooldownRecovery"
-        }
+        "mod":[]
       }
     }],
   "minion_life_regeneration_rate_per_minute_%":[{
       "value":{
-        "mod":{
-          "name":"LifeRegenPercent"
-        }
+        "mod":[]
       }
     }],
   "minion_chance_to_deal_double_damage_%":[{
@@ -454,9 +1119,7 @@
     }],
   "minion_ailment_damage_+%":[{
       "value":{
-        "mod":{
-          "keywordFlags":524288
-        }
+        "mod":[]
       }
     }],
   "base_number_of_zombies_allowed":[{
@@ -468,48 +1131,51 @@
   "base_number_of_raging_spirits_allowed":[{
       "name":"ActiveRagingSpiritLimit"
     }],
-  "base_number_of_golems_allowed":[{
-      "name":"ActiveGolemLimit"
+  "projectile_damage_+%_final_if_pierced_enemy":[{
+      "1":{
+        "type":"StatThreshold",
+        "stat":"PiercedCount"
+      },
+      "flags":1024
     }],
-  "base_number_of_arbalists":[{
-      "name":"ActiveArbalistLimit"
+  "projectile_behaviour_only_explode":[{
+      "name":"CannotSplit"
+    }],
+  "projectiles_cannot_split":[[]],
+  "projectile_number_to_split":[{
+      "name":"SplitCount"
     }],
   "base_number_of_champions_of_light_allowed":[{
       "name":"ActiveSentinelOfPurityLimit"
     }],
+  "modifiers_to_number_of_projectiles_instead_apply_to_splitting":[{
+      "name":"NoAdditionalProjectiles"
+    },{
+      "name":"AdditionalProjectilesAddSplitsInstead"
+    }],
   "base_number_of_spectres_allowed":[{
       "name":"ActiveSpectreLimit"
     }],
-  "number_of_wolves_allowed":[{
-      "name":"ActiveWolfLimit"
+  "modifiers_to_number_of_projectiles_instead_apply_to_chaining":[[],{
+      "name":"AdditionalProjectilesAddChainsInstead"
     }],
-  "number_of_spider_minions_allowed":[{
-      "name":"ActiveSpiderLimit"
+  "active_skill_beam_splits_instead_of_chaining":[{
+      "name":"NoAdditionalChains"
+    },{
+      "name":"AdditionalChainsAddSplitsInstead"
     }],
   "active_skill_minion_damage_+%_final":[{
       "value":{
         "mod":[]
       }
     }],
-  "active_skill_minion_attack_speed_+%_final":[{
-      "value":{
-        "mod":{
-          "name":"Speed"
-        }
-      }
-    }],
-  "active_skill_minion_physical_damage_+%_final":[{
-      "value":{
-        "mod":{
-          "name":"PhysicalDamage"
-        }
-      }
+  "modifiers_to_projectile_count_do_not_apply":[[]],
+  "base_number_of_arrows":[{
+      "name":"ProjectileCount"
     }],
   "active_skill_minion_life_+%_final":[{
       "value":{
-        "mod":{
-          "name":"Life"
-        }
+        "mod":[]
       }
     }],
   "support_minion_damage_minion_life_+%_final":[{
@@ -517,36 +1183,22 @@
         "mod":[]
       }
     }],
-  "minion_life_leech_from_elemental_damage_permyriad":[{
-      "value":{
-        "mod":{
-          "name":"FireDamageLeech"
-        }
-      }
-    },{
-      "value":{
-        "mod":{
-          "name":"LightningDamageLeech"
-        }
-      }
-    },{
-      "value":{
-        "mod":{
-          "name":"ColdDamageLeech"
-        }
-      }
+  "number_of_additional_arrows":[[]],
+  "base_number_of_projectiles":[[]],
+  "number_of_additional_projectiles":[[]],
+  "projectile_damage_+%_per_remaining_chain":[[{
+        "stat":"ChainRemaining"
+      }],{
+      "1":[],
+      "flags":2048
     }],
   "active_skill_minion_energy_shield_+%_final":[{
       "value":{
         "mod":[]
       }
     }],
-  "active_skill_minion_movement_velocity_+%_final":[{
-      "value":{
-        "mod":{
-          "name":"MovementSpeed"
-        }
-      }
+  "number_of_chains":[{
+      "name":"ChainCountMax"
     }],
   "minions_deal_%_of_physical_damage_as_additional_chaos_damage":[{
       "value":{
@@ -555,54 +1207,65 @@
         }
       }
     }],
-  "maximum_life_+%_for_corpses_you_create":[{
-      "name":"CorpseLife"
+  "additional_beam_only_chains":[{
+      "name":"BeamChainCountMax"
     }],
-  "number_of_melee_skeletons_to_summon":[{
+  "damage_+%_per_chain":[[{
+        "stat":"Chain"
+      }]],
+  "projectiles_always_pierce_you":[{
+      "name":"AlwaysPierceSelf"
+    }],
+  "number_of_mage_skeletons_to_summon":[{
       "name":"MinionPerCastCount"
     }],
-  "number_of_archer_skeletons_to_summon":[[]],
-  "number_of_mage_skeletons_to_summon":[[]],
-  "minion_always_crit":[{
-      "value":{
-        "mod":{
-          "name":"CritChance",
-          "type":"OVERRIDE"
-        }
-      }
+  "projectiles_fork":[{
+      "name":"ForkOnce"
+    },{
+      "name":"ForkCountMax"
     }],
-  "golem_buff_effect_+%":[{
-      "name":"BuffEffect"
-    }],
+  "golem_buff_effect_+%":[[]],
   "golem_cooldown_recovery_+%":[{
       "value":{
         "mod":[]
       }
     }],
-  "warcry_grant_damage_+%_to_exerted_attacks":[{
-      "name":"ExertIncrease"
+  "number_of_additional_forks_base":[{
+      "name":"ForkTwice"
+    },[]],
+  "active_skill_returning_projectile_damage_+%_final":[[{
+        "var":"ReturningProjectile"
+      }]],
+  "returning_projectiles_always_pierce":[{
+      "1":[],
+      "name":"PierceAllTargets"
     }],
-  "curse_effect_+%":[{
+  "support_barrage_attack_time_+%_per_projectile_fired":[{
+      "1":{
+        "varList":["UsingBow","UsingWand"]
+      },
+      "2":[],
+      "name":"SkillAttackTime"
+    }],
+  "mark_skills_curse_effect_+%":[{
+      "1":[],
       "name":"CurseEffect"
     }],
-  "curse_effect_+%_vs_players":[{
-      "name":"CurseEffectAgainstPlayer"
+  "curse_area_of_effect_+%":[[]],
+  "base_curse_duration_+%":[[]],
+  "support_barrage_trap_and_mine_throwing_time_+%_final_per_projectile_fired":[{
+      "1":[],
+      "name":"SkillMineThrowingTime"
+    },{
+      "1":[],
+      "name":"SkillTrapThrowingTime"
     }],
-  "mark_skills_curse_effect_+%":[[{
-        "skillType":109
-      }]],
-  "curse_area_of_effect_+%":[{
-      "name":"AreaOfEffect"
-    }],
-  "base_curse_duration_+%":[{
-      "name":"Duration"
-    }],
-  "curse_skill_effect_duration_+%":[[]],
-  "curse_cast_speed_+%":[{
-      "flags":16
-    }],
+  "curse_cast_speed_+%":[[]],
   "curse_maximum_doom":[{
       "name":"MaxDoom"
+    }],
+  "chance_to_be_pierced_%":[{
+      "name":"SelfPierceChance"
     }],
   "triggered_vicious_hex_explosion":[{
       "1":[],
@@ -611,450 +1274,213 @@
         "key":"triggeredWhenHexEnds"
       }
     }],
-  "non_curse_aura_effect_+%":[{
-      "1":{
+  "projectile_damage_taken_+%":[{
+      "name":"ProjectileDamageTaken"
+    }],
+  "non_curse_aura_effect_+%":[[{
         "skillType":79
-      },
-      "name":"AuraEffect"
-    }],
-  "base_mana_reservation_+%":[{
-      "name":"ManaReserved"
-    }],
-  "attack_critical_strike_chance_+%":[[]],
-  "base_critical_strike_multiplier_+":[{
-      "name":"CritMultiplier"
-    }],
-  "critical_strike_chance_+%_vs_shocked_enemies":[[{
-        "type":"ActorCondition",
-        "actor":"enemy"
       }]],
-  "critical_strike_chance_+%_vs_bleeding_enemies":[[{
-        "var":"Bleeding"
+  "physical_damage_taken_+%":[{
+      "name":"PhysicalDamageTaken"
+    }],
+  "enemies_you_shock_take_%_increased_physical_damage":[[[],[]]],
+  "fire_damage_taken_+%":[{
+      "name":"FireDamageTaken"
+    }],
+  "base_reservation_+%":[{
+      "name":"Reserved"
+    }],
+  "cold_damage_taken_+%":[{
+      "name":"ColdDamageTaken"
+    }],
+  "base_mana_reservation_efficiency_+%":[{
+      "name":"ManaReservationEfficiency"
+    }],
+  "lightning_damage_taken_+%":[{
+      "name":"LightningDamageTaken"
+    }],
+  "base_life_reservation_efficiency_+%":[{
+      "name":"LifeReservationEfficiency"
+    }],
+  "chaos_damage_taken_+%":[{
+      "name":"ChaosDamageTaken"
+    }],
+  "base_reservation_efficiency_+%":[{
+      "name":"ReservationEfficiency"
+    }],
+  "base_physical_damage_over_time_taken_+%":[{
+      "name":"PhysicalDamageTakenOverTime"
+    }],
+  "sigil_attached_target_damage_+%_final":[[{
+        "var":"BrandsAttachedToEnemy"
       }]],
-  "critical_strike_chance_+%_per_power_charge":[[{
-        "var":"PowerCharge",
-        "type":"Multiplier"
-      }]],
-  "critical_strike_multiplier_+_per_power_charge":[[[]]],
-  "critical_multiplier_+%_per_100_max_es_on_shield":[[{
-        "stat":"EnergyShieldOnWeapon 2"
-      }]],
-  "critical_strike_multiplier_+_if_dexterity_higher_than_intelligence":[{
-      "1":{
-        "var":"DexHigherThanInt"
-      },
-      "value":[]
-    }],
-  "damage_+%_per_endurance_charge":[[{
-        "var":"EnduranceCharge"
-      }]],
-  "active_skill_attack_damage_+%_final_per_endurance_charge":[[[]]],
-  "attack_damage_+%_per_450_physical_damage_reduction_rating":[[{
-        "div":450
-      }]],
-  "attack_damage_+%_per_450_evasion":[[[]]],
-  "damage_+%_per_frenzy_charge":[[{
-        "var":"FrenzyCharge"
-      }]],
-  "additional_critical_strike_chance_permyriad_while_affected_by_elusive":[[{
-        "var":"Elusive"
-      },{
-        "varList":["UsingClaw","UsingDagger"]
-      },{
-        "varList":["UsingSword","UsingAxe","UsingMace"]
-      }]],
-  "nightblade_elusive_grants_critical_strike_multiplier_+_to_supported_skills":[{
-      "1":{
-        "varList":[]
-      },
-      "2":{
-        "varList":[]
-      },
-      "name":"NightbladeElusiveCritMultiplier"
-    }],
-  "critical_strike_chance_against_enemies_on_full_life_+%":[[{
-        "var":"FullLife"
-      }]],
-  "critical_strike_chance_+%_vs_blinded_enemies":[[{
-        "var":"Blinded"
-      }]],
-  "no_critical_strike_multiplier":[{
-      "name":"NoCritMultiplier"
-    }],
-  "buff_effect_duration_+%_per_removable_endurance_charge":[[{
-        "var":"RemovableEnduranceCharge"
-      }]],
-  "buff_effect_duration_+%_per_removable_endurance_charge_limited_to_5":[[{
-        "limit":5
-      }]],
-  "skill_effect_duration_+%_per_removable_frenzy_charge":[[{
-        "var":"RemovableFrenzyCharge"
-      }]],
-  "skill_effect_duration_+%":[[]],
-  "secondary_skill_effect_duration_+%":[{
-      "name":"SecondaryDuration"
-    }],
-  "offering_skill_effect_duration_per_corpse":[{
-      "1":{
-        "var":"CorpseConsumedRecently",
-        "limit":4
-      },
-      "name":"PrimaryDuration"
-    }],
-  "modifiers_to_skill_effect_duration_also_affect_soul_prevention_duration":[{
-      "value":{
-        "key":"skillEffectAppliesToSoulGainPrevention"
-      }
-    }],
-  "modifiers_to_buff_effect_duration_also_affect_soul_prevention_duration":[{
-      "value":[]
-    }],
-  "active_skill_quality_duration_+%_final":[[]],
-  "fortify_duration_+%":[{
-      "name":"FortifyDuration"
-    }],
-  "support_swift_affliction_skill_effect_and_damaging_ailment_duration_+%_final":[{
-      "name":"SkillAndDamagingAilmentDuration"
-    }],
-  "base_bleed_duration_+%":[{
-      "name":"EnemyBleedDuration"
-    }],
-  "damage_+%":[[]],
-  "chance_for_extra_damage_roll_%":[{
-      "name":"LuckyHitsChance"
-    }],
-  "chance_to_deal_double_damage_%":[[]],
-  "chance_to_deal_double_damage_%_vs_bleeding_enemies":[[[]]],
-  "base_chance_to_deal_triple_damage_%":[{
-      "name":"TripleDamageChance"
-    }],
-  "damage_+%_with_hits_and_ailments":[{
-      "keywordFlags":786432
-    }],
-  "physical_damage_+%":[[]],
-  "lightning_damage_+%":[{
-      "name":"LightningDamage"
-    }],
-  "cold_damage_+%":[{
-      "name":"ColdDamage"
-    }],
-  "fire_damage_+%":[{
-      "name":"FireDamage"
-    }],
-  "chaos_damage_+%":[{
-      "name":"ChaosDamage"
-    }],
-  "elemental_damage_+%":[{
-      "name":"ElementalDamage"
-    }],
-  "trap_throwing_speed_+%_per_frenzy_charge":[{
-      "1":[],
-      "name":"TrapThrowingSpeed"
-    }],
-  "active_skill_trap_throwing_speed_+%_final":[[]],
-  "trap_critical_strike_multiplier_+_per_power_charge":[{
-      "1":[],
-      "keywordFlags":4096
-    }],
-  "placing_traps_cooldown_recovery_+%":[[]],
-  "trap_trigger_radius_+%":[{
-      "name":"TrapTriggerAreaOfEffect"
-    }],
-  "faster_poison_%":[{
-      "name":"PoisonFaster"
-    }],
-  "number_of_additional_traps_to_throw":[{
-      "name":"TrapThrowCount"
-    }],
-  "active_skill_damage_+%_final":[[]],
-  "sigil_attached_target_hit_damage_+%_final":[[{
-        "var":"TargetingBrandedEnemy"
-      }]],
-  "melee_damage_+%":[{
-      "flags":256
-    }],
-  "melee_physical_damage_+%":[[]],
-  "area_damage_+%":[{
-      "flags":512
-    }],
-  "projectile_damage_+%":[[]],
-  "active_skill_projectile_damage_+%_final":[[]],
-  "active_skill_area_damage_+%_final":[[]],
-  "physical_damage_+%_per_frenzy_charge":[[[]]],
-  "melee_damage_vs_bleeding_enemies_+%":[[[]]],
-  "damage_+%_vs_frozen_enemies":[[{
-        "var":"Frozen"
-      }]],
-  "mine_critical_strike_chance_+%_per_power_charge":[{
-      "1":[],
-      "keywordFlags":8192
-    }],
-  "base_reduce_enemy_fire_resistance_%":[{
-      "name":"FirePenetration"
-    }],
-  "number_of_additional_mines_to_place":[{
-      "name":"MineThrowCount"
-    }],
   "degen_effect_+%":[{
       "name":"DamageTakenOverTime"
     }],
-  "support_additional_trap_mine_%_chance_for_1_additional_trap_mine":[[],[]],
-  "base_reduce_enemy_lightning_resistance_%":[{
-      "name":"LightningPenetration"
+  "base_number_of_sigils_allowed_per_target":[{
+      "name":"BrandsAttachedLimit"
     }],
-  "support_additional_trap_mine_%_chance_for_3_additional_trap_mine":{
-    "1":[],
-    "2":[],
-    "div":33.333333333333
-  },
-  "reduce_enemy_chaos_resistance_%":[{
-      "name":"ChaosPenetration"
+  "buff_time_passed_-%":[{
+      "name":"BuffExpireFaster"
     }],
-  "totem_life_+%":[{
-      "name":"TotemLife"
+  "active_skill_brands_allowed_on_enemy_+":[[]],
+  "additional_chance_to_take_critical_strike_%":[{
+      "name":"SelfExtraCritChance"
     }],
-  "reduce_enemy_elemental_resistance_%":[{
-      "name":"ElementalPenetration"
+  "base_self_critical_strike_multiplier_-%":[{
+      "name":"SelfCritMultiplier"
     }],
-  "totem_life_+%_final":[[]],
-  "base_penetrate_elemental_resistances_%":[[]],
-  "treat_enemy_resistances_as_negated_on_elemental_damage_hit_%_chance":[{
-      "name":"HitsInvertEleResChance",
-      "type":"CHANCE"
+  "chance_to_be_shocked_%":[{
+      "name":"SelfShockChance"
     }],
-  "attack_skills_additional_ballista_totems_allowed":[{
+  "brand_atttached_duration_is_infinite":[{
+      "name":"UnlimitedBrandDuration"
+    }],
+  "chance_to_be_ignited_%":[{
+      "name":"SelfIgniteChance"
+    }],
+  "brand_cannot_be_recalled":[{
+      "name":"Condition:CannotRecallBrand"
+    }],
+  "chance_to_be_frozen_%":[{
+      "name":"SelfFreezeChance"
+    }],
+  "banner_buff_effect_+%_final_per_resource":[[{
+        "var":"BannerValour"
+      },{
+        "var":"BannerPlanted"
+      }]],
+  "receive_bleeding_chance_%_when_hit_by_attack":[{
+      "name":"SelfBleedChance"
+    }],
+  "base_self_shock_duration_-%":[{
+      "name":"SelfShockDuration"
+    }],
+  "triggered_skill_damage_+%":[{
       "1":{
-        "skillType":125
+        "skillType":41
       },
-      "name":"ActiveTotemLimit"
+      "name":"TriggeredDamage"
     }],
-  "base_number_of_totems_allowed":[[]],
-  "global_minimum_added_physical_damage_vs_bleeding_enemies":[[[]]],
-  "global_maximum_added_physical_damage_vs_bleeding_enemies":[[[]]],
-  "global_minimum_added_fire_damage_vs_burning_enemies":[{
-      "1":{
-        "var":"Burning"
-      },
-      "name":"FireMin"
+  "base_self_ignite_duration_-%":[{
+      "name":"SelfIgniteDuration"
     }],
-  "totem_duration_+%":[{
-      "name":"TotemDuration"
-    }],
-  "global_maximum_added_fire_damage_vs_burning_enemies":[{
-      "1":[],
-      "name":"FireMax"
-    }],
-  "minimum_added_fire_damage_vs_ignited_enemies":[[{
-        "var":"Ignited"
+  "channelled_skill_damage_+%":[[{
+        "skillType":57
       }]],
-  "minion_damage_+%":[{
+  "base_self_freeze_duration_-%":[{
+      "name":"SelfFreezeDuration"
+    }],
+  "life_leech_on_any_damage_when_hit_permyriad":[{
+      "name":"SelfDamageLifeLeech"
+    }],
+  "mana_leech_on_any_damage_when_hit_permyriad":[{
+      "name":"SelfDamageManaLeech"
+    }],
+  "damage_+%_if_you_have_consumed_a_corpse_recently":[[{
+        "var":"ConsumedCorpseRecently"
+      }]],
+  "life_granted_when_hit_by_attacks":[{
+      "name":"SelfLifeOnHit"
+    }],
+  "withered_on_hit_chance_%":[{
+      "name":"Condition:CanWither"
+    }],
+  "mana_granted_when_hit_by_attacks":[{
+      "name":"SelfManaOnHit"
+    }],
+  "minions_have_%_chance_to_inflict_wither_on_hit":[{
       "value":{
         "mod":[]
       }
     }],
-  "maximum_added_fire_damage_vs_ignited_enemies":[[[]]],
-  "minimum_added_cold_damage_per_frenzy_charge":[{
-      "1":[],
-      "name":"ColdMin"
+  "life_granted_when_killed":[{
+      "name":"SelfLifeOnKill"
     }],
-  "maximum_added_cold_damage_per_frenzy_charge":[{
-      "1":[],
-      "name":"ColdMax"
+  "discharge_damage_+%_if_3_charge_types_removed":[[[],[],[]]],
+  "mana_granted_when_killed":[{
+      "name":"SelfManaOnKill"
     }],
-  "minimum_added_cold_damage_vs_chilled_enemies":[[{
-        "var":"Chilled"
-      }]],
-  "minion_critical_strike_chance_+%":[{
-      "value":{
-        "mod":[]
-      }
+  "trauma_strike_self_damage_per_trauma":[{
+      "name":"TraumaSelfDamageTakenLife"
     }],
-  "maximum_added_cold_damage_vs_chilled_enemies":[[[]]],
-  "global_minimum_added_cold_damage":[[]],
-  "global_maximum_added_cold_damage":[[]],
-  "global_minimum_added_lightning_damage":[{
-      "name":"LightningMin"
+  "kill_enemy_on_hit_if_under_10%_life":[{
+      "name":"CullPercent"
     }],
-  "global_maximum_added_lightning_damage":[{
-      "name":"LightningMax"
-    }],
-  "global_minimum_added_chaos_damage":[{
-      "name":"ChaosMin"
-    }],
-  "global_maximum_added_chaos_damage":[{
-      "name":"ChaosMax"
-    }],
-  "added_damage_+%_final":[{
-      "name":"AddedDamage"
-    }],
-  "minion_additional_physical_damage_reduction_%":[{
-      "value":{
-        "mod":{
-          "name":"PhysicalDamageReduction"
-        }
-      }
-    }],
-  "active_skill_added_damage_+%_final":[[]],
-  "shield_charge_damage_+%_maximum":[[{
-        "ramp":[[],[]],
-        "type":"DistanceRamp"
-      }]],
-  "summon_cold_resistance_+":[{
-      "value":{
-        "mod":[]
-      }
-    }],
-  "damage_+%_on_full_energy_shield":[[{
-        "var":"FullEnergyShield"
-      }]],
-  "damage_+%_when_on_low_life":[[{
-        "var":"LowLife"
-      }]],
-  "damage_vs_enemies_on_low_life_+%":[[[]]],
-  "damage_+%_when_on_full_life":[[[]]],
-  "damage_+%_vs_enemies_on_full_life":[[[]]],
-  "hit_damage_+%":[[]],
-  "active_skill_damage_+%_final_when_cast_on_frostbolt":[[{
-        "var":"CastOnFrostbolt"
-      }]],
-  "active_skill_merged_damage_+%_final_while_dual_wielding":[[{
-        "var":"DualWielding"
-      }]],
-  "active_skill_additive_minion_damage_modifiers_apply_to_all_damage_at_%_value":[{
-      "name":"MinionDamageAppliesToPlayer"
-    },{
-      "name":"ImprovedMinionDamageAppliesToPlayer"
-    }],
-  "active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value":[{
-      "name":"SpellDamageAppliesToAttacks"
-    },{
-      "name":"ImprovedSpellDamageAppliesToAttacks"
-    }],
-  "active_skill_main_hand_weapon_damage_+%_final":[[{
-        "var":"MainHandAttack"
-      }]],
-  "physical_weapon_damage_+%_per_10_str":[[{
-        "div":10,
-        "stat":"Str"
-      }]],
-  "support_makes_skill_mine_pvp_damage_+%_final":[{
-      "name":"PvpDamageMultiplier"
-    }],
-  "physical_damage_%_to_add_as_lightning":[{
-      "name":"PhysicalDamageGainAsLightning"
-    }],
-  "physical_damage_%_to_add_as_cold":[{
-      "name":"PhysicalDamageGainAsCold"
-    }],
-  "physical_damage_%_to_add_as_fire":[{
-      "name":"PhysicalDamageGainAsFire"
-    }],
-  "physical_damage_%_to_add_as_chaos":[[]],
-  "cold_damage_%_to_add_as_fire":[{
-      "name":"ColdDamageGainAsFire"
-    }],
-  "fire_damage_%_to_add_as_chaos":[{
-      "name":"FireDamageGainAsChaos"
-    }],
-  "lightning_damage_%_to_add_as_chaos":[{
-      "name":"LightningDamageGainAsChaos"
-    }],
-  "base_physical_damage_%_to_convert_to_lightning":[{
-      "name":"PhysicalDamageConvertToLightning"
-    }],
-  "base_physical_damage_%_to_convert_to_cold":[{
-      "name":"PhysicalDamageConvertToCold"
-    }],
-  "base_physical_damage_%_to_convert_to_fire":[{
-      "name":"PhysicalDamageConvertToFire"
-    }],
-  "base_physical_damage_%_to_convert_to_chaos":[{
-      "name":"PhysicalDamageConvertToChaos"
-    }],
-  "skill_physical_damage_%_to_convert_to_lightning":[{
-      "name":"SkillPhysicalDamageConvertToLightning"
-    }],
-  "skill_physical_damage_%_to_convert_to_cold":[{
-      "name":"SkillPhysicalDamageConvertToCold"
-    }],
-  "base_physical_damage_%_of_maximum_energy_shield_to_deal_per_minute":{
+  "base_physical_damage_%_of_maximum_life_to_deal_per_minute":{
     "1":{
       "1":[],
       "name":"PhysicalDegen"
     },
     "div":6000
   },
-  "skill_physical_damage_%_to_convert_to_fire":[{
-      "name":"SkillPhysicalDamageConvertToFire"
+  "spell_cast_time_added_to_cooldown_if_triggered":[{
+      "name":"SpellCastTimeAddedToCooldownIfTriggered"
     }],
-  "skill_physical_damage_%_to_convert_to_chaos":[{
-      "name":"SkillPhysicalDamageConvertToChaos"
-    }],
-  "attack_speed_+%":[[]],
-  "skill_lightning_damage_%_to_convert_to_chaos":[{
-      "name":"SkillLightningDamageConvertToChaos"
-    }],
-  "base_attack_speed_+%_per_frenzy_charge":[[[]]],
-  "skill_lightning_damage_%_to_convert_to_fire":[{
-      "name":"SkillLightningDamageConvertToFire"
-    }],
-  "damage_+%_per_power_charge":[[[]]],
-  "skill_lightning_damage_%_to_convert_to_cold":[{
-      "name":"SkillLightningDamageConvertToCold"
-    }],
-  "skill_cold_damage_%_to_convert_to_fire":[{
-      "name":"SkillColdDamageConvertToFire"
-    }],
-  "accuracy_rating_+%_when_on_low_life":[{
+  "base_physical_damage_%_of_maximum_energy_shield_to_deal_per_minute":[[[]]],
+  "base_nonlethal_fire_damage_%_of_maximum_life_taken_per_minute":[{
       "1":[],
+      "name":"FireDegen"
+    }],
+  "warcry_count_power_from_enemies":[{
+      "1":[],
+      "name":"UsesWarcryPower"
+    }],
+  "base_nonlethal_fire_damage_%_of_maximum_energy_shield_taken_per_minute":[[[]]],
+  "attack_speed_+%":[[]],
+  "active_skill_attack_speed_+%_final":[[]],
+  "base_attack_speed_+%_per_frenzy_charge":[[[]]],
+  "attack_speed_+%_when_on_low_life":[[{
+        "var":"LowLife"
+      }]],
+  "damage_+%_per_power_charge":[[[]]],
+  "accuracy_rating":[{
       "name":"Accuracy"
     }],
-  "skill_cold_damage_%_to_convert_to_chaos":[{
-      "name":"SkillColdDamageConvertToChaos"
-    }],
+  "accuracy_rating_+%":[[]],
+  "accuracy_rating_+%_when_on_low_life":[[[]]],
+  "attack_damage_+%":[[]],
   "elemental_damage_with_attack_skills_+%":[{
-      "keywordFlags":65536
+      "keywordFlags":65536,
+      "name":"ElementalDamage"
     }],
-  "skill_fire_damage_%_to_convert_to_chaos":[{
-      "name":"SkillFireDamageConvertToChaos"
+  "attack_minimum_added_physical_damage":[{
+      "name":"PhysicalMin"
     }],
-  "attack_maximum_added_physical_damage":[[]],
+  "attack_maximum_added_physical_damage":[{
+      "name":"PhysicalMax"
+    }],
   "attack_minimum_added_physical_damage_with_weapons":[[]],
   "attack_maximum_added_physical_damage_with_weapons":[[]],
-  "bleed_on_hit_with_attacks_%":[{
-      "name":"BleedChance"
-    }],
+  "attack_minimum_added_lightning_damage":[[]],
   "attack_maximum_added_lightning_damage":[[]],
-  "global_bleed_on_hit":[[]],
-  "bleed_on_melee_attack_chance_%":[[]],
-  "chance_to_bleed_on_hit_%_chance_in_blood_stance":[[{
-        "var":"BloodStance"
-      }]],
-  "chance_to_bleed_on_hit_%_vs_maimed":[[{
-        "var":"Maimed"
-      }]],
+  "attack_skills_have_added_lightning_damage_equal_to_%_of_maximum_mana":[[{
+        "type":"PercentStat",
+        "stat":"Mana"
+      }],[[]]],
+  "quality_display_base_duration_is_quality":[],
+  "quality_display_base_number_of_projectiles_is_gem":[],
+  "quality_display_animate_weapon_is_gem":[],
+  "attack_minimum_added_cold_damage":[[]],
   "attack_maximum_added_cold_damage":[[]],
-  "faster_bleed_%":[{
-      "name":"BleedFaster"
-    }],
+  "attack_minimum_added_fire_damage":[[]],
   "attack_maximum_added_fire_damage":[[]],
-  "bleeding_stacks_up_to_x_times":[{
-      "name":"BleedStacksMax"
-    }],
+  "attack_minimum_added_chaos_damage":[[]],
   "attack_maximum_added_chaos_damage":[[]],
   "melee_weapon_range_+":[{
       "name":"MeleeWeaponRange"
     }],
-  "base_ailment_damage_+%":[[]],
-  "active_skill_ailment_damage_+%_final":[[]],
-  "base_chance_to_poison_on_hit_%":[{
-      "name":"PoisonChance"
+  "melee_range_+":[[],{
+      "name":"UnarmedRange"
     }],
-  "override_off_hand_base_critical_strike_chance_to_5%":[{
+  "override_off_hand_base_critical_strike_chance_to_5%":{
+    "1":{
       "value":{
         "key":"setOffHandBaseCritChance"
       }
-    }],
+    },
+    "value":5
+  },
   "off_hand_local_minimum_added_physical_damage":[{
       "value":{
         "key":"setOffHandPhysicalMin"
@@ -1093,13 +1519,9 @@
   "off_hand_minimum_added_physical_damage_per_15_shield_armour_and_evasion_rating":[[{
         "var":"OffHandAttack"
       },{
-        "div":15,
-        "statList":["ArmourOnWeapon 2","EvasionOnWeapon 2"]
+        "statList":["ArmourOnWeapon 2","EvasionOnWeapon 2"],
+        "div":15
       }]],
-  "retaliation_base_use_window_duration_ms":[],
-  "quality_display_spell_damage_to_attack_damage_is_gem":[],
-  "quality_display_active_skill_area_damage_is_gem":[],
-  "quality_display_shock_chance_from_skill_is_gem":[],
   "off_hand_maximum_added_physical_damage_per_15_shield_armour_and_evasion_rating":[[[],{
         "statList":[]
       }]],
@@ -1111,7 +1533,6 @@
   "attacks_impale_on_hit_%_chance":[{
       "name":"ImpaleChance"
     }],
-  "quality_display_animate_weapon_is_gem":[],
   "impale_on_hit_%_chance":[[]],
   "spells_impale_on_hit_%_chance":[{
       "keywordFlags":131072
@@ -1119,19 +1540,12 @@
   "impale_debuff_effect_+%":[{
       "name":"ImpaleEffect"
     }],
-  "base_resist_all_elements_%":[{
-      "name":"ElementalResist"
-    }],
-  "spell_impale_on_crit_%_chance":[[{
-        "var":"CriticalStrike"
-      }]],
+  "spell_impale_on_crit_%_chance":[[[]]],
   "base_cast_speed_+%":[[]],
   "active_skill_cast_speed_+%_final":[[]],
   "spell_damage_+%":[[]],
   "spell_damage_+%_per_10_int":[{
-      "3":{
-        "stat":"Int"
-      },
+      "3":[],
       "value":[]
     }],
   "spell_minimum_added_physical_damage":[[]],
@@ -1147,32 +1561,36 @@
   "melee_attack_number_of_spirit_strikes":[{
       "name":"AdditionalStrikeTarget"
     }],
-  "quality_display_base_number_of_projectiles_is_gem":[],
-  "support_trap_damage_+%_final":[[]],
-  "trap_damage_+%":[[]],
-  "number_of_additional_traps_allowed":[{
-      "name":"ActiveTrapLimit"
-    }],
+  "retaliation_base_use_window_duration_ms":[],
+  "quality_display_spell_damage_to_attack_damage_is_gem":[],
+  "quality_display_active_skill_bleed_damage_final_is_gem":[],
+  "quality_display_active_skill_area_damage_is_gem":[],
+  "quality_display_trap_duration_is_gem":[],
+  "quality_display_shock_chance_from_skill_is_gem":[],
+  "quality_display_sigil_attached_target_damage_is_gem":[],
   "quality_display_base_additional_arrows_is_gem":[],
-  "trap_throwing_speed_+%":[[]],
-  "base_mana_cost_+":[{
-      "name":"ManaCostNoMult"
+  "supported_minion_skill_gem_level_+":[{
+      "1":{
+        "skillType":9
+      },
+      "name":"SupportedGemProperty",
+      "value":{
+        "key":"level",
+        "keyword":"grants_active_skill"
+      }
     }],
   "supported_elemental_skill_gem_level_+":[{
       "keywordFlags":224,
       "value":[]
     }],
-  "no_mana_cost":{
-    "1":{
-      "name":"ManaCost"
-    },
-    "value":-100
-  },
-  "supported_curse_skill_gem_level_+":[{
+  "supported_strike_skill_gem_level_+":[{
+      "1":{
+        "skillType":25
+      },
       "value":[]
     }],
-  "base_life_cost_+%":[{
-      "name":"LifeCost"
+  "supported_curse_skill_gem_level_+":[{
+      "value":[]
     }],
   "supported_aura_skill_gem_level_+":[{
       "1":{
@@ -1180,14 +1598,8 @@
       },
       "value":[]
     }],
-  "flask_mana_to_recover_+%":[{
-      "name":"FlaskManaRecovery"
-    }],
   "supported_active_skill_gem_level_+":[{
       "value":[]
-    }],
-  "flask_effect_+%":[{
-      "name":"FlaskEffect"
     }],
   "supported_physical_skill_gem_level_+":[{
       "1":{
@@ -1195,273 +1607,453 @@
       },
       "value":[]
     }],
-  "base_chance_to_dodge_%":[{
-      "name":"AttackDodgeChance"
-    }],
   "supported_chaos_skill_gem_level_+":[{
       "1":{
         "skillType":49
       },
       "value":[]
     }],
-  "base_chance_to_dodge_spells_%":[{
-      "name":"SpellDodgeChance"
-    }],
   "supported_lightning_skill_gem_level_+":[{
       "1":[],
       "value":[]
     }],
-  "base_movement_velocity_+%":[[]],
+  "supported_cold_skill_gem_level_+":[{
+      "1":[],
+      "value":[]
+    }],
   "supported_fire_skill_gem_level_+":[{
       "1":{
         "skillType":32
       },
       "value":[]
     }],
-  "monster_base_block_%":[{
-      "name":"BlockChance"
-    }],
   "base_cannot_be_damaged":[{
       "name":"Condition:CannotBeDamaged"
     }],
-  "base_spell_block_%":[{
-      "name":"SpellBlockChance"
-    }],
   "physical_damage_reduction_rating_+%":[[]],
-  "base_block_%_damage_taken":[{
-      "name":"BlockEffect"
-    }],
-  "warcry_count_power_from_enemies":[{
-      "1":{
-        "effectType":"Buff"
-      },
-      "name":"UsesWarcryPower"
-    }],
-  "life_leech_from_any_damage_permyriad":[{
-      "name":"DamageLifeLeech"
-    }],
   "gain_x_rage_on_attack_hit":[{
-      "1":{
-        "effectName":"Rage"
-      },
+      "1":[],
       "name":"Condition:CanGainRage"
     }],
-  "mana_leech_from_any_damage_permyriad":[{
-      "name":"DamageManaLeech"
-    }],
-  "spell_cast_time_added_to_cooldown_if_triggered":[{
-      "name":"SpellCastTimeAddedToCooldownIfTriggered"
-    }],
-  "attack_skill_mana_leech_from_any_damage_permyriad":[[]],
-  "base_mana_leech_from_elemental_damage_permyriad":[{
-      "name":"ElementalDamageManaLeech"
-    }],
-  "kill_enemy_on_hit_if_under_10%_life":[{
-      "name":"CullPercent"
-    }],
-  "base_life_leech_from_attack_damage_permyriad":[[]],
-  "base_life_leech_from_chaos_damage_permyriad":[{
-      "name":"ChaosDamageLifeLeech"
+  "base_added_cooldown_count":[{
+      "name":"AdditionalCooldownUses"
     }],
   "support_added_cooldown_count_if_not_instant":[[[]]],
-  "energy_shield_leech_from_any_damage_permyriad":[{
-      "name":"DamageEnergyShieldLeech"
-    }],
-  "discharge_damage_+%_if_3_charge_types_removed":[[[],[],{
-        "var":"RemovablePowerCharge"
-      }]],
-  "life_leech_from_physical_attack_damage_permyriad":[{
-      "name":"PhysicalDamageLifeLeech"
-    }],
   "withered_on_hit_for_2_seconds_%_chance":[[]],
-  "base_energy_shield_leech_from_spell_damage_permyriad":[[]],
-  "maximum_life_leech_amount_per_leech_+%":[{
-      "name":"MaxLifeLeechRate"
-    }],
-  "skill_convert_%_physical_damage_to_random_element":[{
-      "name":"PhysicalDamageConvertToRandom"
-    }],
-  "maximum_energy_shield_leech_amount_per_leech_+%":[{
-      "name":"MaxEnergyShieldLeechRate"
-    }],
-  "damage_+%_if_you_have_consumed_a_corpse_recently":[[{
-        "var":"ConsumedCorpseRecently"
-      }]],
-  "mana_gain_per_target":[{
-      "name":"ManaOnHit"
-    }],
   "snipe_triggered_skill_damage_+%_final":[[]],
-  "damage_+%_while_life_leeching":[[{
-        "var":"LeechingLife"
-      }]],
   "snipe_triggered_skill_hit_damage_+%_final_per_stage":[{
       "name":"snipeHitMulti"
     }],
-  "damage_+%_while_mana_leeching":[[{
-        "var":"LeechingMana"
-      }]],
   "snipe_triggered_skill_ailment_damage_+%_final_per_stage":[{
       "name":"snipeAilmentMulti"
     }],
-  "damage_+%_while_es_leeching":[[{
-        "var":"LeechingEnergyShield"
-      }]],
-  "base_maximum_lightning_damage_resistance_%":[{
-      "name":"LightningResistMax"
-    }],
-  "aura_effect_+%":[[]],
-  "triggered_skill_damage_+%":[{
-      "1":{
-        "skillType":41
-      },
-      "name":"TriggeredDamage"
-    }],
-  "elusive_effect_+%":[{
-      "1":[],
-      "name":"ElusiveEffect"
-    }],
-  "banner_area_of_effect_+%_final_per_resource":[[{
-        "var":"BannerValour"
-      },{
-        "var":"BannerPlanted"
-      }]],
-  "banner_buff_effect_+%_final_per_resource":[[[],[]]],
-  "brand_cannot_be_recalled":[{
-      "name":"Condition:CannotRecallBrand"
-    }],
-  "blind_effect_+%":[{
-      "1":{
-        "effectName":"Vaal Blade Flurry"
-      },
-      "name":"BlindEffect"
-    }],
-  "brand_atttached_duration_is_infinite":[{
-      "name":"UnlimitedBrandDuration"
-    }],
+  "banner_area_of_effect_+%_final_per_resource":[[[],[]]],
   "additive_cast_speed_modifiers_apply_to_sigil_repeat_frequency":[],
-  "accuracy_rating":[[]],
+  "sigil_repeat_frequency_+%":[{
+      "name":"BrandActivationFrequency"
+    }],
   "base_sigil_repeat_frequency_ms":[{
       "value":{
         "key":"repeatFrequency"
       }
     }],
-  "active_skill_brands_allowed_on_enemy_+":[{
-      "name":"BrandsAttachedLimit"
+  "base_life_reservation_+%":[{
+      "name":"LifeReserved"
     }],
-  "base_number_of_sigils_allowed_per_target":[[]],
-  "sigil_attached_target_damage_+%_final":[[{
-        "var":"BrandsAttachedToEnemy",
-        "type":"MultiplierThreshold"
-      }]],
-  "base_reservation_efficiency_+%":[{
-      "name":"ReservationEfficiency"
+  "base_mana_reservation_+%":[{
+      "name":"ManaReserved"
     }],
-  "base_life_reservation_efficiency_+%":[{
-      "name":"LifeReservationEfficiency"
+  "curse_skill_effect_duration_+%":[[]],
+  "curse_effect_+%_vs_players":[{
+      "name":"CurseEffectAgainstPlayer"
     }],
-  "base_mana_reservation_efficiency_+%":[{
-      "name":"ManaReservationEfficiency"
+  "curse_effect_+%":[[]],
+  "warcry_grant_damage_+%_to_exerted_attacks":[{
+      "name":"ExertIncrease"
     }],
-  "base_reservation_+%":[{
-      "name":"Reserved"
-    }],
-  "buff_time_passed_-%":[{
-      "name":"BuffExpireFaster"
-    }],
-  "summon_fire_resistance_+":[{
-      "value":{
-        "mod":[]
-      }
-    }],
-  "minion_skill_area_of_effect_+%":[{
-      "value":{
-        "mod":[]
-      }
-    }],
-  "base_minion_duration_+%":[[{
-        "skillType":88
-      }]],
-  "minion_elemental_resistance_%":[{
-      "value":{
-        "mod":[]
-      }
-    }],
-  "minion_cast_speed_+%":[{
-      "value":{
-        "mod":[]
-      }
-    }],
-  "minion_attack_speed_+%":[{
-      "value":{
-        "mod":[]
-      }
-    }],
-  "minion_movement_speed_+%":[{
-      "value":{
-        "mod":[]
-      }
-    }],
-  "minion_maximum_life_+%":[{
-      "value":{
-        "mod":[]
-      }
-    }],
-  "minion_critical_strike_multiplier_+":[{
-      "value":{
-        "mod":[]
-      }
-    }],
-  "active_skill_minion_bleeding_damage_+%_final":[{
+  "minion_always_crit":[{
       "value":{
         "mod":{
-          "keywordFlags":4194304
+          "type":"OVERRIDE"
         }
       }
     }],
-  "minion_damage_+%_on_full_life":[{
-      "value":{
-        "mod":[[]]
-      }
+  "number_of_archer_skeletons_to_summon":[[]],
+  "number_of_melee_skeletons_to_summon":[[]],
+  "maximum_life_+%_for_corpses_you_create":[{
+      "name":"CorpseLife"
     }],
-  "minion_melee_damage_+%":[{
+  "active_skill_minion_movement_velocity_+%_final":[{
       "value":{
         "mod":[]
       }
     }],
-  "base_totem_duration":[[]],
-  "totems_regenerate_%_life_per_minute":[{
-      "keywordFlags":16384
-    }],
-  "summon_totem_cast_speed_+%":[{
-      "name":"TotemPlacementSpeed"
-    }],
-  "number_of_additional_totems_allowed":[[]],
-  "totem_damage_+%":[[]],
-  "support_additional_trap_mine_%_chance_for_2_additional_trap_mine":{
-    "1":[],
-    "2":[],
-    "div":50
-  },
-  "mine_projectile_speed_+%_per_frenzy_charge":[{
-      "1":[],
-      "name":"ProjectileSpeed"
-    }],
-  "remote_mined_by_support":[{
-      "name":"ManaCostGainAsReservation"
+  "minion_life_leech_from_elemental_damage_permyriad":[{
+      "value":{
+        "mod":{
+          "name":"FireDamageLeech"
+        }
+      }
     },{
-      "name":"LifeCostGainAsReservation"
+      "value":{
+        "mod":{
+          "name":"LightningDamageLeech"
+        }
+      }
+    },{
+      "value":{
+        "mod":{
+          "name":"ColdDamageLeech"
+        }
+      }
     }],
-  "mine_detonation_radius_+%":[{
-      "name":"MineDetonationAreaOfEffect"
+  "active_skill_minion_physical_damage_+%_final":[{
+      "value":{
+        "mod":{
+          "name":"PhysicalDamage"
+        }
+      }
     }],
-  "mine_damage_+%":[[]],
-  "mine_throwing_speed_+%_per_frenzy_charge":[{
+  "active_skill_minion_attack_speed_+%_final":[{
+      "value":{
+        "mod":[]
+      }
+    }],
+  "number_of_spider_minions_allowed":[{
+      "name":"ActiveSpiderLimit"
+    }],
+  "number_of_wolves_allowed":[{
+      "name":"ActiveWolfLimit"
+    }],
+  "base_number_of_arbalists":[{
+      "name":"ActiveArbalistLimit"
+    }],
+  "base_number_of_golems_allowed":[{
+      "name":"ActiveGolemLimit"
+    }],
+  "global_minimum_added_fire_damage_vs_burning_enemies":[[{
+        "var":"Burning"
+      }]],
+  "damage_+%_vs_frozen_enemies":[[{
+        "var":"Frozen"
+      }]],
+  "modifiers_to_buff_effect_duration_also_affect_soul_prevention_duration":[{
+      "value":{
+        "key":"skillEffectAppliesToSoulGainPrevention"
+      }
+    }],
+  "secondary_skill_effect_duration_+%":[{
+      "name":"SecondaryDuration"
+    }],
+  "skill_effect_duration_+%_per_removable_frenzy_charge":[[[]]],
+  "burn_damage_+%":[{
+      "keywordFlags":134217728,
+      "name":"FireDamage"
+    }],
+  "chance_to_deal_double_damage_%_vs_bleeding_enemies":[[[]]],
+  "chance_to_deal_double_damage_%":[[]],
+  "melee_physical_damage_+%":[[]],
+  "projectile_damage_+%":[[]],
+  "active_skill_quality_duration_+%_final":[[]],
+  "active_skill_area_damage_+%_final":[{
+      "flags":512
+    }],
+  "modifiers_to_skill_effect_duration_also_affect_soul_prevention_duration":[{
+      "value":[]
+    }],
+  "melee_damage_vs_bleeding_enemies_+%":[[[]]],
+  "damage_+%_per_frenzy_charge":[[[]]],
+  "base_reduce_enemy_fire_resistance_%":[{
+      "name":"FirePenetration"
+    }],
+  "base_penetrate_elemental_resistances_%":[{
+      "name":"ElementalPenetration"
+    }],
+  "global_minimum_added_physical_damage_vs_bleeding_enemies":[[[]]],
+  "enemy_phys_reduction_%_penalty_vs_hit":[{
+      "name":"EnemyPhysicalDamageReduction"
+    }],
+  "buff_effect_duration_+%_per_removable_endurance_charge_limited_to_5":[[[]]],
+  "base_stun_threshold_reduction_+%":[{
+      "name":"EnemyStunThreshold"
+    }],
+  "additional_critical_strike_chance_permyriad_while_affected_by_elusive":[[{
+        "var":"Elusive"
+      },{
+        "varList":["UsingClaw","UsingDagger"]
+      },{
+        "varList":["UsingSword","UsingAxe","UsingMace"]
+      }]],
+  "impale_phys_reduction_%_penalty":[{
+      "name":"EnemyImpalePhysicalDamageReduction"
+    }],
+  "minimum_added_fire_damage_vs_ignited_enemies":[[{
+        "var":"Ignited"
+      }]],
+  "base_stun_duration_+%":[{
+      "name":"EnemyStunDuration"
+    }],
+  "faster_burn_%":[[]],
+  "stun_duration_+%_vs_enemies_that_are_on_full_life":[[[]]],
+  "chance_to_double_stun_duration_%":[{
+      "name":"DoubleEnemyStunDurationChance"
+    }],
+  "minimum_added_cold_damage_per_frenzy_charge":[[[]]],
+  "stun_threshold_+%":[{
+      "name":"StunThreshold"
+    }],
+  "sigil_attached_target_hit_damage_+%_final":[[{
+        "var":"TargetingBrandedEnemy"
+      }]],
+  "base_killed_monster_dropped_item_quantity_+%":[{
+      "name":"LootQuantity"
+    }],
+  "melee_damage_+%":[[]],
+  "base_killed_monster_dropped_item_rarity_+%":[{
+      "name":"LootRarity"
+    }],
+  "critical_strike_multiplier_+_if_dexterity_higher_than_intelligence":[{
+      "1":{
+        "var":"DexHigherThanInt"
+      },
+      "value":[]
+    }],
+  "global_knockback":[{
+      "name":"EnemyKnockbackChance"
+    }],
+  "damage_+%_per_endurance_charge":[[[]]],
+  "base_global_chance_to_knockback_%":[[]],
+  "knockback_distance_+%":[{
+      "name":"EnemyKnockbackDistance"
+    }],
+  "attack_damage_+%_per_450_evasion":[[{
+        "div":450
+      }]],
+  "chance_to_be_knocked_back_%":[{
+      "name":"SelfKnockbackChance"
+    }],
+  "nightblade_elusive_grants_critical_strike_multiplier_+_to_supported_skills":[{
+      "1":{
+        "varList":[]
+      },
+      "2":{
+        "varList":[]
+      },
+      "name":"NightbladeElusiveCritMultiplier"
+    }],
+  "number_of_additional_curses_allowed":[{
+      "name":"EnemyCurseLimit"
+    }],
+  "maximum_added_cold_damage_vs_chilled_enemies":[[[]]],
+  "consecrated_ground_enemy_damage_taken_+%":[{
       "1":[],
-      "name":"MineLayingSpeed"
+      "2":{
+        "var":"OnConsecratedGround"
+      },
+      "name":"DamageTakenConsecratedGround"
     }],
-  "mine_laying_speed_+%":[[]],
-  "number_of_additional_remote_mines_allowed":[{
-      "name":"ActiveMineLimit"
+  "no_critical_strike_multiplier":[{
+      "name":"NoCritMultiplier"
+    }],
+  "base_reduce_enemy_lightning_resistance_%":[{
+      "name":"LightningPenetration"
+    }],
+  "consecrated_ground_effect_+%":[{
+      "1":[],
+      "name":"ConsecratedGroundEffect"
+    }],
+  "reduce_enemy_chaos_resistance_%":[{
+      "name":"ChaosPenetration"
+    }],
+  "base_inflict_cold_exposure_on_hit_%_chance":[{
+      "name":"ColdExposureChance"
+    }],
+  "reduce_enemy_elemental_resistance_%":[[]],
+  "base_inflict_lightning_exposure_on_hit_%_chance":[{
+      "name":"LightningExposureChance"
+    }],
+  "critical_strike_chance_against_enemies_on_full_life_+%":[[[]]],
+  "base_inflict_fire_exposure_on_hit_%_chance":[{
+      "name":"FireExposureChance"
+    }],
+  "critical_strike_chance_+%_vs_blinded_enemies":[[{
+        "var":"Blinded"
+      }]],
+  "offering_spells_effect_+%":[[]],
+  "link_buff_effect_on_self_+%":[{
+      "name":"LinkEffectOnSelf"
+    }],
+  "global_maximum_added_physical_damage_vs_bleeding_enemies":[[[]]],
+  "base_projectile_speed_+%":[[]],
+  "base_arrow_speed_+%":[[]],
+  "active_skill_projectile_speed_+%_final":[[]],
+  "projectile_base_number_of_targets_to_pierce":[{
+      "name":"PierceCount"
+    }],
+  "skill_effect_duration_+%":[[]],
+  "arrow_base_number_of_targets_to_pierce":[[]],
+  "pierce_%":[{
+      "name":"PierceChance"
+    }],
+  "maximum_added_cold_damage_per_frenzy_charge":[[[]]],
+  "always_pierce":[[]],
+  "global_maximum_added_lightning_damage":[[]],
+  "cannot_pierce":[{
+      "name":"CannotPierce"
+    }],
+  "global_minimum_added_cold_damage":[[]],
+  "projectile_damage_+%_if_pierced_enemy":[[[]]],
+  "global_minimum_added_lightning_damage":[[]],
+  "fortify_duration_+%":[{
+      "name":"FortifyDuration"
+    }],
+  "global_minimum_added_chaos_damage":[[]],
+  "support_swift_affliction_skill_effect_and_damaging_ailment_duration_+%_final":[{
+      "name":"SkillAndDamagingAilmentDuration"
+    }],
+  "added_damage_+%_final":[{
+      "name":"AddedDamage"
+    }],
+  "base_bleed_duration_+%":[{
+      "name":"EnemyBleedDuration"
+    }],
+  "active_skill_added_damage_+%_final":[[]],
+  "shield_charge_damage_+%_maximum":[[{
+        "type":"DistanceRamp",
+        "ramp":[[],[]]
+      }]],
+  "chance_for_extra_damage_roll_%":[{
+      "name":"LuckyHitsChance"
+    }],
+  "offering_skill_effect_duration_per_corpse":[{
+      "1":{
+        "var":"CorpseConsumedRecently"
+      },
+      "name":"PrimaryDuration"
+    }],
+  "damage_+%_on_full_energy_shield":[[{
+        "var":"FullEnergyShield"
+      }]],
+  "damage_+%_when_on_full_life":[[[]]],
+  "damage_+%_when_on_low_life":[[[]]],
+  "base_chance_to_deal_triple_damage_%":[{
+      "name":"TripleDamageChance"
+    }],
+  "damage_vs_enemies_on_low_life_+%":[[[]]],
+  "damage_+%_with_hits_and_ailments":[{
+      "keywordFlags":786432
+    }],
+  "damage_+%_vs_enemies_on_full_life":[[[]]],
+  "hit_damage_+%":[[]],
+  "lightning_damage_+%":[{
+      "name":"LightningDamage"
+    }],
+  "active_skill_merged_damage_+%_final_while_dual_wielding":[[[]]],
+  "active_skill_additive_minion_damage_modifiers_apply_to_all_damage_at_%_value":[{
+      "name":"MinionDamageAppliesToPlayer"
+    },{
+      "name":"ImprovedMinionDamageAppliesToPlayer"
+    }],
+  "cold_damage_+%":[{
+      "name":"ColdDamage"
+    }],
+  "fire_damage_+%":[[]],
+  "active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value":[{
+      "name":"SpellDamageAppliesToAttacks"
+    },{
+      "name":"ImprovedSpellDamageAppliesToAttacks"
+    }],
+  "chaos_damage_+%":[{
+      "name":"ChaosDamage"
+    }],
+  "damage_+%":[[]],
+  "active_skill_main_hand_weapon_damage_+%_final":[[{
+        "var":"MainHandAttack"
+      }]],
+  "elemental_damage_+%":[[]],
+  "physical_weapon_damage_+%_per_10_str":[[[]]],
+  "support_makes_skill_mine_pvp_damage_+%_final":[{
+      "name":"PvpDamageMultiplier"
+    }],
+  "active_skill_attack_damage_+%_final_per_endurance_charge":[[[]]],
+  "physical_damage_%_to_add_as_lightning":[{
+      "name":"PhysicalDamageGainAsLightning"
+    }],
+  "damage_over_time_+%":[{
+      "flags":8
+    }],
+  "physical_damage_%_to_add_as_cold":[{
+      "name":"PhysicalDamageGainAsCold"
+    }],
+  "base_skill_effect_duration":[{
+      "value":{
+        "key":"duration"
+      }
+    }],
+  "physical_damage_%_to_add_as_fire":[{
+      "name":"PhysicalDamageGainAsFire"
+    }],
+  "base_tertiary_skill_effect_duration":[{
+      "value":{
+        "key":"durationTertiary"
+      }
+    }],
+  "physical_damage_%_to_add_as_chaos":[[]],
+  "spell_minimum_base_physical_damage":[{
+      "value":[]
+    }],
+  "cold_damage_%_to_add_as_fire":[{
+      "name":"ColdDamageGainAsFire"
+    }],
+  "secondary_minimum_base_physical_damage":[{
+      "value":[]
+    }],
+  "fire_damage_%_to_add_as_chaos":[{
+      "name":"FireDamageGainAsChaos"
+    }],
+  "spell_minimum_base_lightning_damage":[{
+      "value":[]
+    }],
+  "lightning_damage_%_to_add_as_chaos":[{
+      "name":"LightningDamageGainAsChaos"
+    }],
+  "spell_maximum_base_physical_damage":[{
+      "value":[]
+    }],
+  "base_physical_damage_%_to_convert_to_lightning":[{
+      "name":"PhysicalDamageConvertToLightning"
+    }],
+  "secondary_maximum_base_physical_damage":[{
+      "value":[]
+    }],
+  "base_physical_damage_%_to_convert_to_cold":[{
+      "name":"PhysicalDamageConvertToCold"
+    }],
+  "secondary_minimum_base_lightning_damage":[{
+      "value":[]
+    }],
+  "base_physical_damage_%_to_convert_to_fire":[{
+      "name":"PhysicalDamageConvertToFire"
+    }],
+  "spell_maximum_base_lightning_damage":[{
+      "value":[]
+    }],
+  "base_physical_damage_%_to_convert_to_chaos":[{
+      "name":"PhysicalDamageConvertToChaos"
+    }],
+  "secondary_maximum_base_lightning_damage":[{
+      "value":[]
+    }],
+  "skill_physical_damage_%_to_convert_to_lightning":[{
+      "name":"SkillPhysicalDamageConvertToLightning"
+    }],
+  "base_secondary_skill_effect_duration":[{
+      "value":{
+        "key":"durationSecondary"
+      }
+    }],
+  "skill_physical_damage_%_to_convert_to_cold":[{
+      "name":"SkillPhysicalDamageConvertToCold"
     }],
   "support_autocast_warcries":[{
       "1":[],
@@ -1472,680 +2064,72 @@
         "key":"triggeredByAutoCry"
       }
     }],
-  "attack_minimum_added_fire_damage":[[]],
-  "faster_burn_%":[{
-      "name":"IgniteBurnFaster"
+  "skill_physical_damage_%_to_convert_to_fire":[{
+      "name":"SkillPhysicalDamageConvertToFire"
     }],
-  "burn_damage_+%":[{
-      "keywordFlags":134217728
+  "active_skill_damage_+%_final_when_cast_on_frostbolt":[[[]]],
+  "skill_physical_damage_%_to_convert_to_chaos":[{
+      "name":"SkillPhysicalDamageConvertToChaos"
     }],
-  "damage_over_time_+%":[{
-      "flags":8
+  "physical_damage_+%":[[]],
+  "skill_lightning_damage_%_to_convert_to_chaos":[{
+      "name":"SkillLightningDamageConvertToChaos"
     }],
-  "base_maximum_fire_damage_resistance_%":[{
-      "name":"FireResistMax"
+  "global_maximum_added_chaos_damage":[[]],
+  "skill_lightning_damage_%_to_convert_to_fire":[{
+      "name":"SkillLightningDamageConvertToFire"
     }],
-  "base_life_gain_per_target":[{
-      "name":"LifeOnHit"
+  "global_maximum_added_cold_damage":[[]],
+  "skill_lightning_damage_%_to_convert_to_cold":[{
+      "name":"SkillLightningDamageConvertToCold"
     }],
-  "attack_minimum_added_cold_damage":[[]],
-  "base_mana_cost_-%":[[]],
-  "attack_damage_+%":[[]],
-  "spell_damage_modifiers_apply_to_skill_dot":[{
-      "value":{
-        "key":"dotIsSpell"
-      }
+  "minimum_added_cold_damage_vs_chilled_enemies":[[[]]],
+  "skill_cold_damage_%_to_convert_to_fire":[{
+      "name":"SkillColdDamageConvertToFire"
     }],
-  "cannot_poison_poisoned_enemies":[{
-      "name":"Condition:SinglePoison"
+  "maximum_added_fire_damage_vs_ignited_enemies":[[[]]],
+  "skill_cold_damage_%_to_convert_to_chaos":[{
+      "name":"SkillColdDamageConvertToChaos"
     }],
-  "trauma_strike_self_damage_per_trauma":[{
-      "name":"TraumaSelfDamageTakenLife"
+  "global_maximum_added_fire_damage_vs_burning_enemies":[[[]]],
+  "skill_fire_damage_%_to_convert_to_chaos":[{
+      "name":"SkillFireDamageConvertToChaos"
     }],
-  "skill_double_hits_when_dual_wielding":[{
-      "value":{
-        "key":"doubleHitsWhenDualWielding"
-      }
+  "buff_effect_duration_+%_per_removable_endurance_charge":[[[]]],
+  "skill_convert_%_physical_damage_to_random_element":[{
+      "name":"PhysicalDamageConvertToRandom"
     }],
-  "base_secondary_skill_effect_duration":[{
-      "value":{
-        "key":"durationSecondary"
-      }
+  "treat_enemy_resistances_as_negated_on_elemental_damage_hit_%_chance":[{
+      "type":"CHANCE",
+      "name":"HitsInvertEleResChance"
     }],
-  "skill_can_own_mirage_archers":[{
-      "1":{
-        "skillType":68
-      },
-      "value":{
-        "key":"triggeredByMirageArcher"
-      }
+  "bleed_on_hit_with_attacks_%":[{
+      "name":"BleedChance"
     }],
-  "base_chaos_damage_to_deal_per_minute":[{
-      "value":{
-        "key":"ChaosDot"
-      }
-    }],
-  "active_skill_beam_splits_instead_of_chaining":[{
-      "name":"NoAdditionalChains"
-    },{
-      "name":"AdditionalChainsAddSplitsInstead"
-    }],
-  "spell_critical_strike_chance_+%":[[]],
-  "attack_minimum_added_lightning_damage":[[]],
-  "attack_speed_+%_when_on_low_life":[[[]]],
-  "mana_granted_when_killed":[{
-      "name":"SelfManaOnKill"
-    }],
-  "spell_minimum_base_fire_damage_per_removable_endurance_charge":[{
-      "1":[],
-      "value":[]
-    }],
-  "spell_maximum_base_lightning_damage_per_removable_power_charge":[{
-      "1":[],
-      "value":[]
-    }],
-  "active_skill_area_of_effect_+%_final_when_cast_on_frostbolt":[[[]]],
-  "mana_leech_on_any_damage_when_hit_permyriad":[{
-      "name":"SelfDamageManaLeech"
-    }],
-  "critical_ailment_dot_multiplier_+":[{
-      "1":[],
-      "name":"DotMultiplier"
-    }],
-  "spell_minimum_base_lightning_damage_per_removable_power_charge":[{
-      "1":[],
-      "value":[]
-    }],
-  "support_barrage_attack_time_+%_per_projectile_fired":[{
-      "1":{
-        "varList":["UsingBow","UsingWand"]
-      },
-      "2":[],
-      "name":"SkillAttackTime"
-    }],
-  "base_nonlethal_fire_damage_%_of_maximum_life_taken_per_minute":[{
-      "1":[],
-      "name":"FireDegen"
-    }],
-  "spell_maximum_base_fire_damage":[{
-      "value":[]
-    }],
-  "secondary_minimum_base_fire_damage":[{
-      "value":[]
-    }],
-  "skill_area_of_effect_+%_final_in_sand_stance":[[{
-        "var":"SandStance"
-      }]],
-  "spell_maximum_base_cold_damage":[{
-      "value":[]
-    }],
-  "base_self_shock_duration_-%":[{
-      "name":"SelfShockDuration"
-    }],
-  "active_skill_area_of_effect_+%_final":[[]],
-  "active_skill_area_of_effect_radius_+%_final":[[]],
-  "energy_shield_recharge_rate_+%":[{
-      "name":"EnergyShieldRecharge"
-    }],
-  "secondary_minimum_base_lightning_damage":[{
-      "value":[]
-    }],
-  "active_skill_area_of_effect_+%_final_per_endurance_charge":[[[]]],
-  "spell_maximum_base_fire_damage_per_removable_endurance_charge":[{
-      "1":[],
-      "value":[]
-    }],
-  "critical_strike_chance_+%":[[]],
-  "spell_minimum_base_cold_damage_+_per_10_intelligence":[{
-      "1":[],
-      "value":[]
-    }],
-  "spell_minimum_base_physical_damage":[{
-      "value":[]
-    }],
-  "cast_time_overrides_attack_duration":[{
-      "value":{
-        "key":"castTimeOverridesAttackTime"
-      }
-    }],
-  "spell_cast_time_cannot_be_modified":[{
-      "value":{
-        "key":"fixedCastTime"
-      }
-    }],
-  "global_always_hit":[{
-      "value":{
-        "key":"cannotBeEvaded"
-      }
-    }],
-  "active_skill_base_secondary_area_of_effect_radius":[{
-      "value":{
-        "key":"radiusSecondary"
-      }
-    }],
-  "base_stun_recovery_+%":[{
-      "name":"StunRecovery"
-    }],
-  "global_poison_on_hit":[[]],
-  "base_chance_to_ignite_%":[{
-      "name":"EnemyIgniteChance"
-    }],
-  "active_skill_base_area_of_effect_radius":[{
-      "value":{
-        "key":"radius"
-      }
-    }],
-  "always_ignite":[[]],
-  "base_chance_to_shock_%":[{
-      "name":"EnemyShockChance"
-    }],
-  "bleed_duration_is_skill_duration":[{
-      "value":{
-        "key":"bleedDurationIsSkillDuration"
-      }
-    }],
-  "always_shock":[[]],
-  "always_freeze":[{
-      "name":"EnemyFreezeChance"
-    }],
-  "base_physical_damage_%_of_maximum_life_to_deal_per_minute":[[[]]],
-  "base_chance_to_freeze_%":[[]],
-  "chance_to_freeze_shock_ignite_%":[[],[],[]],
-  "additional_chance_to_freeze_chilled_enemies_%":[[[]]],
-  "chance_to_scorch_%":[{
-      "name":"EnemyScorchChance"
-    }],
-  "base_skill_effect_duration":[{
-      "value":{
-        "key":"duration"
-      }
-    }],
-  "cannot_inflict_status_ailments":[{
-      "name":"CannotShock"
-    },{
-      "name":"CannotChill"
-    },{
-      "name":"CannotFreeze"
-    },{
-      "name":"CannotIgnite"
-    },{
-      "name":"CannotScorch"
-    },{
-      "name":"CannotBrittle"
-    },{
-      "name":"CannotSap"
-    }],
-  "projectile_damage_modifiers_apply_to_skill_dot":[{
-      "value":{
-        "key":"dotIsProjectile"
-      }
-    }],
-  "additional_weapon_base_attack_time_ms":[[]],
   "base_reduce_enemy_cold_resistance_%":[{
       "name":"ColdPenetration"
     }],
-  "base_spell_cooldown_speed_+%":[[]],
-  "base_life_regeneration_rate_per_minute":[{
-      "name":"LifeRegen"
-    }],
-  "base_cold_damage_to_deal_per_minute":[{
-      "value":{
-        "key":"ColdDot"
-      }
-    }],
-  "base_skill_cost_life_instead_of_mana":[{
-      "name":"CostLifeInsteadOfMana"
-    }],
-  "lightning_damage_cannot_shock":[{
-      "name":"LightningCannotShock"
-    }],
-  "spell_maximum_base_cold_damage_+_per_10_intelligence":[{
-      "1":[],
-      "value":[]
-    }],
-  "chill_effect_+%":[{
-      "name":"EnemyChillEffect"
-    }],
-  "number_of_additional_arrows":[[]],
-  "active_skill_chill_effect_+%_final":[[]],
-  "shock_effect_+%":[{
-      "name":"EnemyShockEffect"
-    }],
-  "attack_speed_+%_with_atleast_20_rage":[[{
-        "threshold":20
+  "global_bleed_on_hit":[[]],
+  "bleed_on_melee_attack_chance_%":[[]],
+  "chance_to_bleed_on_hit_%_chance_in_blood_stance":[[[]]],
+  "physical_damage_+%_per_frenzy_charge":[[[]]],
+  "chance_to_bleed_on_hit_%_vs_maimed":[[{
+        "var":"Maimed"
       }]],
-  "active_skill_shock_effect_+%_final":[[]],
-  "non_damaging_ailment_effect_+%":[[],[],{
-      "name":"EnemyFreezeEffect"
-    },{
-      "name":"EnemyScorchEffect"
-    },{
-      "name":"EnemyBrittleEffect"
-    },{
-      "name":"EnemySapEffect"
-    }],
-  "cast_speed_+%_granted_from_skill":[[]],
-  "number_of_additional_projectiles":[[]],
-  "attack_and_cast_speed_+%":[[]],
-  "life_leech_does_not_stop_at_full_life":[{
-      "name":"CanLeechLifeOnFullLife"
-    }],
-  "lightning_ailment_effect_+%":[[],[]],
-  "cold_ailment_duration_+%":[{
-      "name":"EnemyChillDuration"
-    },{
-      "name":"EnemyFreezeDuration"
-    },{
-      "name":"EnemyBrittleDuration"
-    }],
-  "base_skill_show_average_damage_instead_of_dps":[{
-      "value":{
-        "key":"showAverage"
-      }
-    }],
-  "avoid_interruption_while_using_this_skill_%":[{
-      "name":"AvoidInterruptStun"
-    }],
-  "base_avoid_stun_%":[{
-      "name":"AvoidStun"
-    }],
-  "chill_and_freeze_duration_+%":[[],[]],
-  "cold_ailment_effect_+%":[[],[],[]],
-  "base_poison_duration_+%":[{
-      "name":"EnemyPoisonDuration"
-    }],
-  "base_skill_cost_life_instead_of_mana_%":[{
-      "name":"HybridManaAndLifeCost_Life"
-    }],
-  "active_skill_poison_duration_+%_final":[[]],
-  "ignite_duration_+%":[{
-      "name":"EnemyIgniteDuration"
-    }],
-  "active_skill_attack_speed_+%_final":[[]],
-  "lightning_ailment_duration_+%":[{
-      "name":"EnemyShockDuration"
-    },{
-      "name":"EnemySapDuration"
-    }],
-  "cannot_be_stunned_while_leeching":[{
-      "flags":{
-        "var":"Leeching"
-      }
-    }],
-  "attack_minimum_added_physical_damage":[[]],
-  "shock_duration_+%":[[]],
-  "chill_duration_+%":[[]],
-  "freeze_duration_+%":[[]],
-  "active_skill_freeze_duration_+%_final":[[]],
-  "base_elemental_status_ailment_duration_+%":[{
-      "name":"EnemyElementalAilmentDuration"
-    }],
-  "attack_skills_have_added_lightning_damage_equal_to_%_of_maximum_mana":[[{
-        "type":"PercentStat",
-        "stat":"Mana"
-      }],[[]]],
-  "base_all_ailment_duration_+%":[{
-      "name":"EnemyAilmentDuration"
-    }],
-  "secondary_minimum_base_chaos_damage":[{
-      "value":[]
-    }],
-  "bleeding_damage_+%":[[]],
-  "active_skill_bleeding_damage_+%_final":[[]],
-  "active_skill_bleeding_damage_+%_final_in_blood_stance":[[[]]],
-  "base_poison_damage_+%":[{
-      "keywordFlags":2097152
-    }],
-  "critical_poison_dot_multiplier_+":[[[]]],
-  "poison_dot_multiplier_+":[[]],
-  "dot_multiplier_+":[[]],
-  "fire_dot_multiplier_+":[{
-      "name":"FireDotMultiplier"
-    }],
-  "spell_minimum_base_lightning_damage":[{
-      "value":[]
-    }],
-  "chaos_dot_multiplier_+":[{
-      "name":"ChaosDotMultiplier"
-    }],
-  "attack_minimum_added_chaos_damage":[[]],
-  "cold_dot_multiplier_+":[{
-      "name":"ColdDotMultiplier"
-    }],
-  "trigger_on_attack_hit_against_rare_or_unique":[{
-      "1":[],
-      "2":[],
-      "value":{
-        "key":"triggerMarkOnRareOrUnique"
-      }
-    }],
-  "active_skill_ignite_damage_+%_final":[{
-      "keywordFlags":8388608
-    }],
-  "damaging_ailments_deal_damage_+%_faster":[[],[],[]],
-  "active_skill_shock_as_though_damage_+%_final":[{
-      "name":"ShockAsThoughDealing"
-    }],
-  "base_chaos_damage_resistance_%":[{
-      "name":"ChaosResist"
-    }],
-  "active_skill_chill_as_though_damage_+%_final":[{
-      "name":"ChillAsThoughDealing"
-    }],
-  "base_cooldown_speed_+%":[[]],
-  "ailment_damage_+%_per_frenzy_charge":[[[]]],
-  "freeze_as_though_dealt_damage_+%":[{
-      "name":"FreezeAsThoughDealing"
-    }],
-  "base_cooldown_modifier_ms":[[]],
-  "shock_maximum_magnitude_+":[{
-      "name":"ShockMax"
-    }],
-  "warcry_speed_+%":[{
-      "name":"WarcrySpeed"
-    }],
-  "shock_minimum_damage_taken_increase_%+":[{
-      "name":"ShockMinimum"
-    }],
-  "display_this_skill_cooldown_does_not_recover_during_buff":[{
-      "name":"NoCooldownRecoveryInDuration"
-    }],
-  "never_ignite":[[]],
-  "never_shock":[[]],
-  "never_freeze":[[]],
-  "never_chill":[[]],
-  "cannot_cause_bleeding":[{
-      "name":"CannotBleed"
-    }],
-  "active_skill_base_tertiary_area_of_effect_radius":[{
-      "value":{
-        "key":"radiusTertiary"
-      }
-    }],
-  "keystone_strong_bowman":[{
-      "name":"IronGrip"
-    }],
-  "active_skill_base_radius_+":[{
-      "value":{
-        "key":"radiusExtra"
-      }
-    }],
-  "strong_casting":[{
-      "name":"IronWill"
-    }],
-  "base_skill_area_of_effect_+%":[[]],
-  "deal_no_elemental_damage":[{
-      "name":"DealNoFire"
-    },{
-      "name":"DealNoCold"
-    },{
-      "name":"DealNoLightning"
-    }],
-  "base_aura_area_of_effect_+%":[[]],
-  "area_of_effect_+%_while_not_dual_wielding":[[[]]],
-  "physical_damage_taken_+%":[[]],
-  "base_deal_no_chaos_damage":[{
-      "name":"DealNoChaos"
-    }],
-  "spell_maximum_base_lightning_damage":[{
-      "value":[]
-    }],
-  "all_damage_can_ignite":[{
-      "name":"PhysicalCanIgnite"
-    },{
-      "name":"LightningCanIgnite"
-    },{
-      "name":"ColdCanIgnite"
-    },{
-      "name":"ChaosCanIgnite"
-    }],
-  "secondary_maximum_base_lightning_damage":[{
-      "value":[]
-    }],
-  "spell_minimum_base_cold_damage":[{
-      "value":[]
-    }],
-  "area_of_effect_+%_per_50_strength":[{
-      "1":[],
-      "value":[]
-    }],
-  "secondary_minimum_base_cold_damage":[{
-      "value":[]
-    }],
-  "all_damage_can_freeze":[{
-      "name":"PhysicalCanFreeze"
-    },{
-      "name":"LightningCanFreeze"
-    },{
-      "name":"FireCanFreeze"
-    },{
-      "name":"ChaosCanFreeze"
-    }],
-  "melee_range_+":[[],{
-      "name":"UnarmedRange"
-    }],
-  "secondary_maximum_base_cold_damage":[{
-      "value":[]
-    }],
-  "spell_minimum_base_fire_damage":[{
-      "value":[]
-    }],
-  "area_of_effect_+%_final_per_removable_power_frenzy_or_endurance_charge":[[{
-        "var":"RemovableTotalCharges"
-      }]],
-  "all_damage_can_shock":[{
-      "name":"PhysicalCanShock"
-    },{
-      "name":"ColdCanShock"
-    },{
-      "name":"FireCanShock"
-    },{
-      "name":"ChaosCanShock"
-    }],
-  "additional_base_critical_strike_chance":[[]],
-  "accuracy_rating_+%":[[]],
-  "secondary_maximum_base_fire_damage":[{
-      "value":[]
-    }],
-  "spell_minimum_base_chaos_damage":[{
-      "value":[]
-    }],
-  "all_damage_can_ignite_freeze_shock":[[],[],[],[],[],[],[],[],[],[],[],[]],
-  "enemy_phys_reduction_%_penalty_vs_hit":[{
-      "name":"EnemyPhysicalDamageReduction"
-    }],
-  "spell_maximum_base_chaos_damage":[{
-      "value":[]
-    }],
-  "base_stun_threshold_reduction_+%":[{
-      "name":"EnemyStunThreshold"
-    }],
-  "secondary_maximum_base_chaos_damage":[{
-      "value":[]
-    }],
-  "impale_phys_reduction_%_penalty":[{
-      "name":"EnemyImpalePhysicalDamageReduction"
-    }],
-  "base_self_freeze_duration_-%":[{
-      "name":"SelfFreezeDuration"
-    }],
-  "base_stun_duration_+%":[{
-      "name":"EnemyStunDuration"
-    }],
-  "mana_granted_when_hit_by_attacks":[{
-      "name":"SelfManaOnHit"
-    }],
-  "stun_duration_+%_vs_enemies_that_are_on_full_life":[[[]]],
-  "chance_to_double_stun_duration_%":[{
-      "name":"DoubleEnemyStunDurationChance"
-    }],
-  "base_nonlethal_fire_damage_%_of_maximum_energy_shield_taken_per_minute":[[[]]],
-  "stun_threshold_+%":[{
-      "name":"StunThreshold"
-    }],
-  "spell_minimum_base_cold_damage_per_removable_frenzy_charge":[{
-      "1":[],
-      "value":[]
-    }],
-  "base_killed_monster_dropped_item_quantity_+%":[{
-      "name":"LootQuantity"
-    }],
-  "spell_maximum_base_cold_damage_per_removable_frenzy_charge":[{
-      "1":[],
-      "value":[]
-    }],
-  "base_killed_monster_dropped_item_rarity_+%":[{
-      "name":"LootRarity"
-    }],
-  "base_mana_regeneration_rate_per_minute":[{
-      "name":"ManaRegen"
-    }],
-  "global_knockback":[{
-      "name":"EnemyKnockbackChance"
-    }],
-  "base_maximum_cold_damage_resistance_%":[{
-      "name":"ColdResistMax"
-    }],
-  "base_global_chance_to_knockback_%":[[]],
-  "knockback_distance_+%":[{
-      "name":"EnemyKnockbackDistance"
-    }],
-  "base_fire_damage_to_deal_per_minute":[{
-      "value":{
-        "key":"FireDot"
-      }
-    }],
-  "chance_to_be_knocked_back_%":[{
-      "name":"SelfKnockbackChance"
-    }],
-  "base_physical_damage_to_deal_per_minute":[{
-      "value":{
-        "key":"PhysicalDot"
-      }
-    }],
-  "number_of_additional_curses_allowed":[{
-      "name":"EnemyCurseLimit"
-    }],
-  "support_barrage_trap_and_mine_throwing_time_+%_final_per_projectile_fired":[{
-      "1":[],
-      "name":"SkillMineThrowingTime"
-    },{
-      "1":[],
-      "name":"SkillTrapThrowingTime"
-    }],
-  "consecrated_ground_enemy_damage_taken_+%":[{
-      "1":[],
-      "2":{
-        "var":"OnConsecratedGround"
-      },
-      "name":"DamageTakenConsecratedGround"
-    }],
-  "base_life_reservation_+%":[{
-      "name":"LifeReserved"
-    }],
-  "receive_bleeding_chance_%_when_hit_by_attack":[{
-      "name":"SelfBleedChance"
-    }],
-  "consecrated_ground_effect_+%":[{
-      "1":[],
-      "name":"ConsecratedGroundEffect"
-    }],
-  "base_self_ignite_duration_-%":[{
-      "name":"SelfIgniteDuration"
-    }],
-  "base_inflict_cold_exposure_on_hit_%_chance":[{
-      "name":"ColdExposureChance"
-    }],
-  "life_leech_on_any_damage_when_hit_permyriad":[{
-      "name":"SelfDamageLifeLeech"
-    }],
-  "base_inflict_lightning_exposure_on_hit_%_chance":[{
-      "name":"LightningExposureChance"
-    }],
-  "life_granted_when_hit_by_attacks":[{
-      "name":"SelfLifeOnHit"
-    }],
-  "base_inflict_fire_exposure_on_hit_%_chance":[{
-      "name":"FireExposureChance"
-    }],
-  "life_granted_when_killed":[{
-      "name":"SelfLifeOnKill"
-    }],
-  "offering_spells_effect_+%":[[]],
-  "link_buff_effect_on_self_+%":[{
-      "name":"LinkEffectOnSelf"
-    }],
-  "poison_duration_is_skill_duration":[{
-      "value":{
-        "key":"poisonDurationIsSkillDuration"
-      }
-    }],
-  "base_projectile_speed_+%":[[]],
-  "base_arrow_speed_+%":[[]],
-  "active_skill_projectile_speed_+%_final":[[]],
-  "projectile_base_number_of_targets_to_pierce":[{
-      "name":"PierceCount"
-    }],
-  "sigil_repeat_frequency_+%":[{
-      "name":"BrandActivationFrequency"
-    }],
-  "arrow_base_number_of_targets_to_pierce":[[]],
-  "pierce_%":[{
-      "name":"PierceChance"
-    }],
-  "additive_mine_duration_modifiers_apply_to_buff_effect_duration":[{
-      "value":{
-        "key":"mineDurationAppliesToSkill"
-      }
-    }],
-  "always_pierce":[[]],
-  "additive_arrow_speed_modifiers_apply_to_area_of_effect":[{
-      "value":{
-        "key":"arrowSpeedAppliesToAreaOfEffect"
-      }
-    }],
-  "cannot_pierce":[{
-      "name":"CannotPierce"
-    }],
-  "skill_buff_effect_+%":[[]],
-  "projectile_damage_+%_if_pierced_enemy":[[{
-        "type":"StatThreshold",
-        "stat":"PiercedCount"
-      }]],
-  "life_regeneration_rate_per_minute_%":[[]],
-  "base_skill_reserve_life_instead_of_mana":[{
-      "name":"BloodMagicReserved"
-    }],
-  "projectile_damage_+%_final_if_pierced_enemy":[[[]]],
-  "projectile_behaviour_only_explode":[{
-      "name":"CannotSplit"
-    }],
-  "channelled_skill_damage_+%":[[{
-        "skillType":57
-      }]],
-  "projectiles_cannot_split":[[]],
-  "projectile_number_to_split":[{
-      "name":"SplitCount"
-    }],
-  "base_active_skill_totem_level":[{
-      "value":{
-        "key":"totemLevel"
-      }
-    }],
-  "modifiers_to_number_of_projectiles_instead_apply_to_splitting":[[],{
-      "name":"AdditionalProjectilesAddSplitsInstead"
-    }],
-  "totem_support_gem_level":[{
-      "value":[]
-    }],
-  "spell_uncastable_if_triggerable":[{
-      "1":[],
-      "value":{
-        "key":"triggered"
-      }
-    }],
-  "modifiers_to_number_of_projectiles_instead_apply_to_chaining":[[],{
-      "name":"AdditionalProjectilesAddChainsInstead"
-    }],
-  "withered_on_hit_chance_%":[[]]
+  "active_skill_projectile_damage_+%_final":[[]],
+  "faster_bleed_%":[[]],
+  "area_damage_+%":[[]],
+  "bleeding_stacks_up_to_x_times":[{
+      "name":"BleedStacksMax"
+    }],
+  "active_skill_damage_+%_final":[[]],
+  "faster_poison_%":[[]],
+  "base_ailment_damage_+%":[[]],
+  "active_skill_ailment_damage_+%_final":[[]],
+  "base_chance_to_poison_on_hit_%":[{
+      "name":"PoisonChance"
+    }],
+  "attack_damage_+%_per_450_physical_damage_reduction_rating":[[[]]],
+  "global_poison_on_hit":[[]],
+  "base_chance_to_ignite_%":[[]]
 }
