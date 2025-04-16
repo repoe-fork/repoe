@@ -10085,7 +10085,7 @@
           "buff_id": null,
           "buff_category": "Hex",
           "item": null,
-          "description": "Вы [Slow|замедлены] и эффекты на вас истекают медленнее.",
+          "description": "Проклятие [Slow|замедляет] вас и заставляет другие эффекты на вас истекать медленнее.",
           "name": "Путы времени"
         }
       ]
@@ -10226,7 +10226,7 @@
           "buff_id": null,
           "buff_category": "Mark",
           "item": null,
-          "description": "Вы прокляты. Оглушение на вас действует дольше, вы даруете врагам Свирепость, они могут похищать у вас здоровье и ману, а также получат заряд выносливости, если вы погибнете.",
+          "description": "[DNT-UNUSED] You are cursed. You will be Stunned for longer, grant Rage, Mana and Life Leech to enemies, and grant an Endurance charge when killed.",
           "name": "Метка вождя"
         }
       ]
@@ -10351,7 +10351,7 @@
           "buff_id": null,
           "buff_category": "Hex",
           "item": null,
-          "description": "Проклятие накладывает снижение [Armour|брони]",
+          "description": "Проклятие удаляет часть вашей [Total|итоговой] [Armour|брони].",
           "name": "Беззащитность"
         },
         {
@@ -41130,7 +41130,7 @@
   },
   "jagged_ground": {
     "description": null,
-    "icon": "Art/2DArt/BuffIcons/ImpaleDebuff.dds",
+    "icon": "Art/2DArt/BuffIcons/JaggedGroundBuff.dds",
     "name": null,
     "sources": {
       "BuffDefinitions": [
@@ -41947,7 +41947,7 @@
           "buff_id": null,
           "buff_category": "Debuff",
           "item": null,
-          "description": "Отрицательный эффект нивелирует всю [Armour|броню] и заставляет получать увеличенный [Physical|физический] урон от [HitDamage|ударов].",
+          "description": "Отрицательный эффект нивелирует всю [Armour|броню] и заставляет получать увеличенный [Physical|физический] урон от [HitDamage|ударов], если действует не на игрока.",
           "name": "Полностью разрушенная броня"
         },
         {
@@ -42766,7 +42766,7 @@
           "buff_id": null,
           "buff_category": null,
           "item": null,
-          "description": "Вы создаёте сгустки маны, убивая или нанося [Critical|критические попадания] [Shock|поражённым шоком] врагам. Сгустки можно подобрать для восстановления маны.",
+          "description": "Вы создаёте сгустки маны, убивая или нанося [Critical|критические попадания] врагам под действием [ElementalAilments|стихийных состояний]. Сгустки можно подобрать для восстановления маны.",
           "name": "Сгустки маны"
         }
       ]
@@ -43582,7 +43582,7 @@
   },
   "ground_jagged_slow": {
     "description": "Ваша скорость передвижения снижена, пока вы стоите на нестабильной земле",
-    "icon": "Art/2DArt/BuffIcons/ImpaleDebuff.dds",
+    "icon": "Art/2DArt/BuffIcons/JaggedGroundBuff.dds",
     "name": "Нестабильная земля",
     "sources": null,
     "sounds": null,
@@ -43983,8 +43983,8 @@
           "buff_id": null,
           "buff_category": null,
           "item": null,
-          "description": "Your next [Quarterstaff] [Attack] deals extra [Chaos] damage and grants [PurpleFlamesOfChayula|Purple Flames of Chayula] on kill.",
-          "name": "Mantra of Destruction"
+          "description": "Ваша следующая [Attack|атака] [Quarterstaff|боевым посохом] наносит дополнительный урон [Chaos|хаосом] и дарует [PurpleFlamesOfChayula|фиолетовые огни Чаюлы] при убийстве.",
+          "name": "Мантра разрушения"
         }
       ]
     },
@@ -45303,7 +45303,7 @@
           "buff_id": null,
           "buff_category": null,
           "item": null,
-          "description": "Получает значительно больше урона от [Attack|атак].",
+          "description": "Получает значительно больше урона от [Attack|атак] и не может [Evasion|уклониться].",
           "name": "Парирован"
         }
       ]
@@ -45401,7 +45401,7 @@
           "buff_id": null,
           "buff_category": "Herald",
           "item": null,
-          "description": "Slain Enemies with [BloodLoss|Blood Loss] explode dealing [Physical] [Attack] Damage",
+          "description": "Убитые враги с [BloodLoss|кровопотерей] взрываются, нанося [Physical|физический] урон от [Attack|атак]",
           "name": "Вестник крови"
         }
       ]
@@ -45806,7 +45806,7 @@
           "buff_category": null,
           "item": null,
           "description": "У вас повышены [Item Rarity|Редкость выпадающих предметов] и глобальная [Defences|защита]. Также вы наносите 30% урона в виде дополнительного урона от [Lightning|молнии]",
-          "name": "Благословение Заточённой ярости"
+          "name": "Благословение Замурованной ярости"
         },
         {
           "id": "tempest_radiant_monster",
@@ -46295,6 +46295,25 @@
           "item": null,
           "description": "Дарует увеличение [ItemRarity|редкости выпадающих прелметов] при убийстве.",
           "name": "[MountingGreed|Растущая жадность]"
+        }
+      ]
+    },
+    "sounds": null,
+    "custom_frame": null
+  },
+  "shard_scavenger": {
+    "description": null,
+    "icon": "Art/2DArt/SkillIcons/MercShardDespoiler.dds",
+    "name": null,
+    "sources": {
+      "BuffDefinitions": [
+        {
+          "id": "shard_despoiler_crossbow_not_consume_bolts",
+          "buff_id": null,
+          "buff_category": "Buff",
+          "item": null,
+          "description": "[Crossbow|Crossbow] [Attack|Attacks] do not consume bolts",
+          "name": "Shard Scavenger"
         }
       ]
     },
