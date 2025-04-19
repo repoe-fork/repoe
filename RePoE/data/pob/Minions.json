@@ -1,448 +1,448 @@
 {
-  "ArrowCloneEle":{
-    "monsterTags":["construct","fast_movement","flesh_armour","is_unarmed","medium_height","melee","physical_affinity","red_blood","slashing_weapon"],
-    "attackRange":6,
-    "accuracy":3.4,
-    "name":"Clone",
-    "skillList":["ElementalHitCloneShot"],
-    "attackTime":0.83,
-    "modList":[{
-        "flags":0,
-        "name":"EnergyShield",
-        "type":"BASE",
-        "value":10
-      }],
-    "damage":1,
-    "life":1.5,
-    "fireResist":40,
-    "chaosResist":20
-  },
-  "SpiderMinion":{
-    "monsterTags":["animal_claw_weapon","beast","chaos_affinity","extra_extra_small_height","ghost_armour","has_one_hand_sword","has_one_handed_melee","spider","very_fast_movement"],
-    "attackRange":7,
-    "name":"Spider Minion",
-    "attackTime":0.96,
-    "skillList":["SummonedSpiderViperStrike"],
-    "limit":"ActiveSpiderLimit",
-    "weaponType1":"One Handed Sword",
+  "SummonedPhantasm":{
     "modList":[],
+    "life":1.58,
+    "fireResist":40,
+    "chaosResist":20,
+    "name":"Summoned Phantasm",
     "damageSpread":0.2,
-    "damage":1.76,
-    "life":1.8
+    "attackTime":1.17,
+    "attackRange":6,
+    "accuracy":1,
+    "limit":"ActivePhantasmLimit",
+    "skillList":["Melee","SummonPhantasmFadingProjectile","SummonPhantasmFadingProjectile2"],
+    "damage":1.1,
+    "monsterTags":["caster","flesh_armour","ghost","is_unarmed","medium_movement","melee","not_dex","not_str","physical_affinity","ranged","red_blood","slashing_weapon","small_height","undead"]
   },
-  "SummonedRagingSpirit":{
-    "monsterTags":["bone_armour",null,null,null,null,null,null,"skeleton","undead"],
-    "attackRange":8,
-    "name":"Raging Spirit",
-    "skillList":["SumonRagingSpiritMelee"],
-    "attackTime":0.57,
-    "limit":"ActiveRagingSpiritLimit",
+  "SummonedFlameGolem":{
+    "life":5.82,
+    "fireResist":70,
+    "damage":1.5,
+    "accuracy":3.4,
+    "limit":"ActiveGolemLimit",
+    "skillList":["FireElementalFlameRedSummoned","FireElementalConeSummoned","FireElementalMortarSummoned","FireElementalMeteorSummoned"],
     "modList":[{
-        "name":"PhysicalDamageConvertToFire",
-        "value":100
-      },{
-        "keywordFlags":65536,
-        "name":"PhysicalMin",
-        "value":4
-      },{
-        "name":"PhysicalMax",
-        "value":5
-      },{
-        "name":"Speed",
-        "type":"MORE"
+        "type":"BASE",
+        "flags":0,
+        "name":"LifeRegenPercent"
       }],
-    "damage":1.02,
-    "life":2.16
+    "name":"Flame Golem",
+    "energyShield":0.4,
+    "monsterTags":["bludgeoning_weapon",null,"construct","fast_movement","fire_affinity",null,"mud_blood",null,null,null,null,"stone_armour"],
+    "damageFixup":0.22
   },
   "AbsolutionTemplarJudge":{
-    "monsterTags":["bludgeoning_weapon","caster",null,null,"has_one_hand_mace",null,"human","humanoid",null,"not_dex","not_str",null,"templar"],
-    "attackRange":9,
-    "name":"Sentinel of Absolution",
-    "attackTime":1.17,
-    "skillList":["Melee","AbsolutionMinion","AbsolutionMinionEmpowered"],
-    "weaponType1":"One Handed Mace",
     "modList":[],
-    "damage":2.8
+    "life":4,
+    "name":"Sentinel of Absolution",
+    "attackRange":9,
+    "weaponType1":"One Handed Mace",
+    "skillList":[null,"AbsolutionMinion","AbsolutionMinionEmpowered"],
+    "damage":2.8,
+    "monsterTags":{
+      "5":"has_one_hand_mace",
+      "6":"has_one_handed_melee",
+      "7":"human",
+      "8":"humanoid",
+      "13":"templar"
+    }
   },
-  "AnimatedWeapon":{
-    "monsterTags":[],
-    "name":"Animated Weapon",
-    "skillList":[],
-    "modList":[]
-  },
-  "AnimatedArmour":{
-    "monsterTags":[null,null,null,null,"medium_movement",null,null,"not_int"],
-    "name":"Animated Guardian",
-    "skillList":[null,"AnimateGuardianSmite"],
-    "armour":0.5,
-    "modList":[[{
-          "type":"Condition",
-          "var":"DualWielding"
-        }],{
-        "1":[],
+  "RaisedSkeleton":{
+    "life":1.05,
+    "damage":2.45,
+    "attackTime":0.8,
+    "attackRange":8,
+    "limit":"ActiveSkeletonLimit",
+    "skillList":[null,"MonsterQuickDodgeRunUnarmed"],
+    "modList":[{
         "name":"BlockChance",
+        "value":30
+      },{
+        "name":"BlockEffect",
         "value":15
-      }]
+      }],
+    "monsterTags":["bone_armour","bones","has_one_hand_sword",null,null,"medium_height",null,null,"skeleton",null,"slow_movement"],
+    "name":"Summoned Skeleton",
+    "weaponType2":"Shield",
+    "weaponType1":"One Handed Sword"
+  },
+  "GuardianSentinel":{
+    "modList":[],
+    "life":12,
+    "name":"Sentinel of Radiance",
+    "attackTime":0.83,
+    "attackRange":17,
+    "skillList":["TeleportVaalDomination","VaalDominationMelee"],
+    "monsterTags":{
+      "9":"not_int",
+      "11":"plate_armour",
+      "12":"very_slow_movement"
+    }
   },
   "AbsolutionTemplarJudgeVaal":{
-    "monsterTags":{
-      "9":"innocence_story",
-      "14":"ranged"
-    },
-    "name":"Ascended Sentinel of Absolution",
-    "skillList":["AbsolutionMinionVaal","AbsolutionMinionVaalCascade","GTVaalAbsolutionLarge","VaalAbsolutionDelayedBlast","GSVaalAbsolutionEmerge"],
     "modList":[{
+        "type":"MORE",
         "name":"Damage",
         "value":200
       },{
         "name":"DamageTaken",
         "value":-70
-      }]
-  },
-  "RaisedZombie":{
-    "monsterTags":[null,null,null,null,null,null,null,null,null,"zombie"],
-    "attackRange":11,
-    "name":"Raised Zombie",
-    "skillList":[null,"ZombieSlam","GAZombieCorpseGroundImpact"],
-    "limit":"ActiveZombieLimit",
-    "modList":[{
-        "name":"Armour",
-        "type":"INC"
-      },{
-        "name":"StunThreshold",
-        "value":30
       }],
-    "damageSpread":0.4,
-    "damage":1.65,
-    "life":3.75
-  },
-  "SummonedEssenceSpirit":{
-    "monsterTags":[null,null,null,null,"has_claw"],
-    "name":"Essence Spirit",
-    "skillList":["RagingSpiritMeleeAttack","SpectralSkullShieldCharge"],
-    "modList":[[],{
-        "name":"Condition:FullLife",
-        "type":"FLAG",
-        "value":true
-      }],
-    "damage":1.28,
-    "life":2.25
-  },
-  "IcyRagingSpirit":{
-    "monsterTags":[null,"cleaving_weapon"],
-    "name":"Grave Spirit",
-    "skillList":[],
-    "modList":[{
-        "name":"PhysicalDamageConvertToCold",
-        "value":50
-      },[]],
-    "damage":2.5
-  },
-  "GuardianSentinel":{
-    "monsterTags":{
-      "11":"plate_armour",
-      "12":"very_slow_movement"
-    },
-    "attackRange":17,
-    "name":"Sentinel of Radiance",
-    "skillList":["TeleportVaalDomination","VaalDominationMelee"],
-    "modList":[],
-    "life":12
-  },
-  "RhoaUniqueSummoned":{
-    "monsterTags":[null,"avian_beast",null,null,null,null,"large_model","light_armour","lightning_affinity"],
-    "attackRange":14,
-    "name":"Summoned Rhoa",
-    "attackTime":0.93,
-    "skillList":["MeleeAtAnimationSpeedUnique","SummonedRhoaShieldCharge"],
-    "limit":"ActiveBeastMinionLimit",
-    "armour":0.25,
-    "modList":[{
-        "name":"SkillData",
-        "type":"LIST",
-        "value":{
-          "key":"cannotBeEvaded"
-        }
-      }],
-    "damage":4.28
+    "name":"Ascended Sentinel of Absolution",
+    "skillList":["AbsolutionMinionVaal","AbsolutionMinionVaalCascade","GTVaalAbsolutionLarge","VaalAbsolutionDelayedBlast","GSVaalAbsolutionEmerge"],
+    "monsterTags":[null,null,null,null,null,null,null,null,"innocence_story"]
   },
   "GuardianRelicAll":{
-    "name":"All Relics",
-    "skillList":["RelicTeleport","Anger","Hatred","Wrath"],
-    "energyShield":0.6,
-    "modList":[]
-  },
-  "UniqueAnimatedWeapon":{
-    "monsterTags":[],
-    "attackRange":105,
-    "name":"Dancing Dervish",
-    "skillList":[null,"DancingDervishCycloneChannelled"],
-    "modList":[{
-        "name":"Life",
-        "value":698
-      },{
-        "value":70
-      },{
-        "value":33
-      },{
-        "value":-33
-      },{
-        "value":-95
-      }]
-  },
-  "SummonedSpectralWolf":{
-    "monsterTags":[null,null,"canine_beast",null,"ghost","has_dagger",null,null,"mammal_beast"],
-    "name":"Spectral Wolf Companion",
-    "skillList":["MeleeAtAnimationSpeed"],
-    "limit":"ActiveWolfLimit",
-    "weaponType1":"Dagger",
-    "modList":[{
-        "name":"PhysicalDamageLifeLeech"
-      }],
-    "damage":6.2
-  },
-  "SkitterbotLightning":{
-    "monsterTags":[null,null,null,"non_attacking","stone_armour"],
-    "name":"Shocking Skitterbot",
-    "skillList":["SkitterbotDetonateMines","SkitterbotWait"],
-    "modList":[]
-  },
-  "GuardianRelicFire":{
-    "monsterTags":{
-      "1":"cannot_be_monolith",
-      "11":"unusable_corpse"
-    },
-    "name":"Fire Relic",
-    "skillList":[],
-    "modList":[]
-  },
-  "SummonedPhantasm":{
-    "monsterTags":{
-      "13":"small_height"
-    },
-    "name":"Summoned Phantasm",
-    "skillList":[null,"SummonPhantasmFadingProjectile","SummonPhantasmFadingProjectile2"],
-    "limit":"ActivePhantasmLimit",
     "modList":[],
-    "damage":1.1,
-    "life":1.58
-  },
-  "GuardianRelicCold":{
-    "monsterTags":[],
-    "name":"Cold Relic",
-    "skillList":[],
-    "modList":[]
-  },
-  "SummonedFlameGolem":{
-    "limit":"ActiveGolemLimit",
-    "skillList":["FireElementalFlameRedSummoned","FireElementalConeSummoned","FireElementalMortarSummoned","FireElementalMeteorSummoned"],
-    "modList":[{
-        "name":"LifeRegenPercent"
-      }],
-    "monsterTags":[null,null,null,null,"fire_affinity",null,"mud_blood"],
-    "name":"Flame Golem",
-    "damageFixup":0.22,
-    "life":5.82
-  },
-  "HeraldOfAgonySpiderPlated":{
-    "monsterTags":[null,null,null,null,null,"insect","insect_blood"],
-    "name":"Agony Crawler",
-    "skillList":["HeraldOfAgonyMinionMortar","HeraldOfAgonyMinionTailSpike","HeraldOfAgonyMinionCleave"],
-    "attackTime":1.3,
-    "modList":[{
-        "name":"PhysicalDamageConvertToChaos"
-      },{
-        "name":"Condition:CannotBeDamaged"
-      },[]]
-  },
-  "DropBearUniqueSummoned":{
-    "skillList":[null,"DropBearSummonedGroundSlam","DropBearSummonedRallyingCry"],
-    "modList":[{
-        "value":[]
-      }],
-    "monsterTags":{
-      "3":"extra_small_height",
-      "13":"ursine_beast"
-    },
-    "name":"Summoned Ursa",
-    "damage":3.53
-  },
-  "RaisedSkeleton":{
-    "attackTime":0.8,
-    "limit":"ActiveSkeletonLimit",
-    "skillList":[null,"MonsterQuickDodgeRunUnarmed"],
-    "weaponType2":"Shield",
-    "modList":[[],{
-        "name":"BlockEffect"
-      }],
-    "monsterTags":{
-      "2":"bones",
-      "11":"slow_movement"
-    },
-    "name":"Summoned Skeleton",
-    "damage":2.45,
-    "life":1.05
+    "energyShield":0.6,
+    "skillList":["RelicTeleport","Anger","Hatred","Wrath"],
+    "name":"All Relics"
   },
   "AxisEliteSoldierHeraldOfLight":{
+    "damage":3.04,
     "limit":"ActiveSentinelOfPurityLimit",
     "skillList":[null,"HeraldOfLightMinionSlam","ChampionTeleport","SentinelHolySlam"],
     "modList":[],
-    "monsterTags":[null,null,"has_staff","has_two_handed_melee"],
     "name":"Sentinel of Purity",
-    "weaponType1":"Staff",
-    "damage":3.04
+    "monsterTags":[null,null,"has_staff","has_two_handed_melee"],
+    "weaponType1":"Staff"
   },
   "SummonedIceGolem":{
+    "modList":[[]],
+    "name":"Ice Golem",
+    "attackTime":0.85,
+    "skillList":[null,"IceElementalIceCyclone","IceElementalSpearSummoned","IceElementalSpearSummonedDeathNova","DeathExplodeIceElementalSummoned"],
+    "damage":3.06,
     "monsterTags":{
       "2":"cold_affinity",
       "5":"hard_armour",
       "14":"water"
-    },
-    "name":"Ice Golem",
-    "attackTime":0.85,
-    "skillList":[null,"IceElementalIceCyclone","IceElementalSpearSummoned","IceElementalSpearSummonedDeathNova","DeathExplodeIceElementalSummoned"],
-    "modList":[[]],
-    "damage":3.06
+    }
   },
-  "SummonedArbalists":{
-    "attackRange":60,
-    "limit":"ActiveArbalistLimit",
-    "skillList":["MPWExpeditionSummonedArbalestProjectile"],
-    "modList":[[]],
-    "monsterTags":[null,null,null,null,null,null,"puncturing_weapon"],
-    "name":"Summoned Arbalist",
-    "damage":4.29,
-    "life":7.41
-  },
-  "RaisedSkeletonCaster":{
-    "monsterTags":[],
-    "attackRange":46,
-    "name":"Summoned Skeleton Caster",
-    "attackTime":1.07,
-    "skillList":["SkeletonMinionProjectileCold","SkeletonMinionProjectileFire","SkeletonMinionProjectileLightning"],
+  "GuardianRelicFire":{
     "modList":[],
-    "damageSpread":0.3,
-    "damage":0.98
+    "name":"Fire Relic",
+    "skillList":[],
+    "monsterTags":{
+      "1":"cannot_be_monolith",
+      "4":"extra_extra_small_height",
+      "5":"ghost_armour",
+      "11":"unusable_corpse"
+    }
+  },
+  "RhoaUniqueSummoned":{
+    "modList":[{
+        "type":"LIST",
+        "name":"SkillData",
+        "value":{
+          "key":"cannotBeEvaded",
+          "value":true
+        }
+      }],
+    "name":"Summoned Rhoa",
+    "attackTime":0.93,
+    "attackRange":14,
+    "limit":"ActiveBeastMinionLimit",
+    "skillList":["MeleeAtAnimationSpeedUnique","SummonedRhoaShieldCharge"],
+    "armour":0.25,
+    "damage":4.28,
+    "monsterTags":["animal_claw_weapon","avian_beast","beast",null,"has_claw",null,"large_model","light_armour","lightning_affinity"]
+  },
+  "RaisedZombie":{
+    "modList":[{
+        "type":"INC",
+        "name":"Armour"
+      },{
+        "name":"StunThreshold"
+      }],
+    "life":3.75,
+    "damage":1.65,
+    "attackRange":11,
+    "limit":"ActiveZombieLimit",
+    "skillList":[null,"ZombieSlam","GAZombieCorpseGroundImpact"],
+    "monsterTags":[null,null,null,null,null,null,null,null,null,"zombie"],
+    "name":"Raised Zombie"
   },
   "GuardianRelicLightning":{
-    "monsterTags":[],
+    "modList":[],
     "name":"Lightning Relic",
     "skillList":[],
-    "modList":[]
-  },
-  "SummonedReaper":{
-    "attackRange":13,
-    "skillList":["ReaperConsumeMinionForHeal","ReaperConsumeMinionForBuff","SummonedReaperMelee","SummonedReaperDash","SummonedReaperUltimate","GASummonReaperUltimateLeftSlash","GASummonReaperUltimateRightSlash","EAASummonedReaperComboAttack","GASummonReaperComboWhirl","GASummonReaperComboLeftSlash","GASummonReaperComboRightSlash","GASummonReaperDashImpactSlash","GASummonReaperDash"],
-    "modList":[],
-    "monsterTags":[null,null,null,"has_dual_wield_melee"],
-    "name":"Reaper",
-    "damage":2.4,
-    "life":3.74
-  },
-  "SkitterbotCold":{
-    "monsterTags":[],
-    "name":"Chilling Skitterbot",
-    "skillList":[],
-    "modList":[]
-  },
-  "SummonedCarrionGolem":{
-    "monsterTags":[null,null,null,"golem",null,"large_height"],
-    "name":"Carrion Golem",
-    "attackTime":0.9,
-    "skillList":["BoneGolemMultiAttack","BoneGolemCascade","BoneGolemLeapSlam","EGBoneGolemConsumeCorpse","BoneGolemCascadeEmpowered"],
-    "modList":[[]]
+    "monsterTags":[]
   },
   "HolyLivingRelic":{
-    "monsterTags":[],
+    "modList":[],
     "name":"Holy Relic",
-    "skillList":["RelicTriggeredNova"],
     "limit":"ActiveHolyRelicLimit",
-    "modList":[]
+    "skillList":["RelicTriggeredNova"],
+    "monsterTags":[]
   },
   "SummonedLightningGolem":{
     "skillList":["LightningGolemArcSummoned","LightningGolemWrath","MonsterProjectileSpellLightningGolemSummoned"],
     "modList":[[]],
-    "monsterTags":["aura_bearer"],
-    "name":"Lightning Golem"
+    "name":"Lightning Golem",
+    "monsterTags":["aura_bearer"]
   },
   "RaisedSkeletonArcherVaal":{
+    "damage":0.98,
+    "damageSpread":0.16,
     "attackTime":1.33,
     "skillList":[],
     "modList":[],
-    "monsterTags":[null,null,"has_bow"],
+    "monsterTags":[null,null,"has_bow",null,null,null,null,null,"puncturing_weapon"],
     "name":"Summoned Skeleton Archer",
-    "weaponType1":"Bow",
-    "damageSpread":0.16
-  },
-  "SnakeSpitUniqueSummoned":{
-    "skillList":["SummonedSnakeProjectile"],
-    "modList":[{
-        "value":[]
-      },[]],
-    "monsterTags":{
-      "6":"medium_small_height",
-      "12":"reptile_beast"
-    },
-    "name":"Summoned Cobra",
-    "damage":3.23,
-    "evasion":0.15
-  },
-  "SummonedChaosGolem":{
-    "skillList":[null,"SandstormChaosElementalSummoned","ChaosElementalCascadeSummoned","SandstormChaosElementalSummonedEmpowered"],
-    "modList":[[]],
-    "monsterTags":[null,null,null,null,null,"ghost_blood"],
-    "name":"Chaos Golem",
-    "damage":2.9,
-    "life":6.9
-  },
-  "Clone":{
-    "monsterTags":[],
-    "skillList":[],
-    "modList":[[]]
+    "weaponType1":"Bow"
   },
   "RaisedSkeletonArcher":{
+    "damage":2.25,
+    "attackRange":60,
     "skillList":[],
     "modList":[],
     "monsterTags":[]
   },
-  "AxisEliteSoldierDominatingBlow":{
-    "skillList":[null,"DominatingBlowMinionCharge"],
-    "modList":[[],[]],
+  "Clone":{
+    "modList":[{
+        "name":"EnergyShield",
+        "value":10
+      }],
+    "skillList":[],
     "monsterTags":[],
-    "name":"Sentinel of Dominance"
+    "name":"Clone"
   },
   "SummonedStoneGolem":{
+    "life":7.25,
     "skillList":[null,"RockGolemSlam","RockGolemMinionWhirlingBlades"],
     "modList":[{
         "value":2
       }],
     "monsterTags":[],
     "name":"Stone Golem",
-    "damage":2.7,
-    "life":7.25
+    "damage":2.7
   },
   "ArrowClone":{
-    "monsterTags":[],
+    "modList":[[]],
     "skillList":["BlinkMirrorArrowMelee"],
-    "modList":[[]]
-  },
-  "RaisedSkeletonMeleeVaal":{
-    "skillList":[],
-    "modList":[[],[]],
-    "monsterTags":[],
-    "name":"Summoned Skeleton Soldier",
-    "damage":1.37
+    "monsterTags":[]
   },
   "ArrowCloneRoA":{
-    "monsterTags":[],
+    "modList":[[]],
     "skillList":["RainOfArrowsCloneShot"],
-    "modList":[[]]
+    "monsterTags":[]
   },
   "AxisEliteSoldierDominatingBlowVaal":{
-    "monsterTags":[],
-    "attackRange":28,
+    "modList":[[],[]],
     "name":"Ascended Sentinel of Dominance",
+    "attackRange":28,
     "skillList":[null,"GAVaalDominationTeleportSlam","VaalDominationSunderMelee","VaalDominationSunder","GAVaalDominationLargeSlam"],
-    "modList":[[],[]]
+    "monsterTags":[]
+  },
+  "ArrowCloneEle":{
+    "modList":[[]],
+    "skillList":["ElementalHitCloneShot"],
+    "monsterTags":[]
+  },
+  "SpiderMinion":{
+    "modList":[],
+    "life":1.8,
+    "damage":1.76,
+    "attackTime":0.96,
+    "attackRange":7,
+    "limit":"ActiveSpiderLimit",
+    "skillList":["SummonedSpiderViperStrike"],
+    "monsterTags":[null,null,"chaos_affinity",null,null,null,null,"spider","very_fast_movement"],
+    "name":"Spider Minion"
+  },
+  "SummonedRagingSpirit":{
+    "modList":[{
+        "name":"PhysicalDamageConvertToFire",
+        "value":100
+      },{
+        "keywordFlags":65536,
+        "name":"PhysicalMin"
+      },{
+        "name":"PhysicalMax",
+        "value":5
+      },{
+        "name":"Speed"
+      }],
+    "life":2.16,
+    "damage":1.02,
+    "attackTime":0.57,
+    "limit":"ActiveRagingSpiritLimit",
+    "skillList":["SumonRagingSpiritMelee"],
+    "monsterTags":[],
+    "name":"Raging Spirit"
+  },
+  "GuardianRelicCold":{
+    "modList":[],
+    "name":"Cold Relic",
+    "skillList":[],
+    "monsterTags":[]
+  },
+  "SummonedArbalists":{
+    "life":7.41,
+    "evasion":0.5,
+    "limit":"ActiveArbalistLimit",
+    "skillList":["MPWExpeditionSummonedArbalestProjectile"],
+    "modList":[{
+        "type":"FLAG",
+        "name":"Condition:CannotBeDamaged"
+      }],
+    "monsterTags":[],
+    "name":"Summoned Arbalist",
+    "damage":4.29
+  },
+  "AnimatedWeapon":{
+    "modList":[],
+    "skillList":[],
+    "monsterTags":[],
+    "name":"Animated Weapon"
+  },
+  "DropBearUniqueSummoned":{
+    "skillList":[null,"DropBearSummonedGroundSlam","DropBearSummonedRallyingCry"],
+    "modList":[{
+        "value":[]
+      }],
+    "name":"Summoned Ursa",
+    "monsterTags":{
+      "3":"extra_small_height",
+      "13":"ursine_beast"
+    },
+    "damage":3.53
+  },
+  "AnimatedArmour":{
+    "modList":[[{
+          "type":"Condition",
+          "var":"DualWielding"
+        }],[[]]],
+    "name":"Animated Guardian",
+    "skillList":[null,"AnimateGuardianSmite"],
+    "monsterTags":[]
+  },
+  "SkitterbotLightning":{
+    "modList":[],
+    "skillList":["SkitterbotDetonateMines","SkitterbotWait"],
+    "monsterTags":[null,null,null,"non_attacking"],
+    "name":"Shocking Skitterbot"
+  },
+  "SkitterbotCold":{
+    "modList":[],
+    "skillList":[],
+    "monsterTags":[],
+    "name":"Chilling Skitterbot"
+  },
+  "SummonedChaosGolem":{
+    "life":6.9,
+    "damage":2.9,
+    "skillList":[null,"SandstormChaosElementalSummoned","ChaosElementalCascadeSummoned","SandstormChaosElementalSummonedEmpowered"],
+    "modList":[[]],
+    "name":"Chaos Golem",
+    "monsterTags":[null,null,null,null,null,"ghost_blood"]
+  },
+  "SummonedCarrionGolem":{
+    "modList":[[]],
+    "name":"Carrion Golem",
+    "attackTime":0.9,
+    "attackRange":13,
+    "skillList":["BoneGolemMultiAttack","BoneGolemCascade","BoneGolemLeapSlam","EGBoneGolemConsumeCorpse","BoneGolemCascadeEmpowered"],
+    "monsterTags":[null,null,null,"golem",null,"large_height"]
+  },
+  "SummonedReaper":{
+    "life":3.74,
+    "modList":[],
+    "monsterTags":[null,null,null,"has_dual_wield_melee"],
+    "skillList":["ReaperConsumeMinionForHeal","ReaperConsumeMinionForBuff","SummonedReaperMelee","SummonedReaperDash","SummonedReaperUltimate","GASummonReaperUltimateLeftSlash","GASummonReaperUltimateRightSlash","EAASummonedReaperComboAttack","GASummonReaperComboWhirl","GASummonReaperComboLeftSlash","GASummonReaperComboRightSlash","GASummonReaperDashImpactSlash","GASummonReaperDash"],
+    "name":"Reaper",
+    "damage":2.4
+  },
+  "SummonedEssenceSpirit":{
+    "modList":[[],{
+        "name":"Condition:FullLife"
+      }],
+    "damage":1.28,
+    "skillList":["RagingSpiritMeleeAttack","SpectralSkullShieldCharge"],
+    "monsterTags":[],
+    "name":"Essence Spirit"
+  },
+  "IcyRagingSpirit":{
+    "modList":[{
+        "name":"PhysicalDamageConvertToCold",
+        "value":50
+      },[]],
+    "damage":2.5,
+    "skillList":[],
+    "monsterTags":[null,"cleaving_weapon"],
+    "name":"Grave Spirit"
+  },
+  "SnakeSpitUniqueSummoned":{
+    "evasion":0.15,
+    "skillList":["SummonedSnakeProjectile"],
+    "modList":[{
+        "value":[]
+      },{
+        "name":"PhysicalDamageConvertToChaos"
+      }],
+    "name":"Summoned Cobra",
+    "monsterTags":{
+      "3":"has_dagger",
+      "6":"medium_small_height",
+      "12":"reptile_beast"
+    },
+    "damage":3.23
+  },
+  "RaisedSkeletonCaster":{
+    "modList":[],
+    "name":"Summoned Skeleton Caster",
+    "damageSpread":0.3,
+    "attackTime":1.07,
+    "attackRange":46,
+    "skillList":["SkeletonMinionProjectileCold","SkeletonMinionProjectileFire","SkeletonMinionProjectileLightning"],
+    "monsterTags":[]
+  },
+  "RaisedSkeletonMeleeVaal":{
+    "damage":1.37,
+    "modList":[[],[]],
+    "name":"Summoned Skeleton Soldier",
+    "skillList":[],
+    "monsterTags":[]
+  },
+  "UniqueAnimatedWeapon":{
+    "modList":[{
+        "name":"Life",
+        "value":698
+      },[],{
+        "value":33
+      },{
+        "value":-33
+      },{
+        "value":-95
+      }],
+    "attackRange":105,
+    "skillList":[null,"DancingDervishCycloneChannelled"],
+    "monsterTags":[],
+    "name":"Dancing Dervish"
+  },
+  "SummonedSpectralWolf":{
+    "modList":[{
+        "name":"PhysicalDamageLifeLeech"
+      }],
+    "damage":6.2,
+    "limit":"ActiveWolfLimit",
+    "weaponType1":"Dagger",
+    "skillList":["MeleeAtAnimationSpeed"],
+    "monsterTags":[null,null,"canine_beast",null,null,null,null,null,"mammal_beast"],
+    "name":"Spectral Wolf Companion"
+  },
+  "HeraldOfAgonySpiderPlated":{
+    "modList":[[],[],[]],
+    "attackTime":1.3,
+    "skillList":["HeraldOfAgonyMinionMortar","HeraldOfAgonyMinionTailSpike","HeraldOfAgonyMinionCleave"],
+    "monsterTags":[null,null,null,null,null,"insect","insect_blood"],
+    "name":"Agony Crawler"
+  },
+  "AxisEliteSoldierDominatingBlow":{
+    "skillList":[null,"DominatingBlowMinionCharge"],
+    "modList":[[],[]],
+    "name":"Sentinel of Dominance",
+    "monsterTags":[]
   }
 }
