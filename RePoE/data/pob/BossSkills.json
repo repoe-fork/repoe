@@ -1,47 +1,28 @@
 {
-  "Shaper Beam":{
-    "speed":1000,
-    "critChance":0,
-    "DamageType":"DamageOverTime",
-    "DamageMultipliers":{
-      "Cold":[9.1363649598343],
-      "Lightning":[12.58958162968],
-      "Fire":[11.141451836499]
-    },
-    "tooltip":"Damage Over Time skill"
-  },
-  "Sirus Meteor":{
-    "speed":1500,
+  "Atziri Flameblast":{
     "DamageType":"Spell",
     "DamageMultipliers":{
-      "Physical":[45.087560245599,0.22541711316695]
+      "Fire":[51.086684344463,0.25543342172232]
     },
-    "UberDamageMultiplier":1.52,
-    "tooltip":"Earlier ones with less walls do less damage. Allocating The Perfect Storm increases Damage by a further 50% (Applied on Uber)",
-    "additionalStats":{
-      "uber":{
-        "PhysicalDamageSkillConvertToFire":25
-      },
-      "base":[]
-    }
-  },
-  "Shaper Ball":{
+    "UberDamageMultiplier":1.26,
+    "DamagePenetrations":{
+      "FirePen":8
+    },
     "UberDamagePenetrations":{
-      "ColdPen":40
+      "FirePen":10
     },
-    "speed":1400,
-    "DamageType":"SpellProjectile",
-    "DamageMultipliers":{
-      "Cold":[11.668066430448,0.058340332152239]
-    },
-    "DamagePenetrations":[],
-    "tooltip":"Allocating Cosmic Wounds increases the penetration to 40% (Applied on Uber) and adds 2 projectiles"
+    "speed":25000,
+    "critChance":0,
+    "earlierUber":true,
+    "tooltip":"The Uber variant has 10 ^xB97123Fire^7 penetration (Applied on Pinnacle And Uber)"
   },
   "Cortex Ground Degen":{
-    "speed":1630,
+    "DamageType":"DamageOverTime",
     "DamageMultipliers":{
       "Physical":[5.3012106087214]
-    }
+    },
+    "tooltip":"Damage Over Time skill",
+    "speed":1630
   },
   "Exarch Ball":{
     "DamageMultipliers":{
@@ -50,36 +31,21 @@
     "tooltip":"Spawns 8-18 waves of balls depending on which fight and which ball phase, Cannot be Blocked, Dodged, or Suppressed",
     "additionalStats":{
       "uber":{
-        "CannotBeSuppressed":"flag"
+        "CannotBeBlocked":"flag"
       },
       "base":[]
-    }
-  },
-  "Shaper Slam":{
-    "tooltip":"Cannot be Evaded.  Allocating Cosmic Wounds increases Damage by a further 100% (Applied on Uber) and cannot be blocked or dodged",
-    "speed":3510,
-    "DamageType":"Melee",
-    "DamageMultipliers":{
-      "Physical":[12.358683281257,0.061793416406285]
     },
-    "UberDamageMultiplier":1.6666666666667,
-    "additionalStats":{
-      "uber":[]
-    },
-    "UberSpeed":1755
+    "speed":1000
   },
   "Eater Beam":{
+    "tooltip":"Allocating Insatiable Appetite causes the beam to always shock for at least 30%",
     "DamageMultipliers":{
       "Lightning":[12.164923902598,0.24329847805197]
     },
-    "speed":2500,
-    "tooltip":"Allocating Insatiable Appetite causes the beam to always shock for at least 30%"
+    "speed":2500
   },
   "Maven Fireball":{
-    "UberDamagePenetrations":{
-      "FirePen":30
-    },
-    "speed":3000,
+    "DamageType":"SpellProjectile",
     "DamageMultipliers":{
       "Fire":[14.977416270256,0.074887081351278]
     },
@@ -87,10 +53,13 @@
     "DamagePenetrations":{
       "FirePen":""
     },
-    "tooltip":"Allocating Throw the Gauntlet increases Damage by a further 100% (Applied on Uber) and causes the fireball to have 30 ^xB97123Fire^7 penetration (Applied on Uber)"
+    "tooltip":"Allocating Throw the Gauntlet increases Damage by a further 100% (Applied on Uber) and causes the fireball to have 30 ^xB97123Fire^7 penetration (Applied on Uber)",
+    "UberDamagePenetrations":{
+      "FirePen":30
+    },
+    "speed":3000
   },
   "Maven Memory Game":{
-    "speed":7500,
     "DamageMultipliers":{
       "Physical":[104.29090544842,0.52145452724208]
     },
@@ -101,21 +70,52 @@
         "PhysicalDamageSkillConvertToCold":100
       },
       "base":[]
+    },
+    "speed":7500
+  },
+  "Shaper Beam":{
+    "DamageMultipliers":{
+      "Lightning":[12.58958162968],
+      "Fire":[11.141451836499],
+      "Cold":[9.1363649598343]
     }
   },
-  "Atziri Flameblast":{
-    "UberDamagePenetrations":{
-      "FirePen":10
-    },
-    "speed":25000,
-    "earlierUber":true,
-    "tooltip":"The Uber variant has 10 ^xB97123Fire^7 penetration (Applied on Pinnacle And Uber)",
+  "Shaper Ball":{
     "DamageMultipliers":{
-      "Fire":[51.086684344463,0.25543342172232]
+      "Cold":[11.668066430448,0.058340332152239]
     },
-    "UberDamageMultiplier":1.26,
     "DamagePenetrations":{
-      "FirePen":8
-    }
+      "ColdPen":25
+    },
+    "tooltip":"Allocating Cosmic Wounds increases the penetration to 40% (Applied on Uber) and adds 2 projectiles",
+    "UberDamagePenetrations":{
+      "ColdPen":40
+    },
+    "speed":1400
+  },
+  "Shaper Slam":{
+    "DamageType":"Melee",
+    "DamageMultipliers":{
+      "Physical":[12.358683281257,0.061793416406285]
+    },
+    "UberDamageMultiplier":1.6666666666667,
+    "tooltip":"Cannot be Evaded.  Allocating Cosmic Wounds increases Damage by a further 100% (Applied on Uber) and cannot be blocked or dodged",
+    "additionalStats":{
+      "uber":[]
+    },
+    "UberSpeed":1755,
+    "speed":3510
+  },
+  "Sirus Meteor":{
+    "DamageMultipliers":{
+      "Physical":[45.087560245599,0.22541711316695]
+    },
+    "UberDamageMultiplier":1.52,
+    "tooltip":"Earlier ones with less walls do less damage. Allocating The Perfect Storm increases Damage by a further 50% (Applied on Uber)",
+    "additionalStats":{
+      "uber":[],
+      "base":[]
+    },
+    "speed":1500
   }
 }

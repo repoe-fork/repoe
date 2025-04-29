@@ -1,19 +1,14 @@
 {
-  "base_immune_to_freeze":16,
-  "31":{
-    "1":[{
-        "1":{
-          "k":"reminderstring",
-          "v":"ReminderTextIgnite"
-        },
-        "text":"Linked target has {0}% chance to Ignite",
-        "limit":[[1,"#"]]
-      }],
-    "stats":["flame_link_grants_chance_to_ignite_%"],
-    "name":"flame_link_ignite_chance"
-  },
-  "skill_grants_life_cost_%_mana_cost_while_not_on_low_life":46,
-  "base_movement_velocity_+%":17,
+  "virtual_storm_blade_maximum_lightning_damage":55,
+  "life_leech_is_applied_to_remora_link_targets_instead":35,
+  "attack_maximum_added_cold_damage":2,
+  "display_link_stuff":56,
+  "parent":"skill_stat_descriptions",
+  "remora_link_grants_maximum_life_leech_rate_%_per_minute":37,
+  "attack_minimum_added_lightning_damage":4,
+  "resist_all_elements_%_per_endurance_charge":38,
+  "spell_minimum_added_lightning_damage":5,
+  "resist_all_%":39,
   "56":{
     "1":[{
         "text":"Link breaks if target leaves range or line of sight for 4 seconds\nMaximum 1 Link from any source per target\nYou die if Linked target dies",
@@ -25,14 +20,115 @@
     "stats":["display_link_stuff","link_grace_period_8_second_override"],
     "name":"link_stuff"
   },
-  "base_physical_damage_reduction_rating":18,
   "55":{
     "1":[{
         "text":"Energy Blades have {0} to {1} Lightning Damage",
-        "limit":[[],[]]
+        "limit":[[],[null,"#"]]
       }],
     "stats":["virtual_storm_blade_minimum_lightning_damage","virtual_storm_blade_maximum_lightning_damage"],
     "name":"storm_blade_base_damage"
+  },
+  "base_energy_shield_regeneration_rate_per_minute":11,
+  "skill_buff_effect_+%":40,
+  "skill_buff_grants_critical_strike_chance_+%":6,
+  "28":{
+    "1":[{
+        "text":"Linked target's Main Hand Critical Strike Chance is equal to yours",
+        "limit":[[]]
+      }],
+    "stats":["display_critical_link_overrides_main_hand_critical_strike_chance"],
+    "name":"display_critical_link_override"
+  },
+  "53":{
+    "1":[{
+        "text":"Buff grants {0}% more Armour",
+        "limit":[[1]]
+      }],
+    "stats":["vaal_molten_shall_armour_+%_final"],
+    "name":"vaal_molten_shall_armour_incr"
+  },
+  "herald_of_ice_cold_damage_+%":7,
+  "52":{
+    "1":[{
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextUnaffectedBy"
+        },
+        "text":"Buff makes you Unaffected by Temporal Chains",
+        "limit":[[]]
+      }],
+    "stats":["unaffected_by_temporal_chains"]
+  },
+  "51":{
+    "1":[{
+        "text":"Buff grants {0}% more Maximum Energy Shield",
+        "limit":[[]]
+      },{
+        "1":{
+          "k":"negate"
+        },
+        "text":"Buff grants {0}% less Maximum Energy Shield",
+        "limit":[[null,-1]]
+      }],
+    "stats":["storm_blade_energy_shield_+%_final"],
+    "name":"storm_blade_less_energy_shield"
+  },
+  "herald_of_thunder_lightning_damage_+%":8,
+  "20":{
+    "1":[{
+        "text":"Buff grants {0}% more Spell Damage",
+        "limit":[[]]
+      },{
+        "1":[],
+        "text":"Buff grants {0}% less Spell Damage",
+        "limit":[[]]
+      }],
+    "stats":["berserk_spell_damage_+%_final"],
+    "name":"berserk_spell_damage_final"
+  },
+  "37":{
+    "1":[{
+        "1":{
+          "k":"per_minute_to_per_second"
+        },
+        "text":"Buff grants {0:+d}% to Maximum total Life Recovery per second from Leech",
+        "limit":[[]]
+      }],
+    "stats":["remora_link_grants_maximum_life_leech_rate_%_per_minute"],
+    "name":"remora_link_leech_max"
+  },
+  "46":{
+    "1":[{
+        "1":{
+          "v":"ReminderTextLowLife"
+        },
+        "text":"Skills gain a Base Life Cost equal to {0}% of Base Mana Cost while not on Low Life",
+        "limit":[[]]
+      }],
+    "stats":["skill_grants_life_cost_%_mana_cost_while_not_on_low_life"],
+    "name":"life_cost_from_mana_cost_not_low_life"
+  },
+  "stealth_+%":9,
+  "11":{
+    "1":[{
+        "1":[],
+        "text":"Buff grants {0} Energy Shield Regeneration per second",
+        "limit":[[]]
+      }],
+    "stats":["base_energy_shield_regeneration_rate_per_minute"],
+    "name":"es_regen"
+  },
+  "48":{
+    "1":[{
+        "text":"Linked target has {0}% increased Mana Regeneration Rate",
+        "limit":[[]]
+      },{
+        "1":[],
+        "text":"Linked target has {0}% reduced Mana Regeneration Rate",
+        "limit":[[]]
+      }],
+    "stats":["soul_link_grants_mana_regeneration_+%"],
+    "name":"soul_link_mana_regen"
   },
   "14":{
     "1":[{
@@ -48,100 +144,7 @@
     "stats":["base_chance_to_shock_%_from_skill","quality_display_shock_chance_from_skill_is_gem"],
     "name":"skill_grants_shock_chance"
   },
-  "53":{
-    "1":[{
-        "text":"Buff grants {0}% more Armour",
-        "limit":[[]]
-      }],
-    "stats":["vaal_molten_shall_armour_+%_final"],
-    "name":"vaal_molten_shall_armour_incr"
-  },
-  "berserk_rage_effect_+%":19,
-  "1":{
-    "1":[{
-        "text":"Adds {0} to {1} Fire Damage to Attacks",
-        "limit":[[],[]]
-      }],
-    "stats":["attack_minimum_added_fire_damage","attack_maximum_added_fire_damage"],
-    "name":"attack_added_fire"
-  },
-  "40":{
-    "1":[{
-        "text":"{0}% increased Buff Effect",
-        "limit":[[]]
-      },{
-        "1":{
-          "k":"negate"
-        },
-        "text":"{0}% reduced Buff Effect",
-        "limit":[[null,-1]]
-      }],
-    "stats":["skill_buff_effect_+%"],
-    "name":"skill_buff_effect"
-  },
-  "soul_link_grants_take_%_of_hit_damage_from_soul_link_source_energy_shield_before_you":49,
-  "berserk_spell_damage_+%_final":20,
-  "52":{
-    "1":[{
-        "1":{
-          "v":"ReminderTextUnaffectedBy"
-        },
-        "text":"Buff makes you Unaffected by Temporal Chains",
-        "limit":[[]]
-      }],
-    "stats":["unaffected_by_temporal_chains"]
-  },
-  "51":{
-    "1":[{
-        "text":"Buff grants {0}% more Maximum Energy Shield",
-        "limit":[[]]
-      },{
-        "1":[],
-        "text":"Buff grants {0}% less Maximum Energy Shield",
-        "limit":[[]]
-      }],
-    "stats":["storm_blade_energy_shield_+%_final"],
-    "name":"storm_blade_less_energy_shield"
-  },
-  "buff_added_spell_minimum_base_physical_damage_per_shield_quality":21,
-  "32":{
-    "1":[{
-        "text":"Life Recovery other than Flasks cannot Recover Life to above Low Life\nWhen taking Damage from Hits, {0}% of Life loss below half Life is Prevented, then {1}% of Life loss prevented this way is lost over 4 seconds",
-        "limit":[[],[],[]]
-      },{
-        "text":"When taking Damage from Hits, {0:+d}% of Life loss below half Life is Prevented\n{1:+d}% of Life loss prevented this way is lost over 4 seconds",
-        "limit":[[],[],[]]
-      },{
-        "text":"When taking Damage from Hits, {0:+d}% of Life loss below half Life is Prevented",
-        "limit":[[],[],[]]
-      },{
-        "text":"{1:+d}% of Life loss prevented is lost over 4 seconds",
-        "limit":[[],[],[]]
-      }],
-    "stats":["petrified_blood_%_life_loss_below_half_from_hit_to_prevent","petrified_blood_%_prevented_life_loss_to_lose_over_time","cannot_recover_above_low_life_except_flasks"],
-    "name":"petrified_blood_life_loss_over_time"
-  },
-  "49":{
-    "1":[{
-        "text":"{0}% of Damage from Hits against target is taken from your Energy Shield before them",
-        "limit":[[]]
-      }],
-    "stats":["soul_link_grants_take_%_of_hit_damage_from_soul_link_source_energy_shield_before_you"],
-    "name":"soul_link_transfer_percent"
-  },
-  "storm_blade_energy_shield_+%_final":51,
-  "48":{
-    "1":[{
-        "text":"Linked target has {0}% increased Mana Regeneration Rate",
-        "limit":[[]]
-      },{
-        "1":[],
-        "text":"Linked target has {0}% reduced Mana Regeneration Rate",
-        "limit":[[]]
-      }],
-    "stats":["soul_link_grants_mana_regeneration_+%"],
-    "name":"soul_link_mana_regen"
-  },
+  "base_mana_regeneration_rate_per_minute":10,
   "47":{
     "1":[{
         "text":"Linked target takes {0}% more Damage",
@@ -154,31 +157,6 @@
     "stats":["soul_link_grants_damage_taken_+%_final"],
     "name":"soul_link_damage_taken"
   },
-  "unaffected_by_temporal_chains":52,
-  "bulwark_link_grants_stun_threshold_+%":23,
-  "46":{
-    "1":[{
-        "1":{
-          "v":"ReminderTextLowLife"
-        },
-        "text":"Skills gain a Base Life Cost equal to {0}% of Base Mana Cost while not on Low Life",
-        "limit":[[]]
-      }],
-    "stats":["skill_grants_life_cost_%_mana_cost_while_not_on_low_life"],
-    "name":"life_cost_from_mana_cost_not_low_life"
-  },
-  "vaal_molten_shall_armour_+%_final":53,
-  "45":{
-    "1":[{
-        "text":"Buff grants Immunity to Shock",
-        "limit":[[]]
-      }],
-    "stats":["skill_display_buff_grants_shock_immunity"],
-    "name":"display_buff_shock_immune"
-  },
-  "critical_link_grants_accuracy_rating_+%":24,
-  "virtual_flame_link_minimum_fire_damage":54,
-  "critical_link_grants_base_critical_strike_multiplier_+":25,
   "29":{
     "1":[{
         "text":"Buff grants Immunity to Bleeding",
@@ -187,8 +165,34 @@
     "stats":["display_skill_buff_grants_bleeding_immunity"],
     "name":"display_immune_to_bleeding"
   },
-  "virtual_storm_blade_minimum_lightning_damage":55,
-  "damage_taken_goes_to_mana_%":26,
+  "skill_display_buff_grants_shock_immunity":45,
+  "45":{
+    "1":[{
+        "text":"Buff grants Immunity to Shock",
+        "limit":[[]]
+      }],
+    "stats":["skill_display_buff_grants_shock_immunity"],
+    "name":"display_buff_shock_immune"
+  },
+  "10":{
+    "1":[{
+        "1":[],
+        "text":"Buff grants {0} Mana Regeneration per second",
+        "limit":[[]]
+      }],
+    "stats":["base_mana_regeneration_rate_per_minute"],
+    "name":"mana_regen"
+  },
+  "shield_spell_block_%":12,
+  "skill_grants_life_cost_%_mana_cost_while_not_on_low_life":46,
+  "21":{
+    "1":[{
+        "text":"Buff grants {0} to {1} Added Spell Physical Damage per 1% Shield Quality",
+        "limit":[[],[]]
+      }],
+    "stats":["buff_added_spell_minimum_base_physical_damage_per_shield_quality","buff_added_spell_maximum_base_physical_damage_per_shield_quality"],
+    "name":"buff_spell_phys"
+  },
   "44":{
     "1":[{
         "text":"Buff grants {0}% increased Shock Duration",
@@ -213,10 +217,8 @@
     "stats":["skill_buff_grants_damage_+%"],
     "name":"buff_grants_damage_pluspercent"
   },
-  "display_link_stuff":56,
-  "parent":"skill_stat_descriptions",
-  "display_critical_link_overrides_main_hand_critical_strike_chance":28,
-  "spell_maximum_added_lightning_damage":5,
+  "soul_link_grants_damage_taken_+%_final":47,
+  "spell_maximum_added_cold_damage":3,
   "41":{
     "1":[{
         "text":"Buff grants {0}% increased Attack and Cast Speed",
@@ -229,7 +231,21 @@
     "stats":["skill_buff_grants_attack_and_cast_speed_+%"],
     "name":"buff_grants_attack_and_cast_speed"
   },
-  "display_skill_buff_grants_bleeding_immunity":29,
+  "40":{
+    "1":[{
+        "text":"{0}% increased Buff Effect",
+        "limit":[[]]
+      },{
+        "1":[],
+        "text":"{0}% reduced Buff Effect",
+        "limit":[[]]
+      }],
+    "stats":["skill_buff_effect_+%"],
+    "name":"skill_buff_effect"
+  },
+  "soul_link_grants_mana_regeneration_+%":48,
+  "base_chance_to_shock_%_from_skill":14,
+  "soul_link_grants_take_%_of_hit_damage_from_soul_link_source_energy_shield_before_you":49,
   "39":{
     "1":[{
         "text":"Buff grants {0:+d}% to all Resistances",
@@ -237,35 +253,6 @@
       }],
     "stats":["resist_all_%"],
     "name":"all_resist"
-  },
-  "8":{
-    "1":[{
-        "text":"Buff grants {0}% increased Lightning Damage",
-        "limit":[[]]
-      }],
-    "stats":["herald_of_thunder_lightning_damage_+%"],
-    "name":"herald_of_thunder_lightning_damage_incr"
-  },
-  "energy_shield_lost_per_minute":30,
-  "5":{
-    "1":[{
-        "text":"Buff grants {0} to {1} Added Spell Lightning Damage",
-        "limit":[[],[]]
-      }],
-    "stats":["spell_minimum_added_lightning_damage","spell_maximum_added_lightning_damage"],
-    "name":"spell_added_lightning"
-  },
-  "36":{
-    "1":[{
-        "text":"Linked target deals {0}% increased Damage when on Full Life",
-        "limit":[[]]
-      },{
-        "1":[],
-        "text":"Linked target deals {0}% reduced Damage when on Full Life",
-        "limit":[[]]
-      }],
-    "stats":["remora_link_grants_damage_+%_when_on_full_life"],
-    "name":"remora_link_damage_on_full_life"
   },
   "26":{
     "1":[{
@@ -278,31 +265,17 @@
     "stats":["damage_taken_goes_to_mana_%"],
     "name":"skill_damage_taken_goes_to_mana"
   },
-  "flame_link_grants_chance_to_ignite_%":31,
-  "base_energy_shield_regeneration_rate_per_minute":11,
-  "11":{
+  "base_damage_taken_+%":15,
+  "spell_damage_+%":50,
+  "4":{
     "1":[{
-        "1":{
-          "k":"per_minute_to_per_second"
-        },
-        "text":"Buff grants {0} Energy Shield Regeneration per second",
-        "limit":[[]]
+        "text":"Buff grants {0} to {1} Added Attack Lightning Damage",
+        "limit":[[],[]]
       }],
-    "stats":["base_energy_shield_regeneration_rate_per_minute"],
-    "name":"es_regen"
+    "stats":["attack_minimum_added_lightning_damage","attack_maximum_added_lightning_damage"],
+    "name":"attack_added_lightning"
   },
-  "17":{
-    "1":[{
-        "text":"Buff grants {0}% increased Movement Speed",
-        "limit":[[]]
-      },{
-        "1":[],
-        "text":"Buff grants {0}% reduced Movement Speed",
-        "limit":[[]]
-      }],
-    "stats":["base_movement_velocity_+%"],
-    "name":"movement_speed_incr"
-  },
+  "base_immune_to_freeze":16,
   "50":{
     "1":[{
         "text":"Buff Grants {0}% increased Spell Damage",
@@ -323,16 +296,28 @@
     "stats":["base_physical_damage_reduction_rating"],
     "name":"base_armour"
   },
-  "life_leech_is_applied_to_remora_link_targets_instead":35,
-  "petrified_blood_%_life_loss_below_half_from_hit_to_prevent":32,
-  "28":{
+  "36":{
     "1":[{
-        "text":"Linked target's Main Hand Critical Strike Chance is equal to yours",
+        "text":"Linked target deals {0}% increased Damage when on Full Life",
+        "limit":[[]]
+      },{
+        "1":[],
+        "text":"Linked target deals {0}% reduced Damage when on Full Life",
         "limit":[[]]
       }],
-    "stats":["display_critical_link_overrides_main_hand_critical_strike_chance"],
-    "name":"display_critical_link_override"
+    "stats":["remora_link_grants_damage_+%_when_on_full_life"],
+    "name":"remora_link_damage_on_full_life"
   },
+  "base_movement_velocity_+%":17,
+  "3":{
+    "1":[{
+        "text":"Buff grants {0} to {1} Added Spell Cold Damage",
+        "limit":[[],[]]
+      }],
+    "stats":["spell_minimum_added_cold_damage","spell_maximum_added_cold_damage"],
+    "name":"spell_added_cold"
+  },
+  "base_physical_damage_reduction_rating":18,
   "13":{
     "1":[{
         "1":{
@@ -344,7 +329,26 @@
     "stats":["phase_through_objects"],
     "name":"phasing"
   },
-  "physical_damage_reduction_%_per_endurance_charge":33,
+  "49":{
+    "1":[{
+        "text":"{0}% of Damage from Hits against target is taken from your Energy Shield before them",
+        "limit":[[]]
+      }],
+    "stats":["soul_link_grants_take_%_of_hit_damage_from_soul_link_source_energy_shield_before_you"],
+    "name":"soul_link_transfer_percent"
+  },
+  "19":{
+    "1":[{
+        "1":{
+          "v":"ReminderTextRageEffect"
+        },
+        "text":"{0}% increased Rage Effect",
+        "limit":[[]]
+      }],
+    "stats":["berserk_rage_effect_+%"],
+    "name":"berserk_rage_effect"
+  },
+  "berserk_rage_effect_+%":19,
   "27":{
     "1":[{
         "text":"Linked target's Chance to Block Attack Damage is equal to yours\nLinked target's Maximum Chance to Block Attack Damage is equal to yours",
@@ -353,17 +357,16 @@
     "stats":["display_bulwark_link_overrides_attack_block_and_maximum_attack_block"],
     "name":"display_bulwark_link_override"
   },
-  "6":{
+  "31":{
     "1":[{
-        "text":"Buff grants {0}% increased Critical Strike Chance",
-        "limit":[[]]
-      },{
-        "1":[],
-        "text":"Buff grants have {0}% reduced Critical Strike Chance",
+        "1":{
+          "v":"ReminderTextIgnite"
+        },
+        "text":"Linked target has {0}% chance to Ignite",
         "limit":[[]]
       }],
-    "stats":["skill_buff_grants_critical_strike_chance_+%"],
-    "name":"grants_critical_strike_chance_incr"
+    "stats":["flame_link_grants_chance_to_ignite_%"],
+    "name":"flame_link_ignite_chance"
   },
   "9":{
     "1":[{
@@ -377,29 +380,29 @@
     "stats":["stealth_+%"],
     "name":"stealth_increase"
   },
-  "20":{
+  "berserk_spell_damage_+%_final":20,
+  "30":{
     "1":[{
-        "text":"Buff grants {0}% more Spell Damage",
+        "1":[],
+        "text":"You lose {0} Energy Shield per second",
+        "limit":[[]]
+      }],
+    "stats":["energy_shield_lost_per_minute"],
+    "name":"energy_shield_loss"
+  },
+  "skill_buff_grants_damage_+%":43,
+  "buff_added_spell_minimum_base_physical_damage_per_shield_quality":21,
+  "24":{
+    "1":[{
+        "text":"Linked target has {0}% increased Accuracy Rating",
         "limit":[[]]
       },{
         "1":[],
-        "text":"Buff grants {0}% less Spell Damage",
+        "text":"Linked target has {0}% reduced Accuracy Rating",
         "limit":[[]]
       }],
-    "stats":["berserk_spell_damage_+%_final"],
-    "name":"berserk_spell_damage_final"
-  },
-  "attack_minimum_added_cold_damage":2,
-  "19":{
-    "1":[{
-        "1":{
-          "v":"ReminderTextRageEffect"
-        },
-        "text":"{0}% increased Rage Effect",
-        "limit":[[]]
-      }],
-    "stats":["berserk_rage_effect_+%"],
-    "name":"berserk_rage_effect"
+    "stats":["critical_link_grants_accuracy_rating_+%"],
+    "name":"critical_link_accuracy"
   },
   "23":{
     "1":[{
@@ -413,32 +416,62 @@
     "stats":["bulwark_link_grants_stun_threshold_+%"],
     "name":"bulwark_link_stun_threshold"
   },
-  "spell_minimum_added_cold_damage":3,
-  "skill_buff_grants_chance_to_freeze_%":42,
-  "remora_link_grants_maximum_life_leech_rate_%_per_minute":37,
-  "attack_minimum_added_lightning_damage":4,
-  "resist_all_elements_%_per_endurance_charge":38,
-  "21":{
+  "bulwark_link_grants_recover_X_life_on_block":22,
+  "22":{
     "1":[{
-        "text":"Buff grants {0} to {1} Added Spell Physical Damage per 1% Shield Quality",
+        "text":"Linked target Recovers {0} Life when they Block",
+        "limit":[[]]
+      }],
+    "stats":["bulwark_link_grants_recover_X_life_on_block"],
+    "name":"bulwark_link_recover"
+  },
+  "32":{
+    "1":[{
+        "text":"Life Recovery other than Flasks cannot Recover Life to above Low Life\nWhen taking Damage from Hits, {0}% of Life loss below half Life is Prevented, then {1}% of Life loss prevented this way is lost over 4 seconds",
+        "limit":[[],[],[]]
+      },{
+        "text":"When taking Damage from Hits, {0:+d}% of Life loss below half Life is Prevented\n{1:+d}% of Life loss prevented this way is lost over 4 seconds",
+        "limit":[[],[],[]]
+      },{
+        "text":"When taking Damage from Hits, {0:+d}% of Life loss below half Life is Prevented",
+        "limit":[[],[],[]]
+      },{
+        "text":"{1:+d}% of Life loss prevented is lost over 4 seconds",
+        "limit":[[],[],[]]
+      }],
+    "stats":["petrified_blood_%_life_loss_below_half_from_hit_to_prevent","petrified_blood_%_prevented_life_loss_to_lose_over_time","cannot_recover_above_low_life_except_flasks"],
+    "name":"petrified_blood_life_loss_over_time"
+  },
+  "bulwark_link_grants_stun_threshold_+%":23,
+  "5":{
+    "1":[{
+        "text":"Buff grants {0} to {1} Added Spell Lightning Damage",
         "limit":[[],[]]
       }],
-    "stats":["buff_added_spell_minimum_base_physical_damage_per_shield_quality","buff_added_spell_maximum_base_physical_damage_per_shield_quality"],
-    "name":"buff_spell_phys"
+    "stats":["spell_minimum_added_lightning_damage","spell_maximum_added_lightning_damage"],
+    "name":"spell_added_lightning"
   },
-  "resist_all_%":39,
-  "24":{
+  "15":{
     "1":[{
-        "text":"Linked target has {0}% increased Accuracy Rating",
+        "text":"Buff grants {0}% increased Damage taken",
         "limit":[[]]
       },{
         "1":[],
-        "text":"Linked target has {0}% reduced Accuracy Rating",
+        "text":"Buff grants {0}% reduced Damage taken",
         "limit":[[]]
       }],
-    "stats":["critical_link_grants_accuracy_rating_+%"],
-    "name":"critical_link_accuracy"
+    "stats":["base_damage_taken_+%"],
+    "name":"damage_taken_incr"
   },
+  "1":{
+    "1":[{
+        "text":"Adds {0} to {1} Fire Damage to Attacks",
+        "limit":[[],[]]
+      }],
+    "stats":["attack_minimum_added_fire_damage","attack_maximum_added_fire_damage"],
+    "name":"attack_added_fire"
+  },
+  "critical_link_grants_accuracy_rating_+%":24,
   "33":{
     "1":[{
         "text":"Buff grants {0}% additional Physical Damage Reduction per Endurance Charge",
@@ -455,20 +488,16 @@
     "stats":["virtual_flame_link_minimum_fire_damage","virtual_flame_link_maximum_fire_damage"],
     "name":"flame_link_added_damage"
   },
-  "skill_buff_effect_+%":40,
-  "skill_buff_grants_critical_strike_chance_+%":6,
-  "15":{
+  "critical_link_grants_base_critical_strike_multiplier_+":25,
+  "7":{
     "1":[{
-        "text":"Buff grants {0}% increased Damage taken",
-        "limit":[[]]
-      },{
-        "1":[],
-        "text":"Buff grants {0}% reduced Damage taken",
+        "text":"Buff grants {0}% increased Cold Damage",
         "limit":[[]]
       }],
-    "stats":["base_damage_taken_+%"],
-    "name":"damage_taken_incr"
+    "stats":["herald_of_ice_cold_damage_+%"],
+    "name":"herald_of_ice_cold_damage_incr"
   },
+  "skill_buff_grants_attack_and_cast_speed_+%":41,
   "16":{
     "1":[{
         "text":"Buff grants Immunity to Freeze",
@@ -477,7 +506,7 @@
     "stats":["base_immune_to_freeze"],
     "name":"immune_to_freeze"
   },
-  "herald_of_ice_cold_damage_+%":7,
+  "damage_taken_goes_to_mana_%":26,
   "38":{
     "1":[{
         "text":"Buff grants {0:+d}% to all Elemental Resistances per Endurance Charge",
@@ -498,15 +527,14 @@
     "stats":["physical_damage_reduction_rating_+%"],
     "name":"armour_incr"
   },
-  "herald_of_thunder_lightning_damage_+%":8,
-  "10":{
+  "display_bulwark_link_overrides_attack_block_and_maximum_attack_block":27,
+  "2":{
     "1":[{
-        "1":[],
-        "text":"Buff grants {0} Mana Regeneration per second",
-        "limit":[[]]
+        "text":"Buff grants {0} to {1} Added Attack Cold Damage",
+        "limit":[[],[]]
       }],
-    "stats":["base_mana_regeneration_rate_per_minute"],
-    "name":"mana_regen"
+    "stats":["attack_minimum_added_cold_damage","attack_maximum_added_cold_damage"],
+    "name":"attack_added_cold"
   },
   "12":{
     "1":[{
@@ -516,15 +544,7 @@
     "stats":["shield_spell_block_%"],
     "name":"shield_spell_block"
   },
-  "7":{
-    "1":[{
-        "text":"Buff grants {0}% increased Cold Damage",
-        "limit":[[]]
-      }],
-    "stats":["herald_of_ice_cold_damage_+%"],
-    "name":"herald_of_ice_cold_damage_incr"
-  },
-  "stealth_+%":9,
+  "display_critical_link_overrides_main_hand_critical_strike_chance":28,
   "25":{
     "1":[{
         "text":"Linked target has {0:+d}% to Critical Strike Multiplier",
@@ -533,15 +553,7 @@
     "stats":["critical_link_grants_base_critical_strike_multiplier_+"],
     "name":"critical_link_multiplier"
   },
-  "37":{
-    "1":[{
-        "1":[],
-        "text":"Buff grants {0:+d}% to Maximum total Life Recovery per second from Leech",
-        "limit":[[]]
-      }],
-    "stats":["remora_link_grants_maximum_life_leech_rate_%_per_minute"],
-    "name":"remora_link_leech_max"
-  },
+  "display_skill_buff_grants_bleeding_immunity":29,
   "35":{
     "1":[{
         "text":"Life Leech effects are not removed at Full Life\nLife Leech effects apply Recovery Linked Target instead of you\nLinked target's Maximum total Life Recovery per second from Leech is equal to yours",
@@ -550,61 +562,50 @@
     "stats":["life_leech_is_applied_to_remora_link_targets_instead"],
     "name":"remora_link"
   },
-  "skill_buff_grants_shock_duration_+%":44,
-  "soul_link_grants_mana_regeneration_+%":48,
-  "2":{
+  "8":{
     "1":[{
-        "text":"Buff grants {0} to {1} Added Attack Cold Damage",
-        "limit":[[],[]]
+        "text":"Buff grants {0}% increased Lightning Damage",
+        "limit":[[]]
       }],
-    "stats":["attack_minimum_added_cold_damage","attack_maximum_added_cold_damage"],
-    "name":"attack_added_cold"
+    "stats":["herald_of_thunder_lightning_damage_+%"],
+    "name":"herald_of_thunder_lightning_damage_incr"
   },
-  "skill_display_buff_grants_shock_immunity":45,
-  "bulwark_link_grants_recover_X_life_on_block":22,
-  "display_bulwark_link_overrides_attack_block_and_maximum_attack_block":27,
-  "shield_spell_block_%":12,
-  "soul_link_grants_damage_taken_+%_final":47,
-  "skill_buff_grants_damage_+%":43,
-  "30":{
+  "energy_shield_lost_per_minute":30,
+  "17":{
     "1":[{
+        "text":"Buff grants {0}% increased Movement Speed",
+        "limit":[[]]
+      },{
         "1":[],
-        "text":"You lose {0} Energy Shield per second",
+        "text":"Buff grants {0}% reduced Movement Speed",
         "limit":[[]]
       }],
-    "stats":["energy_shield_lost_per_minute"],
-    "name":"energy_shield_loss"
+    "stats":["base_movement_velocity_+%"],
+    "name":"movement_speed_incr"
   },
-  "physical_damage_reduction_rating_+%":34,
+  "flame_link_grants_chance_to_ignite_%":31,
+  "6":{
+    "1":[{
+        "text":"Buff grants {0}% increased Critical Strike Chance",
+        "limit":[[]]
+      },{
+        "1":[],
+        "text":"Buff grants have {0}% reduced Critical Strike Chance",
+        "limit":[[]]
+      }],
+    "stats":["skill_buff_grants_critical_strike_chance_+%"],
+    "name":"grants_critical_strike_chance_incr"
+  },
+  "skill_buff_grants_chance_to_freeze_%":42,
+  "petrified_blood_%_life_loss_below_half_from_hit_to_prevent":32,
+  "storm_blade_energy_shield_+%_final":51,
   "phase_through_objects":13,
-  "4":{
-    "1":[{
-        "text":"Buff grants {0} to {1} Added Attack Lightning Damage",
-        "limit":[[],[]]
-      }],
-    "stats":["attack_minimum_added_lightning_damage","attack_maximum_added_lightning_damage"],
-    "name":"attack_added_lightning"
-  },
-  "base_mana_regeneration_rate_per_minute":10,
-  "skill_buff_grants_attack_and_cast_speed_+%":41,
-  "22":{
-    "1":[{
-        "text":"Linked target Recovers {0} Life when they Block",
-        "limit":[[]]
-      }],
-    "stats":["bulwark_link_grants_recover_X_life_on_block"],
-    "name":"bulwark_link_recover"
-  },
-  "base_chance_to_shock_%_from_skill":14,
-  "3":{
-    "1":[{
-        "text":"Buff grants {0} to {1} Added Spell Cold Damage",
-        "limit":[[],[]]
-      }],
-    "stats":["spell_minimum_added_cold_damage","spell_maximum_added_cold_damage"],
-    "name":"spell_added_cold"
-  },
-  "spell_damage_+%":50,
+  "remora_link_grants_damage_+%_when_on_full_life":36,
+  "unaffected_by_temporal_chains":52,
+  "vaal_molten_shall_armour_+%_final":53,
+  "skill_buff_grants_shock_duration_+%":44,
+  "physical_damage_reduction_%_per_endurance_charge":33,
+  "virtual_flame_link_minimum_fire_damage":54,
   "42":{
     "1":[{
         "text":"Buff grants {0}% chance to Freeze",
@@ -613,6 +614,5 @@
     "stats":["skill_buff_grants_chance_to_freeze_%"],
     "name":"buff_grants_chance_to_freeze"
   },
-  "base_damage_taken_+%":15,
-  "remora_link_grants_damage_+%_when_on_full_life":36
+  "physical_damage_reduction_rating_+%":34
 }
