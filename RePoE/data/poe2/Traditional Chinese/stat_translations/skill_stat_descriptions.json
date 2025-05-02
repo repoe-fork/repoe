@@ -646,6 +646,26 @@
         "string": "造成相當於[Corpse|屍體]最大生命\n{0}%的 [Physical|物理]傷害",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "divide_by_ten_1dp_if_required"
+          ]
+        ],
+        "string": "造成相當於[Corpse|屍體]最大生命\n{0}%的 [Physical|物理]傷害",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -1254,6 +1274,24 @@
           []
         ],
         "string": "額外施放法術 {0} 次",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 2,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "法術額外重複施放 {0} 次",
         "reminder_text": null,
         "is_markup": null
       }
@@ -2110,6 +2148,24 @@
         "string": "擊中時擊退敵人",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 100,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[HitDamage|擊中]時會[Knockback|擊退敵人]",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -2643,7 +2699,7 @@
         "index_handlers": [
           []
         ],
-        "string": "{0}% 更大範圍效果",
+        "string": "{0}% 更多範圍效果",
         "reminder_text": null,
         "is_markup": null
       },
@@ -7251,7 +7307,7 @@
         "index_handlers": [
           []
         ],
-        "string": "每顆被移除的耐力球增加 {0}% 增益效果持續時間",
+        "string": "每顆移除的耐力球增加 {0}% 增益效果持續時間",
         "reminder_text": null,
         "is_markup": null
       }
@@ -8423,6 +8479,24 @@
         "string": "同時間最多存在 {0} 個陷阱",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "同時最多可以放置 {0} 個陷阱",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -8457,6 +8531,24 @@
           []
         ],
         "string": "同時間最多存在 {0} 個遙控地雷",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "同時最多可以放置 {0} 個遙控地雷",
         "reminder_text": null,
         "is_markup": null
       }
@@ -9745,6 +9837,31 @@
         "string": "投射物返回你",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 0,
+            "max": 0,
+            "negated": true
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "[Projectile|投射物]會[Return|返回]到你身上",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -10799,6 +10916,24 @@
           {
             "min": 1,
             "max": 1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "每顆[Charges|暴擊球]額外傳送和[Strike|打擊] {0} 次，並增加 285% [Attack|攻擊]速度",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
             "negated": null
           }
         ],
@@ -12376,6 +12511,26 @@
         "string": "造成 {0}% 更少每階段法術傷害",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "每層 {0}% 更少傷害",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -12963,7 +13118,7 @@
         "index_handlers": [
           []
         ],
-        "string": "{0}% 更多光束傷害",
+        "string": "光束造成 {0}% 更多傷害",
         "reminder_text": null,
         "is_markup": null
       },
@@ -12983,7 +13138,7 @@
             "negate"
           ]
         ],
-        "string": "{0}% 更少光束傷害",
+        "string": "光束造成 {0}% 更少傷害",
         "reminder_text": null,
         "is_markup": null
       }
@@ -14782,6 +14937,26 @@
         "string": "對流血的敵人造成 {0}% 更少近戰物理傷害",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% 更少對[Bleeding|流血]敵人的[Melee|近戰][Physical|物理]傷害",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -16505,6 +16680,24 @@
     "Spanish": null,
     "Thai": null,
     "Traditional_Chinese": [
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "儲存 {0}% 預期的[Poison|中毒]傷害",
+        "reminder_text": null,
+        "is_markup": null
+      },
       {
         "condition": [
           {
@@ -18839,6 +19032,58 @@
         "string": "對[Immobilised|禁錮]敵人的傷害減少 {0}%",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "{0}% 更多對[Immobilised|禁錮]敵人的傷害",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ],
+          []
+        ],
+        "string": "{0}% 更少對[Immobilised|禁錮]敵人的傷害",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -19381,8 +19626,8 @@
       {
         "condition": [
           {
-            "min": 1,
-            "max": null,
+            "min": null,
+            "max": -1,
             "negated": null
           }
         ],
@@ -19390,9 +19635,11 @@
           "#"
         ],
         "index_handlers": [
-          []
+          [
+            "negate"
+          ]
         ],
-        "string": "{0}% 更多[Stun|暈眩]累積",
+        "string": "{0}% 更少[Stun|暈眩]累積",
         "reminder_text": null,
         "is_markup": null
       },
@@ -19898,6 +20145,58 @@
         "string": "[Pinned|釘身]敵人時，視同造成 {0}% 更少傷害",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "[Pinned|釘身]敵人時，視同造成 {0}% 更多傷害",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ],
+          []
+        ],
+        "string": "[Pinned|釘身]敵人時，視同造成 {0}% 更少傷害",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -20164,6 +20463,31 @@
           []
         ],
         "string": "需要 {0} 個連擊才能使用",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "需要 {0} 個[Combo|連擊]才能使用",
         "reminder_text": null,
         "is_markup": null
       }
@@ -21597,6 +21921,58 @@
           []
         ],
         "string": "每個剩餘的連鎖有 {0}% 更少傷害",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "每個剩餘的[Chain|連鎖]造成 {0}% 更多傷害",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ],
+          []
+        ],
+        "string": "每個剩餘的[Chain|連鎖]造成 {0}% 更少傷害",
         "reminder_text": null,
         "is_markup": null
       }
@@ -23380,6 +23756,58 @@
         "string": "根據移動的距離最少造成 {0}% 更少傷害",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "根據移動的距離最多造成 {0}% 更多傷害",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ],
+          []
+        ],
+        "string": "根據移動的距離最少造成 {0}% 更少傷害",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -23851,6 +24279,56 @@
         "string": "每個彈夾會裝填 {0} 發弩箭",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": 1,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "每個彈夾會裝填 {0} 發弩箭",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 2,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "每個彈夾會裝填 {0} 發弩箭",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -23957,6 +24435,38 @@
         "string": "發射 {0} 投射物",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 2,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": 1,
+            "max": 1,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          [],
+          []
+        ],
+        "string": "發射 {0} 支箭矢",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -23977,6 +24487,56 @@
     "Spanish": null,
     "Thai": null,
     "Traditional_Chinese": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": 1,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "同時可有 {0} 面盾牆",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 2,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "同時可有 {0} 面盾牆",
+        "reminder_text": null,
+        "is_markup": null
+      },
       {
         "condition": [
           {
@@ -27367,6 +27927,26 @@
         "string": "以[Melee|近戰][HitDamage|擊中]敵人時依每點[Power|強度]獲得[Energy|能量]@{0}",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "divide_by_one_hundred_2dp_if_required"
+          ]
+        ],
+        "string": "你以[Melee|近戰][Attack|攻擊][HitDamage|擊中]敵人時，依每點[Power|強度]獲得 {0} [Energy|能量]，隨[HitDamage|擊中]對敵人所造成[AilmentThreshold|異常狀態門檻]百分比變動",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -27403,6 +27983,26 @@
           ]
         ],
         "string": "以[Melee|近戰][HitDamage|擊中]敵人時依每點[Power|強度]獲得[Energy|能量]@{0}",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "divide_by_one_hundred_2dp_if_required"
+          ]
+        ],
+        "string": "你以[Melee|近戰][Attack|攻擊][HitDamage|擊中]敵人時，依每點[Power|強度]獲得 {0} [Energy|能量]，隨[HitDamage|擊中]對敵人所造成[AilmentThreshold|異常狀態門檻]百分比變動",
         "reminder_text": null,
         "is_markup": null
       }
@@ -27649,6 +28249,26 @@
         "string": "躲避翻滾時每移動 1 公尺獲得 {0} [Energy|能量]",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "divide_by_one_hundred_2dp_if_required"
+          ]
+        ],
+        "string": "閃避翻滾時每移動一公尺，獲得 {0} [Energy|能量]",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -27855,6 +28475,24 @@
         "string": "以[Melee|近戰]擊中殺死敵人時獲得 {0} 能量",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "以[Melee|近戰][HitDamage|擊中]殺死敵人時，獲得 {0} [Energy|能量]",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -27889,6 +28527,24 @@
           []
         ],
         "string": "以[Melee|近戰]擊中沉重擊暈敵人時，每敵人強度獲得 {0} 能量",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "以[Melee|近戰]擊中使敵人[HeavyStun|沉重暈眩]時，自每一敵人[Power|強度]獲得 {0} 能量",
         "reminder_text": null,
         "is_markup": null
       }
@@ -27927,6 +28583,24 @@
         "string": "以[Melee|近戰]擊中擊暈敵人時，每敵人強度獲得 {0} 能量",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "以[Melee|近戰]擊中使敵人[Stun|暈眩]時，自每一敵人[Power|強度]獲得 {0} 能量",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -27946,6 +28620,24 @@
     "Spanish": null,
     "Thai": null,
     "Traditional_Chinese": [
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[Minion|召喚物]被[MinionDeath|擊殺]時獲得 50 基礎[Energy|能量]，並隨著[Minion|召喚物]的[Power|強度]而調整",
+        "reminder_text": null,
+        "is_markup": null
+      },
       {
         "condition": [
           {
@@ -28151,6 +28843,24 @@
         "string": "你被擊暈時獲得 {0} 能量",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "當你受[Stun|暈眩]時，獲得 {0} [Energy|能量]",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -28170,6 +28880,24 @@
     "Spanish": null,
     "Thai": null,
     "Traditional_Chinese": [
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "你在引導時每秒獲得 {0} 能量",
+        "reminder_text": null,
+        "is_markup": null
+      },
       {
         "condition": [
           {
@@ -31043,6 +31771,24 @@
         "string": "可以指定生命為 {0} 或更低的[Minion|召喚物]",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "可以指定生命為 {0} 或更低的[Minion|召喚物]",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -31375,6 +32121,26 @@
         "string": "[Consume|消耗]敵人身上的[Daze|目眩]以造成 {0}% 更少[Stun|暈眩累積]",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": -1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[Consume|消耗]敵人身上的[Daze|目眩]以造成 {0}% 更少[Stun|暈眩累積]",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -31481,6 +32247,26 @@
           []
         ],
         "string": "敵人身上每 5% [Shock|感電]效果，增加 {0}% [HitDamage|擊中]傷害",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "敵人身上每 5% [Shock|感電]效果，減少 {0}% [HitDamage|擊中]傷害",
         "reminder_text": null,
         "is_markup": null
       },
@@ -31632,6 +32418,70 @@
     "Spanish": null,
     "Thai": null,
     "Traditional_Chinese": [
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          [],
+          []
+        ],
+        "string": "[Debuff|減益效果]每次擴散時造成 {0}% 更多傷害，最高可達 {1}%",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore",
+          "+#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          [],
+          []
+        ],
+        "string": "{1}% 至擴散的最大[Debuff|減益效果]傷害加成",
+        "reminder_text": null,
+        "is_markup": null
+      },
       {
         "condition": [
           {
@@ -36959,6 +37809,58 @@
         "string": "每一發連續發射的餘燼會使其傷害減少 {0}%",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "每一發連續發射的餘燼會使其造成 {0}% 更多傷害",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ],
+          []
+        ],
+        "string": "每一發連續發射的餘燼會使其造成 {0}% 更少傷害",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -37065,7 +37967,7 @@
       {
         "condition": [
           {
-            "min": 1,
+            "min": null,
             "max": null,
             "negated": null
           }
@@ -37076,7 +37978,7 @@
         "index_handlers": [
           []
         ],
-        "string": "竭盡時，增加 {0}% 傷害",
+        "string": "竭盡攻擊增加 {0}% 傷害",
         "reminder_text": null,
         "is_markup": null
       },
@@ -37096,7 +37998,7 @@
             "negate"
           ]
         ],
-        "string": "竭盡時，造成 {0}% 較少傷害",
+        "string": "[Empowered|強化攻擊]造成的傷害減少 {0}%",
         "reminder_text": null,
         "is_markup": null
       }
@@ -39237,6 +40139,24 @@
         "string": "{0} 最大層數",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "至多 {0} 層",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -39511,6 +40431,24 @@
         "string": "消耗 {0} 次魔力[Flask|藥劑]充能",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "消耗 {0} 次魔力[Flask|藥劑]充能",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -39591,6 +40529,26 @@
           {
             "min": 1000,
             "max": 1000,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ]
+        ],
+        "string": "[HitDamage|擊中]時，施加 {0} 秒的[Exposure|冰冷曝曬]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
             "negated": null
           }
         ],
@@ -39719,6 +40677,26 @@
         "string": "[HitDamage|擊中]時，施加 {0} 秒的[Exposure|火焰曝曬]",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ]
+        ],
+        "string": "[HitDamage|擊中]時，施加 {0} 秒的[Exposure|火焰曝曬]",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -39743,6 +40721,26 @@
           {
             "min": 1000,
             "max": 1000,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ]
+        ],
+        "string": "[HitDamage|擊中]時，施加 {0} 秒的[Exposure|閃電曝曬]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
             "negated": null
           }
         ],
@@ -41002,7 +42000,7 @@
         "index_handlers": [
           []
         ],
-        "string": "最大 {0} 層",
+        "string": "最多 {0} 層",
         "reminder_text": null,
         "is_markup": null
       }
@@ -44046,6 +45044,26 @@
         "string": "舉起你的盾牌時為其注入岩漿，持續 {0} 秒",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ]
+        ],
+        "string": "舉起你的盾牌時為其注入岩漿，持續 {0} 秒",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -44670,6 +45688,24 @@
           []
         ],
         "string": "爆炸的屍體每 1 [Power|強度]，造成 {0}% 更多[Fire|火焰]傷害",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "爆炸的[Corpse|屍體]每 1 [Power|強度]，會造成 {0}% 更多[Fire|火焰]傷害",
         "reminder_text": null,
         "is_markup": null
       }
@@ -47082,6 +48118,33 @@
         "string": "每 {0} 秒獲得 1 層，最多可達 {1} 層",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ],
+          []
+        ],
+        "string": "每 {0} 秒獲得 1 層，最多可達 {1} 層",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -47542,6 +48605,26 @@
         "string": "{0}% 更少[ESRechargeRate|能量護盾充能率]",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% 更少[ESRechargeRate|能量護盾充能率]",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -47632,6 +48715,26 @@
           ]
         ],
         "string": "你以[Melee|近戰][Attack|攻擊]殺死的敵人每擁有一[Power|強度]\n獲得 {0} [Energy|能量]",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "divide_by_one_hundred_2dp_if_required"
+          ]
+        ],
+        "string": "你以[Melee|近戰][Attack|攻擊]擊殺敵人時，\n依每點[Power|強度]獲得 {0} [Energy|能量]",
         "reminder_text": null,
         "is_markup": null
       }
@@ -49714,7 +50817,7 @@
         "index_handlers": [
           []
         ],
-        "string": "每次重複增加 {0}% 範圍效果",
+        "string": "每次重復增加 {0}% 範圍效果",
         "reminder_text": null,
         "is_markup": null
       },
@@ -49734,7 +50837,7 @@
             "negate"
           ]
         ],
-        "string": "每次重複減少 {0}% 範圍效果",
+        "string": "每次重復減少 {0}% 範圍效果",
         "reminder_text": null,
         "is_markup": null
       }
@@ -50017,6 +51120,56 @@
     "Spanish": null,
     "Thai": null,
     "Traditional_Chinese": [
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "[Empowered|強化][Spell|法術][Gain|獲得]相當於傷害 {0}% 的[Lightning|閃電]傷害",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
+          }
+        ],
+        "format": [
+          "+#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "[Empowered|強化][Spell|法術][Gain|獲得]相當於傷害 {0}% 的[Lightning|閃電]傷害",
+        "reminder_text": null,
+        "is_markup": null
+      },
       {
         "condition": [
           {
@@ -50727,6 +51880,24 @@
           []
         ],
         "string": "{0} 次雷擊後漩渦消失",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "[Orb|球體]在發彈 {0} 次後消失",
         "reminder_text": null,
         "is_markup": null
       }
@@ -51682,6 +52853,26 @@
         "string": "儲存的[Poison|中毒]賦予最多 {0}% 額外效果範圍",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "multiply_by_one_hundred"
+          ]
+        ],
+        "string": "儲存的[Poison|中毒]賦予最多 {0}% 額外效果範圍",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -51919,6 +53110,33 @@
         "string": "儲存的[Poison|中毒]使基礎爆炸範圍最多增加 {1} 公尺",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore",
+          "#"
+        ],
+        "index_handlers": [
+          [],
+          [
+            "divide_by_ten_1dp_if_required"
+          ]
+        ],
+        "string": "儲存的[Poison|中毒]使基礎爆炸範圍最多增加 {1} 公尺",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -51939,6 +53157,31 @@
     "Spanish": null,
     "Thai": null,
     "Traditional_Chinese": [
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "ignore",
+          "#"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "儲存的[Poison|中毒]賦予最多 {1}% 更多爆炸傷害",
+        "reminder_text": null,
+        "is_markup": null
+      },
       {
         "condition": [
           {
@@ -53620,6 +54863,31 @@
         "string": "熱能上限 {0}",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "熱能上限 {0}",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -54410,6 +55678,24 @@
           []
         ],
         "string": "疊層上限為 {0}",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          []
+        ],
+        "string": "疊層上限 {0}",
         "reminder_text": null,
         "is_markup": null
       }
@@ -57066,7 +58352,7 @@
         "index_handlers": [
           []
         ],
-        "string": "{0} 最大層數",
+        "string": "至多 {0} 層",
         "reminder_text": null,
         "is_markup": null
       }
@@ -58078,6 +59364,56 @@
           []
         ],
         "string": "最多 {0} 個尖刺",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 1,
+            "max": 1,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "棘刺上限 {0}",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": 2,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "棘刺上限 {0}",
         "reminder_text": null,
         "is_markup": null
       }
@@ -60819,6 +62155,31 @@
           []
         ],
         "string": "每秒獲得 {0}% 更多範圍效果，上限最高 {1}%",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "#"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "每秒獲得 {0}% 更多範圍效果，最高 {1}%",
         "reminder_text": null,
         "is_markup": null
       }
@@ -66657,6 +68018,26 @@
         "string": "每層 {0} 米範圍",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "divide_by_ten_1dp_if_required"
+          ]
+        ],
+        "string": "每層爆炸範圍為 {0} 公尺",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -67269,6 +68650,31 @@
         "string": "每秒獲得 {0}% 更多範圍效果，上限最高 {1}%",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "#"
+        ],
+        "index_handlers": [
+          [],
+          []
+        ],
+        "string": "每秒獲得 {0}% 更多範圍效果，最高 {1}%",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -67359,6 +68765,26 @@
           []
         ],
         "string": "{0}% 更多[Stun|暈眩]累積",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "{0}% 更少[Stun|暈眩]累積",
         "reminder_text": null,
         "is_markup": null
       },
@@ -69953,6 +71379,38 @@
         "string": "增益效果在[Empowered|強化]你下 {0} 次施展的[Melee|近戰][Attack|攻擊]後移除\n由此技能[Empowered|強化]的[Attack|攻擊]無法被其他技能[Empowered|強化]",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
+          },
+          {
+            "min": 3,
+            "max": 3,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "ignore",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          [],
+          []
+        ],
+        "string": "增益效果在[Empowered|強化]你下 {0} 次施展的[Melee|近戰][Attack|攻擊]後移除\n由此技能[Empowered|強化]的[Attack|攻擊]無法被其他技能[Empowered|強化]",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -70483,6 +71941,26 @@
           []
         ],
         "string": "竭盡攻擊增加 {0}% 傷害",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": -1,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "negate"
+          ]
+        ],
+        "string": "[Empowered|強化攻擊]造成的傷害減少 {0}%",
         "reminder_text": null,
         "is_markup": null
       }
@@ -71215,6 +72693,26 @@
         "string": "岩漿消散後的 {0} 秒內無法施展\n灌注岩漿的格擋",
         "reminder_text": null,
         "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#"
+        ],
+        "index_handlers": [
+          [
+            "milliseconds_to_seconds_2dp_if_required"
+          ]
+        ],
+        "string": "岩漿消散後的 {0} 秒內無法施展\n灌注岩漿的格擋",
+        "reminder_text": null,
+        "is_markup": null
       }
     ]
   },
@@ -71729,6 +73227,70 @@
           []
         ],
         "string": "範圍內每 5 敵人[Power|強度]，[Empowered|強化][Attack|攻擊]會獲得相當於傷害 {0}% 的[Fire|火焰]傷害",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": 0,
+            "max": 0,
+            "negated": null
+          }
+        ],
+        "format": [
+          "+#",
+          "+#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          [],
+          []
+        ],
+        "string": "範圍內每 5 敵人[Power|強度]，[Empowered|強化][Attack|攻擊]會[Gain|獲得]相當於傷害 {0}% 的[Fire|火焰]傷害，最高可達 {1}%",
+        "reminder_text": null,
+        "is_markup": null
+      },
+      {
+        "condition": [
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          },
+          {
+            "min": null,
+            "max": null,
+            "negated": null
+          }
+        ],
+        "format": [
+          "#",
+          "#",
+          "ignore"
+        ],
+        "index_handlers": [
+          [],
+          [],
+          []
+        ],
+        "string": "範圍內每 5 敵人[Power|強度]，[Empowered|強化][Attack|攻擊]會[Gain|獲得]相當於傷害 {0}% 的[Fire|火焰]傷害，最高可達 {1}%",
         "reminder_text": null,
         "is_markup": null
       }
