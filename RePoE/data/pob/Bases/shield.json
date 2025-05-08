@@ -1,16 +1,21 @@
 {
-  "Brass Spirit Shield":{
-    "armour":{
-      "MovementPenalty":3,
-      "EnergyShieldBaseMin":35,
-      "EnergyShieldBaseMax":40,
-      "BlockChance":25
-    },
+  "Painted Tower Shield":{
     "req":{
-      "level":33,
-      "int":83
+      "level":35,
+      "str":87
     },
-    "subType":"Energy Shield",
+    "subType":"Armour",
+    "implicit":"+(20-30) to maximum Life",
+    "socketLimit":3,
+    "tags":{
+      "armour":true
+    },
+    "armour":{
+      "BlockChance":25,
+      "ArmourBaseMin":188,
+      "ArmourBaseMax":216
+    },
+    "type":"Shield",
     "influenceTags":{
       "adjudicator":"shield_adjudicator",
       "tangle":"shield_tangle",
@@ -21,426 +26,954 @@
       "elder":"shield_elder",
       "crusader":"shield_crusader"
     },
-    "type":"Shield",
-    "implicitModTypes":[],
-    "tags":{
-      "int_armour":true
-    }
+    "implicitModTypes":[["resource","life"]]
+  },
+  "Buckskin Tower Shield":{
+    "req":{
+      "level":39,
+      "str":96
+    },
+    "implicit":"+(10-20) to maximum Life",
+    "tags":[],
+    "armour":{
+      "BlockChance":26,
+      "ArmourBaseMin":177,
+      "ArmourBaseMax":209
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Mahogany Tower Shield":{
+    "req":{
+      "level":43,
+      "str":105
+    },
+    "tags":[],
+    "armour":{
+      "ArmourBaseMin":230,
+      "ArmourBaseMax":265
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Bronze Tower Shield":{
+    "req":{
+      "level":47,
+      "str":114
+    },
+    "implicit":"+(30-40) to maximum Life",
+    "tags":[],
+    "armour":{
+      "BlockChance":24,
+      "ArmourBaseMin":290,
+      "ArmourBaseMax":324
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Girded Tower Shield":{
+    "req":{
+      "level":51,
+      "str":123
+    },
+    "tags":[],
+    "armour":{
+      "BlockChance":23,
+      "ArmourBaseMin":397,
+      "ArmourBaseMax":437
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Rawhide Tower Shield":{
+    "req":{
+      "level":11,
+      "str":33
+    },
+    "tags":[],
+    "armour":{
+      "ArmourBaseMin":53,
+      "ArmourBaseMax":66
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Cedar Tower Shield":{
+    "req":{
+      "level":17
+    },
+    "tags":[],
+    "armour":{
+      "ArmourBaseMin":94,
+      "ArmourBaseMax":113
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Ebony Tower Shield":{
+    "req":{
+      "level":61,
+      "str":159
+    },
+    "tags":[],
+    "armour":{
+      "ArmourBaseMin":357,
+      "ArmourBaseMax":411
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Copper Tower Shield":{
+    "req":{
+      "str":62
+    },
+    "tags":[],
+    "armour":{
+      "ArmourBaseMin":151,
+      "ArmourBaseMax":173
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Alder Spiked Shield":{
+    "req":{
+      "dex":74,
+      "level":58
+    },
+    "subType":"Evasion/Energy Shield",
+    "implicit":"+3% chance to Suppress Spell Damage",
+    "tags":[],
+    "armour":{
+      "EvasionBaseMax":240,
+      "EnergyShieldBaseMax":49
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Colossal Tower Shield":{
+    "req":{
+      "level":67
+    },
+    "tags":[],
+    "armour":{
+      "ArmourBaseMin":522,
+      "ArmourBaseMax":601
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Pinnacle Tower Shield":{
+    "req":{
+      "level":70
+    },
+    "tags":[],
+    "armour":{
+      "ArmourBaseMin":467,
+      "ArmourBaseMax":537
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Exothermic Tower Shield":{
+    "req":{
+      "level":30,
+      "str":76
+    },
+    "implicit":"Scorch Enemies when you Block their Damage",
+    "tags":[],
+    "armour":{
+      "ArmourBaseMax":100
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Golden Flame":{
+    "armour":{
+      "BlockChance":20
+    },
+    "req":{
+      "level":15
+    },
+    "influenceTags":[],
+    "tags":[],
+    "implicitModTypes":[["chaos","resistance"]],
+    "implicit":"+(11-19)% to Chaos Resistance"
+  },
+  "Magmatic Tower Shield":{
+    "req":{
+      "level":50,
+      "str":121
+    },
+    "tags":[],
+    "armour":{
+      "BlockChance":27,
+      "ArmourBaseMin":144,
+      "ArmourBaseMax":165
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Heat-attuned Tower Shield":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "BlockChance":29,
+      "ArmourBaseMin":220,
+      "ArmourBaseMax":253
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Goathide Buckler":{
+    "req":{
+      "dex":13
+    },
+    "subType":"Evasion",
+    "implicit":"3% increased Movement Speed",
+    "tags":[],
+    "armour":{
+      "EvasionBaseMin":14
+    },
+    "influenceTags":[],
+    "implicitModTypes":[["speed"]]
+  },
+  "Pine Buckler":{
+    "req":{
+      "level":8
+    },
+    "tags":[],
+    "armour":[],
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Painted Buckler":{
+    "req":{
+      "level":16,
+      "dex":44
+    },
+    "implicit":"6% increased Movement Speed",
+    "tags":[],
+    "armour":{
+      "EvasionBaseMax":154
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Hammered Buckler":{
+    "req":{
+      "dex":60
+    },
+    "tags":[],
+    "armour":{
+      "EvasionBaseMin":116,
+      "EvasionBaseMax":139
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "War Buckler":{
+    "req":[],
+    "implicit":"9% increased Movement Speed",
+    "tags":[],
+    "armour":{
+      "EvasionBaseMin":169,
+      "EvasionBaseMax":194
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Gilded Buckler":{
+    "req":{
+      "level":34,
+      "dex":85
+    },
+    "tags":[],
+    "armour":{
+      "EvasionBaseMin":225,
+      "EvasionBaseMax":259
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Oak Buckler":{
+    "req":{
+      "level":38
+    },
+    "tags":[],
+    "armour":[],
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Enameled Buckler":{
+    "req":{
+      "level":42,
+      "dex":103
+    },
+    "tags":[],
+    "armour":{
+      "EvasionBaseMin":311,
+      "EvasionBaseMax":349
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Corrugated Buckler":{
+    "req":{
+      "level":46,
+      "dex":112
+    },
+    "tags":[],
+    "armour":{
+      "EvasionBaseMin":227,
+      "EvasionBaseMax":272
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Battle Buckler":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "EvasionBaseMin":287,
+      "EvasionBaseMax":330
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Golden Buckler":{
+    "req":{
+      "level":54,
+      "dex":130
+    },
+    "tags":[],
+    "armour":{
+      "EvasionBaseMin":354,
+      "EvasionBaseMax":407
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Ironwood Buckler":{
+    "req":{
+      "level":57,
+      "dex":137
+    },
+    "tags":[],
+    "armour":{
+      "EvasionBaseMin":327,
+      "EvasionBaseMax":385
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Lacquered Buckler":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "EvasionBaseMin":477,
+      "EvasionBaseMax":549
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Vaal Buckler":{
+    "req":{
+      "level":63
+    },
+    "tags":[],
+    "armour":{
+      "EvasionBaseMax":379
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Crusader Buckler":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "EvasionBaseMax":442
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Imperial Buckler":{
+    "req":{
+      "level":69
+    },
+    "tags":[],
+    "armour":{
+      "EvasionBaseMin":440,
+      "EvasionBaseMax":506
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Endothermic Buckler":{
+    "req":[],
+    "implicit":"Inflict Brittle on Enemies when you Block their Damage",
+    "tags":[],
+    "armour":{
+      "EvasionBaseMin":75,
+      "EvasionBaseMax":86
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Polar Buckler":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "EvasionBaseMax":142
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Cold-attuned Buckler":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "BlockChance":28,
+      "EvasionBaseMin":206,
+      "EvasionBaseMax":237
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Twig Spirit Shield":{
+    "req":[],
+    "subType":"Energy Shield",
+    "implicit":"(10-15)% increased Spell Damage",
+    "tags":[],
+    "armour":{
+      "BlockChance":22,
+      "EnergyShieldBaseMin":6
+    },
+    "influenceTags":[],
+    "implicitModTypes":[["caster_damage","damage","caster"]]
+  },
+  "Yew Spirit Shield":{
+    "req":{
+      "level":9
+    },
+    "implicit":"(5-10)% increased Spell Damage",
+    "tags":[],
+    "armour":[],
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Bone Spirit Shield":{
+    "req":[],
+    "implicit":"Minions deal (5-10)% increased Damage",
+    "tags":[],
+    "armour":{
+      "EnergyShieldBaseMax":19
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[null,"minion"]]
+  },
+  "Tarnished Spirit Shield":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "EnergyShieldBaseMin":21
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Jingling Spirit Shield":{
+    "req":{
+      "int":71
+    },
+    "tags":[],
+    "armour":[],
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Brass Spirit Shield":{
+    "armour":{
+      "EnergyShieldBaseMax":40
+    },
+    "req":{
+      "int":83
+    },
+    "influenceTags":[],
+    "tags":[],
+    "implicitModTypes":[]
   },
   "Walnut Spirit Shield":{
-    "armour":{
-      "EnergyShieldBaseMin":32,
-      "EnergyShieldBaseMax":38,
-      "BlockChance":24
-    },
     "req":{
       "level":37,
       "int":92
     },
-    "implicit":"(5-10)% increased Spell Damage",
+    "tags":[],
+    "armour":{
+      "EnergyShieldBaseMin":32
+    },
     "influenceTags":[],
-    "implicitModTypes":[["caster_damage","damage","caster"]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Ivory Spirit Shield":{
-    "armour":{
-      "BlockChance":22
-    },
     "req":{
       "level":41,
       "int":101
     },
-    "implicit":"Minions deal (5-10)% increased Damage",
+    "tags":[],
+    "armour":[],
     "influenceTags":[],
-    "implicitModTypes":[[null,"minion"]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Ancient Spirit Shield":{
-    "armour":{
-      "EnergyShieldBaseMax":45
-    },
     "req":{
+      "level":45,
       "int":110
     },
+    "tags":[],
+    "armour":[],
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Chiming Spirit Shield":{
-    "armour":{
-      "EnergyShieldBaseMin":42,
-      "EnergyShieldBaseMax":48,
-      "BlockChance":23
-    },
     "req":{
-      "level":49,
       "int":119
     },
-    "implicit":"(10-15)% increased Spell Damage",
+    "tags":[],
+    "armour":{
+      "EnergyShieldBaseMax":48
+    },
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Thorium Spirit Shield":{
-    "armour":{
-      "EnergyShieldBaseMin":54,
-      "EnergyShieldBaseMax":62
-    },
+    "armour":[],
     "req":{
-      "level":53,
       "int":128
     },
     "influenceTags":[],
-    "implicitModTypes":[],
-    "tags":[]
+    "tags":[],
+    "implicitModTypes":[]
   },
   "Lacewood Spirit Shield":{
-    "armour":{
-      "EnergyShieldBaseMin":47,
-      "EnergyShieldBaseMax":55
-    },
     "req":{
       "level":56,
       "int":134
     },
+    "tags":[],
+    "armour":{
+      "EnergyShieldBaseMax":55
+    },
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Fossilised Spirit Shield":{
-    "armour":[],
     "req":{
       "level":59,
       "int":141
     },
+    "tags":[],
+    "armour":[],
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Vaal Spirit Shield":{
+    "req":[],
+    "tags":[],
     "armour":{
       "EnergyShieldBaseMax":64
     },
-    "req":{
-      "int":159
-    },
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Harmonic Spirit Shield":{
-    "armour":{
-      "EnergyShieldBaseMin":58,
-      "EnergyShieldBaseMax":66
-    },
     "req":{
       "level":65
     },
+    "tags":[],
+    "armour":[],
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Titanium Spirit Shield":{
     "armour":{
-      "EnergyShieldBaseMin":67,
       "EnergyShieldBaseMax":77
     },
     "req":{
       "level":68
     },
     "influenceTags":[],
-    "implicitModTypes":[],
-    "tags":[]
+    "tags":[],
+    "implicitModTypes":[]
   },
   "Exhausting Spirit Shield":{
-    "armour":{
-      "EnergyShieldBaseMin":16,
-      "EnergyShieldBaseMax":19
-    },
-    "req":{
-      "level":30,
-      "int":76
-    },
+    "req":[],
     "implicit":"Sap Enemies when you Block their Damage",
+    "tags":[],
+    "armour":[],
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Subsuming Spirit Shield":{
-    "armour":{
-      "EnergyShieldBaseMax":29
-    },
-    "req":{
-      "level":50,
-      "int":121
-    },
+    "req":[],
+    "tags":[],
+    "armour":[],
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Transfer-attuned Spirit Shield":{
-    "armour":{
-      "EnergyShieldBaseMin":39,
-      "BlockChance":26
-    },
-    "req":{
-      "level":70
-    },
+    "req":[],
+    "tags":[],
+    "armour":[],
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Rotted Round Shield":{
-    "armour":{
-      "EvasionBaseMax":18,
-      "EvasionBaseMin":13
-    },
     "req":{
-      "dex":11,
       "level":5
     },
-    "implicit":"60% increased Block Recovery",
     "subType":"Armour/Evasion",
+    "implicit":"60% increased Block Recovery",
+    "tags":[],
+    "armour":{
+      "EvasionBaseMax":18
+    },
     "influenceTags":[],
-    "implicitModTypes":[["block"]],
-    "tags":[]
+    "implicitModTypes":[["block"]]
+  },
+  "Supreme Spiked Shield":{
+    "req":[],
+    "implicit":"+5% chance to Suppress Spell Damage",
+    "tags":[],
+    "armour":{
+      "EvasionBaseMax":278,
+      "EvasionBaseMin":242
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Mirrored Spiked Shield":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "EnergyShieldBaseMin":31,
+      "EvasionBaseMax":174
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Ezomyte Spiked Shield":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "EvasionBaseMin":181
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Sovereign Spiked Shield":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "EvasionBaseMax":218,
+      "EvasionBaseMin":195
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Polished Spiked Shield":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "EvasionBaseMax":131,
+      "EvasionBaseMin":111
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
   },
   "Fir Round Shield":{
-    "armour":[],
     "req":{
       "level":12
     },
     "implicit":"180% increased Block Recovery",
+    "tags":[],
+    "armour":[],
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
+  },
+  "Compound Spiked Shield":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "EvasionBaseMin":122
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
   },
   "Studded Round Shield":{
-    "armour":{
-      "BlockChance":27,
-      "EvasionBaseMin":46
-    },
-    "req":{
-      "level":20
-    },
+    "req":[],
+    "tags":[],
+    "armour":[],
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Scarlet Round Shield":{
-    "armour":{
-      "EvasionBaseMax":100,
-      "EvasionBaseMin":87
-    },
+    "armour":[],
     "req":[],
     "influenceTags":[],
-    "implicitModTypes":[],
-    "tags":[]
+    "tags":[],
+    "implicitModTypes":[]
   },
   "Splendid Round Shield":{
-    "armour":{
-      "EvasionBaseMax":86,
-      "EvasionBaseMin":75
-    },
-    "req":{
-      "dex":44
-    },
+    "req":[],
     "implicit":"120% increased Block Recovery",
+    "tags":[],
+    "armour":[],
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
-  "Maple Round Shield":{
-    "armour":{
-      "EvasionBaseMax":99,
-      "EvasionBaseMin":88
-    },
+  "Redwood Spiked Shield":{
     "req":{
       "dex":52
     },
+    "tags":[],
+    "armour":{
+      "EvasionBaseMax":163
+    },
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
+  },
+  "Maple Round Shield":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "EvasionBaseMin":88,
+      "EvasionBaseMax":99
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
   },
   "Spiked Round Shield":{
-    "armour":{
-      "EvasionBaseMax":120,
-      "EvasionBaseMin":102
-    },
     "req":[],
+    "tags":[],
+    "armour":{
+      "EvasionBaseMin":102,
+      "EvasionBaseMax":120
+    },
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Crimson Round Shield":{
     "armour":{
-      "EvasionBaseMax":178,
-      "EvasionBaseMin":155
+      "EvasionBaseMin":155,
+      "EvasionBaseMax":178
     },
     "req":[],
     "influenceTags":[],
-    "implicitModTypes":[],
-    "tags":[]
+    "tags":[],
+    "implicitModTypes":[]
   },
   "Baroque Round Shield":{
-    "armour":{
-      "EvasionBaseMax":140,
-      "EvasionBaseMin":122
-    },
     "req":[],
+    "tags":[],
+    "armour":{
+      "EvasionBaseMax":140
+    },
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Teak Round Shield":{
+    "req":[],
+    "tags":[],
     "armour":{
-      "EvasionBaseMax":146,
-      "EvasionBaseMin":131
-    },
-    "req":{
-      "dex":74
+      "EvasionBaseMax":146
     },
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Spiny Round Shield":{
-    "armour":{
-      "EvasionBaseMax":177,
-      "EvasionBaseMin":154
-    },
-    "req":{
-      "dex":85
-    },
+    "req":[],
+    "tags":[],
+    "armour":[],
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Cardinal Round Shield":{
-    "armour":{
-      "EvasionBaseMax":240,
-      "EvasionBaseMin":209
-    },
+    "armour":[],
     "req":[],
     "influenceTags":[],
-    "implicitModTypes":[],
-    "tags":[]
+    "tags":[],
+    "implicitModTypes":[]
   },
   "Elegant Round Shield":{
-    "armour":{
-      "EvasionBaseMax":170,
-      "EvasionBaseMin":148
-    },
     "req":[],
+    "tags":[],
+    "armour":{
+      "EvasionBaseMin":148,
+      "EvasionBaseMax":170
+    },
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Plank Kite Shield":{
-    "armour":{
-      "EnergyShieldBaseMax":7
+    "req":{
+      "level":7
     },
-    "req":[],
-    "implicit":"+4% to all Elemental Resistances",
     "subType":"Armour/Energy Shield",
+    "implicit":"+4% to all Elemental Resistances",
+    "tags":[],
+    "armour":[],
     "influenceTags":[],
-    "implicitModTypes":[["elemental","resistance"]],
-    "tags":[]
+    "implicitModTypes":[["elemental"]]
+  },
+  "Ornate Spiked Shield":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "EvasionBaseMax":135
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Burnished Spiked Shield":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "EvasionBaseMax":73
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Alloyed Spiked Shield":{
+    "req":[],
+    "tags":[],
+    "armour":[],
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Driftwood Spiked Shield":{
+    "req":[],
+    "tags":[],
+    "armour":[],
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Ezomyte Tower Shield":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "ArmourBaseMin":412,
+      "ArmourBaseMax":474
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Crested Tower Shield":{
+    "req":{
+      "str":132
+    },
+    "tags":[],
+    "armour":{
+      "ArmourBaseMin":293,
+      "ArmourBaseMax":337
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
   },
   "Linden Kite Shield":{
-    "armour":{
-      "EnergyShieldBaseMax":14,
-      "ArmourBaseMin":43
-    },
     "req":[],
+    "tags":[],
+    "armour":[],
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Reinforced Kite Shield":{
     "armour":{
-      "EnergyShieldBaseMin":15,
       "ArmourBaseMax":81
     },
     "req":[],
     "influenceTags":[],
-    "implicitModTypes":[],
-    "tags":[]
+    "tags":[],
+    "implicitModTypes":[]
   },
   "Layered Kite Shield":{
-    "armour":{
-      "ArmourBaseMax":73
-    },
     "req":[],
     "implicit":"+8% to all Elemental Resistances",
+    "tags":[],
+    "armour":[],
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
+  },
+  "Corroded Tower Shield":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "ArmourBaseMin":36
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
   },
   "Ceremonial Kite Shield":{
+    "req":[],
+    "implicit":"+12% to all Elemental Resistances",
+    "tags":[],
     "armour":{
       "ArmourBaseMax":89
     },
-    "req":{
-      "level":34
-    },
-    "implicit":"+12% to all Elemental Resistances",
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
+  },
+  "Reinforced Tower Shield":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "ArmourBaseMax":260
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
   },
   "Etched Kite Shield":{
-    "armour":{
-      "ArmourBaseMin":127,
-      "ArmourBaseMax":142
-    },
     "req":[],
+    "tags":[],
+    "armour":{
+      "ArmourBaseMin":127
+    },
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Steel Kite Shield":{
     "armour":{
       "ArmourBaseMax":167
     },
-    "req":{
-      "int":60
-    },
-    "influenceTags":[],
-    "implicitModTypes":[],
-    "tags":[]
-  },
-  "Corroded Tower Shield":{
-    "armour":{
-      "ArmourBaseMin":36
-    },
     "req":[],
-    "implicit":"+(10-20) to maximum Life",
-    "subType":"Armour",
     "influenceTags":[],
-    "implicitModTypes":[["resource","life"]],
-    "tags":[]
+    "tags":[],
+    "implicitModTypes":[]
+  },
+  "Laminated Kite Shield":{
+    "req":[],
+    "tags":[],
+    "armour":{
+      "ArmourBaseMax":133
+    },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
   },
   "Angelic Kite Shield":{
+    "req":[],
+    "tags":[],
     "armour":{
       "ArmourBaseMin":124
     },
-    "req":{
-      "int":71
-    },
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Branded Kite Shield":{
+    "req":[],
+    "tags":[],
     "armour":{
       "ArmourBaseMin":186,
       "ArmourBaseMax":208
     },
-    "req":[],
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Champion Kite Shield":{
     "armour":{
@@ -449,584 +982,52 @@
     },
     "req":[],
     "influenceTags":[],
-    "implicitModTypes":[],
-    "tags":[]
+    "tags":[],
+    "implicitModTypes":[]
   },
   "Mosaic Kite Shield":{
+    "req":[],
+    "tags":[],
     "armour":{
-      "ArmourBaseMin":147,
-      "ArmourBaseMax":169
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Rawhide Tower Shield":{
-    "armour":[],
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Cedar Tower Shield":{
-    "armour":{
-      "ArmourBaseMin":94,
-      "ArmourBaseMax":113
-    },
-    "req":{
-      "level":17
-    },
-    "implicit":"+(20-30) to maximum Life",
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Copper Tower Shield":{
-    "armour":{
-      "ArmourBaseMin":151,
-      "ArmourBaseMax":173
-    },
-    "req":[],
-    "implicit":"+(30-40) to maximum Life",
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Reinforced Tower Shield":{
-    "armour":{
-      "ArmourBaseMin":237,
-      "ArmourBaseMax":260
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Painted Tower Shield":{
-    "armour":{
-      "ArmourBaseMin":188,
-      "ArmourBaseMax":216
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Buckskin Tower Shield":{
-    "armour":[],
-    "req":{
-      "str":96
+      "ArmourBaseMin":147
     },
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Mahogany Tower Shield":{
-    "armour":{
-      "ArmourBaseMin":230,
-      "ArmourBaseMax":265
-    },
-    "req":{
-      "str":105
-    },
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Bronze Tower Shield":{
-    "armour":{
-      "ArmourBaseMin":290,
-      "ArmourBaseMax":324
-    },
-    "req":{
-      "str":114
-    },
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Girded Tower Shield":{
-    "armour":{
-      "ArmourBaseMin":397,
-      "ArmourBaseMax":437
-    },
-    "req":{
-      "level":51,
-      "str":123
-    },
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Crested Tower Shield":{
-    "armour":{
-      "ArmourBaseMin":293,
-      "ArmourBaseMax":337
-    },
-    "req":{
-      "str":132
-    },
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Shagreen Tower Shield":{
-    "armour":{
-      "ArmourBaseMin":261,
-      "ArmourBaseMax":308
-    },
-    "req":{
-      "str":139
-    },
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Ebony Tower Shield":{
-    "armour":{
-      "ArmourBaseMin":357,
-      "ArmourBaseMax":411
-    },
-    "req":{
-      "level":61
-    },
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Ezomyte Tower Shield":{
-    "armour":{
-      "ArmourBaseMin":412,
-      "ArmourBaseMax":474
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Alder Spiked Shield":{
-    "armour":[],
-    "req":[],
-    "implicit":"+3% chance to Suppress Spell Damage",
-    "subType":"Evasion/Energy Shield",
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Colossal Tower Shield":{
-    "armour":{
-      "ArmourBaseMin":522,
-      "ArmourBaseMax":601
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Pinnacle Tower Shield":{
-    "armour":{
-      "ArmourBaseMin":467,
-      "ArmourBaseMax":537
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Exothermic Tower Shield":{
-    "armour":[],
-    "req":[],
-    "implicit":"Scorch Enemies when you Block their Damage",
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Golden Flame":{
-    "armour":[],
-    "req":[],
-    "implicitModTypes":[["chaos"]],
-    "influenceTags":[],
-    "implicit":"+(11-19)% to Chaos Resistance",
-    "tags":[]
-  },
-  "Magmatic Tower Shield":{
-    "armour":{
-      "ArmourBaseMin":144,
-      "ArmourBaseMax":165
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Heat-attuned Tower Shield":{
-    "armour":{
-      "ArmourBaseMin":220,
-      "ArmourBaseMax":253
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Goathide Buckler":{
-    "armour":[],
-    "req":[],
-    "implicit":"3% increased Movement Speed",
-    "subType":"Evasion",
-    "influenceTags":[],
-    "implicitModTypes":[["speed"]],
-    "tags":[]
-  },
-  "Pine Buckler":{
-    "armour":[],
-    "req":{
-      "level":8
-    },
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Painted Buckler":{
-    "armour":[],
-    "req":[],
-    "implicit":"6% increased Movement Speed",
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Hammered Buckler":{
-    "armour":{
-      "EvasionBaseMin":116
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "War Buckler":{
-    "armour":{
-      "EvasionBaseMax":194
-    },
-    "req":[],
-    "implicit":"9% increased Movement Speed",
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Gilded Buckler":{
-    "armour":{
-      "EvasionBaseMin":225,
-      "EvasionBaseMax":259
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Oak Buckler":{
-    "armour":[],
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Enameled Buckler":{
-    "armour":{
-      "EvasionBaseMin":311,
-      "EvasionBaseMax":349
-    },
-    "req":{
-      "dex":103
-    },
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Corrugated Buckler":{
-    "armour":{
-      "EvasionBaseMin":227,
-      "EvasionBaseMax":272
-    },
-    "req":{
-      "dex":112
-    },
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Battle Buckler":{
-    "armour":{
-      "EvasionBaseMin":287,
-      "EvasionBaseMax":330
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Golden Buckler":{
-    "armour":{
-      "EvasionBaseMin":354,
-      "EvasionBaseMax":407
-    },
-    "req":{
-      "dex":130
-    },
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Ironwood Buckler":{
-    "armour":{
-      "EvasionBaseMin":327,
-      "EvasionBaseMax":385
-    },
-    "req":{
-      "level":57,
-      "dex":137
-    },
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Lacquered Buckler":{
-    "armour":{
-      "EvasionBaseMin":477,
-      "EvasionBaseMax":549
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Vaal Buckler":{
-    "armour":{
-      "EvasionBaseMax":379
-    },
-    "req":{
-      "level":63
-    },
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Crusader Buckler":{
-    "armour":{
-      "EvasionBaseMax":442
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Splintered Tower Shield":{
-    "armour":{
-      "ArmourBaseMin":9
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[],
-    "tags":[]
-  },
-  "Endothermic Buckler":{
-    "armour":[],
-    "req":[],
-    "implicit":"Inflict Brittle on Enemies when you Block their Damage",
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Supreme Spiked Shield":{
-    "armour":{
-      "EvasionBaseMax":278,
-      "EvasionBaseMin":242
-    },
-    "req":[],
-    "implicit":"+5% chance to Suppress Spell Damage",
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Polar Buckler":{
-    "armour":[],
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Cold-attuned Buckler":{
-    "armour":{
-      "EvasionBaseMin":206,
-      "BlockChance":28
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Twig Spirit Shield":{
-    "armour":{
-      "EnergyShieldBaseMin":6
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Mirrored Spiked Shield":{
-    "armour":{
-      "EnergyShieldBaseMin":31,
-      "EvasionBaseMax":174
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Ezomyte Spiked Shield":{
-    "armour":{
-      "EvasionBaseMin":181
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Sovereign Spiked Shield":{
-    "armour":{
-      "EvasionBaseMax":218,
-      "EvasionBaseMin":195
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Polished Spiked Shield":{
-    "armour":{
-      "EvasionBaseMin":111
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Compound Spiked Shield":{
-    "armour":[],
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Redwood Spiked Shield":{
-    "armour":{
-      "EvasionBaseMax":163
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Ornate Spiked Shield":{
-    "armour":{
-      "EvasionBaseMax":135
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Burnished Spiked Shield":{
-    "armour":[],
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Alloyed Spiked Shield":{
-    "armour":[],
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Driftwood Spiked Shield":{
-    "armour":[],
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Yew Spirit Shield":{
-    "armour":[],
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Spiked Bundle":{
-    "armour":{
-      "EnergyShieldBaseMin":4
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Bone Spirit Shield":{
-    "armour":[],
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
   "Archon Kite Shield":{
+    "req":[],
+    "tags":[],
     "armour":{
       "ArmourBaseMin":156,
       "ArmourBaseMax":179
     },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Spiked Bundle":{
     "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Laminated Kite Shield":{
+    "tags":[],
     "armour":{
-      "ArmourBaseMax":133
+      "EnergyShieldBaseMin":4
     },
+    "influenceTags":[],
+    "implicitModTypes":[[]]
+  },
+  "Shagreen Tower Shield":{
     "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Imperial Buckler":{
+    "tags":[],
     "armour":{
-      "EvasionBaseMin":440,
-      "EvasionBaseMax":506
-    },
-    "req":{
-      "level":69
+      "ArmourBaseMin":261,
+      "ArmourBaseMax":308
     },
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "implicitModTypes":[[]]
   },
-  "Tarnished Spirit Shield":{
-    "armour":{
-      "EnergyShieldBaseMin":21
-    },
-    "req":[],
-    "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
-  },
-  "Jingling Spirit Shield":{
+  "Splintered Tower Shield":{
     "armour":[],
     "req":[],
     "influenceTags":[],
-    "implicitModTypes":[[]],
-    "tags":[]
+    "tags":[],
+    "implicitModTypes":[]
   }
 }
