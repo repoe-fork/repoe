@@ -9537,7 +9537,7 @@
         "index_handlers": [
           []
         ],
-        "string": "{0}%의 원소 저항 관통",
+        "string": "{0}%의 [ElementalDamage|원소] [Resistances|저항] [Penetration|관통]",
         "reminder_text": null,
         "is_markup": null
       }
@@ -19543,8 +19543,8 @@
       {
         "condition": [
           {
-            "min": null,
-            "max": -1,
+            "min": 1,
+            "max": null,
             "negated": null
           }
         ],
@@ -19552,11 +19552,9 @@
           "#"
         ],
         "index_handlers": [
-          [
-            "negate"
-          ]
+          []
         ],
-        "string": "[Freeze|동결] 축적 {0}% 감폭",
+        "string": "[Freeze|동결] 축적 {0}% 증폭",
         "reminder_text": null,
         "is_markup": null
       },
@@ -19630,7 +19628,7 @@
         "index_handlers": [
           []
         ],
-        "string": "[Stun|기절] 축적 {0}% 증폭",
+        "string": "[Stun|기절] 축적 {0}% 감폭",
         "reminder_text": null,
         "is_markup": null
       },
@@ -20438,12 +20436,12 @@
         "condition": [
           {
             "min": null,
-            "max": null,
+            "max": 0,
             "negated": null
           },
           {
-            "min": null,
-            "max": null,
+            "min": 0,
+            "max": 0,
             "negated": null
           }
         ],
@@ -20452,10 +20450,12 @@
           "ignore"
         ],
         "index_handlers": [
-          [],
+          [
+            "negate"
+          ],
           []
         ],
-        "string": "사용하려면 연계 {0} 필요",
+        "string": "사용하는 데 필요한 [Combo|연계] {0} 감소",
         "reminder_text": null,
         "is_markup": null
       },
