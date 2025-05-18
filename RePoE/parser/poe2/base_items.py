@@ -107,6 +107,30 @@ def _convert_currency_properties(currency_row: Optional[DatRecord],
     properties["stack_size_currency_tab"] = currency_row["CurrencyTab_StackSize"]
 
 
+def _create_skills_dict(relational_reader, col="BaseItemType") -> Dict:
+    skills_dict = {}
+    try:
+        for row in relational_reader["ItemInherentSkills.dat64"]:
+            if row[col] is not None:
+                item_id = row[col]["Id"]
+                skills_granted = []
+                if row["SkillsGranted"]:
+                    for skill in row["SkillsGranted"]:
+                        if skill[col] is not None: 
+                            skills_granted.append(skill[col]["Id"])
+                skills_dict[item_id] = skills_granted
+    except (KeyError, TypeError):
+        print("Warning: ItemInherentSkills.dat64 not found or has incorrect format")
+    
+    return defaultdict(lambda: [], skills_dict)  # 默认返回空列表
+
+
+def _convert_inherent_skills(item_id: str, skills_dict: Dict[str, List[str]], item_object: Dict[str, Any]) -> None:
+    skills = skills_dict[item_id]
+    if skills: 
+        item_object["skills_granted"] = skills
+        
+
 ITEM_CLASS_BLACKLIST = {
     "LabyrinthTrinket",
     "MiscMapItem",
@@ -141,6 +165,7 @@ class base_items(Parser_Module):
         flask_charges = _create_default_dict(relational_reader["ComponentCharges.dat64"])
         weapon_types = _create_default_dict(relational_reader["WeaponTypes.dat64"])
         currency_type = _create_default_dict(relational_reader["CurrencyItems.dat64"])
+        item_skills = _create_skills_dict(relational_reader, col="BaseItemType")
         # Not covered here: SkillGems.dat64 (see gems.py), Essences.dat64 (see essences.py)
 
         root = {}
@@ -192,7 +217,8 @@ class base_items(Parser_Module):
                 ),
             }
             _convert_flask_buff(flask_types[item_id], root[item_id])
-
+            _convert_inherent_skills(item_id, item_skills, root[item_id])
+    
             if self.language == "English" and dds_file:
                 export_image(dds_file, self.data_path, self.file_system,
                              compose=compose_flask if visual_identity["Composition"] == 1 else None)

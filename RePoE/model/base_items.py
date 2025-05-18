@@ -111,6 +111,7 @@ class BaseItemsSchemaValue(BaseModel):
     visual_identity: VisualIdentity
     requirements: Optional[Requirements] = None
     grants_buff: Optional[GrantsBuff] = None
+    skills_granted: Optional[List[str]] = None
 
 
 class Model(RootModel[Optional[Dict[str, BaseItemsSchemaValue]]]):
