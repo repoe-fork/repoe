@@ -1,5 +1,5 @@
 from collections import defaultdict
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, List
 
 from PyPoE.poe.file.dat import DatReader, DatRecord
 from PyPoE.poe.file.it import ITFileCache
