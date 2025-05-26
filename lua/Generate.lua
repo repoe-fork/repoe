@@ -1,6 +1,6 @@
 local params = { ... }
-local path = params[1]:gsub("(.*/Data/).*.lua$", "%1")
-local file = params[1]:gsub(".*/Data/(.*).lua$", "%1")
+local path = params[1]:gsub("(.*)/src/Data/.*.lua$", "%1")
+local file = params[1]:gsub(".*/src/Data/(.*).lua$", "%1")
 
 print(path, file)
 
@@ -8,7 +8,7 @@ latestTreeVersion = '0_0'
 launch = {}
 
 function LoadModule(module, ...)
-    return loadfile(path .. module .. ".lua")(...)
+    return loadfile(path .. "/src/Data/" .. module .. ".lua")(...)
 end
 
 function triangular(n)
@@ -43,7 +43,7 @@ function isValueInArray(tbl, val)
     end
 end
 
-require("PathOfBuilding.src.Data.Global")
+require(path .. ".src.Data.Global")
 
 local function makeSkillMod(modName, modType, modVal, flags, keywordFlags, ...)
     return {
@@ -80,7 +80,7 @@ end
 
 local json = require("dkjson")
 if file == "Global" then
-    require("PathOfBuilding.src.Modules.Data")
+    require(path .. ".src.Modules.Data")
     clean(data, {})
     io.open((params[2] or "data/") .. "DataModule.min.json", "w"):write(json.encode(data))
     io.open((params[2] or "data/") .. "DataModule.json", "w"):write(json.encode(data, { indent = true }))
@@ -90,7 +90,7 @@ end
 local output = {}
 local result
 if file:find("Uniques/Special") then
-    require("PathOfBuilding.src.Modules.Data")
+    require(path .. ".src.Modules.Data")
 end
 if file == "SkillStatMap" then
     result = loadfile(params[1])(makeSkillMod, makeFlagMod, makeSkillDataMod) or output
