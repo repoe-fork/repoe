@@ -1,13 +1,14 @@
 local params = { ... }
+local path = params[1]:gsub("(.*)/Data/.*.lua$", "%1")
 local file = params[1]:gsub(".*/Data/(.*).lua$", "%1")
 
-print(file)
+print(path, file)
 
 latestTreeVersion = '0_0'
 launch = {}
 
 function LoadModule(module, ...)
-    return loadfile("PathOfBuilding/src/" .. module .. ".lua")(...)
+    return loadfile(path .. module .. ".lua")(...)
 end
 
 function triangular(n)
