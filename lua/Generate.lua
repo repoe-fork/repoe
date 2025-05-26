@@ -1,5 +1,5 @@
 local params = { ... }
-local path = params[1]:gsub("(.*)/Data/.*.lua$", "%1")
+local path = params[1]:gsub("(.*/Data/).*.lua$", "%1")
 local file = params[1]:gsub(".*/Data/(.*).lua$", "%1")
 
 print(path, file)
