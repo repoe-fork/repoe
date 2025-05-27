@@ -1,117 +1,124 @@
 {
-  "conduit_sigil_number_of_beam_targets":8,
+  "secondary_skill_effect_duration":9,
+  "2":{
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"{0}% chance for Brands to Attach to a new Enemy each time they Activate"
+      }],
+    "stats":["armageddon_brand_brands_attach_to_new_enemy_each_activation_%_chance"],
+    "name":"armageddon_brand_reattach_each_activation_chance"
+  },
   "12":{
     "1":[{
         "1":{
-          "k":"milliseconds_to_seconds_2dp",
-          "v":1
+          "k":"milliseconds_to_seconds_2dp"
         },
-        "text":"Can be Attached for a total Duration of {0} seconds",
-        "limit":[[null,"#"]]
+        "limit":[[]],
+        "text":"Can be Attached for a total Duration of {0} seconds"
       }],
     "stats":["skill_effect_duration"],
     "name":"skill_duration"
   },
-  "10":{
-    "1":[{
-        "text":"Deals {0:+d}% more Damage with Hits against Branded Enemy",
-        "limit":[[],[null,0]]
-      },{
-        "text":"Deals {0}% more Damage with Hits against Branded Enemy",
-        "limit":[[],[]]
-      },{
-        "1":{
-          "k":"negate"
-        },
-        "text":"Deals {0}% less Damage with Hits against Branded Enemy",
-        "limit":[[null,-1],[]]
-      }],
-    "stats":["sigil_attached_target_hit_damage_+%_final","quality_display_sigil_attached_target_damage_is_gem"],
-    "name":"sigil_attached_target_damage_final"
-  },
-  "9":{
-    "1":[{
-        "1":[],
-        "text":"Can be Detached for a total Duration of {0} seconds",
-        "limit":[[]]
-      }],
-    "stats":["secondary_skill_effect_duration"],
-    "name":"secondary_skill_duration"
-  },
-  "13":{
-    "1":[{
-        "1":[],
-        "text":"Debuff Lasts {0} seconds",
-        "limit":[[]]
-      }],
-    "stats":["tertiary_buff_effect_duration"],
-    "name":"tertiary_buff_duration"
-  },
-  "armageddon_brand_brands_attach_to_new_enemy_each_activation_%_chance":2,
-  "sigil_attached_target_hit_damage_+%_final":10,
-  "7":{
-    "1":[{
-        "text":"Can have {0} Brand Attached to an Enemy",
-        "limit":[[]]
-      },{
-        "text":"Can have {0} Brands Attached to an Enemy",
-        "limit":[[]]
-      }],
-    "stats":["brands_per_target_limit"],
-    "name":"brand_target_limit"
-  },
-  "base_secondary_skill_effect_duration":3,
   "11":{
     "1":[{
         "1":[],
-        "text":"Activates every second while Attached",
-        "limit":[[null,1000]]
+        "limit":[[null,1000]],
+        "text":"Activates every second while Attached"
       },{
         "1":[],
-        "text":"Activates every {0} seconds while Attached",
-        "limit":[[]]
+        "limit":[[]],
+        "text":"Activates every {0} seconds while Attached"
       }],
     "stats":["sigil_repeat_frequency_ms"],
     "name":"sigil_activate_frequency"
   },
+  "sigil_attached_target_hit_damage_+%_final":10,
+  "13":{
+    "1":[{
+        "1":[],
+        "limit":[[]],
+        "text":"Debuff Lasts {0} seconds"
+      }],
+    "stats":["tertiary_buff_effect_duration"],
+    "name":"tertiary_buff_duration"
+  },
+  "base_secondary_skill_effect_duration":3,
+  "10":{
+    "1":[{
+        "limit":[[],[null,0]],
+        "text":"Deals {0:+d}% more Damage with Hits against Branded Enemy"
+      },{
+        "limit":[[],[]],
+        "text":"Deals {0}% more Damage with Hits against Branded Enemy"
+      },{
+        "1":{
+          "k":"negate"
+        },
+        "limit":[[null,-1],[]],
+        "text":"Deals {0}% less Damage with Hits against Branded Enemy"
+      }],
+    "stats":["sigil_attached_target_hit_damage_+%_final","quality_display_sigil_attached_target_damage_is_gem"],
+    "name":"sigil_attached_target_damage_final"
+  },
   "sigil_repeat_frequency_ms":11,
   "base_skill_effect_duration":4,
   "skill_effect_duration":12,
-  "5":{
+  "9":{
     "1":[{
         "1":[],
-        "text":"Base Debuff Duration is {0} seconds",
-        "limit":[[]]
+        "limit":[[]],
+        "text":"Can be Detached for a total Duration of {0} seconds"
       }],
-    "stats":["base_tertiary_skill_effect_duration"],
-    "name":"base_tertiary_duration_identifier"
+    "stats":["secondary_skill_effect_duration"],
+    "name":"secondary_skill_duration"
   },
-  "8":{
+  "6":{
     "1":[{
-        "text":"Sends beams to {0:+d} Enemy",
-        "limit":[[],[]]
-      },{
-        "text":"Sends beams to {0:+d} Enemies",
-        "limit":[[],[]]
-      },{
-        "text":"Sends a beam to the Branded Enemy",
-        "limit":[[],[]]
-      },{
-        "text":"Sends beams to {0} Enemies, including the Branded Enemy",
-        "limit":[[],["!"]]
+        "limit":[[]],
+        "text":"Activates once when Attached, then is Destroyed"
       }],
-    "stats":["conduit_sigil_number_of_beam_targets","quality_display_storm_brand_is_gem"],
-    "name":"storm_brand_beam_num"
+    "stats":["brand_removed_after_activating"]
   },
   "base_tertiary_skill_effect_duration":5,
   "parent":"skill_stat_descriptions",
   "brand_removed_after_activating":6,
-  "6":{
+  "8":{
     "1":[{
-        "text":"Activates once when Attached, then is Destroyed",
-        "limit":[[]]
+        "limit":[[],[]],
+        "text":"Sends beams to {0:+d} Enemy"
+      },{
+        "limit":[[],[]],
+        "text":"Sends beams to {0:+d} Enemies"
+      },{
+        "limit":[[],[]],
+        "text":"Sends a beam to the Branded Enemy"
+      },{
+        "limit":[[2],["!"]],
+        "text":"Sends beams to {0} Enemies, including the Branded Enemy"
       }],
-    "stats":["brand_removed_after_activating"]
+    "stats":["conduit_sigil_number_of_beam_targets","quality_display_storm_brand_is_gem"],
+    "name":"storm_brand_beam_num"
+  },
+  "7":{
+    "1":[{
+        "limit":[[]],
+        "text":"Can have {0} Brand Attached to an Enemy"
+      },{
+        "limit":[[]],
+        "text":"Can have {0} Brands Attached to an Enemy"
+      }],
+    "stats":["brands_per_target_limit"],
+    "name":"brand_target_limit"
+  },
+  "brands_per_target_limit":7,
+  "5":{
+    "1":[{
+        "1":[],
+        "limit":[[]],
+        "text":"Base Debuff Duration is {0} seconds"
+      }],
+    "stats":["base_tertiary_skill_effect_duration"],
+    "name":"base_tertiary_duration_identifier"
   },
   "4":{
     "1":[{
@@ -121,15 +128,9 @@
     "stats":["base_skill_effect_duration","quality_display_base_duration_is_quality"],
     "name":"base_duration_identifier"
   },
-  "2":{
-    "1":[{
-        "text":"{0}% chance for Brands to Attach to a new Enemy each time they Activate",
-        "limit":[[]]
-      }],
-    "stats":["armageddon_brand_brands_attach_to_new_enemy_each_activation_%_chance"],
-    "name":"armageddon_brand_reattach_each_activation_chance"
+  "1":{
+    "stats":["base_number_of_sigils_allowed_per_target"]
   },
-  "brands_per_target_limit":7,
   "3":{
     "1":[{
         "1":[],
@@ -138,9 +139,6 @@
     "stats":["base_secondary_skill_effect_duration"],
     "name":"base_secondary_duration_identifier"
   },
-  "1":{
-    "stats":["base_number_of_sigils_allowed_per_target"]
-  },
   "tertiary_buff_effect_duration":13,
-  "secondary_skill_effect_duration":9
+  "conduit_sigil_number_of_beam_targets":8
 }

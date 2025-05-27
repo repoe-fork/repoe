@@ -1,748 +1,283 @@
 {
-  "SupportBiddingPlayer":{
-    "description":"Supports Minion Skills. Supported Minions deal significantly more damage with their Command Skills.",
-    "name":"Bidding",
-    "support":true,
-    "requireSkillTypes":[184,129],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
+  "SupportSuffusePlayer":{
     "levels":[{
         "levelRequirement":0,
-        "manaMultiplier":30
+        "manaMultiplier":10
       }],
     "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_ground_effect_area_of_effect_+%_final_per_second",20],["support_ground_effect_area_of_effect_+%_final_per_second_max",100]],
+        "stats":[],
+        "label":"Suffuse",
         "incrementalEffectiveness":0.054999999701977,
         "statDescriptionScope":"gem_stat_descriptions",
         "levels":[{
             "actorLevel":1
-          }],
+          }]
+      }],
+    "description":"Supports Skills that create Ground Surfaces, causing those Surfaces to grow over time, up to a limit.",
+    "color":3,
+    "support":true,
+    "requireSkillTypes":[168],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportCorpseConservationPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["base_chance_to_not_consume_corpse_%",25]],
+        "stats":[],
+        "label":"Corpse Conservation",
+        "levels":[[]]
+      }],
+    "description":"Supports skills that consume Corpses, giving them a chance to take effect without destroying the Corpse.",
+    "requireSkillTypes":[66,212],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportAstralProjectionPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_astral_projection_aoe_+%_final":[{
+              "name":"AreaOfEffect",
+              "type":"MORE"
+            }]
+        },
+        "constantStats":[["support_astral_projection_aoe_+%_final",-25]],
+        "levels":[[]],
+        "stats":["nova_skills_cast_at_target_location"],
+        "label":"Astral Projection",
+        "baseFlags":[]
+      }],
+    "description":"Supports Nova Skills, causing those Skills to take place at the targeted location when used instead of around you.",
+    "requireSkillTypes":[84],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportFlukePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_randomise_lower_recover_%_cost_on_use"],["support_randomise_higher_recover_%_cost_on_use"],["support_randomise_lower_damage_+%_final",-40],["support_randomise_higher_damage_+%_final",60]],
+        "stats":[],
+        "label":"Fluke",
+        "levels":[[]]
+      }],
+    "description":"Supports Skills which Trigger other Skills. Skills Triggered by Supported Skills have their Damage randomly raised or lowered when Triggered, as well as recovering a random amount of their cost when Triggered.",
+    "requireSkillTypes":[32],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportMagnetismPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["remnant_pickup_range_+%"]],
+        "stats":[],
+        "label":"Magnetism",
+        "levels":[[]]
+      }],
+    "description":"Supports Skills which create Remnants, allowing those Remnants to be collected from further away.",
+    "requireSkillTypes":[183],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportBiddingPlayer":{
+    "levels":[{
+        "manaMultiplier":30
+      }],
+    "statSets":[{
         "baseFlags":[],
         "constantStats":[["support_command_skill_damage_+%_final"]],
-        "stats":[]
+        "stats":[],
+        "label":"Bidding",
+        "levels":[[]]
       }],
-    "color":3
-  },
-  "SupportStripAwayPlayer":{
-    "description":"Supports Skills which apply Exposure to Enemies, increasing the effect of applied Exposure.",
-    "name":"Strip Away",
-    "requireSkillTypes":[7,2,49,117],
+    "description":"Supports Minion Skills. Supported Minions deal significantly more damage with their Command Skills.",
+    "requireSkillTypes":[184,129],
     "addSkillTypes":[],
-    "excludeSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportCracklingBarrierPlayer":{
     "levels":[[]],
     "statSets":[{
-        "levels":[[]],
         "baseFlags":[],
-        "constantStats":[["support_exposure_effect_+%",20]],
-        "stats":[]
-      }]
-  },
-  "SupportColdPenetrationPlayer":{
-    "description":"Supports any skill that Hits enemies, making those Hits Penetrate enemy Cold resistance.",
-    "name":"Cold Penetration",
-    "requireSkillTypes":[],
+        "constantStats":[["return_%_of_maximum_mana_as_lightning_damage_to_attacker_while_channelling",15]],
+        "stats":[],
+        "label":"Crackling Barrier",
+        "levels":[[]]
+      }],
+    "description":"Supports Channelling Skills. While Channelling Supported Skills, you gain Lightning Thorns based off of your maximum Mana.",
+    "requireSkillTypes":[48],
     "addSkillTypes":[],
-    "excludeSkillTypes":[],
+    "excludeSkillTypes":[6,95]
+  },
+  "SupportFocusedCursePlayer":{
     "levels":[[]],
     "statSets":[{
-        "incrementalEffectiveness":0.092720001935959,
-        "levels":[[]],
         "baseFlags":[],
-        "constantStats":[["base_reduce_enemy_cold_resistance_%"]],
-        "stats":[]
-      }]
+        "constantStats":[["base_curse_delay_+%",-30]],
+        "stats":[],
+        "label":"Focused Curse",
+        "levels":[[]]
+      }],
+    "description":"Supports Curse skills, causing them to Curse enemies more quickly after being cast.",
+    "requireSkillTypes":[69],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
   },
   "SupportBitingFrostPlayer":{
-    "description":"Supports any skill that Hits enemies, causing them to deal more damage to Frozen enemies but consume their Freeze. Cannot support skills that Consume Freeze.",
-    "name":"Biting Frost",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[135,143],
     "levels":[[]],
     "statSets":[{
-        "levels":[[]],
         "statMap":{
           "support_active_skill_consume_enemy_freeze_to_gain_damage_+%_final":[{
               "1":{
-                "type":"ActorCondition",
                 "actor":"enemy",
+                "type":"ActorCondition",
                 "var":"Frozen"
               },
-              "type":"MORE",
               "name":"Damage"
             }]
         },
         "constantStats":[["support_active_skill_consume_enemy_freeze_to_gain_damage_+%_final",50]],
-        "baseFlags":[],
-        "stats":["never_freeze"]
-      }]
-  },
-  "SupportStrongHeartedPlayer":{
-    "description":"Supports Persistent Buff Skills, causing Shock applied to you to last for a shorter duration while the Supported Skill is active.",
-    "name":"Strong Hearted",
-    "requireSkillTypes":[139,5,74],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[{
-        "spiritReservationFlat":15
-      }],
-    "statSets":[{
         "levels":[[]],
+        "stats":["never_freeze"],
+        "label":"Biting Frost",
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that Hits enemies, causing them to deal more damage to Frozen enemies but consume their Freeze. Cannot support skills that Consume Freeze.",
+    "requireSkillTypes":[null,7,117],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[135,143]
+  },
+  "SupportCrazedMinionsPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_crazed_minions_minion_damage_+%_final_if_revived_recently"]],
+        "stats":[],
+        "label":"Crazed Minions",
+        "levels":[[]]
+      }],
+    "description":"Supports Minion Skills which summon Reviving Minions. Supported Minions deal significantly more Damage if they have Revived Recently.",
+    "requireSkillTypes":[null,139,74],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[214]
+  },
+  "SupportManaFlarePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "levels":[[]],
+        "stats":["support_trigger_mana_flare_on_crit"],
+        "label":"Support"
+      }],
+    "description":"Supports any Spell that Hits enemies, causing it to trigger a Mana Flare on Critical Hit. The Mana Flare consumes your Mana to deal Fire damage. Cannot support the skills of Minions.",
+    "name":"Mana Flare",
+    "requireSkillTypes":[2],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[115]
+  },
+  "SupportManaFountainPlayer":{
+    "levels":[[]],
+    "statSets":[{
         "statMap":{
-          "support_shock_protection_spirit_cost_shock_duration_on_self_+%_final":[{
+          "support_mana_fountain_mana_regeneration_rate_+%":[{
               "1":{
                 "type":"GlobalEffect",
-                "effectType":"Buff"
+                "effectType":"Aura"
               },
-              "name":"SelfShockDuration"
+              "name":"ManaRegen",
+              "type":"INC"
             }]
         },
-        "constantStats":[["support_shock_protection_spirit_cost_shock_duration_on_self_+%_final",-50]],
-        "baseFlags":[],
-        "stats":[]
-      }]
+        "constantStats":[["support_mana_fountain_mana_regeneration_rate_+%",40],["support_mana_fountain_radius"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Font of Mana",
+        "baseFlags":[]
+      }],
+    "description":"Supports Skills which create stationary objects. Objects created by supported Skills generate a Font of Mana, creating an Aura which grants Mana regeneration.",
+    "requireSkillTypes":[161,null,null,154],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
   },
-  "SupportCommandment":{
-    "description":"Supports Minions which have Command Skills. Supported Minions have massively increased cooldown recovery speed for Command Skills they use, but deal no damage with non-Command Skills.",
-    "name":"Commandment",
+  "SupportCursedGroundPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "levels":[[]],
+        "stats":["curse_apply_as_curse_zone"],
+        "label":"Cursed Ground"
+      }],
+    "description":"Supports Curse Skills. Supported Curse Skills no longer have an activation delay, instead creating areas which Curse Enemies so long as they are within them.",
     "requireSkillTypes":[],
     "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_minion_damage_with_non_command_skills_+%_final":[{
-              "type":"LIST",
-              "name":"MinionModifier",
-              "value":{
-                "mod":[{
-                    "type":"Condition",
-                    "var":"CommandableSkill"
-                  }]
-              }
-            }],
-          "minion_command_skill_cooldown_speed_+%":[{
-              "value":{
-                "mod":{
-                  "1":[],
-                  "type":"INC",
-                  "name":"CooldownRecovery"
-                }
-              }
-            }]
-        },
-        "constantStats":[["support_minion_damage_with_non_command_skills_+%_final",-100],["minion_command_skill_cooldown_speed_+%",100]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportWallFortressPlayer":{
-    "description":"Supports skills that create walls in a line, causing them to be created in a circle instead but deal less Hit damage.",
-    "name":"Fortress",
-    "requireSkillTypes":[138],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_wall_fortress_hit_damage_+%_final":[[]]
-        },
-        "constantStats":[["wall_maximum_length_+%"],["support_wall_fortress_hit_damage_+%_final"]],
-        "baseFlags":[],
-        "stats":["wall_is_created_in_a_circle_instead"]
-      }]
-  },
-  "SupportElementalArmyPlayer":{
-    "description":"Supports skills which create Minions, bolstering the Elemental Resistances of those Minions.",
-    "name":"Elemental Army",
-    "requireSkillTypes":[77],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["minion_elemental_resistance_%"]],
-        "stats":[]
-      }]
+    "excludeSkillTypes":[]
   },
   "SupportBoneShrapnelPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "levels":[[]],
+        "stats":["trigger_bone_shrapnel_explosion_on_killing_pinned_enemy","cannot_pin"]
+      }],
     "description":"Supports Skills which Hit Enemies. Supported Skills trigger Bone Shrapnel explosions when killing Pinned Enemies.",
     "name":"Bone Shrapnel",
     "requireSkillTypes":[null,null,116],
     "addSkillTypes":[],
-    "excludeSkillTypes":[115],
-    "levels":[[]],
-    "statSets":[{
-        "label":"Support",
-        "levels":[[]],
-        "baseFlags":[],
-        "stats":["trigger_bone_shrapnel_explosion_on_killing_pinned_enemy","cannot_pin"]
-      }]
-  },
-  "SupportLoyaltyPlayer":{
-    "description":"Supports Skills that create Companions which can be damaged. Minions created by Supported Skills take a portion of Hit Damage you would otherwise have taken, but have lowered maximum Life.",
-    "name":"Loyalty",
-    "requireSkillTypes":[198],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[214],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_trusty_companion_minion_life_+%_final":[{
-              "value":{
-                "mod":{
-                  "name":"Life"
-                }
-              }
-            }]
-        },
-        "constantStats":[["support_trusty_companion_minion_life_+%_final",-30],["companion_takes_%_damage_before_you_from_support",10]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportElementalDischargePlayer":{
-    "description":"Supports any Spell that Hits enemies, causing it to consume Elemental Ailments on hit to trigger an Elemental Discharge. Cannot support the skills of Minions.",
-    "name":"Elemental Discharge",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[null,136,137],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "stats":["consume_ignite_freeze_shock_on_hit_to_trigger_elemental_discharge","active_skill_never_freeze_shock_ignite"]
-      }]
-  },
-  "SupportFreezeforkPlayer":{
-    "description":"Supports Skills which can fire Projectiles. Projectiles from Supported Skills always Fork when the initial Projectile Hits Frozen Enemies, but Supported Skills cannot build up Freeze themselves.",
-    "name":"Freezefork",
-    "requireSkillTypes":[],
-    "addSkillTypes":[207],
-    "excludeSkillTypes":[176],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["chance_to_fork_from_frozen_enemy_%"]],
-        "stats":[]
-      }]
-  },
-  "SupportIncreasedCriticalDamagePlayer":{
-    "description":"Supports any skill that Hits enemies, causing it to deal more damage with Critical Hits but have less Critical Hit chance.",
-    "name":"Supercritical",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "statMap":{
-          "support_critical_damage_critical_strike_chance_+%_final":[{
-              "name":"CritChance"
-            }]
-        },
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["base_critical_strike_multiplier_+"],["support_critical_damage_critical_strike_chance_+%_final",-20]],
-        "stats":[]
-      }]
-  },
-  "SupportConcentratedEffectPlayer":{
-    "description":"Supports any skill with an area of effect, causing that area to be smaller but any area damage it deals to be higher.",
-    "name":"Concentrated Effect",
-    "requireSkillTypes":[8,18],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "statMap":{
-          "support_area_concentrate_area_damage_+%_final":[{
-              "flags":512
-            }],
-          "support_concentrated_effect_skill_area_of_effect_+%_final":[{
-              "name":"AreaOfEffect"
-            }]
-        },
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_concentrated_effect_skill_area_of_effect_+%_final"],["support_area_concentrate_area_damage_+%_final"]],
-        "stats":[]
-      }]
-  },
-  "SupportChillingIcePlayer":{
-    "description":"Supports any skill that Hits enemies, causing it to create patches of Chilled Ground around Frozen enemies.",
-    "name":"Frost Nexus",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["chilling_ice_freezing_area_base_radius"],["chilling_ice_create_chilled_ground_on_freeze_base_duration_ms",8000]],
-        "stats":[]
-      }]
-  },
-  "SupportIncreasedAreaOfEffectPlayer":{
-    "description":"Supports any skill with an area of effect, making it larger.",
-    "name":"Magnified Effect",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_area_of_effect_+%_final"],["support_increased_area_damage_+%_final"]],
-        "stats":[]
-      }]
-  },
-  "SupportConsideredCastingPlayer":{
-    "description":"Supports Spell Skills that Hit Enemies and you cast yourself, boosting Damage at the cost of Cast Speed.",
-    "name":"Considered Casting",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[105,33,36,25,37,95,12,13,75],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_slow_cast_cast_speed_+%_final":[{
-              "flags":16,
-              "name":"Speed"
-            }],
-          "support_slow_cast_spell_damage_+%_final":[[]]
-        },
-        "constantStats":[["support_slow_cast_cast_speed_+%_final",-15],["support_slow_cast_spell_damage_+%_final",35]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportFrostfirePlayer":{
-    "description":"Supports any skill that Hits enemies, causing it to Consume Freeze on Igniting a Frozen enemy to boost the effect of the Ignite.",
-    "name":"Frostfire",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "ignite_effect_+%_final_against_frozen_enemies":[{
-              "1":[],
-              "keywordFlags":8388608,
-              "name":"AilmentMagnitude"
-            }]
-        },
-        "constantStats":[["ignite_effect_+%_final_against_frozen_enemies"]],
-        "baseFlags":[],
-        "stats":[null,"remove_freeze_on_ignite"]
-      }]
-  },
-  "SupportUnleashPlayer":{
-    "description":"Supports Spells you cast yourself, making their effect reoccur when cast. Cannot support Channelling Skills or Skills with a Cooldown.",
-    "name":"Unleash",
-    "requireSkillTypes":[70],
-    "addSkillTypes":[188,189],
-    "excludeSkillTypes":{
-      "7":38,
-      "8":64,
-      "9":48,
-      "10":90,
-      "12":152
-    },
-    "levels":[{
-        "PvPDamageMultiplier":-40
-      }],
-    "statSets":[{
-        "statMap":{
-          "support_anticipation_rapid_fire_count":[{
-              "type":"BASE",
-              "name":"SealCount"
-            }],
-          "unleash_support_seal_gain_frequency_as_%_of_total_cast_time":[{
-              "name":"SealGainFrequency"
-            }],
-          "support_spell_rapid_fire_repeat_use_damage_+%_final":[{
-              "name":"SealRepeatPenalty"
-            }]
-        },
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_spell_rapid_fire_repeat_use_damage_+%_final"],["unleash_support_seal_gain_frequency_as_%_of_total_cast_time",200],["support_anticipation_rapid_fire_count"]],
-        "baseMods":[{
-            "type":"FLAG",
-            "name":"HasSeals"
-          }],
-        "stats":[]
-      }]
-  },
-  "SupportManaFlarePlayer":{
-    "description":"Supports any Spell that Hits enemies, causing it to trigger a Mana Flare on Critical Hit. The Mana Flare consumes your Mana to deal Fire damage. Cannot support the skills of Minions.",
-    "name":"Mana Flare",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "stats":["support_trigger_mana_flare_on_crit"]
-      }]
-  },
-  "SupportControlledDestructionPlayer":{
-    "description":"Supports Spells that Hit enemies, boosting their damage but preventing them from dealing Critical Hits.",
-    "name":"Controlled Destruction",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_controlled_destruction_spell_damage_+%_final":[{
-              "flags":4
-            }]
-        },
-        "constantStats":[["support_controlled_destruction_spell_damage_+%_final"]],
-        "baseFlags":[],
-        "stats":["global_cannot_crit"]
-      }]
-  },
-  "SupportGlaciationPlayer":{
-    "description":"Supports any skill that Hits enemies, making it more effective at Freezing enemies.",
-    "name":"Glaciation",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_hypothermia_hit_damage_freeze_multiplier_+%_final"]],
-        "stats":[]
-      }]
-  },
-  "SupportCorpseConservationPlayer":{
-    "description":"Supports skills that consume Corpses, giving them a chance to take effect without destroying the Corpse.",
-    "name":"Corpse Conservation",
-    "requireSkillTypes":[66,212],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["base_chance_to_not_consume_corpse_%"]],
-        "stats":[]
-      }]
-  },
-  "TriggeredBoneShrapnelPlayer":{
-    "levels":[[]],
-    "description":"Deal Physical Area Damage based off of the maximum Life of the Pinned target slain.",
-    "skillTypes":[],
-    "name":"Bone Shrapnel Explosion",
-    "qualityStats":[],
-    "statSets":[{
-        "statDescriptionScope":"triggered_bone_shrapnel",
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["active_skill_base_area_of_effect_radius"],["support_bone_shrapnel_physical_damage_equal_to_%_monster_life"],["triggered_by_bone_shrapnel_support_%"]],
-        "stats":[null,"is_area_damage"]
-      }]
-  },
-  "SupportAbidingHexPlayer":{
-    "description":"Supports Curse Skills you cast yourself. Supported Skills will consume Power Charges on use, gaining significant Curse duration if they do.",
-    "name":"Abiding Hex",
-    "requireSkillTypes":[69],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[null,6],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_consume_power_charge_to_gain_curse_duration_+%_final",80]],
-        "stats":[]
-      }]
-  },
-  "SupportUpwellingPlayer":{
-    "description":"Supports Persistent Buff Skills, causing your Minions to deal increased Damage while you are not on full Mana while the Supported Skill is active.",
-    "name":"Upwelling",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_minion_damage_spirit_cost_minion_damage_+%_while_missing_mana"]],
-        "stats":[]
-      }]
-  },
-  "SupportCoursingCurrentPlayer":{
-    "description":"Supports any skill that Hits enemies, giving it a chance to also Shock nearby enemies when you Shock an enemy.",
-    "name":"Coursing Current",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_%_chance_to_shock_nearby_enemy_on_shock"],["shock_nearby_enemy_base_area_of_effect_radius"]],
-        "stats":[]
-      }]
-  },
-  "SupportCurseEffectPlayer":{
-    "description":"Supports Curse Skills, magnifying their power.",
-    "name":"Heightened Curse",
-    "requireSkillTypes":[null,180],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[{
-        "manaMultiplier":40
-      }],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["curse_effect_+%"]],
-        "stats":[]
-      }]
-  },
-  "SupportArcaneSurgePlayer":{
-    "description":"Supports Spells you cast yourself, tracking the mana you spend to cast them. Spending enough mana grants a burst of Mana Regeneration and Cast Speed.",
-    "name":"Arcane Surge",
-    "requireSkillTypes":[],
-    "addSkillTypes":[9],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_arcane_surge_base_duration_ms",10000],["support_arcane_surge_gain_buff_on_%_of_maximum_mana_use_threshold"]],
-        "stats":[]
-      }]
-  },
-  "SupportCracklingBarrierPlayer":{
-    "description":"Supports Channelling Skills. While Channelling Supported Skills, you gain Lightning Thorns based off of your maximum Mana.",
-    "name":"Crackling Barrier",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["return_%_of_maximum_mana_as_lightning_damage_to_attacker_while_channelling"]],
-        "stats":[]
-      }]
-  },
-  "SupportMinionMasteryPlayer":{
-    "description":"Supports Minion skills, granting them an additional level.",
-    "name":"Minion Mastery",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["supported_minion_skill_gem_level_+"]],
-        "stats":[]
-      }]
-  },
-  "SupportHexBloomPlayer":{
-    "description":"Supports Curses, spreading their effects when a Cursed enemy dies.",
-    "name":"Hex Bloom",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["transfer_hexes_to_X_nearby_enemies_on_kill"]],
-        "stats":[]
-      }]
-  },
-  "SupportVolatilePowerPlayer":{
-    "description":"Supports Skills which you use yourself. On using Supported Skills while they are Empowered, you gain Volatility.",
-    "name":"Volatile Power",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[null,null,122],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["gain_X_volatility_on_empowered_skill_use"]],
-        "stats":[]
-      }]
-  },
-  "SupportCrazedMinionsPlayer":{
-    "description":"Supports Minion Skills which summon Reviving Minions. Supported Minions deal significantly more Damage if they have Revived Recently.",
-    "name":"Crazed Minions",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_crazed_minions_minion_damage_+%_final_if_revived_recently"]],
-        "stats":[]
-      }]
+    "excludeSkillTypes":[]
   },
   "SupportBurgeonPlayer":{
-    "description":"Supports Channelling Skills you use yourself, causing them to deal more damage the longer they have been Channelled.",
-    "name":"Burgeon",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
     "levels":[[]],
     "statSets":[{
-        "levels":[[]],
         "statMap":{
+          "support_channelling_damage_cap":[{
+              "name":"Multiplier:BurgeonDamageCap",
+              "type":"BASE"
+            }],
           "support_chanelling_damage_+%_final_per_second_channelling":[[{
+                "type":"Condition",
                 "var":"Channelling"
               },{
+                "var":"ChannellingTime",
                 "type":"Multiplier",
-                "limitVar":"BurgeonDamageCap",
-                "var":"ChannellingTime"
-              }]],
-          "support_channelling_damage_cap":[{
-              "name":"Multiplier:BurgeonDamageCap"
-            }]
+                "limitVar":"BurgeonDamageCap"
+              }]]
         },
         "constantStats":[["support_chanelling_damage_+%_final_per_second_channelling"],["support_channelling_damage_cap"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportHinderPlayer":{
-    "description":"Supports Spells that deal non-Ailment Chaos damage over time, causing damage over time they inflict to also Hinder enemies. Does not Support Skills used by Minions.",
-    "name":"Hinder",
-    "requireSkillTypes":[null,null,42],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
         "levels":[[]],
-        "baseFlags":[],
-        "stats":["support_hinder_dots_also_apply_hinder"]
-      }]
-  },
-  "SupportVolatilityPlayer":{
-    "description":"Supports Skills you use yourself which can cause Damaging Hits. Supported Skills grant Volatility on Critical Hit.",
-    "name":"Volatility",
+        "stats":[],
+        "label":"Burgeon",
+        "baseFlags":[]
+      }],
+    "description":"Supports Channelling Skills you use yourself, causing them to deal more damage the longer they have been Channelled.",
     "requireSkillTypes":[],
     "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["instability_on_critical_%_chance"]],
-        "stats":[]
-      }]
+    "excludeSkillTypes":[]
   },
-  "SupportCursedGroundPlayer":{
-    "description":"Supports Curse Skills. Supported Curse Skills no longer have an activation delay, instead creating areas which Curse Enemies so long as they are within them.",
-    "name":"Cursed Ground",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
+  "SupportWallFortressPlayer":{
     "levels":[[]],
     "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "stats":["curse_apply_as_curse_zone"]
-      }]
-  },
-  "SupportElementalFocusPlayer":{
-    "description":"Supports any skill that Hits enemies, causing it to deal more Elemental Damage but be unable to inflict Elemental Ailments.",
-    "name":"Elemental Focus",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
         "statMap":{
-          "support_gem_elemental_damage_+%_final":[{
-              "name":"ElementalDamage"
-            }]
+          "support_wall_fortress_hit_damage_+%_final":[[]]
         },
-        "constantStats":[["support_gem_elemental_damage_+%_final"]],
-        "baseFlags":[],
-        "stats":["cannot_inflict_elemental_ailments"]
-      }]
-  },
-  "SupportHourglassPlayer":{
-    "description":"Supports any damaging skill that you use yourself, causing it to deal significantly more damage but gain a long cooldown. Cannot support Skills which already have a cooldown.",
-    "name":"Hourglass",
-    "requireSkillTypes":[],
-    "addSkillTypes":[null,133],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
+        "constantStats":[["wall_maximum_length_+%"],["support_wall_fortress_hit_damage_+%_final",-50]],
         "levels":[[]],
-        "statMap":{
-          "support_hourglass_damage_+%_final":[[]]
-        },
-        "constantStats":[["support_hourglass_damage_+%_final"],["support_hourglass_display_cooldown_time_ms"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportWildfirePlayer":{
-    "description":"Supports any skill that Hits enemies, Spreading Ignites it inflicts to nearby enemies after a delay.",
-    "name":"Wildfire",
-    "requireSkillTypes":[],
+        "stats":["wall_is_created_in_a_circle_instead"],
+        "label":"Fortress",
+        "baseFlags":[]
+      }],
+    "description":"Supports skills that create walls in a line, causing them to be created in a circle instead but deal less Hit damage.",
+    "requireSkillTypes":[138],
     "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[],[],[],[],{
-        "levelRequirement":14
-      },[],{
-        "levelRequirement":22
-      },{
-        "levelRequirement":26
-      },{
-        "levelRequirement":31
-      },[],{
-        "levelRequirement":41
-      },{
-        "levelRequirement":46
-      },{
-        "levelRequirement":52
-      },{
-        "levelRequirement":58
-      },[],[],{
-        "levelRequirement":72
-      },{
-        "levelRequirement":78
-      },{
-        "levelRequirement":84
-      },[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_ignite_proliferation_radius"]],
-        "stats":[]
-      }]
+    "excludeSkillTypes":[]
   },
   "SupportDanseMacabrePlayer":{
-    "description":"Supports Offering Skills. Supported Skills have increased Buff effect and deal more damage, but will target an additional skeletal Minion when cast. If there is not an additional skeletal Minion to target, no damage or Buff effect will be granted.",
-    "name":"Danse Macabre",
-    "requireSkillTypes":[154],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
     "levels":[[]],
     "statSets":[{
-        "levels":[[]],
         "statMap":{
           "offering_spells_effect_+%_if_consumed_additional_skeleton":[{
               "1":{
@@ -753,664 +288,28 @@
           "support_danse_macabre_offering_skill_damage_+%_final_if_consumed_additional_skeleton":[[[]]]
         },
         "constantStats":[["support_danse_macabre_offering_skill_damage_+%_final_if_consumed_additional_skeleton"],["offering_spells_effect_+%_if_consumed_additional_skeleton"]],
-        "baseFlags":[],
-        "stats":["skill_offering_targets_an_additional_skeleton"]
-      }]
-  },
-  "SupportWitheringTouchPlayer":{
-    "description":"Supports any skill that Hits enemies, giving it a chance to Wither enemies on Hit.",
-    "name":"Withering Touch",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
         "levels":[[]],
-        "statMap":{
-          "support_withering_touch_damage_+%_final":[[]]
-        },
-        "constantStats":[["support_withering_touch_damage_+%_final",-25],["support_withered_base_duration_ms",4000],["withered_on_hit_chance_%_for_every_100%_target_ailment_threshold_dealt_as_chaos_damage",175]],
-        "baseFlags":[],
-        "stats":["wither_on_hit_chance_rollovercapped"]
-      }]
-  },
-  "SupportIceBitePlayer":{
-    "description":"Supports Attacks you use yourself. Freezing an enemy with supported skills infuses all of your Attacks with Cold damage for a short time.",
-    "name":"Ice Bite",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "statMap":{
-          "support_ice_bite_base_buff_duration":{
-            "1":{
-              "1":{
-                "var":"FrozenEnemyRecently"
-              },
-              "2":[],
-              "name":"Duration"
-            },
-            "div":1000
-          },
-          "support_ice_bite_buff_grant_%_added_cold_attack_damage":[{
-              "1":[],
-              "2":[],
-              "name":"DamageGainAsCold"
-            }]
-        },
-        "baseEffectiveness":0.51819998025894,
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_ice_bite_buff_grant_%_added_cold_attack_damage"],["support_ice_bite_base_buff_duration",5000]],
-        "stats":[]
-      }]
-  },
-  "SupportEmbitterPlayer":{
-    "description":"Supports Skills which can Damage Enemies with Hits, causing all sources of Damage Gained to instead be treated as Damage Gained as extra Cold for Supported Skills.",
-    "name":"Embitter",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "stats":["all_damage_gained_as_cold_instead"]
-      }]
-  },
-  "SupportWildshardsPlayer":{
-    "description":"Supports Spell Skills that fire Projectiles. Supported Skills have a chance to fire many additional Projectiles in a circle.",
-    "name":"Wildshards",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[113],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["spell_skill_%_chance_to_fire_8_additional_projectiles_in_nova"]],
-        "stats":[]
-      }]
-  },
-  "SupportVerglasPlayer":{
-    "description":"Supports Skills you use yourself which can Hit Enemies. Supported Skills Gain a percentage of their Damage as Cold Damage when you destroy Ice Crystals.",
-    "name":"Verglas",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_crystalshatter_buff_damage_%_gained_as_extra_cold_per_2000_crystal_life"],["support_crystalshatter_buff_duration",6000]],
-        "stats":[]
-      }]
-  },
-  "SupportUnbendingPlayer":{
-    "description":"Supports Spell Skills you use yourself. While using Supported Skills, a percentage of Damage taken is Recouped as Mana, with the percentage scaling higher the longer the Cast time of the Supported Skill. Cannot Support Channelling Skills.",
-    "name":"Unbending",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["damage_taken_%_recouped_as_mana_while_performing_spell_per_250_ms_cast_time"]],
-        "stats":[]
-      }]
-  },
-  "SupportEnergyBarrierPlayer":{
-    "description":"Supports any skill that you can use, causing Energy Shield recharge to begin immediately if you are Stunned while using it.",
-    "name":"Energy Barrier",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_no_energy_shield_recharge_delay_for_duration_ms_on_stunned",2000]],
-        "stats":[]
-      }]
-  },
-  "SupportSuffusePlayer":{
-    "description":"Supports Skills that create Ground Surfaces, causing those Surfaces to grow over time, up to a limit.",
-    "name":"Suffuse",
-    "requireSkillTypes":[168],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_ground_effect_area_of_effect_+%_final_per_second"],["support_ground_effect_area_of_effect_+%_final_per_second_max"]],
-        "stats":[]
-      }]
-  },
-  "SupportIciclePlayer":{
-    "description":"Supports any Skill which creates Ice Crystals, causing them to be created with lower Life.",
-    "name":"Icicle",
-    "requireSkillTypes":[170],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_icicle_ice_crystal_maximum_life_+%_final":[{
-              "name":"IceCrystalLife"
-            }]
-        },
-        "constantStats":[["support_icicle_ice_crystal_maximum_life_+%_final"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "TriggeredElementalDischargePlayer":{
-    "levels":[[]],
-    "skillTypes":[],
-    "qualityStats":[],
-    "statSets":[{
-        "statDescriptionScope":"triggered_elemental_discharge",
-        "levels":[{
-            "2":60,
-            "4":120,
-            "statInterpolation":[]
-          }],
-        "statMap":{
-          "spell_minimum_base_lightning_damage_as_%_of_intelligence":[{
-              "1":{
-                "type":"PercentStat",
-                "stat":"Int"
-              },
-              "2":{
-                "var":"ShockConsumed"
-              },
-              "keywordFlags":131072,
-              "name":"LightningMin"
-            }],
-          "spell_maximum_base_fire_damage_as_%_of_intelligence":[{
-              "1":[],
-              "2":{
-                "var":"IgniteConsumed"
-              },
-              "name":"FireMax"
-            }],
-          "spell_minimum_base_cold_damage_as_%_of_intelligence":[{
-              "1":[],
-              "2":{
-                "var":"FreezeConsumed"
-              },
-              "name":"ColdMin"
-            }],
-          "spell_maximum_base_lightning_damage_as_%_of_intelligence":[{
-              "1":[],
-              "2":[],
-              "name":"LightningMax"
-            }],
-          "spell_maximum_base_cold_damage_as_%_of_intelligence":[{
-              "1":[],
-              "2":[],
-              "name":"ColdMax"
-            }],
-          "spell_minimum_base_fire_damage_as_%_of_intelligence":[{
-              "1":[],
-              "2":[],
-              "name":"FireMin"
-            }]
-        },
-        "constantStats":[["triggered_by_supported_spell_consuming_ignite_freeze_shock_on_hit_%"],[]],
-        "baseFlags":[],
-        "stats":["spell_minimum_base_fire_damage_as_%_of_intelligence","spell_maximum_base_fire_damage_as_%_of_intelligence","spell_minimum_base_cold_damage_as_%_of_intelligence","spell_maximum_base_cold_damage_as_%_of_intelligence","spell_minimum_base_lightning_damage_as_%_of_intelligence","spell_maximum_base_lightning_damage_as_%_of_intelligence"]
-      }]
-  },
-  "SupportEnergyRetentionPlayer":{
-    "description":"Supports Meta Skills. Supported Skills gain a chance to partially Refund a portion of Energy cost when Triggering or Invoking other Skills.",
-    "name":"Energy Retention",
-    "requireSkillTypes":[182],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["trigger_skills_refund_half_energy_spent_chance_%"]],
-        "stats":[]
-      }]
-  },
-  "SupportPhysicalMasteryPlayer":{
-    "description":"Supports Physical skills, granting them an additional level.",
-    "name":"Physical Mastery",
-    "requireSkillTypes":[27],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["supported_physical_skill_gem_level_+"]],
-        "stats":[]
-      }]
-  },
-  "ViciousHexSupportPlayer":{
-    "description":"Supports Curse skills you cast yourself, causing them to trigger Doom Blast on Cursed enemies when the Curse expires.",
-    "name":"Impending Doom",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[null,null,39],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "stats":["trigger_vicious_hex_explosion_when_curse_ends"]
-      }]
-  },
-  "SupportZenithPlayer":{
-    "description":"Supports Spell Skills. Supported Skills deal more damage while you are above 90% of your Maximum Mana. Does not Support Skills used by Minions.",
-    "name":"Zenith",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_spell_damage_+%_final_while_above_90%_maximum_mana"]],
-        "stats":[]
-      }]
-  },
-  "SupportEnormityPlayer":{
-    "description":"Supports Skills which summon Persistent Minions. Supported Minions are larger, have more Life, and deal more Damage, but cost significantly more Spirit.",
-    "name":"Enormity",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_titanblood_minion_life_+%_final":[{
-              "value":{
-                "mod":[]
-              }
-            }],
-          "support_titanblood_minion_damage_+%_final":[{
-              "value":{
-                "mod":[]
-              }
-            }]
-        },
-        "constantStats":[["minion_actor_scale_+%"],["support_titanblood_minion_damage_+%_final"],["support_titanblood_minion_life_+%_final"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportPinpointCriticalPlayer":{
-    "description":"Supports any skill that Hits Enemies, causing it to Critically Hit more often but deal less damage with Critical Hits.",
-    "name":"Pinpoint Critical",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[],[],[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_pinpoint_critical_strike_multiplier_+%_final":[{
-              "name":"CritMultiplier"
-            }],
-          "support_pinpoint_critical_strike_chance_+%_final":[[]]
-        },
-        "constantStats":[["support_pinpoint_critical_strike_chance_+%_final"],["support_pinpoint_critical_strike_multiplier_+%_final"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "DoomBlastPlayer":{
-    "levels":[{
-        "cooldown":0.15
+        "stats":["skill_offering_targets_an_additional_skeleton"],
+        "label":"Danse Macabre",
+        "baseFlags":[]
       }],
-    "description":"Deal Chaos damage in an area around the previously Cursed enemy.",
-    "skillTypes":[],
-    "name":"Doom Blast",
-    "qualityStats":[],
-    "statSets":[{
-        "statMap":{
-          "impending_doom_base_added_chaos_damage_%_of_current_mana":[{
-              "1":{
-                "stat":"Mana",
-                "percentVar":"CurrentManaPercentage"
-              },
-              "name":"ChaosMin"
-            },{
-              "1":[],
-              "name":"ChaosMax"
-            }]
-        },
-        "baseEffectiveness":1.7200000286102,
-        "baseMods":[{
-            "name":"SkillData",
-            "value":{
-              "key":"currentManaPercentage"
-            }
-          }],
-        "incrementalEffectiveness":0.14000000059605,
-        "statDescriptionScope":"doom_blast",
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["impending_doom_base_added_chaos_damage_%_of_current_mana"],[]],
-        "damageIncrementalEffectiveness":0.006800000090152,
-        "stats":["triggered_vicious_hex_explosion"]
-      }]
-  },
-  "SupportDissipatePlayer":{
-    "description":"Supports Skills which create Remnants. Created Remnants are more powerful, but vanish quickly.",
-    "name":"Dissipate",
-    "requireSkillTypes":[183],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["remnant_effect_+%"],["remnants_vanish_after_X_ms",3000]],
-        "stats":[]
-      }]
-  },
-  "SupportManaLeechPlayer":{
-    "description":"Supports Attacks, causing their Physical damage to Leech Mana.",
-    "name":"Soul Thief",
+    "description":"Supports Offering Skills. Supported Skills have increased Buff effect and deal more damage, but will target an additional skeletal Minion when cast. If there is not an additional skeletal Minion to target, no damage or Buff effect will be granted.",
     "requireSkillTypes":[],
     "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["base_mana_leech_from_physical_attack_damage_permyriad",800]],
-        "stats":[]
-      }]
-  },
-  "SupportEnergyShieldOnShockKillPlayer":{
-    "description":"Supports any skill that Hits enemies, causing you to recover Energy Shield when it kills a Shocked enemy.",
-    "name":"Shock Siphon",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "statMap":{
-          "support_recover_%_maximum_energy_shield_killing_shocked_enemies":[{
-              "1":{
-                "stat":"EnergyShield"
-              },
-              "2":{
-                "var":"Shocked"
-              },
-              "name":"EnergyShieldOnKill"
-            }]
-        },
-        "baseEffectiveness":0.3740000128746,
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_recover_%_maximum_energy_shield_killing_shocked_enemies"]],
-        "stats":[]
-      }]
-  },
-  "SupportInevitableCriticalsPlayer":{
-    "description":"Supports any skill you use yourself that Hits enemies, causing it to accumulate Critical Hit chance over time. ",
-    "name":"Inevitable Critical",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_inevitable_criticals_critical_strike_chance_+%_per_second":[[{
-                "limitVar":"InevitableCritCap",
-                "var":"SecondsSinceInevitableCrit"
-              }]],
-          "support_inevitable_criticals_critical_strike_chance_+%_cap":[{
-              "name":"Multiplier:InevitableCritCap"
-            }]
-        },
-        "constantStats":[["support_inevitable_criticals_critical_strike_chance_+%_per_second"],["support_inevitable_criticals_critical_strike_chance_+%_cap"]],
-        "baseFlags":[],
-        "stats":["supported_by_inevitable_criticals"]
-      }]
-  },
-  "SupportPotentialPlayer":{
-    "description":"Supports Skills that you use yourself. Supported Skills will consume a Power Charge on use if possible, and will be much more likely to Critically Hit if they do. Supported Skills cannot generate Power Charges.",
-    "name":"Potential",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[null,null,null,null,171],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "skill_consume_power_charge_to_gain_critical_strike_chance_+%_final":[[{
-                "var":"RemovablePowerCharge"
-              }]]
-        },
-        "constantStats":[["skill_consume_power_charge_to_gain_critical_strike_chance_+%_final"]],
-        "baseFlags":[],
-        "stats":["skill_cannot_generate_power_charges"]
-      }]
-  },
-  "SupportEssenceHarvestPlayer":{
-    "description":"Supports Skills which create Reviving Persistent Minions. When those Minions die, you restore a percentage of your maximum Mana.",
-    "name":"Essence Harvest",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["recover_mana_%_on_minion_death"]],
-        "stats":[]
-      }]
-  },
-  "SupportTempestuousTempoPlayer":{
-    "description":"Supports Skills which deal Damage, raising Elemental Damage dealt for each Skill used Recently of a different Elemental type. Cannot support Minion Skills.",
-    "name":"Rising Tempest",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_elemental_damage_+%_final_per_different_elemental_skill_used_recently":[[{
-                "var":"DifferentElementalSkillUsedRecently"
-              }]]
-        },
-        "constantStats":[["support_elemental_damage_+%_final_per_different_elemental_skill_used_recently"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportMinionPactPlayer":{
-    "description":"Supports damaging skills you use yourself, draining the life from one of your Minions on use in order to boost the skill's damage. Only takes effect if you have a Minion with enough life to drain the full amount.",
-    "name":"Minion Pact",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_minion_pact_damage_+%_final":[[]]
-        },
-        "constantStats":[["support_minion_pact_user_life_%_removed_from_nearby_minion"],["support_minion_pact_damage_+%_final"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportProfanityPlayer":{
-    "description":"Supports Skills you use yourself. Supported Skills consume a Corpse on use, dealing more Chaos Damage if they do. Cannot support Triggered Skills or Reservation Skills.",
-    "name":"Profanity",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_chaos_damage_+%_final_if_corpse_consumed_on_use"],["skill_consume_corpse_within_X_units_on_use"]],
-        "stats":[]
-      }]
-  },
-  "SupportExcisePlayer":{
-    "description":"Supports any damaging Skill that you use yourself, granting it significantly higher chance to Critically Hit, but causing it to gain a long cooldown. Cannot support Skills which already have a cooldown.",
-    "name":"Excise",
-    "requireSkillTypes":[],
-    "addSkillTypes":[177],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_crit_cooldown_crit_chance_+%_final":[[]]
-        },
-        "constantStats":[[],["support_crit_cooldown_crit_chance_+%_final"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportNadirPlayer":{
-    "description":"Supports Skills which gain Stages or Seals. Supported Skills have lower Maximum Stage or Seal count, but have a Minimum Stage or Seal count they cannot fall below.",
-    "name":"Nadir",
-    "requireSkillTypes":[187],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["skill_X_fewer_maximum_stages"],["skill_X_minimum_stages"]],
-        "stats":[]
-      }]
-  },
-  "SupportCapacitorPlayer":{
-    "description":"Supports Invocation Skills which Trigger other Skills. Supported Skills have significantly higher Maximum Energy.",
-    "name":"Capacitor",
-    "requireSkillTypes":[157],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["skill_maximum_energy_+%"]],
-        "stats":[]
-      }]
-  },
-  "SupportMysticismPlayer":{
-    "description":"Supports Persistent Buff Skills, causing you to deal increased Spell Damage while on full Energy Shield while the Supported Skill is active.",
-    "name":"Mysticism",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_spell_damage_spirit_cost_spell_damage_+%_on_full_energy_shield":[[{
-                "var":"FullEnergyShield"
-              },[]]]
-        },
-        "constantStats":[["support_spell_damage_spirit_cost_spell_damage_+%_on_full_energy_shield"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportMusterPlayer":{
-    "description":"Supports Skills which summon Minions. Supported Minions deal more Damage the more different kinds of Persistent Minions you have summoned.",
-    "name":"Muster",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_varied_troops_damage_+%_final_per_different_persistent_ominion"]],
-        "stats":[]
-      }]
-  },
-  "SupportExecratePlayer":{
-    "description":"Supports any damaging Skill that you use yourself, granting it significantly higher chance to inflict Ailments on hit, but causing it to gain a long cooldown. Cannot support Skills which already have a cooldown.",
-    "name":"Execrate",
-    "requireSkillTypes":[],
-    "addSkillTypes":[179],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_ailment_cooldown_ailment_chance_+%_final":[{
-              "name":"EnemyIgniteChance"
-            },{
-              "name":"EnemyShockChance"
-            },{
-              "name":"BleedChance"
-            },{
-              "name":"PoisonChance"
-            }]
-        },
-        "constantStats":[[],["support_ailment_cooldown_ailment_chance_+%_final"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportCatharsisPlayer":{
-    "description":"Supports any Skill you use yourself, causing supported Skill to detonate Volatility that is present on you. Supported Skill can only be used while you have a certain amount of Volatility and cannot support Skills which already have another Condition. Does not support Triggered Skills.",
-    "name":"Catharsis",
-    "requireSkillTypes":[],
-    "addSkillTypes":[194,202],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["skill_conditional_requires_X_volatility"]],
-        "stats":["skill_detonate_random_volatility_amount_on_use"]
-      }]
-  },
-  "SupportRimePlayer":{
-    "description":"Supports Skills which create Ground Surfaces, causing Enemies Chilled by those Surfaces to be more easily Frozen, but at the cost of some Chill magnitude.",
-    "name":"Rime",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["chilled_ground_applies_%_freeze_multiplier_taken"],["support_winterblast_chill_effect_+%_final"]],
-        "stats":[]
-      }]
+    "excludeSkillTypes":[]
   },
   "SupportMinionInstabilityPlayer":{
-    "description":"Supports skills which create Minions, causing them to violently explode when reduced to Low Life.",
-    "name":"Minion Instability",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
     "levels":[[]],
     "statSets":[{
-        "levels":[[]],
         "statMap":{
           "explode_on_low_life_%_maximum_life_to_deal":[{
+              "name":"MinionModifier",
               "value":{
                 "mod":{
                   "name":"Multiplier:MinionInstabilityBaseDamage"
                 }
-              }
+              },
+              "type":"LIST"
             },{
               "name":"ExtraMinionSkill",
               "value":{
@@ -1419,476 +318,156 @@
             }]
         },
         "constantStats":[["explode_on_low_life_%_maximum_life_to_deal"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
+        "levels":[[]],
+        "stats":[],
+        "label":"Minion Instability",
+        "baseFlags":[]
+      }],
+    "description":"Supports skills which create Minions, causing them to violently explode when reduced to Low Life.",
+    "requireSkillTypes":[77],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
   },
-  "TriggeredManaFlarePlayer":{
-    "levels":[[]],
+  "TriggeredBoneShrapnelPlayer":{
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["active_skill_base_area_of_effect_radius"],["support_bone_shrapnel_physical_damage_equal_to_%_monster_life"],["triggered_by_bone_shrapnel_support_%"]],
+        "stats":[null,"is_area_damage"],
+        "label":"Bone Shrapnel Explosion",
+        "statDescriptionScope":"triggered_bone_shrapnel",
+        "levels":[[]]
+      }],
+    "levels":[{
+        "critChance":13
+      }],
     "skillTypes":[],
     "qualityStats":[],
-    "statSets":[{
-        "statMap":{
-          "support_mana_flare_%_of_current_mana_consumed":[[[]],[[]]]
-        },
-        "statDescriptionScope":"triggered_mana_flare",
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["triggered_by_mana_flare_support_%"],["support_mana_flare_%_of_current_mana_consumed"],[]],
-        "baseMods":[{
-            "value":[]
-          }],
-        "stats":[]
-      }]
+    "description":"Deal Physical Area Damage based off of the maximum Life of the Pinned target slain."
   },
-  "SupportMagnetismPlayer":{
-    "description":"Supports Skills which create Remnants, allowing those Remnants to be collected from further away.",
-    "name":"Magnetism",
+  "SupportFreezeforkPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["chance_to_fork_from_frozen_enemy_%"]],
+        "stats":[],
+        "label":"Freezefork",
+        "levels":[[]]
+      }],
+    "description":"Supports Skills which can fire Projectiles. Projectiles from Supported Skills always Fork when the initial Projectile Hits Frozen Enemies, but Supported Skills cannot build up Freeze themselves.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[207],
+    "excludeSkillTypes":[176]
+  },
+  "SupportDeathmarchPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["minion_on_death_heal_radius"],["minion_on_death_heal_nearby_minions_for_%_of_life_and_remove_ailments"]],
+        "stats":[],
+        "label":"Deathmarch",
+        "levels":[[]]
+      }],
+    "description":"Supports Skills which create Persistent Minions. Supported Minions will restore Life to nearby Allied Minions on death, as well as removing Ailments from those Minions.",
     "requireSkillTypes":[],
     "addSkillTypes":[],
-    "excludeSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportElementalArmyPlayer":{
     "levels":[[]],
     "statSets":[{
-        "levels":[[]],
         "baseFlags":[],
-        "constantStats":[["remnant_pickup_range_+%"]],
-        "stats":[]
-      }]
-  },
-  "SupportAcrimonyPlayer":{
-    "description":"Supports Skills which can Damage Enemies. Enemies affected by Damage over time from Supported Skills which was not caused by a Damaging Ailment have reduced Life regeneration rate. Only the strongest instance of this Debuff will apply. Does not Support Skills used by Minions.",
-    "name":"Acrimony",
+        "constantStats":[["minion_elemental_resistance_%"]],
+        "stats":[],
+        "label":"Elemental Army",
+        "incrementalEffectiveness":0.092720001935959,
+        "levels":[[]]
+      }],
+    "description":"Supports skills which create Minions, bolstering the Elemental Resistances of those Minions.",
     "requireSkillTypes":[],
     "addSkillTypes":[],
-    "excludeSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportChillingIcePlayer":{
     "levels":[[]],
     "statSets":[{
-        "levels":[[]],
         "baseFlags":[],
-        "constantStats":[["skill_enemies_affected_by_non_ailment_damage_over_time_life_regeneration_rate_+%"]],
-        "stats":[]
-      }]
-  },
-  "SupportExpansePlayer":{
-    "description":"Supports any Skill that you use yourself, granting it significantly higher Area of Effect but causing it to gain a long cooldown. Cannot support Skills which already have a cooldown.",
-    "name":"Expanse",
-    "requireSkillTypes":[],
-    "addSkillTypes":[178],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_aoe_cooldown_aoe_+%_final":[[]]
-        },
-        "constantStats":[[],["support_aoe_cooldown_aoe_+%_final"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportLightningMasteryPlayer":{
-    "description":"Supports Lightning skills, granting them an additional level.",
-    "name":"Lightning Mastery",
+        "constantStats":[["chilling_ice_freezing_area_base_radius"],["chilling_ice_create_chilled_ground_on_freeze_base_duration_ms",8000]],
+        "stats":[],
+        "label":"Frost Nexus",
+        "levels":[[]]
+      }],
+    "description":"Supports any skill that Hits enemies, causing it to create patches of Chilled Ground around Frozen enemies.",
     "requireSkillTypes":[],
     "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["supported_lightning_skill_gem_level_+"]],
-        "stats":[]
-      }]
-  },
-  "SupportLastGaspPlayer":{
-    "description":"Supports skills that create Persistent Minions, causing those Minions to fight on for a short duration before dying when they are fatally wounded.",
-    "name":"Last Gasp",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_last_gasp_duration_ms"]],
-        "stats":[]
-      }]
-  },
-  "SupportManaFountainPlayer":{
-    "description":"Supports Skills which create stationary objects. Objects created by supported Skills generate a Font of Mana, creating an Aura which grants Mana regeneration.",
-    "name":"Font of Mana",
-    "requireSkillTypes":[161],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_mana_fountain_mana_regeneration_rate_+%":[{
-              "1":{
-                "effectType":"Aura"
-              },
-              "name":"ManaRegen"
-            }]
-        },
-        "constantStats":[["support_mana_fountain_mana_regeneration_rate_+%"],["support_mana_fountain_radius"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportExtractionPlayer":{
-    "description":"Supports Spell Skills which cause Damaging Hits. Using supported Spells will cause you to Sacrifice a portion of your Life on use, gaining extra Chaos Damage in exchange. Does not support Persistent Skills, Minion Skills, or Triggered Skills.",
-    "name":"Extraction",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["sacrifice_%_life_on_skill_use"],["non_skill_base_all_damage_%_to_gain_as_chaos"]],
-        "stats":[]
-      }]
-  },
-  "SupportRitualisticCursePlayer":{
-    "description":"Supports Curse skills, causing them to cover a larger area but take longer to Curse enemies.",
-    "name":"Ritualistic Curse",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["base_curse_delay_+%"],["curse_area_of_effect_+%"]],
-        "stats":[]
-      }]
-  },
-  "SupportImpetusPlayer":{
-    "description":"Supports Meta Skills. Supported Skills generate Energy significantly faster.",
-    "name":"Impetus",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["energy_generated_+%"]],
-        "stats":[]
-      }]
-  },
-  "SupportGlacierPlayer":{
-    "description":"Supports any Skill which creates Ice Crystals, causing them to be created with higher Life.",
-    "name":"Glacier",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_glacier_ice_crystal_maximum_life_+%_final":[[]]
-        },
-        "constantStats":[["support_glacier_ice_crystal_maximum_life_+%_final"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportFeedingFrenzyPlayer":{
-    "description":"Supports skills which create Minions, making them deal and take more damage. Cannot support skills which create undamageable Minions.",
-    "name":"Feeding Frenzy",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "feeding_frenzy_minion_damage_+%_final":[{
-              "value":{
-                "mod":[]
-              }
-            }],
-          "feeding_frenzy_minion_damage_taken_+%_final":[{
-              "value":{
-                "mod":{
-                  "name":"DamageTaken"
-                }
-              }
-            }]
-        },
-        "constantStats":[["feeding_frenzy_minion_damage_taken_+%_final"],["feeding_frenzy_minion_damage_+%_final"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportAmbushPlayer":{
-    "description":"Supports any skill that Hits enemies, making it more likely to Critically Hit enemies on full life.",
-    "name":"Ambush",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_ambush_critical_strike_chance_vs_enemies_on_full_life_+%_final":[[{
-                "var":"FullLife"
-              }]]
-        },
-        "constantStats":[["support_ambush_critical_strike_chance_vs_enemies_on_full_life_+%_final"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportColdMasteryPlayer":{
-    "description":"Supports Cold skills, granting them an additional level.",
-    "name":"Cold Mastery",
-    "requireSkillTypes":[29],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["supported_cold_skill_gem_level_+"]],
-        "stats":[]
-      }]
-  },
-  "SupportAddedChaosDamagePlayer":{
-    "description":"Supports Attacks, causing them to Gain Chaos Damage but deal less Damage of other Types.",
-    "name":"Chaos Infusion",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
-    "statSets":[{
-        "statMap":{
-          "support_chaos_support_non_chaos_damage_+%_final":[{
-              "name":"ColdDamage"
-            },{
-              "name":"LightningDamage"
-            },{
-              "name":"FireDamage"
-            },{
-              "name":"PhysicalDamage"
-            }]
-        },
-        "baseEffectiveness":0.47119998931885,
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["non_skill_base_all_damage_%_to_gain_as_chaos_with_attacks"],["support_chaos_support_non_chaos_damage_+%_final"]],
-        "stats":[]
-      }]
-  },
-  "SupportChaoticFreezePlayer":{
-    "description":"Supports Spells that deal non-Ailment Chaos damage over time. Enemies taking damage over time from Debuffs caused by supported skills will suffer Freeze build up from Chaos damage Hits from any source. Does not Support Skills used by Minions.",
-    "name":"Chaotic Freeze",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "stats":["support_chaotic_freeze_dots_allow_enemies_to_be_frozen_by_chaos_damage"]
-      }]
+    "excludeSkillTypes":[]
   },
   "SupportBurningRunesPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "levels":[[]],
+        "stats":["triggers_burning_runes_on_placing_ground_rune"]
+      }],
     "description":"Supports any Skill which creates Runic Inscriptions when Cast, causing those Runic Inscriptions to trigger Burning Inscription when they expire. Burning Inscription is a Spell which creates Ignited Ground based off of your Maximum Mana.",
     "name":"Burning Inscription",
     "requireSkillTypes":[null,164],
     "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "stats":["triggers_burning_runes_on_placing_ground_rune"]
-      }]
-  },
-  "SupportFieryDeathPlayer":{
-    "description":"Supports any skill that Hits enemies, causing enemies it Ignites to have a chance to explode on death.",
-    "name":"Fiery Death",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["chance_to_trigger_fiery_death_on_ignited_enemy_death_%"]],
-        "stats":[]
-      }]
-  },
-  "SupportAddedColdDamagePlayer":{
-    "description":"Supports Attacks, causing them to Gain Cold Damage but deal less Fire and Lightning Damage.",
-    "name":"Cold Infusion",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "statMap":{
-          "support_fire_and_lightning_damage_+%_final":[[],[]]
-        },
-        "baseEffectiveness":0.58050000667572,
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["non_skill_base_all_damage_%_to_gain_as_cold_with_attacks"],["support_fire_and_lightning_damage_+%_final"]],
-        "stats":[]
-      }]
-  },
-  "SupportClarityPlayer":{
-    "description":"Supports Persistent Buff Skills, causing you to gain increased Mana Regeneration while the Skill is active.",
-    "name":"Clarity",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_clarity_mana_regeneration_rate_+%":[[[]]]
-        },
-        "constantStats":[["support_clarity_mana_regeneration_rate_+%"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportDrainedAilmentPlayer":{
-    "description":"Supports Spells that deal non-Ailment damage over time, causing them to consume Ailments on enemies it applies damage over time Debuffs to in order to deal substantially more damage over time.",
-    "name":"Drain Ailments",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_drained_ailment_damage_over_time_+%_final_if_ailment_consumed":[[{
-                "var":"AilmentConsumed"
-              }]]
-        },
-        "constantStats":[["support_drained_ailment_damage_over_time_+%_final_if_ailment_consumed"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "TriggeredFieryDeathPlayer":{
-    "levels":[[]],
-    "skillTypes":[],
-    "qualityStats":[],
-    "statSets":[{
-        "label":"Explosion",
-        "statDescriptionScope":"triggered_fiery_death",
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["triggered_by_fiery_death_support_%"],[],["corpse_explosion_monster_life_%"]],
-        "baseMods":[{
-            "value":{
-              "key":"explodeCorpse"
-            }
-          },{
-            "value":{
-              "key":"corpseExplosionDamageType",
-              "value":"Fire"
-            }
-          }],
-        "stats":[]
-      }]
+    "excludeSkillTypes":[]
   },
   "SupportDecayingHexPlayer":{
-    "description":"Supports Curse skills. Cursed enemies' bodies decay, taking Chaos damage over time.",
-    "name":"Decaying Hex",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
     "levels":[[]],
     "statSets":[{
-        "levels":[[]],
         "statMap":{
           "support_decaying_hex_base_chaos_damage_per_minute_as_%_of_intelligence_for_8_seconds":[{
-              "1":[],
+              "1":{
+                "stat":"Int",
+                "type":"PercentStat"
+              },
+              "name":"SkillData",
               "value":{
                 "key":"decay"
               }
             }]
         },
-        "constantStats":[["support_decaying_hex_base_chaos_damage_per_minute_as_%_of_intelligence_for_8_seconds"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
+        "constantStats":[["support_decaying_hex_base_chaos_damage_per_minute_as_%_of_intelligence_for_8_seconds",6000]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Decaying Hex",
+        "baseFlags":[]
+      }],
+    "description":"Supports Curse skills. Cursed enemies' bodies decay, taking Chaos damage over time.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[42,null,35],
+    "excludeSkillTypes":[]
   },
-  "SupportSpellCascadePlayer":{
-    "description":"Supports Spells that affect an area around you or a target location, causing those Spells to also target additional areas on either side of the target area, along a randomly chosen axis. Cannot support Channelling skills or Remote skills.",
-    "name":"Spell Cascade",
-    "requireSkillTypes":[56],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
+  "SupportMinionPactPlayer":{
     "levels":[[]],
     "statSets":[{
-        "levels":[[]],
         "statMap":{
-          "support_spell_cascade_area_of_effect_+%_final":[[]],
-          "support_spell_cascade_damage_+%_final":[[]]
+          "support_minion_pact_damage_+%_final":[[]]
         },
-        "constantStats":[["support_spell_cascade_number_of_cascades_per_side"],["support_spell_cascade_area_of_effect_+%_per_cascade"],["support_spell_cascade_area_of_effect_+%_final"],["support_spell_cascade_damage_+%_final"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportAblationPlayer":{
-    "description":"Supports Offering Skills. Supported Skills Sacrifice a portion of your life on use, but deal much more damage and have more powerful Buffs in return.",
-    "name":"Ablation",
+        "constantStats":[["support_minion_pact_user_life_%_removed_from_nearby_minion"],["support_minion_pact_damage_+%_final"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Minion Pact",
+        "baseFlags":[]
+      }],
+    "description":"Supports damaging skills you use yourself, draining the life from one of your Minions on use in order to boost the skill's damage. Only takes effect if you have a Minion with enough life to drain the full amount.",
     "requireSkillTypes":[],
     "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_ablation_offering_skill_damage_+%_final":[[[]]]
-        },
-        "constantStats":[["support_ablation_offering_skill_damage_+%_final"],["offering_spells_effect_+%"],[]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportColdExposurePlayer":{
-    "description":"Supports any skill that Hits enemies, causing it to inflict Cold Exposure when it Critically Hits an enemy.",
-    "name":"Cold Exposure",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "inflict_cold_exposure_for_x_ms_on_cold_crit":[{
-              "name":"ColdExposureChance"
-            }]
-        },
-        "constantStats":[["inflict_cold_exposure_for_x_ms_on_cold_crit"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
+    "excludeSkillTypes":[33,36]
   },
   "TriggeredBurningRunesPlayer":{
-    "levels":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
-    "description":"Create Ignited Ground Igniting Enemies based on a percentage of your Maximum Mana.",
-    "skillTypes":[],
-    "qualityStats":[],
     "statSets":[{
         "statMap":{
           "support_burning_runes_base_fire_damage_equal_to_%_maximum_mana":[{
-              "1":[],
-              "type":"OVERRIDE",
-              "name":"IgniteFireHitDamage"
+              "1":{
+                "stat":"Mana"
+              },
+              "name":"IgniteFireHitDamage",
+              "type":"OVERRIDE"
             }]
         },
-        "statDescriptionScope":"burning_runes",
         "levels":[[],{
             "actorLevel":3.4519999027252
           },{
@@ -1968,214 +547,1659 @@
           },{
             "actorLevel":288.29998779297
           }],
-        "baseFlags":[],
-        "constantStats":[["triggered_by_burning_runes_support_%"],[],["base_skill_effect_duration"],["support_burning_runes_base_fire_damage_equal_to_%_maximum_mana"],["ground_fire_art_variation"]],
-        "baseMods":[[],{
+        "baseMods":[{
+            "name":"EnemyIgniteChance"
+          },{
             "name":"IgniteStacks"
           },{
-            "name":"NeverCrit"
+            "name":"NeverCrit",
+            "type":"FLAG"
           }],
-        "stats":[]
-      }]
+        "baseFlags":[],
+        "constantStats":[["triggered_by_burning_runes_support_%"],[],["base_skill_effect_duration",4000],["support_burning_runes_base_fire_damage_equal_to_%_maximum_mana"],["ground_fire_art_variation"]],
+        "stats":[],
+        "statDescriptionScope":"burning_runes"
+      }],
+    "levels":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+    "skillTypes":[],
+    "qualityStats":[],
+    "description":"Create Ignited Ground Igniting Enemies based on a percentage of your Maximum Mana."
   },
-  "SupportFasterCastPlayer":{
-    "description":"Supports Spells, causing them to cast faster.",
-    "name":"Arcane Tempo",
+  "SupportFrostfirePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "ignite_effect_+%_final_against_frozen_enemies":[{
+              "1":[],
+              "keywordFlags":8388608,
+              "name":"AilmentMagnitude"
+            }]
+        },
+        "constantStats":[["ignite_effect_+%_final_against_frozen_enemies"]],
+        "levels":[[]],
+        "stats":[null,"remove_freeze_on_ignite"],
+        "label":"Frostfire",
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that Hits enemies, causing it to Consume Freeze on Igniting a Frozen enemy to boost the effect of the Ignite.",
     "requireSkillTypes":[],
     "addSkillTypes":[],
-    "excludeSkillTypes":[null,null,218],
+    "excludeSkillTypes":[136]
+  },
+  "TriggeredElementalDischargePlayer":{
+    "name":"Elemental Discharge",
+    "statSets":[{
+        "statMap":{
+          "spell_minimum_base_cold_damage_as_%_of_intelligence":[{
+              "1":[],
+              "2":{
+                "var":"FreezeConsumed"
+              },
+              "keywordFlags":131072,
+              "name":"ColdMin"
+            }],
+          "spell_maximum_base_cold_damage_as_%_of_intelligence":[{
+              "1":[],
+              "2":[],
+              "name":"ColdMax"
+            }],
+          "spell_maximum_base_lightning_damage_as_%_of_intelligence":[{
+              "1":[],
+              "2":{
+                "var":"ShockConsumed"
+              },
+              "name":"LightningMax"
+            }],
+          "spell_minimum_base_lightning_damage_as_%_of_intelligence":[{
+              "1":[],
+              "2":[],
+              "name":"LightningMin"
+            }],
+          "spell_maximum_base_fire_damage_as_%_of_intelligence":[{
+              "1":[],
+              "2":{
+                "var":"IgniteConsumed"
+              },
+              "name":"FireMax"
+            }],
+          "spell_minimum_base_fire_damage_as_%_of_intelligence":[{
+              "1":[],
+              "2":[],
+              "name":"FireMin"
+            }]
+        },
+        "constantStats":[["triggered_by_supported_spell_consuming_ignite_freeze_shock_on_hit_%"],[]],
+        "levels":[{
+            "3":80,
+            "4":120,
+            "statInterpolation":[]
+          }],
+        "stats":["spell_minimum_base_fire_damage_as_%_of_intelligence","spell_maximum_base_fire_damage_as_%_of_intelligence","spell_minimum_base_cold_damage_as_%_of_intelligence","spell_maximum_base_cold_damage_as_%_of_intelligence","spell_minimum_base_lightning_damage_as_%_of_intelligence","spell_maximum_base_lightning_damage_as_%_of_intelligence"],
+        "statDescriptionScope":"triggered_elemental_discharge",
+        "baseFlags":[]
+      }],
+    "skillTypes":[],
+    "qualityStats":[],
+    "levels":[[]]
+  },
+  "SupportMusterPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_varied_troops_damage_+%_final_per_different_persistent_ominion"]],
+        "stats":[],
+        "label":"Muster",
+        "levels":[[]]
+      }],
+    "description":"Supports Skills which summon Minions. Supported Minions deal more Damage the more different kinds of Persistent Minions you have summoned.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportLastingFrostPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["freeze_duration_+%"]],
+        "stats":[],
+        "label":"Deep Freeze",
+        "levels":[[]]
+      }],
+    "description":"Supports any skill that Hits enemies, causing Freeze it inflicts to last longer.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportGlaciationPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_hypothermia_hit_damage_freeze_multiplier_+%_final"]],
+        "stats":[],
+        "label":"Glaciation",
+        "levels":[[]]
+      }],
+    "description":"Supports any skill that Hits enemies, making it more effective at Freezing enemies.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportMinionMasteryPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["supported_minion_skill_gem_level_+"]],
+        "stats":[],
+        "label":"Minion Mastery",
+        "levels":[[]]
+      }],
+    "description":"Supports Minion skills, granting them an additional level.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportMysticismPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_spell_damage_spirit_cost_spell_damage_+%_on_full_energy_shield":[[{
+                "var":"FullEnergyShield"
+              },{
+                "effectType":"Buff",
+                "effectName":"Mysticism"
+              }]]
+        },
+        "constantStats":[["support_spell_damage_spirit_cost_spell_damage_+%_on_full_energy_shield"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports Persistent Buff Skills, causing you to deal increased Spell Damage while on full Energy Shield while the Supported Skill is active.",
+    "requireSkillTypes":[null,5],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportDerangePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_shield_sacrifice_damage_over_time_+%_final_per_100_intelligence":[{
+              "1":{
+                "type":"PerStat"
+              },
+              "flags":8
+            }]
+        },
+        "constantStats":[["support_shield_sacrifice_damage_over_time_+%_final_per_100_intelligence"]],
+        "levels":[[]],
+        "stats":["gain_energy_shield_cost_equal_to_intelligence"],
+        "label":"Derange",
+        "baseFlags":[]
+      }],
+    "description":"Supports Skills which you use yourself which can deal damage. Supported Skills gain an Energy Shield cost equal to your Intelligence, while also dealing more non-Ailment Damage over time based off of your Intelligence. Cannot support Channelling Skills.",
+    "requireSkillTypes":[null,null,null,49],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[null,null,null,37,122]
+  },
+  "SupportGlacierPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_glacier_ice_crystal_maximum_life_+%_final":[{
+              "name":"IceCrystalLife"
+            }]
+        },
+        "constantStats":[["support_glacier_ice_crystal_maximum_life_+%_final"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Glacier",
+        "baseFlags":[]
+      }],
+    "description":"Supports any Skill which creates Ice Crystals, causing them to be created with higher Life.",
+    "requireSkillTypes":[170],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportWildshardsPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["spell_skill_%_chance_to_fire_8_additional_projectiles_in_nova"]],
+        "stats":[],
+        "label":"Wildshards",
+        "levels":[[]]
+      }],
+    "description":"Supports Spell Skills that fire Projectiles. Supported Skills have a chance to fire many additional Projectiles in a circle.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[113]
+  },
+  "SupportWildfirePlayer":{
+    "levels":[[],[],[],[],{
+        "levelRequirement":14
+      },{
+        "levelRequirement":18
+      },{
+        "levelRequirement":22
+      },{
+        "levelRequirement":26
+      },{
+        "levelRequirement":31
+      },[],{
+        "levelRequirement":41
+      },{
+        "levelRequirement":46
+      },{
+        "levelRequirement":52
+      },{
+        "levelRequirement":58
+      },{
+        "levelRequirement":64
+      },[],{
+        "levelRequirement":72
+      },{
+        "levelRequirement":78
+      },[],[],[],[],[],[],[],[],[],[],[],[],{
+        "levelRequirement":90
+      },[],[],[],[],[],[],[],[],[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_ignite_proliferation_radius"]],
+        "stats":[],
+        "label":"Wildfire",
+        "levels":[[]]
+      }],
+    "description":"Supports any skill that Hits enemies, Spreading Ignites it inflicts to nearby enemies after a delay.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportNadirPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["skill_X_fewer_maximum_stages"],["skill_X_minimum_stages"]],
+        "stats":[],
+        "label":"Nadir",
+        "levels":[[]]
+      }],
+    "description":"Supports Skills which gain Stages or Seals. Supported Skills have lower Maximum Stage or Seal count, but have a Minimum Stage or Seal count they cannot fall below.",
+    "requireSkillTypes":[187],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportSpellEchoPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_spell_echo_area_of_effect_+%_final":[[]],
+          "support_multicast_cast_speed_+%_final":[{
+              "name":"Speed",
+              "flags":16
+            }]
+        },
+        "constantStats":[["support_spell_echo_cascade_delay_ms",500],["support_multicast_cast_speed_+%_final"],["support_spell_echo_number_of_echo_cascades"],["support_spell_echo_area_of_effect_+%_final"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Spell Echo",
+        "baseFlags":[]
+      }],
+    "description":"Supports Spells that affect an area around you or a target location. Supported Spells echo, causing their effects to happen again after a short delay. Cannot support Channelling skills Remote skills or skills which are Triggered.",
+    "requireSkillTypes":[56],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[null,null,null,null,38]
+  },
+  "SupportDissipatePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["remnant_effect_+%"],["remnants_vanish_after_X_ms",3000]],
+        "stats":[],
+        "label":"Dissipate",
+        "levels":[[]]
+      }],
+    "description":"Supports Skills which create Remnants. Created Remnants are more powerful, but vanish quickly.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportStormfirePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "levels":[[]],
+        "stats":["stormfire_support_shocks_from_skill_do_not_expire_on_ingited_targets"],
+        "label":"Stormfire"
+      }],
+    "description":"Supports any skill that Hits enemies, prolonging Shocks they inflict on Ignited enemies.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportVerglasPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_crystalshatter_buff_damage_%_gained_as_extra_cold_per_2000_crystal_life"],["support_crystalshatter_buff_duration"]],
+        "stats":[],
+        "label":"Verglas",
+        "levels":[[]]
+      }],
+    "description":"Supports Skills you use yourself which can Hit Enemies. Supported Skills Gain a percentage of their Damage as Cold Damage when you destroy Ice Crystals.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportPhysicalMasteryPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["supported_physical_skill_gem_level_+"]],
+        "stats":[],
+        "label":"Physical Mastery",
+        "levels":[[]]
+      }],
+    "description":"Supports Physical skills, granting them an additional level.",
+    "requireSkillTypes":[27],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportAbidingHexPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_consume_power_charge_to_gain_curse_duration_+%_final"]],
+        "stats":[],
+        "label":"Abiding Hex",
+        "levels":[[]]
+      }],
+    "description":"Supports Curse Skills you cast yourself. Supported Skills will consume Power Charges on use, gaining significant Curse duration if they do.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportDrainedAilmentPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_drained_ailment_damage_over_time_+%_final_if_ailment_consumed":[[{
+                "var":"AilmentConsumed"
+              }]]
+        },
+        "constantStats":[["support_drained_ailment_damage_over_time_+%_final_if_ailment_consumed"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Drain Ailments",
+        "baseFlags":[]
+      }],
+    "description":"Supports Spells that deal non-Ailment damage over time, causing them to consume Ailments on enemies it applies damage over time Debuffs to in order to deal substantially more damage over time.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportExcisePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_crit_cooldown_crit_chance_+%_final":[{
+              "name":"CritChance"
+            }]
+        },
+        "constantStats":[["support_hourglass_display_cooldown_time_ms"],["support_crit_cooldown_crit_chance_+%_final"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Excise",
+        "baseFlags":[]
+      }],
+    "description":"Supports any damaging Skill that you use yourself, granting it significantly higher chance to Critically Hit, but causing it to gain a long cooldown. Cannot support Skills which already have a cooldown.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[177],
+    "excludeSkillTypes":[null,null,75]
+  },
+  "SupportPinpointCriticalPlayer":{
+    "levels":[[],[],[]],
+    "statSets":[{
+        "statMap":{
+          "support_pinpoint_critical_strike_multiplier_+%_final":[{
+              "name":"CritMultiplier"
+            }],
+          "support_pinpoint_critical_strike_chance_+%_final":[[]]
+        },
+        "constantStats":[["support_pinpoint_critical_strike_chance_+%_final"],["support_pinpoint_critical_strike_multiplier_+%_final"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Pinpoint Critical",
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that Hits Enemies, causing it to Critically Hit more often but deal less damage with Critical Hits.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportHinderPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "levels":[[]],
+        "stats":["support_hinder_dots_also_apply_hinder"],
+        "label":"Hinder"
+      }],
+    "description":"Supports Spells that deal non-Ailment Chaos damage over time, causing damage over time they inflict to also Hinder enemies. Does not Support Skills used by Minions.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportAddedChaosDamagePlayer":{
+    "levels":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+    "statSets":[{
+        "statMap":{
+          "support_chaos_support_non_chaos_damage_+%_final":[{
+              "name":"ColdDamage"
+            },{
+              "name":"LightningDamage"
+            },{
+              "name":"FireDamage"
+            },{
+              "name":"PhysicalDamage"
+            }]
+        },
+        "levels":[[]],
+        "label":"Chaos Infusion",
+        "baseFlags":[],
+        "constantStats":[["non_skill_base_all_damage_%_to_gain_as_chaos_with_attacks"],["support_chaos_support_non_chaos_damage_+%_final"]],
+        "stats":[],
+        "baseEffectiveness":0.47119998931885
+      }],
+    "description":"Supports Attacks, causing them to Gain Chaos Damage but deal less Damage of other Types.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportUnleashPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "unleash_support_seal_gain_frequency_as_%_of_total_cast_time":[{
+              "name":"SealGainFrequency"
+            }],
+          "support_anticipation_rapid_fire_count":[{
+              "name":"SealCount"
+            }],
+          "support_spell_rapid_fire_repeat_use_damage_+%_final":[{
+              "name":"SealRepeatPenalty"
+            }]
+        },
+        "levels":[[]],
+        "label":"Unleash",
+        "baseMods":[{
+            "name":"HasSeals"
+          }],
+        "baseFlags":[],
+        "constantStats":[["support_spell_rapid_fire_repeat_use_damage_+%_final"],["unleash_support_seal_gain_frequency_as_%_of_total_cast_time",200],["support_anticipation_rapid_fire_count"]],
+        "stats":[]
+      }],
+    "description":"Supports Spells you cast yourself, making their effect reoccur when cast. Cannot support Channelling Skills or Skills with a Cooldown.",
+    "requireSkillTypes":[70],
+    "addSkillTypes":[188,189],
+    "excludeSkillTypes":{
+      "6":12,
+      "12":152
+    }
+  },
+  "SupportElementalFocusPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_gem_elemental_damage_+%_final":[{
+              "name":"ElementalDamage"
+            }]
+        },
+        "constantStats":[["support_gem_elemental_damage_+%_final"]],
+        "levels":[[]],
+        "stats":["cannot_inflict_elemental_ailments"],
+        "label":"Elemental Focus",
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that Hits enemies, causing it to deal more Elemental Damage but be unable to inflict Elemental Ailments.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportHourglassPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_hourglass_damage_+%_final":[[]]
+        },
+        "constantStats":[["support_hourglass_damage_+%_final"],[null,10000]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Hourglass",
+        "baseFlags":[]
+      }],
+    "description":"Supports any damaging skill that you use yourself, causing it to deal significantly more damage but gain a long cooldown. Cannot support Skills which already have a cooldown.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[null,133],
+    "excludeSkillTypes":[]
+  },
+  "SupportPotentialPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "skill_consume_power_charge_to_gain_critical_strike_chance_+%_final":[[{
+                "var":"RemovablePowerCharge"
+              }]]
+        },
+        "constantStats":[["skill_consume_power_charge_to_gain_critical_strike_chance_+%_final"]],
+        "levels":[[]],
+        "stats":["skill_cannot_generate_power_charges"],
+        "label":"Potential",
+        "baseFlags":[]
+      }],
+    "description":"Supports Skills that you use yourself. Supported Skills will consume a Power Charge on use if possible, and will be much more likely to Critically Hit if they do. Supported Skills cannot generate Power Charges.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[175],
+    "excludeSkillTypes":[null,null,null,null,171]
+  },
+  "SupportUnbendingPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["damage_taken_%_recouped_as_mana_while_performing_spell_per_250_ms_cast_time"]],
+        "stats":[],
+        "label":"Unbending",
+        "levels":[[]]
+      }],
+    "description":"Supports Spell Skills you use yourself. While using Supported Skills, a percentage of Damage taken is Recouped as Mana, with the percentage scaling higher the longer the Cast time of the Supported Skill. Cannot Support Channelling Skills.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportIncreasedCriticalDamagePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_critical_damage_critical_strike_chance_+%_final":[[]]
+        },
+        "levels":[[]],
+        "label":"Supercritical",
+        "baseFlags":[],
+        "constantStats":[["base_critical_strike_multiplier_+"],["support_critical_damage_critical_strike_chance_+%_final",-20]],
+        "stats":[]
+      }],
+    "description":"Supports any skill that Hits enemies, causing it to deal more damage with Critical Hits but have less Critical Hit chance.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportIceBitePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_ice_bite_buff_grant_%_added_cold_attack_damage":[{
+              "1":{
+                "var":"FrozenEnemyRecently"
+              },
+              "2":{
+                "effectName":"Ice Bite"
+              },
+              "name":"DamageGainAsCold"
+            }],
+          "support_ice_bite_base_buff_duration":{
+            "1":{
+              "1":[],
+              "2":[],
+              "name":"Duration"
+            },
+            "div":1000
+          }
+        },
+        "levels":[[]],
+        "baseFlags":[],
+        "constantStats":[["support_ice_bite_buff_grant_%_added_cold_attack_damage"],["support_ice_bite_base_buff_duration",5000]],
+        "stats":[],
+        "baseEffectiveness":0.51819998025894
+      }],
+    "description":"Supports Attacks you use yourself. Freezing an enemy with supported skills infuses all of your Attacks with Cold damage for a short time.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[9],
+    "excludeSkillTypes":[]
+  },
+  "SupportEmbitterPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "levels":[[]],
+        "stats":["all_damage_gained_as_cold_instead"],
+        "label":"Embitter"
+      }],
+    "description":"Supports Skills which can Damage Enemies with Hits, causing all sources of Damage Gained to instead be treated as Damage Gained as extra Cold for Supported Skills.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportChaosMasteryPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["supported_chaos_skill_gem_level_+"]],
+        "stats":[],
+        "label":"Chaos Mastery",
+        "levels":[[]]
+      }],
+    "description":"Supports Chaos skills, granting them an additional level.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportUpwellingPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_minion_damage_spirit_cost_minion_damage_+%_while_missing_mana"]],
+        "stats":[],
+        "label":"Upwelling",
+        "levels":[[]]
+      }],
+    "description":"Supports Persistent Buff Skills, causing your Minions to deal increased Damage while you are not on full Mana while the Supported Skill is active.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportProfanityPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_chaos_damage_+%_final_if_corpse_consumed_on_use"],["skill_consume_corpse_within_X_units_on_use"]],
+        "stats":[],
+        "label":"Profanity",
+        "levels":[[]]
+      }],
+    "description":"Supports Skills you use yourself. Supported Skills consume a Corpse on use, dealing more Chaos Damage if they do. Cannot support Triggered Skills or Reservation Skills.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportEnergyBarrierPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_no_energy_shield_recharge_delay_for_duration_ms_on_stunned",2000]],
+        "stats":[],
+        "label":"Energy Barrier",
+        "levels":[[]]
+      }],
+    "description":"Supports any skill that you can use, causing Energy Shield recharge to begin immediately if you are Stunned while using it.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportChaoticFreezePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "levels":[[]],
+        "stats":["support_chaotic_freeze_dots_allow_enemies_to_be_frozen_by_chaos_damage"],
+        "label":"Chaotic Freeze"
+      }],
+    "description":"Supports Spells that deal non-Ailment Chaos damage over time. Enemies taking damage over time from Debuffs caused by supported skills will suffer Freeze build up from Chaos damage Hits from any source. Does not Support Skills used by Minions.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportIciclePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_icicle_ice_crystal_maximum_life_+%_final":[[]]
+        },
+        "constantStats":[["support_icicle_ice_crystal_maximum_life_+%_final"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Icicle",
+        "baseFlags":[]
+      }],
+    "description":"Supports any Skill which creates Ice Crystals, causing them to be created with lower Life.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportStripAwayPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_exposure_effect_+%"]],
+        "stats":[],
+        "label":"Strip Away",
+        "levels":[[]]
+      }],
+    "description":"Supports Skills which apply Exposure to Enemies, increasing the effect of applied Exposure.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportEnergyRetentionPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["trigger_skills_refund_half_energy_spent_chance_%"]],
+        "stats":[],
+        "label":"Energy Retention",
+        "levels":[[]]
+      }],
+    "description":"Supports Meta Skills. Supported Skills gain a chance to partially Refund a portion of Energy cost when Triggering or Invoking other Skills.",
+    "requireSkillTypes":[182],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportClarityPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_clarity_mana_regeneration_rate_+%":[[{
+                "effectName":"Clarity"
+              }]]
+        },
+        "constantStats":[["support_clarity_mana_regeneration_rate_+%"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports Persistent Buff Skills, causing you to gain increased Mana Regeneration while the Skill is active.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "ViciousHexSupportPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "levels":[[]],
+        "stats":["trigger_vicious_hex_explosion_when_curse_ends"]
+      }],
+    "description":"Supports Curse skills you cast yourself, causing them to trigger Doom Blast on Cursed enemies when the Curse expires.",
+    "name":"Impending Doom",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[null,null,39]
+  },
+  "SupportVolatilePowerPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["gain_X_volatility_on_empowered_skill_use"]],
+        "stats":[],
+        "label":"Volatile Power",
+        "levels":[[]]
+      }],
+    "description":"Supports Skills which you use yourself. On using Supported Skills while they are Empowered, you gain Volatility.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportEnormityPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_titanblood_minion_damage_+%_final":[{
+              "value":{
+                "mod":[]
+              }
+            }],
+          "support_titanblood_minion_life_+%_final":[{
+              "value":{
+                "mod":{
+                  "name":"Life"
+                }
+              }
+            }]
+        },
+        "constantStats":[["minion_actor_scale_+%"],["support_titanblood_minion_damage_+%_final"],["support_titanblood_minion_life_+%_final"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Enormity",
+        "baseFlags":[]
+      }],
+    "description":"Supports Skills which summon Persistent Minions. Supported Minions are larger, have more Life, and deal more Damage, but cost significantly more Spirit.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportTempestuousTempoPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_elemental_damage_+%_final_per_different_elemental_skill_used_recently":[[{
+                "var":"DifferentElementalSkillUsedRecently"
+              }]]
+        },
+        "constantStats":[["support_elemental_damage_+%_final_per_different_elemental_skill_used_recently"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Rising Tempest",
+        "baseFlags":[]
+      }],
+    "description":"Supports Skills which deal Damage, raising Elemental Damage dealt for each Skill used Recently of a different Elemental type. Cannot support Minion Skills.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "DoomBlastPlayer":{
+    "statSets":[{
+        "statMap":{
+          "impending_doom_base_added_chaos_damage_%_of_current_mana":[{
+              "1":{
+                "percentVar":"CurrentManaPercentage"
+              },
+              "name":"ChaosMin"
+            },{
+              "1":[],
+              "name":"ChaosMax"
+            }]
+        },
+        "levels":[[]],
+        "label":"Doom Blast",
+        "damageIncrementalEffectiveness":0.006800000090152,
+        "baseMods":[{
+            "value":{
+              "key":"currentManaPercentage"
+            }
+          }],
+        "baseFlags":[],
+        "constantStats":[["impending_doom_base_added_chaos_damage_%_of_current_mana"],[]],
+        "stats":["triggered_vicious_hex_explosion"],
+        "incrementalEffectiveness":0.14000000059605,
+        "statDescriptionScope":"doom_blast",
+        "baseEffectiveness":1.7200000286102
+      }],
+    "levels":[{
+        "cooldown":0.15
+      }],
+    "skillTypes":[],
+    "qualityStats":[],
+    "description":"Deal Chaos damage in an area around the previously Cursed enemy."
+  },
+  "SupportVolatilityPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["instability_on_critical_%_chance"]],
+        "stats":[],
+        "label":"Volatility",
+        "levels":[[]]
+      }],
+    "description":"Supports Skills you use yourself which can cause Damaging Hits. Supported Skills grant Volatility on Critical Hit.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportSpellCascadePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_spell_cascade_area_of_effect_+%_final":[[]],
+          "support_spell_cascade_damage_+%_final":[[]]
+        },
+        "constantStats":[["support_spell_cascade_number_of_cascades_per_side"],["support_spell_cascade_area_of_effect_+%_per_cascade"],["support_spell_cascade_area_of_effect_+%_final"],["support_spell_cascade_damage_+%_final"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Spell Cascade",
+        "baseFlags":[]
+      }],
+    "description":"Supports Spells that affect an area around you or a target location, causing those Spells to also target additional areas on either side of the target area, along a randomly chosen axis. Cannot support Channelling skills or Remote skills.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportManaLeechPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["base_mana_leech_from_physical_attack_damage_permyriad",800]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Soul Thief"
+      }],
+    "description":"Supports Attacks, causing their Physical damage to Leech Mana.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportAcrimonyPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["skill_enemies_affected_by_non_ailment_damage_over_time_life_regeneration_rate_+%"]],
+        "stats":[],
+        "label":"Acrimony",
+        "levels":[[]]
+      }],
+    "description":"Supports Skills which can Damage Enemies. Enemies affected by Damage over time from Supported Skills which was not caused by a Damaging Ailment have reduced Life regeneration rate. Only the strongest instance of this Debuff will apply. Does not Support Skills used by Minions.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportColdExposurePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "inflict_cold_exposure_for_x_ms_on_cold_crit":[{
+              "name":"ColdExposureChance"
+            }]
+        },
+        "constantStats":[["inflict_cold_exposure_for_x_ms_on_cold_crit"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Cold Exposure",
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that Hits enemies, causing it to inflict Cold Exposure when it Critically Hits an enemy.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportEssenceHarvestPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["recover_mana_%_on_minion_death",4]],
+        "stats":[],
+        "label":"Essence Harvest",
+        "levels":[[]]
+      }],
+    "description":"Supports Skills which create Reviving Persistent Minions. When those Minions die, you restore a percentage of your maximum Mana.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportRitualisticCursePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[[],["curse_area_of_effect_+%"]],
+        "stats":[],
+        "label":"Ritualistic Curse",
+        "levels":[[]]
+      }],
+    "description":"Supports Curse skills, causing them to cover a larger area but take longer to Curse enemies.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportEnergyShieldOnShockKillPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_recover_%_maximum_energy_shield_killing_shocked_enemies":[{
+              "1":{
+                "stat":"EnergyShield"
+              },
+              "2":{
+                "var":"Shocked"
+              },
+              "name":"EnergyShieldOnKill"
+            }]
+        },
+        "levels":[[]],
+        "label":"Shock Siphon",
+        "baseFlags":[],
+        "constantStats":[["support_recover_%_maximum_energy_shield_killing_shocked_enemies"]],
+        "stats":[],
+        "baseEffectiveness":0.3740000128746
+      }],
+    "description":"Supports any skill that Hits enemies, causing you to recover Energy Shield when it kills a Shocked enemy.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportAmbrosiaPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "consume_%_of_maximum_mana_flask_charges_on_skill_use":[{
+              "name":"Multiplier:ManaFlaskMaxChargesPercent"
+            }],
+          "gain_%_damage_as_lighting_per_mana_flask_charge_consumed":[{
+              "1":{
+                "var":"ManaFlaskChargeConsumed"
+              },
+              "name":"DamageGainAsLightning"
+            }]
+        },
+        "levels":[[]],
+        "label":"Ambrosia",
+        "baseMods":[{
+            "1":{
+              "stat":"ManaFlask1MaxCharges",
+              "percentVar":"ManaFlaskMaxChargesPercent"
+            },
+            "name":"Multiplier:ManaFlaskChargeConsumed"
+          },[{
+              "stat":"ManaFlask2MaxCharges"
+            }]],
+        "baseFlags":[],
+        "constantStats":[["consume_%_of_maximum_mana_flask_charges_on_skill_use"],["gain_%_damage_as_lighting_per_mana_flask_charge_consumed"]],
+        "stats":[]
+      }],
+    "description":"Supports Skills you use yourself which Damage enemies with Hits. Supported Skills consume a percentage of your maximum Mana Flask charges, Gaining a percentage of Damage as extra Lightning Damage per Mana Flask charge consumed.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportAddedColdDamagePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_fire_and_lightning_damage_+%_final":[[],[]]
+        },
+        "levels":[[]],
+        "label":"Cold Infusion",
+        "baseFlags":[],
+        "constantStats":[["non_skill_base_all_damage_%_to_gain_as_cold_with_attacks"],["support_fire_and_lightning_damage_+%_final"]],
+        "stats":[],
+        "baseEffectiveness":0.58050000667572
+      }],
+    "description":"Supports Attacks, causing them to Gain Cold Damage but deal less Fire and Lightning Damage.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportImpetusPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["energy_generated_+%"]],
+        "stats":[],
+        "label":"Impetus",
+        "levels":[[]]
+      }],
+    "description":"Supports Meta Skills. Supported Skills generate Energy significantly faster.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportRimePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["chilled_ground_applies_%_freeze_multiplier_taken"],["support_winterblast_chill_effect_+%_final"]],
+        "stats":[],
+        "label":"Rime",
+        "levels":[[]]
+      }],
+    "description":"Supports Skills which create Ground Surfaces, causing Enemies Chilled by those Surfaces to be more easily Frozen, but at the cost of some Chill magnitude.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportWitheringTouchPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_withering_touch_damage_+%_final":[[]]
+        },
+        "constantStats":[["support_withering_touch_damage_+%_final"],["support_withered_base_duration_ms"],["withered_on_hit_chance_%_for_every_100%_target_ailment_threshold_dealt_as_chaos_damage"]],
+        "levels":[[]],
+        "stats":["wither_on_hit_chance_rollovercapped"],
+        "label":"Withering Touch",
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that Hits enemies, giving it a chance to Wither enemies on Hit.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "TriggeredManaFlarePlayer":{
+    "statSets":[{
+        "statMap":{
+          "support_mana_flare_%_of_current_mana_consumed":[[[]],[[]]]
+        },
+        "levels":[[]],
+        "baseMods":[{
+            "value":[]
+          }],
+        "baseFlags":[],
+        "constantStats":[["triggered_by_mana_flare_support_%"],["support_mana_flare_%_of_current_mana_consumed"],[]],
+        "stats":[],
+        "statDescriptionScope":"triggered_mana_flare"
+      }],
+    "skillTypes":[],
+    "qualityStats":[],
+    "levels":[[]]
+  },
+  "SupportColdMasteryPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["supported_cold_skill_gem_level_+"]],
+        "stats":[],
+        "label":"Cold Mastery",
+        "levels":[[]]
+      }],
+    "description":"Supports Cold skills, granting them an additional level.",
+    "requireSkillTypes":[29],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportIncreasedAreaOfEffectPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_area_of_effect_+%_final"],["support_increased_area_damage_+%_final"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Magnified Effect"
+      }],
+    "description":"Supports any skill with an area of effect, making it larger.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportLoyaltyPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_trusty_companion_minion_life_+%_final":[{
+              "value":{
+                "mod":[]
+              }
+            }]
+        },
+        "constantStats":[["support_trusty_companion_minion_life_+%_final"],["companion_takes_%_damage_before_you_from_support"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Loyalty",
+        "baseFlags":[]
+      }],
+    "description":"Supports Skills that create Companions which can be damaged. Minions created by Supported Skills take a portion of Hit Damage you would otherwise have taken, but have lowered maximum Life.",
+    "requireSkillTypes":[198],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportControlledDestructionPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_controlled_destruction_spell_damage_+%_final":[[]]
+        },
+        "constantStats":[["support_controlled_destruction_spell_damage_+%_final"]],
+        "levels":[[]],
+        "stats":["global_cannot_crit"],
+        "label":"Controlled Destruction",
+        "baseFlags":[]
+      }],
+    "description":"Supports Spells that Hit enemies, boosting their damage but preventing them from dealing Critical Hits.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportColdPenetrationPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["base_reduce_enemy_cold_resistance_%"]],
+        "stats":[],
+        "label":"Cold Penetration",
+        "levels":[[]]
+      }],
+    "description":"Supports any skill that Hits enemies, making those Hits Penetrate enemy Cold resistance.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportZenithPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_spell_damage_+%_final_while_above_90%_maximum_mana"]],
+        "stats":[],
+        "label":"Zenith",
+        "levels":[[]]
+      }],
+    "description":"Supports Spell Skills. Supported Skills deal more damage while you are above 90% of your Maximum Mana. Does not Support Skills used by Minions.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportInevitableCriticalsPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_inevitable_criticals_critical_strike_chance_+%_per_second":[[{
+                "var":"SecondsSinceInevitableCrit",
+                "limitVar":"InevitableCritCap"
+              }]],
+          "support_inevitable_criticals_critical_strike_chance_+%_cap":[{
+              "name":"Multiplier:InevitableCritCap"
+            }]
+        },
+        "constantStats":[["support_inevitable_criticals_critical_strike_chance_+%_per_second"],["support_inevitable_criticals_critical_strike_chance_+%_cap"]],
+        "levels":[[]],
+        "stats":["supported_by_inevitable_criticals"],
+        "label":"Inevitable Critical",
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill you use yourself that Hits enemies, causing it to accumulate Critical Hit chance over time. ",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportExpansePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_aoe_cooldown_aoe_+%_final":[[]]
+        },
+        "constantStats":[[],["support_aoe_cooldown_aoe_+%_final"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Expanse",
+        "baseFlags":[]
+      }],
+    "description":"Supports any Skill that you use yourself, granting it significantly higher Area of Effect but causing it to gain a long cooldown. Cannot support Skills which already have a cooldown.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[178],
+    "excludeSkillTypes":[]
+  },
+  "SupportCommandment":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_minion_damage_with_non_command_skills_+%_final":[{
+              "value":{
+                "mod":[{
+                    "var":"CommandableSkill"
+                  }]
+              }
+            }],
+          "minion_command_skill_cooldown_speed_+%":[{
+              "value":{
+                "mod":{
+                  "1":[],
+                  "name":"CooldownRecovery"
+                }
+              }
+            }]
+        },
+        "constantStats":[["support_minion_damage_with_non_command_skills_+%_final",-100],["minion_command_skill_cooldown_speed_+%"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Commandment",
+        "baseFlags":[]
+      }],
+    "description":"Supports Minions which have Command Skills. Supported Minions have massively increased cooldown recovery speed for Command Skills they use, but deal no damage with non-Command Skills.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportIntenseAgonyPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_chaotic_assassination_skill_effect_duration_+%_final":[[]],
+          "support_chaotic_assassination_damage_over_time_+%_final_against_full_life_enemies":[[{
+                "var":"FullLife"
+              }]]
+        },
+        "constantStats":[["support_chaotic_assassination_damage_over_time_+%_final_against_full_life_enemies"],["support_chaotic_assassination_skill_effect_duration_+%_final"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Intense Agony",
+        "baseFlags":[]
+      }],
+    "description":"Supports Spells that deal non-Ailment damage over time, causing them to have a shorter duration but deal substantially more damage over time with Debuffs inflicted against enemies on full life.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportHexBloomPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["transfer_hexes_to_X_nearby_enemies_on_kill"]],
+        "stats":[],
+        "label":"Hex Bloom",
+        "levels":[[]]
+      }],
+    "description":"Supports Curses, spreading their effects when a Cursed enemy dies.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportExtractionPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["sacrifice_%_life_on_skill_use"],["non_skill_base_all_damage_%_to_gain_as_chaos"]],
+        "stats":[],
+        "label":"Extraction",
+        "levels":[[]]
+      }],
+    "description":"Supports Spell Skills which cause Damaging Hits. Using supported Spells will cause you to Sacrifice a portion of your Life on use, gaining extra Chaos Damage in exchange. Does not support Persistent Skills, Minion Skills, or Triggered Skills.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportCurseEffectPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["curse_effect_+%"]],
+        "stats":[],
+        "label":"Heightened Curse",
+        "levels":[[]]
+      }],
+    "description":"Supports Curse Skills, magnifying their power.",
+    "requireSkillTypes":[null,180],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportAmbushPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_ambush_critical_strike_chance_vs_enemies_on_full_life_+%_final":[[[]]]
+        },
+        "constantStats":[["support_ambush_critical_strike_chance_vs_enemies_on_full_life_+%_final"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Ambush",
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that Hits enemies, making it more likely to Critically Hit enemies on full life.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportLastGaspPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_last_gasp_duration_ms"]],
+        "stats":[],
+        "label":"Last Gasp",
+        "levels":[[]]
+      }],
+    "description":"Supports skills that create Persistent Minions, causing those Minions to fight on for a short duration before dying when they are fatally wounded.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportFeedingFrenzyPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "feeding_frenzy_minion_damage_taken_+%_final":[{
+              "value":{
+                "mod":{
+                  "name":"DamageTaken"
+                }
+              }
+            }],
+          "feeding_frenzy_minion_damage_+%_final":[{
+              "value":{
+                "mod":[]
+              }
+            }]
+        },
+        "constantStats":[["feeding_frenzy_minion_damage_taken_+%_final"],["feeding_frenzy_minion_damage_+%_final"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Feeding Frenzy",
+        "baseFlags":[]
+      }],
+    "description":"Supports skills which create Minions, making them deal and take more damage. Cannot support skills which create undamageable Minions.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportCoursingCurrentPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_%_chance_to_shock_nearby_enemy_on_shock"],["shock_nearby_enemy_base_area_of_effect_radius"]],
+        "stats":[],
+        "label":"Coursing Current",
+        "levels":[[]]
+      }],
+    "description":"Supports any skill that Hits enemies, giving it a chance to also Shock nearby enemies when you Shock an enemy.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportConcentratedEffectPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_area_concentrate_area_damage_+%_final":[{
+              "flags":512
+            }],
+          "support_concentrated_effect_skill_area_of_effect_+%_final":[[]]
+        },
+        "levels":[[]],
+        "label":"Concentrated Effect",
+        "baseFlags":[],
+        "constantStats":[["support_concentrated_effect_skill_area_of_effect_+%_final"],["support_area_concentrate_area_damage_+%_final"]],
+        "stats":[]
+      }],
+    "description":"Supports any skill with an area of effect, causing that area to be smaller but any area damage it deals to be higher.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportLightningMasteryPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["supported_lightning_skill_gem_level_+"]],
+        "stats":[],
+        "label":"Lightning Mastery",
+        "levels":[[]]
+      }],
+    "description":"Supports Lightning skills, granting them an additional level.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportArcaneSurgePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_arcane_surge_base_duration_ms"],["support_arcane_surge_gain_buff_on_%_of_maximum_mana_use_threshold"]],
+        "stats":[],
+        "label":"Arcane Surge",
+        "levels":[[]]
+      }],
+    "description":"Supports Spells you cast yourself, tracking the mana you spend to cast them. Spending enough mana grants a burst of Mana Regeneration and Cast Speed.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportCapacitorPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["skill_maximum_energy_+%"]],
+        "stats":[],
+        "label":"Capacitor",
+        "levels":[[]]
+      }],
+    "description":"Supports Invocation Skills which Trigger other Skills. Supported Skills have significantly higher Maximum Energy.",
+    "requireSkillTypes":[157],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportFieryDeathPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["chance_to_trigger_fiery_death_on_ignited_enemy_death_%"]],
+        "stats":[],
+        "levels":[[]]
+      }],
+    "description":"Supports any skill that Hits enemies, causing enemies it Ignites to have a chance to explode on death.",
+    "name":"Fiery Death",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportConsideredCastingPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_slow_cast_cast_speed_+%_final":[[]],
+          "support_slow_cast_spell_damage_+%_final":[[]]
+        },
+        "constantStats":[["support_slow_cast_cast_speed_+%_final",-15],["support_slow_cast_spell_damage_+%_final"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Considered Casting",
+        "baseFlags":[]
+      }],
+    "description":"Supports Spell Skills that Hit Enemies and you cast yourself, boosting Damage at the cost of Cast Speed.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[105]
+  },
+  "SupportCatharsisPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["skill_conditional_requires_X_volatility"]],
+        "stats":["skill_detonate_random_volatility_amount_on_use"],
+        "label":"Catharsis",
+        "levels":[[]]
+      }],
+    "description":"Supports any Skill you use yourself, causing supported Skill to detonate Volatility that is present on you. Supported Skill can only be used while you have a certain amount of Volatility and cannot support Skills which already have another Condition. Does not support Triggered Skills.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[194,202],
+    "excludeSkillTypes":[]
+  },
+  "SupportAblationPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_ablation_offering_skill_damage_+%_final":[[[]]]
+        },
+        "constantStats":[["support_ablation_offering_skill_damage_+%_final"],["offering_spells_effect_+%"],[]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Ablation",
+        "baseFlags":[]
+      }],
+    "description":"Supports Offering Skills. Supported Skills Sacrifice a portion of your life on use, but deal much more damage and have more powerful Buffs in return.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "TriggeredFieryDeathPlayer":{
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["triggered_by_fiery_death_support_%"],[],["corpse_explosion_monster_life_%"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Explosion",
+        "statDescriptionScope":"triggered_fiery_death",
+        "baseMods":[{
+            "value":{
+              "key":"explodeCorpse"
+            }
+          },{
+            "value":{
+              "key":"corpseExplosionDamageType",
+              "value":"Fire"
+            }
+          }]
+      }],
+    "skillTypes":[],
+    "qualityStats":[],
+    "levels":[[]]
+  },
+  "SupportStrongHeartedPlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_shock_protection_spirit_cost_shock_duration_on_self_+%_final":[{
+              "1":{
+                "effectName":"Strong Hearted"
+              },
+              "name":"SelfShockDuration"
+            }]
+        },
+        "constantStats":[["support_shock_protection_spirit_cost_shock_duration_on_self_+%_final"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports Persistent Buff Skills, causing Shock applied to you to last for a shorter duration while the Supported Skill is active.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[]
+  },
+  "SupportFasterCastPlayer":{
     "levels":[[]],
     "statSets":[{
         "statMap":{
           "support_faster_casting_cast_speed_+%_final":[[]]
         },
         "levels":[[]],
+        "label":"Arcane Tempo",
         "baseFlags":[],
         "constantStats":[["support_faster_casting_cast_speed_+%_final"],["support_faster_casting_damage_+%_final"]],
         "stats":[]
-      }]
+      }],
+    "description":"Supports Spells, causing them to cast faster.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[null,null,218]
+  },
+  "SupportExecratePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "statMap":{
+          "support_ailment_cooldown_ailment_chance_+%_final":[[],{
+              "name":"EnemyShockChance"
+            },{
+              "name":"BleedChance"
+            },{
+              "name":"PoisonChance"
+            }]
+        },
+        "constantStats":[[],["support_ailment_cooldown_ailment_chance_+%_final"]],
+        "levels":[[]],
+        "stats":[],
+        "label":"Execrate",
+        "baseFlags":[]
+      }],
+    "description":"Supports any damaging Skill that you use yourself, granting it significantly higher chance to inflict Ailments on hit, but causing it to gain a long cooldown. Cannot support Skills which already have a cooldown.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[179],
+    "excludeSkillTypes":[]
+  },
+  "SupportElementalDischargePlayer":{
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "levels":[[]],
+        "stats":["consume_ignite_freeze_shock_on_hit_to_trigger_elemental_discharge","active_skill_never_freeze_shock_ignite"]
+      }],
+    "description":"Supports any Spell that Hits enemies, causing it to consume Elemental Ailments on hit to trigger an Elemental Discharge. Cannot support the skills of Minions.",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[null,null,137]
   },
   "SupportFireMasteryPlayer":{
-    "description":"Supports Fire skills, granting them an additional level.",
-    "name":"Fire Mastery",
-    "requireSkillTypes":[28],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
     "levels":[[]],
     "statSets":[{
-        "levels":[[]],
         "baseFlags":[],
         "constantStats":[["supported_fire_skill_gem_level_+"]],
-        "stats":[]
-      }]
-  },
-  "SupportLastingFrostPlayer":{
-    "description":"Supports any skill that Hits enemies, causing Freeze it inflicts to last longer.",
-    "name":"Deep Freeze",
-    "requireSkillTypes":[],
+        "stats":[],
+        "label":"Fire Mastery",
+        "levels":[[]]
+      }],
+    "description":"Supports Fire skills, granting them an additional level.",
+    "requireSkillTypes":[28],
     "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["freeze_duration_+%"]],
-        "stats":[]
-      }]
-  },
-  "SupportSpellEchoPlayer":{
-    "description":"Supports Spells that affect an area around you or a target location. Supported Spells echo, causing their effects to happen again after a short delay. Cannot support Channelling skills Remote skills or skills which are Triggered.",
-    "name":"Spell Echo",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_spell_echo_area_of_effect_+%_final":[[]],
-          "support_multicast_cast_speed_+%_final":[[]]
-        },
-        "constantStats":[["support_spell_echo_cascade_delay_ms",500],["support_multicast_cast_speed_+%_final"],["support_spell_echo_number_of_echo_cascades"],["support_spell_echo_area_of_effect_+%_final"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportDeathmarchPlayer":{
-    "description":"Supports Skills which create Persistent Minions. Supported Minions will restore Life to nearby Allied Minions on death, as well as removing Ailments from those Minions.",
-    "name":"Deathmarch",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["minion_on_death_heal_radius"],["minion_on_death_heal_nearby_minions_for_%_of_life_and_remove_ailments"]],
-        "stats":[]
-      }]
-  },
-  "SupportFlukePlayer":{
-    "description":"Supports Skills which Trigger other Skills. Skills Triggered by Supported Skills have their Damage randomly raised or lowered when Triggered, as well as recovering a random amount of their cost when Triggered.",
-    "name":"Fluke",
-    "requireSkillTypes":[32],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["support_randomise_lower_recover_%_cost_on_use"],["support_randomise_higher_recover_%_cost_on_use"],["support_randomise_lower_damage_+%_final"],["support_randomise_higher_damage_+%_final"]],
-        "stats":[]
-      }]
-  },
-  "SupportDerangePlayer":{
-    "description":"Supports Skills which you use yourself which can deal damage. Supported Skills gain an Energy Shield cost equal to your Intelligence, while also dealing more non-Ailment Damage over time based off of your Intelligence. Cannot support Channelling Skills.",
-    "name":"Derange",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_shield_sacrifice_damage_over_time_+%_final_per_100_intelligence":[[{
-                "type":"PerStat"
-              }]]
-        },
-        "constantStats":[["support_shield_sacrifice_damage_over_time_+%_final_per_100_intelligence"]],
-        "baseFlags":[],
-        "stats":["gain_energy_shield_cost_equal_to_intelligence"]
-      }]
-  },
-  "SupportAstralProjectionPlayer":{
-    "description":"Supports Nova Skills, causing those Skills to take place at the targeted location when used instead of around you.",
-    "name":"Astral Projection",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_astral_projection_aoe_+%_final":[[]]
-        },
-        "constantStats":[["support_astral_projection_aoe_+%_final"]],
-        "baseFlags":[],
-        "stats":["nova_skills_cast_at_target_location"]
-      }]
-  },
-  "SupportChaosMasteryPlayer":{
-    "description":"Supports Chaos skills, granting them an additional level.",
-    "name":"Chaos Mastery",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["supported_chaos_skill_gem_level_+"]],
-        "stats":[]
-      }]
-  },
-  "SupportAmbrosiaPlayer":{
-    "description":"Supports Skills you use yourself which Damage enemies with Hits. Supported Skills consume a percentage of your maximum Mana Flask charges, Gaining a percentage of Damage as extra Lightning Damage per Mana Flask charge consumed.",
-    "name":"Ambrosia",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[["consume_%_of_maximum_mana_flask_charges_on_skill_use"],["gain_%_damage_as_lighting_per_mana_flask_charge_consumed"]],
-        "stats":[]
-      }]
-  },
-  "SupportStormfirePlayer":{
-    "description":"Supports any skill that Hits enemies, prolonging Shocks they inflict on Ignited enemies.",
-    "name":"Stormfire",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "stats":["stormfire_support_shocks_from_skill_do_not_expire_on_ingited_targets"]
-      }]
-  },
-  "SupportIntenseAgonyPlayer":{
-    "description":"Supports Spells that deal non-Ailment damage over time, causing them to have a shorter duration but deal substantially more damage over time with Debuffs inflicted against enemies on full life.",
-    "name":"Intense Agony",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "statMap":{
-          "support_chaotic_assassination_skill_effect_duration_+%_final":[[]],
-          "support_chaotic_assassination_damage_over_time_+%_final_against_full_life_enemies":[[[]]]
-        },
-        "constantStats":[["support_chaotic_assassination_damage_over_time_+%_final_against_full_life_enemies"],["support_chaotic_assassination_skill_effect_duration_+%_final"]],
-        "baseFlags":[],
-        "stats":[]
-      }]
-  },
-  "SupportFocusedCursePlayer":{
-    "description":"Supports Curse skills, causing them to Curse enemies more quickly after being cast.",
-    "name":"Focused Curse",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "statSets":[{
-        "levels":[[]],
-        "baseFlags":[],
-        "constantStats":[[]],
-        "stats":[]
-      }]
+    "excludeSkillTypes":[]
   }
 }

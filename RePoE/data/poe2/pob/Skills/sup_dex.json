@@ -1,83 +1,297 @@
 {
-  "SupportLifeFlaskPlayer":{
+  "SupportKnockbackWavePlayer":{
+    "color":2,
+    "name":"Wind Wave",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[64,139],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "statSets":[{
-        "label":"Life Bounty",
-        "constantStats":[["support_life_flask_charges_gained_+%_final_from_killing_blow",100]],
+        "label":"Support",
         "incrementalEffectiveness":0.054999999701977,
         "statDescriptionScope":"gem_stat_descriptions",
         "levels":[{
             "actorLevel":1
           }],
+        "stats":["support_knockback_wave_on_stunned"],
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that you can use, triggering a blast of wind that Knocks Back enemies if you are Stunned while using it.",
+    "support":true
+  },
+  "PlagueBurstPlayer":{
+    "statSets":[{
+        "label":"Plague Burst",
+        "constantStats":[["active_skill_base_area_of_effect_radius",18],["plague_burst_area_+%_final_maximum",100],["plague_burst_%_stored_value_to_deal_as_physical_damage"],["additional_base_critical_strike_chance",500]],
+        "statDescriptionScope":"plague_burst",
+        "levels":[[]],
+        "stats":["is_area_damage","plague_burst_triggered_by_bursting_plague_death"],
+        "baseFlags":[]
+      }],
+    "levels":[{
+        "cooldown":0.1
+      }],
+    "skillTypes":[],
+    "description":"Triggered when an enemy Poisoned by a supported skill dies, dealing Physical damage around them based on the built-up Plague.",
+    "qualityStats":[]
+  },
+  "SupportInnervatePlayer":{
+    "name":"Innervate",
+    "requireSkillTypes":[null,117],
+    "addSkillTypes":[9],
+    "excludeSkillTypes":[33,36,25],
+    "levels":[[]],
+    "statSets":[{
+        "stats":[],
+        "constantStats":[["support_innervate_buff_grant_%_added_lightning_attack_damage",35],["support_innervate_buff_base_duration_ms",5000]],
+        "levels":[[]],
+        "statMap":{
+          "support_innervate_buff_grant_%_added_lightning_attack_damage":[{
+              "1":{
+                "type":"Condition",
+                "var":"KilledShockedLast3Seconds"
+              },
+              "2":{
+                "type":"GlobalEffect",
+                "effectType":"Buff"
+              },
+              "name":"DamageGainAsLightning",
+              "type":"BASE"
+            }],
+          "support_innervate_base_buff_duration":{
+            "1":{
+              "1":[],
+              "2":[],
+              "name":"Duration"
+            },
+            "div":1000
+          }
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports Attacks you use yourself. Killing a Shocked enemy with supported skills infuses all of your Attacks with Lightning damage for a short time."
+  },
+  "KnockbackWavePlayer":{
+    "statSets":[{
+        "constantStats":[["base_knockback_distance",1200],["generic_knockback_+%_final_at_min_distance",50],["generic_knockback_+%_final_at_max_distance",-90],["generic_knockback_distance_limit",20],[],["base_knockback_speed_+%",300]],
+        "statDescriptionScope":"knockback_wave",
+        "levels":[[]],
+        "stats":["trigger_on_stunned_while_performing_supported_skill","base_deal_no_damage"],
+        "baseFlags":[]
+      }],
+    "levels":[[]],
+    "skillTypes":[],
+    "qualityStats":[]
+  },
+  "SupportMultipleChargesPlayer":{
+    "name":"Profusion",
+    "requireSkillTypes":[146],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["chance_to_gain_1_more_charge_%"]],
+        "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports any skill that Hits enemies, causing enemies it kills to grant more Life Flask charges.",
-    "color":2,
-    "support":true,
-    "requireSkillTypes":[null,7,117],
-    "addSkillTypes":[],
-    "levels":[{
-        "levelRequirement":0
-      }],
-    "excludeSkillTypes":[]
+    "description":"Supports skills that can generate Charges, giving them a chance to generate an additional Charge when they do so."
   },
-  "SupportDeadlyPoisonPlayer":{
+  "SupportCorrosionPlayer":{
+    "name":"Corrosion",
+    "requireSkillTypes":[7],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[134],
+    "levels":[{
+        "manaMultiplier":10
+      }],
+    "statSets":[{
+        "constantStats":[["armour_break_for_%_of_poison_damage_over_poison_duration",80]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that Hits enemies, causing Poison it applies to also Break enemy Armour. Cannot support skills that Consume Fully Broken Armour."
+  },
+  "SupportWindowOfOpportunityPlayer":{
+    "name":"Window of Opportunity",
+    "requireSkillTypes":[149],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
         "stats":[],
-        "label":"Deadly Poison",
-        "constantStats":[["support_deadly_poison_hit_damage_+%_final",-25],["support_deadly_poison_poison_effect_+%_final",75]],
+        "constantStats":[["perfect_timing_window_ms_+%",-35],["support_window_of_opportunity_perfect_timing_damage_+%_final"]],
         "levels":[[]],
         "statMap":{
-          "support_deadly_poison_hit_damage_+%_final":[{
-              "type":"MORE",
+          "support_window_of_opportunity_perfect_timing_damage_+%_final":[{
+              "1":{
+                "var":"PerfectTiming"
+              },
               "name":"Damage",
-              "flags":4
-            }],
-          "support_deadly_poison_poison_effect_+%_final":[{
-              "keywordFlags":2097152,
-              "name":"AilmentMagnitude"
+              "type":"MORE"
             }]
         },
         "baseFlags":[]
       }],
-    "description":"Supports any skill that Hits enemies, causing it to deal less damage but inflict more potent Poison.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
+    "description":"Supports Channelling skills that have special effects if released with Perfect Timing, causing them to deal much more damage if released with Perfect Timing but reducing the Perfect Timing window."
   },
-  "SupportStormchainPlayer":{
+  "SupportPursuitPlayer":{
+    "name":"Pursuit",
+    "requireSkillTypes":[null,null,74],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
-        "label":"Stormchain",
-        "constantStats":[["chance_to_chain_from_shocked_enemy_%"]],
+        "stats":[],
+        "constantStats":[["support_advancing_assault_melee_damage_+%_final_if_projectile_attack_damage_hit_in_past_8_seconds"],["support_advancing_assault_projectile_damage_+%_final",-100]],
         "levels":[[]],
-        "stats":["never_shock"],
+        "statMap":{
+          "support_advancing_assault_melee_damage_+%_final_if_projectile_attack_damage_hit_in_past_8_seconds":[{
+              "1":{
+                "var":"HitProjectileRecently"
+              },
+              "flags":256
+            }],
+          "support_advancing_assault_projectile_damage_+%_final":[{
+              "flags":1024
+            }]
+        },
         "baseFlags":[]
       }],
-    "description":"Supports Projectile Skills and Skills which can Chain. Supported Skills always Chain when initially Hitting a Shocked Enemy, but cannot themselves inflict Shock. Does not support Skills which cannot Chain.",
-    "requireSkillTypes":[19,3],
-    "addSkillTypes":[206],
+    "description":"Supports Melee Attacks. Supported Skills deal more Melee damage if you have struck with a Projectile Attack Hit in the last eight seconds, but cannot themselves deal Projectile Damage."
+  },
+  "SupportDazzlePlayer":{
+    "name":"Dazzle",
+    "requireSkillTypes":[null,116],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
     "levels":[[]],
-    "excludeSkillTypes":[176,163]
+    "statSets":[{
+        "levels":[[]],
+        "stats":["consume_enemy_daze_to_always_hit","cannot_daze"],
+        "baseFlags":[]
+      }],
+    "description":"Supports Attack Skills. Supported Skills always hit Dazed Enemies, but Consume Daze on Hit, and cannot themselves inflict Daze."
+  },
+  "SupportCadencePlayer":{
+    "name":"Cadence",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[95,null,218],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["support_measured_speed_attack_speed_+%_final_per_stack",8],["support_measured_speed_maximum_stacks",6],["support_measured_speed_disabled_ms",10000]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports Attacks you use yourself. Supported Skills gain more Attack speed each time you use them, but will become unusable if used too frequently in a short time frame."
+  },
+  "SupportDeadlyHeraldsPlayer":{
+    "name":"Deadly Herald",
+    "requireSkillTypes":[52],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "stats":[],
+        "constantStats":[["support_deadly_heralds_damage_+%_final",30]],
+        "levels":[[]],
+        "statMap":{
+          "support_deadly_heralds_damage_+%_final":[[]]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports Herald Skills, making their triggered effects deal more damage at the expense of higher Spirit cost."
+  },
+  "SupportCaltropsPlayer":{
+    "name":"Caltrops",
+    "requireSkillTypes":[191,41],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[115],
+    "levels":[[]],
+    "statSets":[{
+        "levels":[[]],
+        "stats":["trigger_caltrops_at_end_of_projectile_flight"],
+        "baseFlags":[]
+      }],
+    "description":"Supports Ranged Spear Attacks. Supported Skills create Caltrops when Projectiles they create reach the end of their flight."
+  },
+  "SupportLifeFlaskPlayer":{
+    "name":"Life Bounty",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["support_life_flask_charges_gained_+%_final_from_killing_blow"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that Hits enemies, causing enemies it kills to grant more Life Flask charges."
+  },
+  "SupportDeadlyPoisonPlayer":{
+    "name":"Deadly Poison",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "stats":[],
+        "constantStats":[["support_deadly_poison_hit_damage_+%_final",-25],["support_deadly_poison_poison_effect_+%_final",75]],
+        "levels":[[]],
+        "statMap":{
+          "support_deadly_poison_poison_effect_+%_final":[{
+              "keywordFlags":2097152,
+              "name":"AilmentMagnitude"
+            }],
+          "support_deadly_poison_hit_damage_+%_final":[{
+              "flags":4
+            }]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that Hits enemies, causing it to deal less damage but inflict more potent Poison."
+  },
+  "TriggeredCaltropsPlayer":{
+    "statSets":[{
+        "constantStats":[["triggered_by_caltrops_support_%"],["base_number_of_projectiles"],[null,5],["active_skill_base_secondary_area_of_effect_radius"],["base_skill_effect_duration",8000],["main_hand_base_physical_damage_from_%_dex",60]],
+        "statDescriptionScope":"triggered_caltrops",
+        "levels":[[]],
+        "stats":["global_maim_on_hit","additive_thorns_damage_modifiers_apply_to_attack_damage","replace_main_hand_unarmed_attack_stats_with_nothing_type","base_is_projectile","is_hazard",null,"projectiles_not_offset"],
+        "baseFlags":[]
+      }],
+    "levels":[[]],
+    "skillTypes":[],
+    "description":"Maims and deals Physical area damage when triggered by an Enemy. Caltrops are destroyed when triggered, and a maximum of 20 Caltrops can be active at once.",
+    "qualityStats":[]
   },
   "SupportLifeOnCullPlayer":{
+    "name":"Life Drain",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
-        "label":"Life Drain",
         "constantStats":[["recover_%_maximum_life_on_cull",12]],
         "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports any skill that Hits enemies, causing you to recover Life when it Culls an enemy.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
+    "description":"Supports any skill that Hits enemies, causing you to recover Life when it Culls an enemy."
   },
   "SupportSlowerProjectilesPlayer":{
+    "name":"Deceleration",
+    "requireSkillTypes":[3,11],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[43],
+    "levels":[[]],
     "statSets":[{
         "stats":[],
-        "label":"Deceleration",
         "constantStats":[["support_slower_projectiles_projectile_speed_+%_final",-30]],
         "incrementalEffectiveness":0.092720001935959,
         "levels":[[]],
@@ -88,45 +302,47 @@
         },
         "baseFlags":[]
       }],
-    "description":"Supports Projectile skills, making those Projectiles travel more slowly.",
-    "requireSkillTypes":[null,11],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[43]
+    "description":"Supports Projectile skills, making those Projectiles travel more slowly."
   },
   "SupportLightningExposurePlayer":{
+    "name":"Lightning Exposure",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
-        "label":"Lightning Exposure",
-        "constantStats":[["inflict_lightning_exposure_for_x_ms_on_shock",8000]],
+        "constantStats":[["inflict_lightning_exposure_for_x_ms_on_shock"]],
         "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports any skill that Hits enemies, causing it to inflict Lightning Exposure when inflicting Shock.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[9],
-    "levels":[{
-        "manaMultiplier":20
-      }],
-    "excludeSkillTypes":[]
+    "description":"Supports any skill that Hits enemies, causing it to inflict Lightning Exposure when inflicting Shock."
   },
   "SupportDelayedGratificationPlayer":{
+    "name":"Delayed Gratification",
+    "requireSkillTypes":[194],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
-        "label":"Delayed Gratification",
-        "constantStats":[["difficulty_of_meeting_conditional_requirement_+%",150],["conditional_skill_additional_usages_after_meeting_requirement"],["conditional_skill_additional_usages_duration_ms",10000]],
+        "constantStats":[["difficulty_of_meeting_conditional_requirement_+%",150],["conditional_skill_additional_usages_after_meeting_requirement"],["conditional_skill_additional_usages_duration_ms"]],
         "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports Skills which require some Condition to be met for use. Supported Skills can be used an additional time after their Condition has been met, but meeting that Condition is harder.",
-    "requireSkillTypes":[194],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
+    "description":"Supports Skills which require some Condition to be met for use. Supported Skills can be used an additional time after their Condition has been met, but meeting that Condition is harder."
   },
   "SupportAddedLightningDamagePlayer":{
+    "name":"Lightning Infusion",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
-        "label":"Lightning Infusion",
+        "baseFlags":[],
+        "constantStats":[["non_skill_base_all_damage_%_to_gain_as_lightning_with_attacks"],["support_cold_and_fire_damage_+%_final",-50]],
+        "stats":[],
+        "levels":[[]],
         "baseEffectiveness":0.52710002660751,
         "statMap":{
           "support_cold_and_fire_damage_+%_final":[{
@@ -134,380 +350,407 @@
             },{
               "name":"FireDamage"
             }]
-        },
-        "baseFlags":[],
-        "constantStats":[["non_skill_base_all_damage_%_to_gain_as_lightning_with_attacks",25],["support_cold_and_fire_damage_+%_final",-50]],
-        "stats":[],
-        "levels":[[]]
+        }
       }],
-    "description":"Supports Attacks, causing them to Gain Lightning Damage but deal less Cold and Fire Damage.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportAlignmentPlayer":{
-    "statSets":[{
-        "label":"Alignment",
-        "constantStats":[["support_called_shots_projectile_damage_+%_final_when_matching_direction",30],["called_shot_aiming_delay_ms",1000],["called_shot_angle_allowance_degs",40]],
-        "levels":[[]],
-        "stats":["support_called_shots_enable_directional_buff"],
-        "baseFlags":[]
-      }],
-    "description":"Supports Bow Attacks. Supported Skills indicate one of four directions, changing indicated direction when an Attack with Supported Skill matches that direction. Attacks from Supported Skills which match the indicated direction deal much more Damage. Cannot Support Channelled Skills.",
-    "requireSkillTypes":[null,185,74],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[48]
+    "description":"Supports Attacks, causing them to Gain Lightning Damage but deal less Cold and Fire Damage."
   },
   "SupportDelayedReactionPlayer":{
+    "name":"Delayed Reaction",
+    "requireSkillTypes":[203],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
         "stats":["hazards_trigger_at_end_of_duration_instead"],
-        "label":"Delayed Reaction",
         "constantStats":[["support_sunblast_hazard_hazard_damage_+%_final",15],["support_sunblast_hazard_hazard_duration_+%_final",-70]],
         "levels":[[]],
         "statMap":{
-          "support_sunblast_hazard_hazard_damage_+%_final":[[]],
-          "support_sunblast_hazard_hazard_duration_+%_final":[{
-              "name":"Duration"
-            }]
+          "support_sunblast_hazard_hazard_duration_+%_final":[[]],
+          "support_sunblast_hazard_hazard_damage_+%_final":[[]]
         },
         "baseFlags":[]
       }],
-    "description":"Supports Skills which create Hazards, causing those Hazards to only be able to trigger immediately after creation or at the end of their duration. Created Hazards have significantly lowered duration, and deal more damage.",
-    "requireSkillTypes":[203],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportPayloadPlayer":{
-    "statSets":[{
-        "label":"Payload",
-        "constantStats":[["grenade_skill_%_chance_to_explode_twice",50],["base_cooldown_speed_+%"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports Skills which fire Grenades, giving fired Grenades a chance to activate again, but lengthening their cooldowns.",
-    "requireSkillTypes":[158],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
+    "description":"Supports Skills which create Hazards, causing those Hazards to only be able to trigger immediately after creation or at the end of their duration. Created Hazards have significantly lowered duration, and deal more damage."
   },
   "SupportLightningPenetrationPlayer":{
+    "name":"Lightning Penetration",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
-        "label":"Lightning Penetration",
         "constantStats":[["base_reduce_enemy_lightning_resistance_%"]],
         "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports any skill that Hits enemies, making those Hits Penetrate enemy Lightning resistance.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
+    "description":"Supports any skill that Hits enemies, making those Hits Penetrate enemy Lightning resistance."
   },
-  "SupportUnerringPowerPlayer":{
+  "SupportChainPlayer":{
+    "name":"Chain",
+    "requireSkillTypes":[19],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[163,176],
+    "levels":[[]],
     "statSets":[{
         "stats":[],
-        "label":"Unerring Power",
-        "constantStats":[["support_discount_skill_cost_+%_final_if_empowered"],["support_discount_accuracy_rating_+%_final_if_empowered"]],
+        "constantStats":[["number_of_chains"],["chains_hit_X_more_times"],["support_chain_hit_damage_+%_final"]],
         "levels":[[]],
         "statMap":{
-          "support_discount_accuracy_rating_+%_final_if_empowered":[{
-              "1":{
-                "type":"Condition",
-                "var":"Empowered"
-              },
-              "name":"Accuracy"
-            }],
-          "support_discount_skill_cost_+%_final_if_empowered":[{
-              "1":[],
-              "name":"Cost"
-            }]
+          "support_chain_hit_damage_+%_final":[[]]
         },
         "baseFlags":[]
       }],
-    "description":"Supports Attack Skills you use yourself. When Supported Attacks are Empowered, they have significantly lowered cost and raised Accuracy.",
-    "requireSkillTypes":[null,116],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[95]
+    "description":"Supports Projectile skills and any other skills that Chain, causing them to Chain additional times."
   },
-  "SupportDeliberationPlayer":{
+  "SupportLockdownPlayer":{
+    "name":"Lockdown",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
-        "label":"Deliberation",
-        "constantStats":[["support_deliberation_movement_speed_penalty_+%_final_while_performing_action"],["support_deliberation_damage_+%_final"]],
+        "constantStats":[["support_lockdown_distance_based_pin_damage_+%_final",120]],
         "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports skills that can be used while moving, causing you to move slower while using them, but granting more damage in exchange.",
-    "requireSkillTypes":[140],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportFarCombatPlayer":{
-    "statSets":[{
-        "stats":[],
-        "label":"Longshot",
-        "constantStats":[["support_far_combat_attack_damage_+%_final_from_distance"]],
-        "levels":[[]],
-        "statMap":{
-          "support_far_combat_attack_damage_+%_final_from_distance":[[{
-                "type":"DistanceRamp",
-                "ramp":[[35],[70]]
-              }]]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports Attacks, causing them to deal more damage from farther away.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportDazingPlayer":{
-    "statSets":[{
-        "label":"Discombobulate",
-        "constantStats":[["support_physical_damage_%_to_gain_as_daze_build_up"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports Attacks, causing them to build up Daze based on a portion of Physical Damage dealt.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportBlindPlayer":{
-    "statSets":[{
-        "label":"Blind",
-        "constantStats":[["global_chance_to_blind_on_hit_%"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports any skill that Hits enemies, causing them to Blind on Hit.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[{
-        "manaMultiplier":10
-      }],
-    "excludeSkillTypes":[]
-  },
-  "SupportMaimPlayer":{
-    "statSets":[{
-        "label":"Maim",
-        "constantStats":[["maim_on_hit_%"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports Attacks, causing them to Maim enemies.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[76],
-    "levels":[[],[],{
-        "levelRequirement":6
-      }],
-    "excludeSkillTypes":[]
-  },
-  "SupportElectrocutePlayer":{
-    "statSets":[{
-        "label":"Electrocute",
-        "levels":[[]],
-        "stats":["base_lightning_damage_can_electrocute"],
-        "baseFlags":[]
-      }],
-    "description":"Supports any Skill which can deal Damage. Lightning Damage from Supported Skills can inflict Electrocute, but Supported Skills cannot inflict Shock.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportBlindsidePlayer":{
-    "statSets":[{
-        "stats":["cannot_inflict_blind"],
-        "label":"Blindside",
-        "constantStats":[["support_unseen_critical_damage_multiplier_+%_final_vs_blinded_enemies"],["support_unseen_critical_strike_chance_+%_final_vs_blinded_enemies"]],
-        "levels":[[]],
-        "statMap":{
-          "support_unseen_critical_damage_multiplier_+%_final_vs_blinded_enemies":[{
-              "1":{
-                "actor":"enemy",
-                "type":"ActorCondition",
-                "var":"Blinded"
-              },
-              "name":"CritMultiplier"
-            }],
-          "support_unseen_critical_strike_chance_+%_final_vs_blinded_enemies":[{
-              "1":[],
-              "name":"CritChance"
-            }]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports Skills which can cause Damaging Hits. Supported Skills are more likely to Critically Hit Blinded Enemies, and deal more Damage with Critical Hits against Blinded Enemies, but cannot themselves inflict Blind.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[49]
-  },
-  "SupportMaladyPlayer":{
-    "statSets":[{
-        "label":"Malady",
-        "levels":[[]],
-        "stats":["base_bleed_chance_is_poison_chance_instead","base_poison_chance_is_bleed_chance_instead"],
-        "baseFlags":[]
-      }],
-    "description":"Supports Skills which can cause Damaging Hits, causing base chance to inflict Bleed with Supported Skills to instead apply to base chance to Poison, and causing base chance to Poison to instead apply to Bleed.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportPinPlayer":{
-    "statSets":[{
-        "label":"Pin",
-        "constantStats":[["support_pin_spell_pinned_art_variation"],["support_pin_hit_damage_stun_multiplier_+%_final",-100]],
-        "levels":[[]],
-        "stats":["support_pin_physical_damage_can_pin"],
-        "baseFlags":[]
-      }],
-    "description":"Supports any skill that Hits enemies, allowing its Physical damage to Pin enemies but making it unable to Stun.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportEncumberancePlayer":{
-    "statSets":[{
-        "label":"Encumbrance",
-        "constantStats":[["base_debuff_slow_magnitude_+%"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports any skill, causing inflicted Slows to be more powerful.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
+    "description":"Supports any skill that Hits enemies, causing any Pin buildup it inflicts to be stronger the closer the enemy is to you."
   },
   "SupportWarmbloodedPlayer":{
+    "name":"Warm Blooded",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
         "stats":[],
-        "label":"Warm Blooded",
         "constantStats":[["support_freeze_protection_spirit_cost_freeze_duration_on_self_+%_final"]],
         "levels":[[]],
         "statMap":{
           "support_freeze_protection_spirit_cost_freeze_duration_on_self_+%_final":[{
-              "1":{
-                "effectType":"Buff",
-                "type":"GlobalEffect"
-              },
+              "1":[],
               "name":"SelfFreezeDuration"
             }]
         },
         "baseFlags":[]
       }],
-    "description":"Supports Persistent Buff Skills, causing Freeze applied to you to last for a shorter duration while the Supported Skill is active.",
-    "requireSkillTypes":[139,5],
+    "description":"Supports Persistent Buff Skills, causing Freeze applied to you to last for a shorter duration while the Supported Skill is active."
+  },
+  "SupportVoltPlayer":{
+    "name":"Volt",
+    "requireSkillTypes":[],
     "addSkillTypes":[],
+    "excludeSkillTypes":[],
     "levels":[[]],
-    "excludeSkillTypes":[]
+    "statSets":[{
+        "constantStats":[["support_static_charge_charge_gain_per_metre"],["support_static_charge_X_chains_per_10_charge"],["support_static_charge_%_damage_gained_as_lightning_per_10_charge"],["support_static_charge_maximum_charge"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports Projectile Attack Skills you use yourself. Supported Skills gain Voltaic Charge as you move, up to a maximum. When used, Supported Skills expend that Charge to gain extra Lightning Damage and Chain."
+  },
+  "SupportFarCombatPlayer":{
+    "name":"Longshot",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "stats":[],
+        "constantStats":[["support_far_combat_attack_damage_+%_final_from_distance"]],
+        "levels":[[]],
+        "statMap":{
+          "support_far_combat_attack_damage_+%_final_from_distance":[[{
+                "type":"DistanceRamp",
+                "ramp":[[],[70]]
+              }]]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports Attacks, causing them to deal more damage from farther away."
+  },
+  "SupportFasterAttackPlayer":{
+    "name":"Martial Tempo",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_faster_attacks_attack_speed_+%_final"],["support_faster_attacks_damage_+%_final"]],
+        "stats":[],
+        "levels":[[]],
+        "statMap":{
+          "support_faster_attacks_attack_speed_+%_final":[{
+              "name":"Speed"
+            }]
+        }
+      }],
+    "description":"Supports Attacks, causing them to Attack faster."
+  },
+  "SupportUntouchablePlayer":{
+    "name":"Untouchable",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[null,null,null,48],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["evasion_+%_while_performing_action_per_250_ms_attack_time"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports Attack Skills you use yourself. While using Supported Skills, you gain increased Evasion Rating, with the increase scaling higher the longer the Attack time of the supported Skill. Cannot Support Channelling Skills."
+  },
+  "SupportOverchargePlayer":{
+    "name":"Overcharge",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["shock_effect_+%"]],
+        "levels":[[]],
+        "stats":["shocks_reflected_to_self"],
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that Hits enemies, making its Shocks more effective but reflecting them back to you as well."
+  },
+  "SupportMaimPlayer":{
+    "name":"Maim",
+    "requireSkillTypes":[],
+    "addSkillTypes":[76],
+    "excludeSkillTypes":[],
+    "levels":[[],[],[]],
+    "statSets":[{
+        "constantStats":[["maim_on_hit_%"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports Attacks, causing them to Maim enemies."
+  },
+  "SupportElectrocutePlayer":{
+    "name":"Electrocute",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "levels":[[]],
+        "stats":["base_lightning_damage_can_electrocute","never_shock"],
+        "baseFlags":[]
+      }],
+    "description":"Supports any Skill which can deal Damage. Lightning Damage from Supported Skills can inflict Electrocute, but Supported Skills cannot inflict Shock."
+  },
+  "SupportMobilityPlayer":{
+    "name":"Mobility",
+    "requireSkillTypes":[140],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["support_mobility_damage_+%_final"],["support_mobility_movement_speed_penalty_+%_final_while_performing_action"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports skills that can be used while moving, allowing you to move faster while using them."
+  },
+  "SupportCharmBountyPlayer":{
+    "name":"Charm Bounty",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["support_charm_charges_gained_+%_final_from_killing_blow"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports any Skill that Hits Enemies, causing Enemies it kills to grant more Charm charges."
+  },
+  "SupportMaladyPlayer":{
+    "name":"Malady",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "levels":[[]],
+        "stats":["base_bleed_chance_is_poison_chance_instead","base_poison_chance_is_bleed_chance_instead"],
+        "baseFlags":[]
+      }],
+    "description":"Supports Skills which can cause Damaging Hits, causing base chance to inflict Bleed with Supported Skills to instead apply to base chance to Poison, and causing base chance to Poison to instead apply to Bleed."
+  },
+  "SupportPerfectionPlayer":{
+    "name":"Perfection",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["gain_X_perfection_on_successful_perfect_timing"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports skills which have a benefit for Perfectly Timing their use. On successfully executing Perfect Timing with Supported Skills, gain Perfection, which is a powerful damage buff. However, failing to execute any Perfect Timing (even with skills not supported by Perfection) will remove all Perfection on you."
+  },
+  "SupportEncumberancePlayer":{
+    "name":"Encumbrance",
+    "requireSkillTypes":[null,null,null,49],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["base_debuff_slow_magnitude_+%"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill, causing inflicted Slows to be more powerful."
+  },
+  "SupportMomentumPlayer":{
+    "name":"Momentum",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[37],
+    "levels":[[]],
+    "statSets":[{
+        "stats":[],
+        "constantStats":[["support_momentum_distance_travelled_to_gain_momentum"],["support_momnetum_damage_+%_final_with_momentum",40]],
+        "levels":[[]],
+        "statMap":{
+          "support_momnetum_damage_+%_final_with_momentum":[[{
+                "var":"Moved2m"
+              }]]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports any damaging skill that you use yourself, causing it to deal more damage if you move a sufficient distance while using the skill. Teleportation does not count towards the distance travelled."
+  },
+  "SupportShockingLeapPlayer":{
+    "name":"Shocking Leap",
+    "requireSkillTypes":[162],
+    "addSkillTypes":[168],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["support_shocking_leap_shocked_ground_duration_ms",4000],["support_shocking_leap_shocked_ground_radius"]],
+        "levels":[[]],
+        "stats":["support_shocking_leap_create_shocked_ground_on_leap"],
+        "baseFlags":[]
+      }],
+    "description":"Supports Skills that leap into the air and deal damage, causing them to create Shocked Ground the first time they Critically Hit an enemy."
   },
   "SupportManaFlaskPlayer":{
+    "name":"Mana Bounty",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
-        "label":"Mana Bounty",
         "constantStats":[["support_mana_flask_charges_gained_+%_final_from_killing_blow"]],
         "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports any skill that Hits enemies, causing enemies it kills to grant more Mana Flask charges.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
+    "description":"Supports any skill that Hits enemies, causing enemies it kills to grant more Mana Flask charges."
   },
   "SupportChanceToPoisonPlayer":{
+    "name":"Envenom",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
-        "label":"Envenom",
         "constantStats":[["base_chance_to_poison_on_hit_%"]],
         "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports any skill that Hits enemies, giving it a chance to Poison enemies.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
+    "description":"Supports any skill that Hits enemies, giving it a chance to Poison enemies."
   },
-  "SupportPracticedComboPlayer":{
+  "SupportTumultPlayer":{
+    "name":"Tumult",
+    "requireSkillTypes":[],
+    "addSkillTypes":[221],
+    "excludeSkillTypes":[null,null,null,null,null,172],
+    "levels":[[]],
     "statSets":[{
-        "label":"Practiced Combo",
-        "constantStats":[["additional_combo_gain_chance_%"]],
+        "constantStats":[["skill_consume_frenzy_charge_to_armour_break_for_%_of_physical_damage"]],
         "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports Strike Skills. Supported Skills have a chance to build additional Combo on Hit. Cannot support Skills used by Minions.",
-    "requireSkillTypes":[null,21],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
+    "description":"Supports Skills you use yourself which can cause Damaging Hits. Supported Skills consume a Frenzy Charge on use to powerfully Break Armour."
   },
-  "SupportKnockbackWavePlayer":{
-    "statSets":[{
-        "label":"Support",
-        "levels":[[]],
-        "stats":["support_knockback_wave_on_stunned"],
-        "baseFlags":[]
-      }],
-    "description":"Supports any skill that you can use, triggering a blast of wind that Knocks Back enemies if you are Stunned while using it.",
+  "SupportPrecisionPlayer":{
+    "name":"Precision",
     "requireSkillTypes":[],
     "addSkillTypes":[],
-    "name":"Wind Wave",
+    "excludeSkillTypes":[],
     "levels":[[]],
-    "excludeSkillTypes":[64]
-  },
-  "SupportFasterAttackPlayer":{
     "statSets":[{
-        "label":"Martial Tempo",
+        "stats":[],
+        "constantStats":[["support_precision_accuracy_rating_+%"]],
+        "levels":[[]],
         "statMap":{
-          "support_faster_attacks_attack_speed_+%_final":[{
-              "name":"Speed"
+          "support_precision_accuracy_rating_+%":[{
+              "1":[],
+              "name":"Accuracy",
+              "type":"INC"
             }]
         },
-        "baseFlags":[],
-        "constantStats":[["support_faster_attacks_attack_speed_+%_final"],["support_faster_attacks_damage_+%_final"]],
-        "stats":[],
-        "levels":[[]]
+        "baseFlags":[]
       }],
-    "description":"Supports Attacks, causing them to Attack faster.",
-    "requireSkillTypes":[],
+    "description":"Supports Persistent Buff Skills, causing you to gain increased Accuracy while the Skill is active."
+  },
+  "SupportEmpoweredCullPlayer":{
+    "name":"Murderous Intent",
+    "requireSkillTypes":[147],
     "addSkillTypes":[],
+    "excludeSkillTypes":[],
     "levels":[[]],
-    "excludeSkillTypes":[52,218]
+    "statSets":[{
+        "stats":["support_empowered_culling_strike"],
+        "levels":[[]],
+        "statMap":{
+          "support_empowered_culling_strike":[{
+              "name":"ExtraEmpowerMod",
+              "value":{
+                "mod":{
+                  "name":"CullPercent",
+                  "type":"MAX"
+                }
+              },
+              "type":"LIST"
+            }]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports skills that can Empower skills other than themselves, causing skills they Empower to Cull enemies."
   },
   "SupportExcoriatePlayer":{
+    "name":"Excoriate",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
         "stats":["cannot_inflict_elemental_ailments"],
-        "label":"Excoriate",
         "constantStats":[["support_elemental_assault_melee_damage_+%_final_per_elemental_ailment_on_target"]],
         "levels":[[]],
         "statMap":{
-          "support_elemental_assault_melee_damage_+%_final_per_elemental_ailment_on_target":[{
-              "1":{
+          "support_elemental_assault_melee_damage_+%_final_per_elemental_ailment_on_target":[[{
+                "actor":"enemy",
+                "type":"ActorCondition",
                 "var":"Ignited"
-              },
-              "flags":256
-            },[{
+              }],[{
                 "var":"Chilled"
               }],[{
                 "var":"Frozen"
@@ -519,89 +762,145 @@
         },
         "baseFlags":[]
       }],
-    "description":"Supports Melee Attack Skills. Supported Skills deal more Melee Damage for each Elemental Ailment on Enemies they hit, but cannot themselves inflict Elemental Ailments.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
+    "description":"Supports Melee Attack Skills. Supported Skills deal more Melee Damage for each Elemental Ailment on Enemies they hit, but cannot themselves inflict Elemental Ailments."
   },
-  "SupportBloodInTheEyesPlayer":{
+  "SupportStormchainPlayer":{
+    "name":"Stormchain",
+    "requireSkillTypes":[],
+    "addSkillTypes":[206],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
-        "label":"Blood in the Eyes",
-        "constantStats":[["physical_damage_%_dealt_as_evasion_break_vs_bleeding"]],
+        "constantStats":[["chance_to_chain_from_shocked_enemy_%"]],
         "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports Skills that Hit Enemies, causing those Hits to Hobble Bleeding Enemies based on a portion of Physical Damage dealt.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
+    "description":"Supports Projectile Skills and Skills which can Chain. Supported Skills always Chain when initially Hitting a Shocked Enemy, but cannot themselves inflict Shock. Does not support Skills which cannot Chain."
   },
-  "KnockbackWavePlayer":{
+  "SupportSpectralVolleyPlayer":{
+    "name":"Spectral Volley",
+    "requireSkillTypes":[185,null,null,null,null,null,null,null,73],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[89],
+    "levels":[[]],
     "statSets":[{
-        "constantStats":[["base_knockback_distance",1200],["generic_knockback_+%_final_at_min_distance"],["generic_knockback_+%_final_at_max_distance",-90],["generic_knockback_distance_limit"],["active_skill_base_area_of_effect_radius"],["base_knockback_speed_+%",300]],
-        "statDescriptionScope":"knockback_wave",
+        "constantStats":[["support_spectral_arrows_damage_+%_final_with_spectral_projectiles"],["support_spectral_arrows_damage_+%_final_with_non_spectral_projectiles",-60],["support_spectral_arrows_base_duration_ms",3000],["support_spectral_arrows_delay_between_projectiles_ms"],["support_spectral_arrows_maximum_spectral_arrows"]],
         "levels":[[]],
-        "stats":["trigger_on_stunned_while_performing_supported_skill","base_deal_no_damage"],
+        "stats":["skill_has_spectral_arrows","triggered_skills_ignore_cost"],
         "baseFlags":[]
       }],
-    "skillTypes":[],
-    "qualityStats":[],
-    "levels":[[]]
+    "description":"Supports Bow or Spear Projectile Attacks you use yourself. Supported Skills deal lower damage initially, but generate Spectral Projectiles, which deal more damage when they fire. Spectral Projectiles linger and will fire a short duration after no new Spectral Projectiles have been created. Cannot support Channelling Skills, Leaping skills, or skills which rain Projectiles from above."
   },
-  "SupportMobilityPlayer":{
+  "SupportSingleOutPlayer":{
+    "name":"Single Out",
+    "requireSkillTypes":[98],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
-        "label":"Mobility",
-        "constantStats":[["support_mobility_damage_+%_final"],["support_mobility_movement_speed_penalty_+%_final_while_performing_action"]],
+        "constantStats":[["marked_target_%_physical_damage_taken_as_armour_break"]],
         "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports skills that can be used while moving, allowing you to move faster while using them.",
+    "description":"Supports Mark Skills. Enemies affected by Supported Marks will have their Armour Broken by Physical Damage they take."
+  },
+  "SupportManaOnCullPlayer":{
+    "name":"Soul Drain",
     "requireSkillTypes":[],
     "addSkillTypes":[],
+    "excludeSkillTypes":[],
     "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportDazedBreakPlayer":{
     "statSets":[{
-        "label":"Break Posture",
-        "constantStats":[["support_daze_break_duration_ms"]],
+        "constantStats":[["recover_%_maximum_mana_on_cull"]],
         "levels":[[]],
-        "stats":["support_apply_daze_on_armour_break"],
+        "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports Attacks, causing them to Daze Enemies when they fully Break Armour.",
+    "description":"Supports any skill that Hits enemies, causing you to recover Mana when it Culls an enemy."
+  },
+  "SupportNeuralOverloadPlayer":{
+    "name":"Neural Overload",
     "requireSkillTypes":[],
     "addSkillTypes":[],
+    "excludeSkillTypes":[],
     "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportMomentumPlayer":{
     "statSets":[{
+        "levels":[[]],
+        "stats":["active_skill_show_overload_range","active_skill_can_overload"],
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that Hits enemies. Nearby enemies are marked when they are Primed for Electrocution, and hitting a marked enemy with a supported skill will Electrocute them."
+  },
+  "SupportSecondWindPlayer":{
+    "name":"Second Wind",
+    "requireSkillTypes":[90],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["base_cooldown_speed_+%_final"]],
+        "levels":[[]],
+        "stats":["support_double_number_of_cooldown_uses"],
+        "baseFlags":[]
+      }],
+    "description":"Supports skills with cooldowns, giving them extra uses of that cooldown.\nCannot support instant or triggered skills."
+  },
+  "SupportMultipleProjectilesPlayer":{
+    "name":"Scattershot",
+    "requireSkillTypes":[null,62],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[113],
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["number_of_additional_projectiles"],["support_multiple_damage_+%_final"],["terrain_arrow_attachment_chance_reduction_+%",200],["support_multiple_attack_and_cast_speed_+%_final",-20]],
         "stats":[],
-        "label":"Momentum",
-        "constantStats":[["support_momentum_distance_travelled_to_gain_momentum"],["support_momnetum_damage_+%_final_with_momentum"]],
         "levels":[[]],
         "statMap":{
-          "support_momnetum_damage_+%_final_with_momentum":[[{
-                "var":"Moved2m"
-              }]]
-        },
-        "baseFlags":[]
+          "support_multiple_damage_+%_final":[[]],
+          "support_multiple_attack_and_cast_speed_+%_final":[[]]
+        }
       }],
-    "description":"Supports any damaging skill that you use yourself, causing it to deal more damage if you move a sufficient distance while using the skill. Teleportation does not count towards the distance travelled.",
+    "description":"Supports Projectile skills, making them fire extra Projectiles. Also lowers Attack and Cast speed of supported skills, as well as lessening their damage."
+  },
+  "SupportAlignmentPlayer":{
+    "name":"Alignment",
     "requireSkillTypes":[],
     "addSkillTypes":[],
+    "excludeSkillTypes":[],
     "levels":[[]],
-    "excludeSkillTypes":[37,33,36]
+    "statSets":[{
+        "constantStats":[["support_called_shots_projectile_damage_+%_final_when_matching_direction"],["called_shot_aiming_delay_ms"],["called_shot_angle_allowance_degs"]],
+        "levels":[[]],
+        "stats":["support_called_shots_enable_directional_buff"],
+        "baseFlags":[]
+      }],
+    "description":"Supports Bow Attacks. Supported Skills indicate one of four directions, changing indicated direction when an Attack with Supported Skill matches that direction. Attacks from Supported Skills which match the indicated direction deal much more Damage. Cannot Support Channelled Skills."
+  },
+  "SupportSalvoPlayer":{
+    "name":"Salvo",
+    "requireSkillTypes":[],
+    "addSkillTypes":[188,190],
+    "excludeSkillTypes":[null,null,38,null,152],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["support_salvo_seals_gain_base_interval_ms",2000],["support_salvo_additional_projectiles_fired_per_seal"],["support_salvo_maximum_seals"]],
+        "levels":[[]],
+        "stats":["random_projectile_direction"],
+        "baseFlags":[]
+      }],
+    "description":"Supports Attack Skills you use yourself which fire Projectiles. Supported Skills accumulate Seals over time, and consume them when used. For each Seal consumed, the Attack will fire additional Projectiles. Projectiles from Supported Skills are fired in random directions. Cannot Support Skills which require Combo, have a Cooldown or already gain Seals."
   },
   "SupportFerocityPlayer":{
+    "name":"Ferocity",
+    "requireSkillTypes":[],
+    "addSkillTypes":[174],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
         "stats":["skill_cannot_generate_frenzy_charges"],
-        "label":"Ferocity",
         "constantStats":[["skill_consume_frenzy_charge_to_gain_skill_speed_+%_final"]],
         "levels":[[]],
         "statMap":{
@@ -612,563 +911,133 @@
         },
         "baseFlags":[]
       }],
-    "description":"Supports Skills that you use yourself. Supported Skills will consume a Frenzy Charge on use if possible, and will gain significant Skill Speed if they do. Supported Skills cannot generate Frenzy Charges.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[174],
-    "levels":[[]],
-    "excludeSkillTypes":[null,null,221,null,null,172]
-  },
-  "SupportWindowOfOpportunityPlayer":{
-    "statSets":[{
-        "stats":[],
-        "label":"Window of Opportunity",
-        "constantStats":[["perfect_timing_window_ms_+%",-35],["support_window_of_opportunity_perfect_timing_damage_+%_final"]],
-        "levels":[[]],
-        "statMap":{
-          "support_window_of_opportunity_perfect_timing_damage_+%_final":[[{
-                "var":"PerfectTiming"
-              }]]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports Channelling skills that have special effects if released with Perfect Timing, causing them to deal much more damage if released with Perfect Timing but reducing the Perfect Timing window.",
-    "requireSkillTypes":[149],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportPursuitPlayer":{
-    "statSets":[{
-        "stats":[],
-        "label":"Pursuit",
-        "constantStats":[["support_advancing_assault_melee_damage_+%_final_if_projectile_attack_damage_hit_in_past_8_seconds"],["support_advancing_assault_projectile_damage_+%_final"]],
-        "levels":[[]],
-        "statMap":{
-          "support_advancing_assault_projectile_damage_+%_final":[{
-              "flags":1024
-            }],
-          "support_advancing_assault_melee_damage_+%_final_if_projectile_attack_damage_hit_in_past_8_seconds":[[{
-                "var":"HitProjectileRecently"
-              }]]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports Melee Attacks. Supported Skills deal more Melee damage if you have struck with a Projectile Attack Hit in the last eight seconds, but cannot themselves deal Projectile Damage.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportEmpoweredCullPlayer":{
-    "statSets":[{
-        "label":"Murderous Intent",
-        "stats":["support_empowered_culling_strike"],
-        "levels":[[]],
-        "statMap":{
-          "support_empowered_culling_strike":[{
-              "type":"LIST",
-              "name":"ExtraEmpowerMod",
-              "value":{
-                "mod":{
-                  "type":"MAX",
-                  "name":"CullPercent"
-                }
-              }
-            }]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports skills that can Empower skills other than themselves, causing skills they Empower to Cull enemies.",
-    "requireSkillTypes":[147],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportVoltPlayer":{
-    "statSets":[{
-        "label":"Volt",
-        "constantStats":[["support_static_charge_charge_gain_per_metre"],["support_static_charge_X_chains_per_10_charge"],["support_static_charge_%_damage_gained_as_lightning_per_10_charge"],["support_static_charge_maximum_charge"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports Projectile Attack Skills you use yourself. Supported Skills gain Voltaic Charge as you move, up to a maximum. When used, Supported Skills expend that Charge to gain extra Lightning Damage and Chain.",
-    "requireSkillTypes":[41],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportFlowPlayer":{
-    "statSets":[{
-        "label":"Flow",
-        "constantStats":[["combo_falloff_speed_+%",-60]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports Skills which require Combo to use. Supported Skills lose their Combo stacks after a longer delay spent not gaining any Combo.",
-    "requireSkillTypes":[152],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportUntouchablePlayer":{
-    "statSets":[{
-        "label":"Untouchable",
-        "constantStats":[["evasion_+%_while_performing_action_per_250_ms_attack_time"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports Attack Skills you use yourself. While using Supported Skills, you gain increased Evasion Rating, with the increase scaling higher the longer the Attack time of the supported Skill. Cannot Support Channelling Skills.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportNeuralOverloadPlayer":{
-    "statSets":[{
-        "label":"Neural Overload",
-        "levels":[[]],
-        "stats":["active_skill_show_overload_range","active_skill_can_overload"],
-        "baseFlags":[]
-      }],
-    "description":"Supports any skill that Hits enemies. Nearby enemies are marked when they are Primed for Electrocution, and hitting a marked enemy with a supported skill will Electrocute them.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "PlagueBurstPlayer":{
-    "statSets":[{
-        "label":"Plague Burst",
-        "constantStats":[[null,18],["plague_burst_area_+%_final_maximum"],["plague_burst_%_stored_value_to_deal_as_physical_damage"],["additional_base_critical_strike_chance",500]],
-        "statDescriptionScope":"plague_burst",
-        "levels":[[]],
-        "stats":["is_area_damage","plague_burst_triggered_by_bursting_plague_death"],
-        "baseFlags":[]
-      }],
-    "skillTypes":[],
-    "qualityStats":[],
-    "levels":[{
-        "cooldown":0.1
-      }],
-    "description":"Triggered when an enemy Poisoned by a supported skill dies, dealing Physical damage around them based on the built-up Plague."
-  },
-  "SupportForkPlayer":{
-    "statSets":[{
-        "stats":["projectiles_fork"],
-        "label":"Fork",
-        "constantStats":[["terrain_arrow_attachment_chance_reduction_+%"],["support_fork_forked_projectile_damage_+%_final"]],
-        "levels":[[]],
-        "statMap":{
-          "support_fork_forked_projectile_damage_+%_final":[[{
-                "type":"StatThreshold",
-                "stat":"ForkedCount"
-              }]]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports Projectile skills, making their Projectiles Fork.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportTwofoldPlayer":{
-    "statSets":[{
-        "label":"Twofold",
-        "constantStats":[["chance_%_to_double_effect_of_removing_charges"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports any Skill that Consumes Charges, granting a chance for benefits of that Consumption to be doubled.",
-    "requireSkillTypes":[131],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportTumultPlayer":{
-    "statSets":[{
-        "label":"Tumult",
-        "constantStats":[["skill_consume_frenzy_charge_to_armour_break_for_%_of_physical_damage"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports Skills you use yourself which can cause Damaging Hits. Supported Skills consume a Frenzy Charge on use to powerfully Break Armour.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportNimbleReloadPlayer":{
-    "statSets":[{
-        "label":"Nimble Reload",
-        "constantStats":[["reload_speed_+%",60]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports Crossbow Ammunition Skills, causing them to Reload bolts significantly faster.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportSwiftAfflictionPlayer":{
-    "statSets":[{
-        "stats":[],
-        "label":"Swift Affliction",
-        "constantStats":[["support_rapid_decay_damage_over_time_+%_final"],["support_swift_affliction_skill_effect_and_damaging_ailment_duration_+%_final",-20]],
-        "levels":[[]],
-        "statMap":{
-          "support_rapid_decay_damage_over_time_+%_final":[{
-              "flags":8
-            }]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports any skill that deals damage, causing it to deal more damage over time but have a shorter duration.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportChainPlayer":{
-    "statSets":[{
-        "stats":[],
-        "label":"Chain",
-        "constantStats":[["number_of_chains"],["chains_hit_X_more_times"],["support_chain_hit_damage_+%_final"]],
-        "levels":[[]],
-        "statMap":{
-          "support_chain_hit_damage_+%_final":[[]]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports Projectile skills and any other skills that Chain, causing them to Chain additional times.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportBurstingPlaguePlayer":{
-    "statSets":[{
-        "constantStats":[["support_bursting_plague_store_%_poison_applied_magnitude_towards_burst"],["support_bursting_plague_max_value_%_of_max_life"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports skills that can Poison enemies, causing Poisoned enemies to gain Plague over time and explode in a Plague Burst on death. Cannot support the skills of Minions.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "name":"Bursting Plague",
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportOutmaneuverPlayer":{
-    "statSets":[{
-        "label":"Outmaneuver",
-        "constantStats":[["armour_break_physical_damage_%_dealt_as_armour_break_vs_parried_enemies"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports Skills you use yourself which can cause Damaging Hits. Supported Skills Break Armour against Parried Enemies.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportDazzlePlayer":{
-    "statSets":[{
-        "label":"Dazzle",
-        "levels":[[]],
-        "stats":["consume_enemy_daze_to_always_hit","cannot_daze"],
-        "baseFlags":[]
-      }],
-    "description":"Supports Attack Skills. Supported Skills always hit Dazed Enemies, but Consume Daze on Hit, and cannot themselves inflict Daze.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportGambleshotPlayer":{
-    "statSets":[{
-        "stats":["projectile_randomly_fork_chain_or_pierce"],
-        "label":"Gambleshot",
-        "constantStats":[["support_gambleshot_projectile_damage_+%_final",-15]],
-        "levels":[[]],
-        "statMap":{
-          "support_gambleshot_projectile_damage_+%_final":[[]]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports Skills which fire Projectiles that are not ground targeted. Projectiles from Supported Skills randomly Fork, Chain or Pierce.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[192]
-  },
-  "SupportFasterProjectilesPlayer":{
-    "statSets":[{
-        "label":"Acceleration",
-        "statMap":{
-          "support_faster_projectiles_projectile_speed_+%_final":[[]]
-        },
-        "baseFlags":[],
-        "constantStats":[["support_faster_projectiles_projectile_speed_+%_final"]],
-        "stats":[],
-        "levels":[[]]
-      }],
-    "description":"Supports Projectile skills, making those Projectiles travel faster.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportIncreaseLimitPlayer":{
-    "statSets":[{
-        "stats":[],
-        "label":"Overabundance",
-        "constantStats":[["base_limit_+"],["support_limit_skill_effect_duration_+%_final"]],
-        "levels":[[]],
-        "statMap":{
-          "support_limit_skill_effect_duration_+%_final":[[]]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports skills which can have a Limited number of effects active at once, increasing that Limit at the cost of their duration. Only applies to restrictions that use the word \"Limit\".",
-    "requireSkillTypes":[144],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportChargedShotsPlayer":{
-    "statSets":[{
-        "label":"Charged Shots",
-        "constantStats":[["support_charged_shots_applies_every_X_shots"],["support_charged_shots_recover_%_mana_cost_on_use"],["support_charged_shots_%_damage_to_gain_as_lightning"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports Bow Attacks. Every third shot with Supported Skills restores a portion of it's Mana cost and Gains Damage as extra Lightning Damage.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportShockingLeapPlayer":{
-    "statSets":[{
-        "label":"Shocking Leap",
-        "constantStats":[["support_shocking_leap_shocked_ground_duration_ms",4000],["support_shocking_leap_shocked_ground_radius"]],
-        "levels":[[]],
-        "stats":["support_shocking_leap_create_shocked_ground_on_leap"],
-        "baseFlags":[]
-      }],
-    "description":"Supports Skills that leap into the air and deal damage, causing them to create Shocked Ground the first time they Critically Hit an enemy.",
-    "requireSkillTypes":[162],
-    "addSkillTypes":[168],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportHitAndRunPlayer":{
-    "statSets":[{
-        "label":"Hit and Run",
-        "constantStats":[["support_mobile_assault_skill_speed_+%_final"],["skill_unusable_until_moved_X_distance"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports Attack Skills you use yourself which do not already have some Condition for use. Supported Skills can only be used after you have moved a certain distance, but have massively increased Skill Speed. Cannot support Skills which have a Cooldown or that are Triggered.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[null,195],
-    "levels":[[]],
-    "excludeSkillTypes":[null,null,null,null,null,90]
-  },
-  "SupportSecondWindPlayer":{
-    "statSets":[{
-        "label":"Second Wind",
-        "constantStats":[["base_cooldown_speed_+%_final"]],
-        "levels":[[]],
-        "stats":["support_double_number_of_cooldown_uses"],
-        "baseFlags":[]
-      }],
-    "description":"Supports skills with cooldowns, giving them extra uses of that cooldown.\nCannot support instant or triggered skills.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportOverchargePlayer":{
-    "statSets":[{
-        "label":"Overcharge",
-        "constantStats":[["shock_effect_+%"]],
-        "levels":[[]],
-        "stats":["shocks_reflected_to_self"],
-        "baseFlags":[]
-      }],
-    "description":"Supports any skill that Hits enemies, making its Shocks more effective but reflecting them back to you as well.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
+    "description":"Supports Skills that you use yourself. Supported Skills will consume a Frenzy Charge on use if possible, and will gain significant Skill Speed if they do. Supported Skills cannot generate Frenzy Charges."
   },
   "SupportRicochetPlayer":{
+    "name":"Ricochet",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[null,220],
+    "levels":[[]],
     "statSets":[{
-        "label":"Ricochet",
         "constantStats":[["projectile_chance_to_chain_1_extra_time_from_terrain_%"]],
         "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports any Skill which creates Projectiles, giving those Projectiles a chance to Chain when impacting terrain.",
+    "description":"Supports any Skill which creates Projectiles, giving those Projectiles a chance to Chain when impacting terrain."
+  },
+  "SupportRetreatPlayer":{
+    "name":"Retreat",
     "requireSkillTypes":[],
     "addSkillTypes":[],
+    "excludeSkillTypes":[],
     "levels":[[]],
-    "excludeSkillTypes":[null,220]
-  },
-  "SupportCharmBountyPlayer":{
-    "statSets":[{
-        "label":"Charm Bounty",
-        "constantStats":[["support_charm_charges_gained_+%_final_from_killing_blow"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports any Skill that Hits Enemies, causing Enemies it kills to grant more Charm charges.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportImpalePlayer":{
-    "statSets":[{
-        "label":"Impale",
-        "constantStats":[["impale_on_hit_%_chance"]],
-        "levels":[[]],
-        "stats":["cannot_consume_impale"],
-        "baseFlags":[]
-      }],
-    "description":"Supports Attacks, causing them to Impale on Hit but making them unable to Extract Impale themselves.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportMultipleProjectilesPlayer":{
-    "statSets":[{
-        "label":"Scattershot",
-        "statMap":{
-          "support_multiple_attack_and_cast_speed_+%_final":[[]],
-          "support_multiple_damage_+%_final":[[]]
-        },
-        "baseFlags":[],
-        "constantStats":[["number_of_additional_projectiles"],["support_multiple_damage_+%_final"],[null,200],["support_multiple_attack_and_cast_speed_+%_final"]],
-        "stats":[],
-        "levels":[[]]
-      }],
-    "description":"Supports Projectile skills, making them fire extra Projectiles. Also lowers Attack and Cast speed of supported skills, as well as lessening their damage.",
-    "requireSkillTypes":[null,62],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[113]
-  },
-  "SupportOverextendPlayer":{
     "statSets":[{
         "stats":[],
-        "label":"Overextend",
-        "constantStats":[["support_overextend_critical_strike_multiplier_+%_final"],["daze_self_on_critical_hit_for_X_ms",5000]],
+        "constantStats":[["support_retreating_assault_projectile_damage_+%_final_if_melee_hit_in_past_8_seconds"],["support_retreating_assault_melee_damage_+%_final"]],
         "levels":[[]],
         "statMap":{
-          "support_overextend_critical_strike_multiplier_+%_final":[[]]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports Attack Skills you use yourself. Supported Skills deal more Damage with Critical Hits, but Critically Hitting an Enemy with them will Daze you for a short time.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportCloseCombatPlayer":{
-    "statSets":[{
-        "stats":[],
-        "label":"Close Combat",
-        "constantStats":[["support_close_combat_attack_damage_+%_final_from_distance"]],
-        "levels":[[]],
-        "statMap":{
-          "support_close_combat_attack_damage_+%_final_from_distance":[[{
-                "ramp":[[],[]]
+          "support_retreating_assault_melee_damage_+%_final":[[]],
+          "support_retreating_assault_projectile_damage_+%_final_if_melee_hit_in_past_8_seconds":[[{
+                "var":"HitMeleeRecently"
               }]]
         },
         "baseFlags":[]
       }],
-    "description":"Supports Attacks, causing them to deal more damage to enemies based on how close they are to you.",
+    "description":"Supports Skills which create Projectiles. Supported Skills deal more damage with Projectiles if you have struck with a Melee Hit in the last eight seconds, but cannot themselves deal Melee Damage."
+  },
+  "SupportRetortPlayer":{
+    "name":"Retort",
     "requireSkillTypes":[],
     "addSkillTypes":[],
+    "excludeSkillTypes":[null,null,216],
     "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportSalvoPlayer":{
     "statSets":[{
-        "label":"Salvo",
-        "constantStats":[["support_salvo_seals_gain_base_interval_ms",2000],["support_salvo_additional_projectiles_fired_per_seal"],["support_salvo_maximum_seals"]],
+        "constantStats":[["consume_parry_debuff_on_hit_to_gain_X_frenzy_charges"]],
         "levels":[[]],
-        "stats":["random_projectile_direction"],
+        "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports Attack Skills you use yourself which fire Projectiles. Supported Skills accumulate Seals over time, and consume them when used. For each Seal consumed, the Attack will fire additional Projectiles. Projectiles from Supported Skills are fired in random directions. Cannot Support Skills which require Combo, have a Cooldown or already gain Seals.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[188,190],
-    "levels":[[]],
-    "excludeSkillTypes":[null,null,38]
+    "description":"Supports Attacks you use yourself, causing them to Consume the Parried Debuff on Hit to grant you a Frenzy Charge. Cannot support Skills which already Consume the Parried Debuff."
   },
-  "SupportCooldownReductionPlayer":{
+  "SupportOutmaneuverPlayer":{
+    "name":"Outmaneuver",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["armour_break_physical_damage_%_dealt_as_armour_break_vs_parried_enemies"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports Skills you use yourself which can cause Damaging Hits. Supported Skills Break Armour against Parried Enemies."
+  },
+  "SupportAmmoConservationPlayer":{
+    "name":"Ammo Conservation",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
         "stats":[],
-        "label":"Ingenuity",
-        "constantStats":[["support_cooldown_reduction_cooldown_recovery_+%"]],
+        "constantStats":[["crossbow_attack_%_chance_to_not_consume_ammo"]],
         "levels":[[]],
         "statMap":{
-          "support_cooldown_reduction_cooldown_recovery_+%":[{
-              "type":"INC",
-              "name":"CooldownRecovery"
+          "crossbow_attack_%_chance_to_not_consume_ammo":[{
+              "name":"ChanceToNotConsumeAmmo"
             }]
         },
         "baseFlags":[]
       }],
-    "description":"Supports skills with Cooldowns, increasing the rate at which those Cooldowns Recover.",
+    "description":"Supports Crossbow Ammunition Skills, granting a chance to not consume a Bolt when firing."
+  },
+  "SupportRearmPlayer":{
+    "name":"Rearm",
     "requireSkillTypes":[],
     "addSkillTypes":[],
+    "excludeSkillTypes":[],
     "levels":[[]],
-    "excludeSkillTypes":[]
+    "statSets":[{
+        "constantStats":[["hazard_rearm_%_chance"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports Skills which create Hazards. Hazards created by Supported Skills have a chance to be rearmed a short duration after triggering."
   },
-  "SupportRetreatPlayer":{
+  "SupportReachPlayer":{
+    "name":"Reach",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
         "stats":[],
-        "label":"Retreat",
-        "constantStats":[["support_retreating_assault_projectile_damage_+%_final_if_melee_hit_in_past_8_seconds"],["support_retreating_assault_melee_damage_+%_final"]],
+        "constantStats":[["support_reach_area_of_effect_+%_final"],["support_reach_accuracy_within_2m_+%_final",-80]],
         "levels":[[]],
         "statMap":{
-          "support_retreating_assault_projectile_damage_+%_final_if_melee_hit_in_past_8_seconds":[[{
-                "var":"HitMeleeRecently"
+          "support_reach_accuracy_within_2m_+%_final":[[{
+                "var":"enemyDistance"
               }]],
-          "support_retreating_assault_melee_damage_+%_final":[[]]
+          "support_reach_area_of_effect_+%_final":[{
+              "name":"AreaOfEffect"
+            }]
         },
         "baseFlags":[]
       }],
-    "description":"Supports Skills which create Projectiles. Supported Skills deal more damage with Projectiles if you have struck with a Melee Hit in the last eight seconds, but cannot themselves deal Melee Damage.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
+    "description":"Supports Attack Skills which deal Damage in an Area. Supported Skills have significantly increased Area of Effect, but are less Accurate against nearby targets."
   },
   "SupportChanceToShockPlayer":{
+    "name":"Conduction",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
         "stats":[],
-        "label":"Conduction",
         "constantStats":[["support_conduction_chance_to_shock_+%_final"]],
         "levels":[[]],
         "statMap":{
@@ -1178,58 +1047,567 @@
         },
         "baseFlags":[]
       }],
-    "description":"Supports any skill that Hits enemies, making it more likely to Shock.",
+    "description":"Supports any skill that Hits enemies, making it more likely to Shock."
+  },
+  "SupportFlowPlayer":{
+    "name":"Flow",
     "requireSkillTypes":[],
     "addSkillTypes":[],
+    "excludeSkillTypes":[],
     "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportRetortPlayer":{
     "statSets":[{
-        "label":"Retort",
-        "constantStats":[["consume_parry_debuff_on_hit_to_gain_X_frenzy_charges"]],
+        "constantStats":[["combo_falloff_speed_+%"]],
         "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports Attacks you use yourself, causing them to Consume the Parried Debuff on Hit to grant you a Frenzy Charge. Cannot support Skills which already Consume the Parried Debuff.",
+    "description":"Supports Skills which require Combo to use. Supported Skills lose their Combo stacks after a longer delay spent not gaining any Combo."
+  },
+  "SupportPunchThroughPlayer":{
+    "name":"Punch Through",
     "requireSkillTypes":[],
     "addSkillTypes":[],
+    "excludeSkillTypes":[],
     "levels":[[]],
-    "excludeSkillTypes":[null,null,216]
+    "statSets":[{
+        "constantStats":[["apply_attack_projectile_weakness_%_per_1m_knockback"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports Melee Attack Skills. Supported Skills apply Easy Target when Knocking Back Enemies, causing the next Projectile Attack Hit they take to deal increased Damage."
+  },
+  "SupportBlindPlayer":{
+    "name":"Blind",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["global_chance_to_blind_on_hit_%"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that Hits enemies, causing them to Blind on Hit."
+  },
+  "SupportSwiftAfflictionPlayer":{
+    "name":"Swift Affliction",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "stats":[],
+        "constantStats":[["support_rapid_decay_damage_over_time_+%_final"],["support_swift_affliction_skill_effect_and_damaging_ailment_duration_+%_final"]],
+        "levels":[[]],
+        "statMap":{
+          "support_rapid_decay_damage_over_time_+%_final":[[]]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that deals damage, causing it to deal more damage over time but have a shorter duration."
+  },
+  "SupportCrescendoPlayer":{
+    "name":"Crescendo",
+    "requireSkillTypes":[148],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "levels":[[]],
+        "stats":["repeat_last_step_of_combo_attack"],
+        "baseFlags":[]
+      }],
+    "description":"Supports Strikes that perform a Final Strike at the end of a combination of attacks, allowing you to use the Final Strike twice in succession."
   },
   "SupportComboFinisherPlayer":{
+    "name":"Combo Finisher",
+    "requireSkillTypes":[],
+    "addSkillTypes":[null,153],
+    "excludeSkillTypes":[null,null,null,null,null,null,null,null,null,63],
+    "levels":[[]],
     "statSets":[{
-        "label":"Combo Finisher",
         "constantStats":[["support_combo_finisher_required_number_of_combo_stacks"],["support_combo_finisher_damage_+%_final"],["base_combo_stacks_decay_delay_ms"]],
         "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports Melee Attacks you use yourself. Supported Skills cannot be used until enough Combo has been built up, but deal massively more damage. Cannot support skills which already Combo, or Triggered Skills.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[null,153],
-    "levels":[[]],
-    "excludeSkillTypes":[null,null,null,null,null,null,null,null,null,63]
+    "description":"Supports Melee Attacks you use yourself. Supported Skills cannot be used until enough Combo has been built up, but deal massively more damage. Cannot support skills which already Combo, or Triggered Skills."
   },
-  "SupportRearmPlayer":{
+  "SupportBlindsidePlayer":{
+    "name":"Blindside",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
-        "label":"Rearm",
-        "constantStats":[["hazard_rearm_%_chance"]],
+        "stats":["cannot_inflict_blind"],
+        "constantStats":[["support_unseen_critical_damage_multiplier_+%_final_vs_blinded_enemies"],["support_unseen_critical_strike_chance_+%_final_vs_blinded_enemies"]],
+        "levels":[[]],
+        "statMap":{
+          "support_unseen_critical_damage_multiplier_+%_final_vs_blinded_enemies":[{
+              "1":{
+                "var":"Blinded"
+              },
+              "name":"CritMultiplier"
+            }],
+          "support_unseen_critical_strike_chance_+%_final_vs_blinded_enemies":[{
+              "1":[],
+              "name":"CritChance"
+            }]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports Skills which can cause Damaging Hits. Supported Skills are more likely to Critically Hit Blinded Enemies, and deal more Damage with Critical Hits against Blinded Enemies, but cannot themselves inflict Blind."
+  },
+  "SupportLastingShockPlayer":{
+    "name":"Lasting Shock",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "stats":[],
+        "constantStats":[["shock_duration_+%"],["support_lasting_shock_chance_to_shock_+%_final"]],
+        "levels":[[]],
+        "statMap":{
+          "support_lasting_shock_chance_to_shock_+%_final":[[]]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that Hits enemies or inflicts Shock, causing its Shocks to be inflicted less often but last longer."
+  },
+  "SupportCullingStrikePlayer":{
+    "name":"Culling Strike",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "stats":["support_culling_strike_vs_rare_or_unique_enemy"],
+        "levels":[[]],
+        "statMap":{
+          "support_culling_strike_vs_rare_or_unique_enemy":[[{
+                "var":"RareOrUnique"
+              }]]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports Attack Skills, causing them to Cull Rare and Unique Enemies on Hit."
+  },
+  "SupportOverextendPlayer":{
+    "name":"Overextend",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "stats":[],
+        "constantStats":[["support_overextend_critical_strike_multiplier_+%_final"],["daze_self_on_critical_hit_for_X_ms"]],
+        "levels":[[]],
+        "statMap":{
+          "support_overextend_critical_strike_multiplier_+%_final":[[]]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports Attack Skills you use yourself. Supported Skills deal more Damage with Critical Hits, but Critically Hitting an Enemy with them will Daze you for a short time."
+  },
+  "SupportAdherePlayer":{
+    "name":"Adhere",
+    "requireSkillTypes":[158],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "stats":["grenade_skill_does_not_bounce_off_ground"],
+        "constantStats":[["support_sticky_grenade_damage_+%_final"]],
+        "levels":[[]],
+        "statMap":{
+          "support_sticky_grenade_damage_+%_final":[[]]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports Grenade Skills. Grenades from Supported Skills do not bounce, instead halting movement where they intially land, but doing lower damage when they detonate."
+  },
+  "SupportPerpetualChargePlayer":{
+    "name":"Perpetual Charge",
+    "requireSkillTypes":[131],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[],[],[]],
+    "statSets":[{
+        "constantStats":[["charge_skip_consume_chance_%"]],
         "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports Skills which create Hazards. Hazards created by Supported Skills have a chance to be rearmed a short duration after triggering.",
+    "description":"Supports skills that consume Power, Frenzy or Endurance Charges on use, giving them a chance not to remove each Charge while still gaining the benefits of consuming them."
+  },
+  "SupportTwofoldPlayer":{
+    "name":"Twofold",
     "requireSkillTypes":[],
     "addSkillTypes":[],
+    "excludeSkillTypes":[],
     "levels":[[]],
-    "excludeSkillTypes":[]
+    "statSets":[{
+        "constantStats":[["chance_%_to_double_effect_of_removing_charges"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports any Skill that Consumes Charges, granting a chance for benefits of that Consumption to be doubled."
+  },
+  "SupportGambleshotPlayer":{
+    "name":"Gambleshot",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[192],
+    "levels":[[]],
+    "statSets":[{
+        "stats":["projectile_randomly_fork_chain_or_pierce"],
+        "constantStats":[["support_gambleshot_projectile_damage_+%_final",-15]],
+        "levels":[[]],
+        "statMap":{
+          "support_gambleshot_projectile_damage_+%_final":[[]]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports Skills which fire Projectiles that are not ground targeted. Projectiles from Supported Skills randomly Fork, Chain or Pierce."
+  },
+  "SupportPayloadPlayer":{
+    "name":"Payload",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["grenade_skill_%_chance_to_explode_twice"],["base_cooldown_speed_+%"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports Skills which fire Grenades, giving fired Grenades a chance to activate again, but lengthening their cooldowns."
+  },
+  "SupportCulminationPlayer":{
+    "name":"Culmination",
+    "requireSkillTypes":[],
+    "addSkillTypes":[null,169],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["support_damage_+%_final_per_combo_stack"],[]],
+        "levels":[[]],
+        "stats":["skill_uncapped_combo_counter"],
+        "baseFlags":[]
+      }],
+    "description":"Supports Melee Attack Skills. Supported Skills gain Combo when you successfully Strike Enemies with other Melee Attacks. Supported Skills reset their Combo on use, dealing more Damage the higher Combo you had on use. Cannot support skills which already gain Combo. Cannot Support Skills used by Minions."
+  },
+  "SupportUnerringPowerPlayer":{
+    "name":"Unerring Power",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "stats":[],
+        "constantStats":[["support_discount_skill_cost_+%_final_if_empowered"],["support_discount_accuracy_rating_+%_final_if_empowered"]],
+        "levels":[[]],
+        "statMap":{
+          "support_discount_skill_cost_+%_final_if_empowered":[{
+              "1":{
+                "var":"Empowered"
+              },
+              "name":"Cost"
+            }],
+          "support_discount_accuracy_rating_+%_final_if_empowered":[[[]]]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports Attack Skills you use yourself. When Supported Attacks are Empowered, they have significantly lowered cost and raised Accuracy."
+  },
+  "SupportIncreaseLimitPlayer":{
+    "name":"Overabundance",
+    "requireSkillTypes":[144],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "stats":[],
+        "constantStats":[["base_limit_+"],["support_limit_skill_effect_duration_+%_final"]],
+        "levels":[[]],
+        "statMap":{
+          "support_limit_skill_effect_duration_+%_final":[[]]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports skills which can have a Limited number of effects active at once, increasing that Limit at the cost of their duration. Only applies to restrictions that use the word \"Limit\"."
+  },
+  "SupportHitAndRunPlayer":{
+    "name":"Hit and Run",
+    "requireSkillTypes":[],
+    "addSkillTypes":[null,195],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["support_mobile_assault_skill_speed_+%_final"],["skill_unusable_until_moved_X_distance"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports Attack Skills you use yourself which do not already have some Condition for use. Supported Skills can only be used after you have moved a certain distance, but have massively increased Skill Speed. Cannot support Skills which have a Cooldown or that are Triggered."
+  },
+  "SupportBloodInTheEyesPlayer":{
+    "name":"Blood in the Eyes",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["physical_damage_%_dealt_as_evasion_break_vs_bleeding"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports Skills that Hit Enemies, causing those Hits to Hobble Bleeding Enemies based on a portion of Physical Damage dealt."
+  },
+  "SupportNimbleReloadPlayer":{
+    "name":"Nimble Reload",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["reload_speed_+%"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports Crossbow Ammunition Skills, causing them to Reload bolts significantly faster."
+  },
+  "SupportCloseCombatPlayer":{
+    "name":"Close Combat",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "stats":[],
+        "constantStats":[["support_close_combat_attack_damage_+%_final_from_distance"]],
+        "levels":[[]],
+        "statMap":{
+          "support_close_combat_attack_damage_+%_final_from_distance":[[{
+                "ramp":[[],[]]
+              }]]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports Attacks, causing them to deal more damage to enemies based on how close they are to you."
+  },
+  "SupportLeveragePlayer":{
+    "name":"Leverage",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["critical_strike_chance_+%_vs_immobilised_enemies"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports Skills which Hit Enemies. Supported Skills gain increased chance to Critically Hit against Immobilised Enemies."
+  },
+  "SupportImpalePlayer":{
+    "name":"Impale",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["impale_on_hit_%_chance"]],
+        "levels":[[]],
+        "stats":["cannot_consume_impale"],
+        "baseFlags":[]
+      }],
+    "description":"Supports Attacks, causing them to Impale on Hit but making them unable to Extract Impale themselves."
+  },
+  "SupportFasterProjectilesPlayer":{
+    "name":"Acceleration",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_faster_projectiles_projectile_speed_+%_final"]],
+        "stats":[],
+        "levels":[[]],
+        "statMap":{
+          "support_faster_projectiles_projectile_speed_+%_final":[[]]
+        }
+      }],
+    "description":"Supports Projectile skills, making those Projectiles travel faster."
+  },
+  "SupportDeliberationPlayer":{
+    "name":"Deliberation",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["support_deliberation_movement_speed_penalty_+%_final_while_performing_action"],["support_deliberation_damage_+%_final"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports skills that can be used while moving, causing you to move slower while using them, but granting more damage in exchange."
+  },
+  "SupportAdditionalAccuracyPlayer":{
+    "name":"Bullseye",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_additional_accurary_rating_+%_final"]],
+        "stats":[],
+        "levels":[[]],
+        "statMap":{
+          "support_additional_accurary_rating_+%_final":[[]]
+        }
+      }],
+    "description":"Supports Attacks, causing them to gain Accuracy."
+  },
+  "SupportPiercePlayer":{
+    "name":"Pierce",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "stats":[],
+        "levels":[[]],
+        "constantStats":[["base_chance_to_pierce_%"],["support_pierce_projectile_damage_+%_final_if_pierced_enemy"]],
+        "baseFlags":[]
+      }],
+    "description":"Supports Projectile skills, making their Projectiles Pierce an enemy but deal less damage after doing so."
+  },
+  "SupportCooldownReductionPlayer":{
+    "name":"Ingenuity",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "stats":[],
+        "constantStats":[["support_cooldown_reduction_cooldown_recovery_+%"]],
+        "levels":[[]],
+        "statMap":{
+          "support_cooldown_reduction_cooldown_recovery_+%":[{
+              "name":"CooldownRecovery"
+            }]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports skills with Cooldowns, increasing the rate at which those Cooldowns Recover."
+  },
+  "SupportMultiplePoisonPlayer":{
+    "name":"Comorbidity",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "stats":[],
+        "constantStats":[["number_of_additional_poison_stacks"],["support_multi_poison_poison_duration_+%_final"]],
+        "levels":[[]],
+        "statMap":{
+          "number_of_additional_poison_stacks":[{
+              "name":"PoisonStacks"
+            },{
+              "name":"PoisonCanStack",
+              "type":"FLAG"
+            }],
+          "support_multi_poison_poison_duration_+%_final":[{
+              "name":"EnemyPoisonDuration"
+            }]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that Hits enemies, allowing it to inflict an extra Poison on enemies but shortening the duration of those Poisons."
+  },
+  "SupportDazedBreakPlayer":{
+    "name":"Break Posture",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["support_daze_break_duration_ms"]],
+        "levels":[[]],
+        "stats":["support_apply_daze_on_armour_break"],
+        "baseFlags":[]
+      }],
+    "description":"Supports Attacks, causing them to Daze Enemies when they fully Break Armour."
+  },
+  "SupportForkPlayer":{
+    "name":"Fork",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "stats":["projectiles_fork"],
+        "constantStats":[[],["support_fork_forked_projectile_damage_+%_final"]],
+        "levels":[[]],
+        "statMap":{
+          "support_fork_forked_projectile_damage_+%_final":[[{
+                "stat":"ForkedCount",
+                "type":"StatThreshold"
+              }]]
+        },
+        "baseFlags":[]
+      }],
+    "description":"Supports Projectile skills, making their Projectiles Fork."
+  },
+  "SupportPinPlayer":{
+    "name":"Pin",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["support_pin_spell_pinned_art_variation"],["support_pin_hit_damage_stun_multiplier_+%_final"]],
+        "levels":[[]],
+        "stats":["support_pin_physical_damage_can_pin"],
+        "baseFlags":[]
+      }],
+    "description":"Supports any skill that Hits enemies, allowing its Physical damage to Pin enemies but making it unable to Stun."
+  },
+  "SupportBurstingPlaguePlayer":{
+    "name":"Bursting Plague",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
+    "statSets":[{
+        "constantStats":[["support_bursting_plague_store_%_poison_applied_magnitude_towards_burst"],["support_bursting_plague_max_value_%_of_max_life"]],
+        "levels":[[]],
+        "stats":[],
+        "baseFlags":[]
+      }],
+    "description":"Supports skills that can Poison enemies, causing Poisoned enemies to gain Plague over time and explode in a Plague Burst on death. Cannot support the skills of Minions."
   },
   "SupportInhibitorPlayer":{
+    "name":"Inhibitor",
+    "requireSkillTypes":[],
+    "addSkillTypes":[223],
+    "excludeSkillTypes":[null,null,null,222],
+    "levels":[[]],
     "statSets":[{
         "stats":["cannot_consume_power_frenzy_endurance_charges"],
-        "label":"Inhibitor",
         "constantStats":[["support_inhibitor_damage_+%_final_per_charge_type"]],
         "levels":[[]],
         "statMap":{
@@ -1243,442 +1621,62 @@
         },
         "baseFlags":[]
       }],
-    "description":"Supports any Skill you use yourself or that you Trigger. Supported Skills cannot consume Charges by any means. Cannot Support Skills which require Charges to be used.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[223],
-    "levels":[[]],
-    "excludeSkillTypes":[null,null,null,222]
+    "description":"Supports any Skill you use yourself or that you Trigger. Supported Skills cannot consume Charges by any means. Cannot Support Skills which require Charges to be used."
   },
-  "SupportCorrosionPlayer":{
+  "SupportDazingPlayer":{
+    "name":"Discombobulate",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
-        "label":"Corrosion",
-        "constantStats":[["armour_break_for_%_of_poison_damage_over_poison_duration",80]],
+        "constantStats":[["support_physical_damage_%_to_gain_as_daze_build_up"]],
         "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports any skill that Hits enemies, causing Poison it applies to also Break enemy Armour. Cannot support skills that Consume Fully Broken Armour.",
+    "description":"Supports Attacks, causing them to build up Daze based on a portion of Physical Damage dealt."
+  },
+  "SupportChargedShotsPlayer":{
+    "name":"Charged Shots",
     "requireSkillTypes":[],
     "addSkillTypes":[],
+    "excludeSkillTypes":[],
     "levels":[[]],
-    "excludeSkillTypes":[134]
-  },
-  "SupportReachPlayer":{
     "statSets":[{
-        "stats":[],
-        "label":"Reach",
-        "constantStats":[["support_reach_area_of_effect_+%_final"],["support_reach_accuracy_within_2m_+%_final",-80]],
-        "levels":[[]],
-        "statMap":{
-          "support_reach_area_of_effect_+%_final":[{
-              "name":"AreaOfEffect"
-            }],
-          "support_reach_accuracy_within_2m_+%_final":[[{
-                "var":"enemyDistance"
-              }]]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports Attack Skills which deal Damage in an Area. Supported Skills have significantly increased Area of Effect, but are less Accurate against nearby targets.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportPunchThroughPlayer":{
-    "statSets":[{
-        "label":"Punch Through",
-        "constantStats":[["apply_attack_projectile_weakness_%_per_1m_knockback"]],
+        "constantStats":[["support_charged_shots_applies_every_X_shots"],["support_charged_shots_recover_%_mana_cost_on_use"],["support_charged_shots_%_damage_to_gain_as_lightning"]],
         "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports Melee Attack Skills. Supported Skills apply Easy Target when Knocking Back Enemies, causing the next Projectile Attack Hit they take to deal increased Damage.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
+    "description":"Supports Bow Attacks. Every third shot with Supported Skills restores a portion of it's Mana cost and Gains Damage as extra Lightning Damage."
   },
   "SupportCommiseratePlayer":{
+    "name":"Commiserate",
+    "requireSkillTypes":[],
+    "addSkillTypes":[],
+    "excludeSkillTypes":[],
+    "levels":[[]],
     "statSets":[{
-        "label":"Commiserate",
         "constantStats":[["ailment_effect_+%_while_afflicted_by_relevant_ailment"]],
         "levels":[[]],
         "stats":["remove_ailment_when_applying_relevant_ailment"],
         "baseFlags":[]
       }],
-    "description":"Supports Skills you use yourself which can cause Damaging Hits. Supported Skills inflict more powerful Ailments if you are afflicted with those Ailments when you inflict them, while also removing from you any Ailment that they inflict.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
+    "description":"Supports Skills you use yourself which can cause Damaging Hits. Supported Skills inflict more powerful Ailments if you are afflicted with those Ailments when you inflict them, while also removing from you any Ailment that they inflict."
   },
-  "SupportCrescendoPlayer":{
-    "statSets":[{
-        "label":"Crescendo",
-        "levels":[[]],
-        "stats":["repeat_last_step_of_combo_attack"],
-        "baseFlags":[]
-      }],
-    "description":"Supports Strikes that perform a Final Strike at the end of a combination of attacks, allowing you to use the Final Strike twice in succession.",
-    "requireSkillTypes":[148],
+  "SupportPracticedComboPlayer":{
+    "name":"Practiced Combo",
+    "requireSkillTypes":[null,21],
     "addSkillTypes":[],
+    "excludeSkillTypes":[],
     "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportMultipleChargesPlayer":{
     "statSets":[{
-        "label":"Profusion",
-        "constantStats":[["chance_to_gain_1_more_charge_%"]],
+        "constantStats":[["additional_combo_gain_chance_%"]],
         "levels":[[]],
         "stats":[],
         "baseFlags":[]
       }],
-    "description":"Supports skills that can generate Charges, giving them a chance to generate an additional Charge when they do so.",
-    "requireSkillTypes":[146],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportPrecisionPlayer":{
-    "statSets":[{
-        "stats":[],
-        "label":"Precision",
-        "constantStats":[["support_precision_accuracy_rating_+%"]],
-        "levels":[[]],
-        "statMap":{
-          "support_precision_accuracy_rating_+%":[[[]]]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports Persistent Buff Skills, causing you to gain increased Accuracy while the Skill is active.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportInnervatePlayer":{
-    "statSets":[{
-        "stats":[],
-        "label":"Innervate",
-        "constantStats":[["support_innervate_buff_grant_%_added_lightning_attack_damage"],["support_innervate_buff_base_duration_ms"]],
-        "levels":[[]],
-        "statMap":{
-          "support_innervate_base_buff_duration":[{
-              "1":{
-                "var":"KilledShockedLast3Seconds"
-              },
-              "2":[],
-              "type":"BASE"
-            }],
-          "support_innervate_buff_grant_%_added_lightning_attack_damage":[{
-              "1":[],
-              "2":[],
-              "name":"DamageGainAsLightning"
-            }]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports Attacks you use yourself. Killing a Shocked enemy with supported skills infuses all of your Attacks with Lightning damage for a short time.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportCullingStrikePlayer":{
-    "statSets":[{
-        "label":"Culling Strike",
-        "stats":["support_culling_strike_vs_rare_or_unique_enemy"],
-        "levels":[[]],
-        "statMap":{
-          "support_culling_strike_vs_rare_or_unique_enemy":[[{
-                "var":"RareOrUnique"
-              }]]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports Attack Skills, causing them to Cull Rare and Unique Enemies on Hit.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportPiercePlayer":{
-    "statSets":[{
-        "stats":[],
-        "label":"Pierce",
-        "levels":[[]],
-        "constantStats":[["base_chance_to_pierce_%"],["support_pierce_projectile_damage_+%_final_if_pierced_enemy"]],
-        "baseFlags":[]
-      }],
-    "description":"Supports Projectile skills, making their Projectiles Pierce an enemy but deal less damage after doing so.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportPerpetualChargePlayer":{
-    "statSets":[{
-        "label":"Perpetual Charge",
-        "constantStats":[["charge_skip_consume_chance_%"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports skills that consume Power, Frenzy or Endurance Charges on use, giving them a chance not to remove each Charge while still gaining the benefits of consuming them.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[],[],[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportPerfectionPlayer":{
-    "statSets":[{
-        "label":"Perfection",
-        "constantStats":[["gain_X_perfection_on_successful_perfect_timing"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports skills which have a benefit for Perfectly Timing their use. On successfully executing Perfect Timing with Supported Skills, gain Perfection, which is a powerful damage buff. However, failing to execute any Perfect Timing (even with skills not supported by Perfection) will remove all Perfection on you.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportAdherePlayer":{
-    "statSets":[{
-        "stats":["grenade_skill_does_not_bounce_off_ground"],
-        "label":"Adhere",
-        "constantStats":[["support_sticky_grenade_damage_+%_final"]],
-        "levels":[[]],
-        "statMap":{
-          "support_sticky_grenade_damage_+%_final":[[]]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports Grenade Skills. Grenades from Supported Skills do not bounce, instead halting movement where they intially land, but doing lower damage when they detonate.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportDeadlyHeraldsPlayer":{
-    "statSets":[{
-        "stats":[],
-        "label":"Deadly Herald",
-        "constantStats":[["support_deadly_heralds_damage_+%_final"]],
-        "levels":[[]],
-        "statMap":{
-          "support_deadly_heralds_damage_+%_final":[[]]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports Herald Skills, making their triggered effects deal more damage at the expense of higher Spirit cost.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportSingleOutPlayer":{
-    "statSets":[{
-        "label":"Single Out",
-        "constantStats":[["marked_target_%_physical_damage_taken_as_armour_break"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports Mark Skills. Enemies affected by Supported Marks will have their Armour Broken by Physical Damage they take.",
-    "requireSkillTypes":[98],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportCulminationPlayer":{
-    "statSets":[{
-        "label":"Culmination",
-        "constantStats":[["support_damage_+%_final_per_combo_stack"],[]],
-        "levels":[[]],
-        "stats":["skill_uncapped_combo_counter"],
-        "baseFlags":[]
-      }],
-    "description":"Supports Melee Attack Skills. Supported Skills gain Combo when you successfully Strike Enemies with other Melee Attacks. Supported Skills reset their Combo on use, dealing more Damage the higher Combo you had on use. Cannot support skills which already gain Combo. Cannot Support Skills used by Minions.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[null,169],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportMultiplePoisonPlayer":{
-    "statSets":[{
-        "stats":[],
-        "label":"Comorbidity",
-        "constantStats":[["number_of_additional_poison_stacks"],["support_multi_poison_poison_duration_+%_final"]],
-        "levels":[[]],
-        "statMap":{
-          "support_multi_poison_poison_duration_+%_final":[{
-              "name":"EnemyPoisonDuration"
-            }],
-          "number_of_additional_poison_stacks":[{
-              "name":"PoisonStacks"
-            },{
-              "type":"FLAG",
-              "name":"PoisonCanStack"
-            }]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports any skill that Hits enemies, allowing it to inflict an extra Poison on enemies but shortening the duration of those Poisons.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "TriggeredCaltropsPlayer":{
-    "statSets":[{
-        "label":"Caltrops",
-        "constantStats":[["triggered_by_caltrops_support_%"],["base_number_of_projectiles"],[],["active_skill_base_secondary_area_of_effect_radius"],["base_skill_effect_duration"],["main_hand_base_physical_damage_from_%_dex"]],
-        "statDescriptionScope":"triggered_caltrops",
-        "levels":[[]],
-        "stats":["global_maim_on_hit","additive_thorns_damage_modifiers_apply_to_attack_damage","replace_main_hand_unarmed_attack_stats_with_nothing_type","base_is_projectile","is_hazard",null,"projectiles_not_offset"],
-        "baseFlags":[]
-      }],
-    "skillTypes":[],
-    "qualityStats":[],
-    "levels":[[]],
-    "description":"Maims and deals Physical area damage when triggered by an Enemy. Caltrops are destroyed when triggered, and a maximum of 20 Caltrops can be active at once."
-  },
-  "SupportManaOnCullPlayer":{
-    "statSets":[{
-        "label":"Soul Drain",
-        "constantStats":[["recover_%_maximum_mana_on_cull"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports any skill that Hits enemies, causing you to recover Mana when it Culls an enemy.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportAdditionalAccuracyPlayer":{
-    "statSets":[{
-        "label":"Bullseye",
-        "statMap":{
-          "support_additional_accurary_rating_+%_final":[[]]
-        },
-        "baseFlags":[],
-        "constantStats":[["support_additional_accurary_rating_+%_final"]],
-        "stats":[],
-        "levels":[[]]
-      }],
-    "description":"Supports Attacks, causing them to gain Accuracy.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportLastingShockPlayer":{
-    "statSets":[{
-        "stats":[],
-        "label":"Lasting Shock",
-        "constantStats":[["shock_duration_+%"],["support_lasting_shock_chance_to_shock_+%_final"]],
-        "levels":[[]],
-        "statMap":{
-          "support_lasting_shock_chance_to_shock_+%_final":[[]]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports any skill that Hits enemies or inflicts Shock, causing its Shocks to be inflicted less often but last longer.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportCaltropsPlayer":{
-    "statSets":[{
-        "levels":[[]],
-        "stats":["trigger_caltrops_at_end_of_projectile_flight"],
-        "baseFlags":[]
-      }],
-    "description":"Supports Ranged Spear Attacks. Supported Skills create Caltrops when Projectiles they create reach the end of their flight.",
-    "requireSkillTypes":[191],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[115]
-  },
-  "SupportSpectralVolleyPlayer":{
-    "statSets":[{
-        "label":"Spectral Volley",
-        "constantStats":[["support_spectral_arrows_damage_+%_final_with_spectral_projectiles"],["support_spectral_arrows_damage_+%_final_with_non_spectral_projectiles"],["support_spectral_arrows_base_duration_ms",3000],["support_spectral_arrows_delay_between_projectiles_ms"],["support_spectral_arrows_maximum_spectral_arrows"]],
-        "levels":[[]],
-        "stats":["skill_has_spectral_arrows","triggered_skills_ignore_cost"],
-        "baseFlags":[]
-      }],
-    "description":"Supports Bow or Spear Projectile Attacks you use yourself. Supported Skills deal lower damage initially, but generate Spectral Projectiles, which deal more damage when they fire. Spectral Projectiles linger and will fire a short duration after no new Spectral Projectiles have been created. Cannot support Channelling Skills, Leaping skills, or skills which rain Projectiles from above.",
-    "requireSkillTypes":[null,null,null,null,null,null,null,null,73],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[89]
-  },
-  "SupportCadencePlayer":{
-    "statSets":[{
-        "label":"Cadence",
-        "constantStats":[["support_measured_speed_attack_speed_+%_final_per_stack"],["support_measured_speed_maximum_stacks"],["support_measured_speed_disabled_ms"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports Attacks you use yourself. Supported Skills gain more Attack speed each time you use them, but will become unusable if used too frequently in a short time frame.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportAmmoConservationPlayer":{
-    "statSets":[{
-        "stats":[],
-        "label":"Ammo Conservation",
-        "constantStats":[["crossbow_attack_%_chance_to_not_consume_ammo"]],
-        "levels":[[]],
-        "statMap":{
-          "crossbow_attack_%_chance_to_not_consume_ammo":[{
-              "name":"ChanceToNotConsumeAmmo"
-            }]
-        },
-        "baseFlags":[]
-      }],
-    "description":"Supports Crossbow Ammunition Skills, granting a chance to not consume a Bolt when firing.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportLeveragePlayer":{
-    "statSets":[{
-        "label":"Leverage",
-        "constantStats":[["critical_strike_chance_+%_vs_immobilised_enemies"]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports Skills which Hit Enemies. Supported Skills gain increased chance to Critically Hit against Immobilised Enemies.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
-  },
-  "SupportLockdownPlayer":{
-    "statSets":[{
-        "label":"Lockdown",
-        "constantStats":[["support_lockdown_distance_based_pin_damage_+%_final",120]],
-        "levels":[[]],
-        "stats":[],
-        "baseFlags":[]
-      }],
-    "description":"Supports any skill that Hits enemies, causing any Pin buildup it inflicts to be stronger the closer the enemy is to you.",
-    "requireSkillTypes":[],
-    "addSkillTypes":[],
-    "levels":[[]],
-    "excludeSkillTypes":[]
+    "description":"Supports Strike Skills. Supported Skills have a chance to build additional Combo on Hit. Cannot support Skills used by Minions."
   }
 }
