@@ -196,6 +196,7 @@ class GemsMinimalSchemaElement(BaseModel):
     is_support: bool
     stat_translation_file: StatTranslationFile
     static: Static
+    tooltip_order: Optional[List[str]] = None
     tags: List[Tag]
     secondary_granted_effect: Optional[str] = None
     quest_reward: Optional[QuestReward] = None

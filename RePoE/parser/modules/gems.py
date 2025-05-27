@@ -268,13 +268,18 @@ class GemConverter:
 
         try:
             stat_text = {}
+            stat_order = {}
             value_map = {v["id"]: v["value"] for v in stats if v["value"]}
             trans = self.translation_file.get_translation(
                 value_map.keys(), value_map, full_result=True, lang=self.language
             )
             for i, stats in enumerate(trans.found_ids):
                 stats = [stat for stat in stats if value_map.get(stat, None)]
-                stat_text["\n".join(stats)] = trans.found_lines[i]
+                key = "\n".join(stats)
+                stat_text[key] = trans.found_lines[i]
+                stat_order[key] = trans.tf_indices[i]
+
+            r["stat_order"] = stat_order
 
             r["stat_text"] = stat_text
         except Exception:
@@ -426,6 +431,24 @@ class GemConverter:
         if len(gepls) >= 1:
             representative = gepls_dict[str(gepls[0]["Level"])]
             static, _ = _handle_dict(representative, gepls_dict.values())
+
+            stat_order = {}
+            for level in gepls_dict.values():
+                if "stat_order" in level:
+                    stat_order.update(level["stat_order"])
+                    del level["stat_order"]
+
+            static = static or {}
+            obj["tooltip_order"] = [
+                stat for stat, _ in
+                sorted(
+                    list((stat_order | static.get("stat_order", {})).items()),
+                    key=lambda kv: kv[1]
+                )
+            ]
+            if "stat_order" in static:
+                del static["stat_order"]
+
             if static is not None:
                 obj["static"] = static
 

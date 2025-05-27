@@ -237,6 +237,7 @@ class GemsSchemaValue(BaseModel):
     stat_translation_file: StatTranslationFile
     static: Static
     tags: Optional[List[Tag]] = None
+    tooltip_order: Optional[List[str]] = None
     discriminator: Optional[Discriminator] = None
     secondary_granted_effect: Optional[str] = None
     support_gem: Optional[SupportGem] = None
