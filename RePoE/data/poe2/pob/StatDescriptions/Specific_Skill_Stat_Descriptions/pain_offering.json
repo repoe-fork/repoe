@@ -1,81 +1,81 @@
 {
+  "active_skill_area_of_effect_radius":2,
+  "active_skill_base_area_of_effect_radius":3,
+  "base_skill_effect_duration":4,
+  "pain_offering_attack_and_cast_speed_+%":5,
+  "pain_offering_damage_+%":6,
+  "parent":"skill_stat_descriptions",
+  "skill_effect_duration":7,
   "7":{
     "stats":["skill_effect_duration"],
     "1":[]
   },
-  "active_skill_base_area_of_effect_radius":3,
-  "pain_offering_damage_+%":6,
+  "2":{
+    "stats":["active_skill_area_of_effect_radius"],
+    "1":[]
+  },
   "5":{
     "stats":["pain_offering_attack_and_cast_speed_+%"],
     "1":[{
-        "text":"Aura grants Minions {0}% increased Attack and Cast Speed",
-        "limit":[[]]
+        "limit":[[]],
+        "text":"Aura grants Minions {0}% increased Attack and Cast Speed"
       },{
-        "1":{
-          "v":1,
-          "k":"negate"
-        },
+        "limit":[["#",-1]],
         "text":"Aura grants Minions {0}% reduced Attack and Cast Speed",
-        "limit":[["#",-1]]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "6":{
+    "stats":["pain_offering_damage_+%"],
+    "1":[{
+        "limit":[[]],
+        "text":"Aura grants Minions {0}% increased damage"
+      },{
+        "limit":[[]],
+        "text":"Aura grants Minions {0}% reduced damage",
+        "1":[]
       }]
   },
   "4":{
     "stats":["base_skill_effect_duration"],
     "1":[{
-        "1":[],
+        "limit":[[null,1000]],
         "text":"Spike duration is {0} second",
-        "limit":[[null,1000]]
+        "1":[]
       },{
+        "limit":[[]],
+        "text":"Spike duration is {0} seconds",
         "1":{
           "k":"milliseconds_to_seconds_2dp_if_required"
-        },
-        "text":"Spike duration is {0} seconds",
-        "limit":[[]]
+        }
       }]
   },
-  "base_skill_effect_duration":4,
-  "active_skill_area_of_effect_radius":2,
-  "2":{
-    "stats":["active_skill_area_of_effect_radius"],
-    "1":[]
-  },
-  "pain_offering_attack_and_cast_speed_+%":5,
   "3":{
     "stats":["active_skill_base_area_of_effect_radius","quality_display_active_skill_base_area_of_effect_radius_is_gem"],
     "1":[{
-        "1":[],
+        "limit":[[null,10],[null,0]],
         "text":"{0:+d} metre to Minion Aura radius",
-        "limit":[[null,10],[null,0]]
+        "1":[]
       },{
-        "1":[],
+        "limit":[[],[]],
         "text":"{0:+d} metres to Minion Aura radius",
-        "limit":[[],[]]
+        "1":[]
       },{
-        "1":[],
+        "limit":[[],[]],
         "text":"Minion Aura radius is {0} metre",
-        "limit":[[],[]]
+        "1":[]
       },{
+        "limit":[[],[]],
+        "text":"Minion Aura radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required"
-        },
-        "text":"Minion Aura radius is {0} metres",
-        "limit":[[],[]]
+        }
       }]
   },
-  "skill_effect_duration":7,
-  "parent":"skill_stat_descriptions",
   "1":{
     "stats":["base_secondary_skill_effect_duration"]
-  },
-  "6":{
-    "stats":["pain_offering_damage_+%"],
-    "1":[{
-        "text":"Aura grants Minions {0}% increased damage",
-        "limit":[[]]
-      },{
-        "1":[],
-        "text":"Aura grants Minions {0}% reduced damage",
-        "limit":[[]]
-      }]
   }
 }

@@ -1,4 +1,12 @@
 {
+  "active_skill_base_area_of_effect_radius":2,
+  "base_skill_debuff_action_speed_+%_final_to_inflict":3,
+  "base_skill_effect_duration":4,
+  "base_temporal_chains_other_buff_time_passed_+%_to_apply":5,
+  "parent":"skill_stat_descriptions",
+  "skill_curse_action_speed_+%_final_magnitude_to_inflict":6,
+  "skill_effect_duration":7,
+  "temporal_chains_other_buff_time_passed_+%_magnitude_to_apply":8,
   "1":{
     "stats":["active_skill_area_of_effect_radius"],
     "1":[]
@@ -6,51 +14,51 @@
   "2":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "1":[],
+        "limit":[[null,10]],
         "text":"Curse radius is {0} metre",
-        "limit":[[null,10]]
+        "1":[]
       },{
-        "1":{
-          "v":1,
-          "k":"divide_by_ten_1dp_if_required"
-        },
+        "limit":[[null,"#"]],
         "text":"Curse radius is {0} metres",
-        "limit":[[null,"#"]]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       }]
   },
   "3":{
     "stats":["base_skill_debuff_action_speed_+%_final_to_inflict"],
     "1":[{
+        "limit":[[null,-1]],
+        "text":"Curse Slows targets by {0}%",
         "1":{
           "k":"negate"
-        },
-        "text":"Curse Slows targets by {0}%",
-        "limit":[[null,-1]]
+        }
       }]
   },
   "4":{
     "stats":["base_skill_effect_duration"],
     "1":[{
-        "1":[],
+        "limit":[[null,1000]],
         "text":"Curse duration is {0} second",
-        "limit":[[null,1000]]
+        "1":[]
       },{
+        "limit":[[]],
+        "text":"Curse duration is {0} seconds",
         "1":{
           "k":"milliseconds_to_seconds_2dp_if_required"
-        },
-        "text":"Curse duration is {0} seconds",
-        "limit":[[]]
+        }
       }]
   },
   "5":{
     "stats":["base_temporal_chains_other_buff_time_passed_+%_to_apply"],
     "1":[{
-        "text":"Curse makes other effects on targets expire {0}% faster",
-        "limit":[[]]
+        "limit":[[]],
+        "text":"Curse makes other effects on targets expire {0}% faster"
       },{
-        "1":[],
+        "limit":[[]],
         "text":"Curse makes other effects on targets expire {0}% slower",
-        "limit":[[]]
+        "1":[]
       }]
   },
   "6":{
@@ -64,13 +72,5 @@
   "8":{
     "stats":["temporal_chains_other_buff_time_passed_+%_magnitude_to_apply"],
     "1":[]
-  },
-  "base_skill_effect_duration":4,
-  "base_temporal_chains_other_buff_time_passed_+%_to_apply":5,
-  "skill_curse_action_speed_+%_final_magnitude_to_inflict":6,
-  "skill_effect_duration":7,
-  "temporal_chains_other_buff_time_passed_+%_magnitude_to_apply":8,
-  "parent":"skill_stat_descriptions",
-  "active_skill_base_area_of_effect_radius":2,
-  "base_skill_debuff_action_speed_+%_final_to_inflict":3
+  }
 }

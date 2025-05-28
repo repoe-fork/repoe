@@ -1,4 +1,9 @@
 {
+  "active_skill_area_of_effect_radius":2,
+  "active_skill_base_area_of_effect_radius":3,
+  "channelled_slam_damage_+%_final_per_stage":4,
+  "parent":"skill_stat_descriptions",
+  "quality_display_supercharged_slam_is_gem":5,
   "1":{
     "stats":["base_skill_effect_duration"]
   },
@@ -9,47 +14,42 @@
   "3":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "1":[],
+        "limit":[[null,10]],
         "text":"Impact radius is {0} metre",
-        "limit":[[null,10]]
+        "1":[]
       },{
+        "limit":[[null,"#"]],
+        "text":"Impact radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
           "v":1
-        },
-        "text":"Impact radius is {0} metres",
-        "limit":[[null,"#"]]
+        }
       }]
   },
   "4":{
     "stats":["channelled_slam_damage_+%_final_per_stage"],
     "1":[{
-        "text":"{0}% more Damage with Hits for each stage",
-        "limit":[[]]
+        "limit":[[]],
+        "text":"{0}% more Damage with Hits for each stage"
       },{
+        "limit":[[null,-1]],
+        "text":"{0}% less Damage with Hits for each stage",
         "1":{
           "k":"negate"
-        },
-        "text":"{0}% less Damage with Hits for each stage",
-        "limit":[[null,-1]]
+        }
       }]
   },
-  "active_skill_base_area_of_effect_radius":3,
-  "channelled_slam_damage_+%_final_per_stage":4,
   "5":{
     "stats":["channelled_slam_max_stages","quality_display_supercharged_slam_is_gem"],
     "1":[{
-        "text":"{0:+d} maximum Stage",
-        "limit":[[],[null,0]]
+        "limit":[[],[null,0]],
+        "text":"{0:+d} maximum Stage"
       },{
-        "text":"{0:+d} maximum Stages",
-        "limit":[[],[]]
+        "limit":[[],[]],
+        "text":"{0:+d} maximum Stages"
       },{
-        "text":"Maximum {0} Stages\nChannelling ends 1 second after reaching maximum Stages\nReleases 1 Aftershock per Stage",
-        "limit":[[],[]]
+        "limit":[[],[]],
+        "text":"Maximum {0} Stages\nChannelling ends 1 second after reaching maximum Stages\nReleases 1 Aftershock per Stage"
       }]
-  },
-  "quality_display_supercharged_slam_is_gem":5,
-  "active_skill_area_of_effect_radius":2,
-  "parent":"skill_stat_descriptions"
+  }
 }

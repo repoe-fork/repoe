@@ -1,4 +1,12 @@
 {
+  "active_skill_base_area_of_effect_radius":2,
+  "base_skill_buff_flask_charge_per_min_to_apply":3,
+  "base_skill_buff_stun_and_ailment_threshold_+%_final_to_apply":4,
+  "base_skill_effect_duration":5,
+  "parent":"skill_stat_descriptions",
+  "skill_aura_buff_flask_charge_per_min_magnitude_to_apply":6,
+  "skill_aura_buff_stun_and_ailment_threshold_+%_final_magnitude_to_apply":7,
+  "skill_effect_duration":8,
   "1":{
     "stats":["active_skill_area_of_effect_radius"],
     "1":[]
@@ -6,53 +14,53 @@
   "2":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "1":[],
+        "limit":[[null,10]],
         "text":"Banner Aura radius is {0} metre",
-        "limit":[[null,10]]
+        "1":[]
       },{
+        "limit":[[null,"#"]],
+        "text":"Banner Aura radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
           "v":1
-        },
-        "text":"Banner Aura radius is {0} metres",
-        "limit":[[null,"#"]]
+        }
       }]
   },
   "3":{
     "stats":["base_skill_buff_flask_charge_per_min_to_apply"],
     "1":[{
+        "limit":[[]],
+        "text":"Aura grants {0} Flask charges per second",
         "1":{
           "k":"per_minute_to_per_second_2dp_if_required"
-        },
-        "text":"Aura grants {0} Flask charges per second",
-        "limit":[[]]
+        }
       }]
   },
   "4":{
     "stats":["base_skill_buff_stun_and_ailment_threshold_+%_final_to_apply"],
     "1":[{
-        "text":"Aura grants {0}% more Stun Threshold and\nElemental Ailment Threshold",
-        "limit":[[]]
+        "limit":[[]],
+        "text":"Aura grants {0}% more Stun Threshold and\nElemental Ailment Threshold"
       },{
+        "limit":[[null,-1]],
+        "text":"Aura grants {0}% less Stun Threshold and\nElemental Ailment Threshold",
         "1":{
           "k":"negate"
-        },
-        "text":"Aura grants {0}% less Stun Threshold and\nElemental Ailment Threshold",
-        "limit":[[null,-1]]
+        }
       }]
   },
   "5":{
     "stats":["base_skill_effect_duration"],
     "1":[{
-        "1":[],
+        "limit":[[null,1000]],
         "text":"Banner duration is {0} second, or until you leave the Aura",
-        "limit":[[null,1000]]
+        "1":[]
       },{
+        "limit":[[]],
+        "text":"Banner duration is {0} seconds, or until you leave the Aura",
         "1":{
           "k":"milliseconds_to_seconds_2dp_if_required"
-        },
-        "text":"Banner duration is {0} seconds, or until you leave the Aura",
-        "limit":[[]]
+        }
       }]
   },
   "6":{
@@ -66,13 +74,5 @@
   "8":{
     "stats":["skill_effect_duration"],
     "1":[]
-  },
-  "base_skill_buff_flask_charge_per_min_to_apply":3,
-  "base_skill_buff_stun_and_ailment_threshold_+%_final_to_apply":4,
-  "base_skill_effect_duration":5,
-  "skill_aura_buff_flask_charge_per_min_magnitude_to_apply":6,
-  "skill_aura_buff_stun_and_ailment_threshold_+%_final_magnitude_to_apply":7,
-  "skill_effect_duration":8,
-  "parent":"skill_stat_descriptions",
-  "active_skill_base_area_of_effect_radius":2
+  }
 }

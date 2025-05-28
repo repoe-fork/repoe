@@ -1,4 +1,9 @@
 {
+  "active_skill_base_area_of_effect_radius":2,
+  "freezing_salvo_maximum_number_of_seals":3,
+  "freezing_salvo_seals_gain_interval_ms":5,
+  "parent":"skill_stat_descriptions",
+  "quality_display_freezing_salvo_is_gem":4,
   "1":{
     "stats":["active_skill_area_of_effect_radius"],
     "1":[]
@@ -6,46 +11,41 @@
   "2":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "1":[],
+        "limit":[[null,10]],
         "text":"Impact radius is {0} metre",
-        "limit":[[null,10]]
+        "1":[]
       },{
+        "limit":[[null,"#"]],
+        "text":"Impact radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
           "v":1
-        },
-        "text":"Impact radius is {0} metres",
-        "limit":[[null,"#"]]
+        }
       }]
   },
   "3":{
     "stats":["freezing_salvo_maximum_number_of_seals"],
     "1":[{
-        "text":"Accumulates up to {0} additional missiles",
-        "limit":[[]]
+        "limit":[[]],
+        "text":"Accumulates up to {0} additional missiles"
       }]
   },
   "4":{
     "stats":["freezing_salvo_seals_gain_base_interval_ms","quality_display_freezing_salvo_is_gem"],
     "1":[{
-        "1":[],
+        "limit":[[null,-1],[null,0]],
         "text":"Delay between missile accumulation is {0} seconds shorter",
-        "limit":[[null,-1],[null,0]]
+        "1":[]
       },{
+        "limit":[[],[]],
+        "text":"Accumulates a missile every {0} seconds",
         "1":{
           "k":"milliseconds_to_seconds_2dp_if_required"
-        },
-        "text":"Accumulates a missile every {0} seconds",
-        "limit":[[],[]]
+        }
       }]
   },
-  "freezing_salvo_maximum_number_of_seals":3,
   "5":{
     "stats":["freezing_salvo_seals_gain_interval_ms"],
     "1":[]
-  },
-  "freezing_salvo_seals_gain_interval_ms":5,
-  "parent":"skill_stat_descriptions",
-  "freezing_salvo_seals_gain_base_interval_ms":4,
-  "active_skill_base_area_of_effect_radius":2
+  }
 }

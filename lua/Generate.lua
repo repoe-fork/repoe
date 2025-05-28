@@ -61,9 +61,12 @@ end
 local function makeSkillDataMod(dataKey, dataValue, ...)
     return makeSkillMod("SkillData", "LIST", { key = dataKey, value = dataValue }, 0, 0, ...)
 end
-local function clean(map, visited)
+local function clean(map, visited, keys)
     if type(map) == 'table' then
         for k, v in pairs(map) do
+            if type(k) == "string" then
+                keys[k] = k
+            end
             local seen = visited[v]
             visited[v] = true
             if seen then
@@ -71,7 +74,7 @@ local function clean(map, visited)
             elseif type(v) == 'function' then
                 map[k] = nil
             elseif type(v) == 'table' then
-                clean(v, visited)
+                clean(v, visited, keys)
             end
         end
     end
@@ -81,7 +84,7 @@ end
 local json = require("dkjson")
 if file == "Global" then
     require(path .. ".src.Modules.Data")
-    clean(data, {})
+    clean(data, {}, {})
     io.open((params[2] or "data/") .. "DataModule.min.json", "w"):write(json.encode(data))
     io.open((params[2] or "data/") .. "DataModule.json", "w"):write(json.encode(data, { indent = true }))
     return
@@ -98,7 +101,11 @@ else
     result = loadfile(params[1])(output, makeSkillMod, makeFlagMod, makeSkillDataMod) or output
 end
 
-clean(result, {})
+local keys = {}
+clean(result, {}, keys)
+local keyorder = {}
+for k, _ in pairs(keys) do table.insert(keyorder, k) end
+table.sort(keyorder)
 
-io.open((params[2] or "data/") .. file .. ".min.json", "w"):write(json.encode(result))
-io.open((params[2] or "data/") .. file .. ".json", "w"):write(json.encode(result, { indent = true }))
+io.open((params[2] or "data/") .. file .. ".min.json", "w"):write(json.encode(result, { keyorder = keyorder }))
+io.open((params[2] or "data/") .. file .. ".json", "w"):write(json.encode(result, { indent = true, keyorder = keyorder }))

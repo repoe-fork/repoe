@@ -1,4 +1,8 @@
 {
+  "lightning_strike_base_number_of_projectiles_per_power_charge":5,
+  "lightning_strike_damage_+%_final_per_power_charge":3,
+  "lightning_strike_damage_+%_final_when_charged":4,
+  "parent":"skill_stat_descriptions",
   "1":{
     "stats":["active_skill_area_of_effect_radius"],
     "1":[]
@@ -6,16 +10,16 @@
   "2":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "1":[],
         "limit":[[null,10]],
-        "text":"Cone length is {0} metre"
+        "text":"Cone length is {0} metre",
+        "1":[]
       },{
+        "limit":[[null,"#"]],
+        "text":"Cone length is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
           "v":1
-        },
-        "limit":[[null,"#"]],
-        "text":"Cone length is {0} metres"
+        }
       }]
   },
   "3":{
@@ -24,11 +28,11 @@
         "limit":[[]],
         "text":"{0}% more Damage per Power Charge Consumed"
       },{
+        "limit":[[null,-1]],
+        "text":"{0}% less Damage per Power Charge Consumed",
         "1":{
           "k":"negate"
-        },
-        "limit":[[null,-1]],
-        "text":"{0}% less Damage per Power Charge Consumed"
+        }
       }]
   },
   "4":{
@@ -37,24 +41,19 @@
         "limit":[[]],
         "text":"{0}% more Damage if a Power Charge was Consumed"
       },{
-        "1":[],
         "limit":[[]],
-        "text":"{0}% less Damage if a Power Charge was Consumed"
+        "text":"{0}% less Damage if a Power Charge was Consumed",
+        "1":[]
       }]
   },
-  "active_skill_base_area_of_effect_radius":2,
-  "lightning_strike_base_number_of_projectiles_per_power_charge":5,
-  "parent":"skill_stat_descriptions",
-  "lightning_strike_damage_+%_final_per_power_charge":3,
   "5":{
     "stats":["lightning_strike_base_number_of_projectiles_per_power_charge"],
     "1":[{
         "limit":[[]],
         "text":"Fires {0} Projectile per Power Charge Consumed"
       },{
-        "limit":[[]],
+        "limit":[[2]],
         "text":"Fires {0} Projectiles per Power Charge Consumed"
       }]
-  },
-  "lightning_strike_damage_+%_final_when_charged":4
+  }
 }
