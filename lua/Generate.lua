@@ -64,9 +64,7 @@ end
 local function clean(map, visited, keys)
     if type(map) == 'table' then
         for k, v in pairs(map) do
-            if type(k) == "string" then
-                keys[k] = k
-            end
+            keys[k] = k
             if type(v) == 'function' then
                 map[k] = nil
             elseif type(v) == 'table' then
@@ -107,7 +105,13 @@ local keys = {}
 clean(result, {}, keys)
 local keyorder = {}
 for k, _ in pairs(keys) do table.insert(keyorder, k) end
-table.sort(keyorder)
+table.sort(keyorder, function(l, r)
+    if type(l) == type(r) then
+        return l < r
+    else
+        return type(l) > type(r)
+    end
+end)
 
 io.open((params[2] or "data/") .. file .. ".min.json", "w"):write(json.encode(result, { keyorder = keyorder }))
 io.open((params[2] or "data/") .. file .. ".json", "w"):write(json.encode(result, { indent = true, keyorder = keyorder }))

@@ -823,28 +823,35 @@
         "text":"You gain {0} Mana Flask Charges when you Hit Cursed Enemy, no more\nthan once every 0.5 seconds"
       }]
   },
-  "70":{
-    "name":"bleed_when_hit_chance",
-    "stats":["receive_bleeding_chance_%_when_hit_by_attack"],
+  "65":{
+    "name":"mark_effect_incr",
+    "stats":["mark_skills_curse_effect_+%"],
     "1":[{
         "limit":[[1,"#"]],
-        "text":"Attack Hits against Cursed Enemies have {0}% chance to inflict Bleeding",
+        "text":"{0}% increased Effect of Mark"
+      },{
+        "limit":[["#",-1]],
+        "text":"{0}% reduced Effect of Mark",
         "1":{
-          "k":"reminderstring",
-          "v":"ReminderTextBleeding"
+          "k":"negate",
+          "v":1
         }
       }]
   },
-  "71":{
-    "name":"reflect_overkill_damage_on_death",
-    "stats":["punishment_reflect_%_overkill_damage_to_nearby_allies_on_death"],
+  "66":{
+    "name":"chaos_weakness_damage",
+    "stats":["minimum_added_chaos_damage_taken","maximum_added_chaos_damage_taken"],
     "1":[{
-        "limit":[["#","#"]],
-        "text":"{0}% of Overkill Damage from Killing Blows on Cursed Enemies is Reflected to other Enemies as Physical Damage",
-        "1":{
-          "k":"reminderstring",
-          "v":"ReminderTextOverkill"
-        }
+        "limit":[["#","#"],["#","#"]],
+        "text":"Adds {0} to {1} Chaos Damage to Hits against Cursed Enemies"
+      }]
+  },
+  "67":{
+    "name":"physical_damage_enemies_cursed",
+    "stats":["minimum_added_physical_damage_taken","maximum_added_physical_damage_taken"],
+    "1":[{
+        "limit":[["#","#"],["#","#"]],
+        "text":"Adds {0} to {1} Physical Damage to Hits against Cursed Enemies"
       }]
   },
   "68":{
@@ -870,91 +877,43 @@
         "text":"Projectiles which Hit Cursed Enemies Split towards {0} additional targets"
       }]
   },
-  "66":{
-    "name":"chaos_weakness_damage",
-    "stats":["minimum_added_chaos_damage_taken","maximum_added_chaos_damage_taken"],
-    "1":[{
-        "limit":[["#","#"],["#","#"]],
-        "text":"Adds {0} to {1} Chaos Damage to Hits against Cursed Enemies"
-      }]
-  },
-  "67":{
-    "name":"physical_damage_enemies_cursed",
-    "stats":["minimum_added_physical_damage_taken","maximum_added_physical_damage_taken"],
-    "1":[{
-        "limit":[["#","#"],["#","#"]],
-        "text":"Adds {0} to {1} Physical Damage to Hits against Cursed Enemies"
-      }]
-  },
-  "65":{
-    "name":"mark_effect_incr",
-    "stats":["mark_skills_curse_effect_+%"],
+  "70":{
+    "name":"bleed_when_hit_chance",
+    "stats":["receive_bleeding_chance_%_when_hit_by_attack"],
     "1":[{
         "limit":[[1,"#"]],
-        "text":"{0}% increased Effect of Mark"
+        "text":"Attack Hits against Cursed Enemies have {0}% chance to inflict Bleeding",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextBleeding"
+        }
+      }]
+  },
+  "71":{
+    "name":"reflect_overkill_damage_on_death",
+    "stats":["punishment_reflect_%_overkill_damage_to_nearby_allies_on_death"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"{0}% of Overkill Damage from Killing Blows on Cursed Enemies is Reflected to other Enemies as Physical Damage",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextOverkill"
+        }
+      }]
+  },
+  "72":{
+    "name":"self_bleeding_duration_incr",
+    "stats":["self_bleed_duration_+%"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"{0}% increased Duration of Bleeding on Cursed Enemies"
       },{
         "limit":[["#",-1]],
-        "text":"{0}% reduced Effect of Mark",
+        "text":"{0}% reduced Duration of Bleeding on Cursed Enemies",
         "1":{
           "k":"negate",
           "v":1
         }
-      }]
-  },
-  "77":{
-    "name":"action_speed_reduction_rare_or_unique",
-    "stats":["temporal_chains_action_speed_+%_vs_rare_or_unique_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Cursed Rare and Unique Enemies have {0}% more Action Speed"
-      },{
-        "limit":[["#",-1]],
-        "text":"Cursed Rare and Unique Enemies have {0}% less Action Speed",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "76":{
-    "name":"hextouch_curse_effect",
-    "stats":["support_hextouch_curse_effect_+%_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"{0}% more Effect of Curse"
-      },{
-        "limit":[["#",-1]],
-        "text":"{0}% less Effect of Curse",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "74":{
-    "name":"bane_curse_effect",
-    "stats":["support_bane_curse_effect_+%_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"{0}% more Effect of Curse"
-      },{
-        "limit":[["#",-1]],
-        "text":"{0}% less Effect of Curse",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "78":{
-    "name":"curse_triggers_doom_blast",
-    "stats":["trigger_vicious_hex_explosion_when_curse_ends"],
-    "1":[{
-        "limit":[[1,99]],
-        "text":"Trigger Doom Blast when Curse ends"
-      },{
-        "limit":[[100,"#"]],
-        "text":"Trigger Doom Blast when Curse ends"
       }]
   },
   "73":{
@@ -980,15 +939,15 @@
         }
       }]
   },
-  "72":{
-    "name":"self_bleeding_duration_incr",
-    "stats":["self_bleed_duration_+%"],
+  "74":{
+    "name":"bane_curse_effect",
+    "stats":["support_bane_curse_effect_+%_final"],
     "1":[{
         "limit":[[1,"#"]],
-        "text":"{0}% increased Duration of Bleeding on Cursed Enemies"
+        "text":"{0}% more Effect of Curse"
       },{
         "limit":[["#",-1]],
-        "text":"{0}% reduced Duration of Bleeding on Cursed Enemies",
+        "text":"{0}% less Effect of Curse",
         "1":{
           "k":"negate",
           "v":1
@@ -1008,6 +967,47 @@
           "k":"negate",
           "v":1
         }
+      }]
+  },
+  "76":{
+    "name":"hextouch_curse_effect",
+    "stats":["support_hextouch_curse_effect_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"{0}% more Effect of Curse"
+      },{
+        "limit":[["#",-1]],
+        "text":"{0}% less Effect of Curse",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "77":{
+    "name":"action_speed_reduction_rare_or_unique",
+    "stats":["temporal_chains_action_speed_+%_vs_rare_or_unique_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Cursed Rare and Unique Enemies have {0}% more Action Speed"
+      },{
+        "limit":[["#",-1]],
+        "text":"Cursed Rare and Unique Enemies have {0}% less Action Speed",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "78":{
+    "name":"curse_triggers_doom_blast",
+    "stats":["trigger_vicious_hex_explosion_when_curse_ends"],
+    "1":[{
+        "limit":[[1,99]],
+        "text":"Trigger Doom Blast when Curse ends"
+      },{
+        "limit":[[100,"#"]],
+        "text":"Trigger Doom Blast when Curse ends"
       }]
   }
 }

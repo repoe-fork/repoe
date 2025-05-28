@@ -1986,69 +1986,56 @@
         }
       }]
   },
-  "150":{
-    "name":"withered_on_hit_chance",
-    "stats":["withered_on_hit_chance_%"],
-    "1":[{
-        "limit":[[1,99]],
-        "text":"This Attack and Minions have {0}% chance to inflict Withered on Hit",
-        "1":{
-          "k":"reminderstring",
-          "v":"ReminderTextWithered"
-        }
-      },{
-        "limit":[[100,"#"]],
-        "text":"This Attack and Minions inflict Withered on Hit",
-        "1":{
-          "k":"reminderstring",
-          "v":"ReminderTextWithered"
-        }
-      }]
-  },
-  "149":{
-    "name":"support_slashing_damage_from_distance",
-    "stats":["support_slashing_damage_+%_final_from_distance"],
-    "1":[{
-        "limit":[["#","#"]],
-        "text":"This Skill and Minions deal up to {0}% more Melee Damage to Enemies, based on proximity"
-      }]
-  },
-  "147":{
-    "name":"support_scion_unique_chance",
-    "stats":["support_scion_onslaught_for_3_seconds_on_hitting_unique_enemy_%_chance","support_scion_onslaught_on_unique_hit_duration_ms"],
-    "1":[{
-        "limit":[["#","#"],["#","#"]],
-        "text":"This Attack and Minions have {0}% chance to gain Onslaught for {1} seconds when you Hit a Unique Enemy",
-        "1":{
-          "k":"milliseconds_to_seconds",
-          "v":2
-        },
-        "2":{
-          "k":"reminderstring",
-          "v":"ReminderTextOnslaught"
-        }
-      }]
-  },
-  "146":{
-    "name":"rupture_time_passed",
-    "stats":["support_rupture_bleeding_time_passed_+%_final"],
+  "129":{
+    "name":"hypothermia_cold_damage",
+    "stats":["support_hypothermia_cold_damage_over_time_+%_final"],
     "1":[{
         "limit":[[1,"#"]],
-        "text":"Bleeding expires {0}% more quickly per Rupture from this Skill or Minions on targets"
+        "text":"This Attack and Minions deal {0}% more Cold Damage Over Time"
       },{
         "limit":[["#",-1]],
-        "text":"Bleeding expires {0}% less quickly per Rupture from this Skill or Minions on targets"
+        "text":"This Attack and Minions deal {0}% less Cold Damage Over Time",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
-  "144":{
-    "name":"rupture_on_crit_bleed",
-    "stats":["critical_strikes_that_inflict_bleeding_also_rupture"],
+  "130":{
+    "name":"maimed_phys_damage_taken_incr",
+    "stats":["support_maimed_enemies_physical_damage_taken_+%"],
     "1":[{
-        "limit":[["#","#"]],
-        "text":"Critical Strikes that inflict Bleeding from this Skill or Minions also inflict Rupture",
+        "limit":[[1,"#"]],
+        "text":"Enemies Maimed by this Attack and Minions take {0}% increased Physical Damage"
+      },{
+        "limit":[["#",-1]],
+        "text":"Enemies Maimed by this Attack and Minions take {0}% reduced Physical Damage",
         "1":{
-          "k":"reminderstring",
-          "v":"ReminderTextRupture"
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "131":{
+    "name":"added_fire_against_burning",
+    "stats":["global_minimum_added_fire_damage_vs_burning_enemies","global_maximum_added_fire_damage_vs_burning_enemies"],
+    "1":[{
+        "limit":[["#","#"],["#","#"]],
+        "text":"This Attack and Minions deal {0} to {1} added Fire Damage against Burning Enemies"
+      }]
+  },
+  "132":{
+    "name":"momentum_attack_speed",
+    "stats":["support_momentum_attack_speed_+%_per_stack"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"This Attack and Minions have {0}% increased Attack Speed per Momentum"
+      },{
+        "limit":[["#",-1]],
+        "text":"This Attack and Minions have {0}% reduced Attack Speed per Momentum",
+        "1":{
+          "k":"negate",
+          "v":1
         }
       }]
   },
@@ -2088,6 +2075,21 @@
         "2":{
           "k":"milliseconds_to_seconds_2dp",
           "v":2
+        }
+      }]
+  },
+  "135":{
+    "name":"power_charge_on_crit_damage",
+    "stats":["support_power_charge_on_crit_damage_+%_final_per_power_charge"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"This Attack and Minions deal {0}% more Damage per Power Charge"
+      },{
+        "limit":[["#",-1]],
+        "text":"This Attack and Minions deal {0}% less Damage per Power Charge",
+        "1":{
+          "k":"negate",
+          "v":1
         }
       }]
   },
@@ -2224,71 +2226,53 @@
         "text":"Enemies have -{0}% chance to Block Attack or Spell Damage from this Skill or Minions"
       }]
   },
-  "132":{
-    "name":"momentum_attack_speed",
-    "stats":["support_momentum_attack_speed_+%_per_stack"],
+  "144":{
+    "name":"rupture_on_crit_bleed",
+    "stats":["critical_strikes_that_inflict_bleeding_also_rupture"],
     "1":[{
-        "limit":[[1,"#"]],
-        "text":"This Attack and Minions have {0}% increased Attack Speed per Momentum"
-      },{
-        "limit":[["#",-1]],
-        "text":"This Attack and Minions have {0}% reduced Attack Speed per Momentum",
+        "limit":[["#","#"]],
+        "text":"Critical Strikes that inflict Bleeding from this Skill or Minions also inflict Rupture",
         "1":{
-          "k":"negate",
-          "v":1
+          "k":"reminderstring",
+          "v":"ReminderTextRupture"
         }
       }]
   },
-  "129":{
-    "name":"hypothermia_cold_damage",
-    "stats":["support_hypothermia_cold_damage_over_time_+%_final"],
+  "145":{
+    "name":"rupture_damage_taken",
+    "stats":["support_rupture_bleeding_damage_taken_+%_final"],
     "1":[{
         "limit":[[1,"#"]],
-        "text":"This Attack and Minions deal {0}% more Cold Damage Over Time"
+        "text":"Targets take {0}% more Damage from Bleeding per Rupture on them from this Skill or Minions"
       },{
         "limit":[["#",-1]],
-        "text":"This Attack and Minions deal {0}% less Cold Damage Over Time",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
+        "text":"Targets take {0}% less Damage from Bleeding per Rupture on them from this Skill or Minions"
       }]
   },
-  "131":{
-    "name":"added_fire_against_burning",
-    "stats":["global_minimum_added_fire_damage_vs_burning_enemies","global_maximum_added_fire_damage_vs_burning_enemies"],
+  "146":{
+    "name":"rupture_time_passed",
+    "stats":["support_rupture_bleeding_time_passed_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Bleeding expires {0}% more quickly per Rupture from this Skill or Minions on targets"
+      },{
+        "limit":[["#",-1]],
+        "text":"Bleeding expires {0}% less quickly per Rupture from this Skill or Minions on targets"
+      }]
+  },
+  "147":{
+    "name":"support_scion_unique_chance",
+    "stats":["support_scion_onslaught_for_3_seconds_on_hitting_unique_enemy_%_chance","support_scion_onslaught_on_unique_hit_duration_ms"],
     "1":[{
         "limit":[["#","#"],["#","#"]],
-        "text":"This Attack and Minions deal {0} to {1} added Fire Damage against Burning Enemies"
-      }]
-  },
-  "130":{
-    "name":"maimed_phys_damage_taken_incr",
-    "stats":["support_maimed_enemies_physical_damage_taken_+%"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Enemies Maimed by this Attack and Minions take {0}% increased Physical Damage"
-      },{
-        "limit":[["#",-1]],
-        "text":"Enemies Maimed by this Attack and Minions take {0}% reduced Physical Damage",
+        "text":"This Attack and Minions have {0}% chance to gain Onslaught for {1} seconds when you Hit a Unique Enemy",
         "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "135":{
-    "name":"power_charge_on_crit_damage",
-    "stats":["support_power_charge_on_crit_damage_+%_final_per_power_charge"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"This Attack and Minions deal {0}% more Damage per Power Charge"
-      },{
-        "limit":[["#",-1]],
-        "text":"This Attack and Minions deal {0}% less Damage per Power Charge",
-        "1":{
-          "k":"negate",
-          "v":1
+          "k":"milliseconds_to_seconds",
+          "v":2
+        },
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextOnslaught"
         }
       }]
   },
@@ -2308,15 +2292,31 @@
         }
       }]
   },
-  "145":{
-    "name":"rupture_damage_taken",
-    "stats":["support_rupture_bleeding_damage_taken_+%_final"],
+  "149":{
+    "name":"support_slashing_damage_from_distance",
+    "stats":["support_slashing_damage_+%_final_from_distance"],
     "1":[{
-        "limit":[[1,"#"]],
-        "text":"Targets take {0}% more Damage from Bleeding per Rupture on them from this Skill or Minions"
+        "limit":[["#","#"]],
+        "text":"This Skill and Minions deal up to {0}% more Melee Damage to Enemies, based on proximity"
+      }]
+  },
+  "150":{
+    "name":"withered_on_hit_chance",
+    "stats":["withered_on_hit_chance_%"],
+    "1":[{
+        "limit":[[1,99]],
+        "text":"This Attack and Minions have {0}% chance to inflict Withered on Hit",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextWithered"
+        }
       },{
-        "limit":[["#",-1]],
-        "text":"Targets take {0}% less Damage from Bleeding per Rupture on them from this Skill or Minions"
+        "limit":[[100,"#"]],
+        "text":"This Attack and Minions inflict Withered on Hit",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextWithered"
+        }
       }]
   }
 }

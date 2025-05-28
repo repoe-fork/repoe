@@ -3874,71 +3874,6 @@
         "text":"This Skill and Minions gain a Frenzy Charge when a Mine is Detonated targeting an Enemy"
       }]
   },
-  "326":{
-    "name":"trap_throwing_speed_per_frenzy",
-    "stats":["trap_throwing_speed_+%_per_frenzy_charge"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"This Skill and Minions have {0}% increased Trap Throwing Speed per Frenzy Charge"
-      },{
-        "limit":[["#",-1]],
-        "text":"This Skill and Minions have {0}% reduced Trap Throwing Speed per Frenzy Charge",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "322":{
-    "name":"spell_echo_final_repeat_damage",
-    "stats":["support_spell_echo_final_repeat_damage_+%_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minion's Final Repeat deals {0}% more Damage"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minion's Final Repeat deals {0}% less Damage",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "320":{
-    "name":"support_scion_chance",
-    "stats":["support_scion_onslaught_on_killing_blow_%_chance","support_scion_onslaught_on_killing_blow_duration_ms","virtual_support_scion_onslaught_on_killing_blow_duration_ms"],
-    "1":[{
-        "limit":[["#","#"],["#","#"],["!",0]],
-        "text":"Minions have {0}% chance to gain Onslaught for {2} seconds on\ndealing a Killing Blow",
-        "1":{
-          "k":"milliseconds_to_seconds",
-          "v":3
-        },
-        "2":{
-          "k":"reminderstring",
-          "v":"ReminderTextOnslaught"
-        }
-      }]
-  },
-  "328":{
-    "name":"wither_2_seconds_chance",
-    "stats":["withered_on_hit_for_2_seconds_%_chance"],
-    "1":[{
-        "limit":[[1,99]],
-        "text":"Agony Crawler has {0}% chance to inflict Withered for 2 seconds on Hit",
-        "1":{
-          "k":"reminderstring",
-          "v":"ReminderTextWithered"
-        }
-      },{
-        "limit":[[100,"#"]],
-        "text":"Agony Crawler inflicts Withered for 2 seconds on Hit",
-        "1":{
-          "k":"reminderstring",
-          "v":"ReminderTextWithered"
-        }
-      }]
-  },
   "257":{
     "name":"frenzy_charge_on_trap_trig",
     "stats":["%_chance_to_gain_frenzy_charge_on_trap_triggered_by_an_enemy"],
@@ -3950,54 +3885,71 @@
         "text":"This Skill and Minions have gain a Frenzy Charge when your Trap is triggered by an Enemy"
       }]
   },
-  "324":{
-    "name":"withered_support_base_duration",
-    "stats":["support_withered_base_duration_ms"],
+  "258":{
+    "name":"power_charge_on_mine_detonate",
+    "stats":["%_chance_to_gain_power_charge_on_mine_detonated_targeting_an_enemy"],
     "1":[{
-        "limit":[[1000,1000]],
-        "text":"Withered inflicted by Minions has a base duration of {0} second",
-        "1":{
-          "k":"milliseconds_to_seconds",
-          "v":1
-        }
-      },{
         "limit":[["#","#"]],
-        "text":"Withered inflicted by Minions has a base duration of {0} seconds",
-        "1":{
-          "k":"milliseconds_to_seconds",
-          "v":1
-        }
+        "text":"This Skill and Minions have {0}% chance to gain a Power Charge when a Mine is Detonated targeting an Enemy"
+      },{
+        "limit":[[100,100]],
+        "text":"This Skill and Minions gain a Power Charge when a Mine is Detonated targeting an Enemy"
       }]
   },
-  "323":{
-    "name":"ailment_damage_incr",
-    "stats":["support_unbound_ailments_ailment_damage_+%_final"],
+  "259":{
+    "name":"power_charge_on_trap_trig",
+    "stats":["%_chance_to_gain_power_charge_on_trap_triggered_by_an_enemy"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"This Skill and Minions have {0}% chance to gain a Power Charge when your Trap is triggered by an Enemy"
+      },{
+        "limit":[[100,100]],
+        "text":"This Skill and Minions gain a Power Charge when your Trap is triggered by an Enemy"
+      }]
+  },
+  "260":{
+    "name":"projectile_additional_return_chance",
+    "stats":["projectile_additional_return_chance_%"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"Minions' Projectiles have {0}% chance to Return to you an additional Time"
+      }]
+  },
+  "261":{
+    "name":"base_pierce_num",
+    "stats":["projectile_base_number_of_targets_to_pierce"],
+    "1":[{
+        "limit":[[1,1]],
+        "text":"Minion's Projectiles Pierce an additional Target"
+      },{
+        "limit":[[2,"#"]],
+        "text":"Minion's Projectiles Pierce {0} additional Targets"
+      }]
+  },
+  "262":{
+    "name":"chance_to_not_pierce",
+    "stats":["projectile_chance_to_not_pierce_%"],
+    "1":[{
+        "limit":[["#",99]],
+        "text":"Projectiles Fired by Minions have {0}% chance not to Pierce Enemies"
+      },{
+        "limit":[[100,"#"]],
+        "text":"Projectiles Fired by Minions Cannot Pierce Enemies"
+      }]
+  },
+  "263":{
+    "name":"proj_damage_if_pierced",
+    "stats":["projectile_damage_+%_if_pierced_enemy"],
     "1":[{
         "limit":[[1,"#"]],
-        "text":"Minions deal {0}% more Damage with Ailments",
-        "1":{
-          "k":"reminderstring",
-          "v":"ReminderTextDamagingAilments"
-        }
+        "text":"Minions' Projectiles that have Pierced deal {0}% increased Damage"
       },{
         "limit":[["#",-1]],
-        "text":"Minions deal {0}% less Damage with Ailments",
+        "text":"Minions' Projectiles that have Pierced deal {0}% reduced Damage",
         "1":{
           "k":"negate",
           "v":1
-        },
-        "2":{
-          "k":"reminderstring",
-          "v":"ReminderTextDamagingAilments"
         }
-      }]
-  },
-  "321":{
-    "name":"support_slashing_damage_from_distance",
-    "stats":["support_slashing_damage_+%_final_from_distance"],
-    "1":[{
-        "limit":[["#","#"]],
-        "text":"Minions deal up to {0}% more Melee Damage to Enemies, based on proximity"
       }]
   },
   "264":{
@@ -4015,6 +3967,25 @@
         }
       }]
   },
+  "265":{
+    "name":"pierce_all_targets_in_x_range",
+    "stats":["projectiles_pierce_all_targets_in_x_range"],
+    "1":[{
+        "limit":[[10,10]],
+        "text":"Projectiles Fired by Minions Pierce all Targets within {0} metre",
+        "1":{
+          "k":"locations_to_metres",
+          "v":1
+        }
+      },{
+        "limit":[["#","#"]],
+        "text":"Projectiles Fired by Minions Pierce all Targets within {0} metres",
+        "1":{
+          "k":"locations_to_metres",
+          "v":1
+        }
+      }]
+  },
   "266":{
     "name":"life_recover_on_stun",
     "stats":["recover_%_life_when_stunning_an_enemy_permyriad"],
@@ -4025,6 +3996,14 @@
           "k":"divide_by_one_hundred",
           "v":1
         }
+      }]
+  },
+  "267":{
+    "name":"chaos_penetration",
+    "stats":["reduce_enemy_chaos_resistance_%"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions Penetrate {0}% Chaos Resistance"
       }]
   },
   "268":{
@@ -4042,6 +4021,29 @@
         }
       }]
   },
+  "269":{
+    "name":"skill_and_damaging_ailment_duration_incr",
+    "stats":["skill_effect_and_damaging_ailment_duration_+%"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions have {0}% increased Duration of Skills and Duration of Damaging Ailments",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextDamagingAilments"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions have {0}% reduced Duration of Skills and Damaging Ailments",
+        "1":{
+          "k":"negate",
+          "v":1
+        },
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextDamagingAilments"
+        }
+      }]
+  },
   "270":{
     "name":"physical_damage_to_convert_to_chaos",
     "stats":["skill_physical_damage_%_to_convert_to_chaos"],
@@ -4050,75 +4052,12 @@
         "text":"Minions Convert {0}% of Physical Damage to Chaos Damage"
       }]
   },
-  "258":{
-    "name":"power_charge_on_mine_detonate",
-    "stats":["%_chance_to_gain_power_charge_on_mine_detonated_targeting_an_enemy"],
+  "271":{
+    "name":"physical_damage_to_convert_to_cold",
+    "stats":["skill_physical_damage_%_to_convert_to_cold","active_skill_display_suppress_physical_to_cold_damage_conversion"],
     "1":[{
-        "limit":[["#","#"]],
-        "text":"This Skill and Minions have {0}% chance to gain a Power Charge when a Mine is Detonated targeting an Enemy"
-      },{
-        "limit":[[100,100]],
-        "text":"This Skill and Minions gain a Power Charge when a Mine is Detonated targeting an Enemy"
-      }]
-  },
-  "262":{
-    "name":"chance_to_not_pierce",
-    "stats":["projectile_chance_to_not_pierce_%"],
-    "1":[{
-        "limit":[["#",99]],
-        "text":"Projectiles Fired by Minions have {0}% chance not to Pierce Enemies"
-      },{
-        "limit":[[100,"#"]],
-        "text":"Projectiles Fired by Minions Cannot Pierce Enemies"
-      }]
-  },
-  "306":{
-    "name":"power_charge_on_crit_damage",
-    "stats":["support_power_charge_on_crit_damage_+%_final_per_power_charge"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions deal {0}% more Damage per Power Charge"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minions deal {0}% less Damage per Power Charge",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "317":{
-    "name":"rupture_damage_taken",
-    "stats":["support_rupture_bleeding_damage_taken_+%_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Targets take {0}% more Damage from Bleeding per Rupture on them from Minions"
-      },{
-        "limit":[["#",-1]],
-        "text":"Targets take {0}% less Damage from Bleeding per Rupture on them from Minions"
-      }]
-  },
-  "284":{
-    "name":"executioner_refresh_stolen_mod",
-    "stats":["support_executioner_refresh_stolen_mod_on_hitting_rare_or_unique_monster_chance_%"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions have {0}% chance to refresh Duration of their granted Modifier by up to 5 seconds on Hitting a Rare or Unique Enemy"
-      }]
-  },
-  "305":{
-    "name":"parallel_projectiles_damage_final",
-    "stats":["support_parallel_projectiles_damage_+%_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions deal {0}% more Projectile Damage"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minions deal {0}% less Projectile Damage",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
+        "limit":[[1,"#"],[0,0]],
+        "text":"Minions Convert {0}% of Physical Damage to Cold Damage"
       }]
   },
   "272":{
@@ -4129,15 +4068,38 @@
         "text":"Minions Convert {0}% of Physical Damage to Fire Damage"
       }]
   },
-  "315":{
-    "name":"support_less_duration",
-    "stats":["support_reduced_duration_skill_effect_duration_+%_final"],
+  "273":{
+    "name":"skitterbots_trap_mine_damage",
+    "stats":["skitterbots_trap_mine_damage_+%_final"],
     "1":[{
         "limit":[[1,"#"]],
-        "text":"Minions have {0}% more Duration"
+        "text":"Skitterbots grant {0}% more Trap and Mine Damage"
       },{
         "limit":[["#",-1]],
-        "text":"Minions have {0}% less Duration",
+        "text":"Skitterbots grant {0}% less Trap and Mine Damage",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "274":{
+    "name":"wolf_damage",
+    "stats":["spectral_wolf_grants_attack_minimum_added_physical_damage","spectral_wolf_grants_attack_maximum_added_physical_damage"],
+    "1":[{
+        "limit":[["#","#"],["#","#"]],
+        "text":"Buff grants {0} to {1} Added Attack Physical Damage"
+      }]
+  },
+  "275":{
+    "name":"brutality_phys_damage",
+    "stats":["support_brutality_physical_damage_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions deal {0}% more Physical Damage"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions deal {0}% less Physical Damage",
         "1":{
           "k":"negate",
           "v":1
@@ -4167,6 +4129,370 @@
         }
       }]
   },
+  "277":{
+    "name":"support_chilling_areas_incr_cold_damage_taken",
+    "stats":["support_chilling_areas_also_grant_cold_damage_taken_+%_equal_to_slow_amount"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"Enemies in Chilling Areas from Minion's Skills have Cold Damage taken increased by Chill Effect",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextChillingArea"
+        }
+      }]
+  },
+  "278":{
+    "name":"support_chills_incr_cold_dot_taken",
+    "stats":["support_chills_also_grant_cold_damage_taken_per_minute_+%"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Enemies Chilled by Minions take {0}% increased Cold Damage over Time"
+      },{
+        "limit":[["#",-1]],
+        "text":"Enemies Chilled by Minions take {0}% reduced Cold Damage over Time",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "279":{
+    "name":"support_chills_incr_cold_damage_taken",
+    "stats":["support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"Enemies Chilled by Minions have Cold Damage taken increased by Chill Effect"
+      }]
+  },
+  "280":{
+    "name":"support_damage_full_es_incr",
+    "stats":["support_energy_shield_leech_damage_+%_on_full_energy_shield_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions deal {0}% more Damage while on Full Energy Shield"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions deal {0}% less Damage while on Full Energy Shield",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "281":{
+    "name":"damage_while_es_leeching_more",
+    "stats":["support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions deal {0}% more Damage while Leeching Energy Shield"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions deal {0}% less Damage while Leeching Energy Shield",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "282":{
+    "name":"executioner_low_life_damage",
+    "stats":["support_executioner_damage_vs_enemies_on_low_life_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions deal {0}% more Damage with Hits and Ailments against Enemies on Low Life"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions deal {0}% less Damage with Hits and Ailments against Enemies on Low Life",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "283":{
+    "name":"executioner_steal_mod",
+    "stats":["support_executioner_gain_one_rare_monster_mod_on_kill_ms"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions Killing a Rare Monster with a Hit from a Strike Skill with a Melee Weapon gain one of its Modifiers for a base Duration of {0} seconds",
+        "1":{
+          "k":"milliseconds_to_seconds_0dp",
+          "v":1
+        }
+      }]
+  },
+  "284":{
+    "name":"executioner_refresh_stolen_mod",
+    "stats":["support_executioner_refresh_stolen_mod_on_hitting_rare_or_unique_monster_chance_%"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions have {0}% chance to refresh Duration of their granted Modifier by up to 5 seconds on Hitting a Rare or Unique Enemy"
+      }]
+  },
+  "285":{
+    "name":"support_faster_ailments_duration",
+    "stats":["support_faster_ailments_ailment_duration_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"{0}% more Duration of Ailments inflicted by Minions",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextAilments"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"{0}% less Duration of Ailments inflicted by Minions",
+        "1":{
+          "k":"negate",
+          "v":1
+        },
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextAilments"
+        }
+      }]
+  },
+  "286":{
+    "name":"support_fortify_ailment_damage_final_incr",
+    "stats":["support_fortify_ailment_damage_+%_final_from_melee_hits"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions deal {0}% more Damage with Ailments caused by Melee Hits"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions deal {0}% less Damage with Ailments caused by Melee Hits",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "287":{
+    "name":"support_fortify_melee_damage_final_incr",
+    "stats":["support_fortify_melee_damage_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions deal {0}% more Melee Damage"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions deal {0}% less Melee Damage",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "288":{
+    "name":"greater_volley_projectiles_damage_final",
+    "stats":["support_greater_volley_projectile_damage_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions deal {0}% more Projectile Damage"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions deal {0}% less Projectile Damage",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "289":{
+    "name":"hypothermia_cold_damage",
+    "stats":["support_hypothermia_cold_damage_over_time_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions deal {0}% more Cold Damage Over Time"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions deal {0}% less Cold Damage Over Time",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "290":{
+    "name":"support_more_duration",
+    "stats":["support_more_duration_skill_effect_duration_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions have {0}% more Duration"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions have {0}% less Duration",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "291":{
+    "name":"maim_phys_damage",
+    "stats":["support_maim_chance_physical_damage_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions deal {0}% more Physical Damage"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions deal {0}% less Physical Damage",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "292":{
+    "name":"maimed_phys_damage_taken_incr",
+    "stats":["support_maimed_enemies_physical_damage_taken_+%"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Enemies Maimed by Minions take {0}% increased Physical Damage"
+      },{
+        "limit":[["#",-1]],
+        "text":"Enemies Maimed by Minions take {0}% reduced Physical Damage",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "293":{
+    "name":"added_fire_against_burning",
+    "stats":["global_minimum_added_fire_damage_vs_burning_enemies","global_maximum_added_fire_damage_vs_burning_enemies"],
+    "1":[{
+        "limit":[["#","#"],["#","#"]],
+        "text":"Minions deal {0} to {1} added Fire Damage against Burning Enemies"
+      }]
+  },
+  "294":{
+    "name":"deathmark_crit_chance_vs_target",
+    "stats":["support_minion_focus_fire_critical_strike_chance_+%_vs_focused_target"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions have {0}% increased Critical Strike Chance against the Prey"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions have {0}% reduced Critical Strike Chance against the Prey",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "295":{
+    "name":"deathmark_crit_multi_vs_target",
+    "stats":["support_minion_focus_fire_critical_strike_multiplier_+_vs_focused_target"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"Minions have {0:+d}% to Critical Strike Multiplier against the Prey"
+      }]
+  },
+  "296":{
+    "name":"deathmark_damage_to_target",
+    "stats":["support_minion_focus_fire_damage_+%_final_vs_focussed_target"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions deal {0}% more Damage to the Prey with Hits and Ailments"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions deal {0}% less Damage to the Prey with Hits and Ailments",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "297":{
+    "name":"support_burning_minions_aura_burn",
+    "stats":["support_minion_instability_minion_base_fire_area_damage_per_minute"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions deal {0} Base Fire Damage per second to Enemies near them",
+        "1":{
+          "k":"per_minute_to_per_second",
+          "v":1
+        }
+      }]
+  },
+  "298":{
+    "name":"minion_totem_resistance_support_damage",
+    "stats":["support_minion_totem_resistance_elemental_damage_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions deal {0}% more Elemental Damage"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions deal {0}% less Elemental Damage",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "299":{
+    "name":"deathmark_target",
+    "stats":["support_minion_use_focussed_target"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"Minions always target the Prey if possible"
+      }]
+  },
+  "300":{
+    "name":"momentum_attack_speed",
+    "stats":["support_momentum_attack_speed_+%_per_stack"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions have {0}% increased Attack Speed per Momentum"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions have {0}% reduced Attack Speed per Momentum",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "301":{
+    "name":"momentum_buff_duration",
+    "stats":["support_momentum_base_buff_duration_ms","support_momentum_buff_duration_ms","support_momentum_max_stacks"],
+    "1":[{
+        "limit":[["#","#"],["#","#"],["#","#"]],
+        "text":"When Minions reach {2} Momentum, they lose all Momentum and gain Swiftness for a Base Duration of {0} seconds",
+        "1":{
+          "k":"milliseconds_to_seconds_1dp",
+          "v":1
+        }
+      }]
+  },
+  "302":{
+    "name":"momentum_generation",
+    "stats":["support_momentum_stack_while_channelling_base_ms","support_momentum_stack_while_channelling_ms"],
+    "1":[{
+        "limit":[["#","#"],["#","#"]],
+        "text":"Minions gain 1 Momentum when they Attack\nMinions gain 1 Momentum every {0} seconds while Channelling an Attack\nMinions lose all Momentum if they Move",
+        "1":{
+          "k":"milliseconds_to_seconds_2dp",
+          "v":1
+        }
+      }]
+  },
+  "303":{
+    "name":"support_overpowered_on_enemy_block_base_duration",
+    "stats":["support_overpowered_base_duration_ms"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"Minions inflict Overpowered for a base Duration of {0} seconds when Their Hits are Blocked",
+        "1":{
+          "k":"milliseconds_to_seconds",
+          "v":1
+        },
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextOverpowered"
+        }
+      }]
+  },
   "304":{
     "name":"support_parallel_projectiles",
     "stats":["support_parallel_projectile_number_of_points_per_side"],
@@ -4178,15 +4504,45 @@
         "text":"Minions fire Projectiles from up to {0} points on each side of them"
       }]
   },
-  "310":{
-    "name":"pure_shock_less_damage",
-    "stats":["support_pure_shock_damage_+%_final"],
+  "305":{
+    "name":"parallel_projectiles_damage_final",
+    "stats":["support_parallel_projectiles_damage_+%_final"],
     "1":[{
         "limit":[[1,"#"]],
-        "text":"Minions deal {0}% more Damage"
+        "text":"Minions deal {0}% more Projectile Damage"
       },{
         "limit":[["#",-1]],
-        "text":"Minions deal {0}% less Damage",
+        "text":"Minions deal {0}% less Projectile Damage",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "306":{
+    "name":"power_charge_on_crit_damage",
+    "stats":["support_power_charge_on_crit_damage_+%_final_per_power_charge"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions deal {0}% more Damage per Power Charge"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions deal {0}% less Damage per Power Charge",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "307":{
+    "name":"pulverise_area_of_effect",
+    "stats":["support_pulverise_area_of_effect_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions have {0}% more Area of Effect"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions have {0}% less Area of Effect",
         "1":{
           "k":"negate",
           "v":1
@@ -4208,35 +4564,49 @@
         }
       }]
   },
-  "318":{
-    "name":"rupture_time_passed",
-    "stats":["support_rupture_bleeding_time_passed_+%_final"],
+  "309":{
+    "name":"pulverise_melee_area_damage",
+    "stats":["support_pulverise_melee_area_damage_+%_final"],
     "1":[{
         "limit":[[1,"#"]],
-        "text":"Bleeding expires {0}% more quickly per Rupture from Minions on targets"
+        "text":"Minions deal {0}% more Melee Area Damage"
       },{
         "limit":[["#",-1]],
-        "text":"Bleeding expires {0}% less quickly per Rupture from Minions on targets"
-      }]
-  },
-  "316":{
-    "name":"rupture_on_crit_bleed",
-    "stats":["critical_strikes_that_inflict_bleeding_also_rupture"],
-    "1":[{
-        "limit":[["#","#"]],
-        "text":"Minions' Critical Strikes that inflict Bleeding also inflict Rupture",
+        "text":"Minions deal {0}% less Melee Area Damage",
         "1":{
-          "k":"reminderstring",
-          "v":"ReminderTextRupture"
+          "k":"negate",
+          "v":1
         }
       }]
   },
-  "314":{
-    "name":"support_reduced_block_chance",
-    "stats":["support_reduce_enemy_block_and_spell_block_%"],
+  "310":{
+    "name":"pure_shock_less_damage",
+    "stats":["support_pure_shock_damage_+%_final"],
     "1":[{
-        "limit":[["#","#"]],
-        "text":"Enemies have -{0}% chance to Block Attack or Spell Damage from Minions"
+        "limit":[[1,"#"]],
+        "text":"Minions deal {0}% more Damage"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions deal {0}% less Damage",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "311":{
+    "name":"support_shock_with_more_damage",
+    "stats":["support_pure_shock_shock_as_though_damage_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minions Shock Enemies as though dealing {0}% more Damage"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions Shock Enemies as though dealing {0}% less Damage",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "312":{
@@ -4266,116 +4636,40 @@
         }
       }]
   },
-  "302":{
-    "name":"momentum_generation",
-    "stats":["support_momentum_stack_while_channelling_base_ms","support_momentum_stack_while_channelling_ms"],
+  "313":{
+    "name":"support_recent_ignites_ignite_damage",
+    "stats":["support_recent_ignites_ignite_damage_per_recent_ignite_+%_final","support_recent_ignites_ignite_damage_per_recent_ignite_+%_final_maximum"],
     "1":[{
-        "limit":[["#","#"],["#","#"]],
-        "text":"Minions gain 1 Momentum when they Attack\nMinions gain 1 Momentum every {0} seconds while Channelling an Attack\nMinions lose all Momentum if they Move",
+        "limit":[[1,"#"],["#","#"]],
+        "text":"Minions' Skills deal {0}% more Damage with Ignite for each Ignite inflicted with that Skill Recently, up to a maximum of {1}%",
         "1":{
-          "k":"milliseconds_to_seconds_2dp",
-          "v":1
+          "k":"reminderstring",
+          "v":"ReminderTextRecently"
         }
-      }]
-  },
-  "301":{
-    "name":"momentum_buff_duration",
-    "stats":["support_momentum_base_buff_duration_ms","support_momentum_buff_duration_ms","support_momentum_max_stacks"],
-    "1":[{
-        "limit":[["#","#"],["#","#"],["#","#"]],
-        "text":"When Minions reach {2} Momentum, they lose all Momentum and gain Swiftness for a Base Duration of {0} seconds",
-        "1":{
-          "k":"milliseconds_to_seconds_1dp",
-          "v":1
-        }
-      }]
-  },
-  "300":{
-    "name":"momentum_attack_speed",
-    "stats":["support_momentum_attack_speed_+%_per_stack"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions have {0}% increased Attack Speed per Momentum"
       },{
-        "limit":[["#",-1]],
-        "text":"Minions have {0}% reduced Attack Speed per Momentum",
+        "limit":[["#",-1],["#","#"]],
+        "text":"Minions' Skills deal {0}% less Damage with Ignite for each Ignite inflicted with that Skill Recently",
         "1":{
           "k":"negate",
           "v":1
+        },
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextRecently"
         }
       }]
   },
-  "298":{
-    "name":"minion_totem_resistance_support_damage",
-    "stats":["support_minion_totem_resistance_elemental_damage_+%_final"],
+  "314":{
+    "name":"support_reduced_block_chance",
+    "stats":["support_reduce_enemy_block_and_spell_block_%"],
     "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions deal {0}% more Elemental Damage"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minions deal {0}% less Elemental Damage",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
+        "limit":[["#","#"]],
+        "text":"Enemies have -{0}% chance to Block Attack or Spell Damage from Minions"
       }]
   },
-  "296":{
-    "name":"deathmark_damage_to_target",
-    "stats":["support_minion_focus_fire_damage_+%_final_vs_focussed_target"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions deal {0}% more Damage to the Prey with Hits and Ailments"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minions deal {0}% less Damage to the Prey with Hits and Ailments",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "294":{
-    "name":"deathmark_crit_chance_vs_target",
-    "stats":["support_minion_focus_fire_critical_strike_chance_+%_vs_focused_target"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions have {0}% increased Critical Strike Chance against the Prey"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minions have {0}% reduced Critical Strike Chance against the Prey",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "293":{
-    "name":"added_fire_against_burning",
-    "stats":["global_minimum_added_fire_damage_vs_burning_enemies","global_maximum_added_fire_damage_vs_burning_enemies"],
-    "1":[{
-        "limit":[["#","#"],["#","#"]],
-        "text":"Minions deal {0} to {1} added Fire Damage against Burning Enemies"
-      }]
-  },
-  "292":{
-    "name":"maimed_phys_damage_taken_incr",
-    "stats":["support_maimed_enemies_physical_damage_taken_+%"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Enemies Maimed by Minions take {0}% increased Physical Damage"
-      },{
-        "limit":[["#",-1]],
-        "text":"Enemies Maimed by Minions take {0}% reduced Physical Damage",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "290":{
-    "name":"support_more_duration",
-    "stats":["support_more_duration_skill_effect_duration_+%_final"],
+  "315":{
+    "name":"support_less_duration",
+    "stats":["support_reduced_duration_skill_effect_duration_+%_final"],
     "1":[{
         "limit":[[1,"#"]],
         "text":"Minions have {0}% more Duration"
@@ -4388,180 +4682,158 @@
         }
       }]
   },
-  "289":{
-    "name":"hypothermia_cold_damage",
-    "stats":["support_hypothermia_cold_damage_over_time_+%_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions deal {0}% more Cold Damage Over Time"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minions deal {0}% less Cold Damage Over Time",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "288":{
-    "name":"greater_volley_projectiles_damage_final",
-    "stats":["support_greater_volley_projectile_damage_+%_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions deal {0}% more Projectile Damage"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minions deal {0}% less Projectile Damage",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "287":{
-    "name":"support_fortify_melee_damage_final_incr",
-    "stats":["support_fortify_melee_damage_+%_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions deal {0}% more Melee Damage"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minions deal {0}% less Melee Damage",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "286":{
-    "name":"support_fortify_ailment_damage_final_incr",
-    "stats":["support_fortify_ailment_damage_+%_final_from_melee_hits"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions deal {0}% more Damage with Ailments caused by Melee Hits"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minions deal {0}% less Damage with Ailments caused by Melee Hits",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "283":{
-    "name":"executioner_steal_mod",
-    "stats":["support_executioner_gain_one_rare_monster_mod_on_kill_ms"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions Killing a Rare Monster with a Hit from a Strike Skill with a Melee Weapon gain one of its Modifiers for a base Duration of {0} seconds",
-        "1":{
-          "k":"milliseconds_to_seconds_0dp",
-          "v":1
-        }
-      }]
-  },
-  "282":{
-    "name":"executioner_low_life_damage",
-    "stats":["support_executioner_damage_vs_enemies_on_low_life_+%_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions deal {0}% more Damage with Hits and Ailments against Enemies on Low Life"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minions deal {0}% less Damage with Hits and Ailments against Enemies on Low Life",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "280":{
-    "name":"support_damage_full_es_incr",
-    "stats":["support_energy_shield_leech_damage_+%_on_full_energy_shield_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions deal {0}% more Damage while on Full Energy Shield"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minions deal {0}% less Damage while on Full Energy Shield",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "278":{
-    "name":"support_chills_incr_cold_dot_taken",
-    "stats":["support_chills_also_grant_cold_damage_taken_per_minute_+%"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Enemies Chilled by Minions take {0}% increased Cold Damage over Time"
-      },{
-        "limit":[["#",-1]],
-        "text":"Enemies Chilled by Minions take {0}% reduced Cold Damage over Time",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "277":{
-    "name":"support_chilling_areas_incr_cold_damage_taken",
-    "stats":["support_chilling_areas_also_grant_cold_damage_taken_+%_equal_to_slow_amount"],
+  "316":{
+    "name":"rupture_on_crit_bleed",
+    "stats":["critical_strikes_that_inflict_bleeding_also_rupture"],
     "1":[{
         "limit":[["#","#"]],
-        "text":"Enemies in Chilling Areas from Minion's Skills have Cold Damage taken increased by Chill Effect",
+        "text":"Minions' Critical Strikes that inflict Bleeding also inflict Rupture",
         "1":{
           "k":"reminderstring",
-          "v":"ReminderTextChillingArea"
+          "v":"ReminderTextRupture"
         }
       }]
   },
-  "275":{
-    "name":"brutality_phys_damage",
-    "stats":["support_brutality_physical_damage_+%_final"],
+  "317":{
+    "name":"rupture_damage_taken",
+    "stats":["support_rupture_bleeding_damage_taken_+%_final"],
     "1":[{
         "limit":[[1,"#"]],
-        "text":"Minions deal {0}% more Physical Damage"
+        "text":"Targets take {0}% more Damage from Bleeding per Rupture on them from Minions"
       },{
         "limit":[["#",-1]],
-        "text":"Minions deal {0}% less Physical Damage",
+        "text":"Targets take {0}% less Damage from Bleeding per Rupture on them from Minions"
+      }]
+  },
+  "318":{
+    "name":"rupture_time_passed",
+    "stats":["support_rupture_bleeding_time_passed_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Bleeding expires {0}% more quickly per Rupture from Minions on targets"
+      },{
+        "limit":[["#",-1]],
+        "text":"Bleeding expires {0}% less quickly per Rupture from Minions on targets"
+      }]
+  },
+  "319":{
+    "name":"support_scion_unique_chance",
+    "stats":["support_scion_onslaught_for_3_seconds_on_hitting_unique_enemy_%_chance","support_scion_onslaught_on_unique_hit_duration_ms"],
+    "1":[{
+        "limit":[["#","#"],["#","#"]],
+        "text":"Minions have {0}% chance to gain Onslaught for {1} seconds when they Hit a Unique Enemy",
+        "1":{
+          "k":"milliseconds_to_seconds",
+          "v":2
+        },
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextOnslaught"
+        }
+      }]
+  },
+  "320":{
+    "name":"support_scion_chance",
+    "stats":["support_scion_onslaught_on_killing_blow_%_chance","support_scion_onslaught_on_killing_blow_duration_ms","virtual_support_scion_onslaught_on_killing_blow_duration_ms"],
+    "1":[{
+        "limit":[["#","#"],["#","#"],["!",0]],
+        "text":"Minions have {0}% chance to gain Onslaught for {2} seconds on\ndealing a Killing Blow",
+        "1":{
+          "k":"milliseconds_to_seconds",
+          "v":3
+        },
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextOnslaught"
+        }
+      }]
+  },
+  "321":{
+    "name":"support_slashing_damage_from_distance",
+    "stats":["support_slashing_damage_+%_final_from_distance"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"Minions deal up to {0}% more Melee Damage to Enemies, based on proximity"
+      }]
+  },
+  "322":{
+    "name":"spell_echo_final_repeat_damage",
+    "stats":["support_spell_echo_final_repeat_damage_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Minion's Final Repeat deals {0}% more Damage"
+      },{
+        "limit":[["#",-1]],
+        "text":"Minion's Final Repeat deals {0}% less Damage",
         "1":{
           "k":"negate",
           "v":1
         }
       }]
   },
-  "274":{
-    "name":"wolf_damage",
-    "stats":["spectral_wolf_grants_attack_minimum_added_physical_damage","spectral_wolf_grants_attack_maximum_added_physical_damage"],
-    "1":[{
-        "limit":[["#","#"],["#","#"]],
-        "text":"Buff grants {0} to {1} Added Attack Physical Damage"
-      }]
-  },
-  "271":{
-    "name":"physical_damage_to_convert_to_cold",
-    "stats":["skill_physical_damage_%_to_convert_to_cold","active_skill_display_suppress_physical_to_cold_damage_conversion"],
-    "1":[{
-        "limit":[[1,"#"],[0,0]],
-        "text":"Minions Convert {0}% of Physical Damage to Cold Damage"
-      }]
-  },
-  "267":{
-    "name":"chaos_penetration",
-    "stats":["reduce_enemy_chaos_resistance_%"],
+  "323":{
+    "name":"ailment_damage_incr",
+    "stats":["support_unbound_ailments_ailment_damage_+%_final"],
     "1":[{
         "limit":[[1,"#"]],
-        "text":"Minions Penetrate {0}% Chaos Resistance"
+        "text":"Minions deal {0}% more Damage with Ailments",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextDamagingAilments"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"Minions deal {0}% less Damage with Ailments",
+        "1":{
+          "k":"negate",
+          "v":1
+        },
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextDamagingAilments"
+        }
       }]
   },
-  "260":{
-    "name":"projectile_additional_return_chance",
-    "stats":["projectile_additional_return_chance_%"],
+  "324":{
+    "name":"withered_support_base_duration",
+    "stats":["support_withered_base_duration_ms"],
+    "1":[{
+        "limit":[[1000,1000]],
+        "text":"Withered inflicted by Minions has a base duration of {0} second",
+        "1":{
+          "k":"milliseconds_to_seconds",
+          "v":1
+        }
+      },{
+        "limit":[["#","#"]],
+        "text":"Withered inflicted by Minions has a base duration of {0} seconds",
+        "1":{
+          "k":"milliseconds_to_seconds",
+          "v":1
+        }
+      }]
+  },
+  "325":{
+    "name":"trap_crit_per_power_charge",
+    "stats":["trap_critical_strike_multiplier_+_per_power_charge"],
     "1":[{
         "limit":[["#","#"]],
-        "text":"Minions' Projectiles have {0}% chance to Return to you an additional Time"
+        "text":"Minions' Skills have {0:+d}% to Critical Strike Multiplier per Power Charge when used by Traps"
+      }]
+  },
+  "326":{
+    "name":"trap_throwing_speed_per_frenzy",
+    "stats":["trap_throwing_speed_+%_per_frenzy_charge"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"This Skill and Minions have {0}% increased Trap Throwing Speed per Frenzy Charge"
+      },{
+        "limit":[["#",-1]],
+        "text":"This Skill and Minions have {0}% reduced Trap Throwing Speed per Frenzy Charge",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "327":{
@@ -4583,294 +4855,22 @@
         }
       }]
   },
-  "325":{
-    "name":"trap_crit_per_power_charge",
-    "stats":["trap_critical_strike_multiplier_+_per_power_charge"],
+  "328":{
+    "name":"wither_2_seconds_chance",
+    "stats":["withered_on_hit_for_2_seconds_%_chance"],
     "1":[{
-        "limit":[["#","#"]],
-        "text":"Minions' Skills have {0:+d}% to Critical Strike Multiplier per Power Charge when used by Traps"
-      }]
-  },
-  "265":{
-    "name":"pierce_all_targets_in_x_range",
-    "stats":["projectiles_pierce_all_targets_in_x_range"],
-    "1":[{
-        "limit":[[10,10]],
-        "text":"Projectiles Fired by Minions Pierce all Targets within {0} metre",
-        "1":{
-          "k":"locations_to_metres",
-          "v":1
-        }
-      },{
-        "limit":[["#","#"]],
-        "text":"Projectiles Fired by Minions Pierce all Targets within {0} metres",
-        "1":{
-          "k":"locations_to_metres",
-          "v":1
-        }
-      }]
-  },
-  "269":{
-    "name":"skill_and_damaging_ailment_duration_incr",
-    "stats":["skill_effect_and_damaging_ailment_duration_+%"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions have {0}% increased Duration of Skills and Duration of Damaging Ailments",
+        "limit":[[1,99]],
+        "text":"Agony Crawler has {0}% chance to inflict Withered for 2 seconds on Hit",
         "1":{
           "k":"reminderstring",
-          "v":"ReminderTextDamagingAilments"
+          "v":"ReminderTextWithered"
         }
       },{
-        "limit":[["#",-1]],
-        "text":"Minions have {0}% reduced Duration of Skills and Damaging Ailments",
-        "1":{
-          "k":"negate",
-          "v":1
-        },
-        "2":{
-          "k":"reminderstring",
-          "v":"ReminderTextDamagingAilments"
-        }
-      }]
-  },
-  "259":{
-    "name":"power_charge_on_trap_trig",
-    "stats":["%_chance_to_gain_power_charge_on_trap_triggered_by_an_enemy"],
-    "1":[{
-        "limit":[["#","#"]],
-        "text":"This Skill and Minions have {0}% chance to gain a Power Charge when your Trap is triggered by an Enemy"
-      },{
-        "limit":[[100,100]],
-        "text":"This Skill and Minions gain a Power Charge when your Trap is triggered by an Enemy"
-      }]
-  },
-  "261":{
-    "name":"base_pierce_num",
-    "stats":["projectile_base_number_of_targets_to_pierce"],
-    "1":[{
-        "limit":[[1,1]],
-        "text":"Minion's Projectiles Pierce an additional Target"
-      },{
-        "limit":[[2,"#"]],
-        "text":"Minion's Projectiles Pierce {0} additional Targets"
-      }]
-  },
-  "263":{
-    "name":"proj_damage_if_pierced",
-    "stats":["projectile_damage_+%_if_pierced_enemy"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions' Projectiles that have Pierced deal {0}% increased Damage"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minions' Projectiles that have Pierced deal {0}% reduced Damage",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "281":{
-    "name":"damage_while_es_leeching_more",
-    "stats":["support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions deal {0}% more Damage while Leeching Energy Shield"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minions deal {0}% less Damage while Leeching Energy Shield",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "285":{
-    "name":"support_faster_ailments_duration",
-    "stats":["support_faster_ailments_ailment_duration_+%_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"{0}% more Duration of Ailments inflicted by Minions",
+        "limit":[[100,"#"]],
+        "text":"Agony Crawler inflicts Withered for 2 seconds on Hit",
         "1":{
           "k":"reminderstring",
-          "v":"ReminderTextAilments"
-        }
-      },{
-        "limit":[["#",-1]],
-        "text":"{0}% less Duration of Ailments inflicted by Minions",
-        "1":{
-          "k":"negate",
-          "v":1
-        },
-        "2":{
-          "k":"reminderstring",
-          "v":"ReminderTextAilments"
-        }
-      }]
-  },
-  "273":{
-    "name":"skitterbots_trap_mine_damage",
-    "stats":["skitterbots_trap_mine_damage_+%_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Skitterbots grant {0}% more Trap and Mine Damage"
-      },{
-        "limit":[["#",-1]],
-        "text":"Skitterbots grant {0}% less Trap and Mine Damage",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "279":{
-    "name":"support_chills_incr_cold_damage_taken",
-    "stats":["support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount"],
-    "1":[{
-        "limit":[["#","#"]],
-        "text":"Enemies Chilled by Minions have Cold Damage taken increased by Chill Effect"
-      }]
-  },
-  "295":{
-    "name":"deathmark_crit_multi_vs_target",
-    "stats":["support_minion_focus_fire_critical_strike_multiplier_+_vs_focused_target"],
-    "1":[{
-        "limit":[["#","#"]],
-        "text":"Minions have {0:+d}% to Critical Strike Multiplier against the Prey"
-      }]
-  },
-  "291":{
-    "name":"maim_phys_damage",
-    "stats":["support_maim_chance_physical_damage_+%_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions deal {0}% more Physical Damage"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minions deal {0}% less Physical Damage",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "303":{
-    "name":"support_overpowered_on_enemy_block_base_duration",
-    "stats":["support_overpowered_base_duration_ms"],
-    "1":[{
-        "limit":[["#","#"]],
-        "text":"Minions inflict Overpowered for a base Duration of {0} seconds when Their Hits are Blocked",
-        "1":{
-          "k":"milliseconds_to_seconds",
-          "v":1
-        },
-        "2":{
-          "k":"reminderstring",
-          "v":"ReminderTextOverpowered"
-        }
-      }]
-  },
-  "299":{
-    "name":"deathmark_target",
-    "stats":["support_minion_use_focussed_target"],
-    "1":[{
-        "limit":[["#","#"]],
-        "text":"Minions always target the Prey if possible"
-      }]
-  },
-  "297":{
-    "name":"support_burning_minions_aura_burn",
-    "stats":["support_minion_instability_minion_base_fire_area_damage_per_minute"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions deal {0} Base Fire Damage per second to Enemies near them",
-        "1":{
-          "k":"per_minute_to_per_second",
-          "v":1
-        }
-      }]
-  },
-  "311":{
-    "name":"support_shock_with_more_damage",
-    "stats":["support_pure_shock_shock_as_though_damage_+%_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions Shock Enemies as though dealing {0}% more Damage"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minions Shock Enemies as though dealing {0}% less Damage",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "309":{
-    "name":"pulverise_melee_area_damage",
-    "stats":["support_pulverise_melee_area_damage_+%_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions deal {0}% more Melee Area Damage"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minions deal {0}% less Melee Area Damage",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "307":{
-    "name":"pulverise_area_of_effect",
-    "stats":["support_pulverise_area_of_effect_+%_final"],
-    "1":[{
-        "limit":[[1,"#"]],
-        "text":"Minions have {0}% more Area of Effect"
-      },{
-        "limit":[["#",-1]],
-        "text":"Minions have {0}% less Area of Effect",
-        "1":{
-          "k":"negate",
-          "v":1
-        }
-      }]
-  },
-  "319":{
-    "name":"support_scion_unique_chance",
-    "stats":["support_scion_onslaught_for_3_seconds_on_hitting_unique_enemy_%_chance","support_scion_onslaught_on_unique_hit_duration_ms"],
-    "1":[{
-        "limit":[["#","#"],["#","#"]],
-        "text":"Minions have {0}% chance to gain Onslaught for {1} seconds when they Hit a Unique Enemy",
-        "1":{
-          "k":"milliseconds_to_seconds",
-          "v":2
-        },
-        "2":{
-          "k":"reminderstring",
-          "v":"ReminderTextOnslaught"
-        }
-      }]
-  },
-  "313":{
-    "name":"support_recent_ignites_ignite_damage",
-    "stats":["support_recent_ignites_ignite_damage_per_recent_ignite_+%_final","support_recent_ignites_ignite_damage_per_recent_ignite_+%_final_maximum"],
-    "1":[{
-        "limit":[[1,"#"],["#","#"]],
-        "text":"Minions' Skills deal {0}% more Damage with Ignite for each Ignite inflicted with that Skill Recently, up to a maximum of {1}%",
-        "1":{
-          "k":"reminderstring",
-          "v":"ReminderTextRecently"
-        }
-      },{
-        "limit":[["#",-1],["#","#"]],
-        "text":"Minions' Skills deal {0}% less Damage with Ignite for each Ignite inflicted with that Skill Recently",
-        "1":{
-          "k":"negate",
-          "v":1
-        },
-        "2":{
-          "k":"reminderstring",
-          "v":"ReminderTextRecently"
+          "v":"ReminderTextWithered"
         }
       }]
   }
