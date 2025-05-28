@@ -67,14 +67,16 @@ local function clean(map, visited, keys)
             if type(k) == "string" then
                 keys[k] = k
             end
-            local seen = visited[v]
-            visited[v] = true
-            if seen then
-                map[k] = nil
-            elseif type(v) == 'function' then
+            if type(v) == 'function' then
                 map[k] = nil
             elseif type(v) == 'table' then
-                clean(v, visited, keys)
+                local seen = visited[v]
+                visited[v] = true
+                if seen then
+                    map[k] = nil
+                else
+                    clean(v, visited, keys)
+                end
             end
         end
     end

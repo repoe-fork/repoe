@@ -1,4 +1,5 @@
 {
+  "active_skill_base_secondary_area_of_effect_radius":1,
   "base_skill_effect_duration":2,
   "enemy_additional_critical_strike_multiplier_against_self":3,
   "parent":"skill_stat_descriptions",
@@ -9,11 +10,14 @@
   "2":{
     "stats":["base_skill_effect_duration"],
     "1":[{
-        "limit":[[null,1000]],
+        "limit":[[1000,1000]],
         "text":"Maximum Mark duration is {0} second",
-        "1":[]
+        "1":{
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Maximum Mark duration is {0} seconds",
         "1":{
           "k":"milliseconds_to_seconds_2dp_if_required",
@@ -24,7 +28,7 @@
   "3":{
     "stats":["enemy_additional_critical_strike_multiplier_against_self"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Next Critical Hit against Marked Enemy has {0}% increased Critical Damage Bonus"
       }]
   },

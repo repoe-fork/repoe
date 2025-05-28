@@ -1,4 +1,6 @@
 {
+  "active_skill_area_of_effect_radius":1,
+  "active_skill_base_area_of_effect_radius":2,
   "base_skill_effect_duration":3,
   "living_bomb_base_number_of_bombs_allowed":4,
   "living_bomb_number_of_bombs_allowed":5,
@@ -11,11 +13,14 @@
   "2":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Explosion radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Explosion radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -26,24 +31,28 @@
   "3":{
     "stats":["base_skill_effect_duration"],
     "1":[{
-        "limit":[[null,1000]],
+        "limit":[[1000,1000]],
         "text":"Seed duration is {0} second",
-        "1":[]
+        "1":{
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Seed duration is {0} seconds",
         "1":{
-          "k":"milliseconds_to_seconds_2dp_if_required"
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
         }
       }]
   },
   "4":{
     "stats":["living_bomb_base_number_of_bombs_allowed"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,1]],
         "text":"Limit {0} active Seed"
       },{
-        "limit":[[2]],
+        "limit":[[2,"#"]],
         "text":"Limit {0} active Seeds"
       }]
   },

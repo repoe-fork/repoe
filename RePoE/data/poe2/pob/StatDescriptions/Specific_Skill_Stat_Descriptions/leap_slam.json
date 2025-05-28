@@ -2,6 +2,7 @@
   "active_skill_area_of_effect_radius":2,
   "active_skill_base_area_of_effect_radius":3,
   "active_skill_consume_enemy_fully_broken_armour_to_gain_hit_damage_stun_multiplier_+%":4,
+  "cannot_break_armour":1,
   "parent":"skill_stat_descriptions",
   "1":{
     "stats":["cannot_break_armour"]
@@ -13,11 +14,14 @@
   "3":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Impact radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Impact radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -28,13 +32,14 @@
   "4":{
     "stats":["active_skill_consume_enemy_fully_broken_armour_to_gain_hit_damage_stun_multiplier_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Consumes Fully Broken Armour on enemies to cause {0}% more Stun buildup"
       },{
-        "limit":[[null,-1]],
+        "limit":[["#",-1]],
         "text":"Consumes Fully Broken Armour on enemies to cause {0}% less Stun buildup",
         "1":{
-          "k":"negate"
+          "k":"negate",
+          "v":1
         }
       }]
   }

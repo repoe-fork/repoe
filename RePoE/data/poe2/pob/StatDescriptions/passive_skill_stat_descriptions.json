@@ -2,6 +2,8 @@
   "active_skill_additional_projectiles_description_mode":43,
   "add_frenzy_charge_on_kill":15,
   "ascendancy_chronomancer_apex_of_the_moment_base_slow_aura_value":47,
+  "base_devotion":2,
+  "base_dexterity":5,
   "base_dexterity_and_intelligence":41,
   "base_intelligence":7,
   "base_number_of_golems_allowed":44,
@@ -9,12 +11,15 @@
   "base_number_of_skeletons_allowed":21,
   "base_number_of_spectres_allowed":20,
   "base_phasing_without_visual":65,
+  "base_strength":3,
   "base_strength_and_dexterity":39,
   "base_strength_and_intelligence":40,
   "chill_effect_+%":48,
   "consecrate_ground_on_kill_%_for_3_seconds":46,
   "critical_strike_chance_+%":33,
   "crushing_blow":49,
+  "damage_taken_+%_from_hits":1,
+  "dexterity_+%":6,
   "display_can_take_character_start_point":45,
   "display_nearby_enemies_are_taunted":50,
   "display_you_have_x_fortification":51,
@@ -74,6 +79,8 @@
   "keystone_sacred_bastion":96,
   "keystone_secrets_of_suffering":97,
   "keystone_sharp_and_brittle":98,
+  "keystone_supreme_prodigy":99,
+  "keystone_tempered_by_war":100,
   "keystone_unwavering_stance":37,
   "keystone_vaal_pact":32,
   "keystone_versatile_combatant":102,
@@ -88,6 +95,7 @@
   "max_frenzy_charges":12,
   "max_power_charges":13,
   "no_barrage_projectile_spread":61,
+  "number_of_additional_projectiles":43,
   "parent":"stat_descriptions",
   "passive_can_be_allocated_without_connection":38,
   "physical_damage_+%":62,
@@ -96,30 +104,31 @@
   "shock_effect_+%":63,
   "staff_block_%":34,
   "start_at_zero_energy_shield":64,
+  "strength_+%":4,
   "1":{
     "stats":["damage_taken_+%_from_hits"]
   },
   "2":{
     "stats":["base_devotion"],
     "1":[{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"{0:+d} to Devotion"
       }]
   },
   "3":{
     "stats":["base_strength"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d} to Strength"
       }]
   },
   "4":{
     "stats":["strength_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Strength"
       },{
-        "limit":[[null,-1]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Strength",
         "1":{
           "k":"negate",
@@ -130,763 +139,792 @@
   "5":{
     "stats":["base_dexterity"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d} to Dexterity"
       }]
   },
   "6":{
     "stats":["dexterity_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Dexterity"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Dexterity",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "7":{
     "stats":["base_intelligence"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d} to Intelligence"
       }]
   },
   "8":{
     "stats":["intelligence_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Intelligence"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Intelligence",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "9":{
     "stats":["mana_regeneration_rate_per_minute_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Regenerate {0}% of maximum Mana per second",
         "1":{
-          "k":"per_minute_to_per_second"
+          "k":"per_minute_to_per_second",
+          "v":1
         }
       }]
   },
   "10":{
     "stats":["mana_regeneration_rate_per_minute_%_per_power_charge"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Regenerate {0}% of maximum Mana per second per Power Charge",
-        "1":[]
+        "1":{
+          "k":"per_minute_to_per_second",
+          "v":1
+        }
       }]
   },
   "11":{
     "stats":["max_endurance_charges"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d} to Maximum Endurance Charges"
       }]
   },
   "12":{
     "stats":["max_frenzy_charges"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d} to Maximum Frenzy Charges"
       }]
   },
   "13":{
     "stats":["max_power_charges"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d} to Maximum Power Charges"
       }]
   },
   "14":{
     "stats":["physical_damage_+%_per_frenzy_charge"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Physical Damage per Frenzy Charge"
       }]
   },
   "15":{
     "stats":["add_frenzy_charge_on_kill"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Gain a Frenzy Charge on Kill"
       }]
   },
   "16":{
     "stats":["keystone_iron_reflexes"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Converts all Evasion Rating to Armour"
       }]
   },
   "17":{
     "stats":["keystone_avatar_of_fire"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"75% of Damage Converted to Fire Damage\nDeal no Non-Fire Damage"
       }]
   },
   "18":{
     "stats":["keystone_eldritch_battery"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Converts all Energy Shield to Mana\nDoubles Mana Costs"
       }]
   },
   "19":{
     "stats":["keystone_ancestral_bond"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Unlimited number of Summoned Totems\nTotems reserve 100 Spirit each"
       }]
   },
   "20":{
     "stats":["base_number_of_spectres_allowed"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d} to Maximum number of Spectres"
       }]
   },
   "21":{
     "stats":["base_number_of_skeletons_allowed"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d} to Maximum number of Skeletons"
       }]
   },
   "22":{
     "stats":["base_number_of_raging_spirits_allowed"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d} to Maximum number of Summoned Raging Spirits"
       }]
   },
   "23":{
     "stats":["keystone_acrobatics"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Can Evade all Hits\n75% less Evasion Rating"
       }]
   },
   "24":{
     "stats":["keystone_pain_attunement"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"30% less Critical Damage Bonus when on Full Life\n30% more Critical Damage Bonus when on Low Life"
       }]
   },
   "25":{
     "stats":["keystone_point_blank"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Projectile Attack Hits deal up to 30% more Damage to targets at the start of their movement, dealing less Damage to targets as the projectile travels farther"
       }]
   },
   "26":{
     "stats":["keystone_conduit"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"If you would gain a Charge, Allies in your Presence gain that Charge instead"
       }]
   },
   "27":{
     "stats":["keystone_projectile_evasion"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Evasion Rating is Doubled against Projectile Attacks\n25% less Evasion Rating against Melee Attacks"
       }]
   },
   "28":{
     "stats":["keystone_blood_magic"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You have no Mana\nSkill Mana Costs Converted to Life Costs"
       }]
   },
   "29":{
     "stats":["keystone_minion_instability"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Minions Explode when reduced to Low Life, dealing 33% of their Life as Fire Damage to surrounding Enemies"
       }]
   },
   "30":{
     "stats":["keystone_elemental_equilibrium"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Hits that deal Fire Damage remove Fire Exposure and inflict Lightning Exposure\nHits that deal Cold Damage remove Cold Exposure and inflict Fire Exposure\nHits that deal Lightning Damage remove Lightning Exposure and inflict Cold Exposure"
       }]
   },
   "31":{
     "stats":["keystone_chaos_inoculation"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Maximum Life is 1\nImmune to Chaos Damage and Bleeding"
       }]
   },
   "32":{
     "stats":["keystone_vaal_pact"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Life Leech is Instant\nCannot use Life Flasks"
       }]
   },
   "33":{
     "stats":["critical_strike_chance_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Critical Hit Chance"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Critical Hit Chance",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "34":{
     "stats":["staff_block_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d}% Chance to Block Attack Damage while wielding a Staff"
       }]
   },
   "35":{
     "stats":["keystone_mana_shield"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"All Damage is taken from Mana before Life\n50% less Mana Recovery Rate"
       }]
   },
   "36":{
     "stats":["resolute_technique"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Your Hits can't be Evaded\nNever deal Critical Hits"
       }]
   },
   "37":{
     "stats":["keystone_unwavering_stance"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Cannot be Light Stunned\nCannot Dodge Roll"
       }]
   },
   "38":{
     "stats":["passive_can_be_allocated_without_connection"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Can be allocated without connection to the tree"
       }]
   },
   "39":{
     "stats":["base_strength_and_dexterity"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d} to Strength and Dexterity"
       }]
   },
   "40":{
     "stats":["base_strength_and_intelligence"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d} to Strength and Intelligence"
       }]
   },
   "41":{
     "stats":["base_dexterity_and_intelligence"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d} to Dexterity and Intelligence"
       }]
   },
   "42":{
     "stats":["global_chance_to_blind_on_hit_%"],
     "1":[{
-        "limit":[[null,99]],
+        "limit":[["#",99]],
         "text":"{0}% chance to Blind Enemies on Hit"
       },{
-        "limit":[[100]],
+        "limit":[[100,"#"]],
         "text":"Blind Enemies on Hit"
       }]
   },
   "43":{
     "stats":["active_skill_additional_projectiles_description_mode","number_of_additional_projectiles"],
     "1":[{
-        "limit":[[],[]],
+        "limit":[[0,0],[1,1]],
         "text":"Skills fire an additional Projectile"
       },{
-        "limit":[[null,0],[2]],
+        "limit":[[0,0],[2,"#"]],
         "text":"Skills fire {1} additional Projectiles"
       }]
   },
   "44":{
     "stats":["base_number_of_golems_allowed"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d} to maximum number of Summoned Golems"
       }]
   },
   "45":{
     "stats":["display_can_take_character_start_point"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,1]],
         "text":"Can Allocate Passives from the Marauder's starting point"
       },{
-        "limit":[[]],
+        "limit":[[2,2]],
         "text":"Can Allocate Passives from the Ranger's starting point"
       },{
-        "limit":[[null,3]],
+        "limit":[[3,3]],
         "text":"Can Allocate Passives from the Witch's starting point"
       },{
-        "limit":[[null,4]],
+        "limit":[[4,4]],
         "text":"Can Allocate Passives from the Duelist's starting point"
       },{
-        "limit":[[null,5]],
+        "limit":[[5,5]],
         "text":"Can Allocate Passives from the Templar's starting point"
       },{
-        "limit":[[null,6]],
+        "limit":[[6,6]],
         "text":"Can Allocate Passives from the Shadow's starting point"
       }]
   },
   "46":{
     "stats":["consecrate_ground_on_kill_%_for_3_seconds"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,99]],
         "text":"{0}% chance to create Consecrated Ground on Kill, lasting 8 seconds"
       },{
-        "limit":[[]],
+        "limit":[[100,"#"]],
         "text":"Create Consecrated Ground on Kill, lasting 8 seconds"
       }]
   },
   "47":{
     "stats":["ascendancy_chronomancer_apex_of_the_moment_base_slow_aura_value"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Enemies in your Presence are Slowed by {0}%",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "48":{
     "stats":["chill_effect_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Magnitude of Chill you inflict"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Magnitude of Chill you inflict",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "49":{
     "stats":["crushing_blow"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Your Hits are Crushing Blows"
       }]
   },
   "50":{
     "stats":["display_nearby_enemies_are_taunted"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Enemies within 2 metres of you are Taunted"
       }]
   },
   "51":{
     "stats":["display_you_have_x_fortification"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You have {0} Fortification"
       }]
   },
   "52":{
     "stats":["every_1_second_nearby_enemies_withered_for_X_ms"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Every second, inflict Withered on nearby Enemies for {0} seconds",
         "1":{
-          "k":"milliseconds_to_seconds"
+          "k":"milliseconds_to_seconds",
+          "v":1
         }
       }]
   },
   "53":{
     "stats":["keystone_2_companions"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You can have two Companions of different types\nYou have 30% less Defences\nCompanions have +1 to each Defence for every 2 of that Defence you have"
       }]
   },
   "54":{
     "stats":["keystone_bulwark"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Dodge Roll cannot Avoid Damage\nTake 30% less Damage from Hits while Dodge Rolling"
       }]
   },
   "55":{
     "stats":["keystone_crimson_assault"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Bleeding you inflict is Aggravated\nBase Bleeding Duration is 1 second"
       }]
   },
   "56":{
     "stats":["keystone_crimson_dance"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You can inflict Bleeding on an Enemy up to 8 times\nYour Bleeding does not deal extra Damage while the Enemy is moving\n50% less Damage with Bleeding"
       }]
   },
   "57":{
     "stats":["keystone_dance_with_death"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"25% more Skill Speed while Off Hand is empty and you have\na One-Handed Martial Weapon equipped in your Main Hand"
       }]
   },
   "58":{
     "stats":["keystone_giants_blood"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You can wield Two-Handed Axes, Maces and Swords in one hand\nTriple Attribute requirements of Martial Weapons"
       }]
   },
   "59":{
     "stats":["keystone_zealots_oath"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Excess Life Recovery from Regeneration is applied to Energy Shield\nEnergy Shield does not Recharge"
       }]
   },
   "60":{
     "stats":["life_mastery_nearby_enemy_life_regeneration_rate_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Nearby Enemies have {0}% increased Life Regeneration Rate"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Nearby Enemies have {0}% reduced Life Regeneration Rate",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "61":{
     "stats":["no_barrage_projectile_spread"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Projectile Barrages have no spread"
       }]
   },
   "62":{
     "stats":["physical_damage_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Physical Damage"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Physical Damage",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "63":{
     "stats":["shock_effect_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Magnitude of Shock you inflict"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Magnitude of Shock you inflict",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "64":{
     "stats":["start_at_zero_energy_shield"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Your Energy Shield starts at zero"
       }]
   },
   "65":{
     "stats":["base_phasing_without_visual"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Phasing"
       }]
   },
   "66":{
     "stats":["local_jewel_display_number_of_allocated_passives_between_jewel_and_class_start"],
     "1":[{
-        "limit":[[]],
+        "limit":[[-1,-1]],
         "text":"No path found to your Class' starting location"
       },{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0} Allocated Passive Skills between this Socket and your Class' starting location"
       }]
   },
   "67":{
     "stats":["keystone_alternate_dexterity_bonus"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Gain no inherent bonus from Dexterity\n1% increased Armour per 2 Dexterity"
       }]
   },
   "68":{
     "stats":["keystone_alternate_intelligence_bonus"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Gain no inherent bonus from Intelligence\n1% increased Evasion Rating per 2 Intelligence"
       }]
   },
   "69":{
     "stats":["keystone_alternate_strength_bonus"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Gain no inherent bonus from Strength\n1% increased Energy Shield per 2 Strength"
       }]
   },
   "70":{
     "stats":["keystone_barbed_tips"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Attack Projectiles always inflict Bleeding and Maim, and Knock Back Enemies\nProjectiles cannot Pierce, Fork or Chain"
       }]
   },
   "71":{
     "stats":["keystone_blind_monk"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You are Blind\nBlind does not affect your Light Radius\n25% more Melee Critical Hit Chance while Blinded"
       }]
   },
   "72":{
     "stats":["keystone_call_to_arms"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Using Warcries is Instant\nWarcries share their Cooldown"
       }]
   },
   "73":{
     "stats":["keystone_charge_cycle"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Gain Power Charges instead of Frenzy Charges\nGain Frenzy Charges instead of Endurance Charges\nGain Endurance Charges instead of Power Charges"
       }]
   },
   "74":{
     "stats":["keystone_disciple_of_kitava"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Every second, Consume a nearby Corpse to Recover 5% of maximum Life and Mana\n10% more Damage taken if you haven't Consumed a Corpse Recently"
       }]
   },
   "75":{
     "stats":["keystone_divine_flesh"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"All Damage taken bypasses Energy Shield\n50% of Elemental Damage taken as Chaos Damage\n+5% to maximum Chaos Resistance"
       }]
   },
   "76":{
     "stats":["keystone_divine_shield"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Cannot Recover Energy Shield to above Armour\n3% of Physical Damage prevented from Hits Recently is Regenerated as Energy Shield per second"
       }]
   },
   "77":{
     "stats":["keystone_elemental_overload"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Skills that have dealt a Critical Hit in the past 8 seconds deal 40% more Elemental Damage with Hits\nYour Critical Hits do not deal extra Damage"
       }]
   },
   "78":{
     "stats":["keystone_emperors_heart"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Life Recovery from Flasks also applies to Energy Shield\n30% less Life Recovery from Flasks"
       }]
   },
   "79":{
     "stats":["keystone_eternal_youth"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Life Recharges instead of Energy Shield\nLife Recovery from Flasks applies to Energy Shield instead"
       }]
   },
   "80":{
     "stats":["keystone_focused_rage"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Mana Recovery from Regeneration is not applied\n1 Rage Regenerated for every 25 Mana Regeneration per Second\nSkills Cost +3 Rage"
       }]
   },
   "81":{
     "stats":["keystone_glancing_blows"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Block Chance is doubled\nYou take 50% of Damage from Blocked Hits"
       }]
   },
   "82":{
     "stats":["keystone_heartstopper"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Take 50% less Damage over Time if you've started taking Damage over Time in the past second\nTake 50% more Damage over Time if you've haven't started taking Damage over Time in the past second"
       }]
   },
   "83":{
     "stats":["keystone_herald_of_doom"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You can only have one Herald\n50% more Effect of Herald Buffs on you\n100% more Damage with Hits from Herald Skills\n50% more Damage Over Time with Herald Skills\nMinions from Herald Skills deal 25% more Damage\nYour Aura Skills are Disabled"
       }]
   },
   "84":{
     "stats":["keystone_hex_master"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You can apply an additional Curse\nDouble Activation Delay of Curses"
       }]
   },
   "85":{
     "stats":["keystone_impale"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"When your Hits Impale Enemies, also Impale other Enemies near them\nInflict 4 additional Impales on Enemies you Impale\nFor 4 seconds after you Impale Enemies, they cannot be Impaled again, and Impales cannot be Called from them"
       }]
   },
   "86":{
     "stats":["keystone_iron_grip"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Gain no inherent bonus from Strength\n1% increased Projectile Attack damage per 2 Strength"
       }]
   },
   "87":{
     "stats":["keystone_iron_will"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Gain no inherent bonus from Strength\n1% increased Spell damage per 2 Strength"
       }]
   },
   "88":{
     "stats":["keystone_magnetic_charge"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Nearby Allies and Enemies Share Charges with you\nEnemies Hitting you have 10% chance to gain an Endurance, \nFrenzy or Power Charge"
       }]
   },
   "89":{
     "stats":["keystone_mental_conditioning"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"80% of Maximum Mana is Converted to twice that much Armour"
       }]
   },
   "90":{
     "stats":["keystone_natures_presence"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Gain 2 Grasping Vines each second while stationary\n2% chance to deal Double Damage per Grasping Vine\n1% less Damage taken per Grasping Vine"
       }]
   },
   "91":{
     "stats":["keystone_oasis"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Cannot use Charms\n30% more Recovery from Flasks"
       }]
   },
   "92":{
     "stats":["keystone_precise_technique"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"40% more Attack Damage if Accuracy Rating is higher than Maximum Life\nNever deal Critical Hits"
       }]
   },
   "93":{
     "stats":["keystone_prismatic_bulwark"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Armour applies to Fire, Cold and Lightning Damage taken from Hits instead of Physical Damage\n-15% to all maximum Elemental Resistances"
       }]
   },
   "94":{
     "stats":["keystone_quiet_might"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"3% more Spell Damage per Power Charge\nGain Power Charges instead of Frenzy Charges"
       }]
   },
   "95":{
     "stats":["keystone_runebinder"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"-1 to maximum number of Summoned Totems\nYou can have an additional Brand Attached to an Enemy"
       }]
   },
   "96":{
     "stats":["keystone_sacred_bastion"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"100% chance to Defend with 200% of Armour\nMaximum Damage Reduction for any Damage Type is 50%"
       }]
   },
   "97":{
     "stats":["keystone_secrets_of_suffering"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Cannot Ignite, Chill, Freeze or Shock\nCritical Hits inflict Scorch, Brittle and Sapped"
       }]
   },
   "98":{
     "stats":["keystone_sharp_and_brittle"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Can't use Helmets\nYour Critical Hit Chance is Lucky\nYour Damage with Critical Hits is Lucky\nEnemies' Damage with Critical Hits against you is Lucky"
       }]
   },
   "99":{
     "stats":["keystone_supreme_prodigy"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Ignore Attribute Requirements\nGain no inherent bonuses from Attributes"
       }]
   },
   "100":{
     "stats":["keystone_tempered_by_war"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"50% of Cold and Lightning Damage taken as Fire Damage\n50% less Cold Resistance\n50% less Lightning Resistance"
       }]
   },
   "101":{
     "stats":["keystone_hollow_palm_technique"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You count as Dual Wielding while you are Unencumbered\n40% more Attack Speed with Melee Skills while you are Unencumbered\nAdds 14 to 20 Attack Physical Damage to Melee Skills per 10 Dexterity while you are Unencumbered"
       }]
   },
   "102":{
     "stats":["keystone_versatile_combatant"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"-25% to maximum Chance to Block Attack Damage\n-25% to maximum Chance to Block Spell Damage\n+2% Chance to Block Spell Damage for each 1% Overcapped Chance to Block Attack Damage"
       }]
   },
   "103":{
     "stats":["keystone_veterans_awareness"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"+10% to all Elemental Resistances and maximum Elemental Resistances while affected by a Non-Vaal Guard Skill\n20% additional Physical Damage Reduction while affected by a Non-Vaal Guard Skill\n20% more Damage taken if a Non-Vaal Guard Buff was lost Recently"
       }]
   },
   "104":{
     "stats":["keystone_wind_dancer"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"20% less Attack Damage taken if you haven't been Hit by an Attack Recently\n10% more chance to Evade Attacks if you have been Hit by an Attack Recently\n20% more Attack Damage taken if you have been Hit by an Attack Recently"
       }]
   }

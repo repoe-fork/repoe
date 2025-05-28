@@ -1,4 +1,5 @@
 {
+  "active_skill_area_of_effect_radius":2,
   "active_skill_base_area_of_effect_radius":3,
   "active_skill_base_secondary_area_of_effect_radius":4,
   "active_skill_secondary_area_of_effect_radius":5,
@@ -6,7 +7,11 @@
   "fire_storm_fireball_delay_ms":7,
   "firestorm_improved_bolts_per_ignite_consumed":8,
   "firestorm_max_number_of_storms":9,
+  "never_ignite":1,
   "parent":"skill_stat_descriptions",
+  "quality_display_active_skill_base_area_of_effect_radius_is_gem":3,
+  "skill_effect_duration":10,
+  "vaal_firestorm_number_of_meteors":7,
   "virtual_firestorm_max_number_of_storms":11,
   "1":{
     "stats":["never_ignite"]
@@ -18,19 +23,28 @@
   "3":{
     "stats":["active_skill_base_area_of_effect_radius","quality_display_active_skill_base_area_of_effect_radius_is_gem"],
     "1":[{
-        "limit":[[null,10],[null,0]],
+        "limit":[[10,10],[0,0]],
         "text":"{0:+d} metre to impact radius",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[],[]],
+        "limit":[["#","#"],[0,0]],
         "text":"{0:+d} metres to impact radius",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[],[]],
+        "limit":[[10,10],["#","#"]],
         "text":"Impact radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[],[null,"#"]],
+        "limit":[["#","#"],["#","#"]],
         "text":"Impact radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -41,13 +55,19 @@
   "4":{
     "stats":["active_skill_base_secondary_area_of_effect_radius"],
     "1":[{
-        "limit":[[]],
+        "limit":[[10,10]],
         "text":"Storm radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Storm radius is {0} metres",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       }]
   },
   "5":{
@@ -57,47 +77,52 @@
   "6":{
     "stats":["base_skill_effect_duration"],
     "1":[{
-        "limit":[[null,1000]],
+        "limit":[[1000,1000]],
         "text":"Storm duration is {0} second",
-        "1":[]
+        "1":{
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Storm duration is {0} seconds",
         "1":{
-          "k":"milliseconds_to_seconds_2dp_if_required"
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
         }
       }]
   },
   "7":{
     "stats":["fire_storm_fireball_delay_ms","vaal_firestorm_number_of_meteors"],
     "1":[{
-        "limit":[[],[]],
+        "limit":[[1,"#"],[0,0]],
         "text":"One impact every {0} seconds",
         "1":{
-          "k":"milliseconds_to_seconds_2dp"
+          "k":"milliseconds_to_seconds_2dp",
+          "v":1
         }
       },{
-        "limit":[[],[]],
+        "limit":[["#","#"],[1,"#"]],
         "text":"{1} Bolts"
       }]
   },
   "8":{
     "stats":["firestorm_improved_bolts_per_ignite_consumed"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,1]],
         "text":"{0} Improved Bolt per Ignite Consumed"
       },{
-        "limit":[[2]],
+        "limit":[[2,"#"]],
         "text":"{0} Improved Bolts per Ignite Consumed"
       }]
   },
   "9":{
     "stats":["firestorm_max_number_of_storms"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,1]],
         "text":"Limit {0} Firestorm"
       },{
-        "limit":[[]],
+        "limit":[[2,"#"]],
         "text":"Limit {0} Firestorms"
       }]
   },
@@ -108,7 +133,7 @@
   "11":{
     "stats":["virtual_firestorm_max_number_of_storms"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Firestorm Limit@{0}"
       }]
   }

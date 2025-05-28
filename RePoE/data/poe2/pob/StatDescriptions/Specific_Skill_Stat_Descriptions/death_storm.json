@@ -1,4 +1,5 @@
 {
+  "active_skill_area_of_effect_radius":1,
   "active_skill_base_area_of_effect_radius":2,
   "active_skill_base_secondary_area_of_effect_radius":3,
   "active_skill_secondary_area_of_effect_radius":4,
@@ -11,11 +12,14 @@
   "2":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Bolt explosion radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Bolt explosion radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -26,13 +30,19 @@
   "3":{
     "stats":["active_skill_base_secondary_area_of_effect_radius"],
     "1":[{
-        "limit":[[]],
+        "limit":[[10,10]],
         "text":"Shocked Ground radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Shocked Ground radius is {0} metres",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       }]
   },
   "4":{
@@ -42,14 +52,18 @@
   "5":{
     "stats":["base_skill_effect_duration"],
     "1":[{
-        "limit":[[null,1000]],
+        "limit":[[1000,1000]],
         "text":"Shocked Ground duration is {0} second",
-        "1":[]
+        "1":{
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Shocked Ground duration is {0} seconds",
         "1":{
-          "k":"milliseconds_to_seconds_2dp_if_required"
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
         }
       }]
   }

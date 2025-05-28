@@ -1,4 +1,5 @@
 {
+  "active_skill_area_of_effect_radius":1,
   "active_skill_base_area_of_effect_radius":2,
   "active_skill_base_secondary_area_of_effect_radius":3,
   "active_skill_secondary_area_of_effect_radius":4,
@@ -6,6 +7,8 @@
   "base_skill_effect_duration":6,
   "main_hand_base_physical_damage_from_%_dex":7,
   "parent":"skill_stat_descriptions",
+  "quality_display_base_number_of_projectiles_is_gem":5,
+  "skill_can_fire_arrows":5,
   "skill_effect_duration":8,
   "virtual_maximum_caltrops_allowed":9,
   "1":{
@@ -15,11 +18,14 @@
   "2":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Caltrop radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Caltrop radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -30,9 +36,12 @@
   "3":{
     "stats":["active_skill_base_secondary_area_of_effect_radius"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Caltrops land within a {0} metre radius of Projectile impact",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       }]
   },
   "4":{
@@ -42,31 +51,35 @@
   "5":{
     "stats":["base_number_of_projectiles","skill_can_fire_arrows","quality_display_base_number_of_projectiles_is_gem"],
     "1":[{
-        "limit":[[],[],[]],
+        "limit":[[1,1],["#","#"],["#","#"]],
         "text":"Creates {0} Caltrop"
       },{
-        "limit":[[],[],[]],
+        "limit":[["#","#"],["#","#"],["#","#"]],
         "text":"Creates {0:d} Caltrops"
       }]
   },
   "6":{
     "stats":["base_skill_effect_duration"],
     "1":[{
-        "limit":[[null,1000]],
+        "limit":[[1000,1000]],
         "text":"Caltrop duration is {0} second",
-        "1":[]
+        "1":{
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Caltrop duration is {0} seconds",
         "1":{
-          "k":"milliseconds_to_seconds_2dp_if_required"
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
         }
       }]
   },
   "7":{
     "stats":["main_hand_base_physical_damage_from_%_dex"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Deals {0}% of your Dexterity as Physical Damage on Hit"
       }]
   },
@@ -77,7 +90,7 @@
   "9":{
     "stats":["virtual_maximum_caltrops_allowed"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Maximum {0} active Caltrops"
       }]
   }

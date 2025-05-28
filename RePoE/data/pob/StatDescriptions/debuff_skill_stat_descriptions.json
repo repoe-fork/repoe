@@ -7,14 +7,19 @@
   "base_lightning_damage_resistance_%":21,
   "bear_trap_damage_taken_+%_from_traps_and_mines":22,
   "bear_trap_movement_speed_+%_final":23,
+  "buff_effect_duration":2,
+  "flame_wall_maximum_added_fire_damage":24,
   "flame_wall_minimum_added_fire_damage":24,
   "herald_of_ash_burning_damage_+%_final":11,
   "herald_of_ash_fire_damage_+%":13,
   "herald_of_ash_spell_fire_damage_+%_final":14,
+  "ice_siphon_trap_max_beam_targets":4,
   "minimum_rain_of_spores_movement_speed_+%_final_cap":25,
+  "modifiers_to_buff_effect_duration_also_affect_soul_prevention_duration":1,
   "parent":"skill_stat_descriptions",
   "physical_damage_%_to_add_as_fire":12,
   "quality_display_ice_siphon_trap_is_gem":4,
+  "rain_of_spores_vines_movement_speed_+%_final":25,
   "resist_all_%":26,
   "secondary_buff_effect_duration":3,
   "skill_buff_effect_+%":15,
@@ -29,7 +34,7 @@
     "name":"soul_prevention_buff_duration",
     "stats":["modifiers_to_buff_effect_duration_also_affect_soul_prevention_duration"],
     "1":[{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Modifiers to Debuff Duration also apply to this Skill's Soul Gain Prevention"
       }]
   },
@@ -37,7 +42,7 @@
     "name":"buff_duration",
     "stats":["buff_effect_duration"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Debuff Lasts {0} seconds",
         "1":{
           "k":"milliseconds_to_seconds_2dp",
@@ -49,19 +54,22 @@
     "name":"secondary_buff_duration",
     "stats":["secondary_buff_effect_duration"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Secondary Debuff Lasts {0} seconds",
-        "1":[]
+        "1":{
+          "k":"milliseconds_to_seconds_2dp",
+          "v":1
+        }
       }]
   },
   "4":{
     "name":"ice_siphon_trap_max_targets",
     "stats":["ice_siphon_trap_max_beam_targets","quality_display_ice_siphon_trap_is_gem"],
     "1":[{
-        "limit":[[],[null,0]],
+        "limit":[["#","#"],[0,0]],
         "text":"Applies beams to the closest {0:+d} Enemies"
       },{
-        "limit":[[],[]],
+        "limit":[["#","#"],["#","#"]],
         "text":"Applies beams to the closest {0} Enemies"
       }]
   },
@@ -69,7 +77,7 @@
     "name":"vampiric_icon_max_targets",
     "stats":["vampiric_icon_max_bleeding_beam_targets"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Applies beams to the closest {0} nearby Bleeding Enemies"
       }]
   },
@@ -77,10 +85,11 @@
     "name":"life_regen_with_at_least_one_enemy",
     "stats":["skill_life_regeneration_per_minute_with_at_least_1_affected_enemy"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Regenerate {0} Life per second while any Enemy is affected",
         "1":{
-          "k":"per_minute_to_per_second"
+          "k":"per_minute_to_per_second",
+          "v":1
         }
       }]
   },
@@ -88,40 +97,50 @@
     "name":"mana_regen_with_at_least_one_enemy",
     "stats":["skill_mana_regeneration_per_minute_with_at_least_1_affected_enemy"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Regenerate {0} Mana per second while any Enemy is affected",
-        "1":[]
+        "1":{
+          "k":"per_minute_to_per_second",
+          "v":1
+        }
       }]
   },
   "8":{
     "name":"life_regen_per_enemy",
     "stats":["skill_life_regeneration_per_minute_per_affected_enemy"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Regenerate {0} Life per second for each affected Enemy",
-        "1":[]
+        "1":{
+          "k":"per_minute_to_per_second",
+          "v":1
+        }
       }]
   },
   "9":{
     "name":"mana_regen_per_enemy",
     "stats":["skill_mana_regeneration_per_minute_per_affected_enemy"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Regenerate {0} Mana per second for each affected Enemy",
-        "1":[]
+        "1":{
+          "k":"per_minute_to_per_second",
+          "v":1
+        }
       }]
   },
   "10":{
     "name":"damage_taken_incr_per_enemy",
     "stats":["skill_damage_taken_+%_per_affected_enemy"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Grants {0}% increased Damage Taken for each affected Enemy"
       },{
-        "limit":[[null,-1]],
+        "limit":[["#",-1]],
         "text":"Grants {0}% reduced Damage Taken for each affected Enemy",
         "1":{
-          "k":"negate"
+          "k":"negate",
+          "v":1
         }
       }]
   },
@@ -129,19 +148,22 @@
     "name":"herald_of_ash_burning_damage",
     "stats":["herald_of_ash_burning_damage_+%_final"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% more Burning Damage"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% less Burning Damage",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "12":{
     "name":"physical_damage_to_add_as_fire",
     "stats":["physical_damage_%_to_add_as_fire"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Buff grants {0}% of your Physical Damage as Extra Fire Damage"
       }]
   },
@@ -149,7 +171,7 @@
     "name":"herald_of_ash_fire_damage_incr",
     "stats":["herald_of_ash_fire_damage_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Buff grants {0}% increased Fire Damage"
       }]
   },
@@ -157,43 +179,52 @@
     "name":"herald_of_ash_spell_fire_damage_incr",
     "stats":["herald_of_ash_spell_fire_damage_+%_final"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Buff grants {0}% more Spell Fire Damage"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Buff grants {0}% less Spell Fire Damage",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "15":{
     "name":"skill_buff_effect",
     "stats":["skill_buff_effect_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Debuff Effect"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Debuff Effect",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "16":{
     "name":"action_speed_reduction",
     "stats":["action_speed_-%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Enemies have {0}% reduced Action Speed"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Enemies have {0}% increased Action Speed",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "17":{
     "name":"bane_enemies_explode_on_death_chance",
     "stats":["bane_enemies_explode_on_death_%_chance"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Enemies have {0}% chance to Explode on Death, dealing a quarter of their maximum Life as Chaos Damage"
       }]
   },
@@ -201,7 +232,7 @@
     "name":"chaos_res",
     "stats":["base_chaos_damage_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Enemies get {0:+d}% to Chaos Resistance"
       }]
   },
@@ -209,7 +240,7 @@
     "name":"cold_resist",
     "stats":["base_cold_damage_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Cold Exposure applies {0:+d}% to Cold Resistance"
       }]
   },
@@ -217,7 +248,7 @@
     "name":"fire_resist",
     "stats":["base_fire_damage_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Fire Exposure applies {0:+d}% to Fire Resistance"
       }]
   },
@@ -225,7 +256,7 @@
     "name":"lightning_resist",
     "stats":["base_lightning_damage_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Lightning Exposure applies {0:+d}% to Lightning Resistance"
       }]
   },
@@ -233,31 +264,37 @@
     "name":"trap_and_mine_damage_taken",
     "stats":["bear_trap_damage_taken_+%_from_traps_and_mines"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Enemies take {0}% increased Damage from Trap or Mine Hits"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Enemies take {0}% reduced Damage from Trap or Mine Hits",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "23":{
     "name":"bear_trap_slow",
     "stats":["bear_trap_movement_speed_+%_final"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Enemies have {0}% more Movement Speed when the Debuff starts"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Enemies have {0}% less Movement Speed when the Debuff starts",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "24":{
     "name":"firewall_added_fire",
     "stats":["flame_wall_minimum_added_fire_damage","flame_wall_maximum_added_fire_damage"],
     "1":[{
-        "limit":[[],[]],
+        "limit":[["#","#"],["#","#"]],
         "text":"Projectiles which pass through the wall deal {0} to {1} Added Fire Damage"
       }]
   },
@@ -265,11 +302,15 @@
     "name":"rain_of_spores_slow",
     "stats":["rain_of_spores_vines_movement_speed_+%_final","minimum_rain_of_spores_movement_speed_+%_final_cap"],
     "1":[{
-        "limit":[[],[]],
+        "limit":[["#",-1],["#",-1]],
         "text":"Each Spore Pod applies {0}% less Movement Speed to nearby Enemies, to a maximum of {1}%",
-        "1":[],
         "2":{
+          "k":"negate",
           "v":2
+        },
+        "1":{
+          "k":"negate",
+          "v":1
         }
       }]
   },
@@ -277,7 +318,7 @@
     "name":"all_resist",
     "stats":["resist_all_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Debuff applies {0:+d}% to all Resistances"
       }]
   },
@@ -285,9 +326,12 @@
     "name":"es_regen_per_enemy",
     "stats":["skill_energy_shield_regeneration_%_per_minute_per_affected_enemy"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Regenerate {0}% of Energy Shield per second for each affected Enemy",
-        "1":[]
+        "1":{
+          "k":"per_minute_to_per_second",
+          "v":1
+        }
       }]
   }
 }

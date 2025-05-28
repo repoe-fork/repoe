@@ -2,6 +2,7 @@
   "all_damage_with_tinctured_weapons_can_freeze":7,
   "all_damage_with_tinctured_weapons_can_ignite":8,
   "all_damage_with_tinctured_weapons_can_poison":9,
+  "all_damage_with_tinctured_weapons_can_shock":10,
   "always_stun_enemies_that_are_on_full_life_with_tinctured_weapons":11,
   "apply_X_wither_stacks_for_2_seconds_with_tinctured_weapons":12,
   "attack_speed_+%_with_tinctured_weapons":61,
@@ -10,6 +11,7 @@
   "bleeding_damage_+%_with_tinctured_weapons":14,
   "blind_effect_+%_with_tinctured_weapons":15,
   "chance_to_apply_grasping_vines_on_tinctured_weapon_hit_%":16,
+  "chance_to_bleed_on_hit_%_with_tinctured_weapons":2,
   "chance_to_blind_on_hit_%_with_tinctured_weapons":3,
   "chance_to_block_attack_damage_if_stunned_an_enemy_with_tinctured_weapon_recently_+%":17,
   "chance_to_freeze_%_with_tinctured_weapons":18,
@@ -43,6 +45,7 @@
   "local_tincture_toxicity_rate_+%":46,
   "mana_gained_on_hitting_enemies_with_tinctured_weapons":69,
   "mana_regeneration_rate_+%_if_enemy_shocked_with_tinctured_weapon_recently":36,
+  "melee_splash_area_of_effect_+%":37,
   "melee_splash_with_tinctured_weapons":37,
   "melee_tinctured_weapon_range_+":38,
   "number_of_additional_projectiles_with_tinctured_weapon_attacks_if_you_have_been_hit_recently":39,
@@ -66,6 +69,7 @@
   "steal_frenzy_charges_on_hit_%_with_tinctured_weapons":58,
   "steal_power_charges_on_hit_%_with_tinctured_weapons":59,
   "stun_duration_+%_with_tinctured_weapons":60,
+  "stun_threshold_reduction_+%_with_tinctured_weapons":1,
   "tincture_bleeding_damage_+%_final_vs_non_bleeding_enemies":72,
   "tinctured_weapon_additional_critical_strike_chance_percent_against_full_life_enemies":73,
   "tinctured_weapon_attack_poison_on_non_poisoned_enemies_damage_+%":74,
@@ -85,28 +89,32 @@
   "1":{
     "stats":["stun_threshold_reduction_+%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% reduced Enemy Stun Threshold with Melee Weapons",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextStunThreshold"
+        }
       },{
         "limit":[["#",-1]],
         "text":"{0}% increased Enemy Stun Threshold with Melee Weapons",
-        "1":{
-          "k":"negate",
-          "v":1
-        },
         "2":{
           "k":"reminderstring",
           "v":"ReminderTextStunThreshold"
+        },
+        "1":{
+          "k":"negate",
+          "v":1
         }
       }]
   },
   "2":{
     "stats":["chance_to_bleed_on_hit_%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% chance to cause Bleeding with Melee Weapons",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextBleeding"
         }
       }]
@@ -114,9 +122,10 @@
   "3":{
     "stats":["chance_to_blind_on_hit_%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% chance to Blind Enemies on Hit with Melee Weapons",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextBlind"
         }
       }]
@@ -124,20 +133,24 @@
   "4":{
     "stats":["local_cannot_generate_toxicity_stacks_over_time"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Does not inflict Mana Burn over time"
       }]
   },
   "5":{
     "stats":["toxicity_stacks_gained_on_hit_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,1]],
         "text":"Inflicts Mana Burn on you when you Hit an Enemy with a Melee Weapon",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextTinctureManaBurn"
+        }
       },{
-        "limit":[[2]],
+        "limit":[[2,"#"]],
         "text":"Inflicts {0} Mana Burn on you when you Hit an Enemy with a Melee Weapon",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextTinctureManaBurn"
         }
       }]
@@ -145,16 +158,17 @@
   "6":{
     "stats":["item_rarity_+%_per_toxicity_up_to_100%_from_tincture"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Rarity of Items found per Mana Burn, up to a maximum of 100%"
       }]
   },
   "7":{
     "stats":["all_damage_with_tinctured_weapons_can_freeze"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"All Damage with Melee Weapons can Freeze",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextFreeze"
         }
       }]
@@ -162,9 +176,10 @@
   "8":{
     "stats":["all_damage_with_tinctured_weapons_can_ignite"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"All Damage with Melee Weapons can Ignite",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextIgnite"
         }
       }]
@@ -172,9 +187,10 @@
   "9":{
     "stats":["all_damage_with_tinctured_weapons_can_poison"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"All Damage with Melee Weapons can Poison",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextPoison"
         }
       }]
@@ -182,9 +198,10 @@
   "10":{
     "stats":["all_damage_with_tinctured_weapons_can_shock"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"All Damage with Melee Weapons can Shock",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextShock"
         }
       }]
@@ -192,16 +209,17 @@
   "11":{
     "stats":["always_stun_enemies_that_are_on_full_life_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Damaging Melee Weapon Hits always Stun Enemies that are on Full Life"
       }]
   },
   "12":{
     "stats":["apply_X_wither_stacks_for_2_seconds_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Melee Weapon Hits Inflict {0} Withered Debuffs for 2 seconds",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextWithered"
         }
       }]
@@ -209,52 +227,75 @@
   "13":{
     "stats":["base_killed_monster_from_tinctured_weapon_attack_dropped_item_rarity_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Rarity of Items Dropped by Enemies killed by Melee Weapon Attacks"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Rarity of Items Dropped by Enemies killed by Melee Weapon Attacks",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "14":{
     "stats":["bleeding_damage_+%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Damage with Bleeding from Melee Weapons",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextBleeding"
+        }
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Damage with Bleeding from Melee Weapons",
-        "1":[],
-        "2":[]
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextBleeding"
+        },
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "15":{
     "stats":["blind_effect_+%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Effect of Blind from Melee Weapons",
-        "1":[]
-      },{
-        "limit":[[]],
-        "text":"{0}% reduced Effect of Blind from Melee Weapons",
-        "1":[],
-        "2":{
+        "1":{
+          "k":"reminderstring",
           "v":"ReminderTextBlindNoDuration"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"{0}% reduced Effect of Blind from Melee Weapons",
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextBlindNoDuration"
+        },
+        "1":{
+          "k":"negate",
+          "v":1
         }
       }]
   },
   "16":{
     "stats":["chance_to_apply_grasping_vines_on_tinctured_weapon_hit_%"],
     "1":[{
-        "limit":[[null,99]],
+        "limit":[[1,99]],
         "text":"{0}% chance to inflict a Grasping Vine on Melee Weapon Hit",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextGraspingVines"
+        }
       },{
-        "limit":[[100]],
+        "limit":[[100,"#"]],
         "text":"Inflict a Grasping Vine on Melee Weapon Hit",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextGraspingVines"
         }
       }]
@@ -262,9 +303,10 @@
   "17":{
     "stats":["chance_to_block_attack_damage_if_stunned_an_enemy_with_tinctured_weapon_recently_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"+{0}% Chance to Block Attack Damage if you've Stunned an Enemy with a Melee Weapon Recently",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextRecently"
         }
       }]
@@ -272,56 +314,76 @@
   "18":{
     "stats":["chance_to_freeze_%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% chance to Freeze with Melee Weapons",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextFreeze"
+        }
       }]
   },
   "19":{
     "stats":["chance_to_ignite_%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% chance to Ignite with Melee Weapons",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextIgnite"
+        }
       }]
   },
   "20":{
     "stats":["chance_to_poison_on_hit_%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% chance to Poison with Melee Weapons",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextPoison"
+        }
       }]
   },
   "21":{
     "stats":["chance_to_shock_%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% chance to Shock with Melee Weapons",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextShock"
+        }
       }]
   },
   "22":{
     "stats":["chill_effect_+%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Effect of Chill from Melee Weapons",
-        "1":[]
-      },{
-        "limit":[[]],
-        "text":"{0}% reduced Effect of Chill from Melee Weapons",
-        "1":[],
-        "2":{
+        "1":{
+          "k":"reminderstring",
           "v":"ReminderTextChillPotentialEffect"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"{0}% reduced Effect of Chill from Melee Weapons",
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextChillPotentialEffect"
+        },
+        "1":{
+          "k":"negate",
+          "v":1
         }
       }]
   },
   "23":{
     "stats":["create_consecrated_ground_on_tinctured_weapon_hit_%_vs_rare_or_unique_enemy"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% chance to create Consecrated Ground when you Hit a Rare or\nUnique Enemy with a Melee Weapon, lasting 8 seconds",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextConsecratedGround"
         }
       }]
@@ -329,20 +391,24 @@
   "24":{
     "stats":["critical_strike_chance_+%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Critical Strike Chance with Melee Weapons"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Critical Strike Chance with Melee Weapons",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "25":{
     "stats":["culling_strike_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Melee Weapon Attacks have Culling Strike",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextCullingStrike"
         }
       }]
@@ -350,93 +416,118 @@
   "26":{
     "stats":["elemental_damage_+%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Elemental Damage with Melee Weapons"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Elemental Damage with Melee Weapons",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "27":{
     "stats":["explode_enemies_for_10%_life_as_fire_on_tinctured_weapon_kill_chance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Killing Blows with Melee Weapons have a {0}% chance for Enemies to\nExplode, dealing a tenth of their maximum Life as Fire Damage"
       }]
   },
   "28":{
     "stats":["fire_damage_taken_+_per_toxicity_from_tincture"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d} Fire Damage taken from Hits per Mana Burn"
       }]
   },
   "29":{
     "stats":["gain_1_rare_monster_mod_on_killing_blow_with_tinctured_weapons_for_60_seconds_%_chance"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Killing Blows with Melee Weapons against Rare Monsters have a\n{0}% chance to grant one of their Modifiers for 60 seconds"
       }]
   },
   "30":{
     "stats":["gain_rage_on_hitting_rare_unique_enemy_with_tinctured_weapon_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,99]],
         "text":"{0}% chance to gain 1 Rage when you Hit a Rare or Unique Enemy with a Melee Weapon",
-        "1":[],
-        "2":[]
-      },{
-        "limit":[[]],
-        "text":"Gain 1 Rage when you Hit a Rare or Unique Enemy with a Melee Weapon",
-        "1":{
-          "v":"ReminderTextRage"
-        },
         "2":{
+          "k":"reminderstring",
           "v":"ReminderTextRageOnHit"
+        },
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextRage"
+        }
+      },{
+        "limit":[[100,"#"]],
+        "text":"Gain 1 Rage when you Hit a Rare or Unique Enemy with a Melee Weapon",
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextRageOnHit"
+        },
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextRage"
         }
       }]
   },
   "31":{
     "stats":["gain_x_rage_on_hit_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Gain {0} Rage on Melee Weapon Hit",
-        "1":[],
-        "2":[]
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextRageOnHit"
+        },
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextRage"
+        }
       }]
   },
   "32":{
     "stats":["hits_ignore_enemy_monster_physical_damage_reduction_%_chance_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,99]],
         "text":"Melee Weapon Hits have {0}% chance to ignore Enemy Physical Damage Reduction"
       },{
-        "limit":[[]],
+        "limit":[[100,"#"]],
         "text":"Melee Weapon Hits ignore Enemy Physical Damage Reduction"
       }]
   },
   "33":{
     "stats":["ignite_damage_+%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Damage with Ignite from Melee Weapons",
-        "1":[]
-      },{
-        "limit":[[]],
-        "text":"{0}% reduced Damage with Ignite from Melee Weapons",
-        "1":[],
-        "2":{
+        "1":{
+          "k":"reminderstring",
           "v":"ReminderTextIgniteNonHitNoDuration"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"{0}% reduced Damage with Ignite from Melee Weapons",
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextIgniteNonHitNoDuration"
+        },
+        "1":{
+          "k":"negate",
+          "v":1
         }
       }]
   },
   "34":{
     "stats":["leech_%_is_instant_with_tinctured_weapons_vs_low_life_enemies"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0}% of Melee Weapon Leech is Instant against Enemies that are on Low Life",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextLowLife"
         }
       }]
@@ -444,97 +535,129 @@
   "35":{
     "stats":["life_leech_on_overkill_tinctured_weapon_damage_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% of Overkill Damage with Melee Weapons is Leeched as Life",
-        "1":{
-          "v":"ReminderTextLifeLeech"
-        },
         "2":{
+          "k":"reminderstring",
           "v":"ReminderTextOverkill"
+        },
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextLifeLeech"
         }
       }]
   },
   "36":{
     "stats":["mana_regeneration_rate_+%_if_enemy_shocked_with_tinctured_weapon_recently"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Mana Regeneration Rate if you have Shocked an Enemy with a Melee Weapon Recently",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextRecently"
+        }
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Mana Regeneration Rate if you have Shocked an Enemy with a Melee Weapon Recently",
-        "1":[],
-        "2":[]
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextRecently"
+        },
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "37":{
     "stats":["melee_splash_with_tinctured_weapons","melee_splash_area_of_effect_+%"],
     "1":[{
-        "limit":[[],[null,0]],
+        "limit":[["#","#"],[0,0]],
         "text":"Melee Strike Skills deal Splash Damage to surrounding targets"
       },{
-        "limit":[[],[]],
+        "limit":[["#","#"],[1,"#"]],
         "text":"Melee Strike Skills deal Splash Damage to surrounding targets, with {1}% increased Area of Effect"
       },{
-        "limit":[[],[]],
+        "limit":[["#","#"],["#",-1]],
         "text":"Melee Strike Skills deal Splash Damage to surrounding targets, with {1}% reduced Area of Effect",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":2
+        }
       }]
   },
   "38":{
     "stats":["melee_tinctured_weapon_range_+"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"{0:+d} metre to Melee Strike Range",
-        "1":[],
-        "2":[]
-      },{
-        "limit":[[]],
-        "text":"{0:+d} metres to Melee Strike Range",
-        "1":{
-          "k":"locations_to_metres"
-        },
         "2":{
+          "k":"reminderstring",
           "v":"ReminderTextMeleeStrikeRange"
+        },
+        "1":{
+          "k":"locations_to_metres",
+          "v":1
+        }
+      },{
+        "limit":[["#","#"]],
+        "text":"{0:+d} metres to Melee Strike Range",
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextMeleeStrikeRange"
+        },
+        "1":{
+          "k":"locations_to_metres",
+          "v":1
         }
       }]
   },
   "39":{
     "stats":["number_of_additional_projectiles_with_tinctured_weapon_attacks_if_you_have_been_hit_recently"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,1]],
         "text":"Attacks with Melee Weapons fire an additional Projectile if you've been Hit Recently",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextRecently"
+        }
       },{
-        "limit":[[]],
+        "limit":[[2,"#"]],
         "text":"Attacks with Melee Weapons fire {0} additional Projectiles if you've been Hit Recently",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextRecently"
+        }
       }]
   },
   "40":{
     "stats":["overwhelm_%_physical_damage_reduction_with_tinctured_weapons_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Melee Weapons have {0}% chance to ignore Enemy Physical Damage Reduction"
       }]
   },
   "41":{
     "stats":["penetrate_elemental_resistances_%_per_toxicity_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Melee Weapon Damage Penetrates {0}% Elemental Resistances per Mana Burn, up to a maximum of 200%"
       }]
   },
   "42":{
     "stats":["phasing_for_4_seconds_on_tinctured_weapon_kill_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#",99]],
         "text":"{0}% chance to gain Phasing for 4 seconds on Melee Weapon Kill",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextPhasing"
+        }
       },{
-        "limit":[[]],
+        "limit":[[100,"#"]],
         "text":"Gain Phasing for 4 seconds on Melee Weapon Kill",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextPhasing"
         }
       }]
@@ -542,292 +665,411 @@
   "43":{
     "stats":["poison_damage_+%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Damage with Poison from Melee Weapons",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextPoison"
+        }
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Damage with Poison from Melee Weapons",
-        "1":[],
-        "2":[]
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextPoison"
+        },
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "44":{
     "stats":["local_tincture_cooldown_recovery_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Cooldown Recovery Rate"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Cooldown Recovery Rate",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "45":{
     "stats":["local_tincture_mod_effect_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased effect"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced effect",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "46":{
     "stats":["local_tincture_toxicity_rate_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Mana Burn rate"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Mana Burn rate",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "47":{
     "stats":["random_curse_on_tinctured_weapon_hit_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0}% chance to Curse Enemies with a random Hex on Melee Weapon Hit"
       }]
   },
   "48":{
     "stats":["recover_%_maximum_life_on_killing_rare_or_unique_with_tinctured_weapon"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Recover {0}% of Life on Killing a Rare or Unique Enemy with a Melee Weapon"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Lose {0}% of Life on Killing a Rare or Unique Enemy with a Melee Weapon",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "49":{
     "stats":["reduce_enemy_chaos_resistance_with_tinctured_weapons_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Melee Weapon Damage Penetrates {0}% Chaos Resistance"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Your Melee Weapon Hits treat Chaos Resistance as {0}% higher than actual value",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "50":{
     "stats":["reduce_enemy_cold_resistance_with_tinctured_weapons_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Melee Weapon Damage Penetrates {0}% Cold Resistance"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Your Melee Weapon Hits treat Cold Resistance as {0}% higher than actual value",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "51":{
     "stats":["reduce_enemy_fire_resistance_with_tinctured_weapons_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Melee Weapon Damage Penetrates {0}% Fire Resistance"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Your Melee Weapon Hits treat Fire Resistance as {0}% higher than actual value",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "52":{
     "stats":["reduce_enemy_lightning_resistance_with_tinctured_weapons_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Melee Weapon Damage Penetrates {0}% Lightning Resistance"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Your Melee Weapon Hits treat Lightning Resistance as {0}% higher than actual value",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "53":{
     "stats":["refresh_bleeding_duration_on_tinctured_weapon_hit_%_chance"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% chance to refresh Bleeding Duration on Melee Weapon Hit",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextBleeding"
+        }
       }]
   },
   "54":{
     "stats":["refresh_ignite_duration_on_tinctured_weapon_hit_%_chance"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% chance to refresh Ignite Duration on Melee Weapon Hit",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextIgnite"
+        }
       }]
   },
   "55":{
     "stats":["shatter_on_tinctured_weapon_kill_chance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Killing Blows with Melee Weapons have {0}% chance to Shatter Enemies"
       }]
   },
   "56":{
     "stats":["shock_effect_+%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Effect of Shock from Melee Weapons",
-        "1":[]
-      },{
-        "limit":[[]],
-        "text":"{0}% reduced Effect of Shock from Melee Weapons",
-        "1":[],
-        "2":{
+        "1":{
+          "k":"reminderstring",
           "v":"ReminderTextShockPotentialEffect"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"{0}% reduced Effect of Shock from Melee Weapons",
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextShockPotentialEffect"
+        },
+        "1":{
+          "k":"negate",
+          "v":1
         }
       }]
   },
   "57":{
     "stats":["steal_endurance_charges_on_hit_%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,99]],
         "text":"{0}% chance to Steal Endurance Charges on Hit with Melee Weapons"
       },{
-        "limit":[[]],
+        "limit":[[100,"#"]],
         "text":"Melee Weapon Hits Steal Endurance Charges"
       }]
   },
   "58":{
     "stats":["steal_frenzy_charges_on_hit_%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,99]],
         "text":"{0}% chance to Steal Frenzy Charges on Hit with Melee Weapons"
       },{
-        "limit":[[]],
+        "limit":[[100,"#"]],
         "text":"Melee Weapon Hits Steal Frenzy Charges"
       }]
   },
   "59":{
     "stats":["steal_power_charges_on_hit_%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,99]],
         "text":"{0}% chance to Steal Power Charges on Hit with Melee Weapons"
       },{
-        "limit":[[]],
+        "limit":[[100,"#"]],
         "text":"Melee Weapon Hits Steal Power Charges"
       }]
   },
   "60":{
     "stats":["stun_duration_+%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Stun Duration with Melee Weapons"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Stun Duration with Melee Weapons",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "61":{
     "stats":["attack_speed_+%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Melee Weapon Attack Speed"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Melee Weapon Attack Speed",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "62":{
     "stats":["base_mana_gained_on_tinctured_weapon_kill"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Gain {0} Mana per Enemy Killed with Melee Weapons"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Lose {0} Mana per Enemy Killed with Melee Weapons",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "63":{
     "stats":["critical_strike_multiplier_+_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d}% to Melee Weapon Critical Strike Multiplier"
       }]
   },
   "64":{
     "stats":["damage_over_time_multiplier_+_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d}% to Damage over Time Multiplier with Melee Weapon Attacks"
       }]
   },
   "82":{
     "stats":["tinctured_weapon_hits_cannot_be_evaded_while_on_low_life"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Your Melee Weapon Hits can't be Evaded while you are on Low Life",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextLowLife"
+        }
       }]
   },
-  "84":{
-    "stats":["tinctured_weapon_projectile_chain_from_terrain_chance_%"],
+  "69":{
+    "stats":["mana_gained_on_hitting_enemies_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
-        "text":"Projectiles from Melee Weapon Attacks have {0}% chance to be able to Chain when colliding with terrain"
-      },{
-        "limit":[[]],
-        "text":"Projectiles from Melee Weapon Attacks can Chain when colliding with terrain"
+        "limit":[[1,"#"]],
+        "text":"Gain {0} Mana per Enemy Hit with Melee Weapons"
       }]
   },
   "83":{
     "stats":["tinctured_weapon_kill_chance_to_gain_onslaught_on_kill_for_10_seconds_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,99]],
         "text":"{0}% chance to gain Onslaught for 10 seconds on Killing Blow with Melee Weapons",
-        "1":[]
-      },{
-        "limit":[[]],
-        "text":"Gain Onslaught for 10 seconds on Killing Blow with Melee Weapons",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextOnslaught"
         }
-      }]
-  },
-  "81":{
-    "stats":["tinctured_weapon_damage_+%_per_non_instant_spell_cast_in_past_8_seconds"],
-    "1":[{
-        "limit":[[]],
-        "text":"{0}% increased Melee Weapon Damage for each\nNon-Instant Spell you've Cast in the past 8 seconds"
       },{
-        "limit":[[]],
-        "text":"{0}% reduced Melee Weapon Damage for each\nNon-Instant Spell you've Cast in the past 8 seconds",
-        "1":[]
+        "limit":[[100,"#"]],
+        "text":"Gain Onslaught for 10 seconds on Killing Blow with Melee Weapons",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextOnslaught"
+        }
       }]
   },
   "80":{
     "stats":["tinctured_weapon_crush_on_hit_for_X_seconds_vs_full_life_enemies"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Crush Full Life Enemies for {0} seconds on Melee Weapon Hit",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextCrushedNoDuration"
         }
       }]
   },
-  "70":{
-    "stats":["penetrate_elemental_resistances_%_with_tinctured_weapons"],
+  "65":{
+    "stats":["elemental_ailment_duration_+%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
-        "text":"Melee Weapon Damage Penetrates {0}% Elemental Resistances"
+        "limit":[[1,"#"]],
+        "text":"{0}% increased Duration of Elemental Ailments from Melee Weapon Attacks",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextElementalAilments"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"{0}% reduced Duration of Elemental Ailments from Melee Weapon Attacks",
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextElementalAilments"
+        },
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "77":{
+    "stats":["tinctured_weapon_cover_in_ash_on_hit_for_X_seconds_vs_full_life_enemies"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"Cover Full Life Enemies in Ash for {0} seconds on Melee Weapon Hit",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextCoveredInAshNoDuration"
+        }
+      }]
+  },
+  "76":{
+    "stats":["tinctured_weapon_chill_minimum_slow_%"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Chills from Melee Weapon Hits always reduce Action Speed by at least {0}%"
+      }]
+  },
+  "75":{
+    "stats":["tinctured_weapon_attack_speed_+%_if_have_blocked_recently"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"{0}% increased Melee Weapon Attack Speed if you have Blocked Recently",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextRecently"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"{0}% reduced Melee Weapon Attack Speed if you have Blocked Recently",
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextRecently"
+        },
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "79":{
+    "stats":["tinctured_weapon_critical_strike_multiplier_vs_enemies_on_full_life_+"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"{0:+d}% to Melee Weapon Critical Strike Multiplier against Enemies that are on Full Life"
+      }]
+  },
+  "68":{
+    "stats":["life_gained_on_killing_enemies_with_tinctured_weapons"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"Gain {0} Life per Enemy Killed with Melee Weapons"
       }]
   },
   "78":{
     "stats":["tinctured_weapon_cover_in_frost_on_hit_for_X_seconds_vs_full_life_enemies"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Cover Full Life Enemies in Frost for {0} seconds on Melee Weapon Hit",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextCoveredInFrostNoDuration"
         }
       }]
@@ -835,139 +1077,137 @@
   "71":{
     "stats":["tinctured_weapon_damage_+%_vs_enemies_that_are_on_low_life"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Melee Weapon Damage against Enemies that are on Low Life",
-        "1":[]
-      }]
-  },
-  "77":{
-    "stats":["tinctured_weapon_cover_in_ash_on_hit_for_X_seconds_vs_full_life_enemies"],
-    "1":[{
-        "limit":[[]],
-        "text":"Cover Full Life Enemies in Ash for {0} seconds on Melee Weapon Hit",
         "1":{
-          "v":"ReminderTextCoveredInAshNoDuration"
+          "k":"reminderstring",
+          "v":"ReminderTextLowLife"
         }
       }]
   },
-  "68":{
-    "stats":["life_gained_on_killing_enemies_with_tinctured_weapons"],
+  "70":{
+    "stats":["penetrate_elemental_resistances_%_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
-        "text":"Gain {0} Life per Enemy Killed with Melee Weapons"
+        "limit":[[1,"#"]],
+        "text":"Melee Weapon Damage Penetrates {0}% Elemental Resistances"
       }]
   },
   "73":{
     "stats":["tinctured_weapon_additional_critical_strike_chance_percent_against_full_life_enemies"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Melee Weapons have {0:+d}% to Critical Strike Chance against Enemies that are on Full Life"
-      }]
-  },
-  "72":{
-    "stats":["tincture_bleeding_damage_+%_final_vs_non_bleeding_enemies"],
-    "1":[{
-        "limit":[[]],
-        "text":"Bleeding inflicted with Melee Weapons on non-Bleeding Enemies deals {0}% more Damage",
-        "1":[]
-      },{
-        "limit":[[]],
-        "text":"Bleeding inflicted with Melee Weapons on non-Bleeding Enemies deals {0}% less Damage",
-        "1":[],
-        "2":[]
-      }]
-  },
-  "66":{
-    "stats":["flask_charges_granted_from_tinctured_weapon_kills_+%"],
-    "1":[{
-        "limit":[[]],
-        "text":"{0}% increased Flask Charges gained from Kills with Melee Weapons"
-      },{
-        "limit":[[]],
-        "text":"{0}% reduced Flask Charges gained from Kills with Melee Weapons",
-        "1":[]
-      }]
-  },
-  "69":{
-    "stats":["mana_gained_on_hitting_enemies_with_tinctured_weapons"],
-    "1":[{
-        "limit":[[]],
-        "text":"Gain {0} Mana per Enemy Hit with Melee Weapons"
       }]
   },
   "67":{
     "stats":["life_gained_on_hitting_enemies_with_tinctured_weapons"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Gain {0} Life per Enemy Hit with Melee Weapons"
       }]
   },
-  "65":{
-    "stats":["elemental_ailment_duration_+%_with_tinctured_weapons"],
+  "66":{
+    "stats":["flask_charges_granted_from_tinctured_weapon_kills_+%"],
     "1":[{
-        "limit":[[]],
-        "text":"{0}% increased Duration of Elemental Ailments from Melee Weapon Attacks",
-        "1":[]
+        "limit":[[1,"#"]],
+        "text":"{0}% increased Flask Charges gained from Kills with Melee Weapons"
       },{
-        "limit":[[]],
-        "text":"{0}% reduced Duration of Elemental Ailments from Melee Weapon Attacks",
-        "1":[],
-        "2":{
-          "v":"ReminderTextElementalAilments"
+        "limit":[["#",-1]],
+        "text":"{0}% reduced Flask Charges gained from Kills with Melee Weapons",
+        "1":{
+          "k":"negate",
+          "v":1
         }
       }]
   },
-  "76":{
-    "stats":["tinctured_weapon_chill_minimum_slow_%"],
+  "72":{
+    "stats":["tincture_bleeding_damage_+%_final_vs_non_bleeding_enemies"],
     "1":[{
-        "limit":[[]],
-        "text":"Chills from Melee Weapon Hits always reduce Action Speed by at least {0}%"
-      }]
-  },
-  "79":{
-    "stats":["tinctured_weapon_critical_strike_multiplier_vs_enemies_on_full_life_+"],
-    "1":[{
-        "limit":[[]],
-        "text":"{0:+d}% to Melee Weapon Critical Strike Multiplier against Enemies that are on Full Life"
-      }]
-  },
-  "75":{
-    "stats":["tinctured_weapon_attack_speed_+%_if_have_blocked_recently"],
-    "1":[{
-        "limit":[[]],
-        "text":"{0}% increased Melee Weapon Attack Speed if you have Blocked Recently",
-        "1":[]
+        "limit":[[1,"#"]],
+        "text":"Bleeding inflicted with Melee Weapons on non-Bleeding Enemies deals {0}% more Damage",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextBleeding"
+        }
       },{
-        "limit":[[]],
-        "text":"{0}% reduced Melee Weapon Attack Speed if you have Blocked Recently",
-        "1":[],
-        "2":[]
+        "limit":[["#",-1]],
+        "text":"Bleeding inflicted with Melee Weapons on non-Bleeding Enemies deals {0}% less Damage",
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextBleeding"
+        },
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "74":{
     "stats":["tinctured_weapon_attack_poison_on_non_poisoned_enemies_damage_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Poisons inflicted with Melee Weapons on non-Poisoned Enemies deal {0}% increased Damage",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextPoison"
+        }
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Poisons inflicted with Melee Weapons on non-Poisoned Enemies deal {0}% reduced Damage",
-        "1":[],
-        "2":[]
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextPoison"
+        },
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "85":{
     "stats":["tinctured_weapon_skill_area_of_effect_+%_if_enemy_killed_recently"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Melee Weapon Attack Area of Effect if you've Killed Recently",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextRecently"
+        }
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Melee Weapon Attack Area of Effect if you've Killed Recently",
-        "1":[],
-        "2":[]
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextRecently"
+        },
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "84":{
+    "stats":["tinctured_weapon_projectile_chain_from_terrain_chance_%"],
+    "1":[{
+        "limit":[[0,99]],
+        "text":"Projectiles from Melee Weapon Attacks have {0}% chance to be able to Chain when colliding with terrain"
+      },{
+        "limit":[[100,"#"]],
+        "text":"Projectiles from Melee Weapon Attacks can Chain when colliding with terrain"
+      }]
+  },
+  "81":{
+    "stats":["tinctured_weapon_damage_+%_per_non_instant_spell_cast_in_past_8_seconds"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"{0}% increased Melee Weapon Damage for each\nNon-Instant Spell you've Cast in the past 8 seconds"
+      },{
+        "limit":[["#",-1]],
+        "text":"{0}% reduced Melee Weapon Damage for each\nNon-Instant Spell you've Cast in the past 8 seconds",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   }
 }

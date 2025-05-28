@@ -1,6 +1,7 @@
 {
   "active_skill_area_of_effect_radius":3,
   "active_skill_base_area_of_effect_radius":4,
+  "base_secondary_skill_effect_duration":1,
   "cascade_attack_base_total_distance":5,
   "cascade_attack_total_distance":6,
   "never_freeze":2,
@@ -19,11 +20,14 @@
   "4":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Burst radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Burst radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -34,13 +38,19 @@
   "5":{
     "stats":["cascade_attack_base_total_distance"],
     "1":[{
-        "limit":[[]],
+        "limit":[[10,10]],
         "text":"Wave length is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Wave length is {0} metres",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       }]
   },
   "6":{
@@ -50,7 +60,7 @@
   "7":{
     "stats":["upheaval_number_of_spikes"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Causes {0} Bursts"
       }]
   }

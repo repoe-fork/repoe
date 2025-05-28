@@ -1,6 +1,8 @@
 {
   "active_skill_area_of_effect_radius":3,
   "active_skill_base_area_of_effect_radius":4,
+  "base_consume_enemy_shock_on_hit":2,
+  "never_shock":1,
   "number_of_chains":5,
   "parent":"skill_stat_descriptions",
   "1":{
@@ -16,11 +18,14 @@
   "4":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Shockwave radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Shockwave radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -31,10 +36,10 @@
   "5":{
     "stats":["number_of_chains"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,1]],
         "text":"Chains up to {0} time"
       },{
-        "limit":[[2]],
+        "limit":[[2,"#"]],
         "text":"Chains up to {0} times"
       }]
   }

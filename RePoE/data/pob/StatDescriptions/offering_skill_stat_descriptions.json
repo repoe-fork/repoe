@@ -4,6 +4,8 @@
   "base_movement_velocity_+%":6,
   "base_resist_all_elements_%":13,
   "base_spell_block_%":8,
+  "blood_offering_%_of_life_to_lose":1,
+  "blood_offering_%_of_lost_life_to_regenerate_as_life_per_second":1,
   "blood_offering_life_regenerated_+%_final_per_corpse":2,
   "cast_speed_+%_granted_from_skill":5,
   "damage_+%":4,
@@ -19,7 +21,7 @@
     "name":"blood_offering_life_loss",
     "stats":["blood_offering_%_of_life_to_lose","blood_offering_%_of_lost_life_to_regenerate_as_life_per_second"],
     "1":[{
-        "limit":[[],[null,"#"]],
+        "limit":[["#","#"],["#","#"]],
         "text":"Sacrifices {0}% of your Life\nMinions Regenerate {1}% of Sacrificed Life per second"
       }]
   },
@@ -27,10 +29,10 @@
     "name":"blood_offering_life_regen_multi",
     "stats":["blood_offering_life_regenerated_+%_final_per_corpse"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% more Life Regeneration granted to Minions per corpse Consumed"
       },{
-        "limit":[[null,-1]],
+        "limit":[["#",-1]],
         "text":"{0}% less Life Regeneration granted to Minions per corpse Consumed",
         "1":{
           "k":"negate",
@@ -42,55 +44,67 @@
     "name":"attack_speed_incr_skill_granted",
     "stats":["attack_speed_+%_granted_from_skill"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Grants Minions {0}% increased Attack Speed"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Grants Minions {0}% reduced Attack Speed",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "4":{
     "name":"damage_incr",
     "stats":["damage_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Grants Minions {0}% increased Damage"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Grants Minions {0}% reduced Damage",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "5":{
     "name":"cast_speed_incr_skill_granted",
     "stats":["cast_speed_+%_granted_from_skill"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Grants Minions {0}% increased Cast Speed"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Grants Minions {0}% reduced Cast Speed",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "6":{
     "name":"movement_speed_incr",
     "stats":["base_movement_velocity_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Grants Minions {0}% increased Movement Speed"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Grants Minions {0}% reduced Movement Speed",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "7":{
     "name":"base_block",
     "stats":["monster_base_block_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Grants Minions {0:+d}% Chance to Block Attack Damage"
       }]
   },
@@ -98,7 +112,7 @@
     "name":"base_spell_block",
     "stats":["base_spell_block_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Grants Minions {0:+d}% Chance to Block Spell Damage"
       }]
   },
@@ -106,7 +120,7 @@
     "name":"recover_life_on_block",
     "stats":["minion_recover_X_life_on_block"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Minions recover {0} Life when they Block"
       }]
   },
@@ -114,7 +128,7 @@
     "name":"physical_damage_to_add_as_chaos",
     "stats":["physical_damage_%_to_add_as_chaos"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Minions gain {0}% of their Physical Damage as Extra Chaos Damage"
       }]
   },
@@ -122,7 +136,7 @@
     "name":"spirit_offering_life_as_es_per_corpse",
     "stats":["spirit_offering_life_%_added_as_base_maximum_energy_shield_per_corpse_consumed"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Minions gain {0}% of their Maximum Life as\nExtra Maximum Energy Shield for each corpse Consumed"
       }]
   },
@@ -130,7 +144,7 @@
     "name":"chaos_res",
     "stats":["base_chaos_damage_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Grants Minions +{0}% to Chaos Resistance"
       }]
   },
@@ -138,7 +152,7 @@
     "name":"elemental_resist",
     "stats":["base_resist_all_elements_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Minions gain {0:+d}% to all Elemental Resistances"
       }]
   },
@@ -146,14 +160,15 @@
     "name":"life_leech_from_any",
     "stats":["life_leech_from_any_damage_permyriad"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Grants Minions {0}% of Damage Leeched as Life",
+        "1":{
+          "k":"divide_by_one_hundred",
+          "v":1
+        },
         "2":{
           "k":"reminderstring",
           "v":"ReminderTextLifeLeech"
-        },
-        "1":{
-          "k":"divide_by_one_hundred"
         }
       }]
   },
@@ -161,13 +176,15 @@
     "name":"minion_life_regen_if_blocked",
     "stats":["minion_life_regeneration_rate_per_minute_%_if_blocked_recently"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Grants Minions {0}% of Life Regenerated per Second if they have Blocked recently",
-        "2":{
-          "v":"ReminderTextRecently"
-        },
         "1":{
-          "k":"per_minute_to_per_second"
+          "k":"per_minute_to_per_second",
+          "v":1
+        },
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextRecently"
         }
       }]
   },
@@ -175,12 +192,15 @@
     "name":"offering_effect",
     "stats":["offering_spells_effect_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Effect of Offering"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Effect of Offering",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   }
 }

@@ -6,6 +6,7 @@
   "active_skill_secondary_area_of_effect_radius":7,
   "never_freeze":3,
   "parent":"skill_stat_descriptions",
+  "total_number_of_projectiles_to_fire":1,
   "1":{
     "stats":["total_number_of_projectiles_to_fire"]
   },
@@ -22,7 +23,7 @@
   "5":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Fires Bolts at every Enemy within a {0} metre radius",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -33,13 +34,19 @@
   "6":{
     "stats":["active_skill_base_secondary_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Bolt explosion radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Bolt explosion radius is {0} metres",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       }]
   },
   "7":{

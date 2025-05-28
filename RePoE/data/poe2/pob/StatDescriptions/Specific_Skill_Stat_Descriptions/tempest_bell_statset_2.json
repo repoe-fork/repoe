@@ -2,6 +2,7 @@
   "active_skill_area_of_effect_radius":2,
   "active_skill_base_area_of_effect_radius":3,
   "parent":"specific_skill_stat_descriptions/tempest_bell_statset_0",
+  "tempest_bell_hit_limit":1,
   "tempest_bell_shockwave_cooldown_ms":4,
   "1":{
     "stats":["tempest_bell_hit_limit"]
@@ -13,11 +14,14 @@
   "3":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Shockwave radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Shockwave radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -28,13 +32,14 @@
   "4":{
     "stats":["tempest_bell_shockwave_cooldown_ms"],
     "1":[{
-        "limit":[[null,1000]],
+        "limit":[[1000,1000]],
         "text":"Shockwave can be triggered once every second"
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Shockwave can be triggered once every {0} seconds",
         "1":{
-          "k":"milliseconds_to_seconds_2dp_if_required"
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
         }
       }]
   }

@@ -1,4 +1,6 @@
 {
+  "active_skill_area_of_effect_radius":1,
+  "active_skill_base_area_of_effect_radius":2,
   "base_number_of_overcharged_spears_allowed":3,
   "base_skill_effect_duration":4,
   "number_of_chains":5,
@@ -13,7 +15,7 @@
   "2":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Fires bolts at enemies within a {0} metre radius",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -24,53 +26,60 @@
   "3":{
     "stats":["base_number_of_overcharged_spears_allowed"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,1]],
         "text":"Limit {0} lodged spear"
       },{
-        "limit":[[2]],
+        "limit":[[2,"#"]],
         "text":"Limit {0} lodged spears"
       }]
   },
   "4":{
     "stats":["base_skill_effect_duration"],
     "1":[{
-        "limit":[[null,1000]],
+        "limit":[[1000,1000]],
         "text":"Lodged spear duration is {0} second",
-        "1":[]
+        "1":{
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Lodged spear duration is {0} seconds",
         "1":{
-          "k":"milliseconds_to_seconds_2dp_if_required"
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
         }
       }]
   },
   "5":{
     "stats":["number_of_chains"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,1]],
         "text":"Bolts Chain to {0} enemy"
       },{
-        "limit":[[]],
+        "limit":[[2,"#"]],
         "text":"Bolts Chain to {0} enemies"
       }]
   },
   "6":{
     "stats":["number_of_overcharged_spears_allowed"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Lodged spear limit@{0}"
       }]
   },
   "7":{
     "stats":["overcharged_spear_base_frequency_ms"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1000,1000]],
         "text":"Fires a bolt every second"
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Fires a bolt every {0} seconds",
-        "1":[]
+        "1":{
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
+        }
       }]
   },
   "8":{

@@ -3,6 +3,8 @@
   "active_skill_base_area_of_effect_radius":3,
   "gathering_storm_perfect_aoe_limit":4,
   "parent":"skill_stat_descriptions",
+  "quality_display_gathering_storm_is_gem":4,
+  "total_attack_time_+_ms":1,
   "1":{
     "stats":["total_attack_time_+_ms"]
   },
@@ -13,11 +15,14 @@
   "3":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Shockwave radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Shockwave radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -28,10 +33,10 @@
   "4":{
     "stats":["gathering_storm_perfect_aoe_limit","quality_display_gathering_storm_is_gem"],
     "1":[{
-        "limit":[[],[null,0]],
+        "limit":[["#","#"],[0,0]],
         "text":"Maximum {0:+d} shockwaves per use"
       },{
-        "limit":[[],[]],
+        "limit":[["#","#"],["#","#"]],
         "text":"Maximum {0} shockwaves per use"
       }]
   }

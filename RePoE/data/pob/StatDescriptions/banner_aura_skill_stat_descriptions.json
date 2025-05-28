@@ -4,10 +4,12 @@
   "armour_evasion_banner_critical_strike_chance_+%":3,
   "banner_area_of_effect_+%_final_per_resource":7,
   "banner_buff_effect_+%_final_per_resource":8,
+  "base_can_gain_banner_resource":1,
   "base_movement_velocity_+%":11,
   "base_spell_suppression_chance_%":12,
   "bleeding_dot_multiplier_+":13,
   "buff_effect_duration":6,
+  "can_gain_banner_resource_while_banner_is_placed":1,
   "damage_taken_+_from_suppressed_hits":14,
   "evasion_and_physical_damage_reduction_rating_+%":2,
   "impale_debuff_effect_+%":15,
@@ -20,11 +22,14 @@
     "name":"gain_valour",
     "stats":["base_can_gain_banner_resource","can_gain_banner_resource_while_banner_is_placed"],
     "1":[{
-        "limit":[[],[]],
+        "limit":[["!",0],[0,0]],
         "text":"While you have no placed Banner, you can gain Valour",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextValourGain"
+        }
       },{
-        "limit":[["!",0],[null,"#"]],
+        "limit":[["!",0],["#","#"]],
         "text":"You can gain Valour",
         "1":{
           "k":"reminderstring",
@@ -36,10 +41,10 @@
     "name":"evasion_and_physical_damage_reduction_rating_incr",
     "stats":["evasion_and_physical_damage_reduction_rating_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Banner grants {0}% increased Armour and Evasion Rating to You and Allies"
       },{
-        "limit":[[null,-1]],
+        "limit":[["#",-1]],
         "text":"Banner grants {0}% reduced Armour and Evasion Rating to You and Allies",
         "1":{
           "k":"negate",
@@ -51,46 +56,56 @@
     "name":"armour_evasion_banner_crit_chance",
     "stats":["armour_evasion_banner_critical_strike_chance_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Banner applies {0}% increased Critical Strike Chance to Enemies"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Banner applies {0}% reduced Critical Strike Chance to Enemies",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "4":{
     "name":"dread_banner_accuracy_final",
     "stats":["puresteel_banner_accuracy_rating_+%_final"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Banner applies {0}% more Accuracy Rating to Enemies"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Banner applies {0}% less Accuracy Rating to Enemies",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "5":{
     "name":"dread_banner_enemy_damage_final",
     "stats":["puresteel_banner_damage_+%_final"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Banner applies {0}% more Damage to Enemies"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Banner applies {0}% less Damage to Enemies",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "6":{
     "name":"buff_duration",
     "stats":["buff_effect_duration"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Banner lasts {0} seconds",
         "1":{
-          "k":"milliseconds_to_seconds_2dp"
+          "k":"milliseconds_to_seconds_2dp",
+          "v":1
         }
       }]
   },
@@ -98,43 +113,52 @@
     "name":"banner_resource_aoe",
     "stats":["banner_area_of_effect_+%_final_per_resource"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% more Area of Effect per Valour consumed"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% less Area of Effect per Valour consumed",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "8":{
     "name":"banner_resource_aura_effect",
     "stats":["banner_buff_effect_+%_final_per_resource"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% more Aura effect per Valour consumed"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% less Aura effect per Valour consumed",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "9":{
     "name":"accuracy_rating_incr",
     "stats":["accuracy_rating_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Banner grants {0}% increased Accuracy Rating to You and Allies"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Banner grants {0}% reduced Accuracy Rating to You and Allies",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "10":{
     "name":"block_add",
     "stats":["additional_block_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Banner grants {0:+d}% Chance to Block Attack Damage to You and Allies"
       }]
   },
@@ -142,21 +166,25 @@
     "name":"movement_speed_incr",
     "stats":["base_movement_velocity_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Banner grants {0}% increased Movement Speed to You and Allies"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Banner grants {0}% reduced Movement Speed to You and Allies",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "12":{
     "name":"base_suppress_chance",
     "stats":["base_spell_suppression_chance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Banner grants {0:+d}% chance to Suppress Spell Damage to You and Allies",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextSuppression"
         }
       }]
@@ -165,7 +193,7 @@
     "name":"bleeding_dot_multi",
     "stats":["bleeding_dot_multiplier_+"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Banner grants {0:+d}% to Damage over Time Multiplier for Bleeding to You and Allies"
       }]
   },
@@ -173,9 +201,10 @@
     "name":"suppressed_damage",
     "stats":["damage_taken_+_from_suppressed_hits"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Banner grants {0:+d} Damage taken of each Damage Type from Suppressed Hits to You and Allies",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextDamageTypes"
         }
       }]
@@ -184,19 +213,22 @@
     "name":"impale_effect",
     "stats":["impale_debuff_effect_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Banner grants {0}% increased Impale Effect to You and Allies"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Banner grants {0}% reduced Impale Effect to You and Allies",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "16":{
     "name":"recover_life_on_block",
     "stats":["recover_X_life_on_block"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Banner causes you and Allies to Recover {0} Life when Blocking"
       }]
   },
@@ -204,12 +236,15 @@
     "name":"war_banner_phys_damage",
     "stats":["war_banner_physical_damage_+%_final_with_melee_skills"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Banner grants {0}% more Physical Damage with Melee Skills to You and Allies"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Banner grants {0}% less Physical Damage with Melee Skills to You and Allies",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   }
 }

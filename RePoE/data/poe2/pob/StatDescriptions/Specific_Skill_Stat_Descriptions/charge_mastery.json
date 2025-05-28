@@ -1,4 +1,5 @@
 {
+  "consume_frenzy_power_and_endurance_charge_every_x_ms":1,
   "parent":"skill_stat_descriptions",
   "skill_charge_mastery_crit_chance_+%_final_with_power_charges":2,
   "skill_charge_mastery_defences_+%_final_with_endurance_charges":3,
@@ -6,10 +7,10 @@
   "1":{
     "stats":["consume_frenzy_power_and_endurance_charge_every_x_ms"],
     "1":[{
-        "limit":[[null,1000]],
+        "limit":[[1000,1000]],
         "text":"Consumes one of each Charge every second"
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Consumes one of each Charge every {0} seconds",
         "1":{
           "k":"milliseconds_to_seconds_2dp_if_required",
@@ -20,36 +21,43 @@
   "2":{
     "stats":["skill_charge_mastery_crit_chance_+%_final_with_power_charges"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% more Critical Hit Chance while\nyou have a Power Charge"
       },{
-        "limit":[[null,-1]],
+        "limit":[["#",-1]],
         "text":"{0}% less Critical Hit Chance while\nyou have a Power Charge",
         "1":{
-          "k":"negate"
+          "k":"negate",
+          "v":1
         }
       }]
   },
   "3":{
     "stats":["skill_charge_mastery_defences_+%_final_with_endurance_charges"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% more Defences while you have an Endurance Charge"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% less Defences while you have an Endurance Charge",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "4":{
     "stats":["skill_charge_matery_skill_speed_+%_final_with_frenzy_charges"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% more Skill Speed while you have a Frenzy Charge"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% less Skill Speed while you have a Frenzy Charge",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   }
 }

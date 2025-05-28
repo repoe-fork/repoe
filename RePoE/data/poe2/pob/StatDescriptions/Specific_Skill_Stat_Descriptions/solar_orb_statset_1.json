@@ -1,22 +1,27 @@
 {
+  "active_skill_area_of_effect_radius":1,
   "active_skill_base_area_of_effect_radius":2,
   "parent":"skill_stat_descriptions",
+  "spell_maximum_base_fire_damage":3,
   "spell_minimum_base_fire_damage":3,
   "3":{
     "stats":["spell_minimum_base_fire_damage","spell_maximum_base_fire_damage"],
     "1":[{
-        "limit":[[],[null,"#"]],
+        "limit":[["#","#"],["#","#"]],
         "text":"Ignites as though dealing {0} to {1} Fire damage"
       }]
   },
   "2":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Ignite radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Ignite radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",

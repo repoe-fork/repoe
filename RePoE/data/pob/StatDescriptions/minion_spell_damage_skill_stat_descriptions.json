@@ -1,6 +1,7 @@
 {
   "add_power_charge_on_critical_strike_%":36,
   "additional_chance_to_freeze_chilled_enemies_%":37,
+  "always_freeze":12,
   "base_all_ailment_duration_+%":42,
   "base_chance_to_freeze_%":12,
   "base_chance_to_ignite_%":14,
@@ -21,10 +22,12 @@
   "base_stun_duration_+%":18,
   "base_stun_threshold_reduction_+%":9,
   "blind_duration_+%":29,
+  "buff_effect_duration":1,
   "cannot_inflict_status_ailments":39,
   "chill_duration_+%":22,
   "chill_effect_+%":19,
   "cold_ailment_effect_+%":48,
+  "critical_strike_chance_+%":2,
   "critical_strike_chance_+%_vs_blinded_enemies":49,
   "cruelty_duration_+%":35,
   "cruelty_effect_+%":50,
@@ -43,6 +46,7 @@
   "freeze_duration_+%":23,
   "gain_power_charge_on_kill_with_hit_%":61,
   "global_hit_causes_monster_flee_%":15,
+  "global_maximum_added_fire_damage_vs_burning_enemies":77,
   "global_minimum_added_fire_damage_vs_burning_enemies":77,
   "global_poison_on_hit":40,
   "hits_grant_cruelty":62,
@@ -52,6 +56,7 @@
   "killed_monster_dropped_item_quantity_+%":11,
   "killed_monster_dropped_item_rarity_+%":10,
   "killing_blow_consumes_corpse_restore_x_life":65,
+  "killing_blow_consumes_corpse_restore_x_mana":65,
   "knockback_chance_%_at_close_range":66,
   "knockback_distance_+%":8,
   "life_leech_from_any_damage_permyriad":5,
@@ -85,7 +90,7 @@
     "name":"buff_duration",
     "stats":["buff_effect_duration"],
     "1":[{
-        "limit":[[null,"#"]],
+        "limit":[[1,"#"]],
         "text":"Debuff Lasts {0} seconds",
         "1":{
           "k":"milliseconds_to_seconds_2dp",
@@ -97,13 +102,14 @@
     "name":"critical_strike_chance_incr",
     "stats":["critical_strike_chance_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% increased Critical Strike Chance"
       },{
-        "limit":[[null,-1]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions have {0}% reduced Critical Strike Chance",
         "1":{
-          "k":"negate"
+          "k":"negate",
+          "v":1
         }
       }]
   },
@@ -111,19 +117,22 @@
     "name":"controlled_destruction_critical_strike_chance",
     "stats":["support_controlled_destruction_critical_strike_chance_+%_final"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% more Critical Strike Chance"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions have {0}% less Critical Strike Chance",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "4":{
     "name":"critical_strike_multiplier_incr",
     "stats":["base_critical_strike_multiplier_+"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"This Spell and Minions have {0:+d}% to Critical Strike Multiplier"
       }]
   },
@@ -131,14 +140,15 @@
     "name":"life_leech_from_any",
     "stats":["life_leech_from_any_damage_permyriad"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions Leech {0}% of Damage as Life",
+        "1":{
+          "k":"divide_by_one_hundred",
+          "v":1
+        },
         "2":{
           "k":"reminderstring",
           "v":"ReminderTextLifeLeech"
-        },
-        "1":{
-          "k":"divide_by_one_hundred"
         }
       }]
   },
@@ -146,25 +156,33 @@
     "name":"energy_shield_leech_from_any",
     "stats":["energy_shield_leech_from_any_damage_permyriad"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions Leech {0}% of Damage as Energy Shield",
-        "2":{
-          "v":"ReminderTextEnergyShieldLeech"
+        "1":{
+          "k":"divide_by_one_hundred",
+          "v":1
         },
-        "1":[]
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextEnergyShieldLeech"
+        }
       }]
   },
   "7":{
     "name":"knockback_chance",
     "stats":["base_global_chance_to_knockback_%"],
     "1":[{
-        "limit":[[null,99]],
+        "limit":[[1,99]],
         "text":"This Spell and Minions have an additional {0}% chance to Knock Enemies Back on Hit",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextKnockback"
+        }
       },{
-        "limit":[[100]],
+        "limit":[[100,"#"]],
         "text":"This Spell and Minions knock Enemies Back on Hit",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextKnockback"
         }
       }]
@@ -173,79 +191,104 @@
     "name":"knockback_distance",
     "stats":["knockback_distance_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% increased Knockback Distance"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions have {0}% reduced Knockback Distance",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "9":{
     "name":"stun_threshold_reduction_incr",
     "stats":["base_stun_threshold_reduction_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% reduced Enemy Stun Threshold",
-        "1":[]
-      },{
-        "limit":[[]],
-        "text":"This Spell and Minions have {0}% increased Enemy Stun Threshold",
-        "2":{
+        "1":{
+          "k":"reminderstring",
           "v":"ReminderTextStunThreshold"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"This Spell and Minions have {0}% increased Enemy Stun Threshold",
+        "1":{
+          "k":"negate",
+          "v":1
         },
-        "1":[]
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextStunThreshold"
+        }
       }]
   },
   "10":{
     "name":"killed_monster_dropped_item_rarity_incr",
     "stats":["killed_monster_dropped_item_rarity_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Rarity of Items Dropped by enemies Slain by this Spell or Minions"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Rarity of Items Dropped by enemies Slain by this Spell or Minions",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "11":{
     "name":"killed_monster_dropped_item_quantity_incr",
     "stats":["killed_monster_dropped_item_quantity_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Quantity of Items Dropped by enemies Slain by this Spell or Minions"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Quantity of Items Dropped by enemies Slain by this Spell or Minions",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "12":{
     "name":"freeze_chance",
     "stats":["base_chance_to_freeze_%","always_freeze"],
     "1":[{
-        "limit":[[],[]],
+        "limit":[["#","#"],[1,"#"]],
         "text":"This Spell and Minions always Freeze Enemies",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextFreeze"
         }
       },{
-        "limit":[[],[null,0]],
-        "1":[]
+        "limit":[[100,"#"],[0,0]],
+        "text":"This Spell and Minions always Freeze Enemies",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextFreeze"
+        }
       },{
-        "limit":[[],[]],
+        "limit":[[1,99],[0,0]],
         "text":"This Spell and Minions have {0}% chance to Freeze enemies",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextFreeze"
+        }
       }]
   },
   "13":{
     "name":"shock_chance",
     "stats":["base_chance_to_shock_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% chance to Shock enemies",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextShock"
         }
       }]
@@ -254,9 +297,10 @@
     "name":"burn_chance",
     "stats":["base_chance_to_ignite_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% chance to Ignite enemies",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextIgnite"
         }
       }]
@@ -265,7 +309,7 @@
     "name":"chance_to_flee",
     "stats":["global_hit_causes_monster_flee_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% chance to cause Monsters to Flee on Hit"
       }]
   },
@@ -273,117 +317,145 @@
     "name":"area_of_effect_incr",
     "stats":["base_skill_area_of_effect_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% increased Area of Effect"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions have {0}% reduced Area of Effect",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "17":{
     "name":"concentrated_area_of_effect",
     "stats":["support_concentrated_effect_skill_area_of_effect_+%_final"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% more Area of Effect"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions have {0}% less Area of Effect",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "18":{
     "name":"stun_duration_incr",
     "stats":["base_stun_duration_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% increased Stun Duration on enemies"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions have {0}% reduced Stun Duration on enemies",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "19":{
     "name":"chill_effect",
     "stats":["chill_effect_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Effect of Chill inflicted by this Spell or Minions"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Effect of Chill inflicted by this Spell or Minions",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "20":{
     "name":"shock_effect",
     "stats":["shock_effect_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% increased Shock Effect"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions have {0}% reduced Shock Effect",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "21":{
     "name":"burn_duration",
     "stats":["ignite_duration_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% increased Ignite Duration"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions have {0}% reduced Ignite Duration",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "22":{
     "name":"chill_duration",
     "stats":["chill_duration_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% increased Chill Duration"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions have {0}% reduced Chill Duration",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "23":{
     "name":"freeze_duration",
     "stats":["freeze_duration_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% increased Freeze Duration"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions have {0}% reduced Freeze Duration",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "24":{
     "name":"shock_duration",
     "stats":["shock_duration_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% increased Shock Duration"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions have {0}% reduced Shock Duration",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "25":{
     "name":"elemental_status_aura",
     "stats":["elemental_status_effect_aura_radius"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Elemental Ailments caused by this Spell or Minions also spread to nearby enemies",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextElementalAilments"
         }
       }]
@@ -392,7 +464,7 @@
     "name":"ignite_aura",
     "stats":["support_ignite_proliferation_radius"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Ignites caused by this Spell or Minions spread to other nearby Enemies"
       }]
   },
@@ -400,7 +472,7 @@
     "name":"physical_damage_to_convert_to_lightning",
     "stats":["skill_physical_damage_%_to_convert_to_lightning"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions Convert {0}% of Physical Damage to Lightning Damage"
       }]
   },
@@ -408,9 +480,10 @@
     "name":"chance_to_blind",
     "stats":["virtual_chance_to_blind_on_hit_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"This Spell and Minions have {0}% chance to Blind on Hit",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextBlind"
         }
       }]
@@ -419,19 +492,22 @@
     "name":"blind_duration_incr",
     "stats":["blind_duration_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% increased Blinding duration"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions have {0}% reduced Blinding duration",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "30":{
     "name":"fire_penetration",
     "stats":["base_reduce_enemy_fire_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions Penetrate {0}% Fire Resistance"
       }]
   },
@@ -439,7 +515,7 @@
     "name":"cold_penetration",
     "stats":["base_reduce_enemy_cold_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions Penetrate {0}% Cold Resistance"
       }]
   },
@@ -447,7 +523,7 @@
     "name":"elemental_penetration",
     "stats":["reduce_enemy_elemental_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions Penetrate {0}% Elemental Resistances"
       }]
   },
@@ -455,7 +531,7 @@
     "name":"lightning_penetration",
     "stats":["base_reduce_enemy_lightning_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions Penetrate {0}% Lightning Resistance"
       }]
   },
@@ -463,10 +539,10 @@
     "name":"base_multicast",
     "stats":["base_spell_repeat_count"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,1]],
         "text":"This Spell and Minion's Spells Repeat an additional time"
       },{
-        "limit":[[2]],
+        "limit":[[2,"#"]],
         "text":"This Spell and Minion's Spells Repeat an additional {0} times"
       }]
   },
@@ -474,22 +550,25 @@
     "name":"cruelty_duration_incr",
     "stats":["cruelty_duration_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% increased Duration of Cruelty"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions have {0}% reduced Duration of Cruelty",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "36":{
     "name":"power_charge_on_crit_chance",
     "stats":["add_power_charge_on_critical_strike_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,99]],
         "text":"This Spell and Minions have {0}% chance to gain a Power Charge on Critical Strike"
       },{
-        "limit":[[]],
+        "limit":[[100,"#"]],
         "text":"This Spell and Minions gain a Power Charge on Critical Strike"
       }]
   },
@@ -497,43 +576,57 @@
     "name":"freeze_chance_vs_chilled",
     "stats":["additional_chance_to_freeze_chilled_enemies_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"This Spell and Minions have {0:d}% chance to Freeze Enemies which are Chilled",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextFreeze"
+        }
       }]
   },
   "38":{
     "name":"hypothermia_damage",
     "stats":["support_hypothermia_damage_+%_vs_chilled_enemies_final"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions deal {0}% more Damage with Hits and Ailments against Chilled Enemies",
-        "1":[]
-      },{
-        "limit":[[]],
-        "text":"This Spell and Minions deal {0}% less Damage with Hits and Ailments against Chilled Enemies",
-        "2":{
+        "1":{
+          "k":"reminderstring",
           "v":"ReminderTextDamagingAilments"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"This Spell and Minions deal {0}% less Damage with Hits and Ailments against Chilled Enemies",
+        "1":{
+          "k":"negate",
+          "v":1
         },
-        "1":[]
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextDamagingAilments"
+        }
       }]
   },
   "39":{
     "name":"cannot_inflict_ailments",
     "stats":["cannot_inflict_status_ailments"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"This Spell and Minions cannot inflict Elemental Ailments",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextElementalAilments"
+        }
       }]
   },
   "40":{
     "name":"poison_on_hit",
     "stats":["global_poison_on_hit"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"This Spell and Minions Poison Enemies on Hit",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextPoison"
         }
       }]
@@ -542,54 +635,74 @@
     "name":"poison_duration",
     "stats":["base_poison_duration_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% increased Poison Duration"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions have {0}% reduced Poison Duration",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "42":{
     "name":"ailment_duration_incr",
     "stats":["base_all_ailment_duration_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Duration of Ailments inflicted with this Spell or by Minions",
-        "1":[]
-      },{
-        "limit":[[]],
-        "text":"{0}% reduced Duration of Ailments inflicted with this Spell or by Minions",
-        "2":{
+        "1":{
+          "k":"reminderstring",
           "v":"ReminderTextAilments"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"{0}% reduced Duration of Ailments inflicted with this Spell or by Minions",
+        "1":{
+          "k":"negate",
+          "v":1
         },
-        "1":[]
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextAilments"
+        }
       }]
   },
   "43":{
     "name":"poison_chance",
     "stats":["base_chance_to_poison_on_hit_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,99]],
         "text":"This Spell and Minions have {0}% chance to Poison on Hit",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextPoison"
+        }
       },{
-        "limit":[[]],
+        "limit":[[100,"#"]],
         "text":"This Spell and Minions always Poison on Hit",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextPoison"
+        }
       }]
   },
   "44":{
     "name":"inflict_cold_exposure_on_hit_chance",
     "stats":["base_inflict_cold_exposure_on_hit_%_chance"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,99]],
         "text":"This Spell and Minions have {0}% chance to inflict Cold Exposure on Hit",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextColdExposure"
+        }
       },{
-        "limit":[[]],
+        "limit":[[100,"#"]],
         "text":"This Spell and Minions inflict Cold Exposure on Hit",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextColdExposure"
         }
       }]
@@ -598,13 +711,17 @@
     "name":"inflict_fire_exposure_on_hit_chance",
     "stats":["base_inflict_fire_exposure_on_hit_%_chance"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,99]],
         "text":"This Spell and Minions have {0}% chance to inflict Fire Exposure on Hit",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextFireExposure"
+        }
       },{
-        "limit":[[]],
+        "limit":[[100,"#"]],
         "text":"This Spell and Minions inflict Fire Exposure on Hit",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextFireExposure"
         }
       }]
@@ -613,13 +730,17 @@
     "name":"inflict_lightning_exposure_on_hit_chance",
     "stats":["base_inflict_lightning_exposure_on_hit_%_chance"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,99]],
         "text":"This Spell and Minions have {0}% chance to inflict Lightning Exposure on Hit",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextLightningExposure"
+        }
       },{
-        "limit":[[]],
+        "limit":[[100,"#"]],
         "text":"This Spell and Minions inflict Lightning Exposure on Hit",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextLightningExposure"
         }
       }]
@@ -628,137 +749,190 @@
     "name":"life_leech_from_chaos_damage",
     "stats":["base_life_leech_from_chaos_damage_permyriad"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% of Chaos Damage Leeched as Life",
-        "2":[],
-        "1":[]
+        "1":{
+          "k":"divide_by_one_hundred",
+          "v":1
+        },
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextLifeLeech"
+        }
       }]
   },
   "48":{
     "name":"cold_ailment_effect_incr",
     "stats":["cold_ailment_effect_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions Have {0}% increased Effect of Cold Ailments",
-        "1":[]
-      },{
-        "limit":[[]],
-        "text":"This Spell and Minions Have {0}% reduced Effect of Cold Ailments",
-        "2":{
+        "1":{
+          "k":"reminderstring",
           "v":"ReminderTextColdAilments"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"This Spell and Minions Have {0}% reduced Effect of Cold Ailments",
+        "1":{
+          "k":"negate",
+          "v":1
         },
-        "1":[]
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextColdAilments"
+        }
       }]
   },
   "49":{
     "name":"critical_strike_chance_incr_vs_blinded_enemies",
     "stats":["critical_strike_chance_+%_vs_blinded_enemies"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% increased Critical Strike Chance against Blinded Enemies"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions have {0}% reduced Critical Strike Chance against Blinded Enemies",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "50":{
     "name":"cruelty_effect_incr",
     "stats":["cruelty_effect_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Effect of Cruelty gained by this Spell or Minions"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Effect of Cruelty gained by this Spell or Minions",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "51":{
     "name":"damage_if_consumed_corpse_recently",
     "stats":["damage_+%_if_you_have_consumed_a_corpse_recently"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Damage if you have Consumed a corpse Recently\nMinions deal {0}% increased Damage if they have Consumed a corpse Recently",
-        "1":[]
-      },{
-        "limit":[[]],
-        "text":"{0}% reduced Damage if you have Consumed a corpse Recently\nMinions deal {0}% reduced Damage if they have Consumed a corpse Recently",
-        "2":{
+        "1":{
+          "k":"reminderstring",
           "v":"ReminderTextRecently"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"{0}% reduced Damage if you have Consumed a corpse Recently\nMinions deal {0}% reduced Damage if they have Consumed a corpse Recently",
+        "1":{
+          "k":"negate",
+          "v":1
         },
-        "1":[]
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextRecently"
+        }
       }]
   },
   "52":{
     "name":"damage_incr_per_ailment",
     "stats":["damage_+%_vs_enemies_per_freeze_shock_ignite"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions deal {0}% increased Damage with Hits and Ailments per Freeze, Shock or Ignite on Enemy",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextDamagingAilments"
+        }
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions deal {0}% reduced Damage with Hits and Ailments  per Freeze, Shock or Ignite on Enemy",
-        "2":[],
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        },
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextDamagingAilments"
+        }
       }]
   },
   "53":{
     "name":"damage_while_es_leeching",
     "stats":["damage_+%_while_es_leeching"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions deal {0}% increased Damage while Leeching Energy Shield"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions deal {0}% reduced Damage while Leeching Energy Shield",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "54":{
     "name":"damage_while_life_leeching",
     "stats":["damage_+%_while_life_leeching"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions deal {0}% increased Damage while Leeching Life"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions deal {0}% reduced Damage while Leeching Life",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "55":{
     "name":"damage_while_mana_leeching",
     "stats":["damage_+%_while_mana_leeching"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions deal {0}% increased Damage while Leeching Mana"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions deal {0}% reduced Damage while Leeching Mana",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "56":{
     "name":"damage_per_enemy_curse_incr",
     "stats":["damage_vs_cursed_enemies_per_enemy_curse_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions deal {0}% increased Damage with Hits and Ailments per Curse on Enemy",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextDamagingAilments"
+        }
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions deal {0}% reduced Damage with Hits and Ailments per Curse on Enemy",
-        "2":[],
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        },
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextDamagingAilments"
+        }
       }]
   },
   "57":{
     "name":"damage_vs_enemies_on_low_life_incr",
     "stats":["damage_vs_enemies_on_low_life_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions deal {0}% increased Damage with Hits against Enemies that are on Low Life"
       }]
   },
@@ -766,16 +940,19 @@
     "name":"damaging_ailments_deal_damage_faster",
     "stats":["damaging_ailments_deal_damage_+%_faster"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Damaging Ailments inflicted with this Spell or by Minions deal damage {0}% faster",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextDamagingAilments"
+        }
       }]
   },
   "59":{
     "name":"decay_on_hit",
     "stats":["deal_chaos_damage_per_second_for_10_seconds_on_hit"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"This Spell and Minions inflict Decay on Hit, dealing {0} Chaos Damage per second for 8 seconds"
       }]
   },
@@ -783,28 +960,33 @@
     "name":"shocked_movement_speed",
     "stats":["enemies_you_shock_movement_speed_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Enemies Shocked by this Spell or Minions have {0}% increased Movement Speed"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Enemies Shocked by this Spell or Minions have {0}% reduced Movement Speed",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "61":{
     "name":"gain_power_charge_on_kill_chance",
     "stats":["gain_power_charge_on_kill_with_hit_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% chance to gain a Power Charge on Killing Blow"
       }]
   },
   "62":{
+    "name":"hits_grant_cruelty",
     "stats":["hits_grant_cruelty"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"This Spell and Minions gain Cruelty on Hit",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextCruelty"
         }
       }]
@@ -813,17 +995,38 @@
     "name":"ignites_apply_fire_res",
     "stats":["ignites_apply_fire_resistance_+"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Enemies Ignited by this Spell or Minions have {0:+d}% to Fire Resistance"
       }]
   },
   "64":{
+    "name":"inflict_all_exposure_on_hit",
     "stats":["inflict_all_exposure_on_hit"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"This Spell and Minions inflict Fire, Cold, and Lightning Exposure on Hit",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextAll3Exposures"
+        }
+      }]
+  },
+  "83":{
+    "name":"withered_on_hit_chance",
+    "stats":["withered_on_hit_chance_%"],
+    "1":[{
+        "limit":[[1,99]],
+        "text":"This Spell and Minions have {0}% chance to inflict Withered on Hit",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextWithered"
+        }
+      },{
+        "limit":[[100,"#"]],
+        "text":"This Spell and Minions inflict Withered on Hit",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextWithered"
         }
       }]
   },
@@ -831,14 +1034,132 @@
     "name":"withered_support_base_duration",
     "stats":["support_withered_base_duration_ms"],
     "1":[{
-        "limit":[[null,1000]],
+        "limit":[[1000,1000]],
         "text":"Withered inflicted by this Spell or Minions has a base duration of {0} second",
-        "1":[]
+        "1":{
+          "k":"milliseconds_to_seconds",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Withered inflicted by this Spell or Minions has a base duration of {0} seconds",
         "1":{
-          "k":"milliseconds_to_seconds"
+          "k":"milliseconds_to_seconds",
+          "v":1
+        }
+      }]
+  },
+  "81":{
+    "name":"ailment_damage_incr",
+    "stats":["support_unbound_ailments_ailment_damage_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"This Spell and Minions deal {0}% more Damage with Ailments",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextDamagingAilments"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"This Spell and Minions deal {0}% less Damage with Ailments",
+        "1":{
+          "k":"negate",
+          "v":1
+        },
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextDamagingAilments"
+        }
+      }]
+  },
+  "80":{
+    "name":"spell_echo_final_repeat_damage",
+    "stats":["support_spell_echo_final_repeat_damage_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"Final Repeat of this Spell or Minion's Spells deals {0}% more Damage"
+      },{
+        "limit":[["#",-1]],
+        "text":"Final Repeat of this Spell or Minion's Spells deals {0}% less Damage",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "79":{
+    "name":"support_shock_with_more_damage",
+    "stats":["support_pure_shock_shock_as_though_damage_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"This Spell and Minions Shock Enemies as though dealing {0}% more Damage"
+      },{
+        "limit":[["#",-1]],
+        "text":"This Spell and Minions Shock Enemies as though dealing {0}% less Damage",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "78":{
+    "name":"pure_shock_less_damage",
+    "stats":["support_pure_shock_damage_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"This Spell and Minions deal {0}% more Damage"
+      },{
+        "limit":[["#",-1]],
+        "text":"This Spell and Minions deal {0}% less Damage",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "77":{
+    "name":"added_fire_against_burning",
+    "stats":["global_minimum_added_fire_damage_vs_burning_enemies","global_maximum_added_fire_damage_vs_burning_enemies"],
+    "1":[{
+        "limit":[["#","#"],["#","#"]],
+        "text":"This Spell and Minions deal {0} to {1} added Fire Damage against Burning Enemies"
+      }]
+  },
+  "76":{
+    "name":"support_faster_ailments_duration",
+    "stats":["support_faster_ailments_ailment_duration_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"{0}% more Duration of Ailments inflicted with This Spell or by Minions",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextAilments"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"{0}% less Duration of Ailments inflicted with This Spell or by Minions",
+        "1":{
+          "k":"negate",
+          "v":1
+        },
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextAilments"
+        }
+      }]
+  },
+  "75":{
+    "name":"damage_while_es_leeching_more",
+    "stats":["support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"This Spell and Minions deal {0}% more Damage while Leeching Energy Shield"
+      },{
+        "limit":[["#",-1]],
+        "text":"This Spell and Minions deal {0}% less Damage while Leeching Energy Shield",
+        "1":{
+          "k":"negate",
+          "v":1
         }
       }]
   },
@@ -846,49 +1167,141 @@
     "name":"chaos_penetration",
     "stats":["reduce_enemy_chaos_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions Penetrate {0}% Chaos Resistance"
+      }]
+  },
+  "74":{
+    "name":"support_damage_full_es_incr",
+    "stats":["support_energy_shield_leech_damage_+%_on_full_energy_shield_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"This Spell and Minions deal {0}% more Damage while on Full Energy Shield"
+      },{
+        "limit":[["#",-1]],
+        "text":"This Spell and Minions deal {0}% less Damage while on Full Energy Shield",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "66":{
     "name":"close_range_knockback",
     "stats":["knockback_chance_%_at_close_range"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"This Spell and Minions have {0}% chance to Knock Enemies Back with Hits at Close Range",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextCloseRange"
         }
+      }]
+  },
+  "73":{
+    "name":"support_chills_incr_cold_damage_taken",
+    "stats":["support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"Enemies Chilled by this Spell or Minions have Cold Damage taken increased by Chill Effect"
       }]
   },
   "67":{
     "name":"lightning_ailment_effect_incr",
     "stats":["lightning_ailment_effect_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% increased Effect of Lightning Ailments",
-        "1":[]
-      },{
-        "limit":[[]],
-        "text":"This Spell and Minions have {0}% reduced Effect of Lightning Ailments",
-        "2":{
+        "1":{
+          "k":"reminderstring",
           "v":"ReminderTextLightningAilments"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"This Spell and Minions have {0}% reduced Effect of Lightning Ailments",
+        "1":{
+          "k":"negate",
+          "v":1
         },
-        "1":[]
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextLightningAilments"
+        }
       }]
   },
-  "83":{
-    "name":"withered_on_hit_chance",
-    "stats":["withered_on_hit_chance_%"],
+  "72":{
+    "name":"support_chills_incr_cold_dot_taken",
+    "stats":["support_chills_also_grant_cold_damage_taken_per_minute_+%"],
     "1":[{
-        "limit":[[]],
-        "text":"This Spell and Minions have {0}% chance to inflict Withered on Hit",
-        "1":[]
+        "limit":[[1,"#"]],
+        "text":"Enemies Chilled by this Spell or Minions take {0}% increased Cold Damage over Time"
       },{
-        "limit":[[]],
-        "text":"This Spell and Minions inflict Withered on Hit",
+        "limit":[["#",-1]],
+        "text":"Enemies Chilled by this Spell or Minions take {0}% reduced Cold Damage over Time",
         "1":{
-          "v":"ReminderTextWithered"
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "71":{
+    "name":"skill_and_damaging_ailment_duration_incr",
+    "stats":["skill_effect_and_damaging_ailment_duration_+%"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"{0}% increased Duration of Damaging Ailments\nMinions have {0}% increased Duration of Skills and Damaging Ailments",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextDamagingAilments"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"{0}% reduced Duration of Damaging Ailments\nMinions have {0}% reduced Duration of Skills and Damaging Ailments",
+        "1":{
+          "k":"negate",
+          "v":1
+        },
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextDamagingAilments"
+        }
+      }]
+  },
+  "70":{
+    "name":"critical_shock_effect",
+    "stats":["shock_effect_+%_with_critical_strikes"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"{0}% increased Effect of Shocks this Spell or Minions inflict with Critical Strikes"
+      },{
+        "limit":[["#",-1]],
+        "text":"{0}% reduced Effect of Shocks this Spell or Minions inflict with Critical Strikes",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "68":{
+    "name":"ailment_non_damaging_incr_effect",
+    "stats":["non_damaging_ailment_effect_+%"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"This Spell and Minions have {0}% increased Effect of non-Damaging Ailments",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextNonDamagingAilments"
+        }
+      },{
+        "limit":[["#",-1]],
+        "text":"This Spell and Minions have {0}% reduced Effect of non-Damaging Ailments",
+        "1":{
+          "k":"negate",
+          "v":1
+        },
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextNonDamagingAilments"
         }
       }]
   },
@@ -896,172 +1309,14 @@
     "name":"killing_blow_consume_corpse_add_flat_life",
     "stats":["killing_blow_consumes_corpse_restore_x_life","killing_blow_consumes_corpse_restore_x_mana"],
     "1":[{
-        "limit":[[],[]],
+        "limit":[[1,"#"],[1,"#"]],
         "text":"Killing Blows Consume corpses to Recover {0} Life and {1} Mana\nMinions Consume corpses on Killing Blow to Recover {0} Life and {1} Mana"
       },{
-        "limit":[[],[]],
+        "limit":[[1,"#"],[0,0]],
         "text":"Killing Blows Consume corpses to Recover {0} Life\nMinions Consume corpses on Killing Blow to Recover {0} Life"
       },{
-        "limit":[[],[]],
+        "limit":[[0,0],[1,"#"]],
         "text":"Killing Blows Consume corpses to Recover {1} Mana\nMinions Consume corpses on Killing Blow to Recover {1} Mana"
-      }]
-  },
-  "81":{
-    "name":"ailment_damage_incr",
-    "stats":["support_unbound_ailments_ailment_damage_+%_final"],
-    "1":[{
-        "limit":[[]],
-        "text":"This Spell and Minions deal {0}% more Damage with Ailments",
-        "1":[]
-      },{
-        "limit":[[]],
-        "text":"This Spell and Minions deal {0}% less Damage with Ailments",
-        "2":[],
-        "1":[]
-      }]
-  },
-  "80":{
-    "name":"spell_echo_final_repeat_damage",
-    "stats":["support_spell_echo_final_repeat_damage_+%_final"],
-    "1":[{
-        "limit":[[]],
-        "text":"Final Repeat of this Spell or Minion's Spells deals {0}% more Damage"
-      },{
-        "limit":[[]],
-        "text":"Final Repeat of this Spell or Minion's Spells deals {0}% less Damage",
-        "1":[]
-      }]
-  },
-  "71":{
-    "name":"skill_and_damaging_ailment_duration_incr",
-    "stats":["skill_effect_and_damaging_ailment_duration_+%"],
-    "1":[{
-        "limit":[[]],
-        "text":"{0}% increased Duration of Damaging Ailments\nMinions have {0}% increased Duration of Skills and Damaging Ailments",
-        "1":[]
-      },{
-        "limit":[[]],
-        "text":"{0}% reduced Duration of Damaging Ailments\nMinions have {0}% reduced Duration of Skills and Damaging Ailments",
-        "2":[],
-        "1":[]
-      }]
-  },
-  "76":{
-    "name":"support_faster_ailments_duration",
-    "stats":["support_faster_ailments_ailment_duration_+%_final"],
-    "1":[{
-        "limit":[[]],
-        "text":"{0}% more Duration of Ailments inflicted with This Spell or by Minions",
-        "1":[]
-      },{
-        "limit":[[]],
-        "text":"{0}% less Duration of Ailments inflicted with This Spell or by Minions",
-        "2":[],
-        "1":[]
-      }]
-  },
-  "77":{
-    "name":"added_fire_against_burning",
-    "stats":["global_minimum_added_fire_damage_vs_burning_enemies","global_maximum_added_fire_damage_vs_burning_enemies"],
-    "1":[{
-        "limit":[[],[]],
-        "text":"This Spell and Minions deal {0} to {1} added Fire Damage against Burning Enemies"
-      }]
-  },
-  "79":{
-    "name":"support_shock_with_more_damage",
-    "stats":["support_pure_shock_shock_as_though_damage_+%_final"],
-    "1":[{
-        "limit":[[]],
-        "text":"This Spell and Minions Shock Enemies as though dealing {0}% more Damage"
-      },{
-        "limit":[[]],
-        "text":"This Spell and Minions Shock Enemies as though dealing {0}% less Damage",
-        "1":[]
-      }]
-  },
-  "78":{
-    "name":"pure_shock_less_damage",
-    "stats":["support_pure_shock_damage_+%_final"],
-    "1":[{
-        "limit":[[]],
-        "text":"This Spell and Minions deal {0}% more Damage"
-      },{
-        "limit":[[]],
-        "text":"This Spell and Minions deal {0}% less Damage",
-        "1":[]
-      }]
-  },
-  "72":{
-    "name":"support_chills_incr_cold_dot_taken",
-    "stats":["support_chills_also_grant_cold_damage_taken_per_minute_+%"],
-    "1":[{
-        "limit":[[]],
-        "text":"Enemies Chilled by this Spell or Minions take {0}% increased Cold Damage over Time"
-      },{
-        "limit":[[]],
-        "text":"Enemies Chilled by this Spell or Minions take {0}% reduced Cold Damage over Time",
-        "1":[]
-      }]
-  },
-  "73":{
-    "name":"support_chills_incr_cold_damage_taken",
-    "stats":["support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount"],
-    "1":[{
-        "limit":[[]],
-        "text":"Enemies Chilled by this Spell or Minions have Cold Damage taken increased by Chill Effect"
-      }]
-  },
-  "70":{
-    "name":"critical_shock_effect",
-    "stats":["shock_effect_+%_with_critical_strikes"],
-    "1":[{
-        "limit":[[]],
-        "text":"{0}% increased Effect of Shocks this Spell or Minions inflict with Critical Strikes"
-      },{
-        "limit":[[]],
-        "text":"{0}% reduced Effect of Shocks this Spell or Minions inflict with Critical Strikes",
-        "1":[]
-      }]
-  },
-  "68":{
-    "name":"ailment_non_damaging_incr_effect",
-    "stats":["non_damaging_ailment_effect_+%"],
-    "1":[{
-        "limit":[[]],
-        "text":"This Spell and Minions have {0}% increased Effect of non-Damaging Ailments",
-        "1":[]
-      },{
-        "limit":[[]],
-        "text":"This Spell and Minions have {0}% reduced Effect of non-Damaging Ailments",
-        "2":{
-          "v":"ReminderTextNonDamagingAilments"
-        },
-        "1":[]
-      }]
-  },
-  "75":{
-    "name":"damage_while_es_leeching_more",
-    "stats":["support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final"],
-    "1":[{
-        "limit":[[]],
-        "text":"This Spell and Minions deal {0}% more Damage while Leeching Energy Shield"
-      },{
-        "limit":[[]],
-        "text":"This Spell and Minions deal {0}% less Damage while Leeching Energy Shield",
-        "1":[]
-      }]
-  },
-  "74":{
-    "name":"support_damage_full_es_incr",
-    "stats":["support_energy_shield_leech_damage_+%_on_full_energy_shield_final"],
-    "1":[{
-        "limit":[[]],
-        "text":"This Spell and Minions deal {0}% more Damage while on Full Energy Shield"
-      },{
-        "limit":[[]],
-        "text":"This Spell and Minions deal {0}% less Damage while on Full Energy Shield",
-        "1":[]
       }]
   }
 }

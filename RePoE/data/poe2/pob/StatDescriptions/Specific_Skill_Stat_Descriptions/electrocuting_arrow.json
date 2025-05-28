@@ -2,10 +2,8 @@
   "active_skill_base_secondary_area_of_effect_radius":1,
   "base_skill_effect_duration":2,
   "parent":"skill_stat_descriptions",
+  "quality_display_base_skill_effect_duration_is_gem":2,
   "skill_effect_duration":3,
-  "1":{
-    "stats":["active_skill_base_secondary_area_of_effect_radius"]
-  },
   "3":{
     "stats":["skill_effect_duration"],
     "1":[]
@@ -13,23 +11,36 @@
   "2":{
     "stats":["base_skill_effect_duration","quality_display_base_skill_effect_duration_is_gem"],
     "1":[{
-        "limit":[[null,1000],[null,0]],
+        "limit":[[1000,1000],[0,0]],
         "text":"{0:+d} second to Arrow duration",
-        "1":[]
+        "1":{
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[],[]],
+        "limit":[["#","#"],[0,0]],
         "text":"{0:+d} seconds to Arrow duration",
-        "1":[]
+        "1":{
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[],[]],
+        "limit":[[1000,1000],["#","#"]],
         "text":"Arrow duration is {0} second",
-        "1":[]
+        "1":{
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[],[null,"#"]],
+        "limit":[["#","#"],["#","#"]],
         "text":"Arrow duration is {0} seconds",
         "1":{
-          "k":"milliseconds_to_seconds_2dp_if_required"
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
         }
       }]
+  },
+  "1":{
+    "stats":["active_skill_base_secondary_area_of_effect_radius"]
   }
 }

@@ -1,8 +1,11 @@
 {
   "accuracy_rating":31,
   "accuracy_rating_+%":8,
+  "attack_maximum_added_chaos_damage":32,
   "attack_maximum_added_fire_damage":21,
+  "attack_maximum_added_lightning_damage":22,
   "attack_minimum_added_chaos_damage":32,
+  "attack_minimum_added_fire_damage":21,
   "attack_minimum_added_lightning_damage":22,
   "attack_speed_+%_granted_from_skill":3,
   "attacks_impale_on_hit_%_chance":33,
@@ -74,7 +77,9 @@
   "no_mana_cost":26,
   "parent":"skill_stat_descriptions",
   "physical_damage_%_to_add_as_cold":23,
+  "physical_damage_+%":1,
   "physical_damage_aura_nearby_enemies_physical_damage_taken_+%":79,
+  "physical_damage_aura_nearby_enemies_physical_damage_taken_+%_max":79,
   "physical_damage_taken_+%":80,
   "precision_grants_area_of_effect_+%_final":81,
   "receive_bleeding_chance_%_when_hit_by_attack":82,
@@ -85,6 +90,8 @@
   "skill_buff_grants_critical_strike_chance_+%":9,
   "spell_critical_strike_chance_+%":87,
   "spell_damage_aura_spell_damage_+%_final":88,
+  "spell_maximum_added_chaos_damage":89,
+  "spell_maximum_added_fire_damage":29,
   "spell_minimum_added_chaos_damage":89,
   "spell_minimum_added_fire_damage":29,
   "summon_totem_cast_speed_+%":90,
@@ -94,7 +101,7 @@
     "name":"physical_damage_incr",
     "stats":["physical_damage_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0}% increased Physical Damage"
       },{
         "limit":[["#",-1]],
@@ -109,43 +116,52 @@
     "name":"movement_speed_incr",
     "stats":["base_movement_velocity_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0}% increased Movement Speed"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby allies gain {0}% reduced Movement Speed",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "3":{
     "name":"attack_speed_incr_skill_granted",
     "stats":["attack_speed_+%_granted_from_skill"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0}% increased Attack Speed"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby allies gain {0}% reduced Attack Speed",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "4":{
     "name":"cast_speed_incr_skill_granted",
     "stats":["cast_speed_+%_granted_from_skill"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0}% increased Cast Speed"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby allies gain {0}% reduced Cast Speed",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "5":{
     "name":"elemental_resist",
     "stats":["base_resist_all_elements_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You and nearby allies gain {0:+d}% to all Elemental Resistances"
       }]
   },
@@ -153,10 +169,11 @@
     "name":"life_regen_per_minute_percent",
     "stats":["life_regeneration_rate_per_minute_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You and nearby Allies Regenerate {0}% of Life per second",
         "1":{
-          "k":"per_minute_to_per_second_2dp"
+          "k":"per_minute_to_per_second_2dp",
+          "v":1
         }
       }]
   },
@@ -164,10 +181,11 @@
     "name":"life_regen_per_minute",
     "stats":["base_life_regeneration_rate_per_minute"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You and nearby Allies Regenerate {0} Life per second",
         "1":{
-          "k":"per_minute_to_per_second"
+          "k":"per_minute_to_per_second",
+          "v":1
         }
       }]
   },
@@ -175,31 +193,37 @@
     "name":"accuracy_rating_incr",
     "stats":["accuracy_rating_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0}% increased Accuracy Rating"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby allies gain {0}% reduced Accuracy Rating",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "9":{
     "name":"grants_critical_strike_chance_incr",
     "stats":["skill_buff_grants_critical_strike_chance_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0}% increased Critical Strike Chance"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby allies gain {0}% reduced Critical Strike Chance",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "10":{
     "name":"base_evasion",
     "stats":["base_evasion_rating"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0} additional Evasion Rating"
       }]
   },
@@ -207,7 +231,7 @@
     "name":"grace_evasion_incr",
     "stats":["grace_aura_evasion_rating_+%_final"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0}% more Evasion rating"
       }]
   },
@@ -215,7 +239,7 @@
     "name":"base_armour",
     "stats":["base_physical_damage_reduction_rating"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0} additional Armour"
       }]
   },
@@ -223,7 +247,7 @@
     "name":"determination_armour_incr",
     "stats":["determination_aura_armour_+%_final"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0}% more Armour"
       }]
   },
@@ -231,7 +255,7 @@
     "name":"base_energy_shield",
     "stats":["base_maximum_energy_shield"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0} additional Energy Shield"
       }]
   },
@@ -239,7 +263,7 @@
     "name":"lightning_resist",
     "stats":["base_lightning_damage_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0}% additional Lightning Resistance"
       }]
   },
@@ -247,7 +271,7 @@
     "name":"fire_resist",
     "stats":["base_fire_damage_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0}% additional Fire Resistance"
       }]
   },
@@ -255,7 +279,7 @@
     "name":"cold_resist",
     "stats":["base_cold_damage_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0}% additional Cold Resistance"
       }]
   },
@@ -263,7 +287,7 @@
     "name":"max_fire_resist",
     "stats":["base_maximum_fire_damage_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0}% additional maximum Fire Resistance",
         "1":{
           "k":"reminderstring",
@@ -275,25 +299,31 @@
     "name":"max_cold_resist",
     "stats":["base_maximum_cold_damage_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0}% additional maximum Cold Resistance",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextMaximumResistance"
+        }
       }]
   },
   "20":{
     "name":"max_lightning_resist",
     "stats":["base_maximum_lightning_damage_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0}% additional maximum Lightning Resistance",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextMaximumResistance"
+        }
       }]
   },
   "21":{
     "name":"attack_added_fire",
     "stats":["attack_minimum_added_fire_damage","attack_maximum_added_fire_damage"],
     "1":[{
-        "limit":[[],[]],
+        "limit":[["#","#"],["#","#"]],
         "text":"You and nearby allies deal {0} to {1} additional Fire Damage with Attacks"
       }]
   },
@@ -301,7 +331,7 @@
     "name":"attack_added_lightning",
     "stats":["attack_minimum_added_lightning_damage","attack_maximum_added_lightning_damage"],
     "1":[{
-        "limit":[[],[]],
+        "limit":[["#","#"],["#","#"]],
         "text":"You and nearby allies deal {0} to {1} additional Lightning Damage with Attacks"
       }]
   },
@@ -309,7 +339,7 @@
     "name":"physical_damage_to_add_as_cold",
     "stats":["physical_damage_%_to_add_as_cold"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies gain {0}% of Physical Damage as Extra Cold Damage"
       }]
   },
@@ -317,23 +347,27 @@
     "name":"mana_regen",
     "stats":["base_mana_regeneration_rate_per_minute"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You and nearby Allies Regenerate {0} Mana per second",
-        "1":[]
+        "1":{
+          "k":"per_minute_to_per_second",
+          "v":1
+        }
       }]
   },
   "25":{
     "name":"energy_shield_no_delay",
     "stats":["energy_shield_recharge_not_delayed_by_damage"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Your and nearby allies' Energy Shield Recharges are not delayed by Damage"
       }]
   },
   "26":{
+    "name":"no_mana_cost",
     "stats":["no_mana_cost"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Your and nearby allies' Skills Cost no Mana"
       }]
   },
@@ -341,14 +375,15 @@
     "name":"evade_chance",
     "stats":["chance_to_evade_attacks_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies have {0:+d}% chance to Evade Attack Hits"
       }]
   },
   "28":{
+    "name":"base_elemental_damage_heals",
     "stats":["base_elemental_damage_heals"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Taking Elemental Damage instead heals you and Nearby Allies\nYou and Nearby Allies cannot gain Vaal Souls"
       }]
   },
@@ -356,7 +391,7 @@
     "name":"spell_added_fire_damage",
     "stats":["spell_minimum_added_fire_damage","spell_maximum_added_fire_damage"],
     "1":[{
-        "limit":[[],[]],
+        "limit":[["#","#"],["#","#"]],
         "text":"You and nearby allies deal {0} to {1} additional Fire Damage with Spells"
       }]
   },
@@ -364,18 +399,22 @@
     "name":"wrath_spell_lightning_damage",
     "stats":["wrath_aura_spell_lightning_damage_+%_final"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies deal {0}% more Spell Lightning Damage"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby allies deal {0}% less Spell Lightning Damage with Spells",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "31":{
+    "name":"accuracy_rating",
     "stats":["accuracy_rating"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You and nearby allies gain {0:+d} to Accuracy Rating"
       }]
   },
@@ -383,7 +422,7 @@
     "name":"attack_added_chaos",
     "stats":["attack_minimum_added_chaos_damage","attack_maximum_added_chaos_damage"],
     "1":[{
-        "limit":[[],[]],
+        "limit":[["#","#"],["#","#"]],
         "text":"You and nearby allies deal {0} to {1} additional Chaos Damage with Attacks"
       }]
   },
@@ -391,13 +430,17 @@
     "name":"attack_impale_chance",
     "stats":["attacks_impale_on_hit_%_chance"],
     "1":[{
-        "limit":[[null,99]],
+        "limit":[[1,99]],
         "text":"You and nearby Allies have {0}% chance to Impale Enemies on Hit with Attacks",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextImpale"
+        }
       },{
-        "limit":[[100]],
+        "limit":[[100,"#"]],
         "text":"You and nearby Allies Impale Enemies on Hit with Attacks",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextImpale"
         }
       }]
@@ -406,19 +449,22 @@
     "name":"aura_damage_pluspercent",
     "stats":["auras_grant_damage_+%_to_you_and_your_allies"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby Allies deal {0}% increased Damage"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby Allies deal {0}% reduced Damage",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "35":{
     "name":"aura_avoid_elemental_ailments",
     "stats":["avoid_all_elemental_status_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You and nearby Allies have {0}% chance to avoid Elemental Ailments"
       }]
   },
@@ -426,13 +472,17 @@
     "name":"avoid_chaos_damage",
     "stats":["avoid_chaos_damage_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,99]],
         "text":"You and nearby Allies have {0}% chance to Avoid Chaos Damage from Hits",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextChanceToAvoidDamageMax"
+        }
       },{
-        "limit":[[]],
+        "limit":[[100,"#"]],
         "text":"You and nearby Allies Avoid Chaos Damage from Hits",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextChanceToAvoidDamageMax"
         }
       }]
@@ -441,7 +491,7 @@
     "name":"phys_reduction",
     "stats":["base_additional_physical_damage_reduction_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Nearby Enemies have {0}% to Physical Damage Reduction"
       }]
   },
@@ -449,19 +499,22 @@
     "name":"aura_ailment_damage",
     "stats":["base_ailment_damage_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby Allies deal {0}% increased Damage with Ailments"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby Allies deal {0}% reduced Damage with Ailments",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "39":{
     "name":"aura_avoid_freeze",
     "stats":["base_avoid_freeze_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You and nearby Allies have {0}% chance to avoid being Frozen"
       }]
   },
@@ -469,7 +522,7 @@
     "name":"aura_avoid_ignite",
     "stats":["base_avoid_ignite_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You and nearby Allies have {0}% chance to avoid being Ignited"
       }]
   },
@@ -477,7 +530,7 @@
     "name":"aura_avoid_shock",
     "stats":["base_avoid_shock_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You and nearby Allies have {0}% chance to avoid being Shocked"
       }]
   },
@@ -485,7 +538,7 @@
     "name":"base_avoid_stun_chance",
     "stats":["base_avoid_stun_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby Allies have {0}% chance to Avoid being Stunned"
       }]
   },
@@ -493,7 +546,7 @@
     "name":"critical_strike_multiplier_incr",
     "stats":["base_critical_strike_multiplier_+"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You and nearby Allies have {0:+d}% to Critical Strike Multiplier"
       }]
   },
@@ -501,7 +554,7 @@
     "name":"immune_to_chill",
     "stats":["base_immune_to_chill"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You and nearby allies are Immune to Chill"
       }]
   },
@@ -509,7 +562,7 @@
     "name":"immune_to_freeze",
     "stats":["base_immune_to_freeze"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You and nearby allies are Immune to Freeze"
       }]
   },
@@ -517,7 +570,7 @@
     "name":"immune_to_ignite",
     "stats":["base_immune_to_ignite"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You and nearby allies are Immune to Ignite"
       }]
   },
@@ -525,7 +578,7 @@
     "name":"immune_to_shock",
     "stats":["base_immune_to_shock"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You and nearby allies are Immune to Shock"
       }]
   },
@@ -533,19 +586,22 @@
     "name":"projectile_speed_incr",
     "stats":["base_projectile_speed_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby Allies have {0}% increased Projectile Speed"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby Allies have {0}% reduced Projectile Speed",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "49":{
     "name":"cold_penetration",
     "stats":["base_reduce_enemy_cold_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Your and nearby Allies' Damage Penetrates {0}% Cold Resistance"
       }]
   },
@@ -553,7 +609,7 @@
     "name":"fire_penetration",
     "stats":["base_reduce_enemy_fire_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Your and nearby Allies' Damage Penetrates {0}% Fire Resistance"
       }]
   },
@@ -561,7 +617,7 @@
     "name":"lightning_penetration",
     "stats":["base_reduce_enemy_lightning_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Your and nearby Allies' Damage Penetrates {0}% Lightning Resistance"
       }]
   },
@@ -569,57 +625,70 @@
     "name":"buff_time_passed_pluspercent_for_buff_category",
     "stats":["buff_time_passed_+%_only_buff_category"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Buffs on You and nearby Allies expire {0}% faster"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Buffs on You and nearby Allies expire {0}% slower",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "53":{
     "name":"burn_damage",
     "stats":["burn_damage_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby Allies deal {0}% increased Burning Damage"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby Allies deal {0}% reduced Burning Damage",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "54":{
     "name":"chill_and_freeze_duration",
     "stats":["chill_and_freeze_duration_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby Allies have {0}% increased Chill and Freeze Duration"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby Allies have {0}% reduced Chill and Freeze Duration",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "55":{
     "name":"cold_damage_taken",
     "stats":["cold_damage_taken_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Cold Damage taken"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Cold Damage taken",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "56":{
     "name":"consecrate_on_hit_rare_unique",
     "stats":["create_consecrated_ground_on_hit_%_vs_rare_or_unique_enemy"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby Non-Minion Allies have a {0}% chance to create Consecrated Ground on Hitting a Rare or Unique Enemy, lasting 8 seconds",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextConsecratedGround"
         }
       }]
@@ -628,43 +697,52 @@
     "name":"damage_plus_if_changed_stances_recently",
     "stats":["damage_+%_if_changed_stances_recently"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Buff grants {0}% increased Damage if you've changed Stance recently"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Buff grants {0}% reduced Damage if you've changed Stance recently",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "58":{
     "name":"damage_on_full_mana",
     "stats":["damage_+%_on_full_mana"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby Allies have {0}% increased Damage while on Full Mana"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby Allies have {0}% reduced Damage while on Full Mana",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "59":{
     "name":"damage_on_full_energy_shield_incr",
     "stats":["damage_+%_on_full_energy_shield"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby Allies have {0}% increased Damage while on Full Energy Shield"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby Allies have {0}% reduced Damage while on Full Energy Shield",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "60":{
     "name":"aura_damage_on_full_life",
     "stats":["damage_+%_when_on_full_life"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You and nearby Allies deal {0}% increased Damage while on Full Life"
       }]
   },
@@ -672,9 +750,10 @@
     "name":"unlucky_suppressed_damage",
     "stats":["damage_taken_from_suppressed_hits_is_unlucky"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Suppressed Spell Damage dealt to you is Unlucky",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextUnlucky"
         }
       }]
@@ -683,71 +762,90 @@
     "name":"delirium_aura_damage_over_time_incr",
     "stats":["delirium_aura_damage_over_time_+%_final"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies deal {0}% more Damage over Time"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby allies deal {0}% less Damage over Time",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "63":{
     "name":"duration_incr_from_delerium",
     "stats":["delirium_skill_effect_duration_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies have {0}% increased Skill Effect Duration"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby allies {0}% reduced Skill Effect Duration",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "64":{
     "name":"energy_shield_delay",
     "stats":["energy_shield_delay_-%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby Allies have {0}% faster start of Energy Shield Recharge"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby Allies have {0}% slower start of Energy Shield Recharge",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "80":{
     "name":"physical_damage_taken_incr",
     "stats":["physical_damage_taken_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Nearby Enemies take {0}% increased Physical Damage"
       }]
   },
-  "91":{
-    "name":"guartdians_blessing_aura_only_while_minion",
-    "stats":["support_guardians_blessing_aura_only_enabled_while_support_minion_is_summoned"],
+  "81":{
+    "name":"precision_area_of_effect_incr_final",
+    "stats":["precision_grants_area_of_effect_+%_final"],
     "1":[{
-        "limit":[[]],
-        "text":"Aura cannot be applied unless you have a Minion from a Supported Skill"
+        "limit":[[1,"#"]],
+        "text":"You and nearby Allies have {0}% more Area of Effect"
+      },{
+        "limit":[["#",-1]],
+        "text":"You and nearby Allies have {0}% less Area of Effect",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "90":{
     "name":"totem_summon_speed_incr",
     "stats":["summon_totem_cast_speed_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby Allies have {0}% increased Totem Placement speed"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby Allies have {0}% reduced Totem Placement speed",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "89":{
     "name":"spell_added_chaos_damage",
     "stats":["spell_minimum_added_chaos_damage","spell_maximum_added_chaos_damage"],
     "1":[{
-        "limit":[[],[]],
+        "limit":[["#","#"],["#","#"]],
         "text":"You and nearby allies deal {0} to {1} additional Chaos Damage with Spells"
       }]
   },
@@ -755,34 +853,61 @@
     "name":"spell_damage_aura_spell_damage",
     "stats":["spell_damage_aura_spell_damage_+%_final"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby allies deal {0}% more Spell Damage"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby allies deal {0}% less Spell Damage with Spells",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "87":{
+    "name":"spell_crit_incr",
+    "stats":["spell_critical_strike_chance_+%"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"You and nearby allies have {0}% increased Spell Critical Strike Chance"
+      },{
+        "limit":[["#",-1]],
+        "text":"You and nearby allies have {0}% reduced Spell Critical Strike Chance",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "86":{
     "name":"grant_critical_strike_multiplier_incr",
     "stats":["skill_buff_grant_critical_strike_multiplier_+"],
     "1":[{
-        "limit":[[]]
+        "limit":[["#","#"]],
+        "text":"You and nearby Allies have {0:+d}% to Critical Strike Multiplier"
       }]
   },
   "85":{
     "name":"aura_disables_non_blessing_reservation_skills",
     "stats":["skill_aura_also_disables_non_blessing_mana_reservation_skills"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Disables your Non-Blessing Skills which Reserve Mana"
+      }]
+  },
+  "84":{
+    "name":"elemental_penetration",
+    "stats":["reduce_enemy_elemental_resistance_%"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"Your and nearby Allies' Damage Penetrates {0}% Elemental Resistances"
       }]
   },
   "83":{
     "name":"chaos_penetration",
     "stats":["reduce_enemy_chaos_resistance_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Your and nearby Allies' Damage Penetrates {0}% Chaos Resistance"
       }]
   },
@@ -790,57 +915,174 @@
     "name":"bleed_when_hit_chance",
     "stats":["receive_bleeding_chance_%_when_hit_by_attack"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Attack Hits against nearby Enemies have {0}% chance to inflict Bleeding"
       }]
   },
-  "81":{
-    "name":"precision_area_of_effect_incr_final",
-    "stats":["precision_grants_area_of_effect_+%_final"],
+  "91":{
+    "name":"guartdians_blessing_aura_only_while_minion",
+    "stats":["support_guardians_blessing_aura_only_enabled_while_support_minion_is_summoned"],
     "1":[{
-        "limit":[[]],
-        "text":"You and nearby Allies have {0}% more Area of Effect"
-      },{
-        "limit":[[]],
-        "text":"You and nearby Allies have {0}% less Area of Effect",
-        "1":[]
+        "limit":[["#","#"]],
+        "text":"Aura cannot be applied unless you have a Minion from a Supported Skill"
       }]
   },
-  "78":{
-    "name":"move_speed_on_chilled_ground",
-    "stats":["movement_velocity_+%_on_chilled_ground"],
+  "70":{
+    "name":"hits_ignore_cold_res",
+    "stats":["hits_ignore_my_cold_resistance"],
     "1":[{
-        "limit":[[]],
-        "text":"You and nearby Allies have {0}% increased Movement Speed while on Chilled Ground"
-      },{
-        "limit":[[]],
-        "text":"You and nearby Allies have {0}% reduced Movement Speed while on Chilled Ground",
-        "1":[]
-      }]
-  },
-  "77":{
-    "name":"lightning_damage_taken",
-    "stats":["lightning_damage_taken_+%"],
-    "1":[{
-        "limit":[[]],
-        "text":"{0}% increased Lightning Damage taken"
-      },{
-        "limit":[[]],
-        "text":"{0}% reduced Lightning Damage taken",
-        "1":[]
+        "limit":[["#","#"]],
+        "text":"Nearby Enemies' Cold Resistance is Ignored by Hits"
       }]
   },
   "76":{
     "name":"life_leech_from_physical",
     "stats":["life_leech_from_physical_attack_damage_permyriad"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"You and nearby Allies Leech {0}% of Physical Attack Damage as Life",
-        "2":{
-          "v":"ReminderTextLifeLeech"
-        },
         "1":{
-          "k":"divide_by_one_hundred"
+          "k":"divide_by_one_hundred",
+          "v":1
+        },
+        "2":{
+          "k":"reminderstring",
+          "v":"ReminderTextLifeLeech"
+        }
+      }]
+  },
+  "71":{
+    "name":"hits_ignore_fire_res",
+    "stats":["hits_ignore_my_fire_resistance"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"Nearby Enemies' Fire Resistance is Ignored by Hits"
+      }]
+  },
+  "74":{
+    "name":"elemental_ailment_immunity",
+    "stats":["immune_to_status_ailments"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"You and nearby allies are Immune to all Elemental Ailments",
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextElementalAilments"
+        }
+      }]
+  },
+  "69":{
+    "name":"hatred_aura_cold_damage",
+    "stats":["hatred_aura_cold_damage_+%_final"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"You and nearby allies deal {0}% more Cold Damage"
+      },{
+        "limit":[["#",-1]],
+        "text":"You and nearby allies deal {0}% less Cold Damage",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "73":{
+    "name":"immune_to_curses",
+    "stats":["immune_to_curses"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"You and nearby allies are Immune to Curses"
+      }]
+  },
+  "66":{
+    "name":"evasion_to_add_as_armour",
+    "stats":["evasion_rating_%_to_add_as_armour"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"You and nearby Allies gain {0}% of Evasion Rating as Extra Armour"
+      }]
+  },
+  "72":{
+    "name":"hits_ignore_lightning_res",
+    "stats":["hits_ignore_my_lightning_resistance"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"Nearby Enemies' Lightning Resistance is Ignored by Hits"
+      }]
+  },
+  "67":{
+    "name":"fire_damage_taken",
+    "stats":["fire_damage_taken_+%"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"{0}% increased Fire Damage taken"
+      },{
+        "limit":[["#",-1]],
+        "text":"{0}% reduced Fire Damage taken",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "68":{
+    "name":"flask_mana_to_recover_incr",
+    "stats":["flask_mana_to_recover_+%"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"You and nearby Allies have {0}% increased Mana Recovery from Flasks"
+      }]
+  },
+  "65":{
+    "name":"energy_shield_recharge_rate",
+    "stats":["energy_shield_recharge_rate_+%"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"You and nearby Allies gain {0}% increased Energy Shield Recharge Rate"
+      },{
+        "limit":[["#",-1]],
+        "text":"You and nearby Allies gain {0}% reduced Energy Shield Recharge Rate",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "77":{
+    "name":"lightning_damage_taken",
+    "stats":["lightning_damage_taken_+%"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"{0}% increased Lightning Damage taken"
+      },{
+        "limit":[["#",-1]],
+        "text":"{0}% reduced Lightning Damage taken",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
+      }]
+  },
+  "79":{
+    "name":"pride_physical_damage_taken",
+    "stats":["physical_damage_aura_nearby_enemies_physical_damage_taken_+%","physical_damage_aura_nearby_enemies_physical_damage_taken_+%_max"],
+    "1":[{
+        "limit":[["#","#"],["#","#"]],
+        "text":"Nearby Enemies take at least {0}% more Physical Damage,\n raising up to {1}% as they stay in the Aura for 4 seconds"
+      }]
+  },
+  "78":{
+    "name":"move_speed_on_chilled_ground",
+    "stats":["movement_velocity_+%_on_chilled_ground"],
+    "1":[{
+        "limit":[[1,"#"]],
+        "text":"You and nearby Allies have {0}% increased Movement Speed while on Chilled Ground"
+      },{
+        "limit":[["#",-1]],
+        "text":"You and nearby Allies have {0}% reduced Movement Speed while on Chilled Ground",
+        "1":{
+          "k":"negate",
+          "v":1
         }
       }]
   },
@@ -848,134 +1090,15 @@
     "name":"impale_effect",
     "stats":["impale_debuff_effect_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"You and nearby Allies have {0}% increased Impale Effect"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"You and nearby Allies have {0}% reduced Impale Effect",
-        "1":[]
-      }]
-  },
-  "67":{
-    "name":"fire_damage_taken",
-    "stats":["fire_damage_taken_+%"],
-    "1":[{
-        "limit":[[]],
-        "text":"{0}% increased Fire Damage taken"
-      },{
-        "limit":[[]],
-        "text":"{0}% reduced Fire Damage taken",
-        "1":[]
-      }]
-  },
-  "71":{
-    "name":"hits_ignore_fire_res",
-    "stats":["hits_ignore_my_fire_resistance"],
-    "1":[{
-        "limit":[[]],
-        "text":"Nearby Enemies' Fire Resistance is Ignored by Hits"
-      }]
-  },
-  "70":{
-    "name":"hits_ignore_cold_res",
-    "stats":["hits_ignore_my_cold_resistance"],
-    "1":[{
-        "limit":[[]],
-        "text":"Nearby Enemies' Cold Resistance is Ignored by Hits"
-      }]
-  },
-  "69":{
-    "name":"hatred_aura_cold_damage",
-    "stats":["hatred_aura_cold_damage_+%_final"],
-    "1":[{
-        "limit":[[]],
-        "text":"You and nearby allies deal {0}% more Cold Damage"
-      },{
-        "limit":[[]],
-        "text":"You and nearby allies deal {0}% less Cold Damage",
-        "1":[]
-      }]
-  },
-  "65":{
-    "name":"energy_shield_recharge_rate",
-    "stats":["energy_shield_recharge_rate_+%"],
-    "1":[{
-        "limit":[[]],
-        "text":"You and nearby Allies gain {0}% increased Energy Shield Recharge Rate"
-      },{
-        "limit":[[]],
-        "text":"You and nearby Allies gain {0}% reduced Energy Shield Recharge Rate",
-        "1":[]
-      }]
-  },
-  "68":{
-    "name":"flask_mana_to_recover_incr",
-    "stats":["flask_mana_to_recover_+%"],
-    "1":[{
-        "limit":[[]],
-        "text":"You and nearby Allies have {0}% increased Mana Recovery from Flasks"
-      }]
-  },
-  "66":{
-    "name":"evasion_to_add_as_armour",
-    "stats":["evasion_rating_%_to_add_as_armour"],
-    "1":[{
-        "limit":[[]],
-        "text":"You and nearby Allies gain {0}% of Evasion Rating as Extra Armour"
-      }]
-  },
-  "79":{
-    "name":"pride_physical_damage_taken",
-    "stats":["physical_damage_aura_nearby_enemies_physical_damage_taken_+%","physical_damage_aura_nearby_enemies_physical_damage_taken_+%_max"],
-    "1":[{
-        "limit":[[],[]],
-        "text":"Nearby Enemies take at least {0}% more Physical Damage,\n raising up to {1}% as they stay in the Aura for 4 seconds"
-      }]
-  },
-  "73":{
-    "stats":["immune_to_curses"],
-    "1":[{
-        "limit":[[]],
-        "text":"You and nearby allies are Immune to Curses"
-      }]
-  },
-  "72":{
-    "name":"hits_ignore_lightning_res",
-    "stats":["hits_ignore_my_lightning_resistance"],
-    "1":[{
-        "limit":[[]],
-        "text":"Nearby Enemies' Lightning Resistance is Ignored by Hits"
-      }]
-  },
-  "74":{
-    "name":"elemental_ailment_immunity",
-    "stats":["immune_to_status_ailments"],
-    "1":[{
-        "limit":[[]],
-        "text":"You and nearby allies are Immune to all Elemental Ailments",
         "1":{
-          "v":"ReminderTextElementalAilments"
+          "k":"negate",
+          "v":1
         }
-      }]
-  },
-  "84":{
-    "name":"elemental_penetration",
-    "stats":["reduce_enemy_elemental_resistance_%"],
-    "1":[{
-        "limit":[[]],
-        "text":"Your and nearby Allies' Damage Penetrates {0}% Elemental Resistances"
-      }]
-  },
-  "87":{
-    "name":"spell_crit_incr",
-    "stats":["spell_critical_strike_chance_+%"],
-    "1":[{
-        "limit":[[]],
-        "text":"You and nearby allies have {0}% increased Spell Critical Strike Chance"
-      },{
-        "limit":[[]],
-        "text":"You and nearby allies have {0}% reduced Spell Critical Strike Chance",
-        "1":[]
       }]
   }
 }

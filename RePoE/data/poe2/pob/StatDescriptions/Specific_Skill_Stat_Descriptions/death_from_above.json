@@ -5,6 +5,7 @@
   "active_skill_secondary_area_of_effect_radius":5,
   "death_from_above_number_of_volleys":6,
   "death_from_above_volley_delay_ms":7,
+  "modifiers_to_projectile_count_do_not_apply":1,
   "parent":"skill_stat_descriptions",
   "1":{
     "stats":["modifiers_to_projectile_count_do_not_apply"]
@@ -16,11 +17,14 @@
   "3":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Volley length is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Volley length is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -31,13 +35,19 @@
   "4":{
     "stats":["active_skill_base_secondary_area_of_effect_radius"],
     "1":[{
-        "limit":[[]],
+        "limit":[[10,10]],
         "text":"Volley width is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Volley width is {0} metres",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       }]
   },
   "5":{
@@ -47,17 +57,18 @@
   "6":{
     "stats":["death_from_above_number_of_volleys"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0} Volleys"
       }]
   },
   "7":{
     "stats":["death_from_above_volley_delay_ms"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0} seconds between each Volley",
         "1":{
-          "k":"milliseconds_to_seconds_2dp_if_required"
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
         }
       }]
   }

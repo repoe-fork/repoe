@@ -3,6 +3,7 @@
   "active_skill_base_area_of_effect_radius":3,
   "active_skill_base_secondary_area_of_effect_radius":4,
   "active_skill_secondary_area_of_effect_radius":5,
+  "never_shock":1,
   "parent":"skill_stat_descriptions",
   "1":{
     "stats":["never_shock"]
@@ -14,11 +15,14 @@
   "3":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Charge length is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Charge length is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -29,13 +33,19 @@
   "4":{
     "stats":["active_skill_base_secondary_area_of_effect_radius"],
     "1":[{
-        "limit":[[]],
+        "limit":[[10,10]],
         "text":"Charge width is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Charge width is {0} metres",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       }]
   },
   "5":{

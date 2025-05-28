@@ -1,4 +1,5 @@
 {
+  "demon_form_grants_cast_speed_+%":1,
   "demon_form_grants_spell_gem_level_+":2,
   "demon_form_life_loss_%_per_minute_per_stack":3,
   "demon_form_life_loss_per_minute_per_stack":4,
@@ -8,7 +9,7 @@
   "1":{
     "stats":["demon_form_grants_cast_speed_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Cast Speed while in Demon Form"
       },{
         "limit":[["#",-1]],
@@ -22,35 +23,39 @@
   "2":{
     "stats":["demon_form_grants_spell_gem_level_+"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0:+d} to Level of all Spell Skills while in Demon Form"
       }]
   },
   "3":{
     "stats":["demon_form_life_loss_%_per_minute_per_stack"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Lose {0}% of maximum Life per second per Demonflame",
         "1":{
-          "k":"per_minute_to_per_second"
+          "k":"per_minute_to_per_second",
+          "v":1
         }
       }]
   },
   "4":{
     "stats":["demon_form_life_loss_per_minute_per_stack"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"{0} Life Loss per second per Demonflame",
-        "1":[]
+        "1":{
+          "k":"per_minute_to_per_second",
+          "v":1
+        }
       }]
   },
   "5":{
     "stats":["demon_form_spell_damage_+%_per_stack"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Deal {0}% increased Spell damage per Demonflame"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Deal {0}% reduced Spell damage per Demonflame"
       }]
   },

@@ -1,4 +1,5 @@
 {
+  "active_skill_area_of_effect_radius":1,
   "active_skill_base_area_of_effect_radius":2,
   "base_skill_effect_duration":3,
   "parent":"skill_stat_descriptions",
@@ -11,11 +12,14 @@
   "2":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Haemocrystal radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Haemocrystal radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -26,36 +30,46 @@
   "3":{
     "stats":["base_skill_effect_duration"],
     "1":[{
-        "limit":[[null,1000]],
+        "limit":[[1000,1000]],
         "text":"Haemocrystals detonate after {0} second",
-        "1":[]
+        "1":{
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Haemocrystals detonate after {0} seconds",
         "1":{
-          "k":"milliseconds_to_seconds_2dp_if_required"
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
         }
       }]
   },
   "4":{
     "stats":["support_haemocrystals_crystal_creation_radius"],
     "1":[{
-        "limit":[[]],
+        "limit":[[10,10]],
         "text":"Haemocrystals are randomly created within {0} metre of the Consumed Bleed",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Haemocrystals are randomly created within {0} metres of the Consumed Bleed",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       }]
   },
   "5":{
     "stats":["support_haemocrystals_physical_damage_equal_to_%_of_remaining_bleed_damage"],
     "1":[{
-        "limit":[[null,100]],
+        "limit":[[100,100]],
         "text":"Haemocrystals deal Damage equal to the expected remaining Damage of the Consumed Bleed"
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Haemocrystals deal Damage equal to {0}% of the expected remaining Damage of the Consumed Bleed"
       }]
   }

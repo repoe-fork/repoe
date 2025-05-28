@@ -1,7 +1,10 @@
 {
+  "active_skill_area_of_effect_radius":1,
+  "active_skill_base_area_of_effect_radius":2,
   "parent":"skill_stat_descriptions",
   "permafrost_shard_damage_+%_final_after_1_second":3,
   "permafrost_shard_limit":4,
+  "quality_display_permafrost_shard_damage_+%_final_after_1_second_is_gem":3,
   "1":{
     "stats":["active_skill_area_of_effect_radius"],
     "1":[]
@@ -9,11 +12,14 @@
   "2":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Explosion radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Explosion radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -24,26 +30,27 @@
   "3":{
     "stats":["permafrost_shard_damage_+%_final_after_1_second","quality_display_permafrost_shard_damage_+%_final_after_1_second_is_gem"],
     "1":[{
-        "limit":[[],[]],
+        "limit":[[1,"#"],["#","#"]],
         "text":"Shards that have existed for at\nleast 0.5 seconds deal {0}% more Damage"
       },{
-        "limit":[[null,-1],[]],
+        "limit":[["#",-1],["#","#"]],
         "text":"Shards that have existed for at\nleast 0.5 seconds deal {0}% less Damage",
         "1":{
-          "k":"negate"
+          "k":"negate",
+          "v":1
         }
       },{
-        "limit":[[],[null,0]],
+        "limit":[["#","#"],[0,0]],
         "text":"Shards that have existed for at\nleast 0.5 seconds deal {0:+d}% more Damage"
       }]
   },
   "4":{
     "stats":["permafrost_shard_limit"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,1]],
         "text":"Maximum {0} active shard"
       },{
-        "limit":[[2]],
+        "limit":[[2,"#"]],
         "text":"Maximum {0} active shards"
       }]
   }

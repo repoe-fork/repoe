@@ -1,4 +1,5 @@
 {
+  "active_skill_quality_duration_+%_final":1,
   "parent":"skill_stat_descriptions",
   "skill_effect_and_damaging_ailment_duration_+%":2,
   "skill_effect_duration_+%":3,
@@ -8,7 +9,7 @@
     "name":"quality_duration_final",
     "stats":["active_skill_quality_duration_+%_final"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% more Duration"
       },{
         "limit":[["#",-1]],
@@ -23,13 +24,19 @@
     "name":"skill_and_damaging_ailment_duration_incr",
     "stats":["skill_effect_and_damaging_ailment_duration_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Duration of this Skill and Damaging Ailments",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextDamagingAilments"
+        }
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Duration of this Skill and Damaging Ailments",
-        "1":[],
+        "1":{
+          "k":"negate",
+          "v":1
+        },
         "2":{
           "k":"reminderstring",
           "v":"ReminderTextDamagingAilments"
@@ -40,32 +47,45 @@
     "name":"skill_duration_incr",
     "stats":["skill_effect_duration_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% increased Duration"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"{0}% reduced Duration",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "4":{
     "name":"support_more_duration",
     "stats":["support_more_duration_skill_effect_duration_+%_final"],
     "1":[{
-        "limit":[[]]
+        "limit":[[1,"#"]],
+        "text":"{0}% more Duration"
       },{
-        "limit":[[]],
-        "1":[]
+        "limit":[["#",-1]],
+        "text":"{0}% less Duration",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "5":{
     "name":"support_less_duration",
     "stats":["support_reduced_duration_skill_effect_duration_+%_final"],
     "1":[{
-        "limit":[[]]
+        "limit":[[1,"#"]],
+        "text":"{0}% more Duration"
       },{
-        "limit":[[]],
-        "1":[]
+        "limit":[["#",-1]],
+        "text":"{0}% less Duration",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   }
 }

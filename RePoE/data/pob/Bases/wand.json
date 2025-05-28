@@ -2,15 +2,38 @@
   "Accumulator Wand":{
     "implicit":"Gain 2 Endurance, Frenzy or Power Charges every 6 seconds",
     "implicitModTypes":[[]],
-    "influenceTags":[],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
+    },
     "req":{
       "int":237,
       "level":70
     },
-    "tags":[],
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "experimental_base":true,
+      "not_for_sale":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
     "weapon":{
+      "AttackRateBase":1.5,
+      "CritChanceBase":9,
       "PhysicalMax":50,
-      "PhysicalMin":27
+      "PhysicalMin":27,
+      "Range":120
     }
   },
   "Assembler Wand":{
@@ -32,7 +55,14 @@
     },
     "socketLimit":3,
     "tags":{
-      "onehand":true
+      "default":true,
+      "experimental_base":true,
+      "not_for_sale":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
     },
     "type":"Wand",
     "weapon":{
@@ -45,287 +75,823 @@
   },
   "Calling Wand":{
     "implicit":"Minions deal (12-16)% increased Damage",
-    "implicitModTypes":[[]],
-    "influenceTags":[],
-    "req":{
-      "int":81
+    "implicitModTypes":[["damage","minion"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
     },
-    "tags":[],
+    "req":{
+      "int":81,
+      "level":20
+    },
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true,
+      "weapon_can_roll_minion_modifiers":true
+    },
+    "type":"Wand",
     "weapon":{
+      "AttackRateBase":1.5,
+      "CritChanceBase":8.3,
       "PhysicalMax":23,
-      "PhysicalMin":13
+      "PhysicalMin":13,
+      "Range":120
     }
   },
   "Carved Wand":{
     "implicit":"(11-15)% increased Spell Damage",
-    "implicitModTypes":[[]],
-    "influenceTags":[],
+    "implicitModTypes":[["caster_damage","damage","caster"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
+    },
     "req":{
+      "int":47,
       "level":12
     },
-    "tags":[],
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
     "weapon":{
-      "PhysicalMax":16
+      "AttackRateBase":1.6,
+      "CritChanceBase":8,
+      "PhysicalMax":16,
+      "PhysicalMin":9,
+      "Range":120
     }
   },
   "Coiled Wand":{
     "implicit":"Adds (1-2) to (22-24) Lightning Damage to Spells and Attacks",
-    "implicitModTypes":[[null,null,null,null,"lightning"]],
-    "influenceTags":[],
+    "implicitModTypes":[["elemental_damage","caster_damage","damage","elemental","lightning","attack","caster"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
+    },
     "req":{
       "int":158,
       "level":49
     },
-    "tags":[],
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
     "weapon":{
-      "PhysicalMax":55
+      "AttackRateBase":1.45,
+      "CritChanceBase":9,
+      "PhysicalMax":55,
+      "PhysicalMin":18,
+      "Range":120
     }
   },
   "Congregator Wand":{
+    "implicit":"Gain an Endurance, Frenzy or Power Charge every 6 seconds",
     "implicitModTypes":[[]],
-    "influenceTags":[],
-    "req":{
-      "int":168
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
     },
-    "tags":[],
+    "req":{
+      "int":168,
+      "level":50
+    },
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "experimental_base":true,
+      "not_for_sale":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
     "weapon":{
-      "PhysicalMax":43
+      "AttackRateBase":1.5,
+      "CritChanceBase":9,
+      "PhysicalMax":43,
+      "PhysicalMin":23,
+      "Range":120
     }
   },
   "Convening Wand":{
     "implicit":"Minions deal (20-24)% increased Damage",
-    "implicitModTypes":[[]],
-    "influenceTags":[],
-    "req":{
-      "int":183
+    "implicitModTypes":[["damage","minion"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
     },
-    "tags":[],
+    "req":{
+      "int":183,
+      "level":50
+    },
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true,
+      "weapon_can_roll_minion_modifiers":true
+    },
+    "type":"Wand",
     "weapon":{
+      "AttackRateBase":1.5,
+      "CritChanceBase":8.3,
       "PhysicalMax":47,
-      "PhysicalMin":25
+      "PhysicalMin":25,
+      "Range":120
     }
   },
   "Convoking Wand":{
     "implicit":"Minions deal (26-30)% increased Damage",
-    "implicitModTypes":[[null,"minion"]],
-    "influenceTags":[],
+    "implicitModTypes":[["damage","minion"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
+    },
     "req":{
       "int":242,
       "level":72
     },
-    "tags":[],
+    "socketLimit":3,
+    "tags":{
+      "atlas_base_type":true,
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "top_tier_base_item_type":true,
+      "wand":true,
+      "wandatlas1":true,
+      "weapon":true,
+      "weapon_can_roll_minion_modifiers":true
+    },
+    "type":"Wand",
     "weapon":{
+      "AttackRateBase":1.5,
       "CritChanceBase":8.3,
-      "PhysicalMax":52
+      "PhysicalMax":52,
+      "PhysicalMin":28,
+      "Range":120
     }
   },
   "Crystal Wand":{
     "implicit":"Adds (4-8) to (10-12) Cold Damage to Spells and Attacks",
-    "implicitModTypes":[[null,null,null,null,"cold"]],
-    "influenceTags":[],
+    "implicitModTypes":[["elemental_damage","caster_damage","damage","elemental","cold","attack","caster"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
+    },
     "req":{
       "int":146,
       "level":45
     },
-    "tags":[],
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
     "weapon":{
-      "PhysicalMin":24
+      "AttackRateBase":1.45,
+      "CritChanceBase":9,
+      "PhysicalMax":45,
+      "PhysicalMin":24,
+      "Range":120
     }
   },
   "Demon's Horn":{
     "implicit":"Adds (18-36) to (53-59) Fire Damage to Spells and Attacks",
-    "implicitModTypes":[[]],
-    "influenceTags":[],
+    "implicitModTypes":[["elemental_damage","caster_damage","damage","elemental","fire","attack","caster"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
+    },
     "req":{
       "int":179,
       "level":56
     },
-    "tags":[],
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
     "weapon":{
+      "AttackRateBase":1.4,
       "CritChanceBase":9.5,
       "PhysicalMax":57,
-      "PhysicalMin":31
+      "PhysicalMin":31,
+      "Range":120
     }
   },
   "Driftwood Wand":{
     "implicit":"(8-12)% increased Spell Damage",
-    "implicitModTypes":[[]],
-    "influenceTags":[],
+    "implicitModTypes":[["caster_damage","damage","caster"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
+    },
     "req":{
       "int":14
     },
-    "tags":[],
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
     "weapon":{
-      "PhysicalMin":5
+      "AttackRateBase":1.5,
+      "CritChanceBase":8.3,
+      "PhysicalMax":9,
+      "PhysicalMin":5,
+      "Range":120
     }
   },
   "Engraved Wand":{
     "implicit":"(22-26)% increased Spell Damage",
-    "implicitModTypes":[[]],
-    "influenceTags":[],
+    "implicitModTypes":[["caster_damage","damage","caster"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
+    },
     "req":{
       "int":131,
       "level":40
     },
-    "tags":[],
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
     "weapon":{
       "AttackRateBase":1.6,
       "CritChanceBase":8,
       "PhysicalMax":36,
-      "PhysicalMin":19
+      "PhysicalMin":19,
+      "Range":120
     }
   },
   "Faun's Horn":{
     "implicit":"Adds (5-10) to (11-13) Fire Damage to Spells and Attacks",
-    "implicitModTypes":[["elemental_damage",null,null,"elemental","fire","attack"]],
-    "influenceTags":[],
+    "implicitModTypes":[["elemental_damage","caster_damage","damage","elemental","fire","attack","caster"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
+    },
     "req":{
       "int":116,
       "level":35
     },
-    "tags":[],
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
     "weapon":{
+      "AttackRateBase":1.4,
+      "CritChanceBase":8.5,
       "PhysicalMax":38,
-      "PhysicalMin":21
+      "PhysicalMin":21,
+      "Range":120
     }
   },
   "Goat's Horn":{
     "implicit":"Adds (1-2) to (3-4) Fire Damage to Spells and Attacks",
-    "implicitModTypes":[[]],
-    "influenceTags":[],
+    "implicitModTypes":[["elemental_damage","caster_damage","damage","elemental","fire","attack","caster"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
+    },
     "req":{
       "int":29,
       "level":6
     },
-    "tags":[],
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
     "weapon":{
-      "PhysicalMin":7
+      "AttackRateBase":1.4,
+      "CritChanceBase":9,
+      "PhysicalMax":13,
+      "PhysicalMin":7,
+      "Range":120
     }
   },
   "Heathen Wand":{
-    "implicitModTypes":[[]],
-    "influenceTags":[],
-    "req":{
-      "int":184
+    "implicit":"10% increased Cast Speed",
+    "implicitModTypes":[["caster","speed"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
     },
-    "tags":[],
-    "weapon":[]
+    "req":{
+      "int":184,
+      "level":55
+    },
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "maraketh":true,
+      "not_for_sale":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
+    "weapon":{
+      "AttackRateBase":1.45,
+      "CritChanceBase":8,
+      "PhysicalMax":52,
+      "PhysicalMin":28,
+      "Range":120
+    }
   },
   "Imbued Wand":{
     "implicit":"(33-37)% increased Spell Damage",
-    "implicitModTypes":[[]],
-    "influenceTags":[],
+    "implicitModTypes":[["caster_damage","damage","caster"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
+    },
     "req":{
       "int":188,
       "level":59
     },
-    "tags":[],
-    "weapon":[]
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
+    "weapon":{
+      "AttackRateBase":1.6,
+      "CritChanceBase":8,
+      "PhysicalMax":50,
+      "PhysicalMin":27,
+      "Range":120
+    }
   },
   "Omen Wand":{
     "implicit":"(27-31)% increased Spell Damage",
-    "implicitModTypes":[[]],
-    "influenceTags":[],
+    "implicitModTypes":[["caster_damage","damage","caster"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
+    },
     "req":{
       "int":200,
       "level":53
     },
-    "tags":[],
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
     "weapon":{
-      "PhysicalMin":26
+      "AttackRateBase":1.4,
+      "CritChanceBase":10,
+      "PhysicalMax":49,
+      "PhysicalMin":26,
+      "Range":120
     }
   },
   "Opal Wand":{
     "implicit":"Adds (14-29) to (42-47) Cold Damage to Spells and Attacks",
-    "implicitModTypes":[[]],
-    "influenceTags":[],
+    "implicitModTypes":[["elemental_damage","caster_damage","damage","elemental","cold","attack","caster"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
+    },
     "req":{
       "int":212,
       "level":62
     },
-    "tags":[],
-    "weapon":[]
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "top_tier_base_item_type":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
+    "weapon":{
+      "AttackRateBase":1.45,
+      "CritChanceBase":9,
+      "PhysicalMax":56,
+      "PhysicalMin":30,
+      "Range":120
+    }
   },
   "Pagan Wand":{
     "implicit":"10% increased Cast Speed",
-    "implicitModTypes":[[null,"speed"]],
-    "influenceTags":[],
-    "req":{
-      "int":118
+    "implicitModTypes":[["caster","speed"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
     },
-    "tags":[],
+    "req":{
+      "int":118,
+      "level":34
+    },
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "maraketh":true,
+      "not_for_sale":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
     "weapon":{
       "AttackRateBase":1.45,
       "CritChanceBase":8.5,
       "PhysicalMax":37,
-      "PhysicalMin":20
+      "PhysicalMin":20,
+      "Range":120
     }
   },
   "Profane Wand":{
     "implicit":"14% increased Cast Speed",
-    "implicitModTypes":[[]],
-    "influenceTags":[],
-    "req":[],
-    "tags":[],
-    "weapon":[]
+    "implicitModTypes":[["caster","speed"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
+    },
+    "req":{
+      "int":237,
+      "level":70
+    },
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "maraketh":true,
+      "not_for_sale":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
+    "weapon":{
+      "AttackRateBase":1.45,
+      "CritChanceBase":8.5,
+      "PhysicalMax":56,
+      "PhysicalMin":30,
+      "Range":120
+    }
   },
   "Prophecy Wand":{
     "implicit":"(36-40)% increased Spell Damage",
-    "implicitModTypes":[[]],
-    "influenceTags":[],
+    "implicitModTypes":[["caster_damage","damage","caster"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
+    },
     "req":{
       "int":245,
       "level":68
     },
-    "tags":[],
-    "weapon":[]
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "top_tier_base_item_type":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
+    "weapon":{
+      "AttackRateBase":1.4,
+      "CritChanceBase":10,
+      "PhysicalMax":52,
+      "PhysicalMin":28,
+      "Range":120
+    }
   },
   "Quartz Wand":{
     "implicit":"Adds (2-3) to (4-7) Cold Damage to Spells and Attacks",
-    "implicitModTypes":[[]],
-    "influenceTags":[],
-    "req":[],
-    "tags":[],
-    "weapon":[]
+    "implicitModTypes":[["elemental_damage","caster_damage","damage","elemental","cold","attack","caster"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
+    },
+    "req":{
+      "int":65,
+      "level":18
+    },
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
+    "weapon":{
+      "AttackRateBase":1.45,
+      "CritChanceBase":9,
+      "PhysicalMax":23,
+      "PhysicalMin":12,
+      "Range":120
+    }
   },
   "Sage Wand":{
     "implicit":"(17-21)% increased Spell Damage",
     "implicitModTypes":[["caster_damage","damage","caster"]],
-    "influenceTags":[],
-    "req":{
-      "int":119
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
     },
-    "tags":[],
+    "req":{
+      "int":119,
+      "level":30
+    },
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
     "weapon":{
       "AttackRateBase":1.4,
       "CritChanceBase":10,
       "PhysicalMax":34,
-      "PhysicalMin":18
+      "PhysicalMin":18,
+      "Range":120
     }
   },
   "Spiraled Wand":{
     "implicit":"Adds (1-2) to (9-11) Lightning Damage to Spells and Attacks",
-    "implicitModTypes":[[]],
-    "influenceTags":[],
-    "req":{
-      "int":83
+    "implicitModTypes":[["elemental_damage","caster_damage","damage","elemental","lightning","attack","caster"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
     },
-    "tags":[],
+    "req":{
+      "int":83,
+      "level":24
+    },
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
     "weapon":{
+      "AttackRateBase":1.45,
+      "CritChanceBase":9,
       "PhysicalMax":32,
-      "PhysicalMin":11
+      "PhysicalMin":11,
+      "Range":120
     }
   },
   "Tornado Wand":{
     "implicit":"Adds (3-5) to (70-82) Lightning Damage to Spells and Attacks",
-    "implicitModTypes":[[]],
-    "influenceTags":[],
+    "implicitModTypes":[["elemental_damage","caster_damage","damage","elemental","lightning","attack","caster"]],
+    "influenceTags":{
+      "adjudicator":"wand_adjudicator",
+      "basilisk":"wand_basilisk",
+      "cleansing":"wand_cleansing",
+      "crusader":"wand_crusader",
+      "elder":"wand_elder",
+      "eyrie":"wand_eyrie",
+      "shaper":"wand_shaper",
+      "tangle":"wand_tangle"
+    },
     "req":{
+      "int":212,
       "level":65
     },
-    "tags":[],
+    "socketLimit":3,
+    "tags":{
+      "default":true,
+      "one_hand_weapon":true,
+      "onehand":true,
+      "ranged":true,
+      "top_tier_base_item_type":true,
+      "wand":true,
+      "weapon":true
+    },
+    "type":"Wand",
     "weapon":{
-      "PhysicalMin":22
+      "AttackRateBase":1.45,
+      "CritChanceBase":9,
+      "PhysicalMax":65,
+      "PhysicalMin":22,
+      "Range":120
     }
   }
 }

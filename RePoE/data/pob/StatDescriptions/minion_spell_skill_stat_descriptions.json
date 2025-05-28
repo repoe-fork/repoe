@@ -1,4 +1,5 @@
 {
+  "base_cast_speed_+%":1,
   "cast_speed_+%_when_on_low_life":2,
   "parent":"minion_skill_stat_descriptions",
   "summon_raging_spirit_melee_splash_fire_damage_only":5,
@@ -11,7 +12,7 @@
     "name":"cast_speed_incr",
     "stats":["base_cast_speed_+%"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% increased Cast Speed"
       },{
         "limit":[["#",-1]],
@@ -26,16 +27,22 @@
     "name":"cast_speed_incr_on_low_life",
     "stats":["cast_speed_+%_when_on_low_life"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% increased Cast Speed when on Low Life",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextLowLife"
+        }
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions have {0}% reduced Cast Speed when on Low Life",
-        "1":[],
         "2":{
           "k":"reminderstring",
           "v":"ReminderTextLowLife"
+        },
+        "1":{
+          "k":"negate",
+          "v":1
         }
       }]
   },
@@ -43,29 +50,37 @@
     "name":"multicast_cast_speed_incr",
     "stats":["support_multicast_cast_speed_+%_final"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"This Spell and Minions have {0}% more Cast Speed"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"This Spell and Minions have {0}% less Cast Speed",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "4":{
     "name":"totem_cast_speed",
     "stats":["support_spell_totem_cast_speed_+%_final"],
     "1":[{
-        "limit":[[]]
+        "limit":[[1,"#"]],
+        "text":"This Spell and Minions have {0}% more Cast Speed"
       },{
-        "limit":[[]],
-        "1":[]
+        "limit":[["#",-1]],
+        "text":"This Spell and Minions have {0}% less Cast Speed",
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "5":{
     "name":"melee_splash_fire_only",
     "stats":["summon_raging_spirit_melee_splash_fire_damage_only"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Minion's Melee Strike Skills deal Fire-only Splash Damage to Surrounding Targets"
       }]
   },
@@ -73,9 +88,10 @@
     "name":"chance_for_1_additional_trap_mine",
     "stats":["support_additional_trap_mine_%_chance_for_1_additional_trap_mine"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"This Skill and Minions have {0}% chance to throw up to 1 additional Trap or Mine",
         "1":{
+          "k":"reminderstring",
           "v":"ReminderTextMultipleMines"
         }
       }]
@@ -84,18 +100,24 @@
     "name":"chance_for_2_additional_trap_mine",
     "stats":["support_additional_trap_mine_%_chance_for_2_additional_trap_mine"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"This Skill and Minions have {0}% chance to throw up to 2 additional Traps or Mines",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextMultipleMines"
+        }
       }]
   },
   "8":{
     "name":"chance_for_3_additional_trap_mine",
     "stats":["support_additional_trap_mine_%_chance_for_3_additional_trap_mine"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"This Skill and Minions have {0}% chance to throw up to 3 additional Traps or Mines",
-        "1":[]
+        "1":{
+          "k":"reminderstring",
+          "v":"ReminderTextMultipleMines"
+        }
       }]
   }
 }

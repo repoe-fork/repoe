@@ -6,7 +6,10 @@
   "active_skill_minion_damage_+%_final":4,
   "active_skill_minion_physical_damage_+%_final":5,
   "active_skill_quality_duration_+%_final":8,
+  "bleed_on_hit_with_attacks_%":1,
+  "cannot_cause_bleeding":1,
   "display_minion_maximum_life":6,
+  "global_bleed_on_hit":1,
   "minion_fire_damage_%_of_maximum_life_taken_per_minute":10,
   "minion_grants_rampage_kill_to_parent_on_hitting_unique_enemy_%":11,
   "minion_life_leech_from_elemental_damage_permyriad":12,
@@ -16,6 +19,7 @@
   "non_reaper_minion_maximum_life_+%_final":16,
   "parent":"minion_spell_skill_stat_descriptions",
   "skill_physical_damage_%_to_convert_to_chaos":17,
+  "skill_physical_damage_%_to_convert_to_cold":18,
   "skill_physical_damage_%_to_convert_to_fire":19,
   "support_minion_damage_+%_final":3,
   "support_minion_focus_fire_critical_strike_chance_+%_vs_focused_target":20,
@@ -27,21 +31,28 @@
   "1":{
     "lang":{
       "English":[{
-          "limit":[[1,99],[null,0],[]],
+          "limit":[[1,99],[0,0],[0,0]],
           "text":"Minion's Attacks have {0}% chance to inflict Bleeding",
           "1":{
             "k":"reminderstring",
             "v":"ReminderTextBleeding"
           }
         },{
-          "limit":[[100],[],[]],
+          "limit":[[100,"#"],[0,0],[0,0]],
           "text":"Minion's Attacks inflict Bleeding",
-          "1":[]
+          "1":{
+            "k":"reminderstring",
+            "v":"ReminderTextBleeding"
+          }
         },{
-          "limit":[[],[],[]],
-          "1":[]
+          "limit":[["#","#"],["#","#"],[0,0]],
+          "text":"Minion's Attacks inflict Bleeding",
+          "1":{
+            "k":"reminderstring",
+            "v":"ReminderTextBleeding"
+          }
         },{
-          "limit":[[null,"#"],[],[]],
+          "limit":[["#","#"],["#","#"],["#","#"]],
           "text":"Minion cannot inflict Bleeding"
         }]
     },
@@ -51,10 +62,10 @@
   "2":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Minion deals {0}% more Damage with Bleeding"
         },{
-          "limit":[[null,-1]],
+          "limit":[["#",-1]],
           "text":"Minion deals {0}% less Damage with Bleeding"
         }]
     },
@@ -64,13 +75,14 @@
   "3":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Minion deals {0}% more Damage"
         },{
-          "limit":[[]],
+          "limit":[["#",-1]],
           "text":"Minion deals {0}% less Damage",
           "1":{
-            "k":"negate"
+            "k":"negate",
+            "v":1
           }
         }]
     },
@@ -80,10 +92,15 @@
   "4":{
     "lang":{
       "English":[{
-          "limit":[[]]
+          "limit":[[1,"#"]],
+          "text":"Minion deals {0}% more Damage"
         },{
-          "limit":[[]],
-          "1":[]
+          "limit":[["#",-1]],
+          "text":"Minion deals {0}% less Damage",
+          "1":{
+            "k":"negate",
+            "v":1
+          }
         }]
     },
     "name":"minion_damage_final",
@@ -92,12 +109,15 @@
   "5":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Minion deals {0}% more Physical Damage"
         },{
-          "limit":[[]],
+          "limit":[["#",-1]],
           "text":"Minion deals {0}% less Physical Damage",
-          "1":[]
+          "1":{
+            "k":"negate",
+            "v":1
+          }
         }]
     },
     "name":"minion_physical_damage_final",
@@ -106,7 +126,7 @@
   "6":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Minion has {0} Maximum Life"
         }]
     },
@@ -116,12 +136,15 @@
   "7":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Minion gains {0}% more Added Damage"
         },{
-          "limit":[[]],
+          "limit":[["#",-1]],
           "text":"Minion gains {0}% less Added Damage",
-          "1":[]
+          "1":{
+            "k":"negate",
+            "v":1
+          }
         }]
     },
     "name":"minion_added_damage",
@@ -130,12 +153,15 @@
   "8":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Minion has {0}% more Duration "
         },{
-          "limit":[[]],
+          "limit":[["#",-1]],
           "text":"Minion has {0}% less Duration ",
-          "1":[]
+          "1":{
+            "k":"negate",
+            "v":1
+          }
         }]
     },
     "name":"quality_duration_final",
@@ -144,12 +170,15 @@
   "9":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Minion has {0}% more Attack Speed"
         },{
-          "limit":[[]],
+          "limit":[["#",-1]],
           "text":"Minion has {0}% less Attack Speed",
-          "1":[]
+          "1":{
+            "k":"negate",
+            "v":1
+          }
         }]
     },
     "name":"minion_attack_speed_more",
@@ -158,10 +187,11 @@
   "10":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Minion takes {0}% of its Maximum Life as Fire Damage per second",
           "1":{
-            "k":"per_minute_to_per_second"
+            "k":"per_minute_to_per_second",
+            "v":1
           }
         }]
     },
@@ -171,10 +201,10 @@
   "11":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,99]],
           "text":"{0}% chance to gain a Rampage Kill when Minion hits a Unique Enemy"
         },{
-          "limit":[[]],
+          "limit":[[100,"#"]],
           "text":"Gain a Rampage Kill when Minion hits a Unique Enemy"
         }]
     },
@@ -184,13 +214,15 @@
   "12":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Minion Leeches {0}% of Elemental Damage as Life",
-          "1":{
-            "k":"divide_by_one_hundred"
-          },
           "2":{
+            "k":"reminderstring",
             "v":"ReminderTextLifeLeech"
+          },
+          "1":{
+            "k":"divide_by_one_hundred",
+            "v":1
           }
         }]
     },
@@ -200,7 +232,7 @@
   "13":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Minion Recovers {0}% of Life on Hit"
         }]
     },
@@ -209,7 +241,7 @@
   "14":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[["#","#"]],
           "text":"Minion cannot Taunt Enemies"
         }]
     },
@@ -219,12 +251,15 @@
   "15":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Reaper causes your Non-Reaper Minions to deal {0}% more Damage"
         },{
-          "limit":[[]],
+          "limit":[["#",-1]],
           "text":"Reaper causes your Non-Reaper Minions to deal {0}% less Damage",
-          "1":[]
+          "1":{
+            "k":"negate",
+            "v":1
+          }
         }]
     },
     "name":"non_reaper_minion_damage_final",
@@ -233,12 +268,15 @@
   "16":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Reaper causes your Non-Reaper Minions to have {0}% more Maximum Life"
         },{
-          "limit":[[]],
+          "limit":[["#",-1]],
           "text":"Reaper causes your Non-Reaper Minions to have {0}% less Maximum Life",
-          "1":[]
+          "1":{
+            "k":"negate",
+            "v":1
+          }
         }]
     },
     "name":"non_reaper_minion_life_final",
@@ -247,7 +285,7 @@
   "17":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Minion Converts {0}% of Physical Damage to Chaos Damage"
         }]
     },
@@ -257,7 +295,7 @@
   "18":{
     "lang":{
       "English":[{
-          "limit":[[],[]],
+          "limit":[[1,"#"],[0,0]],
           "text":"Minion Converts {0}% of Physical Damage to Cold Damage"
         }]
     },
@@ -267,7 +305,7 @@
   "19":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Minion Converts {0}% of Physical Damage to Fire Damage"
         }]
     },
@@ -277,12 +315,15 @@
   "20":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Minion has {0}% increased Critical Strike Chance against the Prey"
         },{
-          "limit":[[]],
+          "limit":[["#",-1]],
           "text":"Minion has {0}% reduced Critical Strike Chance against the Prey",
-          "1":[]
+          "1":{
+            "k":"negate",
+            "v":1
+          }
         }]
     },
     "name":"deathmark_crit_chance_vs_target",
@@ -291,7 +332,7 @@
   "21":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[["#","#"]],
           "text":"Minion has {0:+d}% to Critical Strike Multiplier against the Prey"
         }]
     },
@@ -301,12 +342,15 @@
   "22":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Minion deals {0}% more Damage to the Prey"
         },{
-          "limit":[[]],
+          "limit":[["#",-1]],
           "text":"Minion deals {0}% less Damage to the Prey",
-          "1":[]
+          "1":{
+            "k":"negate",
+            "v":1
+          }
         }]
     },
     "name":"deathmark_damage_to_target",
@@ -315,9 +359,12 @@
   "23":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Minion deals {0} Base Fire Damage per second to Enemies near it",
-          "1":[]
+          "1":{
+            "k":"per_minute_to_per_second",
+            "v":1
+          }
         }]
     },
     "name":"support_burning_minions_aura_burn",
@@ -326,12 +373,15 @@
   "24":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[[1,"#"]],
           "text":"Minion deals {0}% more Elemental Damage"
         },{
-          "limit":[[]],
+          "limit":[["#",-1]],
           "text":"Minion deals {0}% less Elemental Damage",
-          "1":[]
+          "1":{
+            "k":"negate",
+            "v":1
+          }
         }]
     },
     "name":"minion_totem_resistance_support_damage",
@@ -340,7 +390,7 @@
   "25":{
     "lang":{
       "English":[{
-          "limit":[[]],
+          "limit":[["#","#"]],
           "text":"Minion always targets the Prey if possible"
         }]
     },

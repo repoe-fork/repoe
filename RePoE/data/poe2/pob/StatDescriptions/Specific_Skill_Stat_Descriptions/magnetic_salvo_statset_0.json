@@ -1,7 +1,10 @@
 {
+  "active_skill_area_of_effect_radius":2,
   "active_skill_base_area_of_effect_radius":3,
+  "base_number_of_projectiles":4,
   "parent":"skill_stat_descriptions",
   "quality_display_base_number_of_projectiles_is_gem":4,
+  "skill_can_fire_arrows":4,
   "total_number_of_projectiles_to_fire":5,
   "1":{
     "stats":["quality_display_base_number_of_projectiles_is_gem"]
@@ -13,11 +16,14 @@
   "3":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Impact radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Impact radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -26,15 +32,15 @@
       }]
   },
   "4":{
-    "stats":["base_number_of_projectiles","skill_can_fire_arrows"],
+    "stats":["base_number_of_projectiles","skill_can_fire_arrows","quality_display_base_number_of_projectiles_is_gem"],
     "1":[{
-        "limit":[[],[],[null,0]],
+        "limit":[[1,1],["#","#"],[0,0]],
         "text":"Fires up to {0:+d} missile"
       },{
-        "limit":[[2],[],[]],
+        "limit":[[2,"#"],["#","#"],[0,0]],
         "text":"Fires up to {0:+d} missiles"
       },{
-        "limit":[[],[],[]],
+        "limit":[[2,"#"],["#","#"],["#","#"]],
         "text":"Fires up to {0} missiles"
       }]
   },

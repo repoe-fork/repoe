@@ -1,4 +1,5 @@
 {
+  "active_skill_area_of_effect_radius":1,
   "active_skill_base_area_of_effect_radius":2,
   "parent":"skill_stat_descriptions",
   "solaris_spear_ground_expands_to_+%_final_by_skill_end":3,
@@ -9,11 +10,14 @@
   "2":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Ignited Ground radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Ignited Ground radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -24,13 +28,14 @@
   "3":{
     "stats":["solaris_spear_ground_expands_to_+%_final_by_skill_end"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Gains Radius over the Ground Spear's lifetime, up to {0}% more at the end of the Spear's lifetime"
       },{
-        "limit":[[null,-1]],
+        "limit":[["#",-1]],
         "text":"Loses Radius over the Ground Spear's lifetime, up to {0}% less at the end of the Spear's lifetime",
         "1":{
-          "k":"negate"
+          "k":"negate",
+          "v":1
         }
       }]
   }

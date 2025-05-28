@@ -1,6 +1,7 @@
 {
   "active_skill_area_of_effect_radius":2,
   "active_skill_base_area_of_effect_radius":3,
+  "cannot_break_armour":1,
   "parent":"skill_stat_descriptions",
   "sunder_shockwave_limit_per_cascade":4,
   "1":{
@@ -13,11 +14,14 @@
   "3":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Wave length is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Wave length is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -28,7 +32,7 @@
   "4":{
     "stats":["sunder_shockwave_limit_per_cascade"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Wave causes Shockwaves from up to {0} Enemies in each Area"
       }]
   }

@@ -1,4 +1,5 @@
 {
+  "active_skill_area_of_effect_radius":1,
   "active_skill_base_area_of_effect_radius":2,
   "base_skill_effect_duration":3,
   "parent":"skill_stat_descriptions",
@@ -8,6 +9,7 @@
   "twister_damage_+%_final_per_whirling_slash_stage":6,
   "twister_gain_%_elemental_damage_of_corresponding_type":7,
   "twister_hit_interval_ms":8,
+  "virtual_sandstorm_swipe_hit_interval":10,
   "1":{
     "stats":["active_skill_area_of_effect_radius"],
     "1":[]
@@ -15,11 +17,14 @@
   "2":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Twister radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Twister radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -30,21 +35,25 @@
   "3":{
     "stats":["base_skill_effect_duration"],
     "1":[{
-        "limit":[[null,1000]],
+        "limit":[[1000,1000]],
         "text":"Twister duration is {0} second",
-        "1":[]
+        "1":{
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Twister duration is {0} seconds",
         "1":{
-          "k":"milliseconds_to_seconds_2dp_if_required"
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
         }
       }]
   },
   "4":{
     "stats":["sandstorm_swipe_hit_frequency_attack_speed_%"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Twister Hits at {0}% of Attack speed"
       }]
   },
@@ -55,42 +64,51 @@
   "6":{
     "stats":["twister_damage_+%_final_per_whirling_slash_stage"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Consumes Whirlwinds to create an additional twister and deal {0}% more damage per Whirlwind stage"
       }]
   },
   "7":{
     "stats":["twister_gain_%_elemental_damage_of_corresponding_type"],
     "1":[{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Elemental twisters Gain {0}% of damage as damage of the corresponding Type"
       }]
   },
   "8":{
     "stats":["twister_hit_interval_ms"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1000,1000]],
         "text":"Twisters fired at the same time can Hit the same\ntarget no more than once per second",
-        "1":[]
+        "1":{
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Twisters fired at the same time can Hit the same\ntarget no more than once every {0} seconds",
-        "1":[]
-      }]
-  },
-  "10":{
-    "stats":["virtual_sandstorm_swipe_hit_interval"],
-    "1":[{
-        "limit":[[]],
-        "text":"Twister Hit interval@{0}s",
-        "1":[]
+        "1":{
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
+        }
       }]
   },
   "9":{
     "stats":["twister_%_chance_for_additional_twister"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% chance for an additional twister"
+      }]
+  },
+  "10":{
+    "stats":["virtual_sandstorm_swipe_hit_interval"],
+    "1":[{
+        "limit":[["#","#"]],
+        "text":"Twister Hit interval@{0}s",
+        "1":{
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
+        }
       }]
   }
 }

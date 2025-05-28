@@ -2,6 +2,7 @@
   "active_skill_area_of_effect_radius":2,
   "active_skill_base_area_of_effect_radius":3,
   "aftershock_radius_+_per_previous_aftershock":4,
+  "base_skill_effect_duration":1,
   "channelled_slam_damage_+%_final_per_stage":5,
   "parent":"skill_stat_descriptions",
   "1":{
@@ -14,11 +15,14 @@
   "3":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Aftershock radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Aftershock radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -29,25 +33,32 @@
   "4":{
     "stats":["aftershock_radius_+_per_previous_aftershock"],
     "1":[{
-        "limit":[[]],
+        "limit":[[10,10]],
         "text":"Each successive aftershock gains {0:+d} metre to radius, up to 3 metres",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Each successive aftershock gains {0:+d} metres to radius, up to 3 metres",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       }]
   },
   "5":{
     "stats":["channelled_slam_damage_+%_final_per_stage"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"{0}% more damage with Hits for each stage"
       },{
-        "limit":[[null,-1]],
+        "limit":[["#",-1]],
         "text":"{0}% less damage with Hits for each stage",
         "1":{
-          "k":"negate"
+          "k":"negate",
+          "v":1
         }
       }]
   }

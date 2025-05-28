@@ -1,1495 +1,2649 @@
 {
   "ArmourExplosionPlayer":{
-    "levels":[[]],
+    "castTime":1,
+    "hidden":true,
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"",
     "qualityStats":[],
-    "skillTypes":[],
+    "skillTypes":{
+      "8":true,
+      "31":true,
+      "218":true,
+      "7":true,
+      "1":true,
+      "115":true,
+      "37":true
+    },
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["active_skill_base_area_of_effect_radius",14],["trigger_on_armour_break_%_chance",100],["active_skill_base_physical_damage_%_to_convert_to_fire"]],
+        "constantStats":[["active_skill_base_area_of_effect_radius",14],["trigger_on_armour_break_%_chance",100],["active_skill_base_physical_damage_%_to_convert_to_fire",100]],
+        "incrementalEffectiveness":0.054999999701977,
         "label":"Explosion",
-        "levels":[[]],
+        "levels":[{
+            "actorLevel":1
+          }],
         "statDescriptionScope":"armour_explosion",
         "stats":["is_area_damage","cannot_break_armour"]
       }]
   },
   "FistOfWarSupportPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Slams you use yourself, providing a powerful Ancestral Boost every few seconds.",
-    "excludeSkillTypes":[null,null,33,36,38],
-    "levels":[[]],
+    "excludeSkillTypes":[25,95,33,36,38],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":50
+      }],
     "name":"Fist of War",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[92],
     "statSets":[{
         "baseFlags":[],
         "baseMods":[{
-            "name":"FistOfWarDamageMultiplier"
+            "flags":0,
+            "keywordFlags":0,
+            "name":"FistOfWarDamageMultiplier",
+            "type":"BASE",
+            "value":20
           },{
-            "name":"FistOfWarMOREAoE"
+            "flags":0,
+            "keywordFlags":0,
+            "name":"FistOfWarMOREAoE",
+            "type":"BASE",
+            "value":20
           }],
-        "constantStats":[["support_ancestral_slam_big_hit_max_count"],["ancestral_slam_interval_duration"]],
-        "levels":[[]],
+        "constantStats":[["support_ancestral_slam_big_hit_max_count",1],["ancestral_slam_interval_duration",6000]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Fist of War",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "ancestral_slam_interval_duration":{
             "div":1000,
             "1":{
-              "name":"FistOfWarCooldown"
+              "flags":0,
+              "keywordFlags":0,
+              "name":"FistOfWarCooldown",
+              "type":"BASE"
             }
           }
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "ImpactShockwaveSupportPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Melee Strike skills, causing them to create an Aftershock that damages enemies around the target when they Heavy Stun an enemy.",
     "excludeSkillTypes":[],
-    "levels":[[],[],[],[]],
+    "levels":[{
+        "levelRequirement":0
+      },{
+        "levelRequirement":3
+      },{
+        "levelRequirement":6
+      },{
+        "levelRequirement":10
+      }],
     "name":"Impact Shockwave",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[21],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_impact_shockwave_base_splash_radius"]],
-        "levels":[[]],
+        "constantStats":[["support_impact_shockwave_base_splash_radius",15]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Impact Shockwave",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "LessDurationSupportPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports any skill that has a duration making that duration shorter.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Fast Forward",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[9],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_reduced_duration_skill_effect_duration_+%_final",-30],["support_reduced_duration_damage_+%_final"]],
-        "levels":[[]],
+        "constantStats":[["support_reduced_duration_skill_effect_duration_+%_final",-30],["support_reduced_duration_damage_+%_final",0]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Fast Forward",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_reduced_duration_skill_effect_duration_+%_final":[{
-              "name":"Duration"
+              "flags":0,
+              "keywordFlags":0,
+              "name":"Duration",
+              "type":"MORE"
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "MoreDurationSupportPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports any skill that has a duration, making that duration longer.",
     "excludeSkillTypes":[],
-    "levels":[[],[],[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      },{
+        "levelRequirement":3,
+        "manaMultiplier":20
+      },{
+        "levelRequirement":6,
+        "manaMultiplier":20
+      }],
     "name":"Persistence",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[9],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_more_duration_skill_effect_duration_+%_final"]],
-        "levels":[[]],
+        "constantStats":[["support_more_duration_skill_effect_duration_+%_final",40]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Persistence",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
-          "support_more_duration_skill_effect_duration_+%_final":[[]]
+          "support_more_duration_skill_effect_duration_+%_final":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"Duration",
+              "type":"MORE"
+            }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "RuthlessSupportPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Attacks, causing repeated uses to be more effective at Stunning enemies.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Ruthless",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_ruthless_big_hit_max_count"],["support_ruthless_big_hit_stun_damage_+%_final",500]],
+        "constantStats":[["support_ruthless_big_hit_max_count",5],["support_ruthless_big_hit_stun_damage_+%_final",500]],
         "incrementalEffectiveness":0.092720001935959,
-        "levels":[[]],
+        "label":"Ruthless",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "StompingGroundShockwavePlayer":{
-    "levels":[[]],
+    "castTime":1,
+    "hidden":true,
+    "levels":[{
+        "critChance":5,
+        "levelRequirement":0
+      }],
     "name":"Stomping Ground Shockwave",
     "qualityStats":[],
-    "skillTypes":[],
+    "skillTypes":{
+      "218":true,
+      "8":true,
+      "31":true,
+      "118":true,
+      "7":true,
+      "1":true,
+      "115":true,
+      "37":true
+    },
     "statSets":[{
-        "baseFlags":[],
+        "baseFlags":{
+          "area":true,
+          "melee":true,
+          "nonWeaponAttack":true
+        },
         "baseMods":[{
+            "flags":0,
+            "keywordFlags":0,
             "name":"SkillData",
+            "type":"LIST",
             "value":{
-              "key":"showAverage"
+              "key":"showAverage",
+              "value":true
             }
           }],
-        "constantStats":[[],["stomping_ground_trigger_on_footstep_%_chance"],["attack_minimum_added_physical_damage_as_%_of_strength"],["attack_maximum_added_physical_damage_as_%_of_strength",150]],
+        "constantStats":[["active_skill_base_area_of_effect_radius",20],["stomping_ground_trigger_on_footstep_%_chance",100],["attack_minimum_added_physical_damage_as_%_of_strength",100],["attack_maximum_added_physical_damage_as_%_of_strength",150]],
+        "incrementalEffectiveness":0.054999999701977,
         "label":"Shockwave",
-        "levels":[[]],
+        "levels":[{
+            "actorLevel":1
+          }],
         "statDescriptionScope":"stomping_ground_shockwave",
         "statMap":{
           "attack_maximum_added_physical_damage_as_%_of_strength":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"SkillData",
+              "type":"LIST",
               "value":{
                 "key":"PhysicalMax"
               },
-              "1":[]
+              "1":{
+                "percent":1,
+                "stat":"Str",
+                "type":"PercentStat"
+              }
             }],
           "attack_minimum_added_physical_damage_as_%_of_strength":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"SkillData",
+              "type":"LIST",
               "value":{
                 "key":"PhysicalMin"
               },
               "1":{
-                "stat":"Str"
+                "percent":1,
+                "stat":"Str",
+                "type":"PercentStat"
               }
             }]
         },
-        "stats":[]
+        "stats":["is_area_damage"]
       }]
   },
   "SupportAddedFireDamagePlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Attacks, causing them to Gain Fire Damage but deal less Cold and Lightning Damage.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Fire Infusion",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1,117],
     "statSets":[{
+        "baseEffectiveness":0,
         "baseFlags":[],
-        "constantStats":[["non_skill_base_all_damage_%_to_gain_as_fire_with_attacks"],["support_cold_and_lightning_damage_+%_final",-50]],
-        "levels":[[]],
+        "constantStats":[["non_skill_base_all_damage_%_to_gain_as_fire_with_attacks",25],["support_cold_and_lightning_damage_+%_final",-50]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Fire Infusion",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_cold_and_lightning_damage_+%_final":[{
-              "name":"ColdDamage"
+              "flags":0,
+              "keywordFlags":0,
+              "name":"ColdDamage",
+              "type":"MORE"
             },{
-              "name":"LightningDamage"
+              "flags":0,
+              "keywordFlags":0,
+              "name":"LightningDamage",
+              "type":"MORE"
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportAftershockChancePlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Slams you use yourself, giving them a chance to create an Aftershock.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[25,95,33,36,38],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Aftershock",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[92],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["slam_aftershock_chance_%"]],
-        "levels":[[]],
+        "constantStats":[["slam_aftershock_chance_%",25]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Aftershock",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportAncestralAidPlayer":{
-    "addSkillTypes":[null,213],
+    "addSkillTypes":[194,213],
+    "color":1,
     "description":"Supports Strikes you use yourself. Supported Skills cannot be used until you have Blocked a certain number of Hits, but will be Ancestrally Boosted when used. After use, this Blocked Hit counter will reset. Cannot Support Channelled Skills or Skills which already have a Condition for use.",
-    "excludeSkillTypes":[null,null,null,null,209],
-    "levels":[[]],
+    "excludeSkillTypes":[194,213,75,74,209,48,95,25],
+    "ignoreMinionTypes":true,
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Ancestral Aid",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[21],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["ancestral_aid_X_spirit_strikes_on_reaching_block_count"],["ancestral_aid_required_count_of_recent_blocks"]],
-        "levels":[[]],
+        "constantStats":[["ancestral_aid_X_spirit_strikes_on_reaching_block_count",2],["ancestral_aid_required_count_of_recent_blocks",3]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Ancestral Aid",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportAncestralCallPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Strikes you use yourself, providing a powerful Ancestral Boost every few seconds. Cannot Support Channelled Skills.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[209,48,95,25],
+    "ignoreMinionTypes":true,
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
     "name":"Ancestral Call",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[21],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_ancestral_call_X_spirit_strikes"],["ancestral_call_spirit_strike_interval_ms"]],
-        "levels":[[]],
+        "constantStats":[["support_ancestral_call_X_spirit_strikes",2],["ancestral_call_spirit_strike_interval_ms",6000]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Ancestral Call",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportAncestralUrgencyPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Skills which place Totems, causing those skills to place Totems much more quickly.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Ancestral Urgency",
     "requireSkillTypes":[25],
     "statSets":[{
         "baseFlags":[],
         "constantStats":[["summon_totem_cast_speed_+%",80]],
-        "levels":[[]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Ancestral Urgency",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportArmourBreakPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Skills that Hit Enemies, causing those Hits to Break Armour based on a portion of Physical Damage dealt.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Splinter",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1,7,117],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["armour_break_physical_damage_%_dealt_as_armour_break"]],
-        "levels":[[]],
+        "constantStats":[["armour_break_physical_damage_%_dealt_as_armour_break",15]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Splinter",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportArmourExplosionPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Attacks, causing them to trigger a Fiery explosion when they Fully Break an enemy's Armour.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Armour Explosion",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1,117],
     "statSets":[{
         "baseFlags":[],
+        "incrementalEffectiveness":0.054999999701977,
         "label":"Support",
-        "levels":[[]],
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":["support_armour_explosion"]
-      }]
+      }],
+    "support":true
   },
   "SupportArmsLengthPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Skills which Hit Enemies, causing Knockback from those Hits to be significantly more effective.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[49],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":10
+      }],
     "name":"Arms Length",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1,7,116,117],
     "statSets":[{
         "baseFlags":[],
         "constantStats":[["support_arms_length_knockback_distance_+%_final",40]],
-        "levels":[[]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Arms Length",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_arms_length_knockback_distance_+%_final":[{
-              "name":"EnemyKnockbackDistance"
+              "flags":0,
+              "keywordFlags":0,
+              "name":"EnemyKnockbackDistance",
+              "type":"MORE"
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportAutoReloadPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Crossbow Ammunition Skills, causing them to automatically reload when they Heavy Stun an enemy.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Auto Reload",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[117,116],
     "statSets":[{
         "baseFlags":[],
-        "levels":[[]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Auto Reload",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":["crossbow_reload_on_heavy_stun"]
-      }]
+      }],
+    "support":true
   },
   "SupportBarbsPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Melee Strike Skills. Supported Skills deal your Thorns Damage on Hit after you've Retaliated with Thorns Damage.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
     "name":"Barbs",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[21],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["deal_thorns_damage_on_hit_for_X_hits_after_thorns_trigger"]],
-        "levels":[[]],
+        "constantStats":[["deal_thorns_damage_on_hit_for_X_hits_after_thorns_trigger",4]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Barbs",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportBattershoutPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Warcry Skills. Supported Skills Consume Fully Broken Armour to trigger Physical Damage explosions on Enemies within their range but cannot themselves Break Armour. ",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":30
+      }],
     "name":"Battershout",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[63],
     "statSets":[{
         "baseFlags":[],
-        "levels":[[]],
-        "stats":[]
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Battershout",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "stats":["cannot_break_armour","consume_armour_break_to_trigger_battershout_explosion"]
       },{
         "baseFlags":[],
-        "constantStats":[["support_battershout_physical_damage_equal_to_%_of_broken_armour"],[],["triggered_by_battershout_support_%"],["additional_base_critical_strike_chance"]],
-        "levels":[[]],
-        "stats":[null,"consume_armour_break_to_trigger_battershout_explosion",null,"is_warcry"]
-      }]
+        "constantStats":[["support_battershout_physical_damage_equal_to_%_of_broken_armour",20],["active_skill_base_area_of_effect_radius",20],["triggered_by_battershout_support_%",100],["additional_base_critical_strike_chance",500]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Battershout",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "stats":["cannot_break_armour","consume_armour_break_to_trigger_battershout_explosion","is_area_damage","is_warcry"]
+      }],
+    "support":true
   },
   "SupportBeheadPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Strike skills, causing them to steal Modifiers from Rare monsters they kill.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Behead",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[21],
     "statSets":[{
         "baseFlags":[],
         "constantStats":[["support_executioner_gain_one_rare_monster_mod_on_kill_ms",20000]],
-        "levels":[[]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Behead",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportBloodFountainPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Skills which create stationary objects. Objects created by supported Skills generate a Font of Blood, creating an Aura which grants Life regeneration.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[6,139,74],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Font of Blood",
-    "requireSkillTypes":[161,null,null,154],
+    "requireSkillTypes":[161,100,25,154],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_blood_fountain_life_regeneration_rate_per_minute_%",120],["support_blood_fountain_radius"]],
-        "levels":[[]],
+        "constantStats":[["support_blood_fountain_life_regeneration_rate_per_minute_%",120],["support_blood_fountain_radius",30]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Font of Blood",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
-          "support_blood_fountain_life_regeneration_rate_per_minute_%":[[{
-                "effectType":"Aura"
-              }]]
+          "support_blood_fountain_life_regeneration_rate_per_minute_%":{
+            "div":60,
+            "1":{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"LifeRegenPercent",
+              "type":"BASE",
+              "1":{
+                "effectType":"Aura",
+                "type":"GlobalEffect"
+              }
+            }
+          }
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportBloodMagicPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports any Skill, turning a portion of its Mana cost into a Life cost. Does not support Skills which reserve Spirit.",
-    "excludeSkillTypes":[108],
-    "levels":[[]],
+    "excludeSkillTypes":[108,139],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Lifetap",
     "requireSkillTypes":[],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["blood_magic_skill_life_cost_+%_final"],["base_skill_cost_life_instead_of_mana_%"]],
-        "levels":[[]],
+        "constantStats":[["blood_magic_skill_life_cost_+%_final",0],["base_skill_cost_life_instead_of_mana_%",100]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Lifetap",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportBloodlustPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Melee Attacks, causing them to deal more damage against Bleeding enemies, but preventing them from inflicting Bleeding.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Bloodlust",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[20],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_bloodlust_melee_physical_damage_+%_final_vs_bleeding_enemies"]],
-        "levels":[[]],
+        "constantStats":[["support_bloodlust_melee_physical_damage_+%_final_vs_bleeding_enemies",30]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Bloodlust",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_bloodlust_melee_physical_damage_+%_final_vs_bleeding_enemies":[{
               "flags":256,
+              "keywordFlags":0,
               "name":"PhysicalDamage",
+              "type":"MORE",
               "1":{
+                "actor":"enemy",
+                "type":"ActorCondition",
                 "var":"Bleeding"
               }
             }]
         },
         "stats":["cannot_cause_bleeding"]
-      }]
+      }],
+    "support":true
   },
   "SupportBrinkPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Melee Attack Skills. Supported Skills deal more Damage against Heavily Stunned Enemies, but cannot themselves Stun.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":15
+      }],
     "name":"Brink",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[20],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_brink_damage_+%_final_vs_heavy_stunned_target"]],
-        "levels":[[]],
+        "constantStats":[["support_brink_damage_+%_final_vs_heavy_stunned_target",20]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Brink",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
-          "support_brink_damage_+%_final_vs_heavy_stunned_target":[[{
+          "support_brink_damage_+%_final_vs_heavy_stunned_target":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"Damage",
+              "type":"MORE",
+              "1":{
+                "actor":"enemy",
+                "type":"ActorCondition",
                 "var":"HeavyStunned"
-              }]]
+              }
+            }]
         },
         "stats":["cannot_cause_stun_but_allow_stun_buildup"]
-      }]
+      }],
+    "support":true
   },
   "SupportBrutalityPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports any skill that deals damage, boosting its Physical damage at the expense of all other Damage Types.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
     "name":"Brutality",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[7,1,35,117],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_brutality_physical_damage_+%_final"]],
-        "levels":[[]],
+        "constantStats":[["support_brutality_physical_damage_+%_final",25]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Brutality",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
-          "support_brutality_physical_damage_+%_final":[[]]
+          "support_brutality_physical_damage_+%_final":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"PhysicalDamage",
+              "type":"MORE"
+            }]
         },
         "stats":["deal_no_elemental_damage","base_deal_no_chaos_damage"]
-      }]
+      }],
+    "support":true
   },
   "SupportCannibalismPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Persistent Buff Skills, causing you to recover Life on kill while the Skill is active.",
     "excludeSkillTypes":[],
-    "levels":[[]],
-    "name":"Cannibalism",
-    "requireSkillTypes":[],
-    "statSets":[{
-        "baseFlags":[],
-        "constantStats":[["support_cannibalism_recover_%_maximum_life_on_kill"]],
-        "levels":[[]],
-        "statMap":{
-          "support_cannibalism_recover_%_maximum_life_on_kill":[{
-              "name":"LifeOnKill",
-              "1":[],
-              "2":[]
-            }]
-        },
-        "stats":[]
-      }]
-  },
-  "SupportChanceToBleedPlayer":{
-    "addSkillTypes":[],
-    "description":"Supports any skill that Hits enemies, giving it a chance to inflict Bleeding.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "name":"Lacerate",
-    "requireSkillTypes":[],
-    "statSets":[{
-        "baseFlags":[],
-        "constantStats":[["base_chance_to_inflict_bleeding_%"]],
-        "levels":[[]],
-        "stats":[]
-      }]
-  },
-  "SupportChanceToIgnitePlayer":{
-    "addSkillTypes":[],
-    "description":"Supports any skill that Hits enemies, making it more likely to Ignite.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "name":"Ignition",
-    "requireSkillTypes":[],
-    "statSets":[{
-        "baseFlags":[],
-        "constantStats":[["support_ignition_chance_to_ignite_+%_final"]],
-        "levels":[[]],
-        "statMap":{
-          "support_ignition_chance_to_ignite_+%_final":[{
-              "name":"EnemyIgniteChance"
-            }]
-        },
-        "stats":[]
-      }]
-  },
-  "SupportClashPlayer":{
-    "addSkillTypes":[],
-    "description":"Supports Melee Attack Skills. Supported Skills deal more Damage while you have a lower percentage of your Life remaining than the target struck, but less Damage when the reverse is true.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "name":"Clash",
-    "requireSkillTypes":[],
-    "statSets":[{
-        "baseFlags":[],
-        "constantStats":[["support_melee_damage_+%_final_vs_higher_percent_life_target"],["support_melee_damage_+%_final_vs_lower_percent_life_target"]],
-        "levels":[[]],
-        "statMap":{
-          "support_melee_damage_+%_final_vs_higher_percent_life_target":[[{
-                "var":"EnemyHigherLifePercent"
-              }]],
-          "support_melee_damage_+%_final_vs_lower_percent_life_target":[[[]]]
-        },
-        "stats":[]
-      }]
-  },
-  "SupportConcoctPlayer":{
-    "addSkillTypes":[],
-    "description":"Supports Skills you use yourself which Damage enemies with Hits. Supported Skills consume a percentage of your maximum Life Flask charges, inflicting more powerful Bleeding based on Life Flask charges consumed.",
-    "excludeSkillTypes":[null,null,null,null,122],
-    "levels":[[]],
-    "name":"Concoct",
-    "requireSkillTypes":[],
-    "statSets":[{
-        "baseFlags":[],
-        "baseMods":[{
-            "name":"Multiplier:LifeFlaskChargeConsumed",
-            "1":{
-              "percentVar":"LifeFlaskMaxChargesPercent",
-              "stat":"LifeFlask1MaxCharges"
-            }
-          },[{
-              "stat":"LifeFlask2MaxCharges"
-            }]],
-        "constantStats":[["consume_%_of_maximum_life_flask_charges_on_skill_use"],["support_concoct_bleed_effect_+%_final_per_life_flask_charge_consumed"]],
-        "levels":[[]],
-        "statMap":{
-          "consume_%_of_maximum_life_flask_charges_on_skill_use":[{
-              "name":"Multiplier:LifeFlaskMaxChargesPercent"
-            }],
-          "support_concoct_bleed_effect_+%_final_per_life_flask_charge_consumed":[[{
-                "var":"LifeFlaskChargeConsumed"
-              }]]
-        },
-        "stats":[]
-      }]
-  },
-  "SupportCoolheadedPlayer":{
-    "addSkillTypes":[],
-    "description":"Supports Persistent Buff Skills, causing Ignite applied to you to last for a shorter duration while the Supported Skill is active.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "name":"Cool Headed",
-    "requireSkillTypes":[],
-    "statSets":[{
-        "baseFlags":[],
-        "constantStats":[["support_ignite_protection_spirit_cost_ignite_duration_on_self_+%_final"]],
-        "levels":[[]],
-        "statMap":{
-          "support_ignite_protection_spirit_cost_ignite_duration_on_self_+%_final":[{
-              "name":"SelfIgniteDuration",
-              "1":[]
-            }]
-        },
-        "stats":[]
-      }]
-  },
-  "SupportCorruptingCryPlayer":{
-    "addSkillTypes":[],
-    "description":"Supports Warcries, causing them to inflict Corrupted Blood on enemies in their area of effect.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "name":"Corrupting Cry",
-    "requireSkillTypes":[],
-    "statSets":[{
-        "baseFlags":[],
-        "baseMods":[{
-            "value":{
-              "key":"debuff"
-            }
-          },{
-            "name":"dotIsCorruptingBlood"
-          },{
-            "name":"Multiplier:CorruptingCryMaxStages"
-          },{
-            "keywordFlags":16777216,
-            "1":{
-              "var":"CorruptingCryStageAfterFirst"
-            }
-          }],
-        "constantStats":[["support_corrupting_cry_warcry_applies_x_stacks_of_corrupted_blood"],["support_corrupting_cry_corrupted_blood_base_physical_damage_per_minute_as_%_of_strength"],["support_corrupting_cry_area_of_effect_+%_final"],["support_corrupting_cry_corrupted_blood_duration_ms"]],
-        "levels":[[]],
-        "statMap":{
-          "support_corrupting_cry_area_of_effect_+%_final":[{
-              "name":"AreaOfEffect"
-            }],
-          "support_corrupting_cry_corrupted_blood_base_physical_damage_per_minute_as_%_of_strength":[{
-              "value":{
-                "key":"PhysicalDot"
-              },
-              "1":[]
-            }],
-          "support_corrupting_cry_corrupted_blood_duration_ms":[{
-              "value":{
-                "key":"durationSecondary"
-              }
-            }],
-          "support_corrupting_cry_warcry_applies_X_stacks_of_corrupted_blood":[{
-              "name":"CorruptingCryStagesFromWarcry"
-            }],
-          "support_corrupting_cry_warcry_applies_x_stacks_of_corrupted_blood":[]
-        },
-        "stats":[]
-      }]
-  },
-  "SupportDauntlessPlayer":{
-    "addSkillTypes":[194,201],
-    "description":"Supports Skills you use yourself which can cause Damaging Hits. Supported Skills cannot be used unless you have been stationary for a certain duration, but deal increasingly more damage the longer you are stationary. Cannot support Skills which have a reservation, are Triggered, have a cooldown or have another usage Condition.",
-    "excludeSkillTypes":[null,null,75,null,49,12,null,null,37,90],
     "levels":[{
-        "manaMultiplier":10
+        "levelRequirement":0,
+        "spiritReservationFlat":15
       }],
-    "name":"Dauntless",
-    "requireSkillTypes":[null,null,116],
-    "statSets":[{
-        "baseFlags":[],
-        "constantStats":[["skill_cannot_be_used_unless_stationary_for_X_ms",1500],["support_unmoving_damage_+%_final_per_250_ms_stationary",3],["support_unmoving_damage_multiplier_cap",45]],
-        "levels":[[]],
-        "statMap":{
-          "support_unmoving_damage_+%_final_per_250_ms_stationary":[[{
-                "type":"Condition",
-                "var":"Stationary"
-              },{
-                "div":0.25,
-                "limitVar":"DauntlessMaxDamage",
-                "type":"Multiplier",
-                "var":"StationarySeconds"
-              }]],
-          "support_unmoving_damage_multiplier_cap":[{
-              "name":"Multiplier:DauntlessMaxDamage",
-              "type":"BASE"
-            }]
-        },
-        "stats":[]
-      }]
-  },
-  "SupportDazingCryPlayer":{
-    "addSkillTypes":[],
-    "description":"Supports Warcries, causing them to Daze Enemies on use.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "name":"Dazing Cry",
-    "requireSkillTypes":[],
-    "statSets":[{
-        "baseFlags":[],
-        "constantStats":[["support_dazed_cry_duration_ms"]],
-        "levels":[[]],
-        "stats":["support_apply_daze_on_warcry"]
-      }]
-  },
-  "SupportDeadlyIgnitesPlayer":{
-    "addSkillTypes":[],
-    "description":"Supports any skill that Hits enemies, causing inflicted Ignites to deal more damage but its Hits to deal less damage.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "name":"Searing Flame",
-    "requireSkillTypes":[],
-    "statSets":[{
-        "baseFlags":[],
-        "constantStats":[["support_stronger_ignites_hit_damage_+%_final",-25],["support_stronger_ignites_ignite_effect_+%_final"]],
-        "levels":[[]],
-        "statMap":{
-          "support_stronger_ignites_hit_damage_+%_final":[[]],
-          "support_stronger_ignites_ignite_effect_+%_final":[{
-              "keywordFlags":8388608
-            }]
-        },
-        "stats":[]
-      }]
-  },
-  "SupportDeepCutsPlayer":{
-    "addSkillTypes":[],
-    "description":"Supports any skill that Hits enemies, causing it to deal less damage but inflict more potent Bleeding.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "name":"Deep Cuts",
-    "requireSkillTypes":[],
-    "statSets":[{
-        "baseFlags":[],
-        "constantStats":[["support_deep_cuts_hit_damage_+%_final"],["support_deep_cuts_bleeding_effect_+%_final"]],
-        "levels":[[]],
-        "statMap":{
-          "support_deep_cuts_bleeding_effect_+%_final":[[]],
-          "support_deep_cuts_hit_damage_+%_final":[[]]
-        },
-        "stats":[]
-      }]
-  },
-  "SupportDefyPlayer":{
-    "addSkillTypes":[],
-    "description":"Supports Attack Skills you use yourself. Hit Damage from Supported Skills is Lucky if you are Surrounded.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "name":"Defy",
-    "requireSkillTypes":[],
-    "statSets":[{
-        "baseFlags":[],
-        "levels":[[]],
-        "stats":["attack_damage_is_lucky_if_surrounded"]
-      }]
-  },
-  "SupportDesperationPlayer":{
-    "addSkillTypes":[],
-    "description":"Supports Melee Attack Skills you use yourself. Insufficient Mana doesn't prevent Supported Skills from being used while Surrounded.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "name":"Desperation",
-    "requireSkillTypes":[],
-    "statSets":[{
-        "baseFlags":[],
-        "levels":[[]],
-        "stats":["melee_attacks_usable_without_mana_cost_while_surrounded"]
-      }]
-  },
-  "SupportDevastatePlayer":{
-    "addSkillTypes":[],
-    "description":"Supports any skill that Hits enemies, causing them to apply Broken Armour to enemies when causing a Heavy Stun to enemies.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "name":"Devastate",
-    "requireSkillTypes":[],
-    "statSets":[{
-        "baseFlags":[],
-        "levels":[[]],
-        "statMap":{
-          "fully_break_enemies_armour_on_heavy_stun":[{
-              "name":"Condition:CanArmourBreak",
-              "type":"FLAG",
-              "1":{
-                "effectName":"ArmourBreak"
-              }
-            }]
-        },
-        "stats":["fully_break_enemies_armour_on_heavy_stun"]
-      }]
-  },
-  "SupportDirestrikePlayer":{
-    "addSkillTypes":[],
-    "description":"Supports Persistent Buff Skills, causing you to deal increased Attack Damage while on Low Life while the Supported Skill is active.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "name":"Direstrike",
+    "name":"Cannibalism",
     "requireSkillTypes":[139,5,74],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_attack_damage_spirit_cost_attack_damage_+%_on_low_life",50]],
-        "levels":[[]],
+        "constantStats":[["support_cannibalism_recover_%_maximum_life_on_kill",2]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Cannibalism",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
-          "support_attack_damage_spirit_cost_attack_damage_+%_on_low_life":[{
-              "name":"Damage",
-              "type":"INC",
+          "support_cannibalism_recover_%_maximum_life_on_kill":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"LifeOnKill",
+              "type":"BASE",
               "1":{
+                "percent":1,
+                "stat":"Life",
+                "type":"PercentStat"
+              },
+              "2":{
+                "effectName":"Cannibalism",
                 "effectType":"Buff",
                 "type":"GlobalEffect"
               }
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
-  "SupportDomainPlayer":{
+  "SupportChanceToBleedPlayer":{
     "addSkillTypes":[],
-    "description":"Supports Skills which create Ground Surfaces, causing created Surfaces to only end when their duration expires.",
+    "color":1,
+    "description":"Supports any skill that Hits enemies, giving it a chance to inflict Bleeding.",
     "excludeSkillTypes":[],
-    "levels":[[]],
-    "name":"Domain",
-    "requireSkillTypes":[168],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
+    "name":"Lacerate",
+    "requireSkillTypes":[7,1,117],
     "statSets":[{
         "baseFlags":[],
-        "levels":[[]],
-        "stats":["ground_effects_cannot_trigger"]
-      }]
+        "constantStats":[["base_chance_to_inflict_bleeding_%",50]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Lacerate",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "stats":[]
+      }],
+    "support":true
   },
-  "SupportDoubleBarrelPlayer":{
+  "SupportChanceToIgnitePlayer":{
     "addSkillTypes":[],
-    "description":"Supports Crossbow Ammunition Skills, causing them to load an extra bolt at the cost of reload speed.",
+    "color":1,
+    "description":"Supports any skill that Hits enemies, making it more likely to Ignite.",
     "excludeSkillTypes":[],
-    "levels":[[]],
-    "name":"Double Barrel",
-    "requireSkillTypes":[],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
+    "name":"Ignition",
+    "requireSkillTypes":[7,1,117],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_double_barrel_number_of_crossbow_bolts_+"],["support_double_barrel_crossbow_reload_speed_-%_final"]],
-        "levels":[[]],
+        "constantStats":[["support_ignition_chance_to_ignite_+%_final",100]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Ignition",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
-          "support_double_barrel_crossbow_reload_speed_-%_final":{
-            "mult":-1,
-            "1":{
-              "name":"ReloadSpeed"
-            }
-          },
-          "support_double_barrel_number_of_crossbow_bolts_+":[{
-              "name":"CrossbowBoltCount"
+          "support_ignition_chance_to_ignite_+%_final":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"EnemyIgniteChance",
+              "type":"MORE"
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
-  "SupportEmpoweredDamagePlayer":{
+  "SupportClashPlayer":{
     "addSkillTypes":[],
-    "description":"Supports skills that can Empower skills other than themselves, causing skills they Empower to deal more damage.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
-    "name":"Premeditation",
-    "requireSkillTypes":[147],
+    "color":1,
+    "description":"Supports Melee Attack Skills. Supported Skills deal more Damage while you have a lower percentage of your Life remaining than the target struck, but less Damage when the reverse is true.",
+    "excludeSkillTypes":[6,95,25],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
+    "name":"Clash",
+    "requireSkillTypes":[1,20,74],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_empowered_damage_+%_final"]],
-        "levels":[[]],
+        "constantStats":[["support_melee_damage_+%_final_vs_higher_percent_life_target",40],["support_melee_damage_+%_final_vs_lower_percent_life_target",-20]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Clash",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
-          "support_empowered_damage_+%_final":[{
-              "name":"ExtraEmpowerMod",
-              "value":{
-                "mod":[]
+          "support_melee_damage_+%_final_vs_higher_percent_life_target":[{
+              "flags":256,
+              "keywordFlags":0,
+              "name":"Damage",
+              "type":"MORE",
+              "1":{
+                "type":"Condition",
+                "var":"EnemyHigherLifePercent"
+              }
+            }],
+          "support_melee_damage_+%_final_vs_lower_percent_life_target":[{
+              "flags":256,
+              "keywordFlags":0,
+              "name":"Damage",
+              "type":"MORE",
+              "1":{
+                "neg":true,
+                "type":"Condition",
+                "var":"EnemyHigherLifePercent"
               }
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
+  },
+  "SupportConcoctPlayer":{
+    "addSkillTypes":[],
+    "color":1,
+    "description":"Supports Skills you use yourself which Damage enemies with Hits. Supported Skills consume a percentage of your maximum Life Flask charges, inflicting more powerful Bleeding based on Life Flask charges consumed.",
+    "excludeSkillTypes":[6,95,25,37,122],
+    "levels":[{
+        "levelRequirement":0
+      }],
+    "name":"Concoct",
+    "requireSkillTypes":[7,1,116,117],
+    "statSets":[{
+        "baseFlags":[],
+        "baseMods":[{
+            "flags":0,
+            "keywordFlags":0,
+            "name":"Multiplier:LifeFlaskChargeConsumed",
+            "type":"BASE",
+            "value":1,
+            "1":{
+              "floor":true,
+              "percentVar":"LifeFlaskMaxChargesPercent",
+              "stat":"LifeFlask1MaxCharges",
+              "type":"PercentStat"
+            }
+          },{
+            "flags":0,
+            "keywordFlags":0,
+            "name":"Multiplier:LifeFlaskChargeConsumed",
+            "type":"BASE",
+            "value":1,
+            "1":{
+              "floor":true,
+              "percentVar":"LifeFlaskMaxChargesPercent",
+              "stat":"LifeFlask2MaxCharges",
+              "type":"PercentStat"
+            }
+          }],
+        "constantStats":[["consume_%_of_maximum_life_flask_charges_on_skill_use",20],["support_concoct_bleed_effect_+%_final_per_life_flask_charge_consumed",3]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Concoct",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "statMap":{
+          "consume_%_of_maximum_life_flask_charges_on_skill_use":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"Multiplier:LifeFlaskMaxChargesPercent",
+              "type":"BASE"
+            }],
+          "support_concoct_bleed_effect_+%_final_per_life_flask_charge_consumed":[{
+              "flags":0,
+              "keywordFlags":4194304,
+              "name":"AilmentMagnitude",
+              "type":"MORE",
+              "1":{
+                "type":"Multiplier",
+                "var":"LifeFlaskChargeConsumed"
+              }
+            }]
+        },
+        "stats":[]
+      }],
+    "support":true
+  },
+  "SupportCoolheadedPlayer":{
+    "addSkillTypes":[],
+    "color":1,
+    "description":"Supports Persistent Buff Skills, causing Ignite applied to you to last for a shorter duration while the Supported Skill is active.",
+    "excludeSkillTypes":[],
+    "levels":[{
+        "levelRequirement":0,
+        "spiritReservationFlat":15
+      }],
+    "name":"Cool Headed",
+    "requireSkillTypes":[139,5,74],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_ignite_protection_spirit_cost_ignite_duration_on_self_+%_final",-50]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Cool Headed",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "statMap":{
+          "support_ignite_protection_spirit_cost_ignite_duration_on_self_+%_final":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"SelfIgniteDuration",
+              "type":"MORE",
+              "1":{
+                "effectName":"Cool Headed",
+                "effectType":"Buff",
+                "type":"GlobalEffect"
+              }
+            }]
+        },
+        "stats":[]
+      }],
+    "support":true
+  },
+  "SupportCorruptingCryPlayer":{
+    "addSkillTypes":[35,9],
+    "color":1,
+    "description":"Supports Warcries, causing them to inflict Corrupted Blood on enemies in their area of effect.",
+    "excludeSkillTypes":[],
+    "levels":[{
+        "levelRequirement":0
+      }],
+    "name":"Corrupting Cry",
+    "requireSkillTypes":[63],
+    "statSets":[{
+        "baseFlags":[],
+        "baseMods":[{
+            "flags":0,
+            "keywordFlags":0,
+            "name":"SkillData",
+            "type":"LIST",
+            "value":{
+              "key":"debuff",
+              "value":true
+            }
+          },{
+            "flags":0,
+            "keywordFlags":0,
+            "name":"dotIsCorruptingBlood",
+            "type":"FLAG",
+            "value":true
+          },{
+            "flags":0,
+            "keywordFlags":0,
+            "name":"Multiplier:CorruptingCryMaxStages",
+            "type":"BASE",
+            "value":10
+          },{
+            "flags":0,
+            "keywordFlags":16777216,
+            "name":"Damage",
+            "type":"MORE",
+            "value":100,
+            "1":{
+              "type":"Multiplier",
+              "var":"CorruptingCryStageAfterFirst"
+            }
+          }],
+        "constantStats":[["support_corrupting_cry_warcry_applies_x_stacks_of_corrupted_blood",1],["support_corrupting_cry_corrupted_blood_base_physical_damage_per_minute_as_%_of_strength",1500],["support_corrupting_cry_area_of_effect_+%_final",-30],["support_corrupting_cry_corrupted_blood_duration_ms",5000]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Corrupting Cry",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "statMap":{
+          "support_corrupting_cry_area_of_effect_+%_final":[{
+              "flags":0,
+              "keywordFlags":4,
+              "name":"AreaOfEffect",
+              "type":"MORE"
+            }],
+          "support_corrupting_cry_corrupted_blood_base_physical_damage_per_minute_as_%_of_strength":{
+            "div":60,
+            "1":{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"SkillData",
+              "type":"LIST",
+              "value":{
+                "key":"PhysicalDot"
+              },
+              "1":{
+                "percent":1,
+                "stat":"Str",
+                "type":"PercentStat"
+              }
+            }
+          },
+          "support_corrupting_cry_corrupted_blood_duration_ms":{
+            "div":1000,
+            "1":{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"SkillData",
+              "type":"LIST",
+              "value":{
+                "key":"durationSecondary"
+              }
+            }
+          },
+          "support_corrupting_cry_warcry_applies_X_stacks_of_corrupted_blood":[{
+              "flags":4,
+              "keywordFlags":0,
+              "name":"CorruptingCryStagesFromWarcry",
+              "value":0
+            }],
+          "support_corrupting_cry_warcry_applies_x_stacks_of_corrupted_blood":[]
+        },
+        "stats":[]
+      }],
+    "support":true
+  },
+  "SupportDauntlessPlayer":{
+    "addSkillTypes":[194,201],
+    "color":1,
+    "description":"Supports Skills you use yourself which can cause Damaging Hits. Supported Skills cannot be used unless you have been stationary for a certain duration, but deal increasingly more damage the longer you are stationary. Cannot support Skills which have a reservation, are Triggered, have a cooldown or have another usage Condition.",
+    "excludeSkillTypes":[194,201,75,74,49,12,95,25,37,90],
+    "ignoreMinionTypes":true,
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":10
+      }],
+    "name":"Dauntless",
+    "requireSkillTypes":[1,7,116,117],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["skill_cannot_be_used_unless_stationary_for_X_ms",1500],["support_unmoving_damage_+%_final_per_250_ms_stationary",3],["support_unmoving_damage_multiplier_cap",45]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Dauntless",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "statMap":{
+          "support_unmoving_damage_+%_final_per_250_ms_stationary":[{
+              "flags":4,
+              "keywordFlags":0,
+              "name":"Damage",
+              "type":"MORE",
+              "1":{
+                "type":"Condition",
+                "var":"Stationary"
+              },
+              "2":{
+                "div":0.25,
+                "limitTotal":true,
+                "limitVar":"DauntlessMaxDamage",
+                "type":"Multiplier",
+                "var":"StationarySeconds"
+              }
+            }],
+          "support_unmoving_damage_multiplier_cap":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"Multiplier:DauntlessMaxDamage",
+              "type":"BASE"
+            }]
+        },
+        "stats":[]
+      }],
+    "support":true
+  },
+  "SupportDazingCryPlayer":{
+    "addSkillTypes":[],
+    "color":1,
+    "description":"Supports Warcries, causing them to Daze Enemies on use.",
+    "excludeSkillTypes":[],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":10
+      }],
+    "name":"Dazing Cry",
+    "requireSkillTypes":[63],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_dazed_cry_duration_ms",4000]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Dazing Cry",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "stats":["support_apply_daze_on_warcry"]
+      }],
+    "support":true
+  },
+  "SupportDeadlyIgnitesPlayer":{
+    "addSkillTypes":[],
+    "color":1,
+    "description":"Supports any skill that Hits enemies, causing inflicted Ignites to deal more damage but its Hits to deal less damage.",
+    "excludeSkillTypes":[],
+    "levels":[{
+        "levelRequirement":0
+      }],
+    "name":"Searing Flame",
+    "requireSkillTypes":[7,1,117],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_stronger_ignites_hit_damage_+%_final",-25],["support_stronger_ignites_ignite_effect_+%_final",75]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Searing Flame",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "statMap":{
+          "support_stronger_ignites_hit_damage_+%_final":[{
+              "flags":4,
+              "keywordFlags":0,
+              "name":"Damage",
+              "type":"MORE"
+            }],
+          "support_stronger_ignites_ignite_effect_+%_final":[{
+              "flags":0,
+              "keywordFlags":8388608,
+              "name":"AilmentMagnitude",
+              "type":"MORE"
+            }]
+        },
+        "stats":[]
+      }],
+    "support":true
+  },
+  "SupportDeepCutsPlayer":{
+    "addSkillTypes":[],
+    "color":1,
+    "description":"Supports any skill that Hits enemies, causing it to deal less damage but inflict more potent Bleeding.",
+    "excludeSkillTypes":[],
+    "levels":[{
+        "levelRequirement":0
+      }],
+    "name":"Deep Cuts",
+    "requireSkillTypes":[1,7,117],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_deep_cuts_hit_damage_+%_final",-25],["support_deep_cuts_bleeding_effect_+%_final",75]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Deep Cuts",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "statMap":{
+          "support_deep_cuts_bleeding_effect_+%_final":[{
+              "flags":0,
+              "keywordFlags":4194304,
+              "name":"AilmentMagnitude",
+              "type":"MORE"
+            }],
+          "support_deep_cuts_hit_damage_+%_final":[{
+              "flags":4,
+              "keywordFlags":0,
+              "name":"Damage",
+              "type":"MORE"
+            }]
+        },
+        "stats":[]
+      }],
+    "support":true
+  },
+  "SupportDefyPlayer":{
+    "addSkillTypes":[],
+    "color":1,
+    "description":"Supports Attack Skills you use yourself. Hit Damage from Supported Skills is Lucky if you are Surrounded.",
+    "excludeSkillTypes":[6,95,25],
+    "levels":[{
+        "levelRequirement":0
+      }],
+    "name":"Defy",
+    "requireSkillTypes":[1],
+    "statSets":[{
+        "baseFlags":[],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Defy",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "stats":["attack_damage_is_lucky_if_surrounded"]
+      }],
+    "support":true
+  },
+  "SupportDesperationPlayer":{
+    "addSkillTypes":[],
+    "color":1,
+    "description":"Supports Melee Attack Skills you use yourself. Insufficient Mana doesn't prevent Supported Skills from being used while Surrounded.",
+    "excludeSkillTypes":[25,95,6],
+    "ignoreMinionTypes":true,
+    "levels":[{
+        "levelRequirement":0
+      }],
+    "name":"Desperation",
+    "requireSkillTypes":[1,20,74],
+    "statSets":[{
+        "baseFlags":[],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Desperation",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "stats":["melee_attacks_usable_without_mana_cost_while_surrounded"]
+      }],
+    "support":true
+  },
+  "SupportDevastatePlayer":{
+    "addSkillTypes":[],
+    "color":1,
+    "description":"Supports any skill that Hits enemies, causing them to apply Broken Armour to enemies when causing a Heavy Stun to enemies.",
+    "excludeSkillTypes":[],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
+    "name":"Devastate",
+    "requireSkillTypes":[7,1,117],
+    "statSets":[{
+        "baseFlags":[],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Devastate",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "statMap":{
+          "fully_break_enemies_armour_on_heavy_stun":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"Condition:CanArmourBreak",
+              "type":"FLAG",
+              "value":true,
+              "1":{
+                "effectName":"ArmourBreak",
+                "effectType":"Buff",
+                "type":"GlobalEffect"
+              }
+            }]
+        },
+        "stats":["fully_break_enemies_armour_on_heavy_stun"]
+      }],
+    "support":true
+  },
+  "SupportDirestrikePlayer":{
+    "addSkillTypes":[],
+    "color":1,
+    "description":"Supports Persistent Buff Skills, causing you to deal increased Attack Damage while on Low Life while the Supported Skill is active.",
+    "excludeSkillTypes":[],
+    "levels":[{
+        "levelRequirement":0,
+        "spiritReservationFlat":20
+      }],
+    "name":"Direstrike",
+    "requireSkillTypes":[139,5,74],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_attack_damage_spirit_cost_attack_damage_+%_on_low_life",50]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Direstrike",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "statMap":{
+          "support_attack_damage_spirit_cost_attack_damage_+%_on_low_life":[{
+              "flags":1,
+              "keywordFlags":0,
+              "name":"Damage",
+              "type":"INC",
+              "1":{
+                "effectName":"Direstrike",
+                "effectType":"Buff",
+                "type":"GlobalEffect"
+              }
+            }]
+        },
+        "stats":[]
+      }],
+    "support":true
+  },
+  "SupportDomainPlayer":{
+    "addSkillTypes":[],
+    "color":1,
+    "description":"Supports Skills which create Ground Surfaces, causing created Surfaces to only end when their duration expires.",
+    "excludeSkillTypes":[],
+    "levels":[{
+        "levelRequirement":0
+      }],
+    "name":"Domain",
+    "requireSkillTypes":[168],
+    "statSets":[{
+        "baseFlags":[],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Domain",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "stats":["ground_effects_cannot_trigger"]
+      }],
+    "support":true
+  },
+  "SupportDoubleBarrelPlayer":{
+    "addSkillTypes":[],
+    "color":1,
+    "description":"Supports Crossbow Ammunition Skills, causing them to load an extra bolt at the cost of reload speed.",
+    "excludeSkillTypes":[],
+    "levels":[{
+        "levelRequirement":0
+      }],
+    "name":"Double Barrel",
+    "requireSkillTypes":[117,116],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_double_barrel_number_of_crossbow_bolts_+",1],["support_double_barrel_crossbow_reload_speed_-%_final",30]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Double Barrel",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "statMap":{
+          "support_double_barrel_crossbow_reload_speed_-%_final":{
+            "mult":-1,
+            "1":{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"ReloadSpeed",
+              "type":"MORE"
+            }
+          },
+          "support_double_barrel_number_of_crossbow_bolts_+":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"CrossbowBoltCount",
+              "type":"BASE"
+            }]
+        },
+        "stats":[]
+      }],
+    "support":true
+  },
+  "SupportEmpoweredDamagePlayer":{
+    "addSkillTypes":[],
+    "color":1,
+    "description":"Supports skills that can Empower skills other than themselves, causing skills they Empower to deal more damage.",
+    "excludeSkillTypes":[],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":30
+      }],
+    "name":"Premeditation",
+    "requireSkillTypes":[147],
+    "statSets":[{
+        "baseFlags":[],
+        "constantStats":[["support_empowered_damage_+%_final",15]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Premeditation",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "statMap":{
+          "support_empowered_damage_+%_final":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"ExtraEmpowerMod",
+              "type":"LIST",
+              "value":{
+                "mod":{
+                  "flags":0,
+                  "keywordFlags":0,
+                  "name":"Damage",
+                  "type":"MORE"
+                }
+              }
+            }]
+        },
+        "stats":[]
+      }],
+    "support":true
   },
   "SupportEnduranceChargeOnArmourBreak":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports any skill that Hits enemies, giving it a chance to gain an Endurance Charge when it Fully Breaks an enemy's Armour.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Break Endurance",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1,7,117],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["chance_to_gain_endurance_charge_on_armour_break_%"]],
-        "levels":[[]],
+        "constantStats":[["chance_to_gain_endurance_charge_on_armour_break_%",40]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Break Endurance",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportEnragedWarcryPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Warcries, causing them to consume Rage to further boost Empowered Attacks.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Enraged Warcry",
     "requireSkillTypes":[63],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_warcry_consumes_up_to_X_rage"],["support_enraged_warcry_+%_damage_final_for_exerted_attacks"]],
-        "levels":[[]],
+        "constantStats":[["support_warcry_consumes_up_to_X_rage",10],["support_enraged_warcry_+%_damage_final_for_exerted_attacks",30]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Enraged Warcry",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportExecutePlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports any skill that Hits enemies, causing it to deal more damage against enemies on Low Life.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":10
+      }],
     "name":"Execute",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[7,1,117],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_executioner_damage_vs_enemies_on_low_life_+%_final"]],
-        "levels":[[]],
+        "constantStats":[["support_executioner_damage_vs_enemies_on_low_life_+%_final",50]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Execute",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
-          "support_executioner_damage_vs_enemies_on_low_life_+%_final":[[{
+          "support_executioner_damage_vs_enemies_on_low_life_+%_final":[{
+              "flags":4,
+              "keywordFlags":0,
+              "name":"Damage",
+              "type":"MORE",
+              "1":{
                 "actor":"enemy",
                 "type":"ActorCondition",
                 "var":"LowLife"
-              }]]
+              }
+            }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportExpeditePlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Skills which Detonate after some amount of time has elapsed, shortening the time before Detonation. ",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":15
+      }],
     "name":"Expedite",
     "requireSkillTypes":[217],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_fast_forward_detonation_time_+%_final"]],
-        "levels":[[]],
+        "constantStats":[["support_fast_forward_detonation_time_+%_final",-40]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Expedite",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportExploitWeaknessPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports any skill that Hits enemies, causing them to deal more Damage against enemies with Broken Armour but preventing them from Breaking Armour themselves. Cannot support skills that Consume Broken Armour.",
     "excludeSkillTypes":[134],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":30
+      }],
     "name":"Exploit Weakness",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[7,1,117],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_gem_consume_enemy_fully_broken_armour_to_gain_damage_+%_final"]],
-        "levels":[[]],
+        "constantStats":[["support_gem_consume_enemy_fully_broken_armour_to_gain_damage_+%_final",40]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Exploit Weakness",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
-          "support_gem_consume_enemy_fully_broken_armour_to_gain_damage_+%_final":[[{
+          "support_gem_consume_enemy_fully_broken_armour_to_gain_damage_+%_final":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"Damage",
+              "type":"MORE",
+              "1":{
+                "actor":"enemy",
+                "type":"ActorCondition",
                 "var":"ArmourFullyBroken"
-              }]]
+              }
+            }]
         },
-        "stats":[]
-      }]
+        "stats":["cannot_break_armour"]
+      }],
+    "support":true
   },
   "SupportFigureheadPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Skills that generate Remnants, causing those Remnants to affect Allies in your Presence when collected instead of you.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Figurehead",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[183],
     "statSets":[{
         "baseFlags":[],
-        "levels":[[]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Figurehead",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":["remnants_affect_allies_in_presence_instead"]
-      }]
+      }],
+    "support":true
   },
   "SupportFireExposurePlayer":{
-    "addSkillTypes":[],
+    "addSkillTypes":[9],
+    "color":1,
     "description":"Supports any skill that Hits enemies, causing it to inflict Fire Exposure when Igniting.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
     "name":"Fire Exposure",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1,7,117],
     "statSets":[{
         "baseFlags":[],
         "constantStats":[["inflict_fire_exposure_for_x_ms_on_ignite",8000]],
-        "levels":[[]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Fire Exposure",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "inflict_fire_exposure_for_x_ms_on_ignite":[{
+              "flags":0,
+              "keywordFlags":0,
               "name":"FireExposureChance",
+              "type":"BASE",
               "1":{
+                "actor":"enemy",
+                "type":"ActorCondition",
                 "var":"Ignited"
               }
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportFirePenetrationPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports any skill that Hits enemies, making those Hits Penetrate enemy Fire resistance.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
     "name":"Fire Penetration",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[7,1,117],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["base_reduce_enemy_fire_resistance_%"]],
-        "levels":[[]],
+        "constantStats":[["base_reduce_enemy_fire_resistance_%",30]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Fire Penetration",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportFirstBloodPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Attacks. Supported Skills are far more likely to inflict Bleeding on Hitting full Life Enemies.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":10
+      }],
     "name":"First Blood",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["bleed_chance_+%_vs_full_life_enemy"]],
-        "levels":[[]],
+        "constantStats":[["bleed_chance_+%_vs_full_life_enemy",100]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"First Blood",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportFlamepiercePlayer":{
     "addSkillTypes":[205],
+    "color":1,
     "description":"Supports Skills which can fire Projectiles. Initial Projectile created by Supported Skills will always Pierce Ignited Enemies, but Supported Skills cannot inflict Ignite themselves.",
     "excludeSkillTypes":[176],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Flamepierce",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[3],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["chance_to_pierce_ignited_enemy_%"]],
-        "levels":[[]],
-        "stats":[]
-      }]
+        "constantStats":[["chance_to_pierce_ignited_enemy_%",100]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Flamepierce",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "stats":["never_ignite"]
+      }],
+    "support":true
   },
   "SupportFreshClipPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Crossbow Skills, granting them more damage for each bolt reloaded by that Skill in the last 6 seconds.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Fresh Clip",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[117,116],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_damage_+%_final_per_crossbow_bolt_reloaded_in_past_6_seconds"]],
-        "levels":[[]],
+        "constantStats":[["support_damage_+%_final_per_crossbow_bolt_reloaded_in_past_6_seconds",1]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Fresh Clip",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
-          "support_damage_+%_final_per_crossbow_bolt_reloaded_in_past_6_seconds":[[{
+          "support_damage_+%_final_per_crossbow_bolt_reloaded_in_past_6_seconds":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"Damage",
+              "type":"MORE",
+              "1":{
+                "type":"Multiplier",
                 "var":"BoltsReloadedPastSixSeconds"
-              }]]
+              }
+            }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportGreatwoodPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Totem Skills, limiting their active Totem count to one but granting significant benefits for supported Totems based on what their Totem Limit would have been without this restriction. Does not Support Skills used by Minions.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "ignoreMinionTypes":true,
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":15
+      }],
     "name":"Greatwood",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[25,95],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_greatwood_totem_damage_+%_final_per_totem_allowed"],["support_greatwood_totem_area_of_effect_+%_final_per_totem_allowed"],["support_greatwood_totem_life_+%_final_per_totem_allowed"],["support_greatwood_totem_actor_scale_+%_per_totem_allowed"]],
-        "levels":[[]],
+        "constantStats":[["support_greatwood_totem_damage_+%_final_per_totem_allowed",10],["support_greatwood_totem_area_of_effect_+%_final_per_totem_allowed",5],["support_greatwood_totem_life_+%_final_per_totem_allowed",10],["support_greatwood_totem_actor_scale_+%_per_totem_allowed",10]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Greatwood",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":["number_of_totems_allowed_is_1"]
-      }]
+      }],
+    "support":true
   },
   "SupportGroundEffectDurationPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Skills that create Ground Surfaces, causing those surfaces to last longer.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Despoiler",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[168,9,74],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["ground_effect_duration_+%"]],
-        "levels":[[]],
+        "constantStats":[["ground_effect_duration_+%",50]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Support",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportHaemocrystalsPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Attack Skills you use yourself which can cause Damaging Hits. Supported Skills Consume Bleeding on Hit to create explosive blood-filled crystals, but cannot themselves inflict Bleeding.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[6,95,25],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Haemocrystals",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["consume_bleed_to_create_X_haemocrystals"],["support_haemocrystals_maximum_allowed_crystals"]],
-        "levels":[[]],
-        "stats":[]
-      }]
+        "constantStats":[["consume_bleed_to_create_X_haemocrystals",4],["support_haemocrystals_maximum_allowed_crystals",20]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Haemocrystals",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "stats":["cannot_cause_bleeding"]
+      }],
+    "support":true
   },
   "SupportHeftPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Skills which deal Damage, increasing the maximum Physical Damage of their Hits.",
     "excludeSkillTypes":[],
     "levels":[{
+        "levelRequirement":0,
         "manaMultiplier":20
       }],
     "name":"Heft",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[7,1,117],
     "statSets":[{
         "baseFlags":[],
         "constantStats":[["support_heft_maximum_physical_damage_+%_final",30]],
-        "levels":[[]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Heft",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_heft_maximum_physical_damage_+%_final":[{
               "flags":4,
+              "keywordFlags":0,
               "name":"MaxPhysicalDamage",
               "type":"MORE"
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportHerbalismPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Persistent Buff Skills, causing you to gain increased Life recovery from Flasks while the Skill is active.",
     "excludeSkillTypes":[],
     "levels":[{
+        "levelRequirement":0,
         "spiritReservationFlat":15
       }],
     "name":"Herbalism",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[139,5,74],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_herbalism_life_recovery_+%_from_life_flasks"]],
-        "levels":[[]],
+        "constantStats":[["support_herbalism_life_recovery_+%_from_life_flasks",30]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Herbalism",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_herbalism_life_recovery_+%_from_life_flasks":[{
+              "flags":0,
+              "keywordFlags":0,
               "name":"FlaskLifeRecovery",
-              "1":[]
+              "type":"INC",
+              "1":{
+                "effectName":"Herbalism",
+                "effectType":"Buff",
+                "type":"GlobalEffect"
+              }
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportHolyDescentPlayer":{
-    "addSkillTypes":[null,null,9],
+    "addSkillTypes":[168,8,9],
+    "color":1,
     "description":"Supports Skills that leap into the air, causing them to create Consecrated Ground when you land",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Holy Descent",
     "requireSkillTypes":[162],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_holy_descent_consecrated_ground_base_duration_ms",4000],["support_holy_descent_consecrated_ground_on_landing_radius"]],
-        "levels":[[]],
+        "constantStats":[["support_holy_descent_consecrated_ground_base_duration_ms",4000],["support_holy_descent_consecrated_ground_on_landing_radius",14]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Holy Descent",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_holy_descent_consecrated_ground_base_duration_ms":[],
           "support_holy_descent_consecrated_ground_on_landing":[]
         },
         "stats":["support_holy_descent_consecrated_ground_on_landing"]
-      }]
+      }],
+    "support":true
   },
   "SupportIgniteDurationPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports any skill that Hits enemies, causing its Ignites to be inflicted less often but last longer.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
     "name":"Eternal Flame",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[7,1,117],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["ignite_duration_+%"],["support_eternal_flame_chance_to_ignite_+%_final"]],
-        "levels":[[]],
+        "constantStats":[["ignite_duration_+%",100],["support_eternal_flame_chance_to_ignite_+%_final",-25]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Eternal Flame",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
-          "support_eternal_flame_chance_to_ignite_+%_final":[[]]
+          "support_eternal_flame_chance_to_ignite_+%_final":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"EnemyIgniteChance",
+              "type":"MORE"
+            }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportImmolatePlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Attacks, granting them extra Fire damage against Ignited enemies but making them unable to Ignite enemies themselves.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Immolate",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1,117],
     "statSets":[{
         "baseEffectiveness":0.88889998197556,
         "baseFlags":[],
-        "constantStats":[["non_skill_base_all_damage_%_to_gain_as_fire_with_attacks_vs_burning_enemies"]],
-        "levels":[[]],
+        "constantStats":[["non_skill_base_all_damage_%_to_gain_as_fire_with_attacks_vs_burning_enemies",30]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Immolate",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":["never_ignite"]
-      }]
+      }],
+    "support":true
   },
   "SupportIncisionPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Attack Skills. Supported Skills inflict Incision on Hit, which causes Enemies to be increasingly more likely to be inflicted with Bleeding. All Incision is removed from a target on inflicting it with Bleeding.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":15
+      }],
     "name":"Incision",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1,116,117],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["apply_X_incision_on_hit"],["support_incision_bleeding_effect_+%_final_per_incision_consumed_recently_up_to_30%"]],
-        "levels":[[]],
+        "constantStats":[["apply_X_incision_on_hit",1],["support_incision_bleeding_effect_+%_final_per_incision_consumed_recently_up_to_30%",3]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Incision",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_incision_bleeding_effect_+%_final_per_incision_consumed_recently_up_to_30%":[{
+              "flags":0,
               "keywordFlags":4194304,
               "name":"AilmentMagnitude",
+              "type":"MORE",
               "1":{
+                "limit":30,
+                "limitTotal":true,
+                "type":"Multiplier",
                 "var":"IncisionConsumedRecently"
               }
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportIncreasedArmourBreakPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports any skill, causing Armour Break it inflicts to be stronger.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Demolisher",
-    "requireSkillTypes":[2],
+    "requireSkillTypes":[2,1,7,117,49],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_increased_armour_break_armour_break_amount_+%_final"]],
-        "levels":[[]],
+        "constantStats":[["support_increased_armour_break_armour_break_amount_+%_final",50]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Demolisher",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_increased_armour_break_armour_break_amount_+%_final":[{
-              "name":"ArmourBreakEffect"
+              "flags":0,
+              "keywordFlags":0,
+              "name":"ArmourBreakEffect",
+              "type":"MORE"
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportInfernalLegionPlayer":{
     "addSkillTypes":[24],
+    "color":1,
     "description":"Supports skills which create Minions which can be damaged, causing them and enemies near them to Burn. Damage dealt by the Burning is based off the Life of the supported Minion.",
     "excludeSkillTypes":[214],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Infernal Legion",
     "requireSkillTypes":[77],
     "statSets":[{
         "baseEffectiveness":5.9082999229431,
         "baseFlags":[],
-        "constantStats":[["minion_fire_damage_%_of_maximum_life_taken_per_minute",1200],["support_minions_ignite_for_%_max_life"],["infernal_legion_minion_burning_effect_radius"]],
-        "levels":[[]],
+        "constantStats":[["minion_fire_damage_%_of_maximum_life_taken_per_minute",1200],["support_minions_ignite_for_%_max_life",20],["infernal_legion_minion_burning_effect_radius",15]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Infernal Legion",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "minion_fire_damage_%_of_maximum_life_taken_per_minute":{
             "div":6000,
             "1":{
-              "value":{
-                "mod":{
-                  "name":"FireDegen",
-                  "1":{
-                    "type":"PerStat"
-                  },
-                  "2":[]
-                }
-              }
-            }
-          },
-          "support_minion_instability_minion_base_fire_area_damage_per_minute":[{
+              "flags":0,
+              "keywordFlags":0,
               "name":"MinionModifier",
               "type":"LIST",
               "value":{
                 "mod":{
-                  "name":"Multiplier:InfernalLegionBaseDamage",
+                  "flags":0,
+                  "keywordFlags":0,
+                  "name":"FireDegen",
+                  "type":"BASE",
                   "1":{
+                    "stat":"Life",
+                    "type":"PerStat"
+                  },
+                  "2":{
+                    "effectType":"Buff",
+                    "type":"GlobalEffect"
+                  }
+                }
+              }
+            }
+          },
+          "support_minion_instability_minion_base_fire_area_damage_per_minute":{
+            "div":60,
+            "1":{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"MinionModifier",
+              "type":"LIST",
+              "value":{
+                "mod":{
+                  "flags":0,
+                  "keywordFlags":0,
+                  "name":"Multiplier:InfernalLegionBaseDamage",
+                  "type":"BASE",
+                  "1":{
+                    "percent":1,
                     "stat":"Life",
                     "type":"PercentStat"
                   }
                 }
               }
-            },{
+            },
+            "2":{
+              "flags":0,
+              "keywordFlags":0,
               "name":"ExtraMinionSkill",
+              "type":"LIST",
               "value":{
                 "skillId":"InfernalLegion"
               }
-            }]
+            }
+          }
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportInspirationPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports any skill, making it cost less to use. Cannot support skills which reserve Spirit.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[139],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Inspiration",
     "requireSkillTypes":[],
     "statSets":[{
+        "baseEffectiveness":0,
         "baseFlags":[],
-        "constantStats":[["support_inspiration_cost_+%_final"]],
-        "levels":[[]],
+        "constantStats":[["support_inspiration_cost_+%_final",-30]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Inspiration",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_inspiration_cost_+%_final":[{
-              "name":"Cost"
+              "flags":0,
+              "keywordFlags":0,
+              "name":"Cost",
+              "type":"MORE"
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportInterludePlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Skills that generate Remnants, causing effects of those Remnants to be more powerful, but at the cost of a delay.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Interlude",
     "requireSkillTypes":[183],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["remnant_effect_+%"],["remnant_delay_X_ms",3000]],
-        "levels":[[]],
+        "constantStats":[["remnant_effect_+%",25],["remnant_delay_X_ms",3000]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Interlude",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportIronwoodPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Skills which create Totems. Totems created by Supported Skills have additional Elemental Resistances.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Ironwood",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[25],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["totem_elemental_resistance_%"],["totem_maximum_all_elemental_resistances_%"]],
-        "levels":[[]],
+        "constantStats":[["totem_elemental_resistance_%",40],["totem_maximum_all_elemental_resistances_%",10]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Ironwood",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportJaggedGroundPlayer":{
-    "addSkillTypes":[],
+    "addSkillTypes":[9,8,168],
+    "color":1,
     "description":"Supports Slam skills, granting them a chance to create patches of Jagged Ground.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
     "name":"Jagged Ground",
     "requireSkillTypes":[92],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_jagged_ground_base_duration_ms"],["support_jagged_ground_chance_%"]],
-        "levels":[[]],
+        "constantStats":[["support_jagged_ground_base_duration_ms",4000],["support_jagged_ground_chance_%",50]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Jagged Ground",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":["can_create_jagged_ground"]
-      }]
+      }],
+    "support":true
   },
   "SupportKnockbackPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports any skill that Hits enemies, causing it to Knock Back enemies.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Bludgeon",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[7,1,117],
     "statSets":[{
+        "baseEffectiveness":0,
         "baseFlags":[],
-        "constantStats":[["generic_knockback_distance_limit"]],
-        "levels":[[]],
+        "constantStats":[["generic_knockback_distance_limit",30]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Bludgeon",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":["global_knockback"]
-      }]
+      }],
+    "support":true
   },
   "SupportLifeLeechPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Attacks, causing their Physical damage to Leech Life.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Life Thief",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1,117],
     "statSets":[{
+        "baseEffectiveness":0,
         "baseFlags":[],
         "constantStats":[["base_life_leech_from_physical_attack_damage_permyriad",800]],
-        "levels":[[]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Life Thief",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportLongFusePlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Skills which fire Grenades, causing those Grenades to have much higher Detonation Time and damage.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Long Fuse",
     "requireSkillTypes":[158],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_grenade_damage_+%_final"],["skill_detonation_time_+%"]],
-        "levels":[[]],
+        "constantStats":[["support_grenade_damage_+%_final",30],["skill_detonation_time_+%",50]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Long Fuse",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":["skill_grenade_detonate_only_at_end_of_duration"]
-      }]
+      }],
+    "support":true
   },
   "SupportMeatShieldPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports skills which create Minions, granting them less damage taken but making them deal less damage. Cannot support skills which create undamageable Minions.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[214],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Meat Shield",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[77],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_minion_defensive_stance_minion_damage_taken_+%_final"],["support_meat_shield_minion_damage_+%_final"]],
-        "levels":[[]],
+        "constantStats":[["support_minion_defensive_stance_minion_damage_taken_+%_final",-35],["support_meat_shield_minion_damage_+%_final",-35]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Meat Shield",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_meat_shield_minion_damage_+%_final":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"MinionModifier",
+              "type":"LIST",
               "value":{
-                "mod":[]
+                "mod":{
+                  "flags":0,
+                  "keywordFlags":0,
+                  "name":"Damage",
+                  "type":"MORE"
+                }
               }
             }],
           "support_minion_defensive_stance_minion_damage_taken_+%_final":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"MinionModifier",
+              "type":"LIST",
               "value":{
                 "mod":{
-                  "name":"DamageTaken"
+                  "flags":0,
+                  "keywordFlags":0,
+                  "name":"DamageTaken",
+                  "type":"MORE"
                 }
               }
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportMeleePhysicalDamagePlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Melee Attacks, boosting their Physical damage at the cost of Attack Speed.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Heavy Swing",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[20],
     "statSets":[{
+        "baseEffectiveness":0,
         "baseFlags":[],
-        "constantStats":[["support_melee_physical_damage_+%_final"],["support_melee_physical_damage_attack_speed_+%_final",-10]],
-        "levels":[[]],
+        "constantStats":[["support_melee_physical_damage_+%_final",35],["support_melee_physical_damage_attack_speed_+%_final",-10]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Heavy Swing",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
-          "support_melee_physical_damage_+%_final":[[]],
-          "support_melee_physical_damage_attack_speed_+%_final":[[]]
+          "support_melee_physical_damage_+%_final":[{
+              "flags":256,
+              "keywordFlags":0,
+              "name":"PhysicalDamage",
+              "type":"MORE"
+            }],
+          "support_melee_physical_damage_attack_speed_+%_final":[{
+              "flags":1,
+              "keywordFlags":0,
+              "name":"Speed",
+              "type":"MORE"
+            }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportOverpowerPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports any skill that hits enemies, causing it to build up Stun more quickly.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
     "name":"Overpower",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1,7,117],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_overpower_hit_damage_stun_multiplier_+%_final"]],
-        "levels":[[]],
+        "constantStats":[["support_overpower_hit_damage_stun_multiplier_+%_final",50]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Overpower",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_overpower_hit_damage_stun_multiplier_+%_final":[{
-              "name":"StunBuildup"
+              "flags":0,
+              "keywordFlags":0,
+              "name":"StunBuildup",
+              "type":"MORE"
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportQuillburstPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Melee Attack Skills. Supported Skills trigger Quill Burst, which deals your Thorns Damage in an Area around the target struck. Quill Burst can only be triggered on Hit after you've\nRetaliated with Thorns Damage.",
     "excludeSkillTypes":[115],
-    "levels":[[]],
+    "ignoreMinionTypes":true,
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Quill Burst",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[20,1,74],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[[]],
-        "levels":[[]],
+        "constantStats":[["trigger_spiked_gauntlets_for_X_hits_after_thorns_trigger",3]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Quill Burst",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
       },{
         "baseFlags":[],
-        "constantStats":[["trigger_spiked_gauntlets_for_X_hits_after_thorns_trigger"],["triggered_by_spiked_gauntlets_support_%"],[]],
-        "levels":[[]],
-        "stats":[null,"display_skill_deals_thorns_damage"]
-      }]
+        "constantStats":[["trigger_spiked_gauntlets_for_X_hits_after_thorns_trigger",3],["triggered_by_spiked_gauntlets_support_%",100],["active_skill_base_area_of_effect_radius",15]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Quill Burst",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
+        "stats":["is_area_damage","display_skill_deals_thorns_damage"]
+      }],
+    "support":true
   },
   "SupportRageFountainPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Skills which create stationary objects. Objects created by supported Skills generate a Font of Rage, creating an Aura which grants Rage over time, as well as preventing Rage loss.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[6,139,74],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Font of Rage",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[161,100,25,154],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_rage_fountain_rage_regeneration_per_minute"],["support_rage_fountain_radius"]],
-        "levels":[[]],
+        "constantStats":[["support_rage_fountain_rage_regeneration_per_minute",120],["support_rage_fountain_radius",30]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Font of Rage",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
-          "support_rage_fountain_rage_regeneration_per_minute":[{
+          "support_rage_fountain_rage_regeneration_per_minute":{
+            "div":60,
+            "1":{
+              "flags":0,
+              "keywordFlags":0,
               "name":"RageRegen",
-              "1":[]
-            }]
+              "type":"BASE",
+              "1":{
+                "effectType":"Aura",
+                "type":"GlobalEffect"
+              }
+            }
+          }
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportRagePlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Melee Attacks, causing them to grant Rage on Hit.",
     "excludeSkillTypes":[],
-    "levels":[[],[],[]],
+    "ignoreMinionTypes":true,
+    "levels":[{
+        "levelRequirement":0
+      },{
+        "levelRequirement":3
+      },{
+        "levelRequirement":6
+      }],
     "name":"Rage",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[20],
     "statSets":[{
         "baseEffectiveness":0.18000000715256,
         "baseFlags":[],
-        "constantStats":[["gain_x_rage_on_melee_hit"],["support_rage_attack_damage_+%_final"]],
-        "levels":[[]],
+        "constantStats":[["gain_x_rage_on_melee_hit",3],["support_rage_attack_damage_+%_final",0]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Rage",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportRageforgedPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports any damaging skill that you use or trigger yourself, causing it to consume Rage to deal more damage. If you don't have enough Rage to consume, the damage bonus will not apply.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[33,36,25],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Rageforged",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[7,1,117],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_rageforged_consumes_X_rage_to_enrage_skill_use"],["support_rageforged_enraged_damage_+%_final"]],
-        "levels":[[]],
+        "constantStats":[["support_rageforged_consumes_X_rage_to_enrage_skill_use",10],["support_rageforged_enraged_damage_+%_final",35]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Rageforged",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportRagingCryPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Warcry skills, causing them to grant you Rage on use depending on counted monster Power.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Raging Cry",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[63],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["warcry_grant_X_rage_per_5_power"]],
-        "levels":[[]],
+        "constantStats":[["warcry_grant_X_rage_per_5_power",4]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Raging Cry",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportRallyPlayer":{
-    "addSkillTypes":[131],
+    "addSkillTypes":[131,204],
+    "color":1,
     "description":"Supports Melee Attacks you use yourself. Supported Skills Consume all Endurance Charge on use, causing you to restore a percentage of your maximum Life for each Charge Consumed.",
-    "excludeSkillTypes":[null,null,null,null,null,173,204],
-    "levels":[[]],
+    "excludeSkillTypes":[37,6,25,95,139,173,204,75,74],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Rally",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[20],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["consume_endurance_charges_on_use_to_recover_%_maximum_life_per_charge"]],
-        "levels":[[]],
+        "constantStats":[["consume_endurance_charges_on_use_to_recover_%_maximum_life_per_charge",10]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Rally",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":["skill_cannot_generate_endurance_charges"]
-      }]
+      }],
+    "support":true
   },
   "SupportRefractionPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Banner Skills, causing those affected by Auras they create to gain Refractive Plating, a Buff which causes Armour to partially apply to Elemental Hit Damage.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "spiritReservationFlat":10
+      }],
     "name":"Refraction",
-    "requireSkillTypes":[88],
+    "requireSkillTypes":[88,139,5,74,74],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_tempered_valour_%_armour_to_apply_to_elemental_damage"],["support_tempered_valour_minimum_valour_to_apply_buff"]],
-        "levels":[[]],
+        "constantStats":[["support_tempered_valour_%_armour_to_apply_to_elemental_damage",20],["support_tempered_valour_minimum_valour_to_apply_buff",25]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Refraction",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_tempered_valour_%_armour_to_apply_to_elemental_damage":[{
+              "flags":0,
+              "keywordFlags":0,
               "name":"ArmourAppliesToFireDamageTaken",
+              "type":"BASE",
               "1":{
-                "effectName":"Refractive Plating"
+                "effectName":"Refractive Plating",
+                "effectType":"Buff",
+                "type":"GlobalEffect"
               },
               "2":{
                 "thresholdVar":"RefractionMinimumValour",
@@ -1497,63 +2651,123 @@
                 "var":"ValourStacks"
               }
             },{
+              "flags":0,
+              "keywordFlags":0,
               "name":"ArmourAppliesToColdDamageTaken",
-              "1":[],
-              "2":[]
+              "type":"BASE",
+              "1":{
+                "effectName":"Refractive Plating",
+                "effectType":"Buff",
+                "type":"GlobalEffect"
+              },
+              "2":{
+                "thresholdVar":"RefractionMinimumValour",
+                "type":"MultiplierThreshold",
+                "var":"ValourStacks"
+              }
             },{
+              "flags":0,
+              "keywordFlags":0,
               "name":"ArmourAppliesToLightningDamageTaken",
-              "1":[],
-              "2":[]
+              "type":"BASE",
+              "1":{
+                "effectName":"Refractive Plating",
+                "effectType":"Buff",
+                "type":"GlobalEffect"
+              },
+              "2":{
+                "thresholdVar":"RefractionMinimumValour",
+                "type":"MultiplierThreshold",
+                "var":"ValourStacks"
+              }
             }],
           "support_tempered_valour_minimum_valour_to_apply_buff":[{
+              "flags":0,
+              "keywordFlags":0,
               "name":"Multiplier:RefractionMinimumValour",
-              "1":[]
+              "type":"BASE",
+              "1":{
+                "effectType":"Buff",
+                "type":"GlobalEffect"
+              }
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportRetaliatePlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Melee Attack Skills you use yourself. Supported Skills gain much more damage the closer you are to being Heavily Stunned.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[6,95,25,122],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":30
+      }],
     "name":"Retaliate",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[20],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_max_attack_damage_+%_final_from_current_poise"]],
-        "levels":[[]],
+        "constantStats":[["support_max_attack_damage_+%_final_from_current_poise",40]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Retaliate",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportReveberatePlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Slam Skills. Supported Skills have increased chance to cause Aftershocks the longer their Attack time.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
     "name":"Reverberate",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[92],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["chance_to_aftershock_+%_per_250_ms_attack_time"]],
-        "levels":[[]],
+        "constantStats":[["chance_to_aftershock_+%_per_250_ms_attack_time",15]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Reverberate",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportRipPlayer":{
-    "addSkillTypes":[],
+    "addSkillTypes":[183,9],
+    "color":1,
     "description":"Supports Melee Attack Skills you use yourself. Killing Blows with Supported Skills on Bleeding enemies create a Blood Remnant. Blood Remnants increase your Life regeneration rate for a short while after being collected.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[6,95,25],
+    "ignoreMinionTypes":true,
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":10
+      }],
     "name":"Rip",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[20],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["create_life_remnant_on_melee_kill_bleeding_enemy_%"],["rip_support_life_remnant_creation_radius"],["base_remnant_duration_ms"],["rip_support_buff_base_duration",5000],["rip_support_life_regeneration_rate_+%"]],
-        "levels":[[]],
+        "constantStats":[["create_life_remnant_on_melee_kill_bleeding_enemy_%",100],["rip_support_life_remnant_creation_radius",15],["base_remnant_duration_ms",8000],["rip_support_buff_base_duration",5000],["rip_support_life_regeneration_rate_+%",10]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Rip",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportRupturePlayer":{
     "addSkillTypes":[],
@@ -1564,11 +2778,14 @@
         "levelRequirement":0
       }],
     "name":"Rupture",
-    "requireSkillTypes":[null,7,117],
+    "requireSkillTypes":[1,7,117],
     "statSets":[{
         "baseFlags":[],
         "incrementalEffectiveness":0.054999999701977,
-        "levels":[[]],
+        "label":"Rupture",
+        "levels":[{
+            "actorLevel":1
+          }],
         "statDescriptionScope":"gem_stat_descriptions",
         "stats":["support_rupture_aggravate_bleeding_on_hitting_heavy_stunned_enemy"]
       }],
@@ -1576,330 +2793,597 @@
   },
   "SupportRustedSpikesPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Skills which deal Damage with Hits. When Supported Skills Pin an Enemy, they also Aggravate Bleeding on that Enemy.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[49],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":10
+      }],
     "name":"Rusted Spikes",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[7,1,116,117],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["aggravate_bleeding_on_pin_chance_%"]],
-        "levels":[[]],
+        "constantStats":[["aggravate_bleeding_on_pin_chance_%",100]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Rusted Spikes",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportSeeRedPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Attack Skills. Bleeding inflicted with Supported Skills lasts significantly longer, but enemies you inflict Bleeding onto with Supported Skills will move and Attack faster.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"See Red",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1,116,117],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["bleeding_monsters_movement_velocity_+%"],["base_bleed_duration_+%"],["bleeding_monsters_attack_speed_+%"]],
-        "levels":[[]],
+        "constantStats":[["bleeding_monsters_movement_velocity_+%",15],["base_bleed_duration_+%",50],["bleeding_monsters_attack_speed_+%",15]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"See Red",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportSparPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Melee Attack Skills. Supported Skills are more capable of Stunning Enemies the closer you are to being Heavily Stunned.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Spar",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1,20,74],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_hit_damage_stun_multiplier_+%_final_from_current_poise"]],
-        "levels":[[]],
+        "constantStats":[["support_hit_damage_stun_multiplier_+%_final_from_current_poise",100]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Spar",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportSteadfastPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Channelling Skills you use yourself, granting you increased Ailment Threshold while Channelling them.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[6,95],
+    "ignoreMinionTypes":true,
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":10
+      }],
     "name":"Steadfast",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[48],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["ailment_threshold_+%_while_channelling"]],
-        "levels":[[]],
+        "constantStats":[["ailment_threshold_+%_while_channelling",100]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Steadfast",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportStompingGroundPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Travel skills, causing your footsteps to crack the earth and emit damaging shockwaves while using the skill.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Stomping Ground",
     "requireSkillTypes":[79],
     "statSets":[{
         "baseFlags":[],
-        "levels":[[]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Support",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":["support_stomping_ground"]
-      }]
+      }],
+    "support":true
   },
   "SupportSyzygyPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Slam Skills you use yourself. Hits from Supported Skills are considered Crushing Blows against Enemies which are both Ignited and Fully Armour Broken. Hits with Supported Skills that Heavily Stun Ignited and Fully Armour Broken Enemies will Intimidate them.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[6,95,25],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Syzygy",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[92],
     "statSets":[{
         "baseFlags":[],
-        "levels":[[]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Syzygy",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":["crushing_blow_vs_ignited_and_fully_armour_broken","intimidate_on_heavy_stun_vs_ignited_and_fully_armour_broken","active_skill_show_stars_aligned"]
-      }]
+      }],
+    "support":true
   },
   "SupportTearPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Melee Attacks you use yourself. On-Kill effects caused by Killing Blows with Supported Skills on Bleeding enemies have a chance to occur twice.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[6,95,25],
+    "ignoreMinionTypes":true,
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":10
+      }],
     "name":"Tear",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[20],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["on_kill_effect_occur_twice_chance_%_vs_bleeding_enemies"]],
-        "levels":[[]],
+        "constantStats":[["on_kill_effect_occur_twice_chance_%_vs_bleeding_enemies",50]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Tear",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportThornskinPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Persistent Buff Skills, causing you to deal increased Thorns Damage while the Supported Skill is active.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "spiritReservationFlat":20
+      }],
     "name":"Thornskin",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[139,5,74],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_thorns_spirit_cost_thorns_damage_+%"]],
-        "levels":[[]],
+        "constantStats":[["support_thorns_spirit_cost_thorns_damage_+%",40]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Thornskin",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_thorns_spirit_cost_thorns_damage_+%":[{
+              "flags":0,
+              "keywordFlags":0,
               "name":"ThornsDamage",
-              "1":[]
+              "type":"INC",
+              "1":{
+                "effectName":"Thornskin",
+                "effectType":"Buff",
+                "type":"GlobalEffect"
+              }
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportTirelessPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Warcry Skills. Attacks Empowered by Supported Skills have a chance not to lower the Empowerment count of Supported Skills when they are used.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
     "name":"Tireless",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[63],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["chance_for_exerted_attacks_to_not_reduce_count_%"]],
-        "levels":[[]],
+        "constantStats":[["chance_for_exerted_attacks_to_not_reduce_count_%",30]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Tireless",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportTremorsPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Slam Skills you use yourself. Supported Skills gain multiple independent chances to cause Aftershocks, but deal less Damage.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[6,95],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Tremors",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[92],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_slam_chance_for_one_additional_aftershock_%"],["support_slam_chance_for_two_additional_aftershocks_%"],["support_slam_chance_for_three_additional_aftershocks_%"],["support_unstable_earth_damage_+%_final",-35]],
-        "levels":[[]],
+        "constantStats":[["support_slam_chance_for_one_additional_aftershock_%",30],["support_slam_chance_for_two_additional_aftershocks_%",15],["support_slam_chance_for_three_additional_aftershocks_%",10],["support_unstable_earth_damage_+%_final",-35]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Tremors",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
-          "support_unstable_earth_damage_+%_final":[[]]
+          "support_unstable_earth_damage_+%_final":[{
+              "flags":0,
+              "keywordFlags":0,
+              "name":"Damage",
+              "type":"MORE"
+            }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportUnabatingPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Attack Skills you use yourself. While using Supported Skills, you gain increased Armour, with the increase scaling higher the longer the Attack time of the supported Skill. Cannot Support Channelling Skills.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[6,95,25,48],
+    "ignoreMinionTypes":true,
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
     "name":"Unabating",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["armour_+%_while_performing_action_per_250_ms_attack_time"]],
-        "levels":[[]],
+        "constantStats":[["armour_+%_while_performing_action_per_250_ms_attack_time",25]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Unabating",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportUnderminePlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Attack Skills. Supported Skills Consume Maim on hit, Breaking a percentage of the Maimed target's Armour in doing so. Supported Skills cannot themselves inflict Maim.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Undermine",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1,116,117],
     "statSets":[{
         "baseFlags":[],
         "constantStats":[["consume_maim_on_hit_to_break_%_armour",35]],
-        "levels":[[]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Undermine",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":["cannot_inflict_maim"]
-      }]
+      }],
+    "support":true
   },
   "SupportUnsteadyTempoPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Melee Attack Skills you use yourself. Attacking with Supported Skills will cycle through various effects, with the first Attack in sequence inflicting Hobble on you. The second and third Attacks in sequence will powerfully scale chance to Critically Hit and overall damage, respectively, at which point the cycle will reset. Cannot Support Channelling Skills.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[95,25,48],
+    "ignoreMinionTypes":true,
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":10
+      }],
     "name":"Unsteady Tempo",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[20,1,74],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["unsteady_tempo_evasion_broken_as_%_of_life_on_first_hit"],["unsteady_tempo_critical_strike_chance_+%_final_on_second_hit"],["unsteady_tempo_damage_+%_final_on_third_hit"]],
-        "levels":[[]],
+        "constantStats":[["unsteady_tempo_evasion_broken_as_%_of_life_on_first_hit",40],["unsteady_tempo_critical_strike_chance_+%_final_on_second_hit",30],["unsteady_tempo_damage_+%_final_on_third_hit",20]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Unsteady Tempo",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportUnyieldingPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Melee Attack Skills you use yourself. While using Supported Skills, a percentage of Damage taken is Recouped as Life, with the percentage scaling higher the longer the Attack time of the Supported Skill. Cannot Support Channelling Skills.",
-    "excludeSkillTypes":[6,95,null,48],
-    "levels":[[]],
+    "excludeSkillTypes":[6,95,25,48],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
     "name":"Unyielding",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1,20,74],
     "statSets":[{
         "baseFlags":[],
         "constantStats":[["damage_taken_%_recouped_as_life_while_performing_attack_per_250_ms_attack_time",8]],
-        "levels":[[]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Unyielding",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportUpheavalPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Melee Attacks which create fissures in the ground, causing them to create additional fissures at the cost of damage and attack speed.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0
+      }],
     "name":"Upheaval",
     "requireSkillTypes":[165],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["base_number_of_additional_fissures"],["support_additional_fissures_damage_+%_final",-40],["support_additional_fissures_attack_speed_+%_final",-20]],
-        "levels":[[]],
+        "constantStats":[["base_number_of_additional_fissures",2],["support_additional_fissures_damage_+%_final",-40],["support_additional_fissures_attack_speed_+%_final",-20]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Upheaval",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_additional_fissures_attack_speed_+%_final":[{
-              "name":"Speed"
+              "flags":1,
+              "keywordFlags":0,
+              "name":"Speed",
+              "type":"MORE"
             }],
-          "support_additional_fissures_damage_+%_final":[[]]
+          "support_additional_fissures_damage_+%_final":[{
+              "flags":4,
+              "keywordFlags":0,
+              "name":"Damage",
+              "type":"MORE"
+            }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportVitalityPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Persistent Buff Skills, causing you to gain Life Regeneration while the Skill is active.",
     "excludeSkillTypes":[],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "spiritReservationFlat":20
+      }],
     "name":"Vitality",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[139,5,74],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_vitality_life_regeneration_rate_per_minute_%"]],
-        "levels":[[]],
+        "constantStats":[["support_vitality_life_regeneration_rate_per_minute_%",60]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Vitality",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_vitality_life_regeneration_rate_per_minute_%":{
             "div":60,
             "1":{
+              "flags":0,
+              "keywordFlags":0,
               "name":"LifeRegenPercent",
-              "1":[]
+              "type":"BASE",
+              "1":{
+                "effectName":"Vitality",
+                "effectType":"Buff",
+                "type":"GlobalEffect"
+              }
             }
           }
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportVolcanicEruptionPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Melee Strike Skills you use yourself. Supported Skills trigger Volcanic Eruption on Hit against Ignited Enemies.",
-    "excludeSkillTypes":[],
-    "levels":[[]],
+    "excludeSkillTypes":[6,25,95],
+    "ignoreMinionTypes":true,
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
     "name":"Volcanic Eruption",
     "requireSkillTypes":[21],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_volcanic_eruption_%_chance_to_trigger_vs_ignited_enemies"]],
-        "levels":[[]],
+        "constantStats":[["support_volcanic_eruption_%_chance_to_trigger_vs_ignited_enemies",100]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Volcanic Eruption",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "SupportWeaponElementalDamagePlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports Attacks that use a weapon, causing them to deal more weapon Elemental damage.",
     "excludeSkillTypes":[167],
-    "levels":[[]],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":20
+      }],
     "name":"Primal Armament",
-    "requireSkillTypes":[],
+    "requireSkillTypes":[1,117],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_weapon_elemental_damage_+%_final"]],
-        "levels":[[]],
+        "constantStats":[["support_weapon_elemental_damage_+%_final",25]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Primal Armament",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_weapon_elemental_damage_+%_final":[{
+              "flags":0,
               "keywordFlags":65536,
-              "name":"ElementalDamage"
+              "name":"ElementalDamage",
+              "type":"MORE"
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   },
   "TriggeredHaemocrystalsPlayer":{
+    "castTime":1,
     "description":"Deal Physical Area Damage based on a percentage of the expected Damage of the Consumed Bleed. ",
-    "levels":[[]],
+    "hidden":true,
+    "levels":[{
+        "levelRequirement":0
+      }],
+    "name":"Haemocrystals",
     "qualityStats":[],
-    "skillTypes":[],
+    "skillTypes":{
+      "8":true,
+      "31":true,
+      "7":true,
+      "27":true,
+      "115":true,
+      "37":true
+    },
     "statSets":[{
-        "baseFlags":[],
-        "constantStats":[[],[]],
-        "levels":[[]],
+        "baseFlags":{
+          "area":true,
+          "hit":true
+        },
+        "constantStats":[["consume_bleed_to_create_X_haemocrystals",4],["support_haemocrystals_maximum_allowed_crystals",20]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Haemocrystals",
+        "levels":[{
+            "actorLevel":1
+          }],
         "statDescriptionScope":"triggered_haemocrystals",
-        "stats":[]
+        "stats":["cannot_cause_bleeding"]
       }]
   },
   "TriggeredVolcanicEruptionPlayer":{
+    "castTime":1,
     "description":"Fire molten Projectiles from the struck target, which will land nearby dealing Attack damage in an area.",
+    "hidden":true,
     "levels":[{
-        "baseMultiplier":0.4
+        "baseMultiplier":0.4,
+        "cooldown":0.4,
+        "levelRequirement":0,
+        "storedUses":1
       }],
+    "name":"Volcanic Eruption",
     "qualityStats":[],
-    "skillTypes":[],
+    "skillTypes":{
+      "31":true,
+      "28":true,
+      "218":true,
+      "37":true,
+      "8":true,
+      "3":true,
+      "7":true,
+      "1":true,
+      "176":true,
+      "115":true
+    },
     "statSets":[{
-        "baseFlags":[],
-        "constantStats":[[],["chance_to_trigger_volcanic_eruption"],["base_number_of_projectiles"],[],["skill_mortar_minimum_projectile_distance"],["skill_mortar_maximum_projectile_distance"]],
-        "levels":[[]],
+        "baseFlags":{
+          "area":true,
+          "attack":true
+        },
+        "constantStats":[["active_skill_base_area_of_effect_radius",10],["chance_to_trigger_volcanic_eruption",100],["base_number_of_projectiles",4],["active_skill_base_physical_damage_%_to_convert_to_fire",80],["skill_mortar_minimum_projectile_distance",5],["skill_mortar_maximum_projectile_distance",15]],
+        "incrementalEffectiveness":0.054999999701977,
+        "label":"Volcanic Eruption",
+        "levels":[{
+            "actorLevel":1
+          }],
         "statDescriptionScope":"triggered_volcanic_eruption",
         "stats":["base_is_projectile"]
       }]
   },
   "UnbreakableSupportPlayer":{
     "addSkillTypes":[],
+    "color":1,
     "description":"Supports any skill that you can use, making you harder to Stun while using it.",
-    "excludeSkillTypes":[64],
-    "levels":[[]],
+    "excludeSkillTypes":[64,139],
+    "levels":[{
+        "levelRequirement":0,
+        "manaMultiplier":10
+      }],
     "name":"Unbreakable",
     "requireSkillTypes":[],
     "statSets":[{
         "baseFlags":[],
-        "constantStats":[["support_unbreakable_light_stun_threshold_+%_final_while_performing_action",200],["support_stability_heavy_stun_threshold_+%_final_while_performing_action"]],
-        "levels":[[]],
+        "constantStats":[["support_unbreakable_light_stun_threshold_+%_final_while_performing_action",200],["support_stability_heavy_stun_threshold_+%_final_while_performing_action",30]],
+        "incrementalEffectiveness":0.092720001935959,
+        "label":"Unbreakable",
+        "levels":[{
+            "actorLevel":1
+          }],
+        "statDescriptionScope":"gem_stat_descriptions",
         "statMap":{
           "support_unbreakable_stun_threshold_+%_final_while_performing_action":[{
+              "flags":0,
+              "keywordFlags":0,
               "name":"StunThreshold",
-              "1":[]
+              "type":"MORE",
+              "1":{
+                "effectType":"Buff",
+                "type":"GlobalEffect",
+                "unscalable":true
+              }
             }]
         },
         "stats":[]
-      }]
+      }],
+    "support":true
   }
 }

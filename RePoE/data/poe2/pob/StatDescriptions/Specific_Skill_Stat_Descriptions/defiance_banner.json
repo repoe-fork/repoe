@@ -1,4 +1,5 @@
 {
+  "active_skill_area_of_effect_radius":1,
   "active_skill_base_area_of_effect_radius":2,
   "base_skill_buff_armour_evasion_+%_final_to_apply":3,
   "base_skill_buff_movement_speed_+%_to_apply":4,
@@ -14,11 +15,14 @@
   "2":{
     "stats":["active_skill_base_area_of_effect_radius"],
     "1":[{
-        "limit":[[null,10]],
+        "limit":[[10,10]],
         "text":"Banner Aura radius is {0} metre",
-        "1":[]
+        "1":{
+          "k":"divide_by_ten_1dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[null,"#"]],
+        "limit":[["#","#"]],
         "text":"Banner Aura radius is {0} metres",
         "1":{
           "k":"divide_by_ten_1dp_if_required",
@@ -29,50 +33,61 @@
   "3":{
     "stats":["base_skill_buff_armour_evasion_+%_final_to_apply"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Aura grants {0}% more Armour and Evasion Rating"
       },{
-        "limit":[[null,-1]],
+        "limit":[["#",-1]],
         "text":"Aura grants {0}% less Armour and Evasion Rating",
         "1":{
-          "k":"negate"
+          "k":"negate",
+          "v":1
         }
       }]
   },
   "4":{
     "stats":["base_skill_buff_movement_speed_+%_to_apply"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Aura grants {0}% increased movement speed"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Aura grants {0}% reduced movement speed",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "5":{
     "stats":["base_skill_effect_duration"],
     "1":[{
-        "limit":[[null,1000]],
+        "limit":[[1000,1000]],
         "text":"Banner duration is {0} second, or until you leave the Aura",
-        "1":[]
+        "1":{
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
+        }
       },{
-        "limit":[[]],
+        "limit":[["#","#"]],
         "text":"Banner duration is {0} seconds, or until you leave the Aura",
         "1":{
-          "k":"milliseconds_to_seconds_2dp_if_required"
+          "k":"milliseconds_to_seconds_2dp_if_required",
+          "v":1
         }
       }]
   },
   "6":{
     "stats":["skill_aura_buff_armour_evasion_+%_final_magnitude_to_apply"],
     "1":[{
-        "limit":[[]],
+        "limit":[[1,"#"]],
         "text":"Aura grants {0}% more Armour and Evasion"
       },{
-        "limit":[[]],
+        "limit":[["#",-1]],
         "text":"Aura grants {0}% less Armour and Evasion",
-        "1":[]
+        "1":{
+          "k":"negate",
+          "v":1
+        }
       }]
   },
   "7":{
