@@ -23,7 +23,7 @@ formatted and a compact version. The formatted versions complement their descrip
 in the [RePoE/docs](RePoE/docs) folder.
 
 Web apps using provided files should link to files in the
-[gh-pages](https://lvlvllvlvllvlvl.github.io/RePoE/), for better performance and caching behavior
+[gh-pages](https://repoe-fork.github.io/), for better performance and caching behavior
 than linking to raw files in the repository.
 
 Note that the file formats are not final, they may change at any time, e.g. when the format
