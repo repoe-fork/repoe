@@ -61,7 +61,7 @@ end
 local function makeSkillDataMod(dataKey, dataValue, ...)
     return makeSkillMod("SkillData", "LIST", { key = dataKey, value = dataValue }, 0, 0, ...)
 end
-local function clean(map, visited, keys)
+local function clean(map, visited, keys, path)
     if type(map) == 'table' then
         for k, v in pairs(map) do
             keys[k] = k
@@ -69,11 +69,14 @@ local function clean(map, visited, keys)
                 map[k] = nil
             elseif type(v) == 'table' then
                 local seen = visited[v]
-                visited[v] = true
-                if seen then
+                visited[v] = path and path .. "/" .. k or true
+                if seen == true then
                     map[k] = nil
+                elseif seen and path:find(seen) then
+                    -- recursive reference
+                    map[k] = { ["$ref"] = seen }
                 else
-                    clean(v, visited, keys)
+                    clean(v, visited, keys, path and path .. "/" .. k)
                 end
             end
         end
@@ -102,7 +105,7 @@ else
 end
 
 local keys = {}
-clean(result, {}, keys)
+clean(result, {}, keys, "#")
 local keyorder = {}
 for k, _ in pairs(keys) do table.insert(keyorder, k) end
 table.sort(keyorder, function(l, r)
