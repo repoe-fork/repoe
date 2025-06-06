@@ -8065,7 +8065,7 @@
   {
     "active_skill": {
       "description": "死体をゾンビミニオンとして蘇生する。そのゾンビは召喚者に付いて行き、近接ストライクおよび回避されない範囲攻撃のスラムを使って敵を攻撃する。",
-      "display_name": "叩きつけのゾンビ蘇生",
+      "display_name": "スラムのゾンビ蘇生",
       "id": "raise_zombie_alt_x",
       "is_manually_casted": true,
       "is_skill_totem": false,
@@ -11111,7 +11111,7 @@
   {
     "active_skill": {
       "description": "敵に当たるか、持続時間が尽きるまでランダムに動くスパークをすべての方向に放つ。",
-      "display_name": "新星のスパーク",
+      "display_name": "ノヴァのスパーク",
       "id": "spark_alt_x",
       "is_manually_casted": true,
       "is_skill_totem": false,
@@ -12693,7 +12693,7 @@
     },
     "cast_time": 1000,
     "color": "r",
-    "display_name": "犠牲のインファーナルブロウ",
+    "display_name": "自己犠牲のインファーナルブロウ",
     "is_support": false,
     "stat_translation_file": "stat_translations/skill",
     "static": {
@@ -16966,6 +16966,111 @@
   },
   {
     "active_skill": {
+      "description": "力強い強打で敵を攻撃する。使用するにはメイス、セプター、斧、剣またはスタッフを装備する必要がある。",
+      "display_name": "トラーサスのヘビーストライク",
+      "id": "heavy_strike_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "heavy_strike_attack_speed_+%": "attack_speed_+%",
+        "heavy_strike_damage_+%": "damage_+%",
+        "heavy_strike_chance_to_deal_double_damage_%": "chance_to_deal_double_damage_%",
+        "cast_bone_corpses_on_stun_with_heavy_strike_or_boneshatter": "trigger_level_20_bone_corpses_on_stun"
+      },
+      "types": [
+        "Attack",
+        "MeleeSingleTarget",
+        "Multistrikeable",
+        "Melee"
+      ],
+      "weapon_restrictions": [
+        "One Hand Axe",
+        "One Hand Mace",
+        "Sceptre",
+        "Staff",
+        "Two Hand Sword",
+        "Two Hand Axe",
+        "Two Hand Mace",
+        "One Hand Sword",
+        "Thrusting One Hand Sword",
+        "Warstaff"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "ヘビーストライク",
+      "experience_type": "GemProgression1",
+      "id": "Metadata/Items/Gems/SkillGemHeavyStrike",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "r",
+    "display_name": "トラーサスのヘビーストライク",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "{chance_to_deal_double_damage_%}%の確率でダブルダメージを与える",
+          "stats": {
+            "chance_to_deal_double_damage_%": 1000
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": 0
+      },
+      "stat_text": {
+        "base_stun_threshold_reduction_+%": "敵スタン閾値が25%減少する"
+      },
+      "stats": [
+        {
+          "id": "base_stun_threshold_reduction_+%",
+          "type": "constant",
+          "value": 25
+        },
+        {
+          "id": "chance_to_deal_double_damage_%",
+          "type": "additional",
+          "value": null
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": -15,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "base_stun_threshold_reduction_+%",
+      "chance_to_deal_double_damage_%"
+    ],
+    "tags": [
+      "strength",
+      "grants_active_skill",
+      "attack",
+      "melee",
+      "strike"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": null,
+    "discriminator": "alt_y",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
       "description": "力強い強打で敵を攻撃し、敵を後ろに飛ばす。使用するにはメイス、セプター、斧、剣または両手武器を装備する必要がある。",
       "display_name": "ヴァールヘビーストライク",
       "id": "vaal_heavy_strike",
@@ -17080,7 +17185,7 @@
   },
   {
     "active_skill": {
-      "description": "近接ストライクにより敵を攻撃し、短時間持続するデバフを付与する。デバフの効果中に非ユニークモンスターが死んだ場合、敵の死体は消費され、敵と同じレア度と接頭辞・接尾辞モッドを持つ支配のセンチネルがより長い持続時間で召喚される。",
+      "description": "近接ストライクにより敵を攻撃し、短時間持続するデバフを付与する。デバフの効果中に非ユニークモンスターが死んだ場合、敵の死体は消費され、敵と同じレア度でプレフィックス・サフィックスモッドを持つ支配のセンチネルがより長い持続時間で召喚される。",
       "display_name": "ドミネイティングブロウ",
       "id": "dominating_blow",
       "is_manually_casted": true,
@@ -33658,7 +33763,7 @@
   },
   {
     "active_skill": {
-      "description": "盾の幽体のコピーを貫通しない投射物として投げ、盾の防御力に応じて付加されたオフハンドダメージを与える。何かと衝突すると砕け散り、全方向に多数の小さな破片を飛ばす。投射物を追加するモッドにより、盾のコピーの数ではなく破片の数が増加する。",
+      "description": "盾のスペクトラルコピーを貫通する投射物として投げ、盾の防御力に応じて付加されたオフハンドダメージを与える。何かと衝突すると砕け散り、全方向に多数の小さな破片を飛ばす。投射物を追加するモッドにより、盾のコピーの数ではなく破片の数が増加する。",
       "display_name": "スペクトラルシールドスロー",
       "id": "spectral_shield_throw",
       "is_manually_casted": true,
@@ -33807,7 +33912,7 @@
   },
   {
     "active_skill": {
-      "description": "盾の幽体のコピーを貫通しない投射物として投げ、盾の回避力に応じて付加されたオフハンドダメージを与える。何かと衝突すると砕け散り、全方向に多数の小さな破片を飛ばす。投射物を追加するモッドにより、盾のコピーの数ではなく破片の数が増加する。",
+      "description": "盾のスペクトラルコピーを貫通する投射物として投げ、盾の回避力に応じて付加されたオフハンドダメージを与える。何かと衝突すると砕け散り、全方向に多数の小さな破片を飛ばす。投射物を追加するモッドにより、盾のコピーの数ではなく破片の数が増加する。",
       "display_name": "粉砕のスペクトラルシールドスロー",
       "id": "spectral_shield_throw_alt_x",
       "is_manually_casted": true,
@@ -33949,6 +34054,155 @@
       "quest": "腹心の部下を倒せ"
     },
     "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "盾の幽体のコピーを貫通しない投射物として投げ、盾の防御力に応じて付加されたオフハンドダメージを与える。何かと衝突すると砕け散り、全方向に多数の小さな破片を飛ばす。投射物を追加するモッドにより、盾のコピーの数ではなく破片の数が増加する。",
+      "display_name": "トラーサスのスペクトラルシールドスロー",
+      "id": "spectral_shield_throw_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "spectral_shield_throw_damage_+%": "damage_+%",
+        "spectral_shield_throw_projectile_speed_+%": "base_projectile_speed_+%",
+        "spectral_shield_throw_num_of_additional_projectiles": "number_of_additional_projectiles",
+        "spectral_shield_throw_additional_chains": "number_of_chains",
+        "spectral_shield_throw_shard_projectiles_+%_final": "number_of_projectiles_+%_final_from_skill",
+        "shield_crush_and_spectral_shield_throw_off_hand_minimum_added_lightning_damage_per_15_energy_shield_on_shield": "off_hand_minimum_added_lightning_damage_per_15_energy_shield_on_shield",
+        "shield_crush_and_spectral_shield_throw_off_hand_maximum_added_lightning_damage_per_15_energy_shield_on_shield": "off_hand_maximum_added_lightning_damage_per_15_energy_shield_on_shield",
+        "shield_crush_and_spectral_shield_throw_skill_physical_damage_%_to_convert_to_lightning": "skill_physical_damage_%_to_convert_to_lightning",
+        "shield_crush_and_spectral_shield_throw_cannot_add_physical_damage_per_armour_and_evasion_rating": "cannot_add_physical_damage_per_armour_and_evasion_rating"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Projectile",
+        "ProjectilesFromUser",
+        "SingleMainProjectile",
+        "Physical"
+      ],
+      "weapon_restrictions": [
+        "Shield"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "スペクトラルシールドスロー",
+      "experience_type": "GemProgression28",
+      "id": "Metadata/Items/Gems/SkillGemThrownShieldProjectile",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "トラーサスのスペクトラルシールドスロー",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "追加の投射物を{number_of_additional_projectiles}個放つ",
+          "stats": {
+            "number_of_additional_projectiles": 100
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": null
+      },
+      "stat_text": {
+        "number_of_additional_projectiles": "追加の投射物を3個放つ",
+        "thrown_shield_secondary_projectile_damage_+%_final": "スペクトラルシールドスローはシャードの投射物のダメージが50%低下する",
+        "primary_projectile_chains_+": "メインの投射物は+3回連鎖する"
+      },
+      "stats": [
+        {
+          "id": "off_hand_local_minimum_added_physical_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "off_hand_local_maximum_added_physical_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "number_of_additional_projectiles",
+          "type": "constant",
+          "value": 3
+        },
+        {
+          "id": "thrown_shield_secondary_projectile_damage_+%_final",
+          "type": "constant",
+          "value": -50
+        },
+        {
+          "id": "primary_projectile_chains_+",
+          "type": "constant",
+          "value": 3
+        },
+        {
+          "id": "off_hand_minimum_added_physical_damage_per_15_shield_armour_and_evasion_rating",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "off_hand_maximum_added_physical_damage_per_15_shield_armour_and_evasion_rating",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "thrown_shield_projectile_fire_random_directions",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": null,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "thrown_shield_secondary_projectile_damage_+%_final",
+      "off_hand_local_minimum_added_physical_damage\noff_hand_local_maximum_added_physical_damage",
+      "off_hand_minimum_added_physical_damage_per_15_shield_armour_and_evasion_rating\noff_hand_maximum_added_physical_damage_per_15_shield_armour_and_evasion_rating",
+      "number_of_additional_projectiles",
+      "primary_projectile_chains_+"
+    ],
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile",
+      "physical"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 3,
+      "classes": [
+        "デュエリスト"
+      ],
+      "quest": "腹心の部下を倒せ"
+    },
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {
@@ -34162,6 +34416,108 @@
     "secondary_granted_effect": null,
     "quest_reward": null,
     "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "近接武器のコピーを投げる。コピーは投射後ブーメランのように使用者に戻り、進路上の敵に回転しながらダメージを与える。",
+      "display_name": "トラーサスのスペクトラルスロー",
+      "id": "spectral_throw_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "spectral_throw_damage_+%": "damage_+%",
+        "spectral_throw_projectile_speed_+%": "base_projectile_speed_+%",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_main_hand": "active_skill_projectile_speed_+%_variation_final",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_off_hand": "active_skill_projectile_speed_+%_variation_final_from_off_hand"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Projectile",
+        "ProjectilesFromUser"
+      ],
+      "weapon_restrictions": [
+        "Claw",
+        "Dagger",
+        "One Hand Sword",
+        "Thrusting One Hand Sword",
+        "One Hand Axe",
+        "One Hand Mace",
+        "Sceptre",
+        "Staff",
+        "Two Hand Sword",
+        "Two Hand Axe",
+        "Two Hand Mace",
+        "Warstaff",
+        "Rune Dagger"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "スペクトラルスロー",
+      "experience_type": "GemProgression1",
+      "id": "Metadata/Items/Gems/SkillGemThrownWeapon",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "トラーサスのスペクトラルスロー",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "貫通した投射物のダメージが{projectile_damage_+%_final_if_pierced_enemy}%上昇する",
+          "stats": {
+            "projectile_damage_+%_final_if_pierced_enemy": 500
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": null
+      },
+      "stat_text": null,
+      "stats": [
+        {
+          "id": "spectral_throw_forget_hit_list_time_override",
+          "type": "constant",
+          "value": 225
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": 10,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [],
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": null,
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {
@@ -36277,6 +36633,142 @@
       "quest": "セイレーンの歌声"
     },
     "discriminator": null,
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "指定地点にマーカーを設置する。短い時間の後に雷がそのマーカーに落ち、周囲にダメージを与える。このとき、すでに設置した他のマーカーにも雷が落ちる。",
+      "display_name": "トラーサスのストームコール",
+      "id": "storm_call_alt_x",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "storm_call_damage_+%": "damage_+%",
+        "storm_call_duration_+%": "skill_effect_duration_+%",
+        "storm_call_radius_+%": "base_skill_area_of_effect_+%",
+        "shock_nova_and_storm_call_all_damage_can_ignite": "all_damage_can_ignite",
+        "shock_nova_and_storm_call_ignite_damage_+100%_final_chance": "ignite_damage_+100%_final_chance"
+      },
+      "types": [
+        "Spell",
+        "Damage",
+        "Area",
+        "Duration",
+        "Trappable",
+        "Totemable",
+        "Mineable",
+        "Triggerable",
+        "Multicastable",
+        "Lightning",
+        "Cascadable",
+        "CanRapidFire",
+        "AreaSpell"
+      ],
+      "weapon_restrictions": [],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "ストームコール",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemStormCall",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 500,
+    "color": "b",
+    "display_name": "トラーサスのストームコール",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": 600,
+      "damage_effectiveness": 150,
+      "quality_stats": [
+        {
+          "stat": "キャスト時に{storm_call_chance_to_strike_on_cast_%}%の確率で雷がマーカーに落ちる",
+          "stats": {
+            "storm_call_chance_to_strike_on_cast_%": 750
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": null,
+        "str": 0,
+        "dex": 0
+      },
+      "stat_text": {
+        "base_skill_effect_duration": "基礎持続時間は1.50秒"
+      },
+      "stats": [
+        {
+          "id": "spell_minimum_base_lightning_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "spell_maximum_base_lightning_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "base_skill_effect_duration",
+          "type": "constant",
+          "value": 1500
+        },
+        {
+          "id": "active_skill_base_radius_+",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_skill_show_average_damage_instead_of_dps",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "console_skill_dont_chase",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": null,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "spell_minimum_base_lightning_damage\nspell_maximum_base_lightning_damage",
+      "base_skill_effect_duration"
+    ],
+    "tags": [
+      "intelligence",
+      "grants_active_skill",
+      "spell",
+      "area",
+      "duration",
+      "lightning"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "テンプラー"
+      ],
+      "quest": "セイレーンの歌声"
+    },
+    "discriminator": "alt_x",
     "support_gem": null
   },
   {
@@ -43753,7 +44245,7 @@
   {
     "active_skill": {
       "description": "指定した地点に矢を放つ。矢が着弾すると、その位置にクローンを召喚する。クローンは使用者と同じ弓と矢筒を使用し、すべての物理ダメージをランダムな元素に変換し他のタイプのダメージを与えない矢を放つミニオンである。",
-      "display_name": "多彩なクローンのミラーアロー",
+      "display_name": "プリズマティッククローンのミラーアロー",
       "id": "mirror_arrow_alt_y",
       "is_manually_casted": true,
       "is_skill_totem": false,
@@ -49681,6 +50173,153 @@
   },
   {
     "active_skill": {
+      "description": "空中に複数の矢を放ち、指定範囲に雨のように降らせる。それぞれの矢は着弾すると範囲ダメージを与えそのダメージは指定位置でオーバーラップする。",
+      "display_name": "トラーサスのブラストレイン",
+      "id": "blast_rain_alt_x",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "blast_rain_damage_+%": "damage_+%",
+        "blast_rain_radius_+%": "base_skill_area_of_effect_+%",
+        "blast_rain_number_of_blasts": "number_of_additional_arrows",
+        "blast_rain_single_additional_projectile": "additional_1_projectile",
+        "blast_rain_artillery_ballista_all_damage_can_poison": "all_damage_can_poison",
+        "blast_rain_artillery_ballista_poison_damage_+100%_final_chance": "poison_damage_+100%_final_chance"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Fire",
+        "MirageArcherCanUse",
+        "Area",
+        "ProjectileSpeed",
+        "ProjectileNumber",
+        "Totemable",
+        "Trappable",
+        "Mineable",
+        "Triggerable",
+        "Rain"
+      ],
+      "weapon_restrictions": [
+        "Bow"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "ブラストレイン",
+      "experience_type": "GemProgression28",
+      "id": "Metadata/Items/Gems/SkillGemBlastRain",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "トラーサスのブラストレイン",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "放つ矢の数が{base_number_of_arrows}本される",
+          "stats": {
+            "base_number_of_arrows": 50
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": 0,
+        "dex": null
+      },
+      "stat_text": {
+        "skill_physical_damage_%_to_convert_to_fire": "物理ダメージの100%を火ダメージに変換する",
+        "base_number_of_arrows\nquality_display_base_additional_arrows_is_gem": "6本の矢を放つ"
+      },
+      "stats": [
+        {
+          "id": "skill_physical_damage_%_to_convert_to_fire",
+          "type": "constant",
+          "value": 100
+        },
+        {
+          "id": "base_number_of_arrows",
+          "type": "constant",
+          "value": 6
+        },
+        {
+          "id": "blast_rain_arrow_delay_ms",
+          "type": "constant",
+          "value": 80
+        },
+        {
+          "id": "base_reduce_enemy_fire_resistance_%",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_can_fire_arrows",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_base_additional_arrows_is_gem",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": null,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "base_number_of_arrows\nquality_display_base_additional_arrows_is_gem",
+      "skill_physical_damage_%_to_convert_to_fire",
+      "base_reduce_enemy_fire_resistance_%"
+    ],
+    "tags": [
+      "fire",
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "area",
+      "projectile",
+      "bow"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 3,
+      "classes": [
+        "デュエリスト",
+        "レンジャー"
+      ],
+      "quest": "腹心の部下を倒せ"
+    },
+    "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
       "description": "放たれた後にすぐに劣化し消滅する3本の電気の矢を放つ。力強く放たれた矢は雷の爆発を生成し、円錐状の範囲にいる敵にダメージを与える。",
       "display_name": "ガルヴァニックアロー",
       "id": "galvanic_arrow",
@@ -52003,6 +52642,154 @@
       "quest": "セイレーンの歌声"
     },
     "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "貫通する矢で攻撃するバリスタトーテムを召喚する。使用するには弓を装備する必要がある。",
+      "display_name": "トラーサスのシージバリスタ",
+      "id": "siege_ballista_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": true,
+      "stat_conversions": {
+        "siege_ballista_totem_placement_speed_+%": "summon_totem_cast_speed_+%",
+        "siege_ballista_damage_+%": "damage_+%",
+        "siege_ballista_attack_speed_+%": "attack_speed_+%",
+        "siege_and_shrapnel_ballista_attack_speed_+%_per_maximum_totem": "attack_speed_+%_per_maximum_totem",
+        "siege_ballista_totems_from_this_skill_grant_siege_ballista_attack_speed_-%": "totems_from_this_skill_grant_siege_ballista_attack_speed_-%",
+        "number_of_additional_siege_ballistae_per_200_dexterity": "number_of_additional_totems_per_200_dexterity"
+      },
+      "types": [
+        "Attack",
+        "Projectile",
+        "ProjectilesFromUser",
+        "RangedAttack",
+        "Trappable",
+        "Mineable",
+        "SummonsTotem",
+        "AttackInPlaceIsDefault",
+        "TotemsAreBallistae"
+      ],
+      "weapon_restrictions": [
+        "Bow"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": 1.0
+    },
+    "base_item": {
+      "display_name": "シージバリスタ",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemSiegeBallista",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "トラーサスのシージバリスタ",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "トーテムの最大数1体ごとにアタックスピードが{attack_speed_+%_per_maximum_totem}%増加する",
+          "stats": {
+            "attack_speed_+%_per_maximum_totem": 250
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": 0,
+        "dex": null
+      },
+      "stat_text": {
+        "base_totem_duration": "トーテムは8秒持続する",
+        "is_totem\nis_ranged_attack_totem": "このスキルを使用するバリスタトーテムを1体召喚する"
+      },
+      "stats": [
+        {
+          "id": "base_totem_range",
+          "type": "constant",
+          "value": 80
+        },
+        {
+          "id": "base_totem_duration",
+          "type": "constant",
+          "value": 8000
+        },
+        {
+          "id": "number_of_additional_totems_allowed",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "arrow_base_number_of_targets_to_pierce",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_skill_is_totemified",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_totem",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_can_fire_arrows",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_ranged_attack_totem",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": -50,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "arrow_base_number_of_targets_to_pierce",
+      "number_of_additional_totems_allowed",
+      "base_totem_duration",
+      "is_totem\nis_ranged_attack_totem"
+    ],
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile",
+      "totem",
+      "bow"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "レンジャー"
+      ],
+      "quest": "セイレーンの歌声"
+    },
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {
@@ -55392,7 +56179,7 @@
   },
   {
     "active_skill": {
-      "description": "地面を叩きつけ、ゆっくりとした隆起のうねりを作り、前方の範囲の敵にダメージを与える。うねりの攻撃を受けた多数の敵は衝撃波を放ち、周囲の他の敵にダメージを与える。再度スキルを使用すると直前のうねりが止まる。使用するにはメイス、セプターまたはスタッフを装備するか素手状態である必要がある。",
+      "description": "地面を叩きつけ、ゆっくりとした隆起のうねりを作り、前方の範囲の敵にダメージを与える。うねりの攻撃を受けた多数の敵は衝撃波を放ち、周囲の他の敵にダメージを与える。再度スキルを使用すると直前のうねりが止まる。使用するには斧、メイス、セプターまたはスタッフを装備するか素手状態である必要がある。",
       "display_name": "サンダー",
       "id": "sunder",
       "is_manually_casted": true,
@@ -55551,7 +56338,7 @@
   },
   {
     "active_skill": {
-      "description": "地面を叩きつけ、隆起のうねりを作り、前方の範囲の敵にダメージを与える。うねりの攻撃を受けた多数の敵は衝撃波を放ち、周囲の他の敵にダメージを与える。使用するにはメイス、セプターまたはスタッフを装備するか素手状態である必要がある。",
+      "description": "地面を叩きつけ、隆起のうねりを作り、前方の範囲の敵にダメージを与える。うねりの攻撃を受けた多数の敵は衝撃波を放ち、周囲の他の敵にダメージを与える。使用するには斧、メイス、セプターまたはスタッフを装備するか素手状態である必要がある。",
       "display_name": "地砕きのサンダー",
       "id": "sunder_alt_x",
       "is_manually_casted": true,
@@ -55694,6 +56481,165 @@
       "quest": "セイレーンの歌声"
     },
     "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "地面を叩きつけ、ゆっくりとした隆起のうねりを作り、前方の範囲の敵にダメージを与える。うねりの攻撃を受けた多数の敵は衝撃波を放ち、周囲の他の敵にダメージを与える。再度スキルを使用すると直前のうねりが止まる。使用するにはメイス、セプターまたはスタッフを装備するか素手状態である必要がある。",
+      "display_name": "トラーサスのサンダー",
+      "id": "sunder_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "shockwave_slam_attack_speed_+%": "attack_speed_+%",
+        "shockwave_slam_damage_+%": "damage_+%",
+        "shockwave_slam_radius_+%": "base_skill_area_of_effect_+%",
+        "ground_slam_and_sunder_poison_on_non_poisoned_enemies_damage_+%": "poison_on_non_poisoned_enemies_damage_+%"
+      },
+      "types": [
+        "Attack",
+        "Area",
+        "Multistrikeable",
+        "Melee",
+        "Slam",
+        "Totemable"
+      ],
+      "weapon_restrictions": [
+        "One Hand Mace",
+        "Sceptre",
+        "Staff",
+        "Two Hand Mace",
+        "One Hand Axe",
+        "Two Hand Axe",
+        "Unarmed",
+        "Warstaff"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "サンダー",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemSunder",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "r",
+    "display_name": "トラーサスのサンダー",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "波動が順番に広がる範囲ごとに効果半径が{sunder_wave_radius_+_per_step/locations_to_metres}mされる",
+          "stats": {
+            "sunder_wave_radius_+_per_step": 50
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": 0
+      },
+      "stat_text": {
+        "shockwave_slam_explosion_damage_+%_final": "衝撃波の与えるダメージが40%低下する",
+        "sunder_wave_radius_+_per_step": "波動が順番に広がる範囲ごとに効果半径が+0.2mされる",
+        "sunder_wave_max_steps": "波動は5箇所の範囲にダメージを与える",
+        "sunder_wave_min_steps": "波動は2箇所の範囲にダメージを与えるまで止めることができない",
+        "sunder_shockwave_limit_per_cascade": "波動はそれぞれの範囲内の敵最大5体から衝撃波を放つ"
+      },
+      "stats": [
+        {
+          "id": "shockwave_slam_explosion_damage_+%_final",
+          "type": "constant",
+          "value": -40
+        },
+        {
+          "id": "base_sunder_wave_delay_ms",
+          "type": "constant",
+          "value": 400
+        },
+        {
+          "id": "sunder_wave_radius_+_per_step",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "sunder_wave_max_steps",
+          "type": "constant",
+          "value": 5
+        },
+        {
+          "id": "sunder_wave_min_steps",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "sunder_shockwave_limit_per_cascade",
+          "type": "constant",
+          "value": 5
+        },
+        {
+          "id": "active_skill_area_of_effect_+%_final",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "sunder_wave_delay_+%",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "console_skill_dont_chase",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": -25,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "shockwave_slam_explosion_damage_+%_final",
+      "sunder_shockwave_limit_per_cascade",
+      "sunder_wave_max_steps",
+      "sunder_wave_min_steps",
+      "sunder_wave_radius_+_per_step"
+    ],
+    "tags": [
+      "strength",
+      "grants_active_skill",
+      "attack",
+      "area",
+      "slam",
+      "melee"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "マローダー"
+      ],
+      "quest": "セイレーンの歌声"
+    },
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {
@@ -68856,6 +69802,170 @@
   },
   {
     "active_skill": {
+      "description": "エネルギーの波が前方に幅を広げながら押し寄せ、円錐状の範囲の敵に時間をかけてダメージを与える。攻撃を受けた全ての敵は最も高いダメージを受けた元素と一致するの曝露デバフが付与される。同時にアクティブになるウェーブオブコンヴィクションは一つだけである。",
+      "display_name": "トラーサスのウェーブオブコンビクション",
+      "id": "wave_of_conviction_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "purge_damage_+%": "damage_+%",
+        "purge_duration_+%": "skill_effect_duration_+%",
+        "purge_additional_enemy_resistance_%": "purge_expose_resist_%_matching_highest_element_damage"
+      },
+      "types": [
+        "Spell",
+        "Area",
+        "Damage",
+        "Duration",
+        "Trappable",
+        "Totemable",
+        "Mineable",
+        "Triggerable",
+        "Fire",
+        "Lightning",
+        "CanRapidFire",
+        "Multicastable",
+        "AreaSpell",
+        "Physical"
+      ],
+      "weapon_restrictions": [],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "ウェーブオブコンヴィクション",
+      "experience_type": "GemProgression16",
+      "id": "Metadata/Items/Gems/SkillGemPurge",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 700,
+    "color": "b",
+    "display_name": "トラーサスのウェーブオブコンビクション",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": 600,
+      "damage_effectiveness": 230,
+      "quality_stats": [
+        {
+          "stat": "ダメージは敵元素耐性の{base_penetrate_elemental_resistances_%}%を突破する",
+          "stats": {
+            "base_penetrate_elemental_resistances_%": 750
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": null,
+        "str": null,
+        "dex": 0
+      },
+      "stat_text": {
+        "skill_physical_damage_%_to_convert_to_fire": "物理ダメージの25%を火ダメージに変換する",
+        "skill_physical_damage_%_to_convert_to_lightning": "物理ダメージの25%を雷ダメージに変換する",
+        "base_secondary_skill_effect_duration": "サブの基礎持続時間は4.00秒",
+        "purge_expose_resist_%_matching_highest_element_damage": "曝露は最大のダメージを受けた元素属性と一致する元素耐性を-15%する"
+      },
+      "stats": [
+        {
+          "id": "spell_minimum_base_physical_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "spell_maximum_base_physical_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "skill_physical_damage_%_to_convert_to_fire",
+          "type": "constant",
+          "value": 25
+        },
+        {
+          "id": "skill_physical_damage_%_to_convert_to_lightning",
+          "type": "constant",
+          "value": 25
+        },
+        {
+          "id": "base_secondary_skill_effect_duration",
+          "type": "constant",
+          "value": 4000
+        },
+        {
+          "id": "shock_art_variation",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "ignite_art_variation",
+          "type": "constant",
+          "value": 7
+        },
+        {
+          "id": "purge_expose_resist_%_matching_highest_element_damage",
+          "type": "constant",
+          "value": -15
+        },
+        {
+          "id": "base_skill_effect_duration",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "visual_hit_effect_elemental_is_holy",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": null,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "spell_minimum_base_physical_damage\nspell_maximum_base_physical_damage",
+      "skill_physical_damage_%_to_convert_to_lightning",
+      "base_skill_effect_duration",
+      "base_secondary_skill_effect_duration",
+      "skill_physical_damage_%_to_convert_to_fire",
+      "purge_expose_resist_%_matching_highest_element_damage"
+    ],
+    "tags": [
+      "fire",
+      "lightning",
+      "intelligence",
+      "grants_active_skill",
+      "spell",
+      "area",
+      "duration",
+      "physical"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 2,
+      "classes": [
+        "テンプラー"
+      ],
+      "quest": "黒ずくめの侵入者"
+    },
+    "discriminator": "alt_y",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
       "description": "使用者とその仲間のスペルダメージを増加させクリティカル率を増加させる。強い敵に対した際に神聖領域を生成する可能性を得るオーラを纏う。",
       "display_name": "ゼロトリー",
       "id": "zealotry",
@@ -71660,6 +72770,119 @@
       "quest": "セイレーンの歌声"
     },
     "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "敵から離れた状態でスキルを使うと鎖を投げ、敵の位置に使用者を引き寄せ、敵の背後の範囲にダメージを与える。敵の近くでスキルを使うと直接範囲ダメージを与える。使用するには片手武器のメイス、セプター、剣または斧が必要である。",
+      "display_name": "トラーサスのチェーンフック",
+      "id": "chain_hook_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "chain_strike_damage_+%": "damage_+%",
+        "chain_hook_and_shield_charge_attack_speed_+%_per_10_rampage_stacks": "attack_speed_+%_per_10_rampage_stacks"
+      },
+      "types": [
+        "Attack",
+        "Area",
+        "Damage",
+        "Movement",
+        "Melee",
+        "Multistrikeable"
+      ],
+      "weapon_restrictions": [
+        "One Hand Sword",
+        "Thrusting One Hand Sword",
+        "One Hand Axe",
+        "One Hand Mace",
+        "Sceptre"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "チェーンフック",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemChainHook",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "r",
+    "display_name": "トラーサスのチェーンフック",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "アタックのヒット時に憤怒を{gain_x_rage_on_attack_hit}獲得する",
+          "stats": {
+            "gain_x_rage_on_attack_hit": 50
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": 0
+      },
+      "stat_text": {
+        "chain_strike_cone_radius_+_per_x_rage": "憤怒5ごとに効果半径 0.1m",
+        "gain_x_rage_on_attack_hit": "アタックのヒット時に憤怒を2獲得する"
+      },
+      "stats": [
+        {
+          "id": "chain_strike_cone_radius_+_per_x_rage",
+          "type": "constant",
+          "value": 5
+        },
+        {
+          "id": "gain_x_rage_on_attack_hit",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": 20,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "chain_strike_cone_radius_+_per_x_rage",
+      "gain_x_rage_on_attack_hit"
+    ],
+    "tags": [
+      "strength",
+      "grants_active_skill",
+      "attack",
+      "area",
+      "movement",
+      "melee"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "マローダー"
+      ],
+      "quest": "セイレーンの歌声"
+    },
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {
@@ -75999,7 +77222,7 @@
   {
     "active_skill": null,
     "base_item": {
-      "display_name": "連射サポート",
+      "display_name": "バラージサポート",
       "experience_type": "GemProgression38",
       "id": "Metadata/Items/Gems/SupportGemBarrage",
       "max_level": 20,
@@ -76007,7 +77230,7 @@
     },
     "cast_time": null,
     "color": "g",
-    "display_name": "連射サポート",
+    "display_name": "バラージサポート",
     "is_support": true,
     "stat_translation_file": "stat_translations/support_gem",
     "static": {
@@ -91141,7 +92364,7 @@
   },
   {
     "active_skill": {
-      "description": "盾の幽体のコピーを貫通しない投射物として投げ、盾の防御力に応じて付加されたオフハンドダメージを与える。何かと衝突すると砕け散り、全方向に多数の小さな破片を飛ばす。投射物を追加するモッドにより、盾のコピーの数ではなく破片の数が増加する。",
+      "description": "盾のスペクトラルコピーを貫通する投射物として投げ、盾の防御力に応じて付加されたオフハンドダメージを与える。何かと衝突すると砕け散り、全方向に多数の小さな破片を飛ばす。投射物を追加するモッドにより、盾のコピーの数ではなく破片の数が増加する。",
       "display_name": "スペクトラルシールドスロー",
       "id": "spectral_shield_throw",
       "is_manually_casted": true,
@@ -102184,6 +103407,137 @@
   },
   {
     "active_skill": {
+      "description": "近接武器のコピーを投げる。コピーは回転しながら螺旋を描いて飛び、進路上の敵にダメージを与える。壁に衝突した場合、跳ね返る。",
+      "display_name": "トラーサスのスペクトラルヘリックス",
+      "id": "spectral_helix_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "spectral_helix_damage_+%": "damage_+%",
+        "spectral_helix_projectile_speed_+%": "base_projectile_speed_+%",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_main_hand": "active_skill_projectile_speed_+%_variation_final",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_off_hand": "active_skill_projectile_speed_+%_variation_final_from_off_hand"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Projectile",
+        "ProjectilesFromUser"
+      ],
+      "weapon_restrictions": [
+        "Claw",
+        "Dagger",
+        "One Hand Sword",
+        "Thrusting One Hand Sword",
+        "One Hand Axe",
+        "One Hand Mace",
+        "Sceptre",
+        "Staff",
+        "Two Hand Sword",
+        "Two Hand Axe",
+        "Two Hand Mace",
+        "Warstaff",
+        "Rune Dagger"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "スペクトラルヘリックス",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemSpectralHelix",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "トラーサスのスペクトラルヘリックス",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "貫通した投射物のダメージが{projectile_damage_+%_final_if_pierced_enemy}%上昇する",
+          "stats": {
+            "projectile_damage_+%_final_if_pierced_enemy": 500
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": null
+      },
+      "stat_text": {
+        "spectral_spiral_weapon_base_number_of_bounces": "最大3回までバウンスする\n投射物の数のモッドは代わりにバウンスの回数に適用される",
+        "spectral_helix_rotations_%": "4.25周まで螺旋運動をする",
+        "projectiles_nova\nskill_display_single_base_projectile": ""
+      },
+      "stats": [
+        {
+          "id": "spectral_spiral_weapon_base_number_of_bounces",
+          "type": "constant",
+          "value": 3
+        },
+        {
+          "id": "spectral_helix_rotations_%",
+          "type": "constant",
+          "value": 425
+        },
+        {
+          "id": "projectiles_nova",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_display_single_base_projectile",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": 10,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "projectiles_nova\nskill_display_single_base_projectile",
+      "spectral_spiral_weapon_base_number_of_bounces",
+      "spectral_helix_rotations_%"
+    ],
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "サイオン"
+      ],
+      "quest": "セイレーンの歌声"
+    },
+    "discriminator": "alt_y",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
       "description": "ウォークライを行い、近くの敵を挑発し、使用者を攻撃させ、使用者のその後のアタックを奮起させる。使用者および周囲の味方のクリティカル率を強化するバフを付与する。",
       "display_name": "バトルメイジズクライ",
       "id": "battlemages_cry",
@@ -106282,7 +107636,7 @@
   },
   {
     "active_skill": {
-      "description": "近接ストライクにより敵を攻撃し、短時間持続するデバフを付与する。デバフの効果中に非ユニークモンスターが死んだ場合、敵の死体は消費され、敵と同じレア度と接頭辞・接尾辞モッドを持つ支配のセンチネルがより長い持続時間で召喚される。",
+      "description": "近接ストライクにより敵を攻撃し、短時間持続するデバフを付与する。デバフの効果中に非ユニークモンスターが死んだ場合、敵の死体は消費され、敵と同じレア度でプレフィックス・サフィックスモッドを持つ支配のセンチネルがより長い持続時間で召喚される。",
       "display_name": "ドミネイティングブロウ",
       "id": "dominating_blow",
       "is_manually_casted": true,
@@ -106592,7 +107946,7 @@
   },
   {
     "active_skill": {
-      "description": "地面を叩きつけ、ゆっくりとした隆起のうねりを作り、前方の範囲の敵にダメージを与える。うねりの攻撃を受けた多数の敵は衝撃波を放ち、周囲の他の敵にダメージを与える。再度スキルを使用すると直前のうねりが止まる。使用するにはメイス、セプターまたはスタッフを装備するか素手状態である必要がある。",
+      "description": "地面を叩きつけ、ゆっくりとした隆起のうねりを作り、前方の範囲の敵にダメージを与える。うねりの攻撃を受けた多数の敵は衝撃波を放ち、周囲の他の敵にダメージを与える。再度スキルを使用すると直前のうねりが止まる。使用するには斧、メイス、セプターまたはスタッフを装備するか素手状態である必要がある。",
       "display_name": "サンダー",
       "id": "sunder",
       "is_manually_casted": true,

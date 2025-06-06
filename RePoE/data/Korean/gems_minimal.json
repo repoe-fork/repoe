@@ -6543,7 +6543,7 @@
       },
       "stat_text": {
         "quality_display_base_additional_arrows_is_gem": "",
-        "modifiers_to_number_of_projectiles_instead_apply_to_splitting": "속성 부여 효과를 투사체 수 대신\n투사체가 분할되는 대상 수에 적용",
+        "modifiers_to_number_of_projectiles_instead_apply_to_splitting": "투사체 개수 속성이 투사체 개수가 아닌\n투사체가 분할되는 대상 수에 적용",
         "projectiles_can_split_at_end_of_range\nprojectiles_can_split_from_terrain": "투사체가 대상에 명중하지 않아도 분할"
       },
       "stats": [
@@ -11870,7 +11870,7 @@
       "stat_text": {
         "ice_spear_second_form_projectile_speed_+%_final": "두 번째 형태의 투사체 속도 300% 증폭",
         "quality_display_base_number_of_projectiles_is_gem": "",
-        "modifiers_to_number_of_projectiles_instead_apply_to_splitting": "속성 부여 효과를 투사체 수 대신\n투사체가 분할되는 대상 수에 적용",
+        "modifiers_to_number_of_projectiles_instead_apply_to_splitting": "투사체 개수 속성이 투사체 개수가 아닌\n투사체가 분할되는 대상 수에 적용",
         "projectiles_can_split_from_terrain": "투사체가 지형에 명중해도 분할"
       },
       "stats": [
@@ -16962,6 +16962,111 @@
     "secondary_granted_effect": null,
     "quest_reward": null,
     "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "강력한 일격으로 적을 공격합니다. 철퇴나 셉터, 도끼, 검, 지팡이가 필요합니다.",
+      "display_name": "트라투스의 묵직한 타격",
+      "id": "heavy_strike_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "heavy_strike_attack_speed_+%": "attack_speed_+%",
+        "heavy_strike_damage_+%": "damage_+%",
+        "heavy_strike_chance_to_deal_double_damage_%": "chance_to_deal_double_damage_%",
+        "cast_bone_corpses_on_stun_with_heavy_strike_or_boneshatter": "trigger_level_20_bone_corpses_on_stun"
+      },
+      "types": [
+        "Attack",
+        "MeleeSingleTarget",
+        "Multistrikeable",
+        "Melee"
+      ],
+      "weapon_restrictions": [
+        "One Hand Axe",
+        "One Hand Mace",
+        "Sceptre",
+        "Staff",
+        "Two Hand Sword",
+        "Two Hand Axe",
+        "Two Hand Mace",
+        "One Hand Sword",
+        "Thrusting One Hand Sword",
+        "Warstaff"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "묵직한 타격",
+      "experience_type": "GemProgression1",
+      "id": "Metadata/Items/Gems/SkillGemHeavyStrike",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "r",
+    "display_name": "트라투스의 묵직한 타격",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "{chance_to_deal_double_damage_%}%의 확률로 2배의 피해를 줌",
+          "stats": {
+            "chance_to_deal_double_damage_%": 1000
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": 0
+      },
+      "stat_text": {
+        "base_stun_threshold_reduction_+%": "적 기절 한계치 25% 감소"
+      },
+      "stats": [
+        {
+          "id": "base_stun_threshold_reduction_+%",
+          "type": "constant",
+          "value": 25
+        },
+        {
+          "id": "chance_to_deal_double_damage_%",
+          "type": "additional",
+          "value": null
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": -15,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "base_stun_threshold_reduction_+%",
+      "chance_to_deal_double_damage_%"
+    ],
+    "tags": [
+      "strength",
+      "grants_active_skill",
+      "attack",
+      "melee",
+      "strike"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": null,
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {
@@ -33953,6 +34058,155 @@
   },
   {
     "active_skill": {
+      "description": "장비한 방패의 복제품을 투척합니다. 이 투사체는 관통할 수 없으며, 방패의 방어력에 따른 보조 장비 피해를 줍니다. 방패가 충돌하면 부서진 뒤 작은 파편들이 사방으로 흩어집니다. 투사체를 증가시키는 속성 부여는 파편의 수를 증가시키지만 복제품 수를 늘려주지는 않습니다.",
+      "display_name": "트라투스의 환영 방패 투척",
+      "id": "spectral_shield_throw_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "spectral_shield_throw_damage_+%": "damage_+%",
+        "spectral_shield_throw_projectile_speed_+%": "base_projectile_speed_+%",
+        "spectral_shield_throw_num_of_additional_projectiles": "number_of_additional_projectiles",
+        "spectral_shield_throw_additional_chains": "number_of_chains",
+        "spectral_shield_throw_shard_projectiles_+%_final": "number_of_projectiles_+%_final_from_skill",
+        "shield_crush_and_spectral_shield_throw_off_hand_minimum_added_lightning_damage_per_15_energy_shield_on_shield": "off_hand_minimum_added_lightning_damage_per_15_energy_shield_on_shield",
+        "shield_crush_and_spectral_shield_throw_off_hand_maximum_added_lightning_damage_per_15_energy_shield_on_shield": "off_hand_maximum_added_lightning_damage_per_15_energy_shield_on_shield",
+        "shield_crush_and_spectral_shield_throw_skill_physical_damage_%_to_convert_to_lightning": "skill_physical_damage_%_to_convert_to_lightning",
+        "shield_crush_and_spectral_shield_throw_cannot_add_physical_damage_per_armour_and_evasion_rating": "cannot_add_physical_damage_per_armour_and_evasion_rating"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Projectile",
+        "ProjectilesFromUser",
+        "SingleMainProjectile",
+        "Physical"
+      ],
+      "weapon_restrictions": [
+        "Shield"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "환영 방패 투척",
+      "experience_type": "GemProgression28",
+      "id": "Metadata/Items/Gems/SkillGemThrownShieldProjectile",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "트라투스의 환영 방패 투척",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "투사체 {number_of_additional_projectiles}개 추가 발사",
+          "stats": {
+            "number_of_additional_projectiles": 100
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": null
+      },
+      "stat_text": {
+        "number_of_additional_projectiles": "투사체 3개 추가 발사",
+        "thrown_shield_secondary_projectile_damage_+%_final": "파편 투사체가 주는 피해 50% 감폭",
+        "primary_projectile_chains_+": "주 투사체 연쇄 +3회"
+      },
+      "stats": [
+        {
+          "id": "off_hand_local_minimum_added_physical_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "off_hand_local_maximum_added_physical_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "number_of_additional_projectiles",
+          "type": "constant",
+          "value": 3
+        },
+        {
+          "id": "thrown_shield_secondary_projectile_damage_+%_final",
+          "type": "constant",
+          "value": -50
+        },
+        {
+          "id": "primary_projectile_chains_+",
+          "type": "constant",
+          "value": 3
+        },
+        {
+          "id": "off_hand_minimum_added_physical_damage_per_15_shield_armour_and_evasion_rating",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "off_hand_maximum_added_physical_damage_per_15_shield_armour_and_evasion_rating",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "thrown_shield_projectile_fire_random_directions",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": null,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "thrown_shield_secondary_projectile_damage_+%_final",
+      "off_hand_local_minimum_added_physical_damage\noff_hand_local_maximum_added_physical_damage",
+      "off_hand_minimum_added_physical_damage_per_15_shield_armour_and_evasion_rating\noff_hand_maximum_added_physical_damage_per_15_shield_armour_and_evasion_rating",
+      "number_of_additional_projectiles",
+      "primary_projectile_chains_+"
+    ],
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile",
+      "physical"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 3,
+      "classes": [
+        "듀얼리스트"
+      ],
+      "quest": "오른팔 잘라내기"
+    },
+    "discriminator": "alt_y",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
       "description": "장비한 근접 무기의 형태 복제품을 투척합니다. 무기는 날아갔다가 되돌아오며 경로에 있는 적들에게 피해를 주는 회전 공격을 합니다.",
       "display_name": "환영 무기 투척",
       "id": "spectral_throw",
@@ -34162,6 +34416,108 @@
     "secondary_granted_effect": null,
     "quest_reward": null,
     "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "장비한 근접 무기의 형태 복제품을 투척합니다. 무기는 날아갔다가 되돌아오며 경로에 있는 적들에게 피해를 주는 회전 공격을 합니다.",
+      "display_name": "트라투스의 환영 무기 투척",
+      "id": "spectral_throw_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "spectral_throw_damage_+%": "damage_+%",
+        "spectral_throw_projectile_speed_+%": "base_projectile_speed_+%",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_main_hand": "active_skill_projectile_speed_+%_variation_final",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_off_hand": "active_skill_projectile_speed_+%_variation_final_from_off_hand"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Projectile",
+        "ProjectilesFromUser"
+      ],
+      "weapon_restrictions": [
+        "Claw",
+        "Dagger",
+        "One Hand Sword",
+        "Thrusting One Hand Sword",
+        "One Hand Axe",
+        "One Hand Mace",
+        "Sceptre",
+        "Staff",
+        "Two Hand Sword",
+        "Two Hand Axe",
+        "Two Hand Mace",
+        "Warstaff",
+        "Rune Dagger"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "환영 무기 투척",
+      "experience_type": "GemProgression1",
+      "id": "Metadata/Items/Gems/SkillGemThrownWeapon",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "트라투스의 환영 무기 투척",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "관통한 투사체가 주는 피해 {projectile_damage_+%_final_if_pierced_enemy}% 증폭",
+          "stats": {
+            "projectile_damage_+%_final_if_pierced_enemy": 500
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": null
+      },
+      "stat_text": null,
+      "stats": [
+        {
+          "id": "spectral_throw_forget_hit_list_time_override",
+          "type": "constant",
+          "value": 225
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": 10,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [],
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": null,
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {
@@ -35355,7 +35711,7 @@
   },
   {
     "active_skill": {
-      "description": "시전자와 동료들에게 화염 저항를 증가시키는 오라를 시전합니다.",
+      "description": "시전자와 동료들에게 화염 저항을 증가시키는 오라를 시전합니다.",
       "display_name": "불의 순수함",
       "id": "purity_of_fire",
       "is_manually_casted": true,
@@ -35616,7 +35972,7 @@
   },
   {
     "active_skill": {
-      "description": "시전자와 동료들에게 냉기 저항를 증가시키는 오라를 시전합니다.",
+      "description": "시전자와 동료들에게 냉기 저항을 증가시키는 오라를 시전합니다.",
       "display_name": "얼음의 순수함",
       "id": "purity_of_ice",
       "is_manually_casted": true,
@@ -35884,7 +36240,7 @@
   },
   {
     "active_skill": {
-      "description": "시전자와 동료들에게 번개 저항를 증가시키는 오라를 시전합니다.",
+      "description": "시전자와 동료들에게 번개 저항을 증가시키는 오라를 시전합니다.",
       "display_name": "번개의 순수함",
       "id": "purity_of_lightning",
       "is_manually_casted": true,
@@ -36277,6 +36633,142 @@
       "quest": "사이렌의 마침곡"
     },
     "discriminator": null,
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "원하는 지점을 대상으로 설정합니다. 잠시 후 번개가 대상 지역을 강타하여 주변에 피해를 주고 시전자가 설정한 다른 모든 대상 지역에도 번개가 강타합니다.",
+      "display_name": "트라투스의 폭풍 부름",
+      "id": "storm_call_alt_x",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "storm_call_damage_+%": "damage_+%",
+        "storm_call_duration_+%": "skill_effect_duration_+%",
+        "storm_call_radius_+%": "base_skill_area_of_effect_+%",
+        "shock_nova_and_storm_call_all_damage_can_ignite": "all_damage_can_ignite",
+        "shock_nova_and_storm_call_ignite_damage_+100%_final_chance": "ignite_damage_+100%_final_chance"
+      },
+      "types": [
+        "Spell",
+        "Damage",
+        "Area",
+        "Duration",
+        "Trappable",
+        "Totemable",
+        "Mineable",
+        "Triggerable",
+        "Multicastable",
+        "Lightning",
+        "Cascadable",
+        "CanRapidFire",
+        "AreaSpell"
+      ],
+      "weapon_restrictions": [],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "폭풍 부름",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemStormCall",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 500,
+    "color": "b",
+    "display_name": "트라투스의 폭풍 부름",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": 600,
+      "damage_effectiveness": 150,
+      "quality_stats": [
+        {
+          "stat": "시전 시 {storm_call_chance_to_strike_on_cast_%}%의 확률로 번개가 대상 타격",
+          "stats": {
+            "storm_call_chance_to_strike_on_cast_%": 750
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": null,
+        "str": 0,
+        "dex": 0
+      },
+      "stat_text": {
+        "base_skill_effect_duration": "기본 지속시간 1.50초"
+      },
+      "stats": [
+        {
+          "id": "spell_minimum_base_lightning_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "spell_maximum_base_lightning_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "base_skill_effect_duration",
+          "type": "constant",
+          "value": 1500
+        },
+        {
+          "id": "active_skill_base_radius_+",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_skill_show_average_damage_instead_of_dps",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "console_skill_dont_chase",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": null,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "spell_minimum_base_lightning_damage\nspell_maximum_base_lightning_damage",
+      "base_skill_effect_duration"
+    ],
+    "tags": [
+      "intelligence",
+      "grants_active_skill",
+      "spell",
+      "area",
+      "duration",
+      "lightning"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "템플러"
+      ],
+      "quest": "사이렌의 마침곡"
+    },
+    "discriminator": "alt_x",
     "support_gem": null
   },
   {
@@ -49681,6 +50173,153 @@
   },
   {
     "active_skill": {
+      "description": "여러 발의 화살을 허공으로 발사합니다. 발사된 화살들은 일정 범위에 떨어지며, 각 화살은 주변에 범위 피해를 주고 모든 폭발은 목표 지점에 중첩됩니다.",
+      "display_name": "트라투스의 폭발 화살비",
+      "id": "blast_rain_alt_x",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "blast_rain_damage_+%": "damage_+%",
+        "blast_rain_radius_+%": "base_skill_area_of_effect_+%",
+        "blast_rain_number_of_blasts": "number_of_additional_arrows",
+        "blast_rain_single_additional_projectile": "additional_1_projectile",
+        "blast_rain_artillery_ballista_all_damage_can_poison": "all_damage_can_poison",
+        "blast_rain_artillery_ballista_poison_damage_+100%_final_chance": "poison_damage_+100%_final_chance"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Fire",
+        "MirageArcherCanUse",
+        "Area",
+        "ProjectileSpeed",
+        "ProjectileNumber",
+        "Totemable",
+        "Trappable",
+        "Mineable",
+        "Triggerable",
+        "Rain"
+      ],
+      "weapon_restrictions": [
+        "Bow"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "폭발 화살비",
+      "experience_type": "GemProgression28",
+      "id": "Metadata/Items/Gems/SkillGemBlastRain",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "트라투스의 폭발 화살비",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "화살 {base_number_of_arrows}개 발사",
+          "stats": {
+            "base_number_of_arrows": 50
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": 0,
+        "dex": null
+      },
+      "stat_text": {
+        "skill_physical_damage_%_to_convert_to_fire": "물리 피해의 100%를 화염 피해로 전환",
+        "base_number_of_arrows\nquality_display_base_additional_arrows_is_gem": "화살 6개 발사"
+      },
+      "stats": [
+        {
+          "id": "skill_physical_damage_%_to_convert_to_fire",
+          "type": "constant",
+          "value": 100
+        },
+        {
+          "id": "base_number_of_arrows",
+          "type": "constant",
+          "value": 6
+        },
+        {
+          "id": "blast_rain_arrow_delay_ms",
+          "type": "constant",
+          "value": 80
+        },
+        {
+          "id": "base_reduce_enemy_fire_resistance_%",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_can_fire_arrows",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_base_additional_arrows_is_gem",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": null,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "base_number_of_arrows\nquality_display_base_additional_arrows_is_gem",
+      "skill_physical_damage_%_to_convert_to_fire",
+      "base_reduce_enemy_fire_resistance_%"
+    ],
+    "tags": [
+      "fire",
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "area",
+      "projectile",
+      "bow"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 3,
+      "classes": [
+        "듀얼리스트",
+        "레인저"
+      ],
+      "quest": "오른팔 잘라내기"
+    },
+    "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
       "description": "전기 화살을 3개 발사합니다. 화살은 빠르게 흩어지며 발사 얼마 후에 사라집니다. 화살을 발사한 힘이 어찌나 강력한지, 번개 폭발이 일어나며 전방 부채꼴 범위 내의 적들에게 피해를 줍니다.",
       "display_name": "충격 화살",
       "id": "galvanic_arrow",
@@ -52003,6 +52642,154 @@
       "quest": "사이렌의 마침곡"
     },
     "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "관통 화살로 공격하는 쇠뇌 토템을 소환합니다. 활이 필요합니다.",
+      "display_name": "트라투스의 공성 쇠뇌",
+      "id": "siege_ballista_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": true,
+      "stat_conversions": {
+        "siege_ballista_totem_placement_speed_+%": "summon_totem_cast_speed_+%",
+        "siege_ballista_damage_+%": "damage_+%",
+        "siege_ballista_attack_speed_+%": "attack_speed_+%",
+        "siege_and_shrapnel_ballista_attack_speed_+%_per_maximum_totem": "attack_speed_+%_per_maximum_totem",
+        "siege_ballista_totems_from_this_skill_grant_siege_ballista_attack_speed_-%": "totems_from_this_skill_grant_siege_ballista_attack_speed_-%",
+        "number_of_additional_siege_ballistae_per_200_dexterity": "number_of_additional_totems_per_200_dexterity"
+      },
+      "types": [
+        "Attack",
+        "Projectile",
+        "ProjectilesFromUser",
+        "RangedAttack",
+        "Trappable",
+        "Mineable",
+        "SummonsTotem",
+        "AttackInPlaceIsDefault",
+        "TotemsAreBallistae"
+      ],
+      "weapon_restrictions": [
+        "Bow"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": 1.0
+    },
+    "base_item": {
+      "display_name": "공성 쇠뇌",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemSiegeBallista",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "트라투스의 공성 쇠뇌",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "토템 최대치당 공격 속도 {attack_speed_+%_per_maximum_totem}% 증가",
+          "stats": {
+            "attack_speed_+%_per_maximum_totem": 250
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": 0,
+        "dex": null
+      },
+      "stat_text": {
+        "base_totem_duration": "8초간 토템 지속",
+        "is_totem\nis_ranged_attack_totem": "이 스킬을 사용하는 쇠뇌 토템 1개 소환"
+      },
+      "stats": [
+        {
+          "id": "base_totem_range",
+          "type": "constant",
+          "value": 80
+        },
+        {
+          "id": "base_totem_duration",
+          "type": "constant",
+          "value": 8000
+        },
+        {
+          "id": "number_of_additional_totems_allowed",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "arrow_base_number_of_targets_to_pierce",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_skill_is_totemified",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_totem",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_can_fire_arrows",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_ranged_attack_totem",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": -50,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "arrow_base_number_of_targets_to_pierce",
+      "number_of_additional_totems_allowed",
+      "base_totem_duration",
+      "is_totem\nis_ranged_attack_totem"
+    ],
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile",
+      "totem",
+      "bow"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "레인저"
+      ],
+      "quest": "사이렌의 마침곡"
+    },
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {
@@ -55694,6 +56481,165 @@
       "quest": "사이렌의 마침곡"
     },
     "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "지면을 강타하면 요동치는 지면이 느린 파도를 일으키며 전방에 여러 개의 범위를 생성하며 순차적으로 피해를 줍니다. 파도에 맞은 적의 상당수는 충격파를 방출하여 주변의 다른 적들에게 피해를 줍니다. 스킬을 다시 사용하면 기존 파도가 멈춥니다. 철퇴, 셉터, 도끼, 지팡이 착용 혹은 비무장 상태여야 합니다.",
+      "display_name": "트라투스의 산산조각",
+      "id": "sunder_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "shockwave_slam_attack_speed_+%": "attack_speed_+%",
+        "shockwave_slam_damage_+%": "damage_+%",
+        "shockwave_slam_radius_+%": "base_skill_area_of_effect_+%",
+        "ground_slam_and_sunder_poison_on_non_poisoned_enemies_damage_+%": "poison_on_non_poisoned_enemies_damage_+%"
+      },
+      "types": [
+        "Attack",
+        "Area",
+        "Multistrikeable",
+        "Melee",
+        "Slam",
+        "Totemable"
+      ],
+      "weapon_restrictions": [
+        "One Hand Mace",
+        "Sceptre",
+        "Staff",
+        "Two Hand Mace",
+        "One Hand Axe",
+        "Two Hand Axe",
+        "Unarmed",
+        "Warstaff"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "산산조각",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemSunder",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "r",
+    "display_name": "트라투스의 산산조각",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "순차적인 범위 1개당 파도 반경 {sunder_wave_radius_+_per_step/locations_to_metres}미터",
+          "stats": {
+            "sunder_wave_radius_+_per_step": 50
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": 0
+      },
+      "stat_text": {
+        "shockwave_slam_explosion_damage_+%_final": "충격파가 주는 피해 40% 감폭",
+        "sunder_wave_radius_+_per_step": "순차적인 범위 1개당 파도 반경 +0.2미터",
+        "sunder_wave_max_steps": "파도가 5개 범위에 피해",
+        "sunder_wave_min_steps": "파도가 2개 범위에 피해를 주기 전에 멈출 수 없음",
+        "sunder_shockwave_limit_per_cascade": "파도가 각 범위에 있는 적 최대 5명에게서 충격파 생성"
+      },
+      "stats": [
+        {
+          "id": "shockwave_slam_explosion_damage_+%_final",
+          "type": "constant",
+          "value": -40
+        },
+        {
+          "id": "base_sunder_wave_delay_ms",
+          "type": "constant",
+          "value": 400
+        },
+        {
+          "id": "sunder_wave_radius_+_per_step",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "sunder_wave_max_steps",
+          "type": "constant",
+          "value": 5
+        },
+        {
+          "id": "sunder_wave_min_steps",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "sunder_shockwave_limit_per_cascade",
+          "type": "constant",
+          "value": 5
+        },
+        {
+          "id": "active_skill_area_of_effect_+%_final",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "sunder_wave_delay_+%",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "console_skill_dont_chase",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": -25,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "shockwave_slam_explosion_damage_+%_final",
+      "sunder_shockwave_limit_per_cascade",
+      "sunder_wave_max_steps",
+      "sunder_wave_min_steps",
+      "sunder_wave_radius_+_per_step"
+    ],
+    "tags": [
+      "strength",
+      "grants_active_skill",
+      "attack",
+      "area",
+      "slam",
+      "melee"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "머라우더"
+      ],
+      "quest": "사이렌의 마침곡"
+    },
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {
@@ -68856,6 +69802,170 @@
   },
   {
     "active_skill": {
+      "description": "팽창하는 에너지의 파도가 전방으로 뿜어지면서, 지속시간 동안 부채꼴 형태 범위 내에 있는 적들에게 피해를 줍니다. 이 스킬에 피해를 받은 적들은 각자 가장 많은 피해를 받은 원소 속성의 노출효과가 부여됩니다. 신념의 파도는 한 번에 하나의 속성만 적용됩니다.",
+      "display_name": "트라투스의 신념의 파도",
+      "id": "wave_of_conviction_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "purge_damage_+%": "damage_+%",
+        "purge_duration_+%": "skill_effect_duration_+%",
+        "purge_additional_enemy_resistance_%": "purge_expose_resist_%_matching_highest_element_damage"
+      },
+      "types": [
+        "Spell",
+        "Area",
+        "Damage",
+        "Duration",
+        "Trappable",
+        "Totemable",
+        "Mineable",
+        "Triggerable",
+        "Fire",
+        "Lightning",
+        "CanRapidFire",
+        "Multicastable",
+        "AreaSpell",
+        "Physical"
+      ],
+      "weapon_restrictions": [],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "신념의 파도",
+      "experience_type": "GemProgression16",
+      "id": "Metadata/Items/Gems/SkillGemPurge",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 700,
+    "color": "b",
+    "display_name": "트라투스의 신념의 파도",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": 600,
+      "damage_effectiveness": 230,
+      "quality_stats": [
+        {
+          "stat": "피해가 적 원소 저항의 {base_penetrate_elemental_resistances_%}%를 관통",
+          "stats": {
+            "base_penetrate_elemental_resistances_%": 750
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": null,
+        "str": null,
+        "dex": 0
+      },
+      "stat_text": {
+        "skill_physical_damage_%_to_convert_to_fire": "물리 피해의 25%를 화염 피해로 전환",
+        "skill_physical_damage_%_to_convert_to_lightning": "물리 피해의 25%를 번개 피해로 전환",
+        "base_secondary_skill_effect_duration": "기본 2차 지속시간 4.00초",
+        "purge_expose_resist_%_matching_highest_element_damage": "노출이 가장 큰 피해에 해당하는 원소 저항 -15% 적용"
+      },
+      "stats": [
+        {
+          "id": "spell_minimum_base_physical_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "spell_maximum_base_physical_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "skill_physical_damage_%_to_convert_to_fire",
+          "type": "constant",
+          "value": 25
+        },
+        {
+          "id": "skill_physical_damage_%_to_convert_to_lightning",
+          "type": "constant",
+          "value": 25
+        },
+        {
+          "id": "base_secondary_skill_effect_duration",
+          "type": "constant",
+          "value": 4000
+        },
+        {
+          "id": "shock_art_variation",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "ignite_art_variation",
+          "type": "constant",
+          "value": 7
+        },
+        {
+          "id": "purge_expose_resist_%_matching_highest_element_damage",
+          "type": "constant",
+          "value": -15
+        },
+        {
+          "id": "base_skill_effect_duration",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "visual_hit_effect_elemental_is_holy",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": null,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "spell_minimum_base_physical_damage\nspell_maximum_base_physical_damage",
+      "skill_physical_damage_%_to_convert_to_lightning",
+      "base_skill_effect_duration",
+      "base_secondary_skill_effect_duration",
+      "skill_physical_damage_%_to_convert_to_fire",
+      "purge_expose_resist_%_matching_highest_element_damage"
+    ],
+    "tags": [
+      "fire",
+      "lightning",
+      "intelligence",
+      "grants_active_skill",
+      "spell",
+      "area",
+      "duration",
+      "physical"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 2,
+      "classes": [
+        "템플러"
+      ],
+      "quest": "검은 침략자"
+    },
+    "discriminator": "alt_y",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
       "description": "시전자와 동료들에게 주문 피해와 주문 치명타 확률을 증가시키는 오라를 시전합니다. 또한 일정 확률로 강한 적을 공격 시 신성화 지대를 생성합니다.",
       "display_name": "열광",
       "id": "zealotry",
@@ -71660,6 +72770,119 @@
       "quest": "사이렌의 마침곡"
     },
     "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "거리를 두고 사용 시, 사슬을 투척하여 명중시킨 적 방향으로 이동하는 동시에 그 뒤쪽 범위에 피해를 줍니다. 해당 적과 가까운 경우 직접 범위 피해만을 줍니다. 한손 철퇴나 셉터, 검, 도끼가 필요합니다.",
+      "display_name": "트라투스의 사슬 갈고리",
+      "id": "chain_hook_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "chain_strike_damage_+%": "damage_+%",
+        "chain_hook_and_shield_charge_attack_speed_+%_per_10_rampage_stacks": "attack_speed_+%_per_10_rampage_stacks"
+      },
+      "types": [
+        "Attack",
+        "Area",
+        "Damage",
+        "Movement",
+        "Melee",
+        "Multistrikeable"
+      ],
+      "weapon_restrictions": [
+        "One Hand Sword",
+        "Thrusting One Hand Sword",
+        "One Hand Axe",
+        "One Hand Mace",
+        "Sceptre"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "사슬 갈고리",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemChainHook",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "r",
+    "display_name": "트라투스의 사슬 갈고리",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "공격 명중 시 격노 {gain_x_rage_on_attack_hit} 획득",
+          "stats": {
+            "gain_x_rage_on_attack_hit": 50
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": 0
+      },
+      "stat_text": {
+        "chain_strike_cone_radius_+_per_x_rage": "격노 5당 반경 +0.1미터",
+        "gain_x_rage_on_attack_hit": "공격 명중 시 격노 2 획득"
+      },
+      "stats": [
+        {
+          "id": "chain_strike_cone_radius_+_per_x_rage",
+          "type": "constant",
+          "value": 5
+        },
+        {
+          "id": "gain_x_rage_on_attack_hit",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": 20,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "chain_strike_cone_radius_+_per_x_rage",
+      "gain_x_rage_on_attack_hit"
+    ],
+    "tags": [
+      "strength",
+      "grants_active_skill",
+      "attack",
+      "area",
+      "movement",
+      "melee"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "머라우더"
+      ],
+      "quest": "사이렌의 마침곡"
+    },
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {
@@ -85292,7 +86515,7 @@
       },
       "stat_text": {
         "attacks_impale_on_hit_%_chance": "명중 시 40%의 확률로 적 꿰뚫음",
-        "modifiers_to_number_of_projectiles_instead_apply_to_splitting": "속성 부여 효과를 투사체 수 대신\n투사체가 분할되는 대상 수에 적용",
+        "modifiers_to_number_of_projectiles_instead_apply_to_splitting": "투사체 개수 속성이 투사체 개수가 아닌\n투사체가 분할되는 대상 수에 적용",
         "projectiles_can_split_at_end_of_range\nprojectiles_can_split_from_terrain": "투사체가 대상에 명중하지 않아도 분할"
       },
       "stats": [
@@ -85444,7 +86667,7 @@
       "stat_text": {
         "attacks_impale_on_hit_%_chance": "명중 시 60%의 확률로 적 꿰뚫음",
         "steel_ammo_consumed_per_use": "강철 조각 최대 2개 소모",
-        "modifiers_to_number_of_projectiles_instead_apply_to_splitting": "속성 부여 효과를 투사체 수 대신\n투사체가 분할되는 대상 수에 적용",
+        "modifiers_to_number_of_projectiles_instead_apply_to_splitting": "투사체 개수 속성이 투사체 개수가 아닌\n투사체가 분할되는 대상 수에 적용",
         "projectiles_can_split_at_end_of_range\nprojectiles_can_split_from_terrain": "투사체가 대상에 명중하지 않아도 분할",
         "already_split_if_no_steel_shards": "강철 조각이 없을 경우 투사체가 이미 분할된 것으로 간주"
       },
@@ -102180,6 +103403,137 @@
       "quest": "사이렌의 마침곡"
     },
     "discriminator": null,
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "장비한 근접 무기의 형태 복제품을 투척합니다. 무기는 큰 나선을 그리면서 날면서 빙글빙글 돌아 경로에 있는 적들에게 피해를 주고, 벽에 충돌하면 튕겨 나옵니다.",
+      "display_name": "트라투스의 영체 나선",
+      "id": "spectral_helix_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "spectral_helix_damage_+%": "damage_+%",
+        "spectral_helix_projectile_speed_+%": "base_projectile_speed_+%",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_main_hand": "active_skill_projectile_speed_+%_variation_final",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_off_hand": "active_skill_projectile_speed_+%_variation_final_from_off_hand"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Projectile",
+        "ProjectilesFromUser"
+      ],
+      "weapon_restrictions": [
+        "Claw",
+        "Dagger",
+        "One Hand Sword",
+        "Thrusting One Hand Sword",
+        "One Hand Axe",
+        "One Hand Mace",
+        "Sceptre",
+        "Staff",
+        "Two Hand Sword",
+        "Two Hand Axe",
+        "Two Hand Mace",
+        "Warstaff",
+        "Rune Dagger"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "영체 나선",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemSpectralHelix",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "트라투스의 영체 나선",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "관통한 투사체가 주는 피해 {projectile_damage_+%_final_if_pierced_enemy}% 증폭",
+          "stats": {
+            "projectile_damage_+%_final_if_pierced_enemy": 500
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": null
+      },
+      "stat_text": {
+        "spectral_spiral_weapon_base_number_of_bounces": "최대 3번 튕김\n속성 부여를 투사체 개수 대신 튕기는 횟수에 적용",
+        "spectral_helix_rotations_%": "나선 모양으로 4.25회 회전",
+        "projectiles_nova\nskill_display_single_base_projectile": ""
+      },
+      "stats": [
+        {
+          "id": "spectral_spiral_weapon_base_number_of_bounces",
+          "type": "constant",
+          "value": 3
+        },
+        {
+          "id": "spectral_helix_rotations_%",
+          "type": "constant",
+          "value": 425
+        },
+        {
+          "id": "projectiles_nova",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_display_single_base_projectile",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": 10,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "projectiles_nova\nskill_display_single_base_projectile",
+      "spectral_spiral_weapon_base_number_of_bounces",
+      "spectral_helix_rotations_%"
+    ],
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "사이온"
+      ],
+      "quest": "사이렌의 마침곡"
+    },
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {

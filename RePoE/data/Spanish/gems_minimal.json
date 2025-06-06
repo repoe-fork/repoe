@@ -3454,7 +3454,7 @@
   },
   {
     "active_skill": {
-      "description": "Ejecuta dos ataques rápidos con un arma cuerpo a cuerpo, y cada uno de ellos invoca a un doble tuyo durante un tiempo para que ataque continuamente a los monstruos de la misma forma.",
+      "description": "Ejecuta dos golpes rápidos con un arma cuerpo a cuerpo, y cada uno de ellos invoca a un doble tuyo durante un tiempo para que ataque continuamente a los monstruos de la misma forma.",
       "display_name": "Golpe doble vaal",
       "id": "vaal_double_strike",
       "is_manually_casted": true,
@@ -3618,7 +3618,7 @@
   },
   {
     "active_skill": {
-      "description": "Ataca dos veces para liberar unas ondas de fuerza que infligen daño a los enemigos que golpean. Los enemigos que estén en el centro de los ataques pueden ser golpeados por los dos ataques. Los ataques tienen una probabilidad de aplicar sangrado en Postura de sangre o un ángulo más amplio en Postura de arena. Se puede usar con hachas y espadas. Estás en Postura de sangre por defecto.",
+      "description": "Ataca dos veces para liberar unas ondas de fuerza que infligen daño a los enemigos que golpean. Los enemigos que estén en el centro de los ataques pueden ser golpeados por los dos ataques. Los ataques tienen una probabilidad de aplicar sangrado en Postura de sangre o de tener un ángulo más amplio en Postura de arena. Se puede usar con hachas y espadas. Estás en Postura de sangre por defecto.",
       "display_name": "Lacerar",
       "id": "lacerate",
       "is_manually_casted": true,
@@ -16966,6 +16966,111 @@
   },
   {
     "active_skill": {
+      "description": "Ataca a los enemigos con un contundente embate. Requiere una maza, un cetro, un hacha, una espada o un báculo.",
+      "display_name": "Golpe pesado de Trarthus ",
+      "id": "heavy_strike_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "heavy_strike_attack_speed_+%": "attack_speed_+%",
+        "heavy_strike_damage_+%": "damage_+%",
+        "heavy_strike_chance_to_deal_double_damage_%": "chance_to_deal_double_damage_%",
+        "cast_bone_corpses_on_stun_with_heavy_strike_or_boneshatter": "trigger_level_20_bone_corpses_on_stun"
+      },
+      "types": [
+        "Attack",
+        "MeleeSingleTarget",
+        "Multistrikeable",
+        "Melee"
+      ],
+      "weapon_restrictions": [
+        "One Hand Axe",
+        "One Hand Mace",
+        "Sceptre",
+        "Staff",
+        "Two Hand Sword",
+        "Two Hand Axe",
+        "Two Hand Mace",
+        "One Hand Sword",
+        "Thrusting One Hand Sword",
+        "Warstaff"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "Golpe pesado",
+      "experience_type": "GemProgression1",
+      "id": "Metadata/Items/Gems/SkillGemHeavyStrike",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "r",
+    "display_name": "Golpe pesado de Trarthus ",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "{chance_to_deal_double_damage_%}% de probabilidad de infligir Daño Doble",
+          "stats": {
+            "chance_to_deal_double_damage_%": 1000
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": 0
+      },
+      "stat_text": {
+        "base_stun_threshold_reduction_+%": "Umbral de aturdimiento de los enemigos reducido un 25%"
+      },
+      "stats": [
+        {
+          "id": "base_stun_threshold_reduction_+%",
+          "type": "constant",
+          "value": 25
+        },
+        {
+          "id": "chance_to_deal_double_damage_%",
+          "type": "additional",
+          "value": null
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": -15,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "base_stun_threshold_reduction_+%",
+      "chance_to_deal_double_damage_%"
+    ],
+    "tags": [
+      "strength",
+      "grants_active_skill",
+      "attack",
+      "melee",
+      "strike"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": null,
+    "discriminator": "alt_y",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
       "description": "Ataca a los enemigos con un contundente embate y los manda a volar hacia atrás. Requiere una maza, un cetro, un hacha, una espada o un arma a dos manos.",
       "display_name": "Golpe pesado vaal",
       "id": "vaal_heavy_strike",
@@ -19709,7 +19814,7 @@
   },
   {
     "active_skill": {
-      "description": "Encanta tu escudo con el poder de la tormenta, la cual esparce sus relámpagos e inflige daño de rayo a los enemigos cuando los bloqueas.",
+      "description": "Encanta tu escudo con el poder de la tormenta, la cual esparce sus relámpagos e inflige daño de rayo a los atacantes cuando los bloqueas.",
       "display_name": "Escudo de tempestad",
       "id": "tempest_shield",
       "is_manually_casted": true,
@@ -26123,7 +26228,7 @@
   },
   {
     "active_skill": {
-      "description": "Invoca un tótem que provoca a los enemigos cercanos para que lo ataquen.",
+      "description": "Invoca un tótem que provoca a los monstruos cercanos para que lo ataquen.",
       "display_name": "Tótem de señuelo",
       "id": "decoy_totem",
       "is_manually_casted": true,
@@ -33953,6 +34058,155 @@
   },
   {
     "active_skill": {
+      "description": "Lanza una copia espectral de tu escudo en forma de un proyectil que no puede perforar. El proyectil inflige el daño de la mano secundaria potenciado por las defensas del escudo. Cuando choca con algo, se hace añicos y lanza algunas esquirlas más pequeñas como proyectiles en todas direcciones. Los modificadores que otorgan proyectiles adicionales añadirán más esquirlas, pero no más copias del escudo.",
+      "display_name": "Lanzamiento de escudo espectral de Trarthus",
+      "id": "spectral_shield_throw_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "spectral_shield_throw_damage_+%": "damage_+%",
+        "spectral_shield_throw_projectile_speed_+%": "base_projectile_speed_+%",
+        "spectral_shield_throw_num_of_additional_projectiles": "number_of_additional_projectiles",
+        "spectral_shield_throw_additional_chains": "number_of_chains",
+        "spectral_shield_throw_shard_projectiles_+%_final": "number_of_projectiles_+%_final_from_skill",
+        "shield_crush_and_spectral_shield_throw_off_hand_minimum_added_lightning_damage_per_15_energy_shield_on_shield": "off_hand_minimum_added_lightning_damage_per_15_energy_shield_on_shield",
+        "shield_crush_and_spectral_shield_throw_off_hand_maximum_added_lightning_damage_per_15_energy_shield_on_shield": "off_hand_maximum_added_lightning_damage_per_15_energy_shield_on_shield",
+        "shield_crush_and_spectral_shield_throw_skill_physical_damage_%_to_convert_to_lightning": "skill_physical_damage_%_to_convert_to_lightning",
+        "shield_crush_and_spectral_shield_throw_cannot_add_physical_damage_per_armour_and_evasion_rating": "cannot_add_physical_damage_per_armour_and_evasion_rating"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Projectile",
+        "ProjectilesFromUser",
+        "SingleMainProjectile",
+        "Physical"
+      ],
+      "weapon_restrictions": [
+        "Shield"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "Lanzamiento de escudo espectral",
+      "experience_type": "GemProgression28",
+      "id": "Metadata/Items/Gems/SkillGemThrownShieldProjectile",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "Lanzamiento de escudo espectral de Trarthus",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "Dispara {number_of_additional_projectiles} proyectiles adicionales",
+          "stats": {
+            "number_of_additional_projectiles": 100
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": null
+      },
+      "stat_text": {
+        "number_of_additional_projectiles": "Dispara 3 proyectiles adicionales",
+        "thrown_shield_secondary_projectile_damage_+%_final": "Los Proyectiles esquirla Infligen 50% menos Daño",
+        "primary_projectile_chains_+": "Las cadenas del proyectil primario se encadenan +3 veces"
+      },
+      "stats": [
+        {
+          "id": "off_hand_local_minimum_added_physical_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "off_hand_local_maximum_added_physical_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "number_of_additional_projectiles",
+          "type": "constant",
+          "value": 3
+        },
+        {
+          "id": "thrown_shield_secondary_projectile_damage_+%_final",
+          "type": "constant",
+          "value": -50
+        },
+        {
+          "id": "primary_projectile_chains_+",
+          "type": "constant",
+          "value": 3
+        },
+        {
+          "id": "off_hand_minimum_added_physical_damage_per_15_shield_armour_and_evasion_rating",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "off_hand_maximum_added_physical_damage_per_15_shield_armour_and_evasion_rating",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "thrown_shield_projectile_fire_random_directions",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": null,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "thrown_shield_secondary_projectile_damage_+%_final",
+      "off_hand_local_minimum_added_physical_damage\noff_hand_local_maximum_added_physical_damage",
+      "off_hand_minimum_added_physical_damage_per_15_shield_armour_and_evasion_rating\noff_hand_maximum_added_physical_damage_per_15_shield_armour_and_evasion_rating",
+      "number_of_additional_projectiles",
+      "primary_projectile_chains_+"
+    ],
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile",
+      "physical"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 3,
+      "classes": [
+        "Duelista"
+      ],
+      "quest": "Amputa la mano derecha"
+    },
+    "discriminator": "alt_y",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
       "description": "Lanza una copia espectral de tu arma cuerpo a cuerpo. Sale volando y luego regresa a ti en un ataque giratorio que daña a los enemigos que están en su camino.",
       "display_name": "Lanzamiento espectral",
       "id": "spectral_throw",
@@ -34162,6 +34416,108 @@
     "secondary_granted_effect": null,
     "quest_reward": null,
     "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "Lanza una copia espectral de tu arma cuerpo a cuerpo. Sale volando y luego regresa a ti en un ataque giratorio que daña a los enemigos que están en su camino.",
+      "display_name": "Lanzamiento espectral de Trarthus",
+      "id": "spectral_throw_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "spectral_throw_damage_+%": "damage_+%",
+        "spectral_throw_projectile_speed_+%": "base_projectile_speed_+%",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_main_hand": "active_skill_projectile_speed_+%_variation_final",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_off_hand": "active_skill_projectile_speed_+%_variation_final_from_off_hand"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Projectile",
+        "ProjectilesFromUser"
+      ],
+      "weapon_restrictions": [
+        "Claw",
+        "Dagger",
+        "One Hand Sword",
+        "Thrusting One Hand Sword",
+        "One Hand Axe",
+        "One Hand Mace",
+        "Sceptre",
+        "Staff",
+        "Two Hand Sword",
+        "Two Hand Axe",
+        "Two Hand Mace",
+        "Warstaff",
+        "Rune Dagger"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "Lanzamiento espectral",
+      "experience_type": "GemProgression1",
+      "id": "Metadata/Items/Gems/SkillGemThrownWeapon",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "Lanzamiento espectral de Trarthus",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "Los proyectiles que han perforado infligen un {projectile_damage_+%_final_if_pierced_enemy}% más de daño",
+          "stats": {
+            "projectile_damage_+%_final_if_pierced_enemy": 500
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": null
+      },
+      "stat_text": null,
+      "stats": [
+        {
+          "id": "spectral_throw_forget_hit_list_time_override",
+          "type": "constant",
+          "value": 225
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": 10,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [],
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": null,
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {
@@ -36277,6 +36633,142 @@
       "quest": "La cadencia de la sirena"
     },
     "discriminator": null,
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "Pone un marcador en una ubicación. Después de una corta duración, un rayo golpea el marcador e inflige daño a su alrededor. Cuando esto sucede, también caen rayos en cualquier otro marcador que hayas colocado.",
+      "display_name": "Llamado de tormenta de Trarthus",
+      "id": "storm_call_alt_x",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "storm_call_damage_+%": "damage_+%",
+        "storm_call_duration_+%": "skill_effect_duration_+%",
+        "storm_call_radius_+%": "base_skill_area_of_effect_+%",
+        "shock_nova_and_storm_call_all_damage_can_ignite": "all_damage_can_ignite",
+        "shock_nova_and_storm_call_ignite_damage_+100%_final_chance": "ignite_damage_+100%_final_chance"
+      },
+      "types": [
+        "Spell",
+        "Damage",
+        "Area",
+        "Duration",
+        "Trappable",
+        "Totemable",
+        "Mineable",
+        "Triggerable",
+        "Multicastable",
+        "Lightning",
+        "Cascadable",
+        "CanRapidFire",
+        "AreaSpell"
+      ],
+      "weapon_restrictions": [],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "Llamado de tormenta",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemStormCall",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 500,
+    "color": "b",
+    "display_name": "Llamado de tormenta de Trarthus",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": 600,
+      "damage_effectiveness": 150,
+      "quality_stats": [
+        {
+          "stat": "{storm_call_chance_to_strike_on_cast_%}% de probabilidad de que el rayo golpee el marcador cuando lanzas la habilidad",
+          "stats": {
+            "storm_call_chance_to_strike_on_cast_%": 750
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": null,
+        "str": 0,
+        "dex": 0
+      },
+      "stat_text": {
+        "base_skill_effect_duration": "La duración base es de 1.50 segundos"
+      },
+      "stats": [
+        {
+          "id": "spell_minimum_base_lightning_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "spell_maximum_base_lightning_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "base_skill_effect_duration",
+          "type": "constant",
+          "value": 1500
+        },
+        {
+          "id": "active_skill_base_radius_+",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_skill_show_average_damage_instead_of_dps",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "console_skill_dont_chase",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": null,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "spell_minimum_base_lightning_damage\nspell_maximum_base_lightning_damage",
+      "base_skill_effect_duration"
+    ],
+    "tags": [
+      "intelligence",
+      "grants_active_skill",
+      "spell",
+      "area",
+      "duration",
+      "lightning"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "Templario"
+      ],
+      "quest": "La cadencia de la sirena"
+    },
+    "discriminator": "alt_x",
     "support_gem": null
   },
   {
@@ -49681,6 +50173,153 @@
   },
   {
     "active_skill": {
+      "description": "Dispara flechas al aire para que caigan en una determinada área. Cada flecha inflige daño en área donde cae, y todas se superpondrán en el área objetivo.",
+      "display_name": "Lluvia de estallidos de Trarthus",
+      "id": "blast_rain_alt_x",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "blast_rain_damage_+%": "damage_+%",
+        "blast_rain_radius_+%": "base_skill_area_of_effect_+%",
+        "blast_rain_number_of_blasts": "number_of_additional_arrows",
+        "blast_rain_single_additional_projectile": "additional_1_projectile",
+        "blast_rain_artillery_ballista_all_damage_can_poison": "all_damage_can_poison",
+        "blast_rain_artillery_ballista_poison_damage_+100%_final_chance": "poison_damage_+100%_final_chance"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Fire",
+        "MirageArcherCanUse",
+        "Area",
+        "ProjectileSpeed",
+        "ProjectileNumber",
+        "Totemable",
+        "Trappable",
+        "Mineable",
+        "Triggerable",
+        "Rain"
+      ],
+      "weapon_restrictions": [
+        "Bow"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "Lluvia de estallidos",
+      "experience_type": "GemProgression28",
+      "id": "Metadata/Items/Gems/SkillGemBlastRain",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "Lluvia de estallidos de Trarthus",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "Dispara {base_number_of_arrows} flechas",
+          "stats": {
+            "base_number_of_arrows": 50
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": 0,
+        "dex": null
+      },
+      "stat_text": {
+        "skill_physical_damage_%_to_convert_to_fire": "El 100% del daño físico se convierte en daño de fuego",
+        "base_number_of_arrows\nquality_display_base_additional_arrows_is_gem": "Dispara 6 flechas"
+      },
+      "stats": [
+        {
+          "id": "skill_physical_damage_%_to_convert_to_fire",
+          "type": "constant",
+          "value": 100
+        },
+        {
+          "id": "base_number_of_arrows",
+          "type": "constant",
+          "value": 6
+        },
+        {
+          "id": "blast_rain_arrow_delay_ms",
+          "type": "constant",
+          "value": 80
+        },
+        {
+          "id": "base_reduce_enemy_fire_resistance_%",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_can_fire_arrows",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_base_additional_arrows_is_gem",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": null,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "base_number_of_arrows\nquality_display_base_additional_arrows_is_gem",
+      "skill_physical_damage_%_to_convert_to_fire",
+      "base_reduce_enemy_fire_resistance_%"
+    ],
+    "tags": [
+      "fire",
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "area",
+      "projectile",
+      "bow"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 3,
+      "classes": [
+        "Duelista",
+        "Exploradora"
+      ],
+      "quest": "Amputa la mano derecha"
+    },
+    "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
       "description": "Dispara un trio de flechas eléctricas que se disipan rápidamente y que se desvanecen poco después de lanzarse. Las flechas se disparan con tanta fuerza que crean un estallido de rayo que inflige daño a los enemigos en un cono delante de ti.",
       "display_name": "Flecha galvánica",
       "id": "galvanic_arrow",
@@ -52003,6 +52642,154 @@
       "quest": "La cadencia de la sirena"
     },
     "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "Invoca un tótem balista que ataca con flechas perforantes. Requiere un arco.",
+      "display_name": "Balista de asedio de Trarthus",
+      "id": "siege_ballista_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": true,
+      "stat_conversions": {
+        "siege_ballista_totem_placement_speed_+%": "summon_totem_cast_speed_+%",
+        "siege_ballista_damage_+%": "damage_+%",
+        "siege_ballista_attack_speed_+%": "attack_speed_+%",
+        "siege_and_shrapnel_ballista_attack_speed_+%_per_maximum_totem": "attack_speed_+%_per_maximum_totem",
+        "siege_ballista_totems_from_this_skill_grant_siege_ballista_attack_speed_-%": "totems_from_this_skill_grant_siege_ballista_attack_speed_-%",
+        "number_of_additional_siege_ballistae_per_200_dexterity": "number_of_additional_totems_per_200_dexterity"
+      },
+      "types": [
+        "Attack",
+        "Projectile",
+        "ProjectilesFromUser",
+        "RangedAttack",
+        "Trappable",
+        "Mineable",
+        "SummonsTotem",
+        "AttackInPlaceIsDefault",
+        "TotemsAreBallistae"
+      ],
+      "weapon_restrictions": [
+        "Bow"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": 1.0
+    },
+    "base_item": {
+      "display_name": "Balista de asedio",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemSiegeBallista",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "Balista de asedio de Trarthus",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "Velocidad de ataque aumentada un {attack_speed_+%_per_maximum_totem}% por cada tótem máximo",
+          "stats": {
+            "attack_speed_+%_per_maximum_totem": 250
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": 0,
+        "dex": null
+      },
+      "stat_text": {
+        "base_totem_duration": "El Tótem dura 8 segundos",
+        "is_totem\nis_ranged_attack_totem": "Invoca un tótem balista que usa esta habilidad"
+      },
+      "stats": [
+        {
+          "id": "base_totem_range",
+          "type": "constant",
+          "value": 80
+        },
+        {
+          "id": "base_totem_duration",
+          "type": "constant",
+          "value": 8000
+        },
+        {
+          "id": "number_of_additional_totems_allowed",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "arrow_base_number_of_targets_to_pierce",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_skill_is_totemified",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_totem",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_can_fire_arrows",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_ranged_attack_totem",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": -50,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "arrow_base_number_of_targets_to_pierce",
+      "number_of_additional_totems_allowed",
+      "base_totem_duration",
+      "is_totem\nis_ranged_attack_totem"
+    ],
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile",
+      "totem",
+      "bow"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "Exploradora"
+      ],
+      "quest": "La cadencia de la sirena"
+    },
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {
@@ -55694,6 +56481,165 @@
       "quest": "La cadencia de la sirena"
     },
     "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "Golpea el suelo y crea una ola de tierra agitada que avanza lentamente y que daña a los enemigos en una secuencia de áreas frente a ti. Algunos de los enemigos que reciban el impacto de la ola liberarán una onda que dañará a otros enemigos a su alrededor. Si vuelves a usar la habilidad, la ola anterior se detendrá. Requiere una maza, un cetro, un hacha, un báculo o estar desarmado.",
+      "display_name": "Fisurar de Trarthus",
+      "id": "sunder_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "shockwave_slam_attack_speed_+%": "attack_speed_+%",
+        "shockwave_slam_damage_+%": "damage_+%",
+        "shockwave_slam_radius_+%": "base_skill_area_of_effect_+%",
+        "ground_slam_and_sunder_poison_on_non_poisoned_enemies_damage_+%": "poison_on_non_poisoned_enemies_damage_+%"
+      },
+      "types": [
+        "Attack",
+        "Area",
+        "Multistrikeable",
+        "Melee",
+        "Slam",
+        "Totemable"
+      ],
+      "weapon_restrictions": [
+        "One Hand Mace",
+        "Sceptre",
+        "Staff",
+        "Two Hand Mace",
+        "One Hand Axe",
+        "Two Hand Axe",
+        "Unarmed",
+        "Warstaff"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "Fisurar",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemSunder",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "r",
+    "display_name": "Fisurar de Trarthus",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "La ola gana {sunder_wave_radius_+_per_step/locations_to_metres} metros al radio por cada área que haya en la secuencia",
+          "stats": {
+            "sunder_wave_radius_+_per_step": 50
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": 0
+      },
+      "stat_text": {
+        "shockwave_slam_explosion_damage_+%_final": "Las Ondas Sísmicas infligen 40% menos Daño",
+        "sunder_wave_radius_+_per_step": "La ola gana +0.2 metros al radio por cada área que haya en la secuencia",
+        "sunder_wave_max_steps": "La ola daña 5 áreas",
+        "sunder_wave_min_steps": "La ola no puede detenerse antes de haber dañado 2 áreas",
+        "sunder_shockwave_limit_per_cascade": "La ola causa ondas sísmicas de hasta 5 enemigos en cada área"
+      },
+      "stats": [
+        {
+          "id": "shockwave_slam_explosion_damage_+%_final",
+          "type": "constant",
+          "value": -40
+        },
+        {
+          "id": "base_sunder_wave_delay_ms",
+          "type": "constant",
+          "value": 400
+        },
+        {
+          "id": "sunder_wave_radius_+_per_step",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "sunder_wave_max_steps",
+          "type": "constant",
+          "value": 5
+        },
+        {
+          "id": "sunder_wave_min_steps",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "sunder_shockwave_limit_per_cascade",
+          "type": "constant",
+          "value": 5
+        },
+        {
+          "id": "active_skill_area_of_effect_+%_final",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "sunder_wave_delay_+%",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "console_skill_dont_chase",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": -25,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "shockwave_slam_explosion_damage_+%_final",
+      "sunder_shockwave_limit_per_cascade",
+      "sunder_wave_max_steps",
+      "sunder_wave_min_steps",
+      "sunder_wave_radius_+_per_step"
+    ],
+    "tags": [
+      "strength",
+      "grants_active_skill",
+      "attack",
+      "area",
+      "slam",
+      "melee"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "Merodeador"
+      ],
+      "quest": "La cadencia de la sirena"
+    },
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {
@@ -68856,6 +69802,170 @@
   },
   {
     "active_skill": {
+      "description": "Lanza una ola expansiva de energía hacia adelante para dañar a los enemigos en un área con forma de cono durante un tiempo. Cada enemigo golpeado queda afectado por la exposición al elemento del cual haya recibido más daño. Solo puede haber una Ola de condena activa a la vez.",
+      "display_name": "Ola de condena de Trarthus",
+      "id": "wave_of_conviction_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "purge_damage_+%": "damage_+%",
+        "purge_duration_+%": "skill_effect_duration_+%",
+        "purge_additional_enemy_resistance_%": "purge_expose_resist_%_matching_highest_element_damage"
+      },
+      "types": [
+        "Spell",
+        "Area",
+        "Damage",
+        "Duration",
+        "Trappable",
+        "Totemable",
+        "Mineable",
+        "Triggerable",
+        "Fire",
+        "Lightning",
+        "CanRapidFire",
+        "Multicastable",
+        "AreaSpell",
+        "Physical"
+      ],
+      "weapon_restrictions": [],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "Ola de condena",
+      "experience_type": "GemProgression16",
+      "id": "Metadata/Items/Gems/SkillGemPurge",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 700,
+    "color": "b",
+    "display_name": "Ola de condena de Trarthus",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": 600,
+      "damage_effectiveness": 230,
+      "quality_stats": [
+        {
+          "stat": "El daño penetra el {base_penetrate_elemental_resistances_%}% de las resistencias elementales de los enemigos",
+          "stats": {
+            "base_penetrate_elemental_resistances_%": 750
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": null,
+        "str": null,
+        "dex": 0
+      },
+      "stat_text": {
+        "skill_physical_damage_%_to_convert_to_fire": "El 25% del daño físico se convierte en daño de fuego",
+        "skill_physical_damage_%_to_convert_to_lightning": "El 25% del daño físico se convierte en daño de rayo",
+        "base_secondary_skill_effect_duration": "La duración secundaria base es de 4.00 segundos",
+        "purge_expose_resist_%_matching_highest_element_damage": "Exposición aplica -15% a la resistencia elemental que corresponda con el mayor daño recibido"
+      },
+      "stats": [
+        {
+          "id": "spell_minimum_base_physical_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "spell_maximum_base_physical_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "skill_physical_damage_%_to_convert_to_fire",
+          "type": "constant",
+          "value": 25
+        },
+        {
+          "id": "skill_physical_damage_%_to_convert_to_lightning",
+          "type": "constant",
+          "value": 25
+        },
+        {
+          "id": "base_secondary_skill_effect_duration",
+          "type": "constant",
+          "value": 4000
+        },
+        {
+          "id": "shock_art_variation",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "ignite_art_variation",
+          "type": "constant",
+          "value": 7
+        },
+        {
+          "id": "purge_expose_resist_%_matching_highest_element_damage",
+          "type": "constant",
+          "value": -15
+        },
+        {
+          "id": "base_skill_effect_duration",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "visual_hit_effect_elemental_is_holy",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": null,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "spell_minimum_base_physical_damage\nspell_maximum_base_physical_damage",
+      "skill_physical_damage_%_to_convert_to_lightning",
+      "base_skill_effect_duration",
+      "base_secondary_skill_effect_duration",
+      "skill_physical_damage_%_to_convert_to_fire",
+      "purge_expose_resist_%_matching_highest_element_damage"
+    ],
+    "tags": [
+      "fire",
+      "lightning",
+      "intelligence",
+      "grants_active_skill",
+      "spell",
+      "area",
+      "duration",
+      "physical"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 2,
+      "classes": [
+        "Templario"
+      ],
+      "quest": "Intrusos de negro"
+    },
+    "discriminator": "alt_y",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
       "description": "Proyecta un aura que otorga bonificaciones al daño y a la probabilidad de golpe crítico de los hechizos para ti y tus aliados, y otorga una probabilidad de crear suelo consagrado contra enemigos más fuertes.",
       "display_name": "Exaltación",
       "id": "zealotry",
@@ -71014,7 +72124,7 @@
   },
   {
     "active_skill": {
-      "description": "Golpea el suelo para hacer surgir múltiples pinchos que dañan a los enemigos. Cuando estás en Postura de sangre, los pinchos surgen del suelo en una secuencia y pueden golpear varias veces a los enemigos. En Postura de arena, los pinchos se lanzan hacia afuera. Requiere una espada o un hacha. Por defecto, estás en Postura de sangre.",
+      "description": "Golpea el suelo para hacer surgir múltiples pinchos que dañan a los enemigos. Cuando estás en Postura de sangre, los pinchos surgen del suelo en una secuencia y pueden golpear varias veces a los enemigos. En Postura de arena, los pinchos se lanzan hacia fuera. Requiere una espada o un hacha. Por defecto, estás en Postura de sangre.",
       "display_name": "Perforación",
       "id": "perforate",
       "is_manually_casted": true,
@@ -71660,6 +72770,119 @@
       "quest": "La cadencia de la sirena"
     },
     "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "Cuando la usas a distancia, lanza una cadena que te atraerá hacia el enemigo golpeado e infligirá daño en un área detrás de él. Cuando estás cerca del enemigo, solo infligirá el daño en área sin pasos previos. Requiere una espada, un hacha, un cetro o una maza a una mano.",
+      "display_name": "Gancho de cadena de Trarthus",
+      "id": "chain_hook_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "chain_strike_damage_+%": "damage_+%",
+        "chain_hook_and_shield_charge_attack_speed_+%_per_10_rampage_stacks": "attack_speed_+%_per_10_rampage_stacks"
+      },
+      "types": [
+        "Attack",
+        "Area",
+        "Damage",
+        "Movement",
+        "Melee",
+        "Multistrikeable"
+      ],
+      "weapon_restrictions": [
+        "One Hand Sword",
+        "Thrusting One Hand Sword",
+        "One Hand Axe",
+        "One Hand Mace",
+        "Sceptre"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "Gancho de cadena",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemChainHook",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "r",
+    "display_name": "Gancho de cadena de Trarthus",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "Ganas {gain_x_rage_on_attack_hit} de furia con cada golpe de ataques",
+          "stats": {
+            "gain_x_rage_on_attack_hit": 50
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": 0
+      },
+      "stat_text": {
+        "chain_strike_cone_radius_+_per_x_rage": "+0.1 metros al radio por cada 5 de Furia",
+        "gain_x_rage_on_attack_hit": "Ganas 2 de furia con cada golpe de ataques"
+      },
+      "stats": [
+        {
+          "id": "chain_strike_cone_radius_+_per_x_rage",
+          "type": "constant",
+          "value": 5
+        },
+        {
+          "id": "gain_x_rage_on_attack_hit",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": 20,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "chain_strike_cone_radius_+_per_x_rage",
+      "gain_x_rage_on_attack_hit"
+    ],
+    "tags": [
+      "strength",
+      "grants_active_skill",
+      "attack",
+      "area",
+      "movement",
+      "melee"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "Merodeador"
+      ],
+      "quest": "La cadencia de la sirena"
+    },
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {
@@ -89186,7 +90409,7 @@
   },
   {
     "active_skill": {
-      "description": "Ataca dos veces para liberar unas ondas de fuerza que infligen daño a los enemigos que golpean. Los enemigos que estén en el centro de los ataques pueden ser golpeados por los dos ataques. Los ataques tienen una probabilidad de aplicar sangrado en Postura de sangre o un ángulo más amplio en Postura de arena. Se puede usar con hachas y espadas. Estás en Postura de sangre por defecto.",
+      "description": "Ataca dos veces para liberar unas ondas de fuerza que infligen daño a los enemigos que golpean. Los enemigos que estén en el centro de los ataques pueden ser golpeados por los dos ataques. Los ataques tienen una probabilidad de aplicar sangrado en Postura de sangre o de tener un ángulo más amplio en Postura de arena. Se puede usar con hachas y espadas. Estás en Postura de sangre por defecto.",
       "display_name": "Lacerar",
       "id": "lacerate",
       "is_manually_casted": true,
@@ -102180,6 +103403,137 @@
       "quest": "La cadencia de la sirena"
     },
     "discriminator": null,
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "Lanza una copia espectral de tu arma cuerpo a cuerpo. Esta copia gira mientras vuela en forma de gran espiral, daña a los enemigos a su paso y rebota si golpea contra las paredes.",
+      "display_name": "Hélice espectral de Trarthus",
+      "id": "spectral_helix_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "spectral_helix_damage_+%": "damage_+%",
+        "spectral_helix_projectile_speed_+%": "base_projectile_speed_+%",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_main_hand": "active_skill_projectile_speed_+%_variation_final",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_off_hand": "active_skill_projectile_speed_+%_variation_final_from_off_hand"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Projectile",
+        "ProjectilesFromUser"
+      ],
+      "weapon_restrictions": [
+        "Claw",
+        "Dagger",
+        "One Hand Sword",
+        "Thrusting One Hand Sword",
+        "One Hand Axe",
+        "One Hand Mace",
+        "Sceptre",
+        "Staff",
+        "Two Hand Sword",
+        "Two Hand Axe",
+        "Two Hand Mace",
+        "Warstaff",
+        "Rune Dagger"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "Hélice espectral",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemSpectralHelix",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "Hélice espectral de Trarthus",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "Los proyectiles que han perforado infligen un {projectile_damage_+%_final_if_pierced_enemy}% más de daño",
+          "stats": {
+            "projectile_damage_+%_final_if_pierced_enemy": 500
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": null
+      },
+      "stat_text": {
+        "spectral_spiral_weapon_base_number_of_bounces": "Rebota hasta 3 veces\nLos modificadores a la cantidad de proyectiles se aplican solo a la cantidad de rebotes",
+        "spectral_helix_rotations_%": "Gira en espiral durante 4.25 rotaciones",
+        "projectiles_nova\nskill_display_single_base_projectile": ""
+      },
+      "stats": [
+        {
+          "id": "spectral_spiral_weapon_base_number_of_bounces",
+          "type": "constant",
+          "value": 3
+        },
+        {
+          "id": "spectral_helix_rotations_%",
+          "type": "constant",
+          "value": 425
+        },
+        {
+          "id": "projectiles_nova",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_display_single_base_projectile",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": 10,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "projectiles_nova\nskill_display_single_base_projectile",
+      "spectral_spiral_weapon_base_number_of_bounces",
+      "spectral_helix_rotations_%"
+    ],
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "Heredera"
+      ],
+      "quest": "La cadencia de la sirena"
+    },
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {

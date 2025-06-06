@@ -3852,6 +3852,21 @@
     },
     "stack_limit": null
   },
+  "player_aura_chaos_resist": {
+    "description": "Grants additional Chaos Resistance",
+    "invisible": false,
+    "name": "Impurity Aura",
+    "removable": true,
+    "stats": [
+      "base_chaos_damage_resistance_%",
+      "affected_by_impurity"
+    ],
+    "visuals": "player_aura_chaos_resist",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
   "player_aura_energy_shield": {
     "description": "Tienes escudo de energía total adicional.",
     "invisible": false,
@@ -40569,6 +40584,21 @@
     "templates": null,
     "stack_limit": null
   },
+  "sceptre_allies_flat_chaos_damage": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [
+      "attack_minimum_added_chaos_damage",
+      "attack_maximum_added_chaos_damage"
+    ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
   "sceptre_allies_attack_speed": {
     "description": "",
     "invisible": true,
@@ -42002,6 +42032,12 @@
         "stats": null,
         "stat_text": null,
         "visuals": null
+      },
+      "SanctumChronomancer4s": {
+        "aura_radius_metres": null,
+        "stats": null,
+        "stat_text": null,
+        "visuals": null
       }
     },
     "stack_limit": null
@@ -43252,6 +43288,20 @@
     "templates": null,
     "stack_limit": null
   },
+  "sanctum_frozen_hideout": {
+    "description": "You are slowed",
+    "invisible": false,
+    "name": "Slowed Time",
+    "removable": false,
+    "stats": [
+      "hourglass_hideout_decoration_movement_speed_+%_final"
+    ],
+    "visuals": "Sanctum_frozen",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
   "charge_mastery_reservation": {
     "description": "",
     "invisible": true,
@@ -43261,9 +43311,9 @@
       "skill_speed_+%_with_frenzy_charges",
       "crit_chance_+%_with_power_charges",
       "defences_+%_with_endurance_charges",
-      "skill_charge_matery_skill_speed_+%_final_with_frenzy_charges",
-      "skill_charge_mastery_crit_chance_+%_final_with_power_charges",
-      "skill_charge_mastery_defences_+%_final_with_endurance_charges",
+      "skill_speed_+%_final_with_frenzy_charges",
+      "crit_chance_+%_final_with_power_charges",
+      "defences_+%_final_with_endurance_charges",
       "skill_charge_mastery_endurance_art_variation",
       "skill_charge_mastery_frenzy_art_variation",
       "skill_charge_mastery_power_art_variation"
@@ -43362,6 +43412,15 @@
           "[Gain|Ganas] el 100% del daño como daño de fuego extra"
         ],
         "visuals": null
+      },
+      "unqiue_guiding_palm_shrine_fire": {
+        "aura_radius_metres": null,
+        "stats": {
+          "has_shrine_effect": 1,
+          "non_skill_base_all_damage_%_to_gain_as_fire": 0
+        },
+        "stat_text": null,
+        "visuals": "unique_shrine_fire"
       }
     },
     "stack_limit": null
@@ -43400,6 +43459,15 @@
           "[Gain|Ganas] el 100% del daño como daño de [Lightning|rayo] extra"
         ],
         "visuals": null
+      },
+      "unqiue_guiding_palm_shrine_lightning": {
+        "aura_radius_metres": null,
+        "stats": {
+          "has_shrine_effect": 1,
+          "non_skill_base_all_damage_%_to_gain_as_lightning": 0
+        },
+        "stat_text": null,
+        "visuals": "unique_shrine_lightning"
       }
     },
     "stack_limit": null
@@ -43438,6 +43506,15 @@
           "[Gain|Ganas] el 100% del daño como daño de [Cold|hielo] extra"
         ],
         "visuals": null
+      },
+      "unqiue_guiding_palm_shrine_cold": {
+        "aura_radius_metres": null,
+        "stats": {
+          "has_shrine_effect": 1,
+          "non_skill_base_all_damage_%_to_gain_as_cold": 0
+        },
+        "stat_text": null,
+        "visuals": "unique_shrine_cold"
       }
     },
     "stack_limit": null
@@ -43495,6 +43572,18 @@
           "[Gain|Ganas] el 35% del daño como daño de caos extra"
         ],
         "visuals": null
+      },
+      "unique_closed_fist_shrine_chaos": {
+        "aura_radius_metres": null,
+        "stats": {
+          "non_skill_base_all_damage_%_to_gain_as_chaos": 0,
+          "explode_enemies_for_25%_life_as_chaos_on_kill_chance_%": 100,
+          "has_shrine_effect": 1
+        },
+        "stat_text": [
+          "Los enemigos que matas tienen un 100% de probabilidad de explotar, con lo que infligen una cuarta parte de su vida máxima como daño de caos"
+        ],
+        "visuals": "unique_shrine_chaos"
       }
     },
     "stack_limit": null
@@ -47016,6 +47105,131 @@
       "ignited_do_not_expire",
       "shocked_do_not_expire"
     ],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "lingering_mirage_reservation": {
+    "description": "Dodge Rolling will create a Mirage copy of you which uses skills.",
+    "invisible": false,
+    "name": "Lingering Mirage",
+    "removable": false,
+    "stats": [],
+    "visuals": "lingering_illusion",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "lingering_mirage_cooldown": {
+    "description": "Dodge Rolling will extend this cooldown.",
+    "invisible": false,
+    "name": "Lingering Mirage Cooldown",
+    "removable": false,
+    "stats": [],
+    "visuals": "lingering_illusion",
+    "category": "Debuff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "unique_double_vision": {
+    "description": "",
+    "invisible": false,
+    "name": "Double Vision",
+    "removable": false,
+    "stats": [],
+    "visuals": "double_vision_buff_cold",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "warding_steel_reservation": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "number_of_enemies_in_presence": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "elemental_power": {
+    "description": "You deal more [ElementalDamage|Elemental Damage] and can apply [ElementalAilments|Elemental Ailments] with other damage types. ",
+    "invisible": false,
+    "name": "Pinnacle of Power",
+    "removable": false,
+    "stats": [
+      "elemental_power_elemental_damage_+%_final",
+      "elemental_damage_can_freeze",
+      "elemental_damage_can_ignite",
+      "elemental_damage_can_shock"
+    ],
+    "visuals": "elemental_power",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "requiem_stages": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "requiem_active": {
+    "description": "Your Crossbow shot is replaced by a barrage of tormented souls.",
+    "invisible": false,
+    "name": "Requiem",
+    "removable": false,
+    "stats": [],
+    "visuals": "requiem_active",
+    "category": null,
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "player_chilling_aura": {
+    "description": "",
+    "invisible": true,
+    "name": "",
+    "removable": false,
+    "stats": [],
+    "visuals": "invisible",
+    "category": "Buff",
+    "sources": null,
+    "templates": null,
+    "stack_limit": null
+  },
+  "chilling_presence_aura": {
+    "description": "",
+    "invisible": true,
+    "name": "Chilling Aura",
+    "removable": false,
+    "stats": [],
     "visuals": "invisible",
     "category": null,
     "sources": null,

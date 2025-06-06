@@ -1767,7 +1767,7 @@
         "dex": 0
       },
       "stat_text": {
-        "global_knockback": "擊中時擊退敵人"
+        "global_knockback": "擊退敵人"
       },
       "stats": [
         {
@@ -1971,7 +1971,7 @@
       },
       "stat_text": {
         "active_skill_attack_speed_+%_final": "50% 更多攻擊速度",
-        "global_knockback": "擊中時擊退敵人"
+        "global_knockback": "擊退敵人"
       },
       "stats": [
         {
@@ -17998,7 +17998,7 @@
         "dex": 0
       },
       "stat_text": {
-        "support_concentrated_effect_skill_area_of_effect_+%_final": "被輔助技能有 30% 更少範圍效果"
+        "support_concentrated_effect_skill_area_of_effect_+%_final": "被輔助的技能有 30% 更少範圍效果"
       },
       "stats": [
         {
@@ -33953,6 +33953,155 @@
   },
   {
     "active_skill": {
+      "description": "使用念能力複製你的盾牌並當做投射物，但無法穿透，造成副手增強盾牌防禦傷害。當它碰觸到東西時會粉碎，並對各個方向發射小碎片投射物。有額外投射物的詞綴會增加碎片數量，而不是盾牌。",
+      "display_name": "特拉特斯盾靈投擲",
+      "id": "spectral_shield_throw_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "spectral_shield_throw_damage_+%": "damage_+%",
+        "spectral_shield_throw_projectile_speed_+%": "base_projectile_speed_+%",
+        "spectral_shield_throw_num_of_additional_projectiles": "number_of_additional_projectiles",
+        "spectral_shield_throw_additional_chains": "number_of_chains",
+        "spectral_shield_throw_shard_projectiles_+%_final": "number_of_projectiles_+%_final_from_skill",
+        "shield_crush_and_spectral_shield_throw_off_hand_minimum_added_lightning_damage_per_15_energy_shield_on_shield": "off_hand_minimum_added_lightning_damage_per_15_energy_shield_on_shield",
+        "shield_crush_and_spectral_shield_throw_off_hand_maximum_added_lightning_damage_per_15_energy_shield_on_shield": "off_hand_maximum_added_lightning_damage_per_15_energy_shield_on_shield",
+        "shield_crush_and_spectral_shield_throw_skill_physical_damage_%_to_convert_to_lightning": "skill_physical_damage_%_to_convert_to_lightning",
+        "shield_crush_and_spectral_shield_throw_cannot_add_physical_damage_per_armour_and_evasion_rating": "cannot_add_physical_damage_per_armour_and_evasion_rating"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Projectile",
+        "ProjectilesFromUser",
+        "SingleMainProjectile",
+        "Physical"
+      ],
+      "weapon_restrictions": [
+        "Shield"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "盾靈投擲",
+      "experience_type": "GemProgression28",
+      "id": "Metadata/Items/Gems/SkillGemThrownShieldProjectile",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "特拉特斯盾靈投擲",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "發射 {number_of_additional_projectiles} 個額外投射物",
+          "stats": {
+            "number_of_additional_projectiles": 100
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": null
+      },
+      "stat_text": {
+        "number_of_additional_projectiles": "發射 3 個額外投射物",
+        "thrown_shield_secondary_projectile_damage_+%_final": "碎片投射物造成 50% 更少傷害",
+        "primary_projectile_chains_+": "主要投射物連鎖 +3 次"
+      },
+      "stats": [
+        {
+          "id": "off_hand_local_minimum_added_physical_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "off_hand_local_maximum_added_physical_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "number_of_additional_projectiles",
+          "type": "constant",
+          "value": 3
+        },
+        {
+          "id": "thrown_shield_secondary_projectile_damage_+%_final",
+          "type": "constant",
+          "value": -50
+        },
+        {
+          "id": "primary_projectile_chains_+",
+          "type": "constant",
+          "value": 3
+        },
+        {
+          "id": "off_hand_minimum_added_physical_damage_per_15_shield_armour_and_evasion_rating",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "off_hand_maximum_added_physical_damage_per_15_shield_armour_and_evasion_rating",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "thrown_shield_projectile_fire_random_directions",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": null,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "thrown_shield_secondary_projectile_damage_+%_final",
+      "off_hand_local_minimum_added_physical_damage\noff_hand_local_maximum_added_physical_damage",
+      "off_hand_minimum_added_physical_damage_per_15_shield_armour_and_evasion_rating\noff_hand_maximum_added_physical_damage_per_15_shield_armour_and_evasion_rating",
+      "number_of_additional_projectiles",
+      "primary_projectile_chains_+"
+    ],
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile",
+      "physical"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 3,
+      "classes": [
+        "決鬥者"
+      ],
+      "quest": "剷除左右手"
+    },
+    "discriminator": "alt_y",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
       "description": "投擲你近戰武器的靈體版本。此靈體將會向外飛出並如同迴力鏢一般回到你的身邊，對所有碰觸到的敵人造成傷害。",
       "display_name": "靈體投擲",
       "id": "spectral_throw",
@@ -34162,6 +34311,108 @@
     "secondary_granted_effect": null,
     "quest_reward": null,
     "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "投擲你近戰武器的靈體版本。此靈體將會向外飛出並如同迴力鏢一般回到你的身邊，對所有碰觸到的敵人造成傷害。",
+      "display_name": "[DNT] ThrownWeaponAltY",
+      "id": "spectral_throw_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "spectral_throw_damage_+%": "damage_+%",
+        "spectral_throw_projectile_speed_+%": "base_projectile_speed_+%",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_main_hand": "active_skill_projectile_speed_+%_variation_final",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_off_hand": "active_skill_projectile_speed_+%_variation_final_from_off_hand"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Projectile",
+        "ProjectilesFromUser"
+      ],
+      "weapon_restrictions": [
+        "Claw",
+        "Dagger",
+        "One Hand Sword",
+        "Thrusting One Hand Sword",
+        "One Hand Axe",
+        "One Hand Mace",
+        "Sceptre",
+        "Staff",
+        "Two Hand Sword",
+        "Two Hand Axe",
+        "Two Hand Mace",
+        "Warstaff",
+        "Rune Dagger"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "靈體投擲",
+      "experience_type": "GemProgression1",
+      "id": "Metadata/Items/Gems/SkillGemThrownWeapon",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "特拉特斯靈體投擲",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "穿透的投射物造成 {projectile_damage_+%_final_if_pierced_enemy}% 更多傷害",
+          "stats": {
+            "projectile_damage_+%_final_if_pierced_enemy": 500
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": null
+      },
+      "stat_text": null,
+      "stats": [
+        {
+          "id": "spectral_throw_forget_hit_list_time_override",
+          "type": "constant",
+          "value": 225
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": 10,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [],
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": null,
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {
@@ -36277,6 +36528,142 @@
       "quest": "海妖之歌"
     },
     "discriminator": null,
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "在一個位置設置一個標記。經過短暫的時間後，閃電會打擊該標記附近，並在你施放的任何其他標記處也引發雷擊。",
+      "display_name": "特拉特斯風暴呼喚",
+      "id": "storm_call_alt_x",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "storm_call_damage_+%": "damage_+%",
+        "storm_call_duration_+%": "skill_effect_duration_+%",
+        "storm_call_radius_+%": "base_skill_area_of_effect_+%",
+        "shock_nova_and_storm_call_all_damage_can_ignite": "all_damage_can_ignite",
+        "shock_nova_and_storm_call_ignite_damage_+100%_final_chance": "ignite_damage_+100%_final_chance"
+      },
+      "types": [
+        "Spell",
+        "Damage",
+        "Area",
+        "Duration",
+        "Trappable",
+        "Totemable",
+        "Mineable",
+        "Triggerable",
+        "Multicastable",
+        "Lightning",
+        "Cascadable",
+        "CanRapidFire",
+        "AreaSpell"
+      ],
+      "weapon_restrictions": [],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "風暴呼喚",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemStormCall",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 500,
+    "color": "b",
+    "display_name": "特拉特斯風暴呼喚",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": 600,
+      "damage_effectiveness": 150,
+      "quality_stats": [
+        {
+          "stat": "施放時有 {storm_call_chance_to_strike_on_cast_%}% 機率使閃電擊中印記",
+          "stats": {
+            "storm_call_chance_to_strike_on_cast_%": 750
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": null,
+        "str": 0,
+        "dex": 0
+      },
+      "stat_text": {
+        "base_skill_effect_duration": "+1.50 秒基礎持續時間"
+      },
+      "stats": [
+        {
+          "id": "spell_minimum_base_lightning_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "spell_maximum_base_lightning_damage",
+          "type": "float",
+          "value": null
+        },
+        {
+          "id": "base_skill_effect_duration",
+          "type": "constant",
+          "value": 1500
+        },
+        {
+          "id": "active_skill_base_radius_+",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_skill_show_average_damage_instead_of_dps",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "console_skill_dont_chase",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": null,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "spell_minimum_base_lightning_damage\nspell_maximum_base_lightning_damage",
+      "base_skill_effect_duration"
+    ],
+    "tags": [
+      "intelligence",
+      "grants_active_skill",
+      "spell",
+      "area",
+      "duration",
+      "lightning"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "聖騎士"
+      ],
+      "quest": "海妖之歌"
+    },
+    "discriminator": "alt_x",
     "support_gem": null
   },
   {
@@ -39208,7 +39595,7 @@
         "upheaval_number_of_spikes\nquality_display_glacial_cascade_num_spikes_is_gem": "爆發 4",
         "skill_physical_damage_%_to_convert_to_cold": "100% 物理傷害轉化至冰冷傷害",
         "glacial_cascade_final_spike_damage_+%_final\nquality_display_glacial_cascade_is_gem": "每秒不能擊退傳奇敵人超過 1 次\n最終爆炸造成 200% 更多傷害\n最終爆炸有 100% 範圍效果\n最終爆炸不能擊退",
-        "global_knockback": "擊中時擊退敵人"
+        "global_knockback": "擊退敵人"
       },
       "stats": [
         {
@@ -49681,6 +50068,153 @@
   },
   {
     "active_skill": {
+      "description": "朝著天空發出大量的箭矢，並像降雨般落下。每支箭矢於落地點造成範圍傷害，它們會在指定的地點重疊。",
+      "display_name": "特拉特斯爆裂箭雨",
+      "id": "blast_rain_alt_x",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "blast_rain_damage_+%": "damage_+%",
+        "blast_rain_radius_+%": "base_skill_area_of_effect_+%",
+        "blast_rain_number_of_blasts": "number_of_additional_arrows",
+        "blast_rain_single_additional_projectile": "additional_1_projectile",
+        "blast_rain_artillery_ballista_all_damage_can_poison": "all_damage_can_poison",
+        "blast_rain_artillery_ballista_poison_damage_+100%_final_chance": "poison_damage_+100%_final_chance"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Fire",
+        "MirageArcherCanUse",
+        "Area",
+        "ProjectileSpeed",
+        "ProjectileNumber",
+        "Totemable",
+        "Trappable",
+        "Mineable",
+        "Triggerable",
+        "Rain"
+      ],
+      "weapon_restrictions": [
+        "Bow"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "爆裂箭雨",
+      "experience_type": "GemProgression28",
+      "id": "Metadata/Items/Gems/SkillGemBlastRain",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "特拉特斯爆裂箭雨",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "發射 {base_number_of_arrows} 支箭矢",
+          "stats": {
+            "base_number_of_arrows": 50
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": 0,
+        "dex": null
+      },
+      "stat_text": {
+        "skill_physical_damage_%_to_convert_to_fire": "100% 物理傷害轉化至火焰傷害",
+        "base_number_of_arrows\nquality_display_base_additional_arrows_is_gem": "發射 6 支箭矢"
+      },
+      "stats": [
+        {
+          "id": "skill_physical_damage_%_to_convert_to_fire",
+          "type": "constant",
+          "value": 100
+        },
+        {
+          "id": "base_number_of_arrows",
+          "type": "constant",
+          "value": 6
+        },
+        {
+          "id": "blast_rain_arrow_delay_ms",
+          "type": "constant",
+          "value": 80
+        },
+        {
+          "id": "base_reduce_enemy_fire_resistance_%",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_can_fire_arrows",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "quality_display_base_additional_arrows_is_gem",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": null,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "base_number_of_arrows\nquality_display_base_additional_arrows_is_gem",
+      "skill_physical_damage_%_to_convert_to_fire",
+      "base_reduce_enemy_fire_resistance_%"
+    ],
+    "tags": [
+      "fire",
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "area",
+      "projectile",
+      "bow"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 3,
+      "classes": [
+        "決鬥者",
+        "遊俠"
+      ],
+      "quest": "剷除左右手"
+    },
+    "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
       "description": "發射迅速消逝的三支電流箭矢，它們在釋放後不久就消失。這些箭矢以極大的力量射出，製造出一道閃電爆發，對你前方扇形範圍內的敵人造成傷害。",
       "display_name": "電流箭矢",
       "id": "galvanic_arrow",
@@ -52003,6 +52537,154 @@
       "quest": "海妖之歌"
     },
     "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "召喚一座砲塔，使用穿透箭矢攻擊。限定弓。",
+      "display_name": "[DNT] SiegeBallistaAltY",
+      "id": "siege_ballista_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": true,
+      "stat_conversions": {
+        "siege_ballista_totem_placement_speed_+%": "summon_totem_cast_speed_+%",
+        "siege_ballista_damage_+%": "damage_+%",
+        "siege_ballista_attack_speed_+%": "attack_speed_+%",
+        "siege_and_shrapnel_ballista_attack_speed_+%_per_maximum_totem": "attack_speed_+%_per_maximum_totem",
+        "siege_ballista_totems_from_this_skill_grant_siege_ballista_attack_speed_-%": "totems_from_this_skill_grant_siege_ballista_attack_speed_-%",
+        "number_of_additional_siege_ballistae_per_200_dexterity": "number_of_additional_totems_per_200_dexterity"
+      },
+      "types": [
+        "Attack",
+        "Projectile",
+        "ProjectilesFromUser",
+        "RangedAttack",
+        "Trappable",
+        "Mineable",
+        "SummonsTotem",
+        "AttackInPlaceIsDefault",
+        "TotemsAreBallistae"
+      ],
+      "weapon_restrictions": [
+        "Bow"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": 1.0
+    },
+    "base_item": {
+      "display_name": "攻城炮台",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemSiegeBallista",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "特拉特斯攻城炮台",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "每個最大圖騰增加 {attack_speed_+%_per_maximum_totem}% 攻擊速度",
+          "stats": {
+            "attack_speed_+%_per_maximum_totem": 250
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": 0,
+        "dex": null
+      },
+      "stat_text": {
+        "base_totem_duration": "圖騰持續 8 秒",
+        "is_totem\nis_ranged_attack_totem": "召喚 1 個使用此技能的砲塔圖騰"
+      },
+      "stats": [
+        {
+          "id": "base_totem_range",
+          "type": "constant",
+          "value": 80
+        },
+        {
+          "id": "base_totem_duration",
+          "type": "constant",
+          "value": 8000
+        },
+        {
+          "id": "number_of_additional_totems_allowed",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "arrow_base_number_of_targets_to_pierce",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_skill_is_totemified",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_totem",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_can_fire_arrows",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "is_ranged_attack_totem",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": -50,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "arrow_base_number_of_targets_to_pierce",
+      "number_of_additional_totems_allowed",
+      "base_totem_duration",
+      "is_totem\nis_ranged_attack_totem"
+    ],
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile",
+      "totem",
+      "bow"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "遊俠"
+      ],
+      "quest": "海妖之歌"
+    },
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {
@@ -55694,6 +56376,165 @@
       "quest": "海妖之歌"
     },
     "discriminator": "alt_x",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
+      "description": "重擊地面造成緩慢的顛簸地形，對你在面前區域中的敵人造成傷害。數個被震波擊中的敵人會釋放衝擊波，對他們附近的敵人造成傷害。在次使用技能會停止前次的震波。限定錘、權杖、斧、長杖或空手。",
+      "display_name": "特拉特斯大地震擊",
+      "id": "sunder_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "shockwave_slam_attack_speed_+%": "attack_speed_+%",
+        "shockwave_slam_damage_+%": "damage_+%",
+        "shockwave_slam_radius_+%": "base_skill_area_of_effect_+%",
+        "ground_slam_and_sunder_poison_on_non_poisoned_enemies_damage_+%": "poison_on_non_poisoned_enemies_damage_+%"
+      },
+      "types": [
+        "Attack",
+        "Area",
+        "Multistrikeable",
+        "Melee",
+        "Slam",
+        "Totemable"
+      ],
+      "weapon_restrictions": [
+        "One Hand Mace",
+        "Sceptre",
+        "Staff",
+        "Two Hand Mace",
+        "One Hand Axe",
+        "Two Hand Axe",
+        "Unarmed",
+        "Warstaff"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "大地震擊",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemSunder",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "r",
+    "display_name": "特拉特斯大地震擊",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "每個連續的地區使震波 {sunder_wave_radius_+_per_step/locations_to_metres} 米範圍",
+          "stats": {
+            "sunder_wave_radius_+_per_step": 50
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": 0
+      },
+      "stat_text": {
+        "shockwave_slam_explosion_damage_+%_final": "衝擊波造成 40% 更少傷害",
+        "sunder_wave_radius_+_per_step": "每個連續的地區使震波 +0.2 米範圍",
+        "sunder_wave_max_steps": "震波傷害 5 個地區",
+        "sunder_wave_min_steps": "震波在傷害 2 個區域前不會停止",
+        "sunder_shockwave_limit_per_cascade": "每個地區的震波最多從 5 個敵人造成衝擊波"
+      },
+      "stats": [
+        {
+          "id": "shockwave_slam_explosion_damage_+%_final",
+          "type": "constant",
+          "value": -40
+        },
+        {
+          "id": "base_sunder_wave_delay_ms",
+          "type": "constant",
+          "value": 400
+        },
+        {
+          "id": "sunder_wave_radius_+_per_step",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "sunder_wave_max_steps",
+          "type": "constant",
+          "value": 5
+        },
+        {
+          "id": "sunder_wave_min_steps",
+          "type": "constant",
+          "value": 2
+        },
+        {
+          "id": "sunder_shockwave_limit_per_cascade",
+          "type": "constant",
+          "value": 5
+        },
+        {
+          "id": "active_skill_area_of_effect_+%_final",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "sunder_wave_delay_+%",
+          "type": "additional",
+          "value": null
+        },
+        {
+          "id": "is_area_damage",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "console_skill_dont_chase",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": -25,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "shockwave_slam_explosion_damage_+%_final",
+      "sunder_shockwave_limit_per_cascade",
+      "sunder_wave_max_steps",
+      "sunder_wave_min_steps",
+      "sunder_wave_radius_+_per_step"
+    ],
+    "tags": [
+      "strength",
+      "grants_active_skill",
+      "attack",
+      "area",
+      "slam",
+      "melee"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "野蠻人"
+      ],
+      "quest": "海妖之歌"
+    },
+    "discriminator": "alt_y",
     "support_gem": null
   },
   {
@@ -65323,7 +66164,7 @@
       "damage_effectiveness": -40,
       "quality_stats": [
         {
-          "stat": "層數上限 {frost_fury_max_number_of_stages}",
+          "stat": "疊層上限 {frost_fury_max_number_of_stages}",
           "stats": {
             "frost_fury_max_number_of_stages": 100
           }
@@ -65335,7 +66176,7 @@
         "dex": 0
       },
       "stat_text": {
-        "frost_fury_max_number_of_stages\nquality_display_winter_orb_is_gem": "層數上限 10",
+        "frost_fury_max_number_of_stages\nquality_display_winter_orb_is_gem": "疊層上限 10",
         "frost_fury_base_fire_interval_ms": "每 1.6 秒發射一波投射物",
         "frost_fury_duration_+%_per_stage": "每層增加 25% 持續時間",
         "frost_fury_fire_speed_+%_per_stage": "每層增加 15% 投射物發射頻率",
@@ -70942,7 +71783,7 @@
       "stat_text": {
         "berserk_minimum_rage": "至少需要 5 層盛怒來開始狂戰之魂",
         "berserk_base_rage_loss_per_second": "每秒失去 5 層盛怒",
-        "berserk_rage_loss_+%_per_second": "每秒 20% 更多盛怒損失率",
+        "berserk_rage_loss_+%_per_second": "每秒 20% 更多盛怒失去率",
         "display_this_skill_cooldown_does_not_recover_during_buff": "此技能的冷卻時間在它的效果持續時間內不會恢復"
       },
       "stats": [
@@ -85139,7 +85980,7 @@
       },
       "stat_text": {
         "frost_globe_absorb_damage_%_enemy_in_bubble": "在區域內的敵人對在區域內的你和友方所造成的 20% 擊中傷害，在扣除你的生命或能量護盾前，先由寒霜護盾寒霜護盾的生命扣除",
-        "frost_globe_max_stages": "最大 4 層",
+        "frost_globe_max_stages": "最多 4 層",
         "frost_globe_absorb_damage_%_enemy_outside_bubble": "在區域外的敵人對在區域內的你和友方所造成的 60% 擊中傷害，在扣除你的生命或能量護盾前，先由寒霜護盾的生命扣除",
         "frost_globe_stage_gain_interval_ms": "你失去能量護盾時，每 0.3 秒獲得 1 層",
         "base_skill_effect_duration": "+10.00 秒基礎持續時間"
@@ -92277,7 +93118,7 @@
       },
       "stat_text": {
         "base_skill_effect_duration": "+3.00 秒基礎持續時間",
-        "active_skill_minion_damage_+%_final": "召喚物有 25% 更多傷害"
+        "active_skill_minion_damage_+%_final": "召喚物造成 25% 更多傷害"
       },
       "stats": [
         {
@@ -102184,6 +103025,137 @@
   },
   {
     "active_skill": {
+      "description": "投擲你的近戰武器的靈體複製體。它以大螺旋型式飛行時會旋轉，對其路徑上的敵人造成傷害，並在與牆壁碰撞時彈射。",
+      "display_name": "[DNT] SpectralHelixAltY",
+      "id": "spectral_helix_alt_y",
+      "is_manually_casted": true,
+      "is_skill_totem": false,
+      "stat_conversions": {
+        "spectral_helix_damage_+%": "damage_+%",
+        "spectral_helix_projectile_speed_+%": "base_projectile_speed_+%",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_main_hand": "active_skill_projectile_speed_+%_variation_final",
+        "spectral_throw_and_spectral_helix_active_skill_projectile_speed_+%_variation_final_from_off_hand": "active_skill_projectile_speed_+%_variation_final_from_off_hand"
+      },
+      "types": [
+        "Attack",
+        "RangedAttack",
+        "Projectile",
+        "ProjectilesFromUser"
+      ],
+      "weapon_restrictions": [
+        "Claw",
+        "Dagger",
+        "One Hand Sword",
+        "Thrusting One Hand Sword",
+        "One Hand Axe",
+        "One Hand Mace",
+        "Sceptre",
+        "Staff",
+        "Two Hand Sword",
+        "Two Hand Axe",
+        "Two Hand Mace",
+        "Warstaff",
+        "Rune Dagger"
+      ],
+      "minion_types": null,
+      "skill_totem_life_multiplier": null
+    },
+    "base_item": {
+      "display_name": "靈體旋武",
+      "experience_type": "GemProgression12",
+      "id": "Metadata/Items/Gems/SkillGemSpectralHelix",
+      "max_level": 20,
+      "release_state": "released"
+    },
+    "cast_time": 1000,
+    "color": "g",
+    "display_name": "特拉特斯靈體旋武",
+    "is_support": false,
+    "stat_translation_file": "stat_translations/skill",
+    "static": {
+      "crit_chance": null,
+      "damage_effectiveness": null,
+      "quality_stats": [
+        {
+          "stat": "穿透的投射物造成 {projectile_damage_+%_final_if_pierced_enemy}% 更多傷害",
+          "stats": {
+            "projectile_damage_+%_final_if_pierced_enemy": 500
+          }
+        }
+      ],
+      "stat_requirements": {
+        "int": 0,
+        "str": null,
+        "dex": null
+      },
+      "stat_text": {
+        "spectral_spiral_weapon_base_number_of_bounces": "最多彈射 3 次\n投射物數量詞綴改為套用至彈射次數",
+        "spectral_helix_rotations_%": "螺旋通過 4.25 旋轉",
+        "projectiles_nova\nskill_display_single_base_projectile": ""
+      },
+      "stats": [
+        {
+          "id": "spectral_spiral_weapon_base_number_of_bounces",
+          "type": "constant",
+          "value": 3
+        },
+        {
+          "id": "spectral_helix_rotations_%",
+          "type": "constant",
+          "value": 425
+        },
+        {
+          "id": "projectiles_nova",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "base_is_projectile",
+          "type": "implicit",
+          "value": 1
+        },
+        {
+          "id": "skill_display_single_base_projectile",
+          "type": "implicit",
+          "value": 1
+        }
+      ],
+      "vaal": null,
+      "costs": null,
+      "attack_speed_multiplier": 10,
+      "cooldown": null,
+      "stored_uses": null,
+      "cost_multiplier": null,
+      "cooldown_bypass_type": null,
+      "required_level": null,
+      "experience": null,
+      "reservations": null,
+      "damage_multiplier": null
+    },
+    "tooltip_order": [
+      "projectiles_nova\nskill_display_single_base_projectile",
+      "spectral_spiral_weapon_base_number_of_bounces",
+      "spectral_helix_rotations_%"
+    ],
+    "tags": [
+      "dexterity",
+      "grants_active_skill",
+      "attack",
+      "projectile"
+    ],
+    "secondary_granted_effect": null,
+    "quest_reward": {
+      "act": 1,
+      "classes": [
+        "貴族"
+      ],
+      "quest": "海妖之歌"
+    },
+    "discriminator": "alt_y",
+    "support_gem": null
+  },
+  {
+    "active_skill": {
       "description": "使用戰吼嘲諷周圍所有敵人，強迫他們攻擊自己，並竭盡接下來的攻擊。使用者和附近友方會獲得一個增加暴擊率的增益效果。",
       "display_name": "戰法戰吼",
       "id": "battlemages_cry",
@@ -104311,7 +105283,7 @@
       },
       "stat_text": {
         "base_skill_effect_duration": "+10.00 秒基礎持續時間",
-        "active_skill_minion_damage_+%_final": "召喚物有 30% 更少傷害",
+        "active_skill_minion_damage_+%_final": "召喚物造成 30% 更少傷害",
         "active_skill_minion_life_+%_final": "召喚物有 30% 更多最大生命"
       },
       "stats": [
@@ -104439,7 +105411,7 @@
       "stat_text": {
         "base_skill_effect_duration": "+4.00 秒基礎持續時間",
         "base_number_of_raging_spirits_allowed": "召喚憤怒狂靈上限 10",
-        "active_skill_minion_damage_+%_final": "召喚物有 20% 更少傷害",
+        "active_skill_minion_damage_+%_final": "召喚物造成 20% 更少傷害",
         "minions_cannot_taunt_enemies": "召喚物不能嘲諷敵人"
       },
       "stats": [
@@ -105600,7 +106572,7 @@
         "upheaval_number_of_spikes": "爆發 +4",
         "skill_physical_damage_%_to_convert_to_cold": "100% 物理傷害轉化至冰冷傷害",
         "glacial_cascade_final_spike_damage_+%_final\nquality_display_glacial_cascade_is_gem": "每秒不能擊退傳奇敵人超過 1 次\n最終爆炸造成 200% 更多傷害\n最終爆炸有 100% 範圍效果\n最終爆炸不能擊退",
-        "global_knockback": "擊中時擊退敵人"
+        "global_knockback": "擊退敵人"
       },
       "stats": [
         {
@@ -107193,7 +108165,7 @@
         "dex": 0
       },
       "stat_text": {
-        "support_concentrated_effect_skill_area_of_effect_+%_final": "被輔助技能有 30% 更少範圍效果"
+        "support_concentrated_effect_skill_area_of_effect_+%_final": "被輔助的技能有 30% 更少範圍效果"
       },
       "stats": [
         {
@@ -107801,7 +108773,7 @@
         "dex": 0
       },
       "stat_text": {
-        "global_knockback": "擊中時擊退敵人"
+        "global_knockback": "擊退敵人"
       },
       "stats": [
         {
@@ -108724,7 +109696,7 @@
       "stat_text": {
         "base_stun_threshold_reduction_+%": "減少 25% 敵人暈眩門檻",
         "chance_to_deal_double_damage_%": "20% 機率造成 2 倍傷害",
-        "global_knockback": "擊中時擊退敵人"
+        "global_knockback": "擊退敵人"
       },
       "stats": [
         {
@@ -111451,7 +112423,7 @@
       },
       "stat_text": {
         "base_number_of_reapers_allowed": "最多召喚 3 個奪魂鐮",
-        "active_skill_minion_damage_+%_final": "召喚物有 30% 更少傷害"
+        "active_skill_minion_damage_+%_final": "召喚物造成 30% 更少傷害"
       },
       "stats": [
         {
