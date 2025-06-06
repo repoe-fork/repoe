@@ -22,23 +22,6 @@ jobs:
         with:
           repository: lvlvllvlvllvlvl/PyPoE
           path: PyPoE
-      - name: checkout pob
-        uses: actions/checkout@v4.2.2
-        with:
-          repository: PathOfBuildingCommunity/PathOfBuilding
-          path: PathOfBuilding
-      - name: checkout pob2
-        uses: actions/checkout@v4.2.2
-        with:
-          repository: PathOfBuildingCommunity/PathOfBuilding-PoE2
-          path: PathOfBuilding2
-      - uses: leafo/gh-actions-lua@v11.0.0
-        with:
-          luaVersion: luajit-openresty
-      - uses: leafo/gh-actions-luarocks@v5
-      - name: install a lua dependencies
-        run: |
-          luarocks install dkjson
       - name: Install poetry
         run: pipx install 'poetry~=1.8'
       - name: setup python
@@ -47,15 +30,9 @@ jobs:
           python-version: "3.11"
           cache: poetry
       - name: clean data dir
-        run: find RePoE/RePoE/data/ '(' -name '*.json' -o -name '*.html' -o -name '*.txt' ')' -delete -print | wc -l
+        run: find RePoE/RePoE/data/ '(' -name '*.json' -not -path '*/pob/*' -o -name '*.html' -o -name '*.txt' ')' -delete -print | wc -l
       - name: copy text files
         run: cp RePoE/RePoE/*.txt RePoE/RePoE/data/
-      - name: lua export
-        run: |
-          find PathOfBuilding/src/Data/ -type d | sed 's|PathOfBuilding/src/Data|RePoE/RePoE/data/pob|g' | while read DIR; do mkdir -p $DIR; done
-          find PathOfBuilding/src/Data/ -name '*.lua' -exec lua RePoE/lua/Generate.lua '{}' RePoE/RePoE/data/pob/ \;
-          find PathOfBuilding2/src/Data/ -type d | sed 's|PathOfBuilding2/src/Data|RePoE/RePoE/data/poe2/pob|g' | while read DIR; do mkdir -p $DIR; done
-          find PathOfBuilding2/src/Data/ -name '*.lua' -exec lua RePoE/lua/Generate.lua '{}' RePoE/RePoE/data/poe2/pob/ \;
       - name: install repoe
         run: |
           poetry install

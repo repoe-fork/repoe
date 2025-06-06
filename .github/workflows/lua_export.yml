@@ -1,0 +1,51 @@
+name: Run data export
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    outputs:
+      changes_detected: ${{ steps.autocommit.outputs.changes_detected }}
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          path: RePoE
+      - name: checkout pypoe
+        uses: actions/checkout@v4.2.2
+        with:
+          repository: lvlvllvlvllvlvl/PyPoE
+          path: PyPoE
+      - name: checkout pob
+        uses: actions/checkout@v4.2.2
+        with:
+          repository: PathOfBuildingCommunity/PathOfBuilding
+          path: PathOfBuilding
+      - name: checkout pob2
+        uses: actions/checkout@v4.2.2
+        with:
+          repository: PathOfBuildingCommunity/PathOfBuilding-PoE2
+          path: PathOfBuilding2
+      - uses: leafo/gh-actions-lua@v11.0.0
+        with:
+          luaVersion: luajit-openresty
+      - uses: leafo/gh-actions-luarocks@v5
+      - name: install a lua dependencies
+        run: |
+          luarocks install dkjson
+      - name: lua export
+        run: |
+          find PathOfBuilding/src/Data/ -type d | sed 's|PathOfBuilding/src/Data|RePoE/RePoE/data/pob|g' | while read DIR; do mkdir -p $DIR; done
+          find PathOfBuilding/src/Data/ -name '*.lua' -exec lua RePoE/lua/Generate.lua '{}' RePoE/RePoE/data/pob/ \;
+          find PathOfBuilding2/src/Data/ -type d | sed 's|PathOfBuilding2/src/Data|RePoE/RePoE/data/poe2/pob|g' | while read DIR; do mkdir -p $DIR; done
+          find PathOfBuilding2/src/Data/ -name '*.lua' -exec lua RePoE/lua/Generate.lua '{}' RePoE/RePoE/data/poe2/pob/ \;
+      - name: commit changes
+        id: autocommit
+        uses: stefanzweifel/git-auto-commit-action@v5.2.0
+        with:
+          repository: RePoE
+          commit_message: "[skip ci] Automated export"
