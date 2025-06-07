@@ -43,6 +43,7 @@ def main():
     )
     parser.add_argument("-2", "--poe2", action=argparse.BooleanOptionalAction)
     parser.add_argument("-f", "--file", help="path to your Content.ggpk file")
+    parser.add_argument("-o", "--outdir", help="output directory")
     parser.add_argument("-l", "--language", default="English", choices=list(LANGS.keys()) + ["all"])
     args = parser.parse_args()
 
@@ -58,7 +59,7 @@ def main():
 
     for language in LANGS.keys() if args.language == "all" else [args.language]:
 
-        data_path = __POE2_DATA_PATH__ if args.poe2 else __DATA_PATH__
+        data_path = args.outdir or (__POE2_DATA_PATH__ if args.poe2 else __DATA_PATH__)
         data_path = data_path if language == "English" else os.path.join(data_path, language, "")
         rr = create_relational_reader(file_system, language, args.poe2)
         caches = {}
