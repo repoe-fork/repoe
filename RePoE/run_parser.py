@@ -60,7 +60,10 @@ def main():
     for language in LANGS.keys() if args.language == "all" else [args.language]:
 
         data_path = args.outdir or (__POE2_DATA_PATH__ if args.poe2 else __DATA_PATH__)
-        data_path = data_path if language == "English" else os.path.join(data_path, language, "")
+        if language == "English" or (args.outdir and args.language != "all"):
+            data_path = os.path.join(data_path, "")
+        else:
+            data_path = os.path.join(data_path, language, "")
         rr = create_relational_reader(file_system, language, args.poe2)
         caches = {}
 
