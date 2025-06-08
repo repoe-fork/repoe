@@ -24,11 +24,7 @@ def _extract_static(obj):
 
         static = static or {}
         static["tooltip_order"] = [
-            stat for stat, _ in
-            sorted(
-                list((stat_order | static.get("stat_order", {})).items()),
-                key=lambda kv: kv[1]
-            )
+            stat for stat, _ in sorted(list((stat_order | static.get("stat_order", {})).items()), key=lambda kv: kv[1])
         ]
         if len(static["tooltip_order"]) == 0:
             del static["tooltip_order"]
@@ -79,7 +75,7 @@ def _handle_dict(representative: Dict[str, Any], per_level: List[Dict[str, Any]]
 
 
 def _handle_list(
-        representative: List[Dict[str, Any]], per_level: List[List[Optional[Dict[str, Any]]]]
+    representative: List[Dict[str, Any]], per_level: List[List[Optional[Dict[str, Any]]]]
 ) -> Tuple[Optional[List[Optional[Dict[str, Any]]]], bool]:
     # edge cases (all None, any None, mismatching lengths, all empty)
     all_none = True
@@ -126,7 +122,7 @@ def _handle_list(
 
 
 def _handle_primitives(
-        representative: Union[int, str], per_level: Union[List[int], List[str]]
+    representative: Union[int, str], per_level: Union[List[int], List[str]]
 ) -> Tuple[Union[None, int, str], bool]:
     for pl in per_level:
         if pl != representative:
@@ -138,11 +134,11 @@ class GemConverter:
     regex_number = re.compile(r"-?\d+(\.\d+)?")
 
     def __init__(
-            self,
-            file_system: FileSystem,
-            relational_reader: RelationalReader,
-            translation_file_cache: TranslationFileCache,
-            language: str,
+        self,
+        file_system: FileSystem,
+        relational_reader: RelationalReader,
+        translation_file_cache: TranslationFileCache,
+        language: str,
     ) -> None:
         self.relational_reader = relational_reader
         self.translation_file_cache = translation_file_cache
@@ -184,7 +180,7 @@ class GemConverter:
         self._skill_totem_life_multipliers = {}
         for row in self.relational_reader["SkillTotemVariations.dat64"]:
             self._skill_totem_life_multipliers[row["SkillTotemsKey"]] = (
-                    row["MonsterVarietiesKey"]["LifeMultiplier"] / 100
+                row["MonsterVarietiesKey"]["LifeMultiplier"] / 100
             )
 
     def _convert_active_skill(self, active_skill: DatRecord) -> Dict[str, Any]:
@@ -206,8 +202,7 @@ class GemConverter:
         if is_skill_totem:
             r["skill_totem_life_multiplier"] = self._skill_totem_life_multipliers[skill_totem_id]
         if active_skill["MinionActiveSkillTypes"]:
-            r["minion_types"] = self._select_active_skill_types(
-                active_skill["MinionActiveSkillTypes"])
+            r["minion_types"] = self._select_active_skill_types(active_skill["MinionActiveSkillTypes"])
         return r
 
     @classmethod
@@ -215,13 +210,10 @@ class GemConverter:
         return {
             "letter": granted_effect["SupportGemLetter"],
             "supports_gems_only": granted_effect["SupportsGemsOnly"],
-            "allowed_types": cls._select_active_skill_types(
-                granted_effect["AllowedActiveSkillTypes"]),
-            "excluded_types": cls._select_active_skill_types(
-                granted_effect["ExcludedActiveSkillTypes"]),
+            "allowed_types": cls._select_active_skill_types(granted_effect["AllowedActiveSkillTypes"]),
+            "excluded_types": cls._select_active_skill_types(granted_effect["ExcludedActiveSkillTypes"]),
             "added_types": cls._select_active_skill_types(granted_effect["AddedActiveSkillTypes"]),
-            "added_minion_types": cls._select_active_skill_types(
-                granted_effect["AddedMinionActiveSkillTypes"]),
+            "added_minion_types": cls._select_active_skill_types(granted_effect["AddedMinionActiveSkillTypes"]),
         }
 
     @staticmethod
@@ -241,10 +233,10 @@ class GemConverter:
         return "".join(s)
 
     def _convert_gepl(
-            self,
-            granted_effect: DatRecord,
-            gepl: DatRecord,
-            is_support: bool,
+        self,
+        granted_effect: DatRecord,
+        gepl: DatRecord,
+        is_support: bool,
     ) -> Dict[str, Any]:
         r = {}
         if gepl["Cooldown"] > 0:
@@ -270,13 +262,13 @@ class GemConverter:
         return r
 
     def _convert_gess(
-            self,
-            granted_effect: DatRecord,
-            gess: DatRecord,
-            gesspl: DatRecord,
-            translation_file: TranslationFile,
-            primary_gess: DatRecord,
-            primary_gesspl: DatRecord
+        self,
+        granted_effect: DatRecord,
+        gess: DatRecord,
+        gesspl: DatRecord,
+        translation_file: TranslationFile,
+        primary_gess: DatRecord,
+        primary_gesspl: DatRecord,
     ) -> Dict[str, Any]:
         r = {}
 
@@ -326,9 +318,10 @@ class GemConverter:
 
         r["stats"] = stats
 
+        stat_text = {}
+        value_map = {}
+        stat_order = {}
         try:
-            stat_text = {}
-            value_map = {}
             for v in stats:
                 if v["value"]:
                     value_map[v["id"]] = v["value"]
@@ -337,7 +330,6 @@ class GemConverter:
                 list(value_map.keys()), value_map, full_result=True, lang=self.language
             )
 
-            stat_order = {}
             for i, stats in enumerate(trans.found_ids):
                 stats = [stat for stat in stats if value_map.get(stat, None)]
                 key = "\n".join(stats)
@@ -363,17 +355,19 @@ class GemConverter:
                     continue
                 q_stat = {"stats": stats}
                 tag_count = -1
-                for value in sorted(
-                        set([min(1000, abs(v)) for v in stats.values() if v] + [25])):
+                for value in sorted(set([min(1000, abs(v)) for v in stats.values() if v] + [25])):
                     trans = translation_file.get_translation(
-                        list(stats.keys()), {k: v / value for k, v in stats.items()},
-                        full_result=True, lang=self.language
+                        list(stats.keys()),
+                        {k: v / value for k, v in stats.items()},
+                        full_result=True,
+                        lang=self.language,
                     )
                     tags = sum(len(i.tags) for i in trans.string_instances)
                     if sum(len(i.tags) for i in trans.string_instances) > tag_count:
                         tag_count = tags
-                        q_stat["stat"] = "\n".join(
-                            self.get_translation(string) for string in trans.string_instances)
+                        q_stat["stat"] = "\n".join(self.get_translation(string) for string in trans.string_instances)
+                    for i, t in enumerate(trans.found_ids):
+                        stat_order["\n".join(t)] = trans.tf_indices[i]
                 q_stats.append(q_stat)
             r["quality_stats"] = q_stats
 
@@ -386,8 +380,8 @@ class GemConverter:
         return None
 
     def convert_skill(
-            self,
-            granted_effect: DatRecord,
+        self,
+        granted_effect: DatRecord,
     ) -> Dict[str, Any]:
         is_support = granted_effect["IsSupport"]
         obj = {"is_support": is_support}
@@ -431,26 +425,23 @@ class GemConverter:
             gepls_dict = {}
             for gesspl, primary_gesspl in zip(self.gesspls[gess["Id"]], self.gesspls[primary_gess["Id"]]):
                 gepls_dict[gesspl["GemLevel"]] = self._convert_gess(
-                    granted_effect,
-                    gess,
-                    gesspl,
-                    translation_file,
-                    primary_gess,
-                    primary_gesspl
+                    granted_effect, gess, gesspl, translation_file, primary_gess, primary_gesspl
                 )
-            obj["stat_sets"].append({
-                "id": gess["Id"],
-                "per_level": gepls_dict,
-                "translation_file": game_file_name,
-                "label": gess["Label"],
-            })
+            obj["stat_sets"].append(
+                {
+                    "id": gess["Id"],
+                    "per_level": gepls_dict,
+                    "translation_file": game_file_name,
+                    "label": gess["Label"],
+                }
+            )
 
         return obj
 
     @staticmethod
     def _get_possible_translation_files(
-            active_skill: Optional[str],
-            stat_set: int | None,
+        active_skill: Optional[str],
+        stat_set: int | None,
     ) -> List[str]:
         if active_skill is None:
             return ["gem_stat_descriptions.txt"]
@@ -458,7 +449,7 @@ class GemConverter:
             return [
                 f"specific_skill_stat_descriptions/{active_skill}/statset_{stat_set}.csd",
                 f"specific_skill_stat_descriptions/{active_skill}.csd",
-                "skill_stat_descriptions.txt"
+                "skill_stat_descriptions.txt",
             ]
 
 

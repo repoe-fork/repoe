@@ -270,9 +270,9 @@ class GemConverter:
             stats.append({"id": k["Id"], "value": 1, "type": "flag"})
         r["stats"] = stats
 
+        stat_text = {}
+        stat_order = {}
         try:
-            stat_text = {}
-            stat_order = {}
             value_map = {v["id"]: v["value"] for v in stats if v["value"]}
             trans = self.translation_file.get_translation(
                 value_map.keys(), value_map, full_result=True, lang=self.language
@@ -310,6 +310,8 @@ class GemConverter:
                         if sum(len(i.tags) for i in trans.string_instances) > tag_count:
                             tag_count = tags
                             stat_text = "\n".join(self.get_translation(string) for string in trans.string_instances)
+                        for i, t in enumerate(trans.found_ids):
+                            stat_order["\n".join(t)] = trans.tf_indices[i]
                     q_stats.append(
                         {
                             "stats": stats,
