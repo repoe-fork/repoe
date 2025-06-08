@@ -48,43 +48,6 @@ fields = [
 ]
 
 
-def get_wiki_data():
-    offset = 0
-    # data will be truncated if it's too large, reducing page size can resolve unterminated json errors
-    page_size = 200
-    data = []
-    errors = 0
-    while True:
-        try:
-            url = (
-                "https://www.poewiki.net/w/api.php?action=cargoquery&tables=items&where=rarity=%22Unique%22"
-                f"&fields={','.join( fields)}&limit={page_size}&offset={offset}&format=json"
-            )
-            json = requests.get(url).json()
-        except Exception as e:
-            print("error fetching", url)
-            if errors > 10:
-                raise e
-            sleep(0.01 * 2**errors)
-            errors += 1
-        if "cargoquery" not in json:
-            print(offset, json)
-            return data
-        page = json["cargoquery"]
-        data.extend(page)
-        offset += page_size
-        if len(page) < page_size:
-            result = {}
-            for entry in data:
-                item = entry["title"]
-                name = item["name"]
-                if name not in result:
-                    result[name] = [item]
-                else:
-                    result[name].append(item)
-            return result
-
-
 class uniques(Parser_Module):
     def write(self) -> None:
         root = {}
@@ -108,14 +71,31 @@ class uniques(Parser_Module):
 </head>
 <body>"""
         )
-        for item in self.relational_reader["UniqueStashLayout.dat64"]:
+        all_items = self.relational_reader["UniqueStashLayout.dat64"]
+        for item in all_items:
             name = item["WordsKey"]["Text2"]
+
+            # Some alt arts don't provide override-width/-height
+            # https://github.com/repoe-fork/repoe/issues/30
+            override = (
+                item
+                if item["OverrideWidth"] and item["OverrideHeight"]
+                else next(
+                    (
+                        i
+                        for i in all_items
+                        if i["WordsKey"] == item["WordsKey"] and i["OverrideWidth"] and i["OverrideHeight"]
+                    ),
+                    None,
+                )
+            )
+
             root[str(item.rowid)] = {
                 "id": item["WordsKey"]["Text"],
                 "name": name,
                 "item_class": item["UniqueStashTypesKey"]["Id"],
-                "inventory_width": item[5] or item["UniqueStashTypesKey"]["Width"],
-                "inventory_height": item[6] or item["UniqueStashTypesKey"]["Height"],
+                "inventory_width": override["OverrideWidth"] if override else item["UniqueStashTypesKey"]["Width"],
+                "inventory_height": override["OverrideHeight"] if override else item["UniqueStashTypesKey"]["Height"],
                 "is_alternate_art": item["IsAlternateArt"],
                 "renamed_version": item["RenamedVersion"]
                 and {
