@@ -186,10 +186,14 @@ class GemConverter:
         return r
 
     @classmethod
-    def _convert_support_gem_specific(cls, granted_effect: DatRecord) -> Dict[str, Any]:
+    def _convert_support_gem_specific(
+        cls, granted_effect: DatRecord, gem_effect: Optional[DatRecord] = None
+    ) -> Dict[str, Any]:
         return {
             "letter": granted_effect["SupportGemLetter"],
             "supports_gems_only": granted_effect["SupportsGemsOnly"],
+            "support_text": gem_effect["SupportText"] if gem_effect else None,
+            "support_name": gem_effect["SupportName"] if gem_effect else None,
             "allowed_types": cls._select_active_skill_types(granted_effect["AllowedActiveSkillTypes"]),
             "excluded_types": cls._select_active_skill_types(granted_effect["ExcludedActiveSkillTypes"]),
             "added_types": cls._select_active_skill_types(granted_effect["AddedActiveSkillTypes"]),
@@ -384,7 +388,7 @@ class GemConverter:
         obj["color"] = ["r", "g", "b", "w"][granted_effect["Attribute"] - 1]
 
         if is_support:
-            obj["support_gem"] = self._convert_support_gem_specific(granted_effect)
+            obj["support_gem"] = self._convert_support_gem_specific(granted_effect, gem_effect)
         else:
             obj["cast_time"] = granted_effect["CastTime"]
             obj["active_skill"] = self._convert_active_skill(granted_effect["ActiveSkill"])
@@ -440,11 +444,8 @@ class GemConverter:
 
             static = static or {}
             obj["tooltip_order"] = [
-                stat for stat, _ in
-                sorted(
-                    list((stat_order | static.get("stat_order", {})).items()),
-                    key=lambda kv: kv[1]
-                )
+                stat
+                for stat, _ in sorted(list((stat_order | static.get("stat_order", {})).items()), key=lambda kv: kv[1])
             ]
             if "stat_order" in static:
                 del static["stat_order"]
