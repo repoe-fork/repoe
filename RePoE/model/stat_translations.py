@@ -38,9 +38,6 @@ class IndexHandler(RootModel[str]):
 
 
 class Type(RootModel[str]):
-    model_config = ConfigDict(
-        extra="forbid",
-    )
     root: str
 
 

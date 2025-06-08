@@ -18,9 +18,6 @@ class SynthModGroups(RootModel[Optional[Dict[str, List[str]]]]):
 
 
 class EssenceMods(RootModel[Optional[Dict[str, str]]]):
-    model_config = ConfigDict(
-        extra="forbid",
-    )
     root: Optional[Dict[str, str]] = None
 
 

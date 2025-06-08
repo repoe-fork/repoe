@@ -26,7 +26,7 @@ class IntHandler(BaseModel):
     type: Type
 
 
-class Type2(Enum):
+class Type1(Enum):
     relational = "relational"
 
 
@@ -38,7 +38,7 @@ class Predicate(BaseModel):
     value: Optional[int] = None
 
 
-class Type3(Enum):
+class Type2(Enum):
     string = "string"
 
 
@@ -46,10 +46,10 @@ class CanonicalLine(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Type3
+    type: Type2
 
 
-class Type4(Enum):
+class Type3(Enum):
     noop = "noop"
 
 
@@ -57,7 +57,7 @@ class Noop(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Type4
+    type: Type3
 
 
 class RelationalData(BaseModel):
@@ -66,7 +66,7 @@ class RelationalData(BaseModel):
     )
     dat_file: str
     index_column: Optional[str] = None
-    type: Type2
+    type: Type1
     value_column: str
     values: Dict[str, str] = Field(..., description="Map from integer stat values to text associated with that value")
     predicate: Optional[Predicate] = None

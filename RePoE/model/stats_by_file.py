@@ -22,7 +22,7 @@ class Literal(BaseModel):
     value: str
 
 
-class Type6(Enum):
+class Type1(Enum):
     number = "number"
 
 
@@ -30,13 +30,13 @@ class Number(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Type6
+    type: Type1
     index: int
     stat: str
     stat_value_handlers: Optional[List[str]] = None
 
 
-class Type7(Enum):
+class Type2(Enum):
     enum = "enum"
 
 
@@ -44,7 +44,7 @@ class EnumModel(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Type7
+    type: Type2
     index: int
     stat: str
     stat_value_handler: str = Field(
@@ -52,7 +52,7 @@ class EnumModel(BaseModel):
     )
 
 
-class Type8(Enum):
+class Type3(Enum):
     unknown = "unknown"
 
 
@@ -60,13 +60,13 @@ class Unknown(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Type8
+    type: Type3
     index: int
     stat: str
     stat_value_handler: Optional[str] = None
 
 
-class Type9(Enum):
+class Type4(Enum):
     nested = "nested"
 
 
@@ -74,7 +74,7 @@ class NestedStat(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Type9
+    type: Type4
     added_stat: str
 
 

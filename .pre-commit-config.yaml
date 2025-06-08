@@ -5,16 +5,10 @@ repos:
     rev: 25.1.0
     hooks:
       - id: black
-  - repo: https://github.com/koxudaxi/datamodel-code-generator
-    rev: 0.29.0
+  - repo: local
     hooks:
       - id: datamodel-code-generator
+        name: update models
         files: ^RePoE/schema
-        args:
-          - -input RePoE/schema
-          - --input-file-type=jsonschema
-          - --output=RePoE/model/
-          - --output-model-type=pydantic_v2.BaseModel
-          - --disable-timestamp
-          - --use-double-quotes
-          - --enable-version-header
+        language: system
+        entry: poetry run ./datamodel-codegen.sh
