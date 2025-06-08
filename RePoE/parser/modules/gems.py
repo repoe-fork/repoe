@@ -273,7 +273,10 @@ class GemConverter:
         stat_text = {}
         stat_order = {}
         try:
-            value_map = {v["id"]: v["value"] for v in stats if v["value"]}
+            value_map = {}
+            for v in stats:
+                if v["value"]:
+                    value_map[v["id"]] = value_map.get(v["id"], 0) + v["value"]
             trans = self.translation_file.get_translation(
                 value_map.keys(), value_map, full_result=True, lang=self.language
             )
