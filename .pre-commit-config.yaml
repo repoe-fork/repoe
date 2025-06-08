@@ -1,5 +1,19 @@
+default_language_version:
+  python: python3
 repos:
--   repo: https://github.com/ambv/black
-    rev: 22.12.0
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 25.1.0
     hooks:
-    - id: black
+      - id: black
+  - repo: https://github.com/koxudaxi/datamodel-code-generator
+    hooks:
+      - id: datamodel-code-generator
+        files: ^RePoE/schema
+        args:
+          - -input RePoE/schema
+          - --input-file-type=jsonschema
+          - --output=RePoE/model/
+          - --output-model-type=pydantic_v2.BaseModel
+          - --disable-timestamp
+          - --use-double-quotes
+          - --enable-version-header
