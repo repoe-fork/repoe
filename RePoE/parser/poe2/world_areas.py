@@ -7,18 +7,36 @@ from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, write_any_json, write_json
 
 AREA_KEYS = [
-    "id", "name", "act", "is_town", "has_waypoint", "connections", "area_level", "loading_screens",
-    "parent_town", "bosses", "area_mods", "tags", "environment", "terrain_plugins",
+    "id",
+    "name",
+    "act",
+    "is_town",
+    "has_waypoint",
+    "connections",
+    "area_level",
+    "loading_screens",
+    "parent_town",
+    "bosses",
+    "area_mods",
+    "tags",
+    "environment",
+    "terrain_plugins",
 ]
 
 PACK_KEYS = [
-    "id", "min_count", "max_count", "boss_monster_spawn_chance", "boss_count", "boss_monsters",
-    "formation", "tags"
+    "id",
+    "min_count",
+    "max_count",
+    "boss_monster_spawn_chance",
+    "boss_count",
+    "boss_monsters",
+    "formation",
+    "tags",
 ]
 
 
 def pascal_case(key: str):
-    return ''.join(word.title() for word in key.split('_'))
+    return "".join(word.title() for word in key.split("_"))
 
 
 class world_areas(Parser_Module):
@@ -33,10 +51,7 @@ class world_areas(Parser_Module):
         self.packs.build_index("WorldAreas")
         self.pack_entries.build_index("MonsterPacksKey")
 
-        root = {
-            area["Id"]: self.process_row(area)
-            for area in self.relational_reader["WorldAreas.dat64"]
-        }
+        root = {area["Id"]: self.process_row(area) for area in self.relational_reader["WorldAreas.dat64"]}
         write_json(root, self.data_path, "world_areas")
         if self.language == "English":
             for k, v in self.graphs.items():
@@ -67,7 +82,8 @@ class world_areas(Parser_Module):
                 p["MonsterVarietiesKey"]["Id"]: {
                     "weight": p["Weight"],
                     "flag": p["Flag"],
-                } for p in self.pack_entries.index["MonsterPacksKey"][pack]
+                }
+                for p in self.pack_entries.index["MonsterPacksKey"][pack]
             }
         if pack["AdditionalMonsters"]:
             result["additional_monsters"] = {
@@ -84,8 +100,7 @@ class world_areas(Parser_Module):
             "id": row["Id"],
             "file": dgr_file,
             "unknown": [
-                self.process_value(row[f]) for f in row.parent.specification.fields.keys()
-                if f not in ["Id", "DGRFile"]
+                self.process_value(row[f]) for f in row.parent.specification.fields.keys() if f not in ["Id", "DGRFile"]
             ],
         }
 
@@ -101,7 +116,7 @@ class world_areas(Parser_Module):
                 if master:
                     val["master"] = master
                     base = file.data["MasterFile"]
-                    base = base[:base.rfind('/') + 1]
+                    base = base[: base.rfind("/") + 1]
                     if "RoomSet" in master:
                         val["room_set"] = self.process_fileset(base + master["RoomSet"])
                     if "TileSet" in master:
@@ -109,8 +124,9 @@ class world_areas(Parser_Module):
             if "edges" in val:
                 val["edge_types"] = {}
                 for edge in val["edges"]:
-                    [edge_type, color, etfile] = self.process_edge_type(next(
-                        u for u in edge["unknown"] if isinstance(u, str) and u.endswith(".et")))
+                    [edge_type, color, etfile] = self.process_edge_type(
+                        next(u for u in edge["unknown"] if isinstance(u, str) and u.endswith(".et"))
+                    )
                     val["edge_types"][edge_type] = etfile
                     edge["edge_type"] = edge_type
                     if color:

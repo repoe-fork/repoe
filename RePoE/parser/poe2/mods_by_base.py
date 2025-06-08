@@ -16,6 +16,7 @@ from RePoE.model.mods_by_base import (
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, write_json
 
+
 class mods_by_base(Parser_Module):
     def write(self) -> None:
         root = ItemClasses({})
@@ -41,9 +42,7 @@ class mods_by_base(Parser_Module):
             while restart:
                 restart = False
                 for mod_id, mod in mods_by_domain.get(base["domain"], {}).items():
-                    weight = next(
-                        (weight["weight"] for weight in mod["spawn_weights"] if weight["tag"] in tags), None
-                    )
+                    weight = next((weight["weight"] for weight in mod["spawn_weights"] if weight["tag"] in tags), None)
                     if not weight:
                         continue
                     mod_generation = mods_data.root.setdefault(mod["generation_type"], ModTypes({}))

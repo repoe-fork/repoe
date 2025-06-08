@@ -14,7 +14,8 @@ from PyPoE.poe.file.translations import (
     TQNumberFormat,
     TQRelationalData,
     get_custom_translation_file,
-    install_data_dependant_quantifiers, TranslationFile,
+    install_data_dependant_quantifiers,
+    TranslationFile,
 )
 from urllib.request import urlopen, Request
 
@@ -22,8 +23,7 @@ from RePoE.model import stats_by_file
 from RePoE.model import stat_value_handlers
 from RePoE.model.stat_translations import Stat
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import call_with_default_args, get_stat_translation_file_name, write_json, \
-    write_model
+from RePoE.parser.util import call_with_default_args, get_stat_translation_file_name, write_json, write_model
 
 
 class stat_translations(Parser_Module):
@@ -42,8 +42,7 @@ class stat_translations(Parser_Module):
                 raise Exception("Unknown tag type:", tag_type)
         return f
 
-    def _convert_range(self, translation_range: List[TranslationRange]) -> Union[
-        List[Dict[str, int]], List[Dict]]:
+    def _convert_range(self, translation_range: List[TranslationRange]) -> Union[List[Dict[str, int]], List[Dict]]:
         rs = []
         for r in translation_range:
             r_dict = {}
@@ -56,8 +55,7 @@ class stat_translations(Parser_Module):
             rs.append(r_dict)
         return rs
 
-    def _convert_handlers(self, n_ids: int, index_handlers: Dict) -> Union[
-        List[List[str]], List[List]]:
+    def _convert_handlers(self, n_ids: int, index_handlers: Dict) -> Union[List[List[str]], List[List]]:
         hs: List[List[str]] = [[] for _ in range(n_ids)]
         for handler_name, ids in index_handlers.items():
             for i in ids:
@@ -72,8 +70,7 @@ class stat_translations(Parser_Module):
         trade_stats = {}
         partial_trade_stats = {}
         strings = tr.get_language(self.language).strings
-        result = [self._convert_translation_string(s, n_ids, trade_stats, partial_trade_stats) for s
-                  in strings]
+        result = [self._convert_translation_string(s, n_ids, trade_stats, partial_trade_stats) for s in strings]
 
         self._add_values_to_lookup(result, strings, ids)
 
@@ -83,14 +80,12 @@ class stat_translations(Parser_Module):
             "trade_stats": (
                 list(trade_stats.values())
                 if trade_stats
-                else list(partial_trade_stats.values())
-                if partial_trade_stats
-                else None
+                else list(partial_trade_stats.values()) if partial_trade_stats else None
             ),
         }
 
     def _convert_translation_string(
-            self, s: TranslationString, n_ids: int, trade_stats: dict, partial_trade_stats: dict
+        self, s: TranslationString, n_ids: int, trade_stats: dict, partial_trade_stats: dict
     ):
         try:
             tags = self._convert_tags(n_ids, s.tags, s.tags_types)
@@ -133,8 +128,7 @@ class stat_translations(Parser_Module):
             print("Error processing stat", s, e)
             return None
 
-    def _add_values_to_lookup(self, values: list[Stat], strings: list[TranslationString],
-                              ids: list[str]):
+    def _add_values_to_lookup(self, values: list[Stat], strings: list[TranslationString], ids: list[str]):
         for value, s in zip(values, strings):
             if not value:
                 continue
@@ -177,13 +171,11 @@ class stat_translations(Parser_Module):
                     )
                 elif isinstance(handler, TQRelationalData):
                     tokens.append(
-                        stats_by_file.EnumModel(type="enum", index=tag, stat=ids[tag],
-                                                stat_value_handler=handler.id)
+                        stats_by_file.EnumModel(type="enum", index=tag, stat=ids[tag], stat_value_handler=handler.id)
                     )
                 else:
                     tokens.append(
-                        stats_by_file.Unknown(type="unknown", index=tag, stat=ids[tag],
-                                              stat_value_handler=handler.id)
+                        stats_by_file.Unknown(type="unknown", index=tag, stat=ids[tag], stat_value_handler=handler.id)
                     )
 
             if s.strings[-1]:
@@ -219,9 +211,10 @@ class stat_translations(Parser_Module):
         return result if result else None
 
     def _get_stat_translations(
-            self, tf: TranslationFile,
-            custom_translations: List[Translation] = None,
-            file_name: str = None,
+        self,
+        tf: TranslationFile,
+        custom_translations: List[Translation] = None,
+        file_name: str = None,
     ) -> List[Dict[str, Any]]:
         seen = set()
         root = []
@@ -285,29 +278,26 @@ class stat_translations(Parser_Module):
                             else None
                         ),
                         "values": {
-                            str(r[
-                                    handler.index_column] if handler.index_column else r.rowid): handler.format_value(
-                                r[handler.value_column])
+                            str(r[handler.index_column] if handler.index_column else r.rowid): handler.format_value(
+                                r[handler.value_column]
+                            )
                             for r in handler.table
                             if r[handler.value_column]
-                               and (not handler.predicate or r[handler.predicate[0]] ==
-                                    handler.predicate[1])
+                            and (not handler.predicate or r[handler.predicate[0]] == handler.predicate[1])
                         },
                     }
                 )
             elif handler.type == TranslationQuantifier.QuantifierTypes.STRING:
-                quantifiers[handler_name] = stat_value_handlers.CanonicalLine(
-                    type=handler.type.name.lower())
+                quantifiers[handler_name] = stat_value_handlers.CanonicalLine(type=handler.type.name.lower())
             else:
                 quantifiers[handler_name] = stat_value_handlers.Noop(type="noop")
         write_json(quantifiers, self.data_path, "stat_value_handlers")
 
         with urlopen(
-                Request(
-                    "https://www.pathofexile.com/api/trade2/data/stats",
-                    headers={
-                        "User-Agent": "OAuth RePoE/1.0.0 (contact: https://github.com/lvlvllvlvllvlvl/RePoE/)"},
-                )
+            Request(
+                "https://www.pathofexile.com/api/trade2/data/stats",
+                headers={"User-Agent": "OAuth RePoE/1.0.0 (contact: https://github.com/lvlvllvlvllvlvl/RePoE/)"},
+            )
         ) as req:
             data = json.load(req)
             if "result" not in data:
@@ -316,8 +306,7 @@ class stat_translations(Parser_Module):
             for trade_stat in [entry for v in data["result"] for entry in v["entries"]]:
                 if "option" in trade_stat:
                     for option in trade_stat["option"]["options"]:
-                        self.trade_stats[trade_stat["text"].replace("#", option["text"])].append(
-                            trade_stat)
+                        self.trade_stats[trade_stat["text"].replace("#", option["text"])].append(trade_stat)
                 else:
                     self.trade_stats[trade_stat["text"]].append(trade_stat)
             for k, v in self.trade_stats.items():

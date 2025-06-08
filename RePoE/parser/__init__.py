@@ -12,13 +12,13 @@ class Parser_Module:
     language: str
 
     def __init__(
-            self,
-            file_system: FileSystem,
-            data_path: str,
-            relational_reader: RelationalReader,
-            language: str,
-            caches: dict[type, AbstractFileCache],
-            sequel=1
+        self,
+        file_system: FileSystem,
+        data_path: str,
+        relational_reader: RelationalReader,
+        language: str,
+        caches: dict[type, AbstractFileCache],
+        sequel=1,
     ) -> None:
         self.file_system = file_system
         self.data_path = data_path

@@ -30,26 +30,20 @@ def get_id_or_none(relational_file_cell):
     return None if relational_file_cell is None else relational_file_cell["Id"]
 
 
-def write_json(
-        root_obj: Any,
-        data_path: str,
-        file_name: str,
-        model_name=""
-) -> None:
+def write_json(root_obj: Any, data_path: str, file_name: str, model_name="") -> None:
     model_name = model_name or file_name.split("/")[0]
     mod = import_module("RePoE.model." + model_name)
     try:
         write_model(mod.Model(root_obj), data_path, file_name)
     except Exception:
-        print("Model:", mod.__file__, "Schema:",
-              os.path.abspath(f"./schema/{model_name}.schema.json"))
+        print("Model:", mod.__file__, "Schema:", os.path.abspath(f"./schema/{model_name}.schema.json"))
         raise
 
 
 def write_model(
-        root_obj: BaseModel,
-        data_path: str,
-        file_name: str,
+    root_obj: BaseModel,
+    data_path: str,
+    file_name: str,
 ) -> None:
     os.makedirs(os.path.join(data_path, *file_name.split("/")[:-1]), exist_ok=True)
     path = os.path.abspath(data_path + file_name)
@@ -64,14 +58,13 @@ def write_model(
 
 
 def write_any_json(
-        root_obj: Any,
-        data_path: str,
-        file_name: str,
+    root_obj: Any,
+    data_path: str,
+    file_name: str,
 ) -> None:
     os.makedirs(os.path.join(data_path, *file_name.split("/")[:-1]), exist_ok=True)
     print("Writing '" + str(file_name) + ".json' ...", end="", flush=True)
-    json.dump(root_obj, io.open(data_path + file_name + ".json", mode="w"), indent=2,
-              sort_keys=True)
+    json.dump(root_obj, io.open(data_path + file_name + ".json", mode="w"), indent=2, sort_keys=True)
     print(" Done!")
     print("Writing '" + str(file_name) + ".min.json' ...", end="", flush=True)
     json.dump(
@@ -93,9 +86,9 @@ def minimize(value):
 
 
 def write_text(
-        text: str,
-        data_path: str,
-        file_name: str,
+    text: str,
+    data_path: str,
+    file_name: str,
 ) -> None:
     print("Writing '" + str(file_name) + "' ...", end="", flush=True)
     with io.open(data_path + file_name, mode="w") as out:
@@ -114,8 +107,7 @@ def load_file_system(ggpk_path: str) -> FileSystem:
     return FileSystem(ggpk_path)
 
 
-def create_relational_reader(file_system: FileSystem, language: str,
-                             poe2spec: bool) -> RelationalReader:
+def create_relational_reader(file_system: FileSystem, language: str, poe2spec: bool) -> RelationalReader:
     opt = {
         "use_dat_value": False,
         "auto_build_index": True,
@@ -133,9 +125,9 @@ DEFAULT_GGPK_PATH = "/mnt/c/Program Files (x86)/Grinding Gear Games/Path of Exil
 
 
 def call_with_default_args(
-        module: type[Parser_Module],
-        poe2spec='poe2' in sys.argv[0],
-        language="English",
+    module: type[Parser_Module],
+    poe2spec="poe2" in sys.argv[0],
+    language="English",
 ):
     file_system = load_file_system(get_cdn_url(2 if poe2spec else 1))
     return module(
@@ -191,12 +183,12 @@ def compose_flask(img: Image):
 
 
 def export_image(
-        ddsfile: str,
-        data_path: str,
-        file_system: FileSystem,
-        outfile: str | None = None,
-        extensions=[".png", ".webp"],
-        compose: Callable[[Image], Image] | None = None
+    ddsfile: str,
+    data_path: str,
+    file_system: FileSystem,
+    outfile: str | None = None,
+    extensions=[".png", ".webp"],
+    compose: Callable[[Image], Image] | None = None,
 ) -> None:
     dest = os.path.join(data_path, os.path.splitext(outfile or ddsfile)[0])
     if dest in exported_images:

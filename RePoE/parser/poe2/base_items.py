@@ -6,8 +6,14 @@ from PyPoE.poe.file.it import ITFileCache
 
 from RePoE.parser import Parser_Module
 from RePoE.parser.poe2.mods import MOD_DOMAIN
-from RePoE.parser.util import call_with_default_args, export_image, get_release_state, write_json, \
-    write_any_json, compose_flask
+from RePoE.parser.util import (
+    call_with_default_args,
+    export_image,
+    get_release_state,
+    write_json,
+    write_any_json,
+    compose_flask,
+)
 
 
 def _create_default_dict(relation: DatReader, col="BaseItemTypesKey") -> Dict:
@@ -25,8 +31,7 @@ def _add_if_not_zero(value: int, key: str, obj: Dict[str, Any]) -> None:
         obj[key] = value
 
 
-def _convert_requirements(attribute_requirements: Optional[DatRecord], drop_level: int) -> Optional[
-    Dict[str, int]]:
+def _convert_requirements(attribute_requirements: Optional[DatRecord], drop_level: int) -> Optional[Dict[str, int]]:
     if attribute_requirements is None:
         return None
     return {
@@ -77,8 +82,7 @@ def _convert_flask_buff(flask_row: Optional[DatRecord], item_object: Dict[str, A
         item_object["grants_buff"]["stats"][stat["Id"]] = value
 
 
-def _convert_flask_charge_properties(flask_row: Optional[DatRecord],
-                                     properties: Dict[str, Any]) -> None:
+def _convert_flask_charge_properties(flask_row: Optional[DatRecord], properties: Dict[str, Any]) -> None:
     if flask_row is None:
         return
     properties["charges_max"] = flask_row["MaxCharges"]
@@ -95,8 +99,7 @@ def _convert_weapon_properties(weapon_row: Optional[DatRecord], properties: Dict
     properties["range"] = weapon_row["RangeMax"]
 
 
-def _convert_currency_properties(currency_row: Optional[DatRecord],
-                                 properties: Dict[str, Any]) -> None:
+def _convert_currency_properties(currency_row: Optional[DatRecord], properties: Dict[str, Any]) -> None:
     if currency_row is None:
         return
     properties["stack_size"] = currency_row["StackSize"]
@@ -116,20 +119,20 @@ def _create_skills_dict(relational_reader, col="BaseItemType") -> Dict:
                 skills_granted = []
                 if row["SkillsGranted"]:
                     for skill in row["SkillsGranted"]:
-                        if skill[col] is not None: 
+                        if skill[col] is not None:
                             skills_granted.append(skill[col]["Id"])
                 skills_dict[item_id] = skills_granted
     except (KeyError, TypeError):
         print("Warning: ItemInherentSkills.dat64 not found or has incorrect format")
-    
+
     return defaultdict(lambda: [], skills_dict)  # 默认返回空列表
 
 
 def _convert_inherent_skills(item_id: str, skills_dict: Dict[str, List[str]], item_object: Dict[str, Any]) -> None:
     skills = skills_dict[item_id]
-    if skills: 
+    if skills:
         item_object["skills_granted"] = skills
-        
+
 
 ITEM_CLASS_BLACKLIST = {
     "LabyrinthTrinket",
@@ -158,7 +161,8 @@ class base_items(Parser_Module):
     def write(self) -> None:
         relational_reader = self.relational_reader
         attribute_requirements = _create_default_dict(
-            relational_reader["AttributeRequirements.dat64"], col="BaseItemType")
+            relational_reader["AttributeRequirements.dat64"], col="BaseItemType"
+        )
         armour_types = _create_default_dict(relational_reader["ArmourTypes.dat64"])
         shield_types = _create_default_dict(relational_reader["ShieldTypes.dat64"])
         flask_types = _create_default_dict(relational_reader["Flasks.dat64"])
@@ -218,10 +222,14 @@ class base_items(Parser_Module):
             }
             _convert_flask_buff(flask_types[item_id], root[item_id])
             _convert_inherent_skills(item_id, item_skills, root[item_id])
-    
+
             if self.language == "English" and dds_file:
-                export_image(dds_file, self.data_path, self.file_system,
-                             compose=compose_flask if visual_identity["Composition"] == 1 else None)
+                export_image(
+                    dds_file,
+                    self.data_path,
+                    self.file_system,
+                    compose=compose_flask if visual_identity["Composition"] == 1 else None,
+                )
 
         print(f"Skipped the following item classes for base_items {skipped_item_classes}")
         write_json(root, self.data_path, "base_items")

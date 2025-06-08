@@ -9,8 +9,7 @@ class audio(Parser_Module):
             root[audio["Id"]] = {
                 "npcs": list(
                     map(
-                        lambda npc: {"name": npc["Name"], "short_name": npc["ShortName"],
-                                     "id": npc["Id"]},
+                        lambda npc: {"name": npc["Name"], "short_name": npc["ShortName"], "id": npc["Id"]},
                         audio["NPCs"],
                     )
                 ),

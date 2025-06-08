@@ -6,9 +6,7 @@ from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, export_image, get_release_state, write_any_json
 
 
-def _convert_base_item_specific(
-        base_item_type: Optional[DatRecord], obj: Dict[str, Any]
-) -> None:
+def _convert_base_item_specific(base_item_type: Optional[DatRecord], obj: Dict[str, Any]) -> None:
     if base_item_type is None:
         obj["base_item"] = None
         return
@@ -23,15 +21,12 @@ def _convert_base_item_specific(
 def get_4k_path(path: str):
     if path is None:
         return None
-    parts = path.split('/')
-    parts.insert(len(parts) - 1, '4k')
-    return '/'.join(parts)
+    parts = path.split("/")
+    parts.insert(len(parts) - 1, "4k")
+    return "/".join(parts)
 
-def convert_gem(
-        skill_gem: DatRecord,
-        gem_effect: DatRecord,
-        support_gem_icons: Dict[int, str]
-) -> Dict[str, Any]:
+
+def convert_gem(skill_gem: DatRecord, gem_effect: DatRecord, support_gem_icons: Dict[int, str]) -> Dict[str, Any]:
     obj = {}
 
     gem_tags = gem_effect["GemTags"]
@@ -42,11 +37,11 @@ def convert_gem(
 
     obj["color"] = [None, "r", "g", "b", "w"][skill_gem["GemColour"]]
 
-    obj["requirement_weights"] = {attr.lower(): skill_gem[f"{attr}RequirementPercent"]
-                                  for attr in ["Strength", "Dexterity", "Intelligence"]}
+    obj["requirement_weights"] = {
+        attr.lower(): skill_gem[f"{attr}RequirementPercent"] for attr in ["Strength", "Dexterity", "Intelligence"]
+    }
 
-    obj["grants_skills"] = [s["Id"] for s in [gem_effect["GrantedEffect"]]
-                            + gem_effect["AdditionalGrantedEffects"]]
+    obj["grants_skills"] = [s["Id"] for s in [gem_effect["GrantedEffect"]] + gem_effect["AdditionalGrantedEffects"]]
 
     _convert_base_item_specific(skill_gem["BaseItemType"], obj)
 
@@ -67,6 +62,7 @@ def convert_gem(
 
     return obj
 
+
 class skill_gems(Parser_Module):
     def write(self) -> None:
         skill_gems = {}
@@ -82,9 +78,8 @@ class skill_gems(Parser_Module):
         # Skills from gems
         for gem in relational_reader["SkillGems.dat64"]:
             for gem_effect in gem["GemEffects"]:
-                if (
-                        (gem_effect["Name"] and ("[DNT]" in gem_effect["Name"])) or
-                        (gem_effect["ItemColor"] != 3 and gem["IsVaalVariant"])
+                if (gem_effect["Name"] and ("[DNT]" in gem_effect["Name"])) or (
+                    gem_effect["ItemColor"] != 3 and gem["IsVaalVariant"]
                 ):
                     continue
 
@@ -99,10 +94,14 @@ class skill_gems(Parser_Module):
                 skill_gems[skill_gem["base_item"]["id"]] = skill_gem
 
                 # ensure fallback ui image is exported without having to add it to gem data
-                export_image("Art/Textures/Interface/2D/2DArt/UIImages/InGame/SmartHover/GemHoverImage/GemHoverImageEmpty.dds", self.data_path, self.file_system)
-                if skill_gem.get("ui_image", None) not in (None, ''):
+                export_image(
+                    "Art/Textures/Interface/2D/2DArt/UIImages/InGame/SmartHover/GemHoverImage/GemHoverImageEmpty.dds",
+                    self.data_path,
+                    self.file_system,
+                )
+                if skill_gem.get("ui_image", None) not in (None, ""):
                     export_image(skill_gem["ui_image"], self.data_path, self.file_system)
-                if skill_gem["icon_dds_file"] not in (None, ''):
+                if skill_gem["icon_dds_file"] not in (None, ""):
                     export_image(skill_gem["icon_dds_file"], self.data_path, self.file_system)
 
         write_any_json(skill_gems, self.data_path, "skill_gems")

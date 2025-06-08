@@ -14,7 +14,7 @@ def _convert_stats(
         List[List[Optional[int]]],
         List[List[Union[DatRecord, int]]],
         List[Union[List[Optional[int]], List[Union[DatRecord, int]]]],
-    ]
+    ],
 ) -> List[Dict[str, Any]]:
     # 'Stats' is a virtual field that is an array of ['Stat1', ..., 'Stat5'].
     # 'Stat{i}' is a virtual field that is an array of ['StatsKey{i}', 'Stat{i}Min', 'Stat{i}Max']

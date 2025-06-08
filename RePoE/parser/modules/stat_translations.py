@@ -14,7 +14,8 @@ from PyPoE.poe.file.translations import (
     TQNumberFormat,
     TQRelationalData,
     get_custom_translation_file,
-    install_data_dependant_quantifiers, TranslationFile,
+    install_data_dependant_quantifiers,
+    TranslationFile,
 )
 from urllib.request import urlopen, Request
 
@@ -79,9 +80,7 @@ class stat_translations(Parser_Module):
             "trade_stats": (
                 list(trade_stats.values())
                 if trade_stats
-                else list(partial_trade_stats.values())
-                if partial_trade_stats
-                else None
+                else list(partial_trade_stats.values()) if partial_trade_stats else None
             ),
         }
 
