@@ -26,6 +26,8 @@ class crafting_bench_options(Parser_Module):
             actions["remove_crafted_mods"] = True
         if row["CraftingBenchCustomAction"] == CRAFTING_BENCH_CUSTOM_ACTIONS.REMOVE_ENCHANT_MODS:
             actions["remove_enchantments"] = True
+        if row["CraftingBenchCustomAction"] == CRAFTING_BENCH_CUSTOM_ACTIONS.REROLL_RARITY:
+            actions["reroll_rarity"] = True
         if len(actions) == 0:
             raise NotImplementedError(f"Crafting option {row['Name']} has an unknown action")
         return actions

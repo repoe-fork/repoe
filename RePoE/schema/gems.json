@@ -165,7 +165,7 @@
             "additionalProperties": false,
             "properties": {
                 "costs": {
-                    "$ref": "#/definitions/PerLevelCosts"
+                    "$ref": "#/definitions/Costs"
                 },
                 "experience": {
                     "type": "integer"
@@ -217,7 +217,7 @@
             "required": [],
             "title": "PerLevel"
         },
-        "PerLevelCosts": {
+        "Costs": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -230,12 +230,18 @@
                 "ManaPerMinute": {
                     "type": "integer"
                 },
+                "ManaPercent": {
+                    "type": "integer"
+                },
+                "ManaPercentPerMinute": {
+                    "type": "integer"
+                },
                 "ES": {
                     "type": "integer"
                 }
             },
             "required": [],
-            "title": "PerLevelCosts"
+            "title": "Costs"
         },
         "PerLevelReservations": {
             "type": "object",
@@ -363,7 +369,7 @@
                     "type": "integer"
                 },
                 "costs": {
-                    "$ref": "#/definitions/StaticCosts"
+                    "$ref": "#/definitions/Costs"
                 },
                 "cost_multiplier": {
                     "type": "integer"
@@ -388,23 +394,6 @@
                 "quality_stats"
             ],
             "title": "Static"
-        },
-        "StaticCosts": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "Mana": {
-                    "type": "integer"
-                },
-                "Life": {
-                    "type": "integer"
-                },
-                "ManaPercent": {
-                    "type": "integer"
-                }
-            },
-            "required": [],
-            "title": "StaticCosts"
         },
         "QualityStat": {
             "type": "object",

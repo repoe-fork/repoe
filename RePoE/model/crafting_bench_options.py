@@ -20,6 +20,7 @@ class Actions(BaseModel):
     remove_crafted_mods: Optional[bool] = None
     add_enchant_mod: Optional[str] = None
     remove_enchantments: Optional[bool] = None
+    reroll_rarity: Optional[bool] = None
 
 
 class ItemClass(RootModel[str]):

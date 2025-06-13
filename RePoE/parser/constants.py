@@ -134,7 +134,8 @@ class CRAFTING_BENCH_CUSTOM_ACTIONS(IntEnumOverride):
     UNKNOWN_4 = 4
     UNKNOWN_5 = 5
     UNKNOWN_6 = 6
-    UNKNOWN_7 = 7
+    REROLL_RARITY = 7
+    NO_ACTION = 8
 
 
 class COOLDOWN_BYPASS_TYPES(IntEnumOverride):

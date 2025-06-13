@@ -16,6 +16,7 @@ class Costs(BaseModel):
     )
     Mana: Optional[int] = None
     ManaPercent: Optional[int] = None
+    ManaPercentPerMinute: Optional[int] = None
 
 
 class QualityStat(BaseModel):

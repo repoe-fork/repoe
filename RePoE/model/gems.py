@@ -10,13 +10,15 @@ from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, ConfigDict, RootModel
 
 
-class PerLevelCosts(BaseModel):
+class Costs(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
     )
     Mana: Optional[int] = None
     Life: Optional[int] = None
     ManaPerMinute: Optional[int] = None
+    ManaPercent: Optional[int] = None
+    ManaPercentPerMinute: Optional[int] = None
     ES: Optional[int] = None
 
 
@@ -32,15 +34,6 @@ class StatRequirements(BaseModel):
     int: Optional[Any] = None
     str: Optional[Any] = None
     dex: Optional[Any] = None
-
-
-class StaticCosts(BaseModel):
-    model_config = ConfigDict(
-        extra="forbid",
-    )
-    Mana: Optional[int] = None
-    Life: Optional[int] = None
-    ManaPercent: Optional[int] = None
 
 
 class QualityStat(BaseModel):
@@ -183,7 +176,7 @@ class Static(BaseModel):
     stored_uses: Optional[int] = None
     required_level: Optional[int] = None
     attack_speed_multiplier: Optional[int] = None
-    costs: Optional[StaticCosts] = None
+    costs: Optional[Costs] = None
     cost_multiplier: Optional[int] = None
     reservations: Optional[StaticReservations] = None
     experience: Optional[int] = None
@@ -210,7 +203,7 @@ class PerLevel(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
     )
-    costs: Optional[PerLevelCosts] = None
+    costs: Optional[Costs] = None
     experience: Optional[int] = None
     required_level: Optional[int] = None
     stat_requirements: Optional[StatRequirements] = None
