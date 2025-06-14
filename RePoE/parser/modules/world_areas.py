@@ -71,7 +71,7 @@ class world_areas(Parser_Module):
 
     def process_row(self, row: DatRecord):
         result = {key: self.process_value(row[map_key(key)]) for key in AREA_KEYS}
-        result["loading_screens"] = [row["LoadingScreen_DDSFile"]]
+        result["loading_screens"] = row["LoadingScreens"]
         if row in self.packs.index["WorldAreasKeys"]:
             result["packs"] = [self.process_pack(p) for p in self.packs.index["WorldAreasKeys"][row]]
         if row["TopologiesKeys"]:
