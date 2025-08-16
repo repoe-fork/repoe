@@ -78,8 +78,11 @@ class skill_gems(Parser_Module):
         # Skills from gems
         for gem in relational_reader["SkillGems.dat64"]:
             for gem_effect in gem["GemEffects"]:
+                if gem_effect["ItemColor"] > 4:
+                    # We only export vaal variants for the base transfiguration, which will be the highest numbered itemcolor
+                    raise ValueError(f"New itemcolor has been added; need to bump the constant")
                 if (gem_effect["Name"] and ("[DNT]" in gem_effect["Name"])) or (
-                    gem_effect["ItemColor"] != 3 and gem["IsVaalVariant"]
+                    gem_effect["ItemColor"] != 4 and gem["IsVaalVariant"]
                 ):
                     continue
 
