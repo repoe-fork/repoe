@@ -43,7 +43,7 @@ def _handle_dict(representative: Dict[str, Any], per_level: List[Dict[str, Any]]
         per_level_values = []
         skip = False
         for pl in per_level:
-            if k not in pl:
+            if not pl or k not in pl:
                 skip = True
                 break
             per_level_values.append(pl[k])
