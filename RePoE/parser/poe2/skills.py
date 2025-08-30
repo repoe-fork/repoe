@@ -179,9 +179,10 @@ class GemConverter:
 
         self._skill_totem_life_multipliers = {}
         for row in self.relational_reader["SkillTotemVariations.dat64"]:
-            self._skill_totem_life_multipliers[row["SkillTotemsKey"]] = (
-                row["MonsterVarietiesKey"]["LifeMultiplier"] / 100
-            )
+            if row["MonsterVarietiesKey"]:
+                self._skill_totem_life_multipliers[row["SkillTotemsKey"]] = (
+                    row["MonsterVarietiesKey"]["LifeMultiplier"] / 100
+                )
 
     def _convert_active_skill(self, active_skill: DatRecord) -> Dict[str, Any]:
         stat_conversions = {}
