@@ -95,7 +95,7 @@ class stat_translations(Parser_Module):
                 return "#"
 
             trade_format, _, _, extra_strings, _ = s.format_string(
-                [1 for _ in s.translation.ids],
+                [-1 for _ in s.translation.ids],
                 [False for _ in s.translation.ids],
                 use_placeholder=placeholder,
             )
