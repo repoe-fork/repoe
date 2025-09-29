@@ -12,6 +12,13 @@ from RePoE.parser.constants import COOLDOWN_BYPASS_TYPES
 from RePoE.parser.util import call_with_default_args, get_release_state, get_stat_translation_file_name, write_json
 
 
+def is_trans(gem_effect: DatRecord) -> bool:
+    # base transfiguration currently == 4, check the values if a new one is added
+    if gem_effect["ItemColor"] > 4:
+        raise ValueError(f"New itemcolor has been added; need to bump the constant")
+    return gem_effect["ItemColor"] != 4
+
+
 def _handle_dict(representative: Dict[str, Any], per_level: List[Dict[str, Any]]):
     static = None
     cleared = True
@@ -499,7 +506,7 @@ class gems(Parser_Module):
         for gem in relational_reader["SkillGems.dat64"]:
             for gem_effect in gem["GemEffects"]:
                 if (gem_effect["Name"] and ("[DNT]" in gem_effect["Name"])) or (
-                    gem_effect["ItemColor"] != 3 and gem["IsVaalVariant"]
+                    is_trans(gem_effect) and gem["IsVaalVariant"]
                 ):
                     continue
 
