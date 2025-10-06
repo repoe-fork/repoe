@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+from PyPoE.poe import poe1constants
 from PyPoE.poe.file.dat import DatRecord
 from PyPoE.poe.file.idl import IDLFile
 from PyPoE.poe.file.translations import TranslationFileCache
@@ -93,7 +94,7 @@ class buffs(Parser_Module):
                 stat_file = "stat_descriptions.txt"
                 for source in self.relational_reader["Mods.dat64"].index["BuffTemplate"][row]:
                     sources["Mods"].append({"id": source["Id"], "template": row["Id"]})
-                    stat_file = get_translation_file_from_domain(source["Domain"])
+                    stat_file = get_translation_file_from_domain(source["Domain"], poe1constants)
                 for source in self.relational_reader["PassiveSkills.dat64"].index["PassiveSkillBuffs"][row]:
                     sources["PassiveSkills"].append({"id": source["Id"], "template": row["Id"]})
                     stat_file = "passive_skill_aura_stat_descriptions.txt"
