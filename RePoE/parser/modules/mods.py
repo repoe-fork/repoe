@@ -75,8 +75,8 @@ class mods(Parser_Module):
 
             try:
                 lines = get_translation(mod, translation_cache, lang=self.language).lines
-            except Exception:
-                print("could not get text for mod", mod["Id"])
+            except Exception as e:
+                print("could not get text for mod", mod["Id"], e)
                 lines = []
 
             obj = {

@@ -5,7 +5,7 @@ from PyPoE.poe.file.dat import DatRecord, RelationalReader
 from PyPoE.poe.file.file_system import FileSystem
 from PyPoE.poe.file.stat_filters import StatFilterFile
 from PyPoE.poe.file.translations import TranslationFileCache, TranslationString
-from PyPoE.poe.sim.formula import GemTypes, gem_stat_requirement
+from PyPoE.poe.sim.poe1formula import GemTypes, gem_stat_requirement
 
 from RePoE.parser import Parser_Module
 from RePoE.parser.constants import COOLDOWN_BYPASS_TYPES
