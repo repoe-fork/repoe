@@ -437,8 +437,11 @@ class GemConverter:
         gesspls = {row["GemLevel"]: row for row in self.gesspls[gess["Id"]]}
         gepls_dict = {}
         for gepl in gepls:
-            gepl_converted = self._convert_gepl(gepl, gess, gesspls[gepl["Level"]], multipliers, is_support, xp)
-            gepls_dict[str(gepl["Level"])] = gepl_converted
+            if gepl["Level"] not in gesspls:
+                print(f"no level {gepl["Level"]} for {gess["Id"]}")
+            else:
+                gepl_converted = self._convert_gepl(gepl, gess, gesspls[gepl["Level"]], multipliers, is_support, xp)
+                gepls_dict[str(gepl["Level"])] = gepl_converted
         obj["per_level"] = gepls_dict
 
         # GrantedEffectsPerLevel that do not change with level
