@@ -1,3 +1,6 @@
+import re
+from typing import Dict
+
 from PyPoE.poe.file.dat import DatRecord
 from PyPoE.poe.file.dgr import DGRFile
 from PyPoE.poe.file.file_set import FileSet
@@ -121,6 +124,8 @@ class world_areas(Parser_Module):
                         val["room_set"] = self.process_fileset(base + master["RoomSet"])
                     if "TileSet" in master:
                         val["tile_set"] = self.process_fileset(base + master["TileSet"])
+                    if "FileGroups" in master:
+                        val["file_groups"] = self.process_filegroup(base, master["FileGroups"])
             if "edges" in val:
                 val["edge_types"] = {}
                 for edge in val["edges"]:
@@ -132,6 +137,17 @@ class world_areas(Parser_Module):
                     if color:
                         edge["color"] = color
                 self.graphs[filename] = val
+            for node in val.get("nodes", []):
+                if node.get("room", None) == "graph" and node.get("strings", None):
+                    subgraph = node["strings"][0]
+                    # if key is not in file groups it may be a full filename
+                    subgraphs = val.get("file_groups", {}).get(subgraph, [subgraph])
+                    if "subgraphs" not in val:
+                        val["subgraphs"] = {}
+                    val["subgraphs"][subgraph] = subgraphs
+                    for filename in subgraphs:
+                        # sometimes the dgr files contain unnormalized paths; could fix this better further upstream
+                        self.process_graph(filename.replace("//", "/"))
         except FileNotFoundError:
             print("Graph not found", filename)
         except Exception:
@@ -161,6 +177,30 @@ class world_areas(Parser_Module):
             file.read(self.file_system.get_file(filename))
             self.cache[filename] = file.files
             return file.files
+        except FileNotFoundError:
+            print("File not found", filename)
+            self.cache[filename] = None
+        except Exception:
+            print("Error parsing file", filename, file)
+            raise
+
+    def process_filegroup(self, base, filename: str):
+        filename = base + filename
+        if filename in self.cache:
+            return self.cache[filename]
+        file = self.file_system.get_file(filename)
+        key = ""
+        files: Dict[str, list[str]] = {}
+        try:
+            for line in self.file_system.get_file(filename).decode("utf-16").splitlines():
+                key_match = re.match(r'\"([^"]*)\"', line)
+                if key_match:
+                    key = key_match.group(1)
+                    files[key] = []
+                elif key and line.strip():
+                    files[key].append(base + line.strip())
+            self.cache[filename] = files
+            return files
         except FileNotFoundError:
             print("File not found", filename)
             self.cache[filename] = None
