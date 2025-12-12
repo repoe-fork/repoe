@@ -64,12 +64,12 @@ def write_any_json(
 ) -> None:
     os.makedirs(os.path.join(data_path, *file_name.split("/")[:-1]), exist_ok=True)
     print("Writing '" + str(file_name) + ".json' ...", end="", flush=True)
-    json.dump(root_obj, io.open(data_path + file_name + ".json", mode="w"), indent=2, sort_keys=True)
+    json.dump(root_obj, io.open(os.path.join(data_path, file_name + ".json"), mode="w"), indent=2, sort_keys=True)
     print(" Done!")
     print("Writing '" + str(file_name) + ".min.json' ...", end="", flush=True)
     json.dump(
         minimize(root_obj),
-        io.open(data_path + file_name + ".min.json", mode="w"),
+        io.open(os.path.join(data_path, file_name + ".min.json"), mode="w"),
         separators=(",", ":"),
         sort_keys=True,
     )
