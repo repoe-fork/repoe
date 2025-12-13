@@ -82,7 +82,8 @@ class world_areas(Parser_Module):
         result["boss_chance"] = pack["BossMonsterSpawnChance"]
         if pack in self.pack_entries.index["MonsterPacksKey"]:
             result["monsters"] = {
-                p["MonsterVarietiesKey"]["Id"]: {
+                p["Id"]: {
+                    "monster_variety": p["MonsterVarietiesKey"]["Id"] if p["MonsterVarietiesKey"] else None,
                     "weight": p["Weight"],
                     "flag": p["Flag"],
                 }

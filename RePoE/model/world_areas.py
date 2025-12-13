@@ -20,6 +20,7 @@ class Monster(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
     )
+    monster_variety: Optional[str] = None
     flag: bool
     weight: int
 
