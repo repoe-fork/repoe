@@ -314,13 +314,13 @@ class stat_translations(Parser_Module):
 
         self.tag_set: Set[str] = set()
 
-        node = self.file_system.build_directory()["Metadata"]["StatDescriptions"]
-        for file in self._build_stat_translation_file_map(node, "Metadata/StatDescriptions/"):
+        node = self.file_system.build_directory()["Data"]["StatDescriptions"]
+        for file in self._build_stat_translation_file_map(node, "Data/StatDescriptions/"):
             try:
                 self.current_file = file
                 tf = self.get_cache(TranslationFileCache)[file]
                 result = self._get_stat_translations(tf, file_name=file)
-                filename = file.replace("Metadata/StatDescriptions", "stat_translations")
+                filename = file.replace("Data/StatDescriptions", "stat_translations")
                 filename = filename.replace(".csd", "")
                 write_json(result, self.data_path, filename, "stat_translations")
             except Exception as e:
