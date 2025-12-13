@@ -37,7 +37,7 @@ class passives(Parser_Module):
             all_passives.build_index("PassiveSkillGraphId")
         self.index = all_passives.index["PassiveSkillGraphId"]
         for tree in self.relational_reader["PassiveSkillTrees.dat64"]:
-            tf = TRANSLATION_FILES.get(tree["Key0"]["Id"], None)
+            tf = TRANSLATION_FILES.get(tree["Name"]["Id"], None)
             psg = self.psg(tree["PassiveSkillGraph"])
             nodes = {}
             for passive in psg.root_passives:
