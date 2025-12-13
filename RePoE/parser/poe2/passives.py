@@ -67,7 +67,7 @@ class passives(Parser_Module):
                         nodes[node.passive_skill] = self.passive(self.index[node.passive_skill], tf)
             write_any_json(
                 {
-                    "title": tree["Key0"]["Text"],
+                    "title": tree["Name"]["Text"],
                     "roots": psg.root_passives,
                     "groups": groups,
                     "passives": nodes,
