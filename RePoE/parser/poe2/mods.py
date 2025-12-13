@@ -72,10 +72,11 @@ class mods(Parser_Module):
         translation_cache = self.get_cache(TranslationFileCache)
         install_data_dependant_quantifiers(self.relational_reader)
         prices = self.relational_reader["GoldModPrices.dat64"]
-        prices.build_index("Mod")
+        if "Mod" not in prices.index:
+            prices.build_index("Mod")
         for mod in self.relational_reader["Mods.dat64"]:
             domain = MOD_DOMAIN_FIX.get(mod["Id"], mod["Domain"])
-            price = prices.index["Mod"][mod]
+            price = prices.index["Mod"].get(mod, None)
             if isinstance(price, list):
                 price = next(iter(price), None)
 
