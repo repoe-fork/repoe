@@ -3,52 +3,11 @@ from typing import Any, Dict, List, Optional, Union
 from PyPoE.poe.constants import IntEnumOverride
 from PyPoE.poe.file.dat import DatRecord
 from PyPoE.poe.file.translations import install_data_dependant_quantifiers, TranslationFileCache
+from PyPoE.poe.poe2constants import MOD_DOMAIN
 from PyPoE.poe.sim.mods import get_translation
 
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, write_json
-
-
-class MOD_DOMAIN(IntEnumOverride):
-    ITEM = 1
-    FLASK = 2
-    MONSTER = 3
-    CHEST = 4
-    STRONGBOX = 5
-    AREA = 6
-    UNKNOWN1 = 7
-    TEMPLAR_RELIC = 8
-    UNKNOWN3 = 9
-    CRAFTED = 10
-    # Corruptions, item limits, jewel mods, other stuff?
-    MISC = 11
-    ATLAS = 12
-    LEAGUESTONE = 13
-    ABYSS_JEWEL = 14
-    MAP_DEVICE = 15
-    DUMMY = 16
-    DELVE = 17
-    DELVE_AREA = 18
-    SYNTHESIS_A = 19
-    SYNTHESIS_GLOBALS = 20
-    SYNTHESIS_BONUS = 21
-    AFFLICTION_JEWEL = 22
-    HEIST_AREA = 23
-    HEIST_NPC = 24
-    HEIST_TRINKET = 25
-    WATCHSTONE = 26
-    VEILED = 27
-    EXPEDITION_RELIC = 28
-    UNVEILED = 29
-    SENTINEL = 31
-    MEMORY_LINES = 32
-    SANCTUM_RELIC = 33
-    TOWER = 34
-    ULTIMATUM = 35
-    RELIQUARY_KEY = 36
-
-    # Items that can't have mods (may need to increase the number when new values are added)
-    MODS_DISALLOWED = 37
 
 
 def _convert_stats(
@@ -135,7 +94,7 @@ class mods(Parser_Module):
                 "type": mod["ModType"]["Name"],
                 "generation_type": mod["GenerationType"].name.lower() if mod["GenerationType"] else "<unknown>",
                 "groups": [family["Id"] for family in mod["Families"]],
-                "spawn_weights": _convert_spawn_weights(zip(price["Tags"], price["SpawnWeight"])) if price else [],
+                "spawn_weights": _convert_spawn_weights(zip(mod["SpawnWeight_Tags"], mod["SpawnWeight_Values"])),
                 "generation_weights": _convert_generation_weights(mod["GenerationWeight"]),
                 "grants_effects": _convert_granted_effects(mod["GrantedEffectsPerLevel"]),
                 "is_essence_only": mod["IsEssenceOnlyModifier"] > 0,
