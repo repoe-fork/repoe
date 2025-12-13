@@ -79,11 +79,7 @@ class mods(Parser_Module):
             if isinstance(price, list):
                 price = next(iter(price), None)
 
-            try:
-                lines = get_translation(mod, translation_cache, lang=self.language).lines
-            except Exception as e:
-                print("could not get text for mod", mod["Id"], e)
-                lines = []
+            lines = get_translation(mod, translation_cache, lang=self.language).lines
 
             obj = {
                 "required_level": mod["Level"],
