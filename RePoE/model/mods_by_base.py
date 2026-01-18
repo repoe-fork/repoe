@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from typing import Dict, List, Optional, Union
 
-from pydantic import BaseModel, ConfigDict, RootModel
+from pydantic import BaseModel, ConfigDict, Field, RootModel
 
 
 class ModWeights(RootModel[Optional[Dict[str, int]]]):
@@ -39,7 +39,10 @@ class TagSet(BaseModel):
     )
     bases: List[str]
     mods: GenerationTypes
-    conditional_mods: Optional[List[str]] = None
+    conditional_mods: Optional[List[str]] = Field(
+        None,
+        description="Lists all mods that spawn (or don't spawn) at different weights depending on the presence or absence of other mods on the base.",
+    )
 
 
 class TagSets(RootModel[Optional[Dict[str, Union[TagSet, SynthModGroups, EssenceModLevels]]]]):
