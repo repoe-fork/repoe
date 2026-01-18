@@ -39,6 +39,7 @@ class TagSet(BaseModel):
     )
     bases: List[str]
     mods: GenerationTypes
+    conditional_mods: Optional[List[str]] = None
 
 
 class TagSets(RootModel[Optional[Dict[str, Union[TagSet, SynthModGroups, EssenceModLevels]]]]):

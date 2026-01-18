@@ -62,6 +62,8 @@ class mods_by_base(Parser_Module):
             by_tags.bases.append(base_id)
             mods_data = by_tags.mods
             tags = OrderedDict.fromkeys(base["tags"])
+            conditional_tags = OrderedDict(tags)
+            conditional_mods = set()
             restart = True
             while restart:
                 restart = False
@@ -72,10 +74,16 @@ class mods_by_base(Parser_Module):
                         weight = next(
                             (weight["weight"] for weight in mod["spawn_weights"] if weight["tag"] in tags), None
                         )
+                        conditional_weight = next(
+                            (weight["weight"] for weight in mod["spawn_weights"] if weight["tag"] in conditional_tags),
+                            None,
+                        )
+                        if weight != conditional_weight:
+                            conditional_mods.add(mod_id)
                         gen_type = mod["generation_type"]
                         if delve:
                             gen_type = "delve_" + gen_type
-                        if not weight:
+                        if not weight and not conditional_weight:
                             influence = next(
                                 (weight for weight in mod["spawn_weights"] if weight["tag"] in influence_tags), {}
                             )
@@ -88,11 +96,13 @@ class mods_by_base(Parser_Module):
                         mod_group = mod_generation.root.setdefault(mod["type"], ModWeights({}))
                         mod_group.root[mod_id] = weight
                         for added_tag in mod.get("adds_tags", []):
-                            if added_tag not in tags:
-                                restart = tags[added_tag] = True
-                                tags.move_to_end(added_tag, False)
+                            if added_tag not in conditional_tags:
+                                restart = conditional_tags[added_tag] = True
+                                conditional_tags.move_to_end(added_tag, False)
                         if restart:
                             break
+            if conditional_mods:
+                by_tags.conditional_mods = list(sorted(conditional_mods))
 
         for synth in requests.get(
             "https://www.poewiki.net/index.php?title=Special:CargoExport&tables=synthesis_mods&format=json"
