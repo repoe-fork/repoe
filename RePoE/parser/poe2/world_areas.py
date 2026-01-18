@@ -8,6 +8,7 @@ from PyPoE.poe.file.tsi import TSIFile
 
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, write_any_json, write_json
+from RePoE.poe.file.arm import ARMFile
 
 AREA_KEYS = [
     "id",
@@ -115,6 +116,17 @@ class world_areas(Parser_Module):
             file = DGRFile()
             file.read(self.file_system.get_file(filename))
             val = vars(file)
+            if "edges" in val:
+                val["edge_types"] = {}
+                for edge in val["edges"]:
+                    edge_type, edge_file = self.process_edge_type(
+                        next(u for u in edge["unknown"] if isinstance(u, str) and u.endswith(".et"))
+                    )
+                    val["edge_types"][edge_file] = edge_type
+                    edge["edge_type"] = edge_file
+                    if "color" in edge_type:
+                        edge["color"] = edge_type["color"]
+                self.graphs[filename] = val
             if "MasterFile" in file.data:
                 master = self.process_master(file.data["MasterFile"])
                 if master:
@@ -127,17 +139,6 @@ class world_areas(Parser_Module):
                         val["tile_set"] = self.process_fileset(base + master["TileSet"])
                     if "FileGroups" in master:
                         val["file_groups"] = self.process_filegroup(base, master["FileGroups"])
-            if "edges" in val:
-                val["edge_types"] = {}
-                for edge in val["edges"]:
-                    [edge_type, color, etfile] = self.process_edge_type(
-                        next(u for u in edge["unknown"] if isinstance(u, str) and u.endswith(".et"))
-                    )
-                    val["edge_types"][edge_type] = etfile
-                    edge["edge_type"] = edge_type
-                    if color:
-                        edge["color"] = color
-                self.graphs[filename] = val
             for node in val.get("nodes", []):
                 if node.get("room", None) == "graph" and node.get("strings", None):
                     subgraph = node["strings"][0]
@@ -177,6 +178,11 @@ class world_areas(Parser_Module):
         try:
             file.read(self.file_system.get_file(filename))
             self.cache[filename] = file.files
+            for f in file.files:
+                if f["file"].endswith(".arm"):
+                    room = self.process_room(f["file"])
+                    f["room_tag"] = room.tag
+                    write_any_json(room.to_dict(), self.data_path, f["file"])
             return file.files
         except FileNotFoundError:
             print("File not found", filename)
@@ -216,14 +222,21 @@ class world_areas(Parser_Module):
         first_line = etfile.splitlines()[0].split()
         match len(first_line):
             case 1:
-                return first_line[0], None, etfile
+                return {"id": first_line[0]}, filename
             case 2:
                 if not first_line[1].startswith("#"):
                     print("bad color", first_line[1], "in", filename)
                     raise Exception(first_line[1])
-                return first_line[0], first_line[1], etfile
+                return {"id": first_line[0], "color": first_line[1]}, filename
             case _:
                 raise Exception(filename)
+
+    def process_room(self, filename: str):
+        if filename in self.cache:
+            return self.cache[filename]
+        room = ARMFile(filename, 2)
+        room.read(self.file_system.get_file(filename))
+        return room
 
 
 if __name__ == "__main__":
