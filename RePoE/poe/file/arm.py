@@ -57,12 +57,12 @@ class ARMFile(AbstractFile):
         self.numbers.extend(self.number_list(lines.pop(0)) for _ in range(sum(self.numbers[0]) * 2))
 
         self.pois = self.points_of_interest(lines)
-        self.grid = [self.grid_row(lines.pop(0)) for _ in range(self.root_slot.height)]
+        self.grid = [self.grid_row(lines.pop(0)) for _ in range(self.root_slot.get("height", 1))]
         self.doodads = self.points_of_interest(lines)
 
     def grid_row(self, line):
         result = []
-        for _ in range(self.root_slot.width):
+        for _ in range(self.root_slot.get("width", 1)):
             cell, line = self.grid_cell(line)
             result.append(cell)
         if line:
@@ -74,15 +74,14 @@ class ARMFile(AbstractFile):
         if not match:
             raise ParserError(f"{self} - Unexpected cell format: '{line}'")
         if match.group("tag") == "k":
-            return Slot(match.group("tag"), match.group("data"), self), match.group("rest")
+            return Slot(match.group("data"), self).__dict__, match.group("rest")
         elif match.group("tag") == "f":
-            return Fill(match.group("tag"), self.get_string(int(match.group("data").strip()))), match.group("rest")
-        elif match.group("tag") == "s":
-            return Static(match.group("tag")), match.group("rest")
-        elif match.group("tag") == "o":
-            return Open(match.group("tag")), match.group("rest")
-        elif match.group("tag") == "n":
-            return Null(match.group("tag")), match.group("rest")
+            return (
+                {"tag": match.group("tag"), "fill": self.get_string(int(match.group("data").strip()))},
+                match.group("rest"),
+            )
+        elif match.group("tag") in ["s", "o", "n"]:
+            return {"tag": match.group("tag")}, match.group("rest")
         else:
             raise ParserError(f"{self} - Unexpected cell tag: {match.group('tag')} in {line}.")
 
@@ -90,14 +89,20 @@ class ARMFile(AbstractFile):
         result = []
         group = []
         while lines:
+            if self._re_cell.match(lines[0]):
+                if group:
+                    raise ParserError(f"{self} - Hit grid row '{lines[0]}' with group still in progress {group}.")
+                return result
             line = lines.pop(0)
             parsed = self.tokenise(line)
             if len(parsed) == 1:
-                if isinstance(parsed[0], str):
+                if line.startswith('"'):
                     result.append(group)
                     if parsed[0]:
                         self.overrides = parsed[0]
                     return result
+                elif not isinstance(parsed[0], int):
+                    raise ParserError(f"{self} - Unexpected line in poi block: {line}")
                 count = parsed[0]
                 if count >= 0:
                     if group:
@@ -112,11 +117,6 @@ class ARMFile(AbstractFile):
                         raise ParserError(f"{self} - Unexpected negative count: {count}.")
                     result.append(group)
                     group = []
-            elif isinstance(parsed[0], str) and len(parsed[0]) == 1:
-                if group:
-                    raise ParserError(f"{self} - Hit grid {parsed} row with group still in progress {group}.")
-                lines.insert(0, line)
-                return result
             else:
                 # poe2-style group should be followed by a -1
                 group.append(parsed)
@@ -173,27 +173,19 @@ class ARMFile(AbstractFile):
         return {slot: getattr(self, slot) for slot in self.__slots__ if slot != "sequel"}
 
 
-@dataclass
-class Cell:
-    def __init__(self, tag, expected):
-        if tag != expected:
-            raise ParserError(f"Expected tag '{expected}', but was '{tag}'")
-        self.tag = tag
-        self.width = 1
-        self.height = 1
+class Slot:
+    tag = "k"
 
-
-@dataclass
-class Slot(Cell):
-    def __init__(self, tag: str, data: str, parent: ARMFile):
-        super().__init__(tag, "k")
+    def __init__(self, data: str, parent: ARMFile):
         vals = [int(d) for d in data.split()]
         if len(vals) < 23:
             raise ParserError(f"{self} - Insufficient data: {data}")
+        if len(vals) > 24:
+            raise ParserError(f"{self} - Excess data: {data}")
         self.width = vals[0]
         self.height = vals[1]
         self.tag = parent.get_string(vals[22])
-        self.anchor = ["sw", "se", "ne", "nw"][vals[23]]
+        self.origin = ["sw", "se", "ne", "nw"][vals[23] if len(vals) > 23 else 0]
         self.edges = dict(
             zip(
                 ["n", "w", "s", "e"],
@@ -219,28 +211,3 @@ class Slot(Cell):
                 ],
             )
         )
-
-
-@dataclass
-class Fill(Cell):
-    def __init__(self, tag, data):
-        super().__init__(tag, "f")
-        self.fill = data
-
-
-@dataclass
-class Static(Cell):
-    def __init__(self, tag):
-        super().__init__(tag, "s")
-
-
-@dataclass
-class Open(Cell):
-    def __init__(self, tag):
-        super().__init__(tag, "o")
-
-
-@dataclass
-class Null(Cell):
-    def __init__(self, tag):
-        super().__init__(tag, "n")
