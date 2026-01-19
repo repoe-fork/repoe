@@ -31,8 +31,6 @@ of files in the GGPK changes.
 
 The following data is currently available:
 
-- `stat_translations.json`: Maps stat ids together with their values to human-readable
-  text. This is the text that appears on items in-game.
 - `stats.json`: Describes stat ids. Defines whether they are local and whether they
   are aliased depending on main-hand or off-hand.
 - `mods.json`: Describes mod ids. Defines which items they can appear on and what
