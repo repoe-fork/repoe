@@ -182,7 +182,6 @@ class world_areas(Parser_Module):
                 if f["file"].endswith(".arm"):
                     room = self.process_room(f["file"])
                     f["room_tag"] = room.tag
-                    write_any_json(room.to_dict(), self.data_path, f["file"])
             return file.files
         except FileNotFoundError:
             print("File not found", filename)
