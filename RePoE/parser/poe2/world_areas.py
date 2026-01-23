@@ -1,5 +1,5 @@
 import re
-from typing import Dict
+from typing import Dict, Any
 
 from PyPoE.poe.file.dat import DatRecord
 from PyPoE.poe.file.dgr import DGRFile
@@ -9,6 +9,7 @@ from PyPoE.poe.file.tsi import TSIFile
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, write_any_json, write_json
 from RePoE.poe.file.arm import ARMFile
+from RePoE.poe.file.tdt import TDTFile
 
 AREA_KEYS = [
     "id",
@@ -43,7 +44,14 @@ def pascal_case(key: str):
     return "".join(word.title() for word in key.split("_"))
 
 
+# files from ggg contain unnormalized paths
+# could fix this better further upstream, but for now just sprinkle this function around
+def normalize(filename) -> Any:
+    return filename.replace("//", "/")
+
+
 class world_areas(Parser_Module):
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.packs = self.relational_reader["MonsterPacks.dat64"]
@@ -134,9 +142,11 @@ class world_areas(Parser_Module):
                     base = file.data["MasterFile"]
                     base = base[: base.rfind("/") + 1]
                     if "RoomSet" in master:
-                        val["room_set"] = self.process_fileset(base + master["RoomSet"])
+                        val["room_set"] = self.process_fileset(base, master["RoomSet"])
                     if "TileSet" in master:
-                        val["tile_set"] = self.process_fileset(base + master["TileSet"])
+                        val["tile_set"] = self.process_fileset(base, master["TileSet"])
+                    if "FillTiles" in master:
+                        val["fill_tiles"] = self.process_fileset(base, master["FillTiles"])
                     if "FileGroups" in master:
                         val["file_groups"] = self.process_filegroup(base, master["FileGroups"])
             for node in val.get("nodes", []):
@@ -148,8 +158,7 @@ class world_areas(Parser_Module):
                         val["subgraphs"] = {}
                     val["subgraphs"][subgraph] = subgraphs
                     for filename in subgraphs:
-                        # sometimes the dgr files contain unnormalized paths; could fix this better further upstream
-                        self.process_graph(filename.replace("//", "/"))
+                        self.process_graph(normalize(filename))
         except FileNotFoundError:
             print("Graph not found", filename)
         except Exception:
@@ -164,14 +173,16 @@ class world_areas(Parser_Module):
             file.read(self.file_system.get_file(filename))
             self.cache[filename] = file.data
             return file.data
-        except FileNotFoundError:
-            print("File not found", filename)
+        except FileNotFoundError as e:
+            print("File not found", filename, e)
             self.cache[filename] = None
         except Exception:
             print("Error parsing file", filename)
             raise
 
-    def process_fileset(self, filename: str):
+    def process_fileset(self, base: str, filename: str):
+        if "/" not in filename:
+            filename = base + filename
         if filename in self.cache:
             return self.cache[filename]
         file = FileSet()
@@ -179,12 +190,24 @@ class world_areas(Parser_Module):
             file.read(self.file_system.get_file(filename))
             self.cache[filename] = file.files
             for f in file.files:
-                if f["file"].endswith(".arm"):
-                    room = self.process_room(f["file"])
-                    f["room_tag"] = room.tag
+                if any("//" in p for p in f.get("prefix", [])):
+                    continue
+                f["file"] = normalize(f["file"])
+                try:
+                    if f["file"].endswith(".arm"):
+                        room = self.process_room(f["file"])
+                        if room and room.tag:
+                            f["room_tag"] = room.tag
+                    if f["file"].endswith(".tdt"):
+                        tile = self.process_tile(f["file"])
+                        if tile and tile.tag:
+                            f["tile_tag"] = tile.tag
+                except FileNotFoundError as e:
+                    print("File in fileset", filename, "not found", e)
+                    self.cache[filename] = None
             return file.files
-        except FileNotFoundError:
-            print("File not found", filename)
+        except FileNotFoundError as e:
+            print("File not found", filename, e)
             self.cache[filename] = None
         except Exception:
             print("Error parsing file", filename, file)
@@ -236,6 +259,13 @@ class world_areas(Parser_Module):
         room = ARMFile(filename, 2)
         room.read(self.file_system.get_file(filename))
         return room
+
+    def process_tile(self, filename: str):
+        if filename in self.cache:
+            return self.cache[filename]
+        tile = TDTFile(filename, 2)
+        tile.read(self.file_system.get_file(filename))
+        return tile
 
 
 if __name__ == "__main__":

@@ -1,5 +1,4 @@
 import re
-from dataclasses import dataclass
 
 from PyPoE.poe.file.shared import AbstractFile, ParserError
 
@@ -184,7 +183,7 @@ class Slot:
             raise ParserError(f"{self} - Excess data: {data}")
         self.width = vals[0]
         self.height = vals[1]
-        self.tag = parent.get_string(vals[22])
+        self.slot_tag = parent.get_string(vals[22])
         self.origin = ["sw", "se", "ne", "nw"][vals[23] if len(vals) > 23 else 0]
         self.edges = dict(
             zip(
