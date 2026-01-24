@@ -199,9 +199,7 @@ class world_areas(Parser_Module):
                         if room and room.tag:
                             f["room_tag"] = room.tag
                     if f["file"].endswith(".tdt"):
-                        tile = self.process_tile(f["file"])
-                        if tile and tile.tag:
-                            f["tile_tag"] = tile.tag
+                        self.process_tile(f)
                 except FileNotFoundError as e:
                     print("File in fileset", filename, "not found", e)
                     self.cache[filename] = None
@@ -260,12 +258,22 @@ class world_areas(Parser_Module):
         room.read(self.file_system.get_file(filename))
         return room
 
-    def process_tile(self, filename: str):
+    def process_tile(self, f: dict[str, Any]):
+        filename = f["file"]
         if filename in self.cache:
-            return self.cache[filename]
+            file = self.cache[filename]
+        else:
+            file = self.file_system.get_file(filename)
+            self.cache[filename] = file
         tile = TDTFile(filename, 2)
-        tile.read(self.file_system.get_file(filename))
-        return tile
+        tile.read(file)
+        if hasattr(tile, "tag") and tile.tag:
+            f["tile_tag"] = tile.tag
+        if hasattr(tile, "tdt") and tile.tdt:
+            f["tile_parent"] = {"file": tile.tdt}
+            self.process_tile(f["tile_parent"])
+        if hasattr(tile, "tgt") and tile.tgt:
+            f["tile_tgt"] = tile.tgt
 
 
 if __name__ == "__main__":

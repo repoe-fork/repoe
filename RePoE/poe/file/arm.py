@@ -4,7 +4,7 @@ from PyPoE.poe.file.shared import AbstractFile, ParserError
 
 
 class ARMFile(AbstractFile):
-    _re_version = re.compile(r"^version ([0-9]+)$")
+    _re_version = re.compile(r"^\s*version ([0-9]+)$")
     _re_data = re.compile(r'^(?P<key>\S+):\s+(?P<value>.*)|"(?P<string>.*)"|(?P<number>\d+)$')
     _re_token = re.compile(
         r'^(?:(?P<int>-?\d+)|(?P<float>-?\d*\.\d+)|"(?P<quoted>(?:[^"]|\\")*)"|(?P<word>\S+))\s*(?P<rest>.*)$'
