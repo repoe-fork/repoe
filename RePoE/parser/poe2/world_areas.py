@@ -67,7 +67,7 @@ class world_areas(Parser_Module):
         write_json(root, self.data_path, "world_areas")
         if self.language == "English":
             for k, v in self.graphs.items():
-                write_any_json(v, self.data_path, k)
+                write_json(v, self.data_path, k, "world_area_graph")
 
     def process_row(self, row: DatRecord):
         result = {key: self.process_value(row[pascal_case(key)]) for key in AREA_KEYS}

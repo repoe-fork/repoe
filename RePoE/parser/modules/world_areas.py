@@ -4,7 +4,7 @@ from PyPoE.poe.file.file_set import FileSet
 from PyPoE.poe.file.tsi import TSIFile
 
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import call_with_default_args, write_any_json, write_json
+from RePoE.parser.util import call_with_default_args, write_json
 from RePoE.poe.file.arm import ARMFile
 from RePoE.poe.file.tdt import TDTFile
 
@@ -69,7 +69,7 @@ class world_areas(Parser_Module):
         write_json(root, self.data_path, "world_areas")
         if self.language == "English":
             for k, v in self.graphs.items():
-                write_any_json(v, self.data_path, k)
+                write_json(v, self.data_path, k, "world_area_graph")
 
     def process_row(self, row: DatRecord):
         result = {key: self.process_value(row[map_key(key)]) for key in AREA_KEYS}

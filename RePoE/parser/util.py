@@ -37,7 +37,9 @@ def write_json(root_obj: Any, data_path: str, file_name: str, model_name="") -> 
     try:
         write_model(mod.Model(root_obj), data_path, file_name)
     except Exception:
-        print("Model:", mod.__file__, "Schema:", os.path.abspath(f"./schema/{model_name}.schema.json"))
+        print(
+            "File:", file_name, "Model:", mod.__file__, "Schema:", os.path.abspath(f"./schema/{model_name}.schema.json")
+        )
         raise
 
 

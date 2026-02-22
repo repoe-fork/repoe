@@ -1,0 +1,259 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/WorldAreaGraph",
+    "definitions": {
+        "WorldAreaGraph": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/Data"
+                },
+                "edge_count": {
+                    "type": "integer"
+                },
+                "edge_types": {
+                    "$ref": "#/definitions/EdgeTypes"
+                },
+                "edges": {
+                    "type": "array",
+                    "items": {}
+                },
+                "fill_tiles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/FillTile"
+                    }
+                },
+                "master": {
+                    "$ref": "#/definitions/Master"
+                },
+                "node_count": {
+                    "type": "integer"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Node"
+                    }
+                },
+                "room_set": {
+                    "type": "array",
+                    "items": {}
+                },
+                "size": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "strings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "tile_set": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TileSet"
+                    }
+                },
+                "version": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "data",
+                "edge_count",
+                "edge_types",
+                "edges",
+                "fill_tiles",
+                "master",
+                "node_count",
+                "nodes",
+                "room_set",
+                "size",
+                "strings",
+                "tile_set",
+                "version"
+            ],
+            "title": "WorldAreaGraph"
+        },
+        "Data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Default%": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "MasterFile": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Default%",
+                "MasterFile"
+            ],
+            "title": "Data"
+        },
+        "EdgeTypes": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "EdgeTypes"
+        },
+        "FillTile": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "file": {
+                    "type": "string"
+                },
+                "prefix": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "integer"
+                    }
+                },
+                "tile_tgt": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "file"
+            ],
+            "title": "FillTile"
+        },
+        "Master": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "ChestData": {
+                    "type": "string"
+                },
+                "Doodads": {
+                    "type": "string"
+                },
+                "EdgeCombination": {
+                    "type": "string"
+                },
+                "FillTiles": {
+                    "type": "string"
+                },
+                "MaterialsList": {
+                    "type": "string"
+                },
+                "OuterGroundType": {
+                    "type": "string"
+                },
+                "Reskin": {
+                    "type": "string"
+                },
+                "RoomSet": {
+                    "type": "string"
+                },
+                "TileSet": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ChestData",
+                "Doodads",
+                "EdgeCombination",
+                "FillTiles",
+                "MaterialsList",
+                "OuterGroundType",
+                "Reskin",
+                "RoomSet",
+                "TileSet"
+            ],
+            "title": "Master"
+        },
+        "Node": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "numbers": {
+                    "type": "array",
+                    "items": {}
+                },
+                "room": {
+                    "type": "string"
+                },
+                "strings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "transform": {
+                    "type": "string"
+                },
+                "unknown": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Unknown"
+                    }
+                },
+                "x": {
+                    "type": "integer"
+                },
+                "y": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "numbers",
+                "room",
+                "strings",
+                "transform",
+                "unknown",
+                "x",
+                "y"
+            ],
+            "title": "Node"
+        },
+        "TileSet": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "file": {
+                    "type": "string"
+                },
+                "prefix": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "integer"
+                    }
+                },
+                "tile_tag": {
+                    "type": "string"
+                },
+                "suffix": {
+                    "type": "array",
+                    "items": {}
+                }
+            },
+            "required": [
+                "file"
+            ],
+            "title": "TileSet"
+        },
+        "Unknown": {
+            "anyOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "string"
+                }
+            ],
+            "title": "Unknown"
+        }
+    }
+}
