@@ -13,16 +13,21 @@
                     "type": "integer"
                 },
                 "edge_types": {
-                    "$ref": "#/definitions/EdgeTypes"
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/EdgeType"
+                    }
                 },
                 "edges": {
                     "type": "array",
-                    "items": {}
+                    "items": {
+                        "$ref": "#/definitions/Edge"
+                    }
                 },
                 "fill_tiles": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/FillTile"
+                        "$ref": "#/definitions/FileSetItem"
                     }
                 },
                 "master": {
@@ -30,6 +35,12 @@
                 },
                 "node_count": {
                     "type": "integer"
+                },
+                "numbers": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
                 },
                 "nodes": {
                     "type": "array",
@@ -39,7 +50,9 @@
                 },
                 "room_set": {
                     "type": "array",
-                    "items": {}
+                    "items": {
+                        "$ref": "#/definitions/FileSetItem"
+                    }
                 },
                 "size": {
                     "type": "array",
@@ -56,11 +69,29 @@
                 "tile_set": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/TileSet"
+                        "$ref": "#/definitions/FileSetItem"
                     }
                 },
                 "version": {
                     "type": "integer"
+                },
+                "subgraphs": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "file_groups": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
                 }
             },
             "required": [
@@ -68,21 +99,33 @@
                 "edge_count",
                 "edge_types",
                 "edges",
-                "fill_tiles",
                 "master",
                 "node_count",
                 "nodes",
-                "room_set",
                 "size",
                 "strings",
-                "tile_set",
                 "version"
             ],
             "title": "WorldAreaGraph"
         },
         "Data": {
             "type": "object",
-            "additionalProperties": false,
+            "additionalProperties": {
+                "anyOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "integer"
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                ]
+            },
             "properties": {
                 "Default%": {
                     "type": "array",
@@ -95,7 +138,6 @@
                 }
             },
             "required": [
-                "Default%",
                 "MasterFile"
             ],
             "title": "Data"
@@ -104,6 +146,99 @@
             "type": "object",
             "additionalProperties": false,
             "title": "EdgeTypes"
+        },
+        "EdgeType": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "color": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "EdgeType"
+        },
+        "Edge": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "from": {
+                    "type": "integer"
+                },
+                "to": {
+                    "type": "integer"
+                },
+                "path": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "unknown": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Unknown"
+                    }
+                },
+                "edge_type": {
+                    "type": "string"
+                },
+                "color": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "from",
+                "to",
+                "path",
+                "unknown"
+            ],
+            "title": "Edge"
+        },
+        "FileSetItem": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "file": {
+                    "type": "string"
+                },
+                "prefix": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "suffix": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "tile_tag": {
+                    "type": "string"
+                },
+                "room_tag": {
+                    "type": "string"
+                },
+                "tile_tgt": {
+                    "type": "string"
+                },
+                "tile_parent": {
+                    "$ref": "#/definitions/TileParent"
+                }
+            },
+            "required": [
+                "file"
+            ],
+            "title": "FileSetItem"
         },
         "FillTile": {
             "type": "object",
@@ -130,7 +265,22 @@
         },
         "Master": {
             "type": "object",
-            "additionalProperties": false,
+            "additionalProperties": {
+                "anyOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "integer"
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                ]
+            },
             "properties": {
                 "ChestData": {
                     "type": "string"
@@ -158,19 +308,65 @@
                 },
                 "TileSet": {
                     "type": "string"
+                },
+                "version": {
+                    "type": "integer"
+                },
+                "StoreyHeight": {
+                    "type": "integer"
+                },
+                "RoomUnitSize": {
+                    "type": "integer"
+                },
+                "RoomOverlap": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    ]
+                },
+                "OuterBufferSize": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    ]
+                },
+                "EdgePoints": {
+                    "type": "string"
+                },
+                "Decals": {
+                    "type": "string"
+                },
+                "Overlays": {
+                    "type": "string"
+                },
+                "RestrictedGTs": {
+                    "type": "string"
+                },
+                "EnvironmentPreload": {
+                    "type": "string"
+                },
+                "Critters": {
+                    "type": "string"
+                },
+                "FileGroups": {
+                    "type": "string"
                 }
             },
-            "required": [
-                "ChestData",
-                "Doodads",
-                "EdgeCombination",
-                "FillTiles",
-                "MaterialsList",
-                "OuterGroundType",
-                "Reskin",
-                "RoomSet",
-                "TileSet"
-            ],
+            "required": [],
             "title": "Master"
         },
         "Node": {
@@ -179,7 +375,9 @@
             "properties": {
                 "numbers": {
                     "type": "array",
-                    "items": {}
+                    "items": {
+                        "type": "integer"
+                    }
                 },
                 "room": {
                     "type": "string"
@@ -243,6 +441,28 @@
                 "file"
             ],
             "title": "TileSet"
+        },
+        "TileParent": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "file": {
+                    "type": "string"
+                },
+                "tile_parent": {
+                    "$ref": "#/definitions/TileParent"
+                },
+                "tile_tag": {
+                    "type": "string"
+                },
+                "tile_tgt": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "file"
+            ],
+            "title": "TileParent"
         },
         "Unknown": {
             "anyOf": [

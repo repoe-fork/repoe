@@ -171,7 +171,7 @@ class Static(BaseModel):
     crit_chance: Optional[int] = None
     damage_effectiveness: Optional[int] = None
     quality_stats: List[QualityStat]
-    stat_requirements: StatRequirements
+    stat_requirements: Optional[StatRequirements] = None
     stat_text: Optional[Dict[str, str]] = None
     stats: Optional[List[Optional[Stat]]] = None
     vaal: Optional[Vaal] = None

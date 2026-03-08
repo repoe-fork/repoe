@@ -11,12 +11,18 @@ from RePoE.parser import Parser_Module
 from RePoE.parser.constants import COOLDOWN_BYPASS_TYPES
 from RePoE.parser.util import call_with_default_args, get_release_state, get_stat_translation_file_name, write_json
 
+GEM_COLORS = {
+    1: "trans",  # alt_x
+    2: "trans",  # alt_y
+    3: "trans",  # trarthus
+    4: "support",
+    5: "base",
+}
+
 
 def is_trans(gem_effect: DatRecord) -> bool:
-    # base transfiguration currently == 4, check the values if a new one is added
-    if gem_effect["ItemColor"] > 4:
-        raise ValueError(f"New itemcolor has been added; need to bump the constant")
-    return gem_effect["ItemColor"] != 4
+    # New colors can be inserted between existing - if this throws keyerror check gemeffects.dat
+    return GEM_COLORS[gem_effect["ItemColor"]] == "trans"
 
 
 def _handle_dict(representative: Dict[str, Any], per_level: List[Dict[str, Any]]):

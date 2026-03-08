@@ -4,16 +4,13 @@
 
 from __future__ import annotations
 
-from typing import List, Optional, Union
+from typing import Dict, List, Optional, Union
 
 from pydantic import BaseModel, ConfigDict, Field, RootModel
 
 
 class Data(BaseModel):
-    model_config = ConfigDict(
-        extra="forbid",
-    )
-    Default_: List[int] = Field(..., alias="Default%")
+    Default_: Optional[List[int]] = Field(None, alias="Default%")
     MasterFile: str
 
 
@@ -22,6 +19,14 @@ class EdgeTypes(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
     )
+
+
+class EdgeType(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    id: str
+    color: Optional[str] = None
 
 
 class FillTile(BaseModel):
@@ -34,18 +39,27 @@ class FillTile(BaseModel):
 
 
 class Master(BaseModel):
-    model_config = ConfigDict(
-        extra="forbid",
-    )
-    ChestData: str
-    Doodads: str
-    EdgeCombination: str
-    FillTiles: str
-    MaterialsList: str
-    OuterGroundType: str
-    Reskin: str
-    RoomSet: str
-    TileSet: str
+    ChestData: Optional[str] = None
+    Doodads: Optional[str] = None
+    EdgeCombination: Optional[str] = None
+    FillTiles: Optional[str] = None
+    MaterialsList: Optional[str] = None
+    OuterGroundType: Optional[str] = None
+    Reskin: Optional[str] = None
+    RoomSet: Optional[str] = None
+    TileSet: Optional[str] = None
+    version: Optional[int] = None
+    StoreyHeight: Optional[int] = None
+    RoomUnitSize: Optional[int] = None
+    RoomOverlap: Optional[Union[int, List[int]]] = None
+    OuterBufferSize: Optional[Union[int, List[int]]] = None
+    EdgePoints: Optional[str] = None
+    Decals: Optional[str] = None
+    Overlays: Optional[str] = None
+    RestrictedGTs: Optional[str] = None
+    EnvironmentPreload: Optional[str] = None
+    Critters: Optional[str] = None
+    FileGroups: Optional[str] = None
 
 
 class TileSet(BaseModel):
@@ -58,15 +72,50 @@ class TileSet(BaseModel):
     suffix: Optional[List] = None
 
 
+class TileParent(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    file: str
+    tile_parent: Optional[TileParent] = None
+    tile_tag: Optional[str] = None
+    tile_tgt: Optional[str] = None
+
+
 class Unknown(RootModel[Union[int, str]]):
     root: Union[int, str] = Field(..., title="Unknown")
+
+
+class Edge(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    from_: int = Field(..., alias="from")
+    to: int
+    path: List[List[int]]
+    unknown: List[Unknown]
+    edge_type: Optional[str] = None
+    color: Optional[str] = None
+
+
+class FileSetItem(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    file: str
+    prefix: Optional[List[str]] = None
+    suffix: Optional[List[str]] = None
+    tile_tag: Optional[str] = None
+    room_tag: Optional[str] = None
+    tile_tgt: Optional[str] = None
+    tile_parent: Optional[TileParent] = None
 
 
 class Node(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
     )
-    numbers: List
+    numbers: List[int]
     room: str
     strings: List[str]
     transform: str
@@ -81,18 +130,24 @@ class WorldAreaGraph(BaseModel):
     )
     data: Data
     edge_count: int
-    edge_types: EdgeTypes
-    edges: List
-    fill_tiles: List[FillTile]
+    edge_types: Dict[str, EdgeType]
+    edges: List[Edge]
+    fill_tiles: Optional[List[FileSetItem]] = None
     master: Master
     node_count: int
+    numbers: Optional[List[int]] = None
     nodes: List[Node]
-    room_set: List
+    room_set: Optional[List[FileSetItem]] = None
     size: List[int]
     strings: List[str]
-    tile_set: List[TileSet]
+    tile_set: Optional[List[FileSetItem]] = None
     version: int
+    subgraphs: Optional[Dict[str, List[str]]] = None
+    file_groups: Optional[Dict[str, List[str]]] = None
 
 
 class Model(RootModel[WorldAreaGraph]):
     root: WorldAreaGraph
+
+
+TileParent.model_rebuild()
