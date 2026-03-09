@@ -1,6 +1,5 @@
 import os.path
 
-from PyPoE.cli.exporter.wiki.parsers.passives import CLASS_PASSIVES
 from PyPoE.poe.file.psg import PSGFile, GraphGroup, GraphGroupNode
 from PyPoE.poe.file.translations import TranslationFileCache
 

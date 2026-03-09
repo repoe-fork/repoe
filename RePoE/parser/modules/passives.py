@@ -1,6 +1,5 @@
 import os.path
 
-from PyPoE.cli.exporter.wiki.parsers.passives import CLASS_PASSIVES
 from PyPoE.poe.file.psg import PSGFile, GraphGroup, GraphGroupNode
 from PyPoE.poe.file.translations import TranslationFileCache
 
@@ -27,6 +26,8 @@ TRANSLATION_FILES = {
     "AtlasSkillTreeTitle": "atlas_stat_descriptions.txt",
     "PassiveSkillTreeTitle": "passive_skill_stat_descriptions.txt",
 }
+
+CLASS_PASSIVES = [f"AscendancySpecialEldritch{i}" for i in range(1, 6)] + ["AscendancyTrickster14"]
 
 
 class passives(Parser_Module):
