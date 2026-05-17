@@ -26,7 +26,7 @@ def get_4k_path(path: str):
     return "/".join(parts)
 
 
-def convert_gem(skill_gem: DatRecord, gem_effect: DatRecord, support_gem_icons: Dict[int, str]) -> Dict[str, Any]:
+def convert_gem(skill_gem: DatRecord, gem_effect: DatRecord, support_gem: Optional[DatRecord]) -> Dict[str, Any]:
     obj = {}
 
     gem_tags = gem_effect["GemTags"]
@@ -58,7 +58,8 @@ def convert_gem(skill_gem: DatRecord, gem_effect: DatRecord, support_gem_icons: 
     if obj["gem_type"] != "support":
         obj["icon_dds_file"] = get_4k_path(gem_effect["GrantedEffect"]["ActiveSkill"]["Icon_DDSFile"])
     else:
-        obj["icon_dds_file"] = get_4k_path(support_gem_icons.get(skill_gem.rowid))
+        obj["icon_dds_file"] = get_4k_path(support_gem["Icon"]) if support_gem else None
+        obj["is_lineage"] = bool(support_gem["IsLineage"]) if support_gem else False
 
     return obj
 
@@ -68,9 +69,9 @@ class skill_gems(Parser_Module):
         skill_gems = {}
         relational_reader = self.relational_reader
 
-        support_gem_icons = {}
+        support_gem_data = {}
         for support in relational_reader["SupportGems.dat64"]:
-            support_gem_icons[support["SkillGem"].rowid] = support["Icon"]
+            support_gem_data[support["SkillGem"].rowid] = support
 
         support_gem_recs = relational_reader["SkillGemSupports.dat64"]
         support_gem_recs.build_index("SkillGem")
@@ -81,7 +82,7 @@ class skill_gems(Parser_Module):
                 if gem_effect["Name"] and ("[DNT]" in gem_effect["Name"]):
                     continue
 
-                skill_gem = convert_gem(gem, gem_effect, support_gem_icons)
+                skill_gem = convert_gem(gem, gem_effect, support_gem_data.get(gem.rowid))
                 if skill_gem["gem_type"] != "support":
                     skill_gem["recommended_supports"] = []
                     rec_rows = support_gem_recs.index["SkillGem"][gem]
