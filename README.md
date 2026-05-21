@@ -18,13 +18,12 @@ open an Issue or Pull Request for that. The source data files can be inspected w
 
 ## Files
 
-The [RePoE/data](RePoE/data) folder contains the generated data in Json format. Each file has a
+When running locally generated json data is exported to ./RePoE/data/. Each file has a
 formatted and a compact version. The formatted versions complement their descriptions
 in the [RePoE/docs](RePoE/docs) folder.
 
-Web apps using provided files should link to files in the
-[gh-pages](https://repoe-fork.github.io/), for better performance and caching behavior
-than linking to raw files in the repository.
+For hosted data exports see the
+[gh-pages](https://repoe-fork.github.io/) index.
 
 Note that the file formats are not final, they may change at any time, e.g. when the format
 of files in the GGPK changes.
