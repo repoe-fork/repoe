@@ -1,5 +1,5 @@
 from enum import unique, Enum
-from PyPoE.poe.constants import IntEnumOverride
+from PyPoE.poe.poe1constants import IntEnumOverride
 
 
 @unique

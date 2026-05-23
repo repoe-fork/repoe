@@ -41,11 +41,11 @@ class Pack(BaseModel):
     boss_chance: int
     boss_count: int
     boss_monster_spawn_chance: Optional[int] = None
-    boss_monsters: List[str]
+    boss_monsters: Optional[List[str]] = None
     id: str
     max_count: int
     min_count: int
-    monsters: Dict[str, Monster]
+    monsters: Optional[Dict[str, Monster]] = None
     tags: List[str]
     formation: Optional[str] = None
 

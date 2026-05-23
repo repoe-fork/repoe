@@ -1,7 +1,7 @@
 from collections import defaultdict
 from typing import Any, Dict, Optional
 
-from PyPoE.poe.constants import MOD_DOMAIN
+from PyPoE.poe.poe1constants import MOD_DOMAIN
 from PyPoE.poe.file.dat import DatReader, DatRecord
 from PyPoE.poe.file.it import ITFileCache
 

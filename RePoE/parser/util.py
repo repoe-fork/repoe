@@ -1,3 +1,4 @@
+import dataclasses
 import io
 import json
 import os
@@ -36,7 +37,9 @@ def write_json(root_obj: Any, data_path: str, file_name: str, model_name="") -> 
     try:
         write_model(mod.Model(root_obj), data_path, file_name)
     except Exception:
-        print("Model:", mod.__file__, "Schema:", os.path.abspath(f"./schema/{model_name}.schema.json"))
+        print(
+            "File:", file_name, "Model:", mod.__file__, "Schema:", os.path.abspath(f"./schema/{model_name}.schema.json")
+        )
         raise
 
 
@@ -64,7 +67,13 @@ def write_any_json(
 ) -> None:
     os.makedirs(os.path.join(data_path, *file_name.split("/")[:-1]), exist_ok=True)
     print("Writing '" + str(file_name) + ".json' ...", end="", flush=True)
-    json.dump(root_obj, io.open(os.path.join(data_path, file_name + ".json"), mode="w"), indent=2, sort_keys=True)
+    json.dump(
+        root_obj,
+        io.open(os.path.join(data_path, file_name + ".json"), mode="w"),
+        indent=2,
+        sort_keys=True,
+        default=lambda o: o.__dict__,
+    )
     print(" Done!")
     print("Writing '" + str(file_name) + ".min.json' ...", end="", flush=True)
     json.dump(
@@ -77,6 +86,8 @@ def write_any_json(
 
 
 def minimize(value):
+    if dataclasses.is_dataclass(value):
+        value = dataclasses.asdict(value)
     if isinstance(value, dict):
         return {k: minimize(v) for k, v in value.items() if v is not None}
     elif isinstance(value, list):

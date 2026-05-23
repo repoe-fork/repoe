@@ -18,21 +18,18 @@ open an Issue or Pull Request for that. The source data files can be inspected w
 
 ## Files
 
-The [RePoE/data](RePoE/data) folder contains the generated data in Json format. Each file has a
+When running locally generated json data is exported to ./RePoE/data/. Each file has a
 formatted and a compact version. The formatted versions complement their descriptions
 in the [RePoE/docs](RePoE/docs) folder.
 
-Web apps using provided files should link to files in the
-[gh-pages](https://repoe-fork.github.io/), for better performance and caching behavior
-than linking to raw files in the repository.
+For hosted data exports see the
+[gh-pages](https://repoe-fork.github.io/) index.
 
 Note that the file formats are not final, they may change at any time, e.g. when the format
 of files in the GGPK changes.
 
 The following data is currently available:
 
-- `stat_translations.json`: Maps stat ids together with their values to human-readable
-  text. This is the text that appears on items in-game.
 - `stats.json`: Describes stat ids. Defines whether they are local and whether they
   are aliased depending on main-hand or off-hand.
 - `mods.json`: Describes mod ids. Defines which items they can appear on and what
@@ -57,7 +54,7 @@ The following data is currently available:
 - `characters.json`: Describes the stat base values of the different player character classes.
 - `flavour.json`: Table containing the flavour text used throughout the game.
 - `fossils.json`: Describes fossils. Defines the mods they spawn, the tags they affect, and 
-  auxillary effects of the fossils.
+  auxiliary effects of the fossils.
 - `mod_types.json`: Describes the types of mods with sell price information and the tags
   relevant for fossil crafting.
 - `cluster_jewels.json`: Describes how cluster jewels can be generated and how they influence the passive tree. 

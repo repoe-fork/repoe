@@ -1,6 +1,6 @@
 from typing import Any, Dict, List, Optional, Union
 
-from PyPoE.poe.constants import MOD_DOMAIN
+from PyPoE.poe.poe1constants import MOD_DOMAIN
 from PyPoE.poe.file.dat import DatRecord
 from PyPoE.poe.file.translations import install_data_dependant_quantifiers, TranslationFileCache
 from PyPoE.poe.sim.mods import get_translation

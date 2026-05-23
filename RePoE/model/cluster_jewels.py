@@ -17,6 +17,7 @@ class PassiveSkill(BaseModel):
     id: str
     name: str
     stats: Dict[str, int]
+    stat_text: List[str]
     tag: str
 
 

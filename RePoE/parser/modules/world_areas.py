@@ -4,7 +4,9 @@ from PyPoE.poe.file.file_set import FileSet
 from PyPoE.poe.file.tsi import TSIFile
 
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import call_with_default_args, write_any_json, write_json
+from RePoE.parser.util import call_with_default_args, write_json
+from RePoE.poe.file.arm import ARMFile
+from RePoE.poe.file.tdt import TDTFile
 
 AREA_KEYS = [
     "id",
@@ -67,7 +69,7 @@ class world_areas(Parser_Module):
         write_json(root, self.data_path, "world_areas")
         if self.language == "English":
             for k, v in self.graphs.items():
-                write_any_json(v, self.data_path, k)
+                write_json(v, self.data_path, k, "world_area_graph")
 
     def process_row(self, row: DatRecord):
         result = {key: self.process_value(row[map_key(key)]) for key in AREA_KEYS}
@@ -122,6 +124,17 @@ class world_areas(Parser_Module):
             file = DGRFile()
             file.read(self.file_system.get_file(filename))
             val = vars(file)
+            if "edges" in val:
+                val["edge_types"] = {}
+                for edge in val["edges"]:
+                    edge_type, edge_file = self.process_edge_type(
+                        next(u for u in edge["unknown"] if isinstance(u, str) and u.endswith(".et"))
+                    )
+                    val["edge_types"][edge_file] = edge_type
+                    edge["edge_type"] = edge_file
+                    if "color" in edge_type:
+                        edge["color"] = edge_type["color"]
+                self.graphs[filename] = val
             if "MasterFile" in file.data:
                 master = self.process_master(file.data["MasterFile"])
                 if master:
@@ -129,20 +142,11 @@ class world_areas(Parser_Module):
                     base = file.data["MasterFile"]
                     base = base[: base.rfind("/") + 1]
                     if "RoomSet" in master:
-                        val["room_set"] = self.process_fileset(base + master["RoomSet"])
+                        val["room_set"] = self.process_fileset(base, master["RoomSet"])
                     if "TileSet" in master:
-                        val["tile_set"] = self.process_fileset(base + master["TileSet"])
-            if "edges" in val:
-                val["edge_types"] = {}
-                for edge in val["edges"]:
-                    [edge_type, color, etfile] = self.process_edge_type(
-                        next(u for u in edge["unknown"] if isinstance(u, str) and u.endswith(".et"))
-                    )
-                    val["edge_types"][edge_type] = etfile
-                    edge["edge_type"] = edge_type
-                    if color:
-                        edge["color"] = color
-                self.graphs[filename] = val
+                        val["tile_set"] = self.process_fileset(base, master["TileSet"])
+                    if "FillTiles" in master:
+                        val["fill_tiles"] = self.process_fileset(base, master["FillTiles"])
         except FileNotFoundError:
             print("Graph not found", filename)
         except Exception:
@@ -164,16 +168,33 @@ class world_areas(Parser_Module):
             print("Error parsing file", filename)
             raise
 
-    def process_fileset(self, filename: str):
+    def process_fileset(self, base: str, filename: str):
+        if "/" not in filename:
+            filename = base + filename
         if filename in self.cache:
             return self.cache[filename]
         file = FileSet()
         try:
             file.read(self.file_system.get_file(filename))
             self.cache[filename] = file.files
+            for f in file.files:
+                if any("//" in p for p in f.get("prefix", [])):
+                    continue
+                try:
+                    if f["file"].endswith(".arm"):
+                        room = self.process_room(f["file"])
+                        if room and room.tag:
+                            f["room_tag"] = room.tag
+                    if f["file"].endswith(".tdt"):
+                        tile = self.process_tile(f["file"])
+                        if tile and tile.tag:
+                            f["tile_tag"] = tile.tag
+                except FileNotFoundError as e:
+                    print("File not found", filename, e)
+                    self.cache[filename] = None
             return file.files
-        except FileNotFoundError:
-            print("File not found", filename)
+        except FileNotFoundError as e:
+            print("File not found", filename, e)
             self.cache[filename] = None
         except Exception:
             print("Error parsing file", filename, file)
@@ -186,14 +207,28 @@ class world_areas(Parser_Module):
         first_line = etfile.splitlines()[0].split()
         match len(first_line):
             case 1:
-                return first_line[0], None, etfile
+                return {"id": first_line[0]}, filename
             case 2:
                 if not first_line[1].startswith("#"):
                     print("bad color", first_line[1], "in", filename)
                     raise Exception(first_line[1])
-                return first_line[0], first_line[1], etfile
+                return {"id": first_line[0], "color": first_line[1]}, filename
             case _:
                 raise Exception(filename)
+
+    def process_room(self, filename: str):
+        if filename in self.cache:
+            return self.cache[filename]
+        room = ARMFile(filename, 1)
+        room.read(self.file_system.get_file(filename))
+        return room
+
+    def process_tile(self, filename: str):
+        if filename in self.cache:
+            return self.cache[filename]
+        room = TDTFile(filename, 1)
+        room.read(self.file_system.get_file(filename))
+        return room
 
 
 if __name__ == "__main__":
