@@ -17,7 +17,7 @@ from RePoE.parser.util import (
 
 
 def _create_default_dict(relation: DatReader, col="BaseItemTypesKey") -> Dict:
-    d = {row[col]["Id"]: row for row in relation if row[col] is not None}
+    d = {row[col]["Id"]: row for row in relation if row[col]}
     return defaultdict(lambda: None, d)
 
 
@@ -114,12 +114,12 @@ def _create_skills_dict(relational_reader, col="BaseItemType") -> Dict:
     skills_dict = {}
     try:
         for row in relational_reader["ItemInherentSkills.dat64"]:
-            if row[col] is not None:
+            if row[col]:
                 item_id = row[col]["Id"]
                 skills_granted = []
                 if row["SkillsGranted"]:
                     for skill in row["SkillsGranted"]:
-                        if skill[col] is not None:
+                        if skill[col]:
                             skills_granted.append(skill[col]["Id"])
                 skills_dict[item_id] = skills_granted
     except (KeyError, TypeError):
