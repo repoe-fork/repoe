@@ -41,6 +41,7 @@ def _convert_armour_properties(armour_row: Optional[DatRecord], properties: Dict
     _add_min_max(armour_row, "Armour", "armour", properties)
     _add_min_max(armour_row, "Evasion", "evasion", properties)
     _add_min_max(armour_row, "EnergyShield", "energy_shield", properties)
+    _add_min_max(armour_row, "Ward", "ward", properties)
     _add_if_not_zero(armour_row["IncreasedMovementSpeed"], "movement_speed", properties)
 
 

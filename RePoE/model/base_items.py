@@ -70,6 +70,7 @@ class Properties(BaseModel):
     armour: Optional[Armour] = None
     energy_shield: Optional[Armour] = None
     evasion: Optional[Armour] = None
+    ward: Optional[Armour] = None
     movement_speed: Optional[int] = None
     block: Optional[int] = None
     description: Optional[str] = None
