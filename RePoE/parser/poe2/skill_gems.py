@@ -26,6 +26,15 @@ def get_4k_path(path: str):
     return "/".join(parts)
 
 
+def get_non_4k_path(path: str):
+    if path is None:
+        return None
+    parts = path.split("/")
+    if len(parts) >= 2 and parts[-2] == "4k":
+        del parts[-2]
+    return "/".join(parts)
+
+
 def convert_gem(skill_gem: DatRecord, gem_effect: DatRecord, support_gem: Optional[DatRecord]) -> Dict[str, Any]:
     obj = {}
 
@@ -101,7 +110,13 @@ class skill_gems(Parser_Module):
                 if skill_gem.get("ui_image", None) not in (None, ""):
                     export_image(skill_gem["ui_image"], self.data_path, self.file_system)
                 if skill_gem["icon_dds_file"] not in (None, ""):
-                    export_image(skill_gem["icon_dds_file"], self.data_path, self.file_system)
+                    exported = export_image(skill_gem["icon_dds_file"], self.data_path, self.file_system)
+                    # some skills do not have 4k icons, so fallback to non-4k in those cases
+                    if not exported:
+                        fallback_icon = get_non_4k_path(skill_gem["icon_dds_file"])
+                        if fallback_icon != skill_gem["icon_dds_file"]:
+                            if export_image(fallback_icon, self.data_path, self.file_system):
+                                skill_gem["icon_dds_file"] = fallback_icon
 
         write_any_json(skill_gems, self.data_path, "skill_gems")
 

@@ -9,9 +9,9 @@ def _convert_alias_stats(
     alias_stats_key_1: Optional[DatRecord], alias_stats_key_2: Optional[DatRecord]
 ) -> Dict[str, str]:
     r = {}
-    if alias_stats_key_1 is not None:
+    if alias_stats_key_1:
         r["when_in_main_hand"] = alias_stats_key_1["Id"]
-    if alias_stats_key_2 is not None:
+    if alias_stats_key_2:
         r["when_in_off_hand"] = alias_stats_key_2["Id"]
     return r
 

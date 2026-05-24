@@ -200,10 +200,10 @@ def export_image(
     outfile: str | None = None,
     extensions=[".png", ".webp"],
     compose: Callable[[Image], Image] | None = None,
-) -> None:
+) -> bool:
     dest = os.path.join(data_path, os.path.splitext(outfile or ddsfile)[0])
     if dest in exported_images:
-        return
+        return True
     exported_images.add(dest)
     os.makedirs(os.path.dirname(dest), exist_ok=True)
 
@@ -212,16 +212,17 @@ def export_image(
     except Exception:
         print(f"Failed to extract {ddsfile}")
         traceback.print_exc()
-        return
+        return False
     if not bytes:
         print(f"dds file not found {ddsfile}")
-        return
+        return False
     if bytes[:4] != b"DDS ":
         print(f"{ddsfile} was not a dds file")
-        return
+        return False
 
     with Image.open(BytesIO(bytes)) as image:
         if compose:
             image = compose(image)
         for ext in extensions:
             image.save(dest + ext)
+    return True

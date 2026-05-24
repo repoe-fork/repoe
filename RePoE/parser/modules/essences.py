@@ -29,7 +29,7 @@ def _convert_mods(row: DatRecord) -> Dict[str, str]:
         "Two Hand Sword": "TwoHandSword_ModsKey",
         "Wand": "Wand_ModsKey",
     }
-    return {item_class: row[key]["Id"] for item_class, key in class_to_key.items() if row[key] is not None}
+    return {item_class: row[key]["Id"] for item_class, key in class_to_key.items() if row[key]}
 
 
 class essences(Parser_Module):

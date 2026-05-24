@@ -10,7 +10,7 @@ from RePoE.parser.util import call_with_default_args, export_image, get_release_
 
 
 def _create_default_dict(relation: DatReader, col="BaseItemTypesKey") -> Dict:
-    d = {row[col]["Id"]: row for row in relation if row[col] is not None}
+    d = {row[col]["Id"]: row for row in relation if row[col]}
     return defaultdict(lambda: None, d)
 
 
