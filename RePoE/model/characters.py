@@ -40,6 +40,7 @@ class CharactersSchemaElement(BaseModel):
         extra="forbid",
     )
     base_stats: BaseStats
+    passive_tree_image: Optional[str] = None
     integer_id: int
     metadata_id: MetadataID
     name: str
