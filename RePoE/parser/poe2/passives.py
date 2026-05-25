@@ -4,7 +4,7 @@ from PyPoE.poe.file.psg2 import PSGFile
 from PyPoE.poe.file.translations import TranslationFileCache
 
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import call_with_default_args, export_image, write_any_json
+from RePoE.parser.util import call_with_default_args, write_any_json
 
 
 PASSIVE_COLS = {
@@ -34,7 +34,7 @@ TRANSLATION_FILES = {
 }
 
 
-def passive(row, translation_file, lang, data_path=None, file_system=None):
+def passive(row, translation_file, lang):
     result = {k: row[col] for col, k in PASSIVE_COLS.items()}
     if row["PassiveSkillBuffs"]:
         result["buff_definitions"] = [buff["BuffDefinitionsKey"]["Id"] for buff in row["PassiveSkillBuffsKeys"]]
@@ -42,8 +42,6 @@ def passive(row, translation_file, lang, data_path=None, file_system=None):
         result["ascendancy"] = row["Ascendancy"]["Id"]
     if row["Icon_DDSFile"]:
         result["icon"] = row["Icon_DDSFile"]
-        if row["Ascendancy"] and data_path and file_system:
-            export_image(row["Icon_DDSFile"], data_path, file_system)
     if row["AtlasSubTree"]:
         result["atlas_subtree"] = row["AtlasSubTree"]["Id"]
     if row["GrantedSkill"]:
@@ -97,7 +95,6 @@ def frame_art(row):
 class passives(Parser_Module):
 
     def write(self) -> None:
-        should_export_images = self.language == "English"
         all_passives = self.relational_reader["PassiveSkills.dat64"]
         if "PassiveSkillGraphId" not in all_passives.index:
             all_passives.build_index("PassiveSkillGraphId")
@@ -109,13 +106,7 @@ class passives(Parser_Module):
             nodes = {}
             for p in psg.root_passives:
                 if p not in nodes:
-                    nodes[p] = passive(
-                        self.index[p],
-                        tf,
-                        self.language,
-                        self.data_path if should_export_images else None,
-                        self.file_system if should_export_images else None,
-                    )
+                    nodes[p] = passive(self.index[p], tf, self.language)
             groups = []
             for group in psg.groups:
                 groups.append(
@@ -137,17 +128,12 @@ class passives(Parser_Module):
                 )
                 for node in group.nodes:
                     if node.passive_skill not in nodes:
-                        nodes[node.passive_skill] = passive(
-                            self.index[node.passive_skill],
-                            tf,
-                            self.language,
-                            self.data_path if should_export_images else None,
-                            self.file_system if should_export_images else None,
-                        )
+                        nodes[node.passive_skill] = passive(self.index[node.passive_skill], tf, self.language)
             write_any_json(
                 {
                     "title": tree["Name"]["Text"],
                     "roots": psg.root_passives,
+                    "skills_per_orbit": self.skills_per_orbit(psg),
                     "orbit_radii": [0, 82, 162, 335, 493, 662, 846, 251, 1080, 1332],
                     "groups": groups,
                     "passives": nodes,
@@ -161,6 +147,13 @@ class passives(Parser_Module):
         psg = PSGFile()
         psg.read(self.file_system.get_file(filename + ".psg"))
         return psg
+
+    def skills_per_orbit(self, psg):
+        skills_per_orbit = {}
+        for group in psg.groups:
+            for node in group.nodes:
+                skills_per_orbit[node.radius] = max(skills_per_orbit.get(node.radius, 0), node.position + 1)
+        return [skills_per_orbit[i] for i in sorted(skills_per_orbit)]
 
 
 if __name__ == "__main__":

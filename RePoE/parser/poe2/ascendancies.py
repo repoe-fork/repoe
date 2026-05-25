@@ -6,7 +6,7 @@ from PyPoE.poe.file.translations import TranslationFileCache
 from RePoE.parser import Parser_Module
 from RePoE.parser.modules.flavour import flavour
 from RePoE.parser.poe2.passives import uiart, passive
-from RePoE.parser.util import call_with_default_args, export_image, write_any_json
+from RePoE.parser.util import call_with_default_args, write_any_json
 
 COLS = {
     "ClassNo": "class_number",
@@ -27,7 +27,6 @@ COLS = {
 class ascendancies(Parser_Module):
 
     def write(self) -> None:
-        self.should_export_images = self.language == "English"
         self.relational_reader["AscendancyPassiveSkillOverrides.dat64"].build_index("AscendancyToOverrideFor")
         write_any_json(
             {asc["Id"]: self.process(asc) for asc in self.relational_reader["Ascendancy.dat64"]},
@@ -39,20 +38,12 @@ class ascendancies(Parser_Module):
         tf = self.get_cache(TranslationFileCache)["passive_skill_stat_descriptions.txt"]
 
         data = {v: row[k] for k, v in COLS.items()}
-        if self.should_export_images and data["passive_tree_image"]:
-            export_image(data["passive_tree_image"], self.data_path, self.file_system)
         data["art"] = uiart(row["UIArt"])
         if row["BaseAscendancy"]:
             data["passive_overrides"] = [
                 {
                     "from_hash": o["SkillToOverride"]["PassiveSkillGraphId"],
-                    "to_passive": passive(
-                        o["Override"],
-                        tf,
-                        self.language,
-                        self.data_path if self.should_export_images else None,
-                        self.file_system if self.should_export_images else None,
-                    ),
+                    "to_passive": passive(o["Override"], tf, self.language),
                 }
                 for o in self.relational_reader["AscendancyPassiveSkillOverrides.dat64"].index[
                     "AscendancyToOverrideFor"
