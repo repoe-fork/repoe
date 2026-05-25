@@ -148,7 +148,6 @@ class passives(Parser_Module):
                 {
                     "title": tree["Name"]["Text"],
                     "roots": psg.root_passives,
-                    # "skills_per_orbit": psg.skills_per_orbit,
                     "orbit_radii": [0, 82, 162, 335, 493, 662, 846, 251, 1080, 1332],
                     "groups": groups,
                     "passives": nodes,
