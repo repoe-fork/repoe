@@ -1,6 +1,5 @@
 from typing import Any, Dict, List, Optional, Union
 
-from PyPoE.poe.poe2constants import IntEnumOverride
 from PyPoE.poe.file.dat import DatRecord
 from PyPoE.poe.file.translations import install_data_dependant_quantifiers, TranslationFileCache
 from PyPoE.poe.poe2constants import MOD_DOMAIN

@@ -45,6 +45,7 @@ def main():
     parser.add_argument("-f", "--file", help="path to your Content.ggpk file")
     parser.add_argument("-o", "--outdir", help="output directory")
     parser.add_argument("-l", "--language", default="English", choices=list(LANGS.keys()) + ["all"])
+    parser.add_argument("-rf", "--resume-from", default=None, choices=module_names)
     args = parser.parse_args()
 
     print("Loading GGPK ...", end="", flush=True)
@@ -56,6 +57,9 @@ def main():
         modules.sort(key=lambda m: m.__name__)
     else:
         modules = [next(m for m in modules if m.__name__ == name) for name in args.module_names]
+
+    if args.resume_from:
+        modules = modules[modules.index(next(m for m in modules if m.__name__ == args.resume_from)) :]
 
     for language in LANGS.keys() if args.language == "all" else [args.language]:
 
