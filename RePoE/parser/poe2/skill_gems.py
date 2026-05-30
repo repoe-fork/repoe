@@ -75,8 +75,11 @@ def convert_gem(skill_gem: DatRecord, gem_effect: DatRecord, support_gem: Option
 
 class skill_gems(Parser_Module):
     def export_image(self, ddsfile) -> bool:
+        if not self.file_exists(ddsfile):
+            return False
         if self.language != "English":
-            return self.file_exists(ddsfile)
+            return True
+
         return export_image(ddsfile, self.data_path, self.file_system)
 
     def write(self) -> None:
