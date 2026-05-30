@@ -29,10 +29,13 @@ class Parser_Module:
         self.caches = caches or {}
         self.sequel = sequel
 
-    @cache
     def file_exists(self, path: str) -> bool:
         try:
-            return bool(self.file_system.get_file(path))
+            return bool(
+                self.file_system.index.get_file_record(path)
+                if self.file_system.index
+                else self.file_system.get_file(path)
+            )
         except FileNotFoundError:
             return False
 
