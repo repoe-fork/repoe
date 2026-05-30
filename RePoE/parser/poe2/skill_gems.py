@@ -74,6 +74,11 @@ def convert_gem(skill_gem: DatRecord, gem_effect: DatRecord, support_gem: Option
 
 
 class skill_gems(Parser_Module):
+    def export_image(self, ddsfile) -> bool:
+        if self.language != "English":
+            return self.file_exists(ddsfile)
+        return export_image(ddsfile, self.data_path, self.file_system)
+
     def write(self) -> None:
         skill_gems = {}
         relational_reader = self.relational_reader
@@ -84,6 +89,11 @@ class skill_gems(Parser_Module):
 
         support_gem_recs = relational_reader["SkillGemSupports.dat64"]
         support_gem_recs.build_index("SkillGem")
+
+        # ensure fallback ui image is exported without having to add it to gem data
+        self.export_image(
+            "Art/Textures/Interface/2D/2DArt/UIImages/InGame/SmartHover/GemHoverImage/GemHoverImageEmpty.dds"
+        )
 
         # Skills from gems
         for gem in relational_reader["SkillGems.dat64"]:
@@ -100,22 +110,14 @@ class skill_gems(Parser_Module):
                             skill_gem["recommended_supports"].append(support["BaseItemType"]["Id"])
 
                 skill_gems[skill_gem["base_item"]["id"]] = skill_gem
-
-                # ensure fallback ui image is exported without having to add it to gem data
-                export_image(
-                    "Art/Textures/Interface/2D/2DArt/UIImages/InGame/SmartHover/GemHoverImage/GemHoverImageEmpty.dds",
-                    self.data_path,
-                    self.file_system,
-                )
-                if skill_gem.get("ui_image", None) not in (None, ""):
-                    export_image(skill_gem["ui_image"], self.data_path, self.file_system)
+                if self.language == "English" and skill_gem.get("ui_image", None) not in (None, ""):
+                    self.export_image(skill_gem["ui_image"])
                 if skill_gem["icon_dds_file"] not in (None, ""):
-                    exported = export_image(skill_gem["icon_dds_file"], self.data_path, self.file_system)
                     # some skills do not have 4k icons, so fallback to non-4k in those cases
-                    if not exported:
+                    if not self.export_image(skill_gem["icon_dds_file"]):
                         fallback_icon = get_non_4k_path(skill_gem["icon_dds_file"])
-                        if fallback_icon != skill_gem["icon_dds_file"]:
-                            if export_image(fallback_icon, self.data_path, self.file_system):
+                        if fallback_icon and fallback_icon != skill_gem["icon_dds_file"]:
+                            if self.export_image(fallback_icon):
                                 skill_gem["icon_dds_file"] = fallback_icon
 
         write_any_json(skill_gems, self.data_path, "skill_gems")
