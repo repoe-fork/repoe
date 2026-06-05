@@ -21,6 +21,7 @@ class Parser_Module:
         language: str,
         caches: dict[type, AbstractFileCache],
         sequel=1,
+        fail_fast=False,
     ) -> None:
         self.file_system = file_system
         self.data_path = data_path
@@ -28,6 +29,7 @@ class Parser_Module:
         self.relational_reader = relational_reader
         self.caches = caches or {}
         self.sequel = sequel
+        self.fail_fast = fail_fast
 
     def file_exists(self, path: str) -> bool:
         try:

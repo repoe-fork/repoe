@@ -148,6 +148,7 @@ def call_with_default_args(
         language=language,
         caches={},
         sequel=2 if poe2spec else 1,
+        fail_fast=True,
     ).write()
 
 
