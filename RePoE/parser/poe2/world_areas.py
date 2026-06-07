@@ -7,7 +7,7 @@ from PyPoE.poe.file.file_set import FileSet
 from PyPoE.poe.file.tsi import TSIFile
 
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import call_with_default_args, write_any_json, write_json
+from RePoE.parser.util import call_with_default_args, write_json
 from RePoE.poe.file.arm import ARMFile
 from RePoE.poe.file.tdt import TDTFile
 

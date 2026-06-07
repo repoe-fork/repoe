@@ -52,11 +52,11 @@ def write_model(
     path = os.path.abspath(data_path + file_name)
     print("Writing '" + path + ".json' ...", end="", flush=True)
     with io.open(path + ".json", mode="w") as out:
-        out.write(root_obj.model_dump_json(indent=2))
+        out.write(root_obj.model_dump_json(indent=2, by_alias=True))
     print(" Done!")
     print("Writing '" + path + ".min.json' ...", end="", flush=True)
     with io.open(path + ".min.json", mode="w") as out:
-        out.write(root_obj.model_dump_json(exclude_unset=True, exclude_none=True))
+        out.write(root_obj.model_dump_json(exclude_unset=True, exclude_none=True, by_alias=True))
     print(" Done!")
 
 
