@@ -47,7 +47,7 @@ def pascal_case(key: str):
 # files from ggg contain unnormalized paths
 # could fix this better further upstream, but for now just sprinkle this function around
 def normalize(filename) -> Any:
-    return filename.replace("//", "/")
+    return filename.replace("//", "/").strip()
 
 
 class world_areas(Parser_Module):
@@ -58,6 +58,12 @@ class world_areas(Parser_Module):
         self.pack_entries = self.relational_reader["MonsterPackEntries.dat64"]
         self.graphs = {}
         self.cache = {}
+
+    def resolve(self, base, filename):
+        filename = normalize(filename)
+        if not self.file_exists(filename):
+            return normalize(base + filename)
+        return filename
 
     def write(self) -> None:
         self.packs.build_index("WorldAreas")
@@ -182,8 +188,7 @@ class world_areas(Parser_Module):
             raise
 
     def process_fileset(self, base: str, filename: str):
-        if "/" not in filename:
-            filename = base + filename
+        filename = self.resolve(base, filename)
         if filename in self.cache:
             return self.cache[filename]
         file = FileSet()
@@ -213,8 +218,7 @@ class world_areas(Parser_Module):
             raise
 
     def process_filegroup(self, base, filename: str):
-        if "/" not in filename:
-            filename = base + filename
+        filename = self.resolve(base, filename)
         if filename in self.cache:
             return self.cache[filename]
         file = self.file_system.get_file(filename)
@@ -227,7 +231,7 @@ class world_areas(Parser_Module):
                     key = key_match.group(1)
                     files[key] = []
                 elif key and line.strip():
-                    files[key].append(base + line.strip())
+                    files[key].append(self.resolve(base, line))
             self.cache[filename] = files
             return files
         except FileNotFoundError:
