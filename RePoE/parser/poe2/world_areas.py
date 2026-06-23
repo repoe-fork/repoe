@@ -142,6 +142,10 @@ class world_areas(Parser_Module):
                     if "FillTiles" in master:
                         val["fill_tiles"] = self.process_fileset(base, master["FillTiles"])
                     if "FileGroups" in master:
+                        # this can be set from the dgrfile? did l know that when l wrote this?
+                        # if so, l should have added a comment here because that's confusing
+                        if "file_groups" in val:
+                            pass  # didn't hit a breakpoint here 0.5
                         val["file_groups"] = self.process_filegroup(base, master["FileGroups"])
             for node in val.get("nodes", []):
                 if node.get("room", None) == "graph" and node.get("strings", None):
@@ -152,7 +156,7 @@ class world_areas(Parser_Module):
                         val["subgraphs"] = {}
                     val["subgraphs"][subgraph] = subgraphs
                     for filename in subgraphs:
-                        self.process_graph(filename)
+                        self.process_graph(self.normalize(filename))
         except FileNotFoundError:
             print("Graph not found", filename)
         except Exception:
