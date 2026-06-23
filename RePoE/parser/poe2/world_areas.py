@@ -213,7 +213,8 @@ class world_areas(Parser_Module):
             raise
 
     def process_filegroup(self, base, filename: str):
-        filename = base + filename
+        if "/" not in filename:
+            filename = base + filename
         if filename in self.cache:
             return self.cache[filename]
         file = self.file_system.get_file(filename)
