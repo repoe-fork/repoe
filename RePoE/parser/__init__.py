@@ -41,6 +41,12 @@ class Parser_Module:
         except FileNotFoundError:
             return False
 
+    def resolve(self, base, filename):
+        filename = normalize(filename)
+        if not self.file_exists(filename):
+            return normalize(base + filename)
+        return filename
+
     def get_cache(self, cache_type: type) -> AbstractFileCache:
         if cache_type not in self.caches:
             if cache_type == TranslationFileCache:
@@ -52,3 +58,9 @@ class Parser_Module:
     def write(self) -> None:
         """method which writes json files to data_path"""
         raise NotImplementedError
+
+
+# files from ggg contain unnormalized paths
+# could fix this better further upstream, but for now just sprinkle this function around
+def normalize(filename) -> Any:
+    return filename.replace("//", "/").strip()

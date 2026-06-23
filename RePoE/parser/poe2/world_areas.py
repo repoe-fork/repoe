@@ -44,12 +44,6 @@ def pascal_case(key: str):
     return "".join(word.title() for word in key.split("_"))
 
 
-# files from ggg contain unnormalized paths
-# could fix this better further upstream, but for now just sprinkle this function around
-def normalize(filename) -> Any:
-    return filename.replace("//", "/").strip()
-
-
 class world_areas(Parser_Module):
 
     def __init__(self, *args, **kwargs):
@@ -58,12 +52,6 @@ class world_areas(Parser_Module):
         self.pack_entries = self.relational_reader["MonsterPackEntries.dat64"]
         self.graphs = {}
         self.cache = {}
-
-    def resolve(self, base, filename):
-        filename = normalize(filename)
-        if not self.file_exists(filename):
-            return normalize(base + filename)
-        return filename
 
     def write(self) -> None:
         self.packs.build_index("WorldAreas")
@@ -164,7 +152,7 @@ class world_areas(Parser_Module):
                         val["subgraphs"] = {}
                     val["subgraphs"][subgraph] = subgraphs
                     for filename in subgraphs:
-                        self.process_graph(normalize(filename))
+                        self.process_graph(filename)
         except FileNotFoundError:
             print("Graph not found", filename)
         except Exception:
@@ -198,7 +186,7 @@ class world_areas(Parser_Module):
             for f in file.files:
                 if any("//" in p for p in f.get("prefix", [])):
                     continue
-                f["file"] = normalize(f["file"])
+                f["file"] = self.resolve(base, f["file"])
                 try:
                     if f["file"].endswith(".arm"):
                         room = self.process_room(f["file"])

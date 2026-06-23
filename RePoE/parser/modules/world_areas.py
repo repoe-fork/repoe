@@ -169,8 +169,7 @@ class world_areas(Parser_Module):
             raise
 
     def process_fileset(self, base: str, filename: str):
-        if "/" not in filename:
-            filename = base + filename
+        filename = self.resolve(base, filename)
         if filename in self.cache:
             return self.cache[filename]
         file = FileSet()
