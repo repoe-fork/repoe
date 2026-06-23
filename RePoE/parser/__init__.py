@@ -62,5 +62,5 @@ class Parser_Module:
 
 # files from ggg contain unnormalized paths
 # could fix this better further upstream, but for now just sprinkle this function around
-def normalize(filename) -> Any:
+def normalize(filename: str) -> str:
     return filename.replace("//", "/").strip()
