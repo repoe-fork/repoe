@@ -149,9 +149,12 @@ class world_areas(Parser_Module):
                         val["fill_tiles"] = self.process_fileset(base, master["FillTiles"])
         except FileNotFoundError:
             print("Graph not found", filename)
-        except Exception:
-            print("Error in topology", filename)
-            raise
+        except Exception as e:
+            if self.fail_fast:
+                print("Error in topology", filename)
+                raise
+            else:
+                print("Error in topology", filename, e)
 
     def process_master(self, filename: str):
         if filename in self.cache:
@@ -216,11 +219,16 @@ class world_areas(Parser_Module):
                 raise Exception(filename)
 
     def process_room(self, filename: str):
-        if filename in self.cache:
-            return self.cache[filename]
-        room = ARMFile(filename, 1)
-        room.read(self.file_system.get_file(filename))
-        return room
+        try:
+            if filename in self.cache:
+                return self.cache[filename]
+            room = ARMFile(filename, 1)
+            room.read(self.file_system.get_file(filename))
+            return room
+        except Exception as e:
+            if self.fail_fast:
+                raise
+            print("Error processing room", filename, e)
 
     def process_tile(self, filename: str):
         if filename in self.cache:

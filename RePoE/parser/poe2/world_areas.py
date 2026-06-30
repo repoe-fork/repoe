@@ -259,7 +259,7 @@ class world_areas(Parser_Module):
         except Exception as e:
             if self.fail_fast:
                 raise
-            print(f"Error processing room {filename}", e)
+            print("Error processing room", filename, e)
 
     def process_tile(self, f: dict[str, Any]):
         filename = f["file"]
