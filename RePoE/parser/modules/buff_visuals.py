@@ -1,9 +1,6 @@
-from collections import defaultdict
-from functools import cache
 import html
-import json
+from collections import defaultdict
 from os import path
-import re
 
 from PyPoE.poe.file.dat import DatRecord
 from PyPoE.poe.file.idl import IDLFile
@@ -70,13 +67,6 @@ class buff_visuals(Parser_Module):
 
             if sources:
                 visuals["sources"] = sources
-
-            sounds = set()
-            for epkfile in record["EPKFiles1"] + record["EPKFiles2"]:
-                sounds.update(self.epkfile(epkfile))
-
-            if sounds:
-                visuals["sounds"] = sorted(sounds)
 
             root[record["Id"]] = visuals
             if "icon" in visuals:
@@ -179,37 +169,6 @@ if (window.location.hash) {{
             )
             + "".join(self.html(buff, k) for k, buffs in buff.get("sources", {}).items() for buff in buffs)
         )
-
-    @cache
-    def epkfile(self, epkfile):
-        result = []
-        try:
-            raw = self.file_system.get_file(epkfile)
-            epk = raw.decode("utf-16_le")
-            for aofile in re.findall(r'"([^"]*.ao)"', epk):
-                result.extend(self.aofile(aofile))
-        except FileNotFoundError:
-            print(epkfile, "not found")
-        except UnicodeDecodeError:
-            print(f"{epkfile} (length {len(raw)}) not valid utf-16")
-        return result
-
-    @cache
-    def aofile(self, aofile):
-        result = []
-        try:
-            raw = self.file_system.get_file(aofile + "c")
-            aoc = raw.decode("utf-16_le")
-            for data in re.findall(r"SoundEvents\s*{\s*animations\s*=\s*'([^']*)'", aoc):
-                for animation in json.loads(data):
-                    for event in animation.get("events", []):
-                        if "filename" in event:
-                            result.append(event["filename"])
-        except FileNotFoundError:
-            print(aofile + "c", "not found")
-        except UnicodeDecodeError:
-            print(f"{aofile}c (length {len(raw)}) not valid utf-16")
-        return result
 
     def source(self, row: DatRecord):
         result = {}

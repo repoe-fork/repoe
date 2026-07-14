@@ -128,7 +128,7 @@ class world_areas(Parser_Module):
                     edge["edge_type"] = edge_file
                     if "color" in edge_type:
                         edge["color"] = edge_type["color"]
-                self.graphs[filename] = val
+                self.graphs[filename] = val if self.language == "English" else {}
             if "MasterFile" in file.data:
                 master = self.process_master(file.data["MasterFile"])
                 if master:

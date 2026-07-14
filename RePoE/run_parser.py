@@ -7,7 +7,6 @@ from RePoE import __DATA_PATH__, __POE2_DATA_PATH__
 from RePoE.parser.modules import get_parser_modules
 from RePoE.parser.poe2 import get_poe2_modules
 from RePoE.parser.util import create_relational_reader, get_cdn_url, load_file_system
-import requests
 
 # Codes taken from the 'preferred language' setting at https://www.pathofexile.com/my-account/preferences
 LANGS = {
@@ -82,6 +81,9 @@ def main():
                 sequel=2 if args.poe2 else 1,
             ).write()
 
+
+def run_parser():
+    main()
     # This forces the globals to be up to date with what we just parsed,
     # in case someone uses `run_parser` within a script
     reload(RePoE)
