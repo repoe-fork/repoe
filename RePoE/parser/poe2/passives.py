@@ -133,7 +133,7 @@ class passives(Parser_Module):
                 {
                     "title": tree["Name"]["Text"],
                     "roots": psg.root_passives,
-                    "skills_per_orbit": psg.skills_per_orbit,
+                    "skills_per_orbit": self.skills_per_orbit(psg),
                     "orbit_radii": [0, 82, 162, 335, 493, 662, 846, 251, 1080, 1332],
                     "groups": groups,
                     "passives": nodes,
@@ -147,6 +147,13 @@ class passives(Parser_Module):
         psg = PSGFile()
         psg.read(self.file_system.get_file(filename + ".psg"))
         return psg
+
+    def skills_per_orbit(self, psg):
+        skills_per_orbit = {}
+        for group in psg.groups:
+            for node in group.nodes:
+                skills_per_orbit[node.radius] = max(skills_per_orbit.get(node.radius, 0), node.position + 1)
+        return [skills_per_orbit[i] for i in sorted(skills_per_orbit)]
 
 
 if __name__ == "__main__":
