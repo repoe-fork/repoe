@@ -183,7 +183,8 @@ class base_items(Parser_Module):
             itfile = self.get_cache(ITFileCache)[it_path + ".it"]
             itfiles[it_path] = itfile
             inherited_tags = list(itfile["Base"]["tag"])
-            mod_domain = MOD_DOMAIN(item["ModDomain"])
+            mod_domain = item["ModDomain"]
+            mod_domain = MOD_DOMAIN(mod_domain) if mod_domain and mod_domain in MOD_DOMAIN else None
             item_id = item["Id"]
             properties: Dict = {}
             _convert_armour_properties(armour_types[item_id], properties)

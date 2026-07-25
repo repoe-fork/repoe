@@ -167,7 +167,8 @@ class base_items(Parser_Module):
             itfile = self.get_cache(ITFileCache)[it_path + ".it"]
             itfiles[it_path] = itfile
             inherited_tags = list(itfile["Base"]["tag"])
-            mod_domain = MOD_DOMAIN(item["ModDomain"])
+            mod_domain = item["ModDomain"]
+            mod_domain = MOD_DOMAIN(mod_domain) if mod_domain and mod_domain in MOD_DOMAIN else None
             item_id = item["Id"]
             properties: Dict = {}
             _convert_armour_properties(armour_types[item_id], properties)
@@ -194,11 +195,7 @@ class base_items(Parser_Module):
                 "requirements": _convert_requirements(attribute_requirements[item_id], item["DropLevel"]),
                 "properties": properties,
                 "release_state": get_release_state(item_id).name,
-                "domain": (
-                    mod_domain.name.lower()
-                    if mod_domain and mod_domain is not MOD_DOMAIN.MODS_DISALLOWED
-                    else "undefined"
-                ),
+                "domain": (mod_domain.name.lower() if mod_domain else "undefined"),
             }
             _convert_flask_buff(flask_types[item_id], root[item_id])
 
