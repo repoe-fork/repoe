@@ -1,8 +1,9 @@
-from RePoE.parser.util import write_json, call_with_default_args
-from RePoE.parser import Parser_Module
-from PyPoE.poe.file.dat import DatRecord
 from typing import Dict, Set
 from typing import Optional
+
+from PyPoE.poe.file.dat import DatRecord
+from RePoE.parser import Parser_Module
+from RePoE.parser.util import write_json, call_with_default_args
 
 
 def _convert_alias_stats(

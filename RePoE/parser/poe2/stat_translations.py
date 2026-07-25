@@ -1,9 +1,10 @@
-from collections import defaultdict
 import json
 import re
-from typing import Any, Dict, Iterator, List, Set, Tuple, Union
+from collections import defaultdict
+from typing import Any, Dict, Iterator, List, Set, Union
+from urllib.request import urlopen, Request
 
-from PyPoE.poe.file.file_system import FileSystem, FileSystemNode
+from PyPoE.poe.file.file_system import FileSystemNode
 from PyPoE.poe.file.translations import (
     Translation,
     TranslationString,
@@ -13,17 +14,14 @@ from PyPoE.poe.file.translations import (
     TranslationQuantifierHandler,
     TQNumberFormat,
     TQRelationalData,
-    get_custom_translation_file,
     install_data_dependant_quantifiers,
     TranslationFile,
 )
-from urllib.request import urlopen, Request
-
-from RePoE.model import stats_by_file
 from RePoE.model import stat_value_handlers
+from RePoE.model import stats_by_file
 from RePoE.model.stat_translations import Stat
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import call_with_default_args, get_stat_translation_file_name, write_json, write_model
+from RePoE.parser.util import call_with_default_args, write_json, write_model
 
 
 class stat_translations(Parser_Module):

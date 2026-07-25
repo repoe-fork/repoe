@@ -4,7 +4,6 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from PyPoE.poe.file.dat import DatRecord, RelationalReader
 from PyPoE.poe.file.file_system import FileSystem
 from PyPoE.poe.file.translations import TranslationFileCache, TranslationString, TranslationFile
-
 from RePoE.parser import Parser_Module
 from RePoE.parser.constants import COOLDOWN_BYPASS_TYPES
 from RePoE.parser.util import call_with_default_args, write_any_json

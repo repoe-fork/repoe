@@ -1,14 +1,10 @@
 import html
-import json
-import re
 from collections import defaultdict
-from functools import cache
 from os import path
 
 from PyPoE.poe.file.dat import DatRecord
 from PyPoE.poe.file.idl import IDLFile
 from PyPoE.poe.file.translations import TranslationFileCache
-
 from RePoE.parser import Parser_Module
 from RePoE.parser.poe2.buffs import BUFF_CATEGORIES, BUFF_SOURCES
 from RePoE.parser.util import call_with_default_args, export_image, write_json, write_text, crop

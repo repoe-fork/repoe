@@ -1,10 +1,6 @@
-import os.path
-
-from PyPoE.poe.file.psg import PSGFile, GraphGroup, GraphGroupNode
 from PyPoE.poe.file.translations import TranslationFileCache
 
 from RePoE.parser import Parser_Module
-from RePoE.parser.modules.flavour import flavour
 from RePoE.parser.poe2.passives import uiart, passive
 from RePoE.parser.util import call_with_default_args, write_any_json
 

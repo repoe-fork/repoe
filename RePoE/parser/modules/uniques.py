@@ -1,10 +1,8 @@
 from html import escape
-from time import sleep
 from urllib.parse import quote
+
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, export_image, write_json, write_text
-
-import requests
 
 fields = [
     field if "=" in field else f"{field}={field}"

@@ -5,7 +5,6 @@ from PyPoE.poe.file.dat import DatRecord
 from PyPoE.poe.file.idl import IDLFile
 from PyPoE.poe.file.translations import TranslationFileCache
 from PyPoE.poe.sim.mods import get_translation_file_from_domain
-
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, write_json
 

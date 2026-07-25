@@ -1,5 +1,3 @@
-from collections import OrderedDict
-
 from PyPoE.poe.file.translations import TranslationFileCache
 
 from RePoE.parser import Parser_Module

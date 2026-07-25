@@ -1,7 +1,6 @@
 from typing import Any, Dict, Optional
 
 from PyPoE.poe.file.dat import DatRecord
-
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, export_image, get_release_state, write_any_json
 

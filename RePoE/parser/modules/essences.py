@@ -1,7 +1,8 @@
+from typing import Dict
+
+from PyPoE.poe.file.dat import DatRecord
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, write_json
-from PyPoE.poe.file.dat import DatRecord
-from typing import Dict
 
 
 def _convert_mods(row: DatRecord) -> Dict[str, str]:

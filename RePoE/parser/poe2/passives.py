@@ -2,10 +2,8 @@ import os.path
 
 from PyPoE.poe.file.psg2 import PSGFile
 from PyPoE.poe.file.translations import TranslationFileCache
-
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, write_any_json
-
 
 PASSIVE_COLS = {
     "Id": "id",

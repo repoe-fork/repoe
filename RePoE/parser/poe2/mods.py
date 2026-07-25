@@ -4,7 +4,6 @@ from PyPoE.poe.file.dat import DatRecord
 from PyPoE.poe.file.translations import install_data_dependant_quantifiers, TranslationFileCache
 from PyPoE.poe.poe2constants import MOD_DOMAIN
 from PyPoE.poe.sim.mods import get_translation
-
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, write_json
 

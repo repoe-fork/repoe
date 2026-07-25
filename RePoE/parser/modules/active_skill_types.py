@@ -1,5 +1,5 @@
-from RePoE.parser.util import call_with_default_args, write_json
 from RePoE.parser import Parser_Module
+from RePoE.parser.util import call_with_default_args, write_json
 
 
 class active_skill_types(Parser_Module):

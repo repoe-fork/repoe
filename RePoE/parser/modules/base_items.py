@@ -1,10 +1,9 @@
 from collections import defaultdict
 from typing import Any, Dict, Optional
 
-from PyPoE.poe.poe1constants import MOD_DOMAIN
 from PyPoE.poe.file.dat import DatReader, DatRecord
 from PyPoE.poe.file.it import ITFileCache
-
+from PyPoE.poe.poe1constants import MOD_DOMAIN
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, export_image, get_release_state, write_json, write_any_json
 

@@ -6,7 +6,6 @@ from PyPoE.poe.file.file_system import FileSystem
 from PyPoE.poe.file.stat_filters import StatFilterFile
 from PyPoE.poe.file.translations import TranslationFileCache, TranslationString
 from PyPoE.poe.sim.poe1formula import GemTypes, gem_stat_requirement
-
 from RePoE.parser import Parser_Module
 from RePoE.parser.constants import COOLDOWN_BYPASS_TYPES
 from RePoE.parser.util import call_with_default_args, get_release_state, get_stat_translation_file_name, write_json

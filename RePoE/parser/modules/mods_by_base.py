@@ -2,7 +2,6 @@ import json
 from collections import OrderedDict
 
 import requests
-
 from RePoE.model.mods_by_base import (
     EssenceModLevels,
     EssenceMods,

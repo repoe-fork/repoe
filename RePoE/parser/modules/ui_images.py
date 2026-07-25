@@ -1,7 +1,8 @@
 from typing import Iterator
+
+from PyPoE.poe.file.idl import IDLFile, IDLRecord
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, export_image, crop
-from PyPoE.poe.file.idl import IDLFile, IDLRecord
 
 IMAGES_TO_EXPORT = set("Art/2DArt/UIImages/InGame/" + image for image in ["Buff", "Debuff", "Flask", "Charges"])
 
