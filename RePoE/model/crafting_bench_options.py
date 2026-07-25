@@ -21,6 +21,7 @@ class Actions(BaseModel):
     add_enchant_mod: Optional[str] = None
     remove_enchantments: Optional[bool] = None
     reroll_rarity: Optional[bool] = None
+    reroll_rare_mods: Optional[int] = None
 
 
 class ItemClass(RootModel[str]):
