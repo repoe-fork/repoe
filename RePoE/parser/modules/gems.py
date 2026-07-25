@@ -402,7 +402,7 @@ class GemConverter:
         else:
             obj["tags"] = [tag["Id"] for tag in gem_tags]
 
-        obj["color"] = ["r", "g", "b", "w"][granted_effect["Attribute"] - 1]
+        obj["color"] = granted_effect["Attribute"].colour[0]
 
         if is_support:
             obj["support_gem"] = self._convert_support_gem_specific(granted_effect, gem_effect)
