@@ -29,6 +29,9 @@ class stats(Parser_Module):
                 "is_local": stat["IsLocal"],
                 "is_aliased": stat["IsWeaponLocal"],
                 "alias": _convert_alias_stats(stat["MainHandAlias_StatsKey"], stat["OffHandAlias_StatsKey"]),
+                # If false, the game renders the stat line with a " — Unscalable Value" suffix
+                # in the advanced (Alt) mod description.
+                "is_scalable": stat["IsScalable"],
                 # 'is_on_character_panel': stat['Flag6'],  # not sure
                 # 'is_on_tooltip': stat['Flag7'],  # not sure
             }

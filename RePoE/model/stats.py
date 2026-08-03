@@ -21,6 +21,7 @@ class StatsSchemaValue(BaseModel):
     alias: Alias
     is_aliased: bool
     is_local: bool
+    is_scalable: bool
 
 
 class Model(RootModel[dict[str, StatsSchemaValue]]):
