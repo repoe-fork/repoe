@@ -30,6 +30,7 @@ include_classes = set(
         "Jewel",
         "Map",
         "Relic",
+        "Tincture",
         "Trinket",
     ]
 )
