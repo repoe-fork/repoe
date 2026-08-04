@@ -15,26 +15,6 @@ from RePoE.model.mods_by_base import (
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, write_json
 
-include_classes = set(
-    [
-        "AbyssJewel",
-        "ExpeditionLogbook",
-        "FishingRod",
-        "HeistBlueprint",
-        "HeistContract",
-        "HeistEquipmentReward",
-        "HeistEquipmentTool",
-        "HeistEquipmentUtility",
-        "HeistEquipmentWeapon",
-        "Flask",
-        "Jewel",
-        "Map",
-        "Relic",
-        "Tincture",
-        "Trinket",
-    ]
-)
-
 
 class mods_by_base(Parser_Module):
     def write(self) -> None:
@@ -55,7 +35,7 @@ class mods_by_base(Parser_Module):
         for base_id, base in base_items.items():
             item_class: dict = item_classes[base["item_class"]]
             influence_tags = item_class.get("influence_tags", [])
-            if not (influence_tags or item_class.get("category_id", None) in include_classes):
+            if not base["tags"]:
                 continue
             by_class = root.root.setdefault(item_class["name"], TagSets({}))
             by_tags: TagSet = by_class.root.setdefault(",".join(base["tags"]), TagSet(bases=[], mods={}))
@@ -103,23 +83,6 @@ class mods_by_base(Parser_Module):
                             break
             if conditional_mods:
                 by_tags.conditional_mods = list(sorted(conditional_mods))
-
-        for synth in requests.get(
-            "https://www.poewiki.net/index.php?title=Special:CargoExport&tables=synthesis_mods&format=json"
-            "&fields=synthesis_mods.item_class_ids__full%3Ditem_classes%2C+synthesis_mods.mod_ids__full%3Dmods"
-            "&group+by=synthesis_mods.mod_ids__full%2Csynthesis_mods.item_class_ids__full&order+by=&limit=2000"
-        ).json():
-            for item_class in synth["item_classes"]:
-                results: SynthModGroups = root.root[item_classes[item_class]["name"]].root.setdefault(
-                    "synthesis", SynthModGroups({})
-                )
-                for mod_id in synth["mods"]:
-                    if mod_id == "SynthesisImplicitMaximumAttackDodge1":
-                        mod_id = "SynthesisImplicitSpellDamageSuppressed1_"
-                    mod = mods[mod_id]
-                    group = results.root.setdefault(mod["type"], [])
-                    if mod_id not in group:
-                        group.append(mod_id)
 
         essences = self.relational_reader["Essences.dat64"]
         keys = [k for k in essences.table_columns.keys() if k.endswith("ModsKey") and not k.startswith("Display")]

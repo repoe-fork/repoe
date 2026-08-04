@@ -83,14 +83,15 @@ class passives(Parser_Module):
 
     def uiart(self, row):
         result = {"ornament": row["Ornament"]}
+        bg = row["BackgroundArt"]
         for size in ["Small", "Medium", "Large"]:
             for blank in [False, True]:
-                result[f"group_bg_{size.lower()}_{"blank" if blank else "normal"}"] = row[
-                    f"GroupBackground{size}{'Blank' if blank else ''}"
+                result[f"group_bg_{size.lower()}_{"blank" if blank else "normal"}"] = bg[
+                    f"{size}{'Blank' if blank else ''}"
                 ]
         for size in ["Passive", "Notable", "Keystone"]:
             result[f"{size.lower()}_frame"] = {
-                k: row[f"{size}{"" if (size == "Keystone" and t == "CanAllocate") else "Frame"}{t}"]
+                k: row[f"{size}Frame"][t]
                 for t, k in [("Normal", "unallocated"), ("Active", "allocated"), ("CanAllocate", "allocatable")]
             }
         return result
