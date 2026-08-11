@@ -118,29 +118,6 @@ def _convert_corpse_properties(corpse_row: Optional[DatRecord], properties: Dict
     properties["monster_category"] = corpse_row["MonsterCategory"]["Name"]
 
 
-ITEM_CLASS_BLACKLIST = {
-    "LabyrinthTrinket",
-    "MiscMapItem",
-    "Leaguestone",
-    "LabyrinthItem",
-    "PantheonSoul",
-    "UniqueFragment",
-    "IncursionItem",
-    "MetamorphosisDNA",
-    "HideoutDoodad",
-    "LabyrinthMapItem",
-    "Incubator",
-    "Microtransaction",
-    "HarvestInfrastructure",
-    "HarvestSeed",
-    "HarvestPlantBooster",
-    "Trinket",
-    "HeistObjective",
-    "HiddenItem",
-    "ArchnemesisMod",
-}
-
-
 class base_items(Parser_Module):
     def write(self) -> None:
         relational_reader = self.relational_reader
@@ -157,11 +134,8 @@ class base_items(Parser_Module):
 
         root = {}
         itfiles = {}
-        skipped_item_classes = set()
+        by_class = defaultdict(dict)
         for item in relational_reader["BaseItemTypes.dat64"]:
-            if item["ItemClassesKey"]["Id"] in ITEM_CLASS_BLACKLIST:
-                skipped_item_classes.add(item["ItemClassesKey"]["Id"])
-                continue
 
             it_path = item["InheritsFrom"]
             itfile = self.get_cache(ITFileCache)[it_path + ".it"]
@@ -170,6 +144,7 @@ class base_items(Parser_Module):
             mod_domain = item["ModDomain"]
             mod_domain = MOD_DOMAIN(mod_domain) if mod_domain and mod_domain in MOD_DOMAIN else None
             item_id = item["Id"]
+            item_class = item["ItemClassesKey"]["Id"]
             properties: Dict = {}
             _convert_armour_properties(armour_types[item_id], properties)
             _convert_shield_properties(shield_types[item_id], properties)
@@ -179,9 +154,9 @@ class base_items(Parser_Module):
             _convert_currency_properties(currency_type[item_id], properties)
             _convert_tincture_properties(tincture_type[item_id], properties)
             _convert_corpse_properties(corpse_type[item_id], properties)
-            root[item_id] = {
+            result = {
                 "name": item["Name"],
-                "item_class": item["ItemClassesKey"]["Id"],
+                "item_class": item_class,
                 "inherits_from": it_path,
                 "inventory_width": item["Width"],
                 "inventory_height": item["Height"],
@@ -197,13 +172,17 @@ class base_items(Parser_Module):
                 "release_state": get_release_state(item_id).name,
                 "domain": (mod_domain.name.lower() if mod_domain else "undefined"),
             }
-            _convert_flask_buff(flask_types[item_id], root[item_id])
+            _convert_flask_buff(flask_types[item_id], result)
+            root[item_id] = result
+            if item_class:
+                by_class[item_class][item_id] = result
 
             if self.language == "English" and item["ItemVisualIdentity"]["DDSFile"]:
                 export_image(item["ItemVisualIdentity"]["DDSFile"], self.data_path, self.file_system)
 
-        print(f"Skipped the following item classes for base_items {skipped_item_classes}")
         write_json(root, self.data_path, "base_items")
+        for k, v in by_class.items():
+            write_json(v, self.data_path, f"base_items/{k}")
         if self.language == "English":
             for k, v in itfiles.items():
                 write_any_json(v, self.data_path, k)

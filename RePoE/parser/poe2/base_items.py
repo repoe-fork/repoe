@@ -133,29 +133,6 @@ def _convert_inherent_skills(item_id: str, skills_dict: Dict[str, List[str]], it
         item_object["skills_granted"] = skills
 
 
-ITEM_CLASS_BLACKLIST = {
-    "LabyrinthTrinket",
-    "MiscMapItem",
-    "Leaguestone",
-    "LabyrinthItem",
-    "PantheonSoul",
-    "UniqueFragment",
-    "IncursionItem",
-    "MetamorphosisDNA",
-    "HideoutDoodad",
-    "LabyrinthMapItem",
-    "Incubator",
-    "Microtransaction",
-    "HarvestInfrastructure",
-    "HarvestSeed",
-    "HarvestPlantBooster",
-    "Trinket",
-    "HeistObjective",
-    "HiddenItem",
-    "ArchnemesisMod",
-}
-
-
 class base_items(Parser_Module):
     def write(self) -> None:
         relational_reader = self.relational_reader
@@ -173,11 +150,8 @@ class base_items(Parser_Module):
 
         root = {}
         itfiles = {}
-        skipped_item_classes = set()
+        by_class = defaultdict(dict)
         for item in relational_reader["BaseItemTypes.dat64"]:
-            if item["ItemClass"]["Id"] in ITEM_CLASS_BLACKLIST:
-                skipped_item_classes.add(item["ItemClass"]["Id"])
-                continue
 
             it_path = item["InheritsFrom"]
             itfile = self.get_cache(ITFileCache)[it_path + ".it"]
@@ -186,6 +160,7 @@ class base_items(Parser_Module):
             mod_domain = item["ModDomain"]
             mod_domain = MOD_DOMAIN(mod_domain) if mod_domain and mod_domain in MOD_DOMAIN else None
             item_id = item["Id"]
+            item_class = item["ItemClass"]["Id"]
             properties: Dict = {}
             _convert_armour_properties(armour_types[item_id], properties)
             _convert_shield_properties(shield_types[item_id], properties)
@@ -195,9 +170,9 @@ class base_items(Parser_Module):
             _convert_currency_properties(currency_type[item_id], properties)
             visual_identity = item["ItemVisualIdentity"]
             dds_file = visual_identity["DDSFile"]
-            root[item_id] = {
+            result = {
                 "name": item["Name"],
-                "item_class": item["ItemClass"]["Id"],
+                "item_class": item_class,
                 "inherits_from": it_path,
                 "inventory_width": item["Width"],
                 "inventory_height": item["Height"],
@@ -220,8 +195,11 @@ class base_items(Parser_Module):
                     else "undefined"
                 ),
             }
-            _convert_flask_buff(flask_types[item_id], root[item_id])
-            _convert_inherent_skills(item_id, item_skills, root[item_id])
+            _convert_flask_buff(flask_types[item_id], result)
+            _convert_inherent_skills(item_id, item_skills, result)
+            root[item_id] = result
+            if item_class:
+                by_class[item_class][item_id] = result
 
             if self.language == "English" and dds_file:
                 export_image(
@@ -231,8 +209,9 @@ class base_items(Parser_Module):
                     compose=compose_flask if visual_identity["Composition"] == 1 else None,
                 )
 
-        print(f"Skipped the following item classes for base_items {skipped_item_classes}")
         write_json(root, self.data_path, "base_items")
+        for k, v in by_class.items():
+            write_json(v, self.data_path, f"base_items/{k}")
         if self.language == "English":
             for k, v in itfiles.items():
                 write_any_json(v, self.data_path, k)
