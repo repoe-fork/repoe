@@ -25,6 +25,17 @@ from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, get_stat_translation_file_name, write_json, write_model
 
 
+# When two different stats have the same text, the trade site tells them apart by appending a 
+# parenthetical that does not exist in game data, e.g. "+# to Armour (Local)". Pair each trade 
+# site suffix with a check for the stat ids that should use it.
+TRADE_STAT_SUFFIXES = {
+    " (Local)": lambda ids: any(id.startswith("local_") for id in ids),
+    " (Maps)": lambda ids: any(id.startswith("map_") for id in ids),
+    " (Legacy)": lambda ids: any(id.startswith("old_do_not_use") for id in ids),
+    " (Staves)": lambda ids: ids == ["staff_block_%"],
+}
+
+
 class stat_translations(Parser_Module):
     def _convert_tags(self, n_ids: int, tags: List[int], tags_types: List[str]) -> List[str]:
         f = ["ignore" for _ in range(n_ids)]
@@ -98,16 +109,18 @@ class stat_translations(Parser_Module):
                 [False for _ in s.translation.ids],
                 use_placeholder=placeholder,
             )
+            trade_format = self._disambiguate(trade_format, s.translation.ids)
             if trade_format in self.trade_stats:
                 for trade_stat in self.trade_stats[trade_format]:
                     trade_stats[trade_stat["id"]] = trade_stat
             elif "\n" in trade_format:
                 for line in trade_format.splitlines():
+                    line = self._disambiguate(line, s.translation.ids)
                     if line in self.trade_stats:
                         for trade_stat in self.trade_stats[line]:
                             partial_trade_stats[trade_stat["id"]] = trade_stat
             else:
-                trade_format = re.sub(r"\d+", "#", trade_format)
+                trade_format = self._disambiguate(re.sub(r"\d+", "#", trade_format), s.translation.ids)
                 if trade_format in self.trade_stats:
                     for trade_stat in self.trade_stats[trade_format]:
                         trade_stats[trade_stat["id"]] = trade_stat
@@ -126,6 +139,12 @@ class stat_translations(Parser_Module):
         except Exception as e:
             print("Error processing stat", s, e)
             return None
+
+    def _disambiguate(self, trade_format: str, ids: list[str]) -> str:
+        for suffix, is_variant in TRADE_STAT_SUFFIXES.items():
+            if trade_format + suffix in self.trade_stats and is_variant(ids):
+                return trade_format + suffix
+        return trade_format
 
     def _add_values_to_lookup(self, values: list[Stat], strings: list[TranslationString], ids: list[str]):
         for value, s in zip(values, strings):
