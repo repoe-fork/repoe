@@ -46,7 +46,7 @@ class Master(BaseModel):
         extra="allow",
     )
     __annotations__ = {
-        "__pydantic_extra__": Dict[str, str | int | list[int]],
+        "__pydantic_extra__": Dict[str, str | int | list[int] | None],
     }
     ChestData: str | None = None
     Doodads: str | None = None

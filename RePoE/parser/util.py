@@ -36,10 +36,10 @@ def write_json(root_obj: Any, data_path: str, file_name: str, model_name="") -> 
     mod = import_module("RePoE.model." + model_name)
     try:
         write_model(mod.Model(root_obj), data_path, file_name)
-    except Exception:
-        print(
-            "File:", file_name, "Model:", mod.__file__, "Schema:", os.path.abspath(f"./schema/{model_name}.schema.json")
-        )
+    except Exception as e:
+        e.add_note(f"File: {file_name}")
+        e.add_note(f"Model: {model_name}")
+        e.add_note(f"Object: {root_obj}")
         raise
 
 
