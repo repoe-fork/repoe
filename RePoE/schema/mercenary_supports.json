@@ -1,0 +1,64 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "additionalProperties": {
+        "$ref": "#/definitions/MercenarySupportsSchemaValue"
+    },
+    "definitions": {
+        "MercenarySupportsSchemaValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "tier": {
+                    "type": "integer"
+                },
+                "family": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "stats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Stat"
+                    }
+                },
+                "stat_text": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "name",
+                "tier",
+                "icon",
+                "stats",
+                "stat_text"
+            ],
+            "title": "MercenarySupportsSchemaValue"
+        },
+        "Stat": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "id",
+                "value"
+            ],
+            "title": "Stat"
+        }
+    }
+}

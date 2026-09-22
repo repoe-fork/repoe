@@ -1,0 +1,85 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "additionalProperties": {
+        "$ref": "#/definitions/MercenaryClassesSchemaValue"
+    },
+    "definitions": {
+        "MercenaryClassesSchemaValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "house_name": {
+                    "type": "string"
+                },
+                "attribute": {
+                    "$ref": "#/definitions/Attribute"
+                },
+                "monster_variety": {
+                    "type": "string"
+                },
+                "monster_variety_allied": {
+                    "type": "string"
+                },
+                "terrain_feature": {
+                    "type": "string"
+                },
+                "house_spawn_chance_stats": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "attribute_spawn_chance_stats": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "class_icon": {
+                    "type": "string"
+                },
+                "house_icon": {
+                    "type": "string"
+                },
+                "house_buff_icon": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "house_name",
+                "attribute",
+                "house_spawn_chance_stats",
+                "attribute_spawn_chance_stats",
+                "class_icon",
+                "house_icon",
+                "house_buff_icon"
+            ],
+            "title": "MercenaryClassesSchemaValue"
+        },
+        "Attribute": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "id",
+                "name",
+                "tags"
+            ],
+            "title": "Attribute"
+        }
+    }
+}

@@ -1,0 +1,295 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "additionalProperties": {
+        "$ref": "#/definitions/MercenarySkillsSchemaValue"
+    },
+    "definitions": {
+        "MercenarySkillsSchemaValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "required_level": {
+                    "type": "integer"
+                },
+                "support_count": {
+                    "type": "string"
+                },
+                "possible_supports": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "family": {
+                    "type": "string"
+                },
+                "encounter_granted_effect": {
+                    "type": "string"
+                },
+                "house_icon": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "cast_time": {
+                    "type": "integer"
+                },
+                "active_skill": {
+                    "$ref": "#/definitions/ActiveSkill"
+                },
+                "stat_translation_file": {
+                    "type": "string"
+                },
+                "per_level": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/SkillLevel"
+                    }
+                },
+                "static": {
+                    "$ref": "#/definitions/SkillLevel"
+                },
+                "tooltip_order": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "name",
+                "description",
+                "required_level",
+                "possible_supports",
+                "house_icon"
+            ],
+            "title": "MercenarySkillsSchemaValue"
+        },
+        "ActiveSkill": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "display_name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "types": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "weapon_restrictions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "is_skill_totem": {
+                    "type": "boolean"
+                },
+                "is_manually_casted": {
+                    "type": "boolean"
+                },
+                "stat_conversions": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "skill_totem_life_multiplier": {
+                    "type": "number"
+                },
+                "minion_types": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "id",
+                "display_name",
+                "description",
+                "is_skill_totem",
+                "is_manually_casted",
+                "stat_conversions",
+                "weapon_restrictions"
+            ],
+            "title": "ActiveSkill"
+        },
+        "SkillLevel": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "experience": {
+                    "type": "integer"
+                },
+                "required_level": {
+                    "type": "integer"
+                },
+                "cooldown": {
+                    "type": "integer"
+                },
+                "cooldown_bypass_type": {
+                    "type": "string"
+                },
+                "stored_uses": {
+                    "type": "integer"
+                },
+                "cost_multiplier": {
+                    "type": "integer"
+                },
+                "costs": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
+                },
+                "damage_effectiveness": {
+                    "type": "integer"
+                },
+                "damage_multiplier": {
+                    "type": "integer"
+                },
+                "crit_chance": {
+                    "type": "integer"
+                },
+                "attack_speed_multiplier": {
+                    "type": "integer"
+                },
+                "vaal": {
+                    "$ref": "#/definitions/Vaal"
+                },
+                "reservations": {
+                    "$ref": "#/definitions/Reservations"
+                },
+                "stats": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/Stat"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    }
+                },
+                "stat_text": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "quality_stats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/QualityStat"
+                    }
+                }
+            },
+            "required": [],
+            "title": "SkillLevel"
+        },
+        "Stat": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "integer"
+                },
+                "type": {
+                    "$ref": "#/definitions/StatType"
+                }
+            },
+            "required": [],
+            "title": "Stat"
+        },
+        "StatType": {
+            "type": "string",
+            "enum": [
+                "float",
+                "constant",
+                "additional",
+                "implicit",
+                "flag"
+            ],
+            "title": "StatType"
+        },
+        "QualityStat": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "stat": {
+                    "type": "string"
+                },
+                "stats": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "required": [
+                "stat",
+                "stats"
+            ],
+            "title": "QualityStat"
+        },
+        "Reservations": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "mana_flat": {
+                    "type": "integer"
+                },
+                "mana_percent": {
+                    "type": "number"
+                },
+                "life_flat": {
+                    "type": "integer"
+                },
+                "life_percent": {
+                    "type": "number"
+                }
+            },
+            "required": [],
+            "title": "Reservations"
+        },
+        "Vaal": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "souls": {
+                    "type": "integer"
+                },
+                "stored_uses": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "souls",
+                "stored_uses"
+            ],
+            "title": "Vaal"
+        }
+    }
+}

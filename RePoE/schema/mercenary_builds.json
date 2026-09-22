@@ -1,0 +1,246 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "additionalProperties": {
+        "$ref": "#/definitions/MercenaryBuildsSchemaValue"
+    },
+    "definitions": {
+        "MercenaryBuildsSchemaValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "class_id": {
+                    "type": "string"
+                },
+                "is_infamous": {
+                    "type": "boolean"
+                },
+                "primary_skills": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "secondary_skills": {
+                    "$ref": "#/definitions/SkillPool"
+                },
+                "utility_skills": {
+                    "$ref": "#/definitions/SkillPool"
+                },
+                "idle_skill": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "weapon_item_classes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "extra_stats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ExtraStat"
+                    }
+                },
+                "achievements": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "visual_overrides": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VisualOverride"
+                    }
+                },
+                "ai_file": {
+                    "type": "string"
+                },
+                "infamous": {
+                    "$ref": "#/definitions/Infamous"
+                }
+            },
+            "required": [
+                "name",
+                "class_id",
+                "is_infamous",
+                "primary_skills",
+                "secondary_skills",
+                "utility_skills",
+                "tags",
+                "weapon_item_classes",
+                "extra_stats",
+                "achievements",
+                "visual_overrides",
+                "ai_file"
+            ],
+            "title": "MercenaryBuildsSchemaValue"
+        },
+        "Infamous": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "class_id": {
+                    "type": "string"
+                },
+                "primary_skills": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "secondary_skills": {
+                    "$ref": "#/definitions/SkillPool"
+                },
+                "utility_skills": {
+                    "$ref": "#/definitions/SkillPool"
+                },
+                "idle_skill": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "weapon_item_classes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "extra_stats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ExtraStat"
+                    }
+                },
+                "achievements": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "visual_overrides": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VisualOverride"
+                    }
+                },
+                "ai_file": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "name"
+            ],
+            "title": "Infamous"
+        },
+        "SkillPool": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "pool": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "count",
+                "pool"
+            ],
+            "title": "SkillPool"
+        },
+        "ExtraStat": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "stat_id": {
+                    "type": "string"
+                },
+                "level24": {
+                    "type": "integer"
+                },
+                "level68": {
+                    "type": "integer"
+                },
+                "level84": {
+                    "type": "integer"
+                },
+                "category": {
+                    "$ref": "#/definitions/ExtraStatCategory"
+                }
+            },
+            "required": [
+                "id",
+                "stat_id",
+                "level24",
+                "level68",
+                "level84"
+            ],
+            "title": "ExtraStat"
+        },
+        "ExtraStatCategory": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "name"
+            ],
+            "title": "ExtraStatCategory"
+        },
+        "VisualOverride": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "slot_id": {
+                    "type": "integer"
+                },
+                "mtx_type": {
+                    "type": "string"
+                },
+                "dds_file": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "slot_id"
+            ],
+            "title": "VisualOverride"
+        }
+    }
+}
