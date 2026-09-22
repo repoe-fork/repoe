@@ -33,8 +33,8 @@ INFAMOUS_ID_SUFFIX = "Noble"
 
 SUPPORT_STAT_DESCRIPTIONS = "mercenary_support_stat_descriptions.txt"
 
-# The GemConverter.convert(None, granted_effect) fields each skill carries. Only these
-# are copied, so the schema stays valid whatever other fields a converter adds.
+# The GemConverter.convert(None, granted_effect) fields each skill carries. Top-level and
+# active_skill fields are filtered to these; per_level and static are copied whole.
 CONVERTED_SKILL_FIELDS = ("cast_time", "active_skill", "stat_translation_file", "per_level", "static", "tooltip_order")
 ACTIVE_SKILL_FIELDS = (
     "id",
@@ -134,7 +134,8 @@ def pair_infamous(builds: Dict[str, Dict[str, Any]]) -> Tuple[Dict[str, Dict[str
         if not entry["is_infamous"]:
             continue
         regular_id = build_id[: -len(INFAMOUS_ID_SUFFIX)] if build_id.endswith(INFAMOUS_ID_SUFFIX) else None
-        if regular_id not in out:
+        pairable = regular_id in builds and not builds[regular_id]["is_infamous"]
+        if not pairable:
             out[build_id] = dict(entry, infamous=None)
             unpaired.append(build_id)
             continue
@@ -167,10 +168,12 @@ def copy_converted(converted: Dict[str, Any]) -> Dict[str, Any]:
     return out
 
 
-def skill_entry(row: Any, convert: Callable[[Any], Dict[str, Any]]) -> Tuple[Dict[str, Any], Optional[str]]:
+def skill_entry(
+    row: Any, convert: Callable[[Any], Dict[str, Any]], fail_fast: bool
+) -> Tuple[Dict[str, Any], Optional[str]]:
     """The skill and, when its granted effect converts, the converted fields. A granted
-    effect the converter cannot handle comes back as an error string, never raised, so
-    one skill does not stop the other files."""
+    effect the converter cannot handle comes back as an error string so one skill does
+    not stop the other files, unless fail_fast is set, in which case it raises."""
     skill_id(row)
     granted_effect = row["GrantedEffect"]
     active_skill = granted_effect["ActiveSkill"]
@@ -188,6 +191,8 @@ def skill_entry(row: Any, convert: Callable[[Any], Dict[str, Any]]) -> Tuple[Dic
     try:
         converted = convert(granted_effect)
     except Exception as error:
+        if fail_fast:
+            raise
         return entry, f"{type(error).__name__}: {error}"
     entry.update(copy_converted(converted))
     return entry, None
@@ -264,7 +269,9 @@ class mercenaries(Parser_Module):
         skill_rows: List[Tuple[str, Dict[str, Any]]] = []
         failed: List[Tuple[str, str]] = []
         for row in reader["MercenarySkills.dat64"]:
-            entry, error = skill_entry(row, lambda granted_effect: converter.convert(None, granted_effect))
+            entry, error = skill_entry(
+                row, lambda granted_effect: converter.convert(None, granted_effect), self.fail_fast
+            )
             skill_rows.append((skill_id(row), entry))
             if error is not None:
                 failed.append((skill_id(row), error))
