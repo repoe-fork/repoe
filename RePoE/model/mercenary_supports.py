@@ -22,6 +22,7 @@ class MercenarySupportsSchemaValue(BaseModel):
     tier: int
     family: str | None = None
     icon: str
+    stat_translation_file: str
     stats: list[Stat]
     stat_text: dict[str, str]
 

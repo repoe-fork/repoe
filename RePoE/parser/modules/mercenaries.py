@@ -11,7 +11,7 @@ Writes six files, each keyed by the row's game id:
 - mercenary_skills.json: MercenarySkills keyed by granted effect id, with the granted
   effect converted the way gems.json converts gems.
 - mercenary_supports.json: MercenarySupports with stat_text rendered through
-  mercenary_support_stat_descriptions.txt.
+  mercenary_support_stat_descriptions.txt, which stat_translation_file names.
 - mercenary_flavour_text.json: MercenaryFlavourText with its tag weights.
 - mercenary_inventories.json: the slots of the mercenary gear panel.
 
@@ -25,13 +25,20 @@ from PyPoE.poe.file.translations import TranslationFileCache
 
 from RePoE.parser import Parser_Module
 from RePoE.parser.modules.gems import GemConverter
-from RePoE.parser.util import call_with_default_args, export_image, get_id_or_none, write_json
+from RePoE.parser.util import (
+    call_with_default_args,
+    export_image,
+    get_id_or_none,
+    get_stat_translation_file_name,
+    write_json,
+)
 
 # An Infamous build's id is its regular build's id with this suffix
 # (AurasMinionsTemplarSmite, AurasMinionsTemplarSmiteNoble).
 INFAMOUS_ID_SUFFIX = "Noble"
 
 SUPPORT_STAT_DESCRIPTIONS = "mercenary_support_stat_descriptions.txt"
+SUPPORT_STAT_TRANSLATION_FILE = get_stat_translation_file_name(SUPPORT_STAT_DESCRIPTIONS)
 
 # The GemConverter.convert(None, granted_effect) fields each skill carries. Top-level and
 # active_skill fields are filtered to these; per_level and static are copied whole.
@@ -225,6 +232,7 @@ def support_entry(row: Any, translate: Callable[[Dict[str, int]], Any]) -> Dict[
         "tier": row["Tier"],
         "family": get_id_or_none(row["SupportFamily"]),
         "icon": row["GemIcon"],
+        "stat_translation_file": SUPPORT_STAT_TRANSLATION_FILE,
         "stats": stats,
         "stat_text": stat_text(stats, translate),
     }
