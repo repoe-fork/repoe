@@ -1,22 +1,19 @@
-"""Mercenaries of Trarthus: builds, classes, skills, supports, flavour text and the
-mercenary gear panel, from the 14 Mercenary tables.
+"""Mercenaries of Trarthus: builds, classes, skills, supports and flavour text, from
+the Mercenary tables.
 
-Writes six files, each keyed by the row's game id:
+Writes five files, each keyed by the row's game id:
 
 - mercenary_builds.json: MercenaryBuilds with their extra stats, weapon item classes
-  and cosmetic overrides. Each Infamous build sits inside the regular build whose id it
-  extends with "Noble", as `infamous`: its id and name plus every other field whose
-  value differs. An Infamous build with no regular build of that id stays a build.
+  and cosmetic overrides. Infamous builds are rows of their own, marked is_infamous.
 - mercenary_classes.json: MercenaryClasses with their attribute.
 - mercenary_skills.json: MercenarySkills keyed by granted effect id, with the granted
   effect converted the way gems.json converts gems.
 - mercenary_supports.json: MercenarySupports with stat_text rendered through
   mercenary_support_stat_descriptions.txt, which stat_translation_file names.
 - mercenary_flavour_text.json: MercenaryFlavourText with its tag weights.
-- mercenary_inventories.json: the slots of the mercenary gear panel.
 
-Every row is exported, placeholder rows included. Unknown, Data and HASH16 columns are
-not exported.
+Every row is exported, placeholder rows included, since builds reference them. Unknown,
+Data and HASH16 columns are not exported.
 """
 
 from typing import Any, Callable, Dict, Iterable, List, Optional, Tuple
@@ -32,10 +29,6 @@ from RePoE.parser.util import (
     get_stat_translation_file_name,
     write_json,
 )
-
-# An Infamous build's id is its regular build's id with this suffix
-# (AurasMinionsTemplarSmite, AurasMinionsTemplarSmiteNoble).
-INFAMOUS_ID_SUFFIX = "Noble"
 
 SUPPORT_STAT_DESCRIPTIONS = "mercenary_support_stat_descriptions.txt"
 SUPPORT_STAT_TRANSLATION_FILE = get_stat_translation_file_name(SUPPORT_STAT_DESCRIPTIONS)
@@ -72,11 +65,16 @@ def skill_pool(count: int, rows: Iterable[Any]) -> Dict[str, Any]:
     return {"count": count, "pool": [skill_id(row) for row in rows]}
 
 
-def keyed(pairs: Iterable[Tuple[str, Dict[str, Any]]], table: str) -> Dict[str, Dict[str, Any]]:
+def keyed(pairs: Iterable[Tuple[str, Dict[str, Any]]], table: str, fail_fast: bool) -> Dict[str, Dict[str, Any]]:
+    """Entries keyed by id. A duplicate id keeps the first row and is printed, or raises
+    when fail_fast is set."""
     out: Dict[str, Dict[str, Any]] = {}
     for key, entry in pairs:
         if key in out:
-            raise ValueError(f"{table}: duplicate id {key}")
+            if fail_fast:
+                raise ValueError(f"{table}: duplicate id {key}")
+            print(f"{table}: duplicate id {key}, keeping the first row")
+            continue
         out[key] = entry
     return out
 
@@ -119,35 +117,6 @@ def build_entry(row: Any, visual_overrides: List[Dict[str, Any]]) -> Dict[str, A
         "visual_overrides": visual_overrides,
         "ai_file": row["AIFile"],
     }
-
-
-def infamous_entry(infamous_id: str, infamous: Dict[str, Any], regular: Dict[str, Any]) -> Dict[str, Any]:
-    entry = {"id": infamous_id, "name": infamous["name"]}
-    for field, value in infamous.items():
-        if field in ("name", "is_infamous") or value == regular[field]:
-            continue
-        if value is None:
-            raise ValueError(f"Infamous build {infamous_id} has no {field} where its regular build has one")
-        entry[field] = value
-    return entry
-
-
-def pair_infamous(builds: Dict[str, Dict[str, Any]]) -> Tuple[Dict[str, Dict[str, Any]], List[str]]:
-    """Each Infamous build inside its regular build, paired by id alone. Returns the
-    builds and the Infamous ids left as builds of their own."""
-    out = {build_id: dict(entry, infamous=None) for build_id, entry in builds.items() if not entry["is_infamous"]}
-    unpaired = []
-    for build_id, entry in builds.items():
-        if not entry["is_infamous"]:
-            continue
-        regular_id = build_id[: -len(INFAMOUS_ID_SUFFIX)] if build_id.endswith(INFAMOUS_ID_SUFFIX) else None
-        pairable = regular_id in builds and not builds[regular_id]["is_infamous"]
-        if not pairable:
-            out[build_id] = dict(entry, infamous=None)
-            unpaired.append(build_id)
-            continue
-        out[regular_id]["infamous"] = infamous_entry(build_id, entry, builds[regular_id])
-    return out, unpaired
 
 
 def class_entry(row: Any) -> Dict[str, Any]:
@@ -246,10 +215,6 @@ def flavour_text_entry(row: Any) -> Dict[str, Any]:
     return {"text": row["Description"], "tag_weights": [{"tag": t, "weight": w} for t, w in zip(tags, weights)]}
 
 
-def inventory_entry(row: Any) -> Dict[str, Any]:
-    return {"position_x": row["PositionX"], "position_y": row["PositionY"]}
-
-
 class mercenaries(Parser_Module):
     def write(self) -> None:
         reader = self.relational_reader
@@ -260,19 +225,17 @@ class mercenaries(Parser_Module):
         def translate(values: Dict[str, int]) -> Any:
             return support_stats.get_translation(values.keys(), values, full_result=True, lang=self.language)
 
-        overrides: Dict[str, List[Dict[str, Any]]] = {}
-        for row in reader["MercenaryBuildVisualOverrides.dat64"]:
-            overrides.setdefault(row["Id"]["Id"], []).append(visual_override_entry(row))
+        overrides = reader["MercenaryBuildVisualOverrides.dat64"]
+        overrides.build_index("Id")
 
         builds = keyed(
-            ((row["Id"], build_entry(row, overrides.get(row["Id"], []))) for row in reader["MercenaryBuilds.dat64"]),
+            (
+                (row["Id"], build_entry(row, [visual_override_entry(o) for o in overrides.index["Id"][row]]))
+                for row in reader["MercenaryBuilds.dat64"]
+            ),
             "MercenaryBuilds",
+            self.fail_fast,
         )
-        builds, unpaired = pair_infamous(builds)
-        paired = sorted(build_id for build_id, build in builds.items() if build["infamous"] is not None)
-        print(f"mercenaries: {len(paired)} Infamous builds inside their regular build, {len(unpaired)} on their own")
-        for build_id in unpaired:
-            print(f"  on its own: {build_id}")
 
         skill_rows: List[Tuple[str, Dict[str, Any]]] = []
         failed: List[Tuple[str, str]] = []
@@ -283,7 +246,7 @@ class mercenaries(Parser_Module):
             skill_rows.append((skill_id(row), entry))
             if error is not None:
                 failed.append((skill_id(row), error))
-        skills = keyed(skill_rows, "MercenarySkills")
+        skills = keyed(skill_rows, "MercenarySkills", self.fail_fast)
         print(f"mercenaries: {len(failed)} of {len(skills)} granted effects did not convert")
         for key, error in failed:
             print(f"  {key}: {error}")
@@ -291,15 +254,17 @@ class mercenaries(Parser_Module):
         supports = keyed(
             ((row["Id"], support_entry(row, translate)) for row in reader["MercenarySupports.dat64"]),
             "MercenarySupports",
+            self.fail_fast,
         )
-        classes = keyed(((row["Id"], class_entry(row)) for row in reader["MercenaryClasses.dat64"]), "MercenaryClasses")
+        classes = keyed(
+            ((row["Id"], class_entry(row)) for row in reader["MercenaryClasses.dat64"]),
+            "MercenaryClasses",
+            self.fail_fast,
+        )
         flavour_text = keyed(
             ((row["Id"], flavour_text_entry(row)) for row in reader["MercenaryFlavourText.dat64"]),
             "MercenaryFlavourText",
-        )
-        inventories = keyed(
-            ((row["Id"]["Id"], inventory_entry(row)) for row in reader["MercenaryInventories.dat64"]),
-            "MercenaryInventories",
+            self.fail_fast,
         )
 
         if self.language == "English":
@@ -310,7 +275,6 @@ class mercenaries(Parser_Module):
         write_json(skills, self.data_path, "mercenary_skills")
         write_json(supports, self.data_path, "mercenary_supports")
         write_json(flavour_text, self.data_path, "mercenary_flavour_text")
-        write_json(inventories, self.data_path, "mercenary_inventories")
 
     def _export_icons(self, skills: Dict[str, Dict[str, Any]], supports: Dict[str, Dict[str, Any]]) -> None:
         paths = {path for skill in skills.values() for path in (skill["icon"], skill["house_icon"]) if path}

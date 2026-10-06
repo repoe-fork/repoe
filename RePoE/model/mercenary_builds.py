@@ -43,25 +43,6 @@ class ExtraStat(BaseModel):
     category: ExtraStatCategory | None = None
 
 
-class Infamous(BaseModel):
-    model_config = ConfigDict(
-        extra="forbid",
-    )
-    id: str
-    name: str
-    class_id: str | None = None
-    primary_skills: list[str] | None = None
-    secondary_skills: SkillPool | None = None
-    utility_skills: SkillPool | None = None
-    idle_skill: str | None = None
-    tags: list[str] | None = None
-    weapon_item_classes: list[str] | None = None
-    extra_stats: list[ExtraStat] | None = None
-    achievements: list[str] | None = None
-    visual_overrides: list[VisualOverride] | None = None
-    ai_file: str | None = None
-
-
 class MercenaryBuildsSchemaValue(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -79,7 +60,6 @@ class MercenaryBuildsSchemaValue(BaseModel):
     achievements: list[str]
     visual_overrides: list[VisualOverride]
     ai_file: str
-    infamous: Infamous | None = None
 
 
 class Model(RootModel[dict[str, MercenaryBuildsSchemaValue]]):
