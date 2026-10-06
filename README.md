@@ -63,6 +63,11 @@ The following data is currently available:
 - `active_skill_types.json`: List the active skill types used in `gems.json`.
 - `uniques.json`: Lists the names and art files of unique items - this is the only information
 included in the data files.
+- `mercenary_builds.json`: Describes mercenary builds with their skill pools, extra stats and weapon types. Infamous builds are their own entries, marked `is_infamous`.
+- `mercenary_classes.json`: Describes mercenary classes with their house, attribute and monster varieties.
+- `mercenary_skills.json`: Describes mercenary skills keyed by granted effect id, with their possible supports and per-level data.
+- `mercenary_supports.json`: Describes mercenary supports with their tier, family, stats and stat text.
+- `mercenary_flavour_text.json`: Lists mercenary flavour text with the tag weights that select it.
 
 ## Credits
 

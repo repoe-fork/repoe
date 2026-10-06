@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "additionalProperties": {
+        "$ref": "#/definitions/MercenaryFlavourTextSchemaValue"
+    },
+    "definitions": {
+        "MercenaryFlavourTextSchemaValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "text": {
+                    "type": "string"
+                },
+                "tag_weights": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TagWeight"
+                    }
+                }
+            },
+            "required": [
+                "text",
+                "tag_weights"
+            ],
+            "title": "MercenaryFlavourTextSchemaValue"
+        },
+        "TagWeight": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "tag": {
+                    "type": "string"
+                },
+                "weight": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "tag",
+                "weight"
+            ],
+            "title": "TagWeight"
+        }
+    }
+}
