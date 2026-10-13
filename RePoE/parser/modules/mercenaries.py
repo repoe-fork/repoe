@@ -12,8 +12,9 @@ Writes five files, each keyed by the row's game id:
   mercenary_support_stat_descriptions.txt, which stat_translation_file names.
 - mercenary_flavour_text.json: MercenaryFlavourText with its tag weights.
 
-Every row is exported, placeholder rows included, since builds reference them. Unknown,
-Data and HASH16 columns are not exported.
+Every row is exported, placeholder rows included, since builds reference them. Builds,
+skills and supports carry their HASH16 column as hash, the id the trade and stash APIs
+send for them. Unknown and Data columns are not exported.
 """
 
 from typing import Any, Callable, Dict, Iterable, List, Optional, Tuple
@@ -104,6 +105,7 @@ def build_entry(row: Any, visual_overrides: List[Dict[str, Any]]) -> Dict[str, A
     idle_skill = row["IdleSkill"]
     return {
         "name": row["Name"],
+        "hash": row["HASH16"],
         "class_id": row["Class"]["Id"],
         "is_infamous": bool(row["IsInfamous"]),
         "primary_skills": [skill_id(skill) for skill in row["Skills1"]],
@@ -155,6 +157,7 @@ def skill_entry(
     active_skill = granted_effect["ActiveSkill"]
     entry = {
         "name": row["Name"],
+        "hash": row["HASH16"],
         "description": row["Description"],
         "required_level": row["RequiredLevel"],
         "support_count": get_id_or_none(row["SupportCount"]),
@@ -198,6 +201,7 @@ def support_entry(row: Any, translate: Callable[[Dict[str, int]], Any]) -> Dict[
     stats = [{"id": stat, "value": value} for stat, value in zip(stat_ids, values)]
     return {
         "name": row["Name"],
+        "hash": row["HASH16"],
         "tier": row["Tier"],
         "family": get_id_or_none(row["SupportFamily"]),
         "icon": row["GemIcon"],

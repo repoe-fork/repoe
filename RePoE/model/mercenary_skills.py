@@ -93,6 +93,7 @@ class MercenarySkillsSchemaValue(BaseModel):
         extra="forbid",
     )
     name: str
+    hash: int
     description: str
     required_level: int
     support_count: str | None = None
