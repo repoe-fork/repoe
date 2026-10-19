@@ -48,6 +48,7 @@ class MercenaryBuildsSchemaValue(BaseModel):
         extra="forbid",
     )
     name: str
+    hash: int
     class_id: str
     is_infamous: bool
     primary_skills: list[str]

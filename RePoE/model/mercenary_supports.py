@@ -19,6 +19,7 @@ class MercenarySupportsSchemaValue(BaseModel):
         extra="forbid",
     )
     name: str
+    hash: int
     tier: int
     family: str | None = None
     icon: str
