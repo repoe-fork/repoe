@@ -220,7 +220,7 @@ class GemConverter:
     def _select_active_skill_types(type_rows: List[DatRecord]) -> List[str]:
         return [row["Id"] for row in type_rows] if type_rows else None
 
-    def get_translation(self, string: TranslationString):
+    def get_translation(self, string: TranslationString, values: Dict[str, int] = None):
         s = []
         for i, tag in enumerate(string.tags):
             q = [string.translation.ids[tag]]
@@ -228,6 +228,8 @@ class GemConverter:
                 if tag + 1 in v:
                     q.append(k)
             s.append(string.strings[i])
+            if values and "+" in string.tags_types[i] and values.get(q[0], 0) > 0:
+                s.append("+")
             s.append(f'{{{"/".join(q)}}}')
         s.append(string.strings[-1])
         return "".join(s)
@@ -364,11 +366,12 @@ class GemConverter:
                             {k: v / value for k, v in stats.items()},
                             full_result=True,
                             lang=self.language,
+                            restriction="gem_quality",
                         )
                         tags = sum(len(i.tags) for i in trans.string_instances)
                         if sum(len(i.tags) for i in trans.string_instances) > tag_count:
                             tag_count = tags
-                            q_stat["stat"] = "\n".join(self.get_translation(string) for string in trans.string_instances)
+                            q_stat["stat"] = "\n".join(self.get_translation(string, stats) for string in trans.string_instances)
                         for i, t in enumerate(trans.found_ids):
                             stat_order["\n".join(t)] = trans.tf_indices[i]
                     q_stats.append(q_stat)
