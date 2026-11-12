@@ -342,34 +342,37 @@ class GemConverter:
             print("Error processing stat text for", stats, e)
             pass
 
-        q_stats = []
-
         if granted_effect["Id"] in self.granted_effect_quality_stats:
-            for geq in self.granted_effect_quality_stats[granted_effect["Id"]]:
-                stats = {
-                    r["Id"]: geq["StatsValuesPermille"][i]
-                    for i, r in enumerate(geq["StatsKeys"])
-                    if geq["StatsValuesPermille"][i] is not None
-                }
-                if not stats:
-                    continue
-                q_stat = {"stats": stats}
-                tag_count = -1
-                for value in sorted(set([min(1000, abs(v)) for v in stats.values() if v] + [25])):
-                    trans = translation_file.get_translation(
-                        list(stats.keys()),
-                        {k: v / value for k, v in stats.items()},
-                        full_result=True,
-                        lang=self.language,
-                    )
-                    tags = sum(len(i.tags) for i in trans.string_instances)
-                    if sum(len(i.tags) for i in trans.string_instances) > tag_count:
-                        tag_count = tags
-                        q_stat["stat"] = "\n".join(self.get_translation(string) for string in trans.string_instances)
-                    for i, t in enumerate(trans.found_ids):
-                        stat_order["\n".join(t)] = trans.tf_indices[i]
-                q_stats.append(q_stat)
-            r["quality_stats"] = q_stats
+            for out_key, stats_key, values_key in (
+                ("quality_stats", "StatsKeys", "StatsValuesPermille"),
+                ("alt_quality_stats", "AltStats", "AltStatValuesPermille"),
+            ):
+                q_stats = []
+                for geq in self.granted_effect_quality_stats[granted_effect["Id"]]:
+                    stats = {
+                        r["Id"]: geq[values_key][i]
+                        for i, r in enumerate(geq[stats_key])
+                        if geq[values_key][i] is not None
+                    }
+                    if not stats:
+                        continue
+                    q_stat = {"stats": stats}
+                    tag_count = -1
+                    for value in sorted(set([min(1000, abs(v)) for v in stats.values() if v] + [25])):
+                        trans = translation_file.get_translation(
+                            list(stats.keys()),
+                            {k: v / value for k, v in stats.items()},
+                            full_result=True,
+                            lang=self.language,
+                        )
+                        tags = sum(len(i.tags) for i in trans.string_instances)
+                        if sum(len(i.tags) for i in trans.string_instances) > tag_count:
+                            tag_count = tags
+                            q_stat["stat"] = "\n".join(self.get_translation(string) for string in trans.string_instances)
+                        for i, t in enumerate(trans.found_ids):
+                            stat_order["\n".join(t)] = trans.tf_indices[i]
+                    q_stats.append(q_stat)
+                r[out_key] = q_stats
 
         return r
 
