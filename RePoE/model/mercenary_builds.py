@@ -54,7 +54,6 @@ class MercenaryBuildsSchemaValue(BaseModel):
     primary_skills: list[str]
     secondary_skills: SkillPool
     utility_skills: SkillPool
-    idle_skill: str | None = None
     tags: list[str]
     weapon_item_classes: list[str]
     extra_stats: list[ExtraStat]
