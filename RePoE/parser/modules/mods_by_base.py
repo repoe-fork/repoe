@@ -96,6 +96,9 @@ class mods_by_base(Parser_Module):
             level = name.split()[0]
             type = name.split()[-1]
             for key in keys:
+                # 3.30.0: Essence of Trickery applies to belts only; its other class columns are empty
+                if essence[key] is None:
+                    continue
                 essence_levels: EssenceModLevels = root.root[item_classes[item_class_map[key]]["name"]].root.setdefault(
                     "essences", EssenceModLevels({})
                 )

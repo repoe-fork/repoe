@@ -255,6 +255,9 @@ class stat_translations(Parser_Module):
     def _build_stat_translation_file_map(self, file_system: FileSystem) -> Iterator[Tuple[str, str]]:
         node = file_system.build_directory()
         for game_file in node["Metadata"]["StatDescriptions"].children.keys():
+            # 3.30.0 renamed these files .txt -> .csd; output names keep following the .txt form
+            if game_file.endswith(".csd"):
+                game_file = game_file[:-4] + ".txt"
             out_file = get_stat_translation_file_name(game_file)
             if out_file:
                 yield game_file, out_file
