@@ -271,6 +271,7 @@ class GemConverter:
         translation_file: TranslationFile,
         primary_gess: DatRecord,
         primary_gesspl: DatRecord,
+        stat_set_translation_files: List[TranslationFile],
     ) -> Dict[str, Any]:
         r = {}
 
@@ -345,9 +346,9 @@ class GemConverter:
             pass
 
         if granted_effect["Id"] in self.granted_effect_quality_stats:
-            for out_key, stats_key, values_key in (
-                ("quality_stats", "StatsKeys", "StatsValuesPermille"),
-                ("alt_quality_stats", "AltStats", "AltStatValuesPermille"),
+            for out_key, stats_key, values_key, sets_key in (
+                ("quality_stats", "StatsKeys", "StatsValuesPermille", "ApplyToStatSets"),
+                ("alt_quality_stats", "AltStats", "AltStatValuesPermille", "AltApplyToStatSets"),
             ):
                 q_stats = []
                 for geq in self.granted_effect_quality_stats[granted_effect["Id"]]:
@@ -359,21 +360,30 @@ class GemConverter:
                     if not stats:
                         continue
                     q_stat = {"stats": stats}
-                    tag_count = -1
-                    for value in sorted(set([min(1000, abs(v)) for v in stats.values() if v] + [25])):
-                        trans = translation_file.get_translation(
-                            list(stats.keys()),
-                            {k: v / value for k, v in stats.items()},
-                            full_result=True,
-                            lang=self.language,
-                            restriction="gem_quality",
-                        )
-                        tags = sum(len(i.tags) for i in trans.string_instances)
-                        if sum(len(i.tags) for i in trans.string_instances) > tag_count:
-                            tag_count = tags
-                            q_stat["stat"] = "\n".join(self.get_translation(string, stats) for string in trans.string_instances)
-                        for i, t in enumerate(trans.found_ids):
-                            stat_order["\n".join(t)] = trans.tf_indices[i]
+                    # word the effect for the first stat set it applies to that describes it
+                    applies_to = sorted(i for i in geq[sets_key] or [] if i < len(stat_set_translation_files))
+                    candidates = [stat_set_translation_files[i] for i in applies_to] + [translation_file]
+                    for quality_tf in [tf for tf in candidates if tf]:
+                        tag_count = -1
+                        for value in sorted(set([min(1000, abs(v)) for v in stats.values() if v] + [25])):
+                            trans = quality_tf.get_translation(
+                                list(stats.keys()),
+                                {k: v / value for k, v in stats.items()},
+                                full_result=True,
+                                lang=self.language,
+                                restriction="gem_quality",
+                            )
+                            tags = sum(len(i.tags) for i in trans.string_instances)
+                            if sum(len(i.tags) for i in trans.string_instances) > tag_count:
+                                tag_count = tags
+                                q_stat["stat"] = "\n".join(
+                                    self.get_translation(string, stats) for string in trans.string_instances
+                                )
+                            if quality_tf is translation_file:
+                                for i, t in enumerate(trans.found_ids):
+                                    stat_order["\n".join(t)] = trans.tf_indices[i]
+                        if q_stat.get("stat"):
+                            break
                     q_stats.append(q_stat)
                 r[out_key] = q_stats
 
@@ -414,24 +424,21 @@ class GemConverter:
         gesses = [granted_effect["StatSet"]] + (granted_effect["AdditionalStatSets"] or [])
         if gesses:
             obj["stat_sets"] = []
+        skill_id = obj.get("active_skill").get("id") if "active_skill" in obj else None
+        translation_files = [self._get_translation_file(skill_id, i) for i in range(len(gesses))]
         for i, gess in enumerate(gesses):
             primary_gess = gesses[0]
-            skill_id = obj.get("active_skill").get("id") if "active_skill" in obj else None
-            translation_file = None
-            game_file_name = None
-            for game_file_name in self._get_possible_translation_files(skill_id, i):
-                try:
-                    translation_file = self.translation_file_cache[game_file_name]
-                    break
-                except (KeyError, FileNotFoundError):
-                    pass
-                except:
-                    print("Unexpected error in translation file", game_file_name)
-                    raise
+            game_file_name, translation_file = translation_files[i]
             gepls_dict = {}
             for gesspl, primary_gesspl in zip(self.gesspls[gess["Id"]], self.gesspls[primary_gess["Id"]]):
                 gepls_dict[gesspl["GemLevel"]] = self._convert_gess(
-                    granted_effect, gess, gesspl, translation_file, primary_gess, primary_gesspl
+                    granted_effect,
+                    gess,
+                    gesspl,
+                    translation_file,
+                    primary_gess,
+                    primary_gesspl,
+                    [tf for _, tf in translation_files],
                 )
             obj["stat_sets"].append(
                 {
@@ -443,6 +450,18 @@ class GemConverter:
             )
 
         return obj
+
+    def _get_translation_file(self, skill_id: Optional[str], stat_set: int):
+        game_file_name = None
+        for game_file_name in self._get_possible_translation_files(skill_id, stat_set):
+            try:
+                return game_file_name, self.translation_file_cache[game_file_name]
+            except (KeyError, FileNotFoundError):
+                pass
+            except:
+                print("Unexpected error in translation file", game_file_name)
+                raise
+        return game_file_name, None
 
     @staticmethod
     def _get_possible_translation_files(
