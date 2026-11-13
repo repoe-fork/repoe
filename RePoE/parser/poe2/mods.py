@@ -4,8 +4,18 @@ from PyPoE.poe.file.dat import DatRecord
 from PyPoE.poe.file.translations import install_data_dependant_quantifiers, TranslationFileCache
 from PyPoE.poe.poe2constants import MOD_DOMAIN
 from PyPoE.poe.sim.mods import get_translation
+from pydantic import RootModel
+from RePoE.model.mods import ModsSchemaValue
 from RePoE.parser import Parser_Module
-from RePoE.parser.util import call_with_default_args, write_json
+from RePoE.parser.util import call_with_default_args, write_model
+
+
+class Poe2ModsSchemaValue(ModsSchemaValue):
+    grants_skill_gems: list[str]
+
+
+class Poe2Model(RootModel[dict[str, Poe2ModsSchemaValue]]):
+    root: dict[str, Poe2ModsSchemaValue]
 
 
 def _convert_stats(
@@ -72,6 +82,9 @@ class mods(Parser_Module):
         prices = self.relational_reader["GoldModPrices.dat64"]
         if "Mod" not in prices.index:
             prices.build_index("Mod")
+        granted_skill_gems = {}
+        for row in self.relational_reader["ModGrantedSkills.dat64"]:
+            granted_skill_gems.setdefault(row["Mod"].rowid, []).append(row["Skill"]["BaseItemTypesKey"]["Id"])
         for mod in self.relational_reader["Mods.dat64"]:
             domain = MOD_DOMAIN_FIX.get(mod["Id"], mod["Domain"])
             price = prices.index["Mod"].get(mod, None)
@@ -96,6 +109,7 @@ class mods(Parser_Module):
                 "spawn_weights": _convert_spawn_weights(zip(mod["SpawnWeight_Tags"], mod["SpawnWeight_Values"])),
                 "generation_weights": _convert_generation_weights(mod["GenerationWeight"]),
                 "grants_effects": _convert_granted_effects(mod["GrantedEffectsPerLevel"]),
+                "grants_skill_gems": granted_skill_gems.get(mod.rowid, []),
                 "is_essence_only": mod["IsEssenceOnlyModifier"] > 0,
                 "adds_tags": _convert_tags_keys(mod["Tags"]),
                 "implicit_tags": _convert_tags_keys(mod["ImplicitTags"]),
@@ -106,7 +120,7 @@ class mods(Parser_Module):
             else:
                 root[mod["Id"]] = obj
 
-        write_json(root, self.data_path, "mods")
+        write_model(Poe2Model(root), self.data_path, "mods")
 
 
 # a few unique item mods have the wrong mod domain so they wouldn't be added to the file without this
