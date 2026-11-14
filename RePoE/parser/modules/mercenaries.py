@@ -102,7 +102,6 @@ def visual_override_entry(row: Any) -> Dict[str, Any]:
 
 
 def build_entry(row: Any, visual_overrides: List[Dict[str, Any]]) -> Dict[str, Any]:
-    idle_skill = row["IdleSkill"]
     return {
         "name": row["Name"],
         "hash": row["HASH16"],
@@ -111,7 +110,6 @@ def build_entry(row: Any, visual_overrides: List[Dict[str, Any]]) -> Dict[str, A
         "primary_skills": [skill_id(skill) for skill in row["Skills1"]],
         "secondary_skills": skill_pool(row["Skills2Count"], row["Skills2"]),
         "utility_skills": skill_pool(row["Skills3Count"], row["Skills3"]),
-        "idle_skill": None if idle_skill is None else skill_id(idle_skill),
         "tags": ids(row["Tags"]),
         "weapon_item_classes": [wieldable["ItemClass"]["Id"] for wieldable in row["WieldableTypes"]],
         "extra_stats": [extra_stat_entry(extra) for extra in row["ExtraStats"]],

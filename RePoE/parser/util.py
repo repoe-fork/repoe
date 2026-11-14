@@ -163,6 +163,9 @@ def get_release_state(item_id: str) -> ReleaseState:
 
 
 def get_stat_translation_file_name(game_file: str) -> Optional[str]:
+    # 3.30.0 renamed the stat description files .txt -> .csd; output names keep following the .txt form
+    if game_file.endswith(".csd"):
+        game_file = game_file[: -len(".csd")] + ".txt"
     if game_file in STAT_DESCRIPTION_NAMING_EXCEPTIONS:
         return f"stat_translations{STAT_DESCRIPTION_NAMING_EXCEPTIONS[game_file]}"
     elif game_file.endswith("_stat_descriptions.txt"):
