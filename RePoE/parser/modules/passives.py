@@ -1,6 +1,6 @@
 import os.path
 
-from PyPoE.poe.file.psg import PSGFile
+from PyPoE.poe.file.psg2 import PSGFile
 from PyPoE.poe.file.translations import TranslationFileCache
 from RePoE.parser import Parser_Module
 from RePoE.parser.util import call_with_default_args, write_any_json
@@ -82,7 +82,7 @@ class passives(Parser_Module):
         return psg
 
     def uiart(self, row):
-        result = {"ornament": row["Ornament"]}
+        result = {"ornament": row["ConnectionArt"]["Ornament1"]}
         bg = row["BackgroundArt"]
         for size in ["Small", "Medium", "Large"]:
             for blank in [False, True]:
