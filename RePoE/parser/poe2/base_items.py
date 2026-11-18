@@ -191,9 +191,7 @@ class base_items(Parser_Module):
                 "properties": properties,
                 "release_state": get_release_state(item_id).name,
                 "domain": (
-                    mod_domain.name.lower()
-                    if mod_domain and mod_domain is not MOD_DOMAIN.MODS_DISALLOWED
-                    else "undefined"
+                    mod_domain.name.lower() if mod_domain and mod_domain.name != "MODS_DISALLOWED" else "undefined"
                 ),
             }
             _convert_flask_buff(flask_types[item_id], result)
