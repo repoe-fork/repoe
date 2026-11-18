@@ -97,19 +97,22 @@ class stat_translations(Parser_Module):
                 [False for _ in s.translation.ids],
                 use_placeholder=placeholder,
             )
-            if trade_format in self.trade_stats:
-                for trade_stat in self.trade_stats[trade_format]:
-                    trade_stats[trade_stat["id"]] = trade_stat
-            elif "\n" in trade_format:
-                for line in trade_format.splitlines():
-                    if line in self.trade_stats:
-                        for trade_stat in self.trade_stats[line]:
-                            partial_trade_stats[trade_stat["id"]] = trade_stat
-            else:
-                trade_format = re.sub(r"\d+", "#", trade_format)
+            for i in range(2):
+                if i:
+                    trade_format = re.sub(r"\[(?:[^|\]]+\|)?([^]]+)]", r"\1", trade_format)
                 if trade_format in self.trade_stats:
                     for trade_stat in self.trade_stats[trade_format]:
                         trade_stats[trade_stat["id"]] = trade_stat
+                elif "\n" in trade_format:
+                    for line in trade_format.splitlines():
+                        if line in self.trade_stats:
+                            for trade_stat in self.trade_stats[line]:
+                                partial_trade_stats[trade_stat["id"]] = trade_stat
+                else:
+                    hash_format = re.sub(r"\d+", "#", trade_format)
+                    if hash_format in self.trade_stats:
+                        for trade_stat in self.trade_stats[hash_format]:
+                            trade_stats[trade_stat["id"]] = trade_stat
 
             value = Stat(
                 condition=self._convert_range(s.range),
