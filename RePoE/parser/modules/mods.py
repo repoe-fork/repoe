@@ -57,6 +57,30 @@ def _convert_granted_effects(granted_effects_per_level: List[DatRecord]) -> List
     ]
 
 
+def _granted_effect_lines(mod: DatRecord, client_strings: Dict[str, str]) -> List[str]:
+    # Since 3.30 the stat descriptions no longer word a mod's granted skills and supports (the local_display_* stats
+    # are left at 0). The client words them from the granted effect with these ClientStrings instead, on mods with
+    # Flag1 set: "Grants Level {1} {0}", or "Grants {0}" for an effect that cannot be supported.
+    if not mod["Flag1"]:
+        return []
+    lines = []
+    for gepl in mod["GrantedEffectsPerLevelKeys"] or []:
+        effect = gepl["GrantedEffect"]
+        if effect["IsSupport"]:
+            name = effect["SupportName"]
+            key = "ModGrantsSupportEffect"
+        else:
+            name = effect["ActiveSkill"]["DisplayedName"] if effect["ActiveSkill"] else None
+            key = "ModGrantsEffect"
+        if not name:
+            continue
+        if not effect["CannotBeSupported"]:
+            key += "WithLevel"
+        link = f"[{effect['Id']}::{gepl['Level']}|{name}]"
+        lines.append(client_strings[key].replace("{0}", link).replace("{1}", str(gepl["Level"])).strip())
+    return lines
+
+
 def _convert_tags_keys(tags_keys: List[DatRecord]) -> List[str]:
     r = []
     for tag in tags_keys:
@@ -69,6 +93,15 @@ class mods(Parser_Module):
         root = {}
         translation_cache = self.get_cache(TranslationFileCache)
         install_data_dependant_quantifiers(self.relational_reader)
+        client_strings = {
+            key: self.relational_reader["ClientStrings.dat64"].index["Id"][key]["Text"]
+            for key in (
+                "ModGrantsEffect",
+                "ModGrantsEffectWithLevel",
+                "ModGrantsSupportEffect",
+                "ModGrantsSupportEffectWithLevel",
+            )
+        }
         for mod in self.relational_reader["Mods.dat64"]:
             domain = MOD_DOMAIN_FIX.get(mod["Id"], mod["Domain"])
 
@@ -77,6 +110,7 @@ class mods(Parser_Module):
             except Exception as e:
                 print("could not get text for mod", mod["Id"], e)
                 lines = []
+            lines = _granted_effect_lines(mod, client_strings) + lines
 
             obj = {
                 "required_level": mod["Level"],
